@@ -38,6 +38,7 @@ Minuet::Minuet()
     KStandardAction::openNew(this, SLOT(fileNew()), actionCollection());
     KStandardAction::quit(qApp, SLOT(closeAllWindows()), actionCollection());
     KStandardAction::preferences(this, SLOT(settingsConfigure()), actionCollection());
+    setStandardToolBarMenuEnabled(false);
     setupGUI();
 }
 

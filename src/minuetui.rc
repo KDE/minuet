@@ -6,10 +6,6 @@
      xsi:schemaLocation="http://www.kde.org/standards/kxmlgui/1.0
                          http://www.kde.org/standards/kxmlgui/1.0/kxmlgui.xsd" >
 <MenuBar>
-  <Menu name="move">
-    <text>&amp;Move</text>
-    <Action name="switch_action" />
-  </Menu>
   <ToolBar name="mainToolBar" noEdit="true" >
     <text>About System Settings</text>
     <ActionList name="viewActions" />
@@ -19,6 +15,5 @@
     <ActionList name="quit" />
     <ActionList name="search" />
   </ToolBar>
-
 </MenuBar>
 </gui>
