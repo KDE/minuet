@@ -12,7 +12,7 @@ include(KDECMakeSettings)
 include(KDECompilerSettings)
 include(FeatureSummary)
 
-find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Widgets)
+find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Widgets Quick)
 
 find_package(KF5 REQUIRED COMPONENTS
     CoreAddons
