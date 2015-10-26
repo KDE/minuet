@@ -22,6 +22,11 @@ find_package(KF5 REQUIRED COMPONENTS
     DocTools
 )
 
+find_package(Drumstick REQUIRED COMPONENTS Alsa File RT)
+
+MESSAGE(STATUS "Drumstick_FOUND: " ${Drumstick_FOUND} ${DRUMSTICK_LIBRARIES})
+MESSAGE(STATUS "DrumstickFile_FOUND: " ${DrumstickFile_FOUND} ${DRUMSTICK_LIBRARIES})
+
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 add_subdirectory(doc)
