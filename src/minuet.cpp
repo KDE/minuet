@@ -59,14 +59,15 @@ void Minuet::fileOpen()
 void Minuet::settingsConfigure()
 {
     qCDebug(MINUET) << "Minuet:settingsConfigure()";
-    if (KConfigDialog::showDialog("settings")) {
+
+    if (KConfigDialog::showDialog("settings"))
         return;
-    }
+
     KConfigDialog *dialog = new KConfigDialog(this, "settings", MinuetSettings::self());
     QWidget *generalSettingsDialog = new QWidget;
     settingsBase.setupUi(generalSettingsDialog);
     dialog->addPage(generalSettingsDialog, i18n("General"), "package_setting");
-    dialog->setAttribute( Qt::WA_DeleteOnClose );
+    dialog->setAttribute(Qt::WA_DeleteOnClose);
     dialog->show();
 }
 

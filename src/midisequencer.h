@@ -47,7 +47,12 @@ public:
     void subscribeTo(const QString &portName);
     void play(const QString &fileName);
 
+Q_SIGNALS:
+    void noteOn(int chan, int pitch, int vol);
+    void noteOff(int chan, int pitch, int vol);
+
 private Q_SLOTS:
+    // Slots for events generated when reading a MIDI file
     void SMFHeader(int format, int ntrks, int division);
     void SMFNoteOn(int chan, int pitch, int vol);
     void SMFNoteOff(int chan, int pitch, int vol);
@@ -63,13 +68,18 @@ private Q_SLOTS:
     void SMFKeySig(int b0, int b1);
     void SMFError(const QString &errorStr);
 
+    // Slots for events generated when playing a MIDI
+    void eventReceived(drumstick::SequencerEvent *ev);
+
 private:
     void appendEvent(drumstick::SequencerEvent *ev);
     
 private:
-    int m_portId;
+    int m_outputPortId;
+    int m_inputPortId;
     int m_queueId;
-    drumstick::MidiPort *m_port;
+    drumstick::MidiPort *m_outputPort;
+    drumstick::MidiPort *m_inputPort;
     drumstick::QSmf *m_smfReader;
     drumstick::MidiQueue *m_queue;
     drumstick::QueueTempo m_firstTempo;
