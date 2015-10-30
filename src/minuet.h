@@ -29,6 +29,8 @@
 #include "ui_settingsbase.h"
 #include "minuetsettings.h"
 
+class MidiSequencer;
+
 Q_DECLARE_LOGGING_CATEGORY(MINUET)
 
 /**
@@ -57,7 +59,7 @@ private slots:
     /**
      * Create a new window
      */
-    void fileNew();
+    void fileOpen();
 
     /**
      * Open the settings dialog
@@ -68,6 +70,7 @@ private:
     // this is the name of the root widget inside our Ui file
     // you can rename it in designer and then change it here
     Ui::settingsBase settingsBase;
+    MidiSequencer *m_midiSequencer;
 };
 
-#endif // _MINUET_H_
+#endif // MINUET_H

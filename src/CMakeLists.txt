@@ -1,6 +1,9 @@
+kde_enable_exceptions()
+
 set(minuet_SRCS
     main.cpp
     minuet.cpp
+    midisequencer.cpp
 )
 
 qt5_add_resources(minuet_SRCS qml.qrc)
@@ -17,6 +20,8 @@ target_link_libraries(minuet
     KF5::I18n
     KF5::XmlGui
     KF5::ConfigWidgets
+    drumstick-file
+    drumstick-alsa
 )
 
 install(TARGETS minuet ${INSTALL_TARGETS_DEFAULT_ARGS})

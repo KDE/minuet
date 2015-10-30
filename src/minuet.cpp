@@ -27,15 +27,19 @@
 
 #include <QtCore/QDebug>
 #include <QtQuick/QQuickView>
+#include <QtWidgets/QFileDialog>
 
-Minuet::Minuet()
-    : KXmlGuiWindow()
+#include "midisequencer.h"
+
+Minuet::Minuet() :
+    KXmlGuiWindow(),
+    m_midiSequencer(new MidiSequencer(this))
 {
     QQuickView *quickView = new QQuickView;
     quickView->setSource(QUrl("qrc:/main.qml"));
     quickView->setResizeMode(QQuickView::SizeRootObjectToView);
     setCentralWidget(QWidget::createWindowContainer(quickView, this));
-    KStandardAction::openNew(this, SLOT(fileNew()), actionCollection());
+    KStandardAction::open(this, SLOT(fileOpen()), actionCollection());
     KStandardAction::quit(qApp, SLOT(closeAllWindows()), actionCollection());
     KStandardAction::preferences(this, SLOT(settingsConfigure()), actionCollection());
     setStandardToolBarMenuEnabled(false);
@@ -46,10 +50,10 @@ Minuet::~Minuet()
 {
 }
 
-void Minuet::fileNew()
+void Minuet::fileOpen()
 {
-    qCDebug(MINUET) << "Minuet::fileNew()";
-    (new Minuet)->show();
+    QString fileName = QFileDialog::getOpenFileName(this, i18n("Open File"));
+    m_midiSequencer->play(fileName);
 }
 
 void Minuet::settingsConfigure()
