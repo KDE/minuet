@@ -26,6 +26,8 @@
 #include <KActionCollection>
 
 #include <QtCore/QDebug>
+#include <QtQml/QQmlEngine>
+#include <QtQml/QQmlContext>
 #include <QtQuick/QQuickView>
 #include <QtWidgets/QFileDialog>
 
@@ -36,14 +38,16 @@ Minuet::Minuet() :
     m_midiSequencer(new MidiSequencer(this))
 {
     QQuickView *quickView = new QQuickView;
+    quickView->engine()->rootContext()->setContextProperty("sequencer", m_midiSequencer);
     quickView->setSource(QUrl("qrc:/main.qml"));
     quickView->setResizeMode(QQuickView::SizeRootObjectToView);
     setCentralWidget(QWidget::createWindowContainer(quickView, this));
+
     KStandardAction::open(this, SLOT(fileOpen()), actionCollection());
     KStandardAction::quit(qApp, SLOT(closeAllWindows()), actionCollection());
     KStandardAction::preferences(this, SLOT(settingsConfigure()), actionCollection());
     setStandardToolBarMenuEnabled(false);
-    setupGUI();
+    setupGUI();    
 }
 
 Minuet::~Minuet()

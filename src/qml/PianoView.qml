@@ -35,4 +35,13 @@ Item {
             Octave { }
         }
     }
+    Component.onCompleted: {
+        sequencer.noteOn.connect(noteOn)
+        sequencer.noteOff.connect(noteOff)
+    }
+    function noteOn(chan, pitch, vol) {
+        whiteKeys0.children[1].color = "#475057"
+    }
+    function noteOff(chan, pitch, vol) {
+    }
 }

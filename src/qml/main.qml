@@ -35,7 +35,7 @@ Item {
     ScrollView {
         id: scrollView
         frameVisible: true
-        width: 200; height: parent.height
+        width: 250; height: parent.height
         Rectangle {
             color: "#475057"
             anchors.fill: parent

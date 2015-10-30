@@ -26,6 +26,8 @@
 #include <drumstick/alsaevent.h>
 #include <drumstick/alsaclient.h>
 
+#include "midisequenceroutputthread.h"
+
 MidiSequencer::MidiSequencer(QObject *parent) :
     QObject(parent)
 {
@@ -40,13 +42,8 @@ MidiSequencer::MidiSequencer(QObject *parent) :
     m_outputPort->setCapability(SND_SEQ_PORT_CAP_READ | SND_SEQ_PORT_CAP_SUBS_READ);
     m_outputPort->setPortType(SND_SEQ_PORT_TYPE_APPLICATION);
     m_outputPortId = m_outputPort->getPortId();
-
-    m_inputPort = new drumstick::MidiPort(this);
-    m_inputPort->attach(m_client);
-    m_inputPort->setPortName("Minuet Sequencer Input Port");
-    m_inputPort->setCapability(SND_SEQ_PORT_CAP_WRITE | SND_SEQ_PORT_CAP_SUBS_WRITE);
-    m_inputPort->setPortType(SND_SEQ_PORT_TYPE_APPLICATION);
-    m_inputPortId = m_inputPort->getPortId();
+    
+    m_midiSequencerOutputThread = new MidiSequencerOutputThread(m_client, m_outputPortId);
 
     m_queue = m_client->createQueue();
     m_firstTempo = m_queue->getTempo();
@@ -80,6 +77,7 @@ MidiSequencer::MidiSequencer(QObject *parent) :
 
 MidiSequencer::~MidiSequencer()
 {
+    delete m_midiSequencerOutputThread;
 }
 
 void MidiSequencer::subscribeTo(const QString &portName)
@@ -93,22 +91,16 @@ void MidiSequencer::subscribeTo(const QString &portName)
 
 void MidiSequencer::play(const QString &fileName)
 {
+    m_song.clear();
     m_smfReader->readFromFile(fileName);
-    try {
-        m_client->drainOutput();
-        m_client->synchronizeOutput();
-        m_queue->stop();
-    } catch (const drumstick::SequencerError& err) {
-        throw err;
-    }
+    m_song.sort();
+    m_midiSequencerOutputThread->setSong(&m_song);
+    m_midiSequencerOutputThread->start();
 }
 
 void MidiSequencer::SMFHeader(int format, int ntrks, int division)
 {
-    Q_UNUSED(format);
-    Q_UNUSED(ntrks);
-    m_firstTempo.setPPQ(division);
-    m_queue->start();
+    m_song.setHeader(format, ntrks, division);
 }
 
 void MidiSequencer::SMFNoteOn(int chan, int pitch, int vol)
@@ -159,7 +151,7 @@ void MidiSequencer::SMFText(int typ, const QString& data)
 
 void MidiSequencer::SMFTempo(int tempo)
 {
-    m_firstTempo.setTempo(tempo);
+    m_song.setInitialTempo(tempo);
     appendEvent(new drumstick::TempoEvent(m_queueId, tempo));
 }
 
@@ -199,7 +191,7 @@ void MidiSequencer::appendEvent(drumstick::SequencerEvent *ev)
     if (ev->getSequencerType() != SND_SEQ_EVENT_TEMPO)
         ev->setSubscribers();
     ev->scheduleTick(m_queueId, m_smfReader->getCurrentTime(), false);
-    m_client->output(ev);
+    m_song.append(ev);
 }
 
 #include "midisequencer.moc"

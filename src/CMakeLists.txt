@@ -2,8 +2,10 @@ kde_enable_exceptions()
 
 set(minuet_SRCS
     main.cpp
+    song.cpp
     minuet.cpp
     midisequencer.cpp
+    midisequenceroutputthread.cpp
 )
 
 qt5_add_resources(minuet_SRCS qml.qrc)
