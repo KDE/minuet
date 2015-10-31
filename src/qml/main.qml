@@ -2,6 +2,8 @@ import QtQuick 2.5
 import QtQuick.Controls 1.4
 
 Item {
+    property int menuBarWidth: 280
+
     ListModel {
         id: categories
         ListElement { name: "Intervals"; cost: 2.45 }
@@ -14,8 +16,8 @@ Item {
     Component {
         id: categoryDelegate
         Rectangle {
-            color: "#475057"
             width: parent.width; height: 50
+            color: "#475057"
             Text {
                 text: name; color: "white"
                 anchors { verticalCenter: parent.verticalCenter; left: parent.left; leftMargin: 10 }
@@ -34,8 +36,7 @@ Item {
     }
     ScrollView {
         id: scrollView
-        frameVisible: true
-        width: 250; height: parent.height
+        width: menuBarWidth; height: parent.height - midiPlayer.height
         Rectangle {
             color: "#475057"
             anchors.fill: parent
@@ -45,6 +46,9 @@ Item {
             model: categories
             delegate: categoryDelegate
         }
+    }
+    MidiPlayer {
+        id: midiPlayer
     }
     Image {
         id: background
