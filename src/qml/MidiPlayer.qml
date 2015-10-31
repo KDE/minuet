@@ -3,69 +3,61 @@ import QtQuick.Controls 1.4
 
 Rectangle {
     width: menuBarWidth; height: 100
-    color: "black"
     anchors { left: parent.left; bottom: parent.bottom }
+    color: "black"
+
     Item {
         id: item1
-        width: parent.width / 2; height: parent.height
-        anchors { left: parent.left; bottom: parent.bottom }
+
+        width: parent.width / 2 - 8; height: childrenRect.height
+        anchors { left: parent.left; leftMargin: 8; verticalCenter: parent.verticalCenter }
+
         Text {
             id: playbackTime
-            width: item1.width
+
+            width: item1.width;
             horizontalAlignment: Text.AlignHCenter
             text: "00:00:00"
             font.pointSize: 24
             color: "#008000"
         }
-        Item {
-            id: item11
-            width: item1.width / 3
-            anchors { top: playbackTime.bottom }
-            Image {
-                id: playImage
-                anchors.horizontalCenter: parent.horizontalCenter
-                source: "qrc:/images/multimedia-play.png"
-                width: 24; height: 24
-            }
-            Text { id: playText; text: "Play"; color: "white"; width: item11.width; horizontalAlignment: Text.AlignHCenter; anchors.top: playImage.bottom }
-        }
-        Item {
+        MultimediaButton {
             id: item12
-            width: item1.width / 3
-            anchors { top: playbackTime.bottom; left: item11.right }
-            Image {
-                id: pauseImage
-                anchors.horizontalCenter: parent.horizontalCenter
-                source: "qrc:/images/multimedia-pause.png"
-                width: 24; height: 24
-            }
-            Text { id: pauseText; text: "Pause"; color: "white"; width: item11.width; horizontalAlignment: Text.AlignHCenter; anchors.top: pauseImage.bottom }
+
+            anchors { top: playbackTime.bottom; horizontalCenter: playbackTime.horizontalCenter }
+            source: "qrc:/images/multimedia-pause.png"
+            text: "Pause"
         }
-        Item {
-            id: item13
-            width: item1.width / 3
-            anchors { top: playbackTime.bottom; left: item12.right }
-            Image {
-                id: stopImage
-                anchors.horizontalCenter: parent.horizontalCenter
-                source: "qrc:/images/multimedia-stop.png"
-                width: 24; height: 24
-            }
-            Text { id: stopText; text: "Stop"; color: "white"; width: item11.width; horizontalAlignment: Text.AlignHCenter; anchors.top: stopImage.bottom }
+        MultimediaButton {
+            anchors { top: playbackTime.bottom; right: item12.left; rightMargin: -2 }
+            source: "qrc:/images/multimedia-play.png"
+            text: "Play"
+        }
+        MultimediaButton {
+            anchors { top: playbackTime.bottom; left: item12.right; leftMargin: -2 }
+            source: "qrc:/images/multimedia-stop.png"
+            text: "Stop"
         }
     }
     Item {
-        width: parent.width / 2; height: parent.height
-        anchors { right: parent.right; bottom: parent.bottom }
-        Column {
-            anchors.centerIn: parent
-            spacing: 10
-            Text { text: "Tempo: 120.00 bpm"; color: "white" }
-            Text { text: "Volume: 100%"; color: "white" }
-            Row {
-                Text { id: pitch; text: "Pitch: "; color: "white" }
-                SpinBox { anchors.verticalCenter: pitch.verticalCenter; id: spinbox }
-            }
+        id: item2
+
+        width: parent.width / 2 - 15; height: item1.height
+        anchors { right: parent.right; rightMargin: 15; verticalCenter: parent.verticalCenter }
+
+        MultimediaSlider {
+            id: volumeSlider
+            anchors.right: parent.right
+            source: "qrc:/images/multimedia-volume.png"
+            maximumValue: 200
+            value: 100
+        }
+        MultimediaSlider {
+            anchors { right: volumeSlider.left; rightMargin: 8 }
+            source: "qrc:/images/multimedia-speed.png"
+            minimumValue: 50
+            maximumValue: 200
+            value: 100
         }
     }
 }
