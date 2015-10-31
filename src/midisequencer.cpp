@@ -45,6 +45,13 @@ MidiSequencer::MidiSequencer(QObject *parent) :
     
     m_midiSequencerOutputThread = new MidiSequencerOutputThread(m_client, m_outputPortId);
 
+    m_inputPort = new drumstick::MidiPort(this);
+    m_inputPort->attach(m_client);
+    m_inputPort->setPortName("Minuet Sequencer Input Port");
+    m_inputPort->setCapability(SND_SEQ_PORT_CAP_WRITE | SND_SEQ_PORT_CAP_SUBS_WRITE);
+    m_inputPort->setPortType(SND_SEQ_PORT_TYPE_APPLICATION);
+    m_inputPortId = m_inputPort->getPortId();
+
     m_queue = m_client->createQueue();
     m_firstTempo = m_queue->getTempo();
     m_queueId = m_queue->getId();

@@ -80,9 +80,11 @@ private:
     
 private:
     int m_outputPortId;
+    int m_inputPortId;
     int m_queueId;
     Song m_song;
     drumstick::MidiPort *m_outputPort;
+    drumstick::MidiPort *m_inputPort;
     drumstick::QSmf *m_smfReader;
     drumstick::MidiQueue *m_queue;
     drumstick::QueueTempo m_firstTempo;
