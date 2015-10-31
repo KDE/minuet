@@ -1,47 +1,41 @@
 import QtQuick 2.5
 
 Item {
-    width: 1020; height: 68
-    Row {
-        id: whiteKeys0
-        Repeater {
-            model: 2
-            Rectangle {
-                width: 20; height: 68
-                border { width: 1; color: "black" }
-                color: whitemouse.pressed ? "#475057" : "white"
-                MouseArea { id: whitemouse;  anchors.fill: parent }
+    id: keyboard
 
-            }
-        }
-    }
-    Row {
-        id: blackKeys0
-        anchors { left: whiteKeys0.left; leftMargin: 14 }
-        Repeater {
-            model: 1
-            Rectangle {
-                width: 12; height: 42
-                border { width: 1; color: "black" }
-                color: blackmouse.pressed ? "#475057" : "black"
-                MouseArea { id: blackmouse;  anchors.fill: parent }
-            }
-        }
-    }
-    Row {
-        anchors.left: whiteKeys0.right
-        Repeater {
-            model: 7
-            Octave { }
-        }
-    }
+    property int keyWidth: 20
+    property int keyHeight: 3.4*keyWidth
+
+    width: 2*keyWidth+7*(7*keyWidth); height: keyHeight
+
+    WhiteKey { id: whiteKeyA }
+    BlackKey { anchor: whiteKeyA }
+    WhiteKey { id: whiteKeyB; anchor: whiteKeyA }
+    Octave { id: octave1; initialAnchor: whiteKeyB }
+    Octave { id: octave2; initialAnchor: octave1 }
+    Octave { id: octave3; initialAnchor: octave2 }
+    Octave { id: octave4; initialAnchor: octave3 }
+    Octave { id: octave5; initialAnchor: octave4 }
+    Octave { id: octave6; initialAnchor: octave5 }
+    Octave { id: octave7; initialAnchor: octave6 }
+
     Component.onCompleted: {
         sequencer.noteOn.connect(noteOn)
         sequencer.noteOff.connect(noteOff)
     }
     function noteOn(chan, pitch, vol) {
-        whiteKeys0.children[1].color = "#475057"
+        highlightKey(pitch, "#778692")
     }
     function noteOff(chan, pitch, vol) {
+        highlightKey(pitch, ([1,3,6,8,10].indexOf(pitch % 12) > -1) ? "black":"white")
+    }
+    function highlightKey(pitch, color) {
+        if (pitch < 24) {
+            keyboard.children[pitch-21].color = color
+            return
+        }
+        var note = (pitch - 24) % 12
+        var octave = (pitch - 24 - note) / 12
+        keyboard.children[3+octave].children[note].color = color
     }
 }

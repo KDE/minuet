@@ -45,12 +45,10 @@ void MidiSequencerOutputThread::setSong(Song *song)
 
 bool MidiSequencerOutputThread::hasNext()
 {
-    qDebug() << "hasNext() returns " << m_songIterator->hasNext();
     return m_songIterator->hasNext();
 }
 
 drumstick::SequencerEvent *MidiSequencerOutputThread::nextEvent()
 {
-    qDebug() << "nextEvent()";
     return m_songIterator->next()->clone();
 }

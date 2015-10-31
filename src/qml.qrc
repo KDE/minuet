@@ -1,8 +1,11 @@
 <RCC>
     <qresource prefix="/">
         <file alias="main.qml">qml/main.qml</file>
+        <file alias="WhiteKey.qml">qml/WhiteKey.qml</file>
+        <file alias="BlackKey.qml">qml/BlackKey.qml</file>
         <file alias="Octave.qml">qml/Octave.qml</file>
         <file alias="PianoView.qml">qml/PianoView.qml</file>
+        <file alias="MidiPlayer.qml">qml/MidiPlayer.qml</file>
         <file alias="images/minuet-background.png">qml/images/minuet-background.png</file>
         <file alias="images/navigate-next.png">qml/images/navigate-next.png</file>
     </qresource>
