@@ -22,10 +22,14 @@
 
 #include "midisequenceroutputthread.h"
 
+#include <drumstick/alsaqueue.h>
+#include <drumstick/alsaclient.h>
+
 #include "song.h"
 
-MidiSequencerOutputThread::MidiSequencerOutputThread(drumstick::MidiClient *seq, int portId) :
-    drumstick::SequencerOutputThread(seq, portId),
+MidiSequencerOutputThread::MidiSequencerOutputThread(drumstick::MidiClient *midiClient, int portId) :
+    drumstick::SequencerOutputThread(midiClient, portId),
+    m_midiClient(midiClient),
     m_song(0),
     m_songIterator(0)
 {
@@ -41,6 +45,13 @@ void MidiSequencerOutputThread::setSong(Song *song)
     if (m_songIterator)
         delete m_songIterator;
     m_songIterator = new QListIterator<drumstick::SequencerEvent *>(*song);
+    drumstick::MidiQueue *midiQueue = m_midiClient->getQueue();
+    drumstick::QueueTempo firstTempo = midiQueue->getTempo();
+    firstTempo.setPPQ(m_song->division());
+    firstTempo.setTempo(song->initialTempo());
+    float value = 1.0;
+    firstTempo.setTempoFactor(1);
+    midiQueue->setTempo(firstTempo);
 }
 
 bool MidiSequencerOutputThread::hasNext()

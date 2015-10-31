@@ -35,6 +35,9 @@ MidiSequencer::MidiSequencer(QObject *parent) :
     m_client->open();
     m_client->setClientName("MinuetSequencer");
     m_client->setPoolOutput(100);
+    // Connection for events generated when playing a MIDI
+    connect(m_client, &drumstick::MidiClient::eventReceived, this, &MidiSequencer::eventReceived, Qt::DirectConnection);
+    m_client->startSequencerInput();
 
     m_outputPort = new drumstick::MidiPort(this);
     m_outputPort->attach(m_client);
@@ -43,8 +46,6 @@ MidiSequencer::MidiSequencer(QObject *parent) :
     m_outputPort->setPortType(SND_SEQ_PORT_TYPE_APPLICATION);
     m_outputPortId = m_outputPort->getPortId();
     
-    m_midiSequencerOutputThread = new MidiSequencerOutputThread(m_client, m_outputPortId);
-
     m_inputPort = new drumstick::MidiPort(this);
     m_inputPort->attach(m_client);
     m_inputPort->setPortName("Minuet Sequencer Input Port");
@@ -57,7 +58,6 @@ MidiSequencer::MidiSequencer(QObject *parent) :
     m_queueId = m_queue->getId();
 
     m_smfReader = new drumstick::QSmf(this);
-    
     // Connections for events generated when reading a MIDI file
     connect(m_smfReader, &drumstick::QSmf::signalSMFHeader, this, &MidiSequencer::SMFHeader);
     connect(m_smfReader, &drumstick::QSmf::signalSMFNoteOn, this, &MidiSequencer::SMFNoteOn);
@@ -73,11 +73,9 @@ MidiSequencer::MidiSequencer(QObject *parent) :
     connect(m_smfReader, &drumstick::QSmf::signalSMFTimeSig, this, &MidiSequencer::SMFTimeSig);
     connect(m_smfReader, &drumstick::QSmf::signalSMFKeySig, this, &MidiSequencer::SMFKeySig);
     connect(m_smfReader, &drumstick::QSmf::signalSMFError, this, &MidiSequencer::SMFError);
-    
-    // Connection for events generated when playing a MIDI
-    connect(m_client, &drumstick::MidiClient::eventReceived, this, &MidiSequencer::eventReceived, Qt::DirectConnection);
-    m_client->startSequencerInput();
-    
+
+    m_midiSequencerOutputThread = new MidiSequencerOutputThread(m_client, m_outputPortId);
+
     subscribeTo("TiMidity:0");
     subscribeTo("MinuetSequencer:1");
 }
@@ -91,7 +89,7 @@ void MidiSequencer::subscribeTo(const QString &portName)
 {
     try {
         m_outputPort->subscribeTo(portName);
-    } catch (const drumstick::SequencerError& err) {
+    } catch (const drumstick::SequencerError &err) {
         throw err;
     }
 }
@@ -145,12 +143,12 @@ void MidiSequencer::SMFChanPress(int chan, int press)
     appendEvent(new drumstick::ChanPressEvent(chan, press));
 }
 
-void MidiSequencer::SMFSysex(const QByteArray& data)
+void MidiSequencer::SMFSysex(const QByteArray &data)
 {
     appendEvent(new drumstick::SysExEvent(data));
 }
 
-void MidiSequencer::SMFText(int typ, const QString& data)
+void MidiSequencer::SMFText(int typ, const QString &data)
 {
     Q_UNUSED(typ);
     Q_UNUSED(data);
@@ -158,7 +156,8 @@ void MidiSequencer::SMFText(int typ, const QString& data)
 
 void MidiSequencer::SMFTempo(int tempo)
 {
-    m_song.setInitialTempo(tempo);
+    if (m_song.initialTempo() == 0)
+        m_song.setInitialTempo(tempo);
     appendEvent(new drumstick::TempoEvent(m_queueId, tempo));
 }
 

@@ -42,11 +42,11 @@ public:
     void setDivision(int division);
     void setFileName(const QString &fileName);
     
-    int getFormat() const { return m_format; }
-    int getTracks() const { return m_ntrks; }
-    int getDivision() const { return m_division; }
-    int getInitialTempo() const { return m_initialTempo; }
-    QString getFileName() const { return m_fileName; }
+    int format() const { return m_format; }
+    int tracks() const { return m_ntrks; }
+    int division() const { return m_division; }
+    int initialTempo() const { return m_initialTempo; }
+    QString fileName() const { return m_fileName; }
 
 private:    
     int m_format;

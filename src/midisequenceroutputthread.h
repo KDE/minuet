@@ -25,12 +25,16 @@
 
 #include <drumstick/playthread.h>
 
+namespace drumstick {
+    class MidiClient;
+}
+
 class Song;
 
 class MidiSequencerOutputThread : public drumstick::SequencerOutputThread
 {
 public:
-    MidiSequencerOutputThread(drumstick::MidiClient *seq, int portId);
+    MidiSequencerOutputThread(drumstick::MidiClient *midiClient, int portId);
     virtual ~MidiSequencerOutputThread();
     
     void setSong(Song *song);
@@ -40,6 +44,7 @@ public:
     virtual drumstick::SequencerEvent *nextEvent();
     
 private:
+    drumstick::MidiClient *m_midiClient;
     Song *m_song;
     QListIterator<drumstick::SequencerEvent *>* m_songIterator;
 };
