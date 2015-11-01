@@ -61,11 +61,7 @@ Item {
         source: "qrc:/images/minuet-background.png"
         fillMode: Image.Tile
     }
-    Rectangle {
-        width: background.width; height: 100
-        anchors { bottom: parent.bottom; right: parent.right }
-        clip: true
-
-        PianoView { anchors.centerIn: parent }
+    PianoView {
+        anchors { verticalCenter: midiPlayer.verticalCenter; bottomMargin: 10; horizontalCenter: background.horizontalCenter }
     }
 }
