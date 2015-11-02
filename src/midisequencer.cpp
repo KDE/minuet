@@ -108,14 +108,14 @@ void MidiSequencer::SMFHeader(int format, int ntrks, int division)
     m_song.setHeader(format, ntrks, division);
 }
 
-void MidiSequencer::SMFNoteOn(int chan, int pitch, int vol)
+void MidiSequencer::SMFNoteOn(int chan, int pitch, int vel)
 {
-    appendEvent(new drumstick::NoteOnEvent(chan, pitch, vol));
+    appendEvent(new drumstick::NoteOnEvent(chan, pitch, vel));
 }
 
-void MidiSequencer::SMFNoteOff(int chan, int pitch, int vol)
+void MidiSequencer::SMFNoteOff(int chan, int pitch, int vel)
 {
-    appendEvent(new drumstick::NoteOffEvent(chan, pitch, vol));
+    appendEvent(new drumstick::NoteOffEvent(chan, pitch, vel));
 }
 
 void MidiSequencer::SMFKeyPress(int chan, int pitch, int press)

@@ -52,14 +52,14 @@ public:
     void play(const QString &fileName);
 
 Q_SIGNALS:
-    void noteOn(int chan, int pitch, int vol);
-    void noteOff(int chan, int pitch, int vol);
+    void noteOn(int chan, int pitch, int vel);
+    void noteOff(int chan, int pitch, int vel);
 
 private Q_SLOTS:
     // Slots for events generated when reading a MIDI file
     void SMFHeader(int format, int ntrks, int division);
-    void SMFNoteOn(int chan, int pitch, int vol);
-    void SMFNoteOff(int chan, int pitch, int vol);
+    void SMFNoteOn(int chan, int pitch, int vel);
+    void SMFNoteOff(int chan, int pitch, int vel);
     void SMFKeyPress(int chan, int pitch, int press);
     void SMFCtlChange(int chan, int ctl, int value);
     void SMFPitchBend(int chan, int value);

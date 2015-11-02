@@ -6,10 +6,13 @@ Item {
     property int keyWidth: 20
     property int keyHeight: 3.4*keyWidth
 
-    function noteOn(chan, pitch, vol) {
-        highlightKey(pitch, "#778692")
+    function noteOn(chan, pitch, vel) {
+        if (vel > 0)
+            highlightKey(pitch, "#778692")
+        else
+            noteOff(chan, pitch, vel)
     }
-    function noteOff(chan, pitch, vol) {
+    function noteOff(chan, pitch, vel) {
         highlightKey(pitch, ([1,3,6,8,10].indexOf(pitch % 12) > -1) ? "black":"white")
     }
     function highlightKey(pitch, color) {

@@ -1,13 +1,13 @@
 <RCC>
     <qresource prefix="/">
         <file alias="main.qml">qml/main.qml</file>
-        <file alias="WhiteKey.qml">qml/WhiteKey.qml</file>
-        <file alias="BlackKey.qml">qml/BlackKey.qml</file>
-        <file alias="Octave.qml">qml/Octave.qml</file>
-        <file alias="PianoView.qml">qml/PianoView.qml</file>
-        <file alias="MultimediaButton.qml">qml/MultimediaButton.qml</file>
-        <file alias="MultimediaSlider.qml">qml/MultimediaSlider.qml</file>
-        <file alias="MidiPlayer.qml">qml/MidiPlayer.qml</file>
+        <file alias="WhiteKey.qml">qml/pianoview/WhiteKey.qml</file>
+        <file alias="BlackKey.qml">qml/pianoview/BlackKey.qml</file>
+        <file alias="Octave.qml">qml/pianoview/Octave.qml</file>
+        <file alias="PianoView.qml">qml/pianoview/PianoView.qml</file>
+        <file alias="MultimediaButton.qml">qml/midiplayer/MultimediaButton.qml</file>
+        <file alias="MultimediaSlider.qml">qml/midiplayer/MultimediaSlider.qml</file>
+        <file alias="MidiPlayer.qml">qml/midiplayer/MidiPlayer.qml</file>
         <file alias="images/minuet-background.png">qml/images/minuet-background.png</file>
         <file alias="images/navigate-next.png">qml/images/navigate-next.png</file>
         <file alias="images/multimedia-pause.png">qml/images/multimedia-pause.png</file>
