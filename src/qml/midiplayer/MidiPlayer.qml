@@ -59,6 +59,7 @@ Rectangle {
             minimumValue: 50
             maximumValue: 200
             value: 100
+            onValueChanged: sequencer.setTempoFactor(value)
         }
     }
 }

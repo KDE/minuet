@@ -108,6 +108,15 @@ void MidiSequencer::setVolumeFactor(unsigned int vol)
     m_midiSequencerOutputThread->setVolumeFactor(vol);
 }
 
+void MidiSequencer::setTempoFactor(unsigned int value)
+{
+    float tempoFactor = (value*value + 100.0*value + 20000.0) / 40000.0;
+    drumstick::QueueTempo queueTempo = m_queue->getTempo();
+    queueTempo.setTempoFactor(tempoFactor);
+    m_queue->setTempo(queueTempo);
+    m_client->drainOutput();
+}
+
 void MidiSequencer::SMFHeader(int format, int ntrks, int division)
 {
     m_song.setHeader(format, ntrks, division);

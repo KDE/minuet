@@ -57,6 +57,7 @@ Q_SIGNALS:
 
 public Q_SLOTS:
     void setVolumeFactor(unsigned int vol);
+    void setTempoFactor(unsigned int value);
     
 private Q_SLOTS:
     // Slots for events generated when reading a MIDI file
