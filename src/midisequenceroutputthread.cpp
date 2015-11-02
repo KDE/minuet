@@ -31,6 +31,7 @@ MidiSequencerOutputThread::MidiSequencerOutputThread(drumstick::MidiClient *clie
     drumstick::SequencerOutputThread(client, portId),
     m_client(client),
     m_song(0),
+    m_songPosition(0),
     m_lastEvent(0), 
     m_volumeFactor(100),
     m_pitchShift(0),
@@ -48,46 +49,6 @@ MidiSequencerOutputThread::~MidiSequencerOutputThread()
         delete m_songIterator;
     if (m_lastEvent != 0)
         delete m_lastEvent;
-}
-
-void MidiSequencerOutputThread::setSong(Song *song)
-{
-    m_song = song;
-    if (m_songIterator)
-        delete m_songIterator;
-    m_songIterator = new QListIterator<drumstick::SequencerEvent *>(*song);
-    drumstick::QueueTempo firstTempo = m_Queue->getTempo();
-    firstTempo.setPPQ(m_song->division());
-    firstTempo.setTempo(song->initialTempo());
-    firstTempo.setTempoFactor(1.0);
-    m_Queue->setTempo(firstTempo);
-}
-
-void MidiSequencerOutputThread::setVolumeFactor(unsigned int vol)
-{
-    m_volumeFactor = vol;
-    for(int chan = 0; chan < MIDI_CHANNELS; ++chan) {
-        int value = m_volume[chan];
-        value = floor(value * m_volumeFactor / 100.0);
-        if (value < 0) value = 0;
-        if (value > 127) value = 127;
-        sendControllerEvent(chan, MIDI_CTL_MSB_MAIN_VOLUME, value);
-    }
-}
-
-void MidiSequencerOutputThread::setPitchShift(unsigned int value)
-{
-    bool playing = isRunning();
-    if (playing) {
-        stop();
-        unsigned int pos = m_Queue->getStatus().getTickTime();
-        m_Queue->clear();
-        allNotesOff();
-        setPosition(pos);
-    }
-    m_pitchShift = value;
-    if (playing)
-        start();
 }
 
 bool MidiSequencerOutputThread::hasNext()
@@ -128,8 +89,50 @@ drumstick::SequencerEvent *MidiSequencerOutputThread::nextEvent()
     return m_lastEvent;
 }
 
+void MidiSequencerOutputThread::setSong(Song *song)
+{
+    m_song = song;
+    if (m_songIterator)
+        delete m_songIterator;
+    m_songIterator = new QListIterator<drumstick::SequencerEvent *>(*song);
+    m_songPosition = 0;
+    drumstick::QueueTempo firstTempo = m_Queue->getTempo();
+    firstTempo.setPPQ(m_song->division());
+    firstTempo.setTempo(song->initialTempo());
+    firstTempo.setTempoFactor(1.0);
+    m_Queue->setTempo(firstTempo);
+}
+
+void MidiSequencerOutputThread::setVolumeFactor(unsigned int vol)
+{
+    m_volumeFactor = vol;
+    for(int chan = 0; chan < MIDI_CHANNELS; ++chan) {
+        int value = m_volume[chan];
+        value = floor(value * m_volumeFactor / 100.0);
+        if (value < 0) value = 0;
+        if (value > 127) value = 127;
+        sendControllerEvent(chan, MIDI_CTL_MSB_MAIN_VOLUME, value);
+    }
+}
+
+void MidiSequencerOutputThread::setPitchShift(unsigned int value)
+{
+    bool playing = isRunning();
+    if (playing) {
+        stop();
+        unsigned int pos = m_Queue->getStatus().getTickTime();
+        m_Queue->clear();
+        allNotesOff();
+        setPosition(pos);
+    }
+    m_pitchShift = value;
+    if (playing)
+        start();
+}
+
 void MidiSequencerOutputThread::setPosition(unsigned int pos)
 {
+    m_songPosition = pos;
     m_songIterator->toFront();
     while (m_songIterator->hasNext() && (m_songIterator->next()->getTick() < pos)) { };
     if (m_songIterator->hasPrevious())
@@ -138,8 +141,10 @@ void MidiSequencerOutputThread::setPosition(unsigned int pos)
 
 void MidiSequencerOutputThread::resetPosition()
 {
-    if ((m_song != NULL) && (m_songIterator != NULL))
+    if ((m_song != NULL) && (m_songIterator != NULL)) {
         m_songIterator->toFront();
+        m_songPosition = 0;
+    }
 }
 
 void MidiSequencerOutputThread::allNotesOff()

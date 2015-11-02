@@ -37,15 +37,19 @@ public:
     MidiSequencerOutputThread(drumstick::MidiClient *client, int portId);
     virtual ~MidiSequencerOutputThread();
     
-    void setSong(Song *song);
-    void setVolumeFactor(unsigned int vol);
-    void setPitchShift(unsigned int value);
-    
     // Virtual methods from drumstick::SequencerOutputThread
     virtual bool hasNext();
     virtual drumstick::SequencerEvent *nextEvent();
+    virtual unsigned int getInitialPosition() { return m_songPosition; }
+
+    void setSong(Song *song);
+    void setVolumeFactor(unsigned int vol);
+    void setPitchShift(unsigned int value);
     void setPosition(unsigned int pos);
     void resetPosition();
+
+Q_SIGNALS:
+    void allNotesoff();
 
 private:
     void allNotesOff();
@@ -54,6 +58,7 @@ private:
 private:
     drumstick::MidiClient *m_client;
     Song *m_song;
+    unsigned int m_songPosition;
     drumstick::SequencerEvent *m_lastEvent;
     int m_volume[MIDI_CHANNELS];
     unsigned int m_volumeFactor;

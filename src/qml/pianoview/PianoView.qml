@@ -15,9 +15,17 @@ Item {
     function noteOff(chan, pitch, vel) {
         highlightKey(pitch, ([1,3,6,8,10].indexOf(pitch % 12) > -1) ? "black":"white")
     }
+    function allNotesOff() {
+        for (var index = 21; index <= 108; ++index)
+            noteOff(0, index, 0)
+    }
     function highlightKey(pitch, color) {
         if (pitch < 24) {
             keyboard.children[pitch-21].color = color
+            return
+        }
+        if (pitch == 108) {
+            whiteKeyC.color = color
             return
         }
         var note = (pitch - 24) % 12
@@ -37,9 +45,11 @@ Item {
     Octave { id: octave5; initialAnchor: octave4 }
     Octave { id: octave6; initialAnchor: octave5 }
     Octave { id: octave7; initialAnchor: octave6 }
+    WhiteKey { id: whiteKeyC; anchor: octave7 }
 
     Component.onCompleted: {
         sequencer.noteOn.connect(noteOn)
         sequencer.noteOff.connect(noteOff)
+        sequencer.allNotesOff.connect(allNotesOff)
     }
 }

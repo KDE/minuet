@@ -130,6 +130,7 @@ void MidiSequencer::stop()
 {
     m_midiSequencerOutputThread->stop();
     m_midiSequencerOutputThread->resetPosition();
+    emit allNotesOff();
 }
 
 void MidiSequencer::setVolumeFactor(unsigned int vol)
@@ -149,6 +150,7 @@ void MidiSequencer::setTempoFactor(unsigned int value)
 void MidiSequencer::setPitchShift(unsigned int value)
 {
     m_midiSequencerOutputThread->setPitchShift(value);
+    emit allNotesOff();
 }
 
 void MidiSequencer::SMFHeader(int format, int ntrks, int division)

@@ -54,6 +54,7 @@ public:
 Q_SIGNALS:
     void noteOn(int chan, int pitch, int vel);
     void noteOff(int chan, int pitch, int vel);
+    void allNotesOff();
 
 public Q_SLOTS:
     void play();
