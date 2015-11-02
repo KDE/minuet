@@ -86,8 +86,8 @@ void MidiSequencerOutputThread::setPitchShift(unsigned int value)
         setPosition(pos);
     }
     m_pitchShift = value;
-   if (playing)
-       start();
+    if (playing)
+        start();
 }
 
 bool MidiSequencerOutputThread::hasNext()
