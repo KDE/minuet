@@ -103,6 +103,11 @@ void MidiSequencer::play(const QString &fileName)
     m_midiSequencerOutputThread->start();
 }
 
+void MidiSequencer::setVolumeFactor(unsigned int vol)
+{
+    m_midiSequencerOutputThread->setVolumeFactor(vol);
+}
+
 void MidiSequencer::SMFHeader(int format, int ntrks, int division)
 {
     m_song.setHeader(format, ntrks, division);

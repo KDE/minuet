@@ -51,6 +51,7 @@ Rectangle {
             source: "qrc:/images/multimedia-volume.png"
             maximumValue: 200
             value: 100
+            onValueChanged: sequencer.setVolumeFactor(value)
         }
         MultimediaSlider {
             anchors { right: volumeSlider.left; rightMargin: 8 }

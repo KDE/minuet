@@ -38,14 +38,19 @@ public:
     virtual ~MidiSequencerOutputThread();
     
     void setSong(Song *song);
+    void setVolumeFactor(unsigned int vol);
     
     // Virtual methods from drumstick::SequencerOutputThread
     virtual bool hasNext();
     virtual drumstick::SequencerEvent *nextEvent();
+
+private:
+    void sendControllerEvent(int chan, int control, int value);
     
 private:
     drumstick::MidiClient *m_midiClient;
     Song *m_song;
+    int m_volume[MIDI_CHANNELS];
     QListIterator<drumstick::SequencerEvent *>* m_songIterator;
 };
 

@@ -55,6 +55,9 @@ Q_SIGNALS:
     void noteOn(int chan, int pitch, int vel);
     void noteOff(int chan, int pitch, int vel);
 
+public Q_SLOTS:
+    void setVolumeFactor(unsigned int vol);
+    
 private Q_SLOTS:
     // Slots for events generated when reading a MIDI file
     void SMFHeader(int format, int ntrks, int division);

@@ -33,6 +33,8 @@ MidiSequencerOutputThread::MidiSequencerOutputThread(drumstick::MidiClient *midi
     m_song(0),
     m_songIterator(0)
 {
+    for (int chan = 0; chan < MIDI_CHANNELS; ++chan)
+    m_volume[chan] = 100;
 }
 
 MidiSequencerOutputThread::~MidiSequencerOutputThread()
@@ -54,6 +56,17 @@ void MidiSequencerOutputThread::setSong(Song *song)
     midiQueue->setTempo(firstTempo);
 }
 
+void MidiSequencerOutputThread::setVolumeFactor(unsigned int vol)
+{
+    for(int chan = 0; chan < MIDI_CHANNELS; ++chan) {
+        int value = m_volume[chan];
+        value = floor(value*vol/100.0);
+        if (value < 0) value = 0;
+        if (value > 127) value = 127;
+        sendControllerEvent(chan, MIDI_CTL_MSB_MAIN_VOLUME, value);
+    }
+}
+
 bool MidiSequencerOutputThread::hasNext()
 {
     return m_songIterator->hasNext();
@@ -62,4 +75,13 @@ bool MidiSequencerOutputThread::hasNext()
 drumstick::SequencerEvent *MidiSequencerOutputThread::nextEvent()
 {
     return m_songIterator->next()->clone();
+}
+
+void MidiSequencerOutputThread::sendControllerEvent(int chan, int control, int value)
+{
+    drumstick::ControllerEvent ev(chan, control, value);
+    ev.setSource(m_PortId);
+    ev.setSubscribers();
+    ev.setDirect();
+    sendSongEvent(&ev);
 }
