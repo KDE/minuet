@@ -34,7 +34,7 @@ class Song;
 class MidiSequencerOutputThread : public drumstick::SequencerOutputThread
 {
 public:
-    MidiSequencerOutputThread(drumstick::MidiClient *midiClient, int portId);
+    MidiSequencerOutputThread(drumstick::MidiClient *client, int portId);
     virtual ~MidiSequencerOutputThread();
     
     void setSong(Song *song);
@@ -52,7 +52,7 @@ private:
     void sendControllerEvent(int chan, int control, int value);
     
 private:
-    drumstick::MidiClient *m_midiClient;
+    drumstick::MidiClient *m_client;
     Song *m_song;
     drumstick::SequencerEvent *m_lastEvent;
     int m_volume[MIDI_CHANNELS];

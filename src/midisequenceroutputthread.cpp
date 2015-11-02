@@ -27,9 +27,9 @@
 
 #include "song.h"
 
-MidiSequencerOutputThread::MidiSequencerOutputThread(drumstick::MidiClient *midiClient, int portId) :
-    drumstick::SequencerOutputThread(midiClient, portId),
-    m_midiClient(midiClient),
+MidiSequencerOutputThread::MidiSequencerOutputThread(drumstick::MidiClient *client, int portId) :
+    drumstick::SequencerOutputThread(client, portId),
+    m_client(client),
     m_song(0),
     m_lastEvent(0), 
     m_volumeFactor(100),
@@ -37,7 +37,7 @@ MidiSequencerOutputThread::MidiSequencerOutputThread(drumstick::MidiClient *midi
     m_songIterator(0)
 {
     for (int chan = 0; chan < MIDI_CHANNELS; ++chan)
-    m_volume[chan] = 100;
+        m_volume[chan] = 100;
 }
 
 MidiSequencerOutputThread::~MidiSequencerOutputThread()
