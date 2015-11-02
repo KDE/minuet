@@ -15,5 +15,6 @@
         <file alias="images/multimedia-stop.png">qml/images/multimedia-stop.png</file>
         <file alias="images/multimedia-volume.png">qml/images/multimedia-volume.png</file>
         <file alias="images/multimedia-speed.png">qml/images/multimedia-speed.png</file>
+        <file alias="images/multimedia-pitch.png">qml/images/multimedia-pitch.png</file>
     </qresource>
 </RCC>

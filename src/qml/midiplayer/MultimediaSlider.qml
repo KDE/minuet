@@ -14,6 +14,7 @@ Item {
         
         height: parent.height - sliderImage.height - 5
         orientation: Qt.Vertical
+        activeFocusOnPress: true
     }
     Image {
         id: sliderImage

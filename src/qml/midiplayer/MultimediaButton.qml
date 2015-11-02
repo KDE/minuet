@@ -1,8 +1,12 @@
 import QtQuick 2.5
 
 Item {
+    id: item
+
     property alias source: buttonImage.source;
     property alias text: buttonText.text;
+
+    signal activated
 
     width: playbackTime.contentWidth / 3; height: childrenRect.height
 
@@ -11,6 +15,10 @@ Item {
 
         width: 24; height: 24
         anchors.horizontalCenter: parent.horizontalCenter
+        MouseArea {
+            anchors.fill: parent
+            onClicked: item.activated()
+        }
     }
     Text {
         id: buttonText

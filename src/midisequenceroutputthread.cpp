@@ -31,6 +31,9 @@ MidiSequencerOutputThread::MidiSequencerOutputThread(drumstick::MidiClient *midi
     drumstick::SequencerOutputThread(midiClient, portId),
     m_midiClient(midiClient),
     m_song(0),
+    m_lastEvent(0), 
+    m_volumeFactor(100),
+    m_pitchShift(0),
     m_songIterator(0)
 {
     for (int chan = 0; chan < MIDI_CHANNELS; ++chan)
@@ -39,6 +42,12 @@ MidiSequencerOutputThread::MidiSequencerOutputThread(drumstick::MidiClient *midi
 
 MidiSequencerOutputThread::~MidiSequencerOutputThread()
 {
+    if (isRunning())
+        stop();
+    if (m_songIterator != 0)
+        delete m_songIterator;
+    if (m_lastEvent != 0)
+        delete m_lastEvent;
 }
 
 void MidiSequencerOutputThread::setSong(Song *song)
@@ -47,23 +56,38 @@ void MidiSequencerOutputThread::setSong(Song *song)
     if (m_songIterator)
         delete m_songIterator;
     m_songIterator = new QListIterator<drumstick::SequencerEvent *>(*song);
-    drumstick::MidiQueue *midiQueue = m_midiClient->getQueue();
-    drumstick::QueueTempo firstTempo = midiQueue->getTempo();
+    drumstick::QueueTempo firstTempo = m_Queue->getTempo();
     firstTempo.setPPQ(m_song->division());
     firstTempo.setTempo(song->initialTempo());
     firstTempo.setTempoFactor(1.0);
-    midiQueue->setTempo(firstTempo);
+    m_Queue->setTempo(firstTempo);
 }
 
 void MidiSequencerOutputThread::setVolumeFactor(unsigned int vol)
 {
+    m_volumeFactor = vol;
     for(int chan = 0; chan < MIDI_CHANNELS; ++chan) {
         int value = m_volume[chan];
-        value = floor(value*vol/100.0);
+        value = floor(value * m_volumeFactor / 100.0);
         if (value < 0) value = 0;
         if (value > 127) value = 127;
         sendControllerEvent(chan, MIDI_CTL_MSB_MAIN_VOLUME, value);
     }
+}
+
+void MidiSequencerOutputThread::setPitchShift(unsigned int value)
+{
+    bool playing = isRunning();
+    if (playing) {
+        stop();
+        unsigned int pos = m_Queue->getStatus().getTickTime();
+        m_Queue->clear();
+        allNotesOff();
+        setPosition(pos);
+    }
+    m_pitchShift = value;
+   if (playing)
+       start();
 }
 
 bool MidiSequencerOutputThread::hasNext()
@@ -73,7 +97,57 @@ bool MidiSequencerOutputThread::hasNext()
 
 drumstick::SequencerEvent *MidiSequencerOutputThread::nextEvent()
 {
-    return m_songIterator->next()->clone();
+    if (m_lastEvent != 0)
+        delete m_lastEvent;
+
+    m_lastEvent = m_songIterator->next()->clone();
+    switch (m_lastEvent->getSequencerType()) {
+        case SND_SEQ_EVENT_NOTE:
+        case SND_SEQ_EVENT_NOTEON:
+        case SND_SEQ_EVENT_NOTEOFF:
+        case SND_SEQ_EVENT_KEYPRESS: {
+            drumstick::KeyEvent *kev = static_cast<drumstick::KeyEvent*>(m_lastEvent);
+            if (kev->getChannel() != MIDI_GM_DRUM_CHANNEL)
+                kev->setKey(kev->getKey() + m_pitchShift);
+        }
+        break;
+        case SND_SEQ_EVENT_CONTROLLER: {
+            drumstick::ControllerEvent *cev = static_cast<drumstick::ControllerEvent*>(m_lastEvent);
+            if (cev->getParam() == MIDI_CTL_MSB_MAIN_VOLUME) {
+                int chan = cev->getChannel();
+                int value = cev->getValue();
+                m_volume[chan] = value;
+                value = floor(value * m_volumeFactor / 100.0);
+                if (value < 0) value = 0;
+                if (value > 127) value = 127;
+                cev->setValue(value);
+            }
+        }
+        break;
+    }
+    return m_lastEvent;
+}
+
+void MidiSequencerOutputThread::setPosition(unsigned int pos)
+{
+    m_songIterator->toFront();
+    while (m_songIterator->hasNext() && (m_songIterator->next()->getTick() < pos)) { };
+    if (m_songIterator->hasPrevious())
+        m_songIterator->previous();
+}
+
+void MidiSequencerOutputThread::resetPosition()
+{
+    if ((m_song != NULL) && (m_songIterator != NULL))
+        m_songIterator->toFront();
+}
+
+void MidiSequencerOutputThread::allNotesOff()
+{
+    for(int chan = 0; chan < MIDI_CHANNELS; ++chan) {
+        sendControllerEvent(chan, MIDI_CTL_ALL_NOTES_OFF, 0);
+        sendControllerEvent(chan, MIDI_CTL_ALL_SOUNDS_OFF, 0);
+    }
 }
 
 void MidiSequencerOutputThread::sendControllerEvent(int chan, int control, int value)

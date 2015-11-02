@@ -31,21 +31,25 @@
 MidiSequencer::MidiSequencer(QObject *parent) :
     QObject(parent)
 {
+    // MidiClient configuration
     m_client = new drumstick::MidiClient(this);
     m_client->open();
     m_client->setClientName("MinuetSequencer");
-    m_client->setPoolOutput(100);
+    m_client->setPoolOutput(50);
     // Connection for events generated when playing a MIDI
-    connect(m_client, &drumstick::MidiClient::eventReceived, this, &MidiSequencer::eventReceived, Qt::DirectConnection);
+    connect(m_client, &drumstick::MidiClient::eventReceived, this, &MidiSequencer::eventReceived, Qt::QueuedConnection);
+    m_client->setRealTimeInput(false);
     m_client->startSequencerInput();
 
+    // Output port configuration
     m_outputPort = new drumstick::MidiPort(this);
     m_outputPort->attach(m_client);
     m_outputPort->setPortName("Minuet Sequencer Output Port");
     m_outputPort->setCapability(SND_SEQ_PORT_CAP_READ | SND_SEQ_PORT_CAP_SUBS_READ);
-    m_outputPort->setPortType(SND_SEQ_PORT_TYPE_APPLICATION);
+    m_outputPort->setPortType(SND_SEQ_PORT_TYPE_APPLICATION | SND_SEQ_PORT_TYPE_MIDI_GENERIC);
     m_outputPortId = m_outputPort->getPortId();
     
+    // Input port configuration
     m_inputPort = new drumstick::MidiPort(this);
     m_inputPort->attach(m_client);
     m_inputPort->setPortName("Minuet Sequencer Input Port");
@@ -53,10 +57,12 @@ MidiSequencer::MidiSequencer(QObject *parent) :
     m_inputPort->setPortType(SND_SEQ_PORT_TYPE_APPLICATION);
     m_inputPortId = m_inputPort->getPortId();
 
+    // MidiQueue configuration
     m_queue = m_client->createQueue();
     m_firstTempo = m_queue->getTempo();
     m_queueId = m_queue->getId();
 
+    // SMFReader configuration
     m_smfReader = new drumstick::QSmf(this);
     // Connections for events generated when reading a MIDI file
     connect(m_smfReader, &drumstick::QSmf::signalSMFHeader, this, &MidiSequencer::SMFHeader);
@@ -74,14 +80,21 @@ MidiSequencer::MidiSequencer(QObject *parent) :
     connect(m_smfReader, &drumstick::QSmf::signalSMFKeySig, this, &MidiSequencer::SMFKeySig);
     connect(m_smfReader, &drumstick::QSmf::signalSMFError, this, &MidiSequencer::SMFError);
 
+    // OutputThread
     m_midiSequencerOutputThread = new MidiSequencerOutputThread(m_client, m_outputPortId);
+    connect(m_midiSequencerOutputThread, &MidiSequencerOutputThread::stopped, this, &MidiSequencer::outputThreadStopped);
 
+    // Subscribe to TiMidity and Minuet's virtual piano
     subscribeTo("TiMidity:0");
     subscribeTo("MinuetSequencer:1");
 }
 
 MidiSequencer::~MidiSequencer()
 {
+    m_client->stopSequencerInput();
+    m_outputPort->detach();
+    m_inputPort->detach();
+    m_client->close();
     delete m_midiSequencerOutputThread;
 }
 
@@ -94,13 +107,29 @@ void MidiSequencer::subscribeTo(const QString &portName)
     }
 }
 
-void MidiSequencer::play(const QString &fileName)
+void MidiSequencer::openFile(const QString &fileName)
 {
     m_song.clear();
     m_smfReader->readFromFile(fileName);
     m_song.sort();
     m_midiSequencerOutputThread->setSong(&m_song);
+}
+
+void MidiSequencer::play()
+{
     m_midiSequencerOutputThread->start();
+}
+
+void MidiSequencer::pause()
+{
+    m_midiSequencerOutputThread->stop();
+    m_midiSequencerOutputThread->setPosition(m_queue->getStatus().getTickTime());
+}
+
+void MidiSequencer::stop()
+{
+    m_midiSequencerOutputThread->stop();
+    m_midiSequencerOutputThread->resetPosition();
 }
 
 void MidiSequencer::setVolumeFactor(unsigned int vol)
@@ -115,6 +144,11 @@ void MidiSequencer::setTempoFactor(unsigned int value)
     queueTempo.setTempoFactor(tempoFactor);
     m_queue->setTempo(queueTempo);
     m_client->drainOutput();
+}
+
+void MidiSequencer::setPitchShift(unsigned int value)
+{
+    m_midiSequencerOutputThread->setPitchShift(value);
 }
 
 void MidiSequencer::SMFHeader(int format, int ntrks, int division)
@@ -203,6 +237,23 @@ void MidiSequencer::eventReceived(drumstick::SequencerEvent *ev)
         emit noteOn(kev->getChannel(), kev->getKey(), kev->getVelocity());
     if (kev->getSequencerType() == SND_SEQ_EVENT_NOTEOFF)
         emit noteOff(kev->getChannel(), kev->getKey(), kev->getVelocity());
+}
+
+void MidiSequencer::outputThreadStopped()
+{
+    for (int channel = 0; channel < 16; ++channel) {
+        drumstick::ControllerEvent ev1(channel, MIDI_CTL_ALL_NOTES_OFF, 0);
+        ev1.setSource(m_outputPortId);
+        ev1.setSubscribers();
+        ev1.setDirect();
+        m_client->outputDirect(&ev1);
+        drumstick::ControllerEvent ev2(channel, MIDI_CTL_ALL_SOUNDS_OFF, 0);
+        ev2.setSource(m_outputPortId);
+        ev2.setSubscribers();
+        ev2.setDirect();
+        m_client->outputDirect(&ev2);
+    }
+    m_client->drainOutput();
 }
 
 void MidiSequencer::appendEvent(drumstick::SequencerEvent *ev)

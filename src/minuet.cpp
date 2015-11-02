@@ -57,7 +57,7 @@ Minuet::~Minuet()
 void Minuet::fileOpen()
 {
     QString fileName = QFileDialog::getOpenFileName(this, i18n("Open File"));
-    m_midiSequencer->play(fileName);
+    m_midiSequencer->openFile(fileName);
 }
 
 void Minuet::settingsConfigure()

@@ -27,16 +27,19 @@ Rectangle {
             anchors { top: playbackTime.bottom; horizontalCenter: playbackTime.horizontalCenter }
             source: "qrc:/images/multimedia-pause.png"
             text: "Pause"
+            onActivated: sequencer.pause()
         }
         MultimediaButton {
             anchors { top: playbackTime.bottom; right: item12.left; rightMargin: -2 }
             source: "qrc:/images/multimedia-play.png"
             text: "Play"
+            onActivated: sequencer.play()
         }
         MultimediaButton {
             anchors { top: playbackTime.bottom; left: item12.right; leftMargin: -2 }
             source: "qrc:/images/multimedia-stop.png"
             text: "Stop"
+            onActivated: sequencer.stop()
         }
     }
     Item {
@@ -54,12 +57,21 @@ Rectangle {
             onValueChanged: sequencer.setVolumeFactor(value)
         }
         MultimediaSlider {
+            id: tempoSlider
             anchors { right: volumeSlider.left; rightMargin: 8 }
             source: "qrc:/images/multimedia-speed.png"
-            minimumValue: 50
             maximumValue: 200
+            minimumValue: 50
             value: 100
             onValueChanged: sequencer.setTempoFactor(value)
+        }
+        MultimediaSlider {
+            anchors { right: tempoSlider.left; rightMargin: 8 }
+            source: "qrc:/images/multimedia-pitch.png"
+            maximumValue: 12
+            minimumValue: -12
+            value: 0
+            onValueChanged: sequencer.setPitchShift(value)
         }
     }
 }

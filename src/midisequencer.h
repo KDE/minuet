@@ -49,15 +49,19 @@ public:
     virtual ~MidiSequencer();
 
     void subscribeTo(const QString &portName);
-    void play(const QString &fileName);
+    void openFile(const QString &fileName);
 
 Q_SIGNALS:
     void noteOn(int chan, int pitch, int vel);
     void noteOff(int chan, int pitch, int vel);
 
 public Q_SLOTS:
+    void play();
+    void pause();
+    void stop();
     void setVolumeFactor(unsigned int vol);
     void setTempoFactor(unsigned int value);
+    void setPitchShift(unsigned int value);
     
 private Q_SLOTS:
     // Slots for events generated when reading a MIDI file
@@ -78,6 +82,8 @@ private Q_SLOTS:
 
     // Slots for events generated when playing a MIDI
     void eventReceived(drumstick::SequencerEvent *ev);
+    
+    void outputThreadStopped();
 
 private:
     void appendEvent(drumstick::SequencerEvent *ev);
