@@ -56,6 +56,9 @@ Q_SIGNALS:
     void noteOff(int chan, int pitch, int vel);
     void allNotesOff();
     void timeLabelChanged(QString timeLabel);
+    void volumeChanged(unsigned int vol);
+    void tempoChanged(unsigned int vol);
+    void pitchChanged(unsigned int vol);
 
 public Q_SLOTS:
     void play();

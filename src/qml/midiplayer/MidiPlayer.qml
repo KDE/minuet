@@ -2,10 +2,11 @@ import QtQuick 2.5
 import QtQuick.Controls 1.4
 
 Rectangle {
-    function timeLabelChanged(timeLabel) {
-        playbackTime.text = timeLabel
-    }
-
+    function timeLabelChanged(timeLabel) { playbackTime.text = timeLabel }
+    function volumeChanged(value) { volumeLabel.text = "Volume: " + value + "%" }
+    function tempoChanged(value) { tempoLabel.text = "Tempo: " + value + "bpm" }
+    function pitchChanged(value) { pitchLabel.text = "Pitch: " + value }
+    
     width: menuBarWidth; height: 100
     anchors { left: parent.left; bottom: parent.bottom }
     color: "black"
@@ -80,5 +81,8 @@ Rectangle {
     }
     Component.onCompleted: {
         sequencer.timeLabelChanged.connect(timeLabelChanged)
+        sequencer.volumeChanged.connect(volumeChanged)
+        sequencer.tempoChanged.connect(tempoChanged)
+        sequencer.pitchChanged.connect(pitchChanged)
     }
 }

@@ -115,6 +115,7 @@ void MidiSequencer::openFile(const QString &fileName)
     m_tick = 0;
     m_song.clear();
     m_smfReader->readFromFile(fileName);
+    emit tempoChanged(6.0e7f / m_song.initialTempo());
     m_song.sort();
     m_midiSequencerOutputThread->setSong(&m_song);
 }
@@ -141,6 +142,7 @@ void MidiSequencer::stop()
 void MidiSequencer::setVolumeFactor(unsigned int vol)
 {
     m_midiSequencerOutputThread->setVolumeFactor(vol);
+    emit volumeChanged(vol);
 }
 
 void MidiSequencer::setTempoFactor(unsigned int value)
@@ -150,12 +152,14 @@ void MidiSequencer::setTempoFactor(unsigned int value)
     queueTempo.setTempoFactor(tempoFactor);
     m_queue->setTempo(queueTempo);
     m_client->drainOutput();
+    emit tempoChanged(queueTempo.getRealBPM());
 }
 
 void MidiSequencer::setPitchShift(unsigned int value)
 {
     m_midiSequencerOutputThread->setPitchShift(value);
     emit allNotesOff();
+    emit pitchChanged(value);
 }
 
 void MidiSequencer::SMFHeader(int format, int ntrks, int division)

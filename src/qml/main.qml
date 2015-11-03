@@ -40,7 +40,7 @@ Item {
     ScrollView {
         id: scrollView
 
-        width: menuBarWidth; height: parent.height - midiPlayer.height
+        width: menuBarWidth; height: parent.height - midiPlayer.height - midiPlayerLabels.height
 
         Rectangle {
             anchors.fill: parent
@@ -53,6 +53,40 @@ Item {
         }
     }
     MidiPlayer { id: midiPlayer }
+    Rectangle {
+        id: midiPlayerLabels
+        width: menuBarWidth; height: 20
+        anchors.bottom: midiPlayer.top
+        color: "#343434"
+        Row {
+            width: parent.width
+            anchors { verticalCenter: parent.verticalCenter; left: parent.left; leftMargin: 15 }
+            Text {
+                id: tempoLabel
+                width: parent.width / 3
+                font.pointSize: 8
+                horizontalAlignment: Text.AlignLeft
+                color: "white"
+                text: "Tempo:"
+            }
+            Text {
+                id: volumeLabel
+                width: parent.width / 3
+                font.pointSize: 8
+                horizontalAlignment: Text.AlignLeft
+                color: "white"
+                text: "Volume: 100%"
+            }
+            Text {
+                id: pitchLabel
+                width: parent.width / 3
+                font.pointSize: 8
+                horizontalAlignment: Text.AlignLeft
+                color: "white"
+                text: "Pitch: 0"
+            }
+        }
+    }
     Image {
         id: background
 
