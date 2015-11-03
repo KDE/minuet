@@ -122,13 +122,16 @@ void MidiSequencer::openFile(const QString &fileName)
 
 void MidiSequencer::play()
 {
-    m_midiSequencerOutputThread->start();
+    if (!m_midiSequencerOutputThread->isRunning())
+        m_midiSequencerOutputThread->start();
 }
 
 void MidiSequencer::pause()
 {
-    m_midiSequencerOutputThread->stop();
-    m_midiSequencerOutputThread->setPosition(m_queue->getStatus().getTickTime());
+    if (m_midiSequencerOutputThread->isRunning()) {
+        m_midiSequencerOutputThread->stop();
+        m_midiSequencerOutputThread->setPosition(m_queue->getStatus().getTickTime());
+    }
 }
 
 void MidiSequencer::stop()
@@ -250,7 +253,7 @@ void MidiSequencer::eventReceived(drumstick::SequencerEvent *ev)
     if (kev->getSequencerType() == SND_SEQ_EVENT_NOTEOFF)
         emit noteOff(kev->getChannel(), kev->getKey(), kev->getVelocity());
     
-    if (m_tick != 0) {
+    if (m_tick != 0 && m_midiSequencerOutputThread->isRunning()) {
         const snd_seq_real_time_t *rt = m_queue->getStatus().getRealtime();
         int mins = rt->tv_sec / 60;
         int secs = rt->tv_sec % 60;
