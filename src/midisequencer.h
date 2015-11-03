@@ -55,6 +55,7 @@ Q_SIGNALS:
     void noteOn(int chan, int pitch, int vel);
     void noteOff(int chan, int pitch, int vel);
     void allNotesOff();
+    void timeLabelChanged(QString timeLabel);
 
 public Q_SLOTS:
     void play();
@@ -93,6 +94,7 @@ private:
     int m_outputPortId;
     int m_inputPortId;
     int m_queueId;
+    unsigned long m_tick;
     Song m_song;
     drumstick::MidiPort *m_outputPort;
     drumstick::MidiPort *m_inputPort;

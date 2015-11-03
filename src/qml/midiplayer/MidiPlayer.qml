@@ -2,6 +2,10 @@ import QtQuick 2.5
 import QtQuick.Controls 1.4
 
 Rectangle {
+    function timeLabelChanged(timeLabel) {
+        playbackTime.text = timeLabel
+    }
+
     width: menuBarWidth; height: 100
     anchors { left: parent.left; bottom: parent.bottom }
     color: "black"
@@ -17,7 +21,7 @@ Rectangle {
 
             width: item1.width;
             horizontalAlignment: Text.AlignHCenter
-            text: "00:00:00"
+            text: "00:00.00"
             font.pointSize: 24
             color: "#008000"
         }
@@ -73,5 +77,8 @@ Rectangle {
             value: 0
             onValueChanged: sequencer.setPitchShift(value)
         }
+    }
+    Component.onCompleted: {
+        sequencer.timeLabelChanged.connect(timeLabelChanged)
     }
 }

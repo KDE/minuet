@@ -26,10 +26,13 @@
 #include <drumstick/alsaevent.h>
 #include <drumstick/alsaclient.h>
 
+#include <QtMath>
+
 #include "midisequenceroutputthread.h"
 
 MidiSequencer::MidiSequencer(QObject *parent) :
-    QObject(parent)
+    QObject(parent),
+    m_tick(0)
 {
     // MidiClient configuration
     m_client = new drumstick::MidiClient(this);
@@ -109,6 +112,7 @@ void MidiSequencer::subscribeTo(const QString &portName)
 
 void MidiSequencer::openFile(const QString &fileName)
 {
+    m_tick = 0;
     m_song.clear();
     m_smfReader->readFromFile(fileName);
     m_song.sort();
@@ -131,6 +135,7 @@ void MidiSequencer::stop()
     m_midiSequencerOutputThread->stop();
     m_midiSequencerOutputThread->resetPosition();
     emit allNotesOff();
+    emit timeLabelChanged("00:00.00");
 }
 
 void MidiSequencer::setVolumeFactor(unsigned int vol)
@@ -232,6 +237,7 @@ void MidiSequencer::SMFError(const QString &errorStr)
 
 void MidiSequencer::eventReceived(drumstick::SequencerEvent *ev)
 {
+    static QChar fill('0');
     drumstick::KeyEvent *kev;
     if (!(kev = static_cast<drumstick::KeyEvent*>(ev)))
         return;
@@ -239,6 +245,14 @@ void MidiSequencer::eventReceived(drumstick::SequencerEvent *ev)
         emit noteOn(kev->getChannel(), kev->getKey(), kev->getVelocity());
     if (kev->getSequencerType() == SND_SEQ_EVENT_NOTEOFF)
         emit noteOff(kev->getChannel(), kev->getKey(), kev->getVelocity());
+    
+    if (m_tick != 0) {
+        const snd_seq_real_time_t *rt = m_queue->getStatus().getRealtime();
+        int mins = rt->tv_sec / 60;
+        int secs = rt->tv_sec % 60;
+        int cnts = qFloor( rt->tv_nsec / 1.0e7 );
+        emit timeLabelChanged(QString("%1:%2.%3").arg(mins,2,10,fill).arg(secs,2,10,fill).arg(cnts,2,10,fill));
+    }
 }
 
 void MidiSequencer::outputThreadStopped()
@@ -263,8 +277,11 @@ void MidiSequencer::appendEvent(drumstick::SequencerEvent *ev)
     ev->setSource(m_outputPortId);
     if (ev->getSequencerType() != SND_SEQ_EVENT_TEMPO)
         ev->setSubscribers();
-    ev->scheduleTick(m_queueId, m_smfReader->getCurrentTime(), false);
+    unsigned long tick = m_smfReader->getCurrentTime();
+    ev->scheduleTick(m_queueId, tick, false);
     m_song.append(ev);
+    if (tick > m_tick)
+        m_tick = tick;
 }
 
 #include "midisequencer.moc"
