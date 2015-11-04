@@ -22,6 +22,7 @@ Item {
                 color: "#181B1E"
             }
             Image {
+                visible: delegateRect.ListView.view.model[index].children != undefined
                 width: 24; height: 24
                 anchors { verticalCenter: parent.verticalCenter; right: parent.right; rightMargin: 10 }
                 source: "qrc:/images/navigate-next.png"
@@ -48,9 +49,14 @@ Item {
     StackView {
         id: stackView
         width: menuBarWidth; height: parent.height - midiPlayer.height - midiPlayerLabels.height
-        anchors.left: parent.left
+        anchors { left: parent.left; top: parent.top}
+        focus: true
+        Keys.onPressed: {
+            if (event.key == Qt.Key_Backspace && stackView.depth > 0)
+                stackView.pop()
+        }
         
-        Component.onCompleted: { categoryMenu.createObject(stackView, {model: exerciseCategories}); }
+        Component.onCompleted: { stackView.push(categoryMenu.createObject(stackView, {model: exerciseCategories})); }
     }
     MidiPlayer { id: midiPlayer }
     Rectangle {
