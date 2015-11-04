@@ -122,7 +122,7 @@ void MidiSequencer::openFile(const QString &fileName)
 
 void MidiSequencer::play()
 {
-    if (!m_midiSequencerOutputThread->isRunning())
+    if (!m_song.isEmpty() && !m_midiSequencerOutputThread->isRunning())
         m_midiSequencerOutputThread->start();
 }
 
