@@ -1,30 +1,33 @@
-{"exercises":[
-    {
-        "category":"Intervals|Ascending Melodic Intervals|Seconds",
+{"exercises":[{
+    "name":"Intervals",
+    "children":[{
+        "name":"Ascending Melodic Intervals",
         "root":"21..104",
-        "options":[
-            {
+        "children":[{
+            "name":"Seconds",
+            "options":[{
                 "name":"Minor Second",
                 "sequenceFromRoot":"1"
-            },
-            {
+            },{
                 "name":"Major Second",
                 "sequenceFromRoot":"2"
-            }
-        ]
-    },
-    {
-        "category":"Intervals|Ascending Melodic Intervals|Thirds",
-        "root":"21..104",
-        "options":[
-            {
+            }]
+        },{
+            "name":"Thirds",
+            "options":[{
                 "name":"Minor Third",
                 "sequenceFromRoot":"3"
-            },
-            {
+            },{
                 "name":"Major Third",
                 "sequenceFromRoot":"4"
-            }
-        ]
-    }
-]}
+            }]
+        }]
+    }]},{
+    "name":"Theory",
+    "children":[{
+        "name":"Name Intervals",
+        "children":[{
+            "name":"Unisons"
+        }]
+    }]}]
+}

@@ -8,13 +8,13 @@ Item {
         id: categoryDelegate
 
         Rectangle {
+            id: delegateRect
             width: parent.width; height: 50
             color: "#475057"
 
             Text {
                 anchors { verticalCenter: parent.verticalCenter; left: parent.left; leftMargin: 10 }
-                //text: modelData.category.split('|')[0]; color: "white"
-                text: modelData.options[scrollView.depth].name; color: "white"
+                text: modelData.name; color: "white"
             }
             Rectangle {
                 width: parent.width; height: 1
@@ -25,23 +25,32 @@ Item {
                 width: 24; height: 24
                 anchors { verticalCenter: parent.verticalCenter; right: parent.right; rightMargin: 10 }
                 source: "qrc:/images/navigate-next.png"
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: stackView.push(categoryMenu.createObject(stackView, {model: delegateRect.ListView.view.model[index].children}))
+                }
+            }
+        }
+    }
+    Component {
+        id: categoryMenu
+        Rectangle {
+            width: menuBarWidth; height: parent.height
+            color: "#475057"
+            property alias model: listView.model
+            ListView {
+                id: listView
+                anchors.fill: parent
+                delegate: categoryDelegate
             }
         }
     }
     StackView {
-        id: scrollView
-
+        id: stackView
         width: menuBarWidth; height: parent.height - midiPlayer.height - midiPlayerLabels.height
-
-        Rectangle {
-            anchors.fill: parent
-            color: "#475057"
-        }
-        ListView {
-            anchors.fill: parent
-            model: exerciseCategories
-            delegate: categoryDelegate
-        }
+        anchors.left: parent.left
+        
+        Component.onCompleted: { categoryMenu.createObject(stackView, {model: exerciseCategories}); }
     }
     MidiPlayer { id: midiPlayer }
     Rectangle {
@@ -81,18 +90,12 @@ Item {
     Image {
         id: background
 
-        width: parent.width - scrollView.width
-        anchors.left: scrollView.right
+        width: parent.width - menuBarWidth
+        anchors.right: parent.right
         source: "qrc:/images/minuet-background.png"
         fillMode: Image.Tile
     }
     PianoView {
         anchors { verticalCenter: midiPlayer.verticalCenter; bottomMargin: 10; horizontalCenter: background.horizontalCenter }
-    }
-    Component.onCompleted: {
-        console.log(exerciseCategories);
-        for (var prop in exerciseCategories) {
-            console.log("Object item:", prop, "=", exerciseCategories[prop])
-        }
     }
 }
