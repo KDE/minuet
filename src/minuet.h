@@ -29,6 +29,8 @@
 #include "ui_settingsbase.h"
 #include "minuetsettings.h"
 
+class QQuickView;
+
 class MidiSequencer;
 
 Q_DECLARE_LOGGING_CATEGORY(MINUET)
@@ -54,6 +56,9 @@ public:
      * Default Destructor
      */
     virtual ~Minuet();
+    
+private:
+    void configureExercises();
 
 private slots:
     /**
@@ -71,6 +76,8 @@ private:
     // you can rename it in designer and then change it here
     Ui::settingsBase settingsBase;
     MidiSequencer *m_midiSequencer;
+    QQuickView *m_quickView;
+    QStringList m_exerciseCategories;
 };
 
 #endif // MINUET_H

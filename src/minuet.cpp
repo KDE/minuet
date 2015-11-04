@@ -26,22 +26,30 @@
 #include <KActionCollection>
 
 #include <QtCore/QDebug>
+#include <QtCore/QJsonArray>
+#include <QtCore/QJsonObject>
+#include <QtCore/QJsonDocument>
+
 #include <QtQml/QQmlEngine>
 #include <QtQml/QQmlContext>
+
 #include <QtQuick/QQuickView>
+
 #include <QtWidgets/QFileDialog>
 
 #include "midisequencer.h"
 
 Minuet::Minuet() :
     KXmlGuiWindow(),
-    m_midiSequencer(new MidiSequencer(this))
+    m_midiSequencer(new MidiSequencer(this)),
+    m_quickView(new QQuickView)
 {
-    QQuickView *quickView = new QQuickView;
-    quickView->engine()->rootContext()->setContextProperty("sequencer", m_midiSequencer);
-    quickView->setSource(QUrl("qrc:/main.qml"));
-    quickView->setResizeMode(QQuickView::SizeRootObjectToView);
-    setCentralWidget(QWidget::createWindowContainer(quickView, this));
+    
+    configureExercises();
+    m_quickView->engine()->rootContext()->setContextProperty("sequencer", m_midiSequencer);
+    m_quickView->setSource(QUrl("qrc:/main.qml"));
+    m_quickView->setResizeMode(QQuickView::SizeRootObjectToView);
+    setCentralWidget(QWidget::createWindowContainer(m_quickView, this));
 
     KStandardAction::open(this, SLOT(fileOpen()), actionCollection());
     KStandardAction::quit(qApp, SLOT(closeAllWindows()), actionCollection());
@@ -52,6 +60,29 @@ Minuet::Minuet() :
 
 Minuet::~Minuet()
 {
+    delete m_quickView;
+}
+
+void Minuet::configureExercises()
+{
+    QDir exercisesDir = QStandardPaths::locate(QStandardPaths::AppDataLocation, "exercises", QStandardPaths::LocateDirectory);
+    foreach (QString exercise, exercisesDir.entryList(QDir::Files)) {
+        QFile exerciseFile(exercisesDir.absoluteFilePath(exercise));
+        if (!exerciseFile.open(QIODevice::ReadOnly)) {
+            qWarning("Couldn't open exercise file.");
+            return;
+        }
+        QJsonParseError error;
+        QJsonDocument document = QJsonDocument::fromJson(exerciseFile.readAll(), &error);
+        QJsonArray exercises = document.object()["exercises"].toArray();
+        for (QJsonArray::const_iterator i = exercises.constBegin(); i < exercises.constEnd(); ++i) {
+            foreach (const QString &categoryName, i->toObject()["category"].toString().split('|')) {
+                if (!m_exerciseCategories.contains(categoryName))
+                    m_exerciseCategories << categoryName;
+            }
+        }
+        m_quickView->engine()->rootContext()->setContextProperty("exerciseCategories", m_exerciseCategories);
+    }
 }
 
 void Minuet::fileOpen()

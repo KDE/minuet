@@ -4,16 +4,6 @@ import QtQuick.Controls 1.4
 Item {
     property int menuBarWidth: 280
 
-    ListModel {
-        id: categories
-
-        ListElement { name: "Intervals"; cost: 2.45 }
-        ListElement { name: "Rythm"; cost: 3.25 }
-        ListElement { name: "Theory"; cost: 1.95 }
-        ListElement { name: "Chords"; cost: 1.95 }
-        ListElement { name: "Scales"; cost: 1.95 }
-        ListElement { name: "Misc"; cost: 1.95 }
-    }
     Component {
         id: categoryDelegate
 
@@ -23,7 +13,7 @@ Item {
 
             Text {
                 anchors { verticalCenter: parent.verticalCenter; left: parent.left; leftMargin: 10 }
-                text: name; color: "white"
+                text: modelData; color: "white"
             }
             Rectangle {
                 width: parent.width; height: 1
@@ -48,7 +38,7 @@ Item {
         }
         ListView {
             anchors.fill: parent
-            model: categories
+            model: exerciseCategories
             delegate: categoryDelegate
         }
     }
