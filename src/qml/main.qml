@@ -67,7 +67,7 @@ Item {
                 font.pointSize: 8
                 horizontalAlignment: Text.AlignLeft
                 color: "white"
-                text: "Tempo:"
+                text: qsTr("Tempo:")
             }
             Text {
                 id: volumeLabel
@@ -75,7 +75,7 @@ Item {
                 font.pointSize: 8
                 horizontalAlignment: Text.AlignLeft
                 color: "white"
-                text: "Volume: 100%"
+                text: qsTr("Volume: 100%")
             }
             Text {
                 id: pitchLabel
@@ -83,7 +83,7 @@ Item {
                 font.pointSize: 8
                 horizontalAlignment: Text.AlignLeft
                 color: "white"
-                text: "Pitch: 0"
+                text: qsTr("Pitch: 0")
             }
         }
     }

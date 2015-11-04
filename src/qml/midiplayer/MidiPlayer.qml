@@ -3,9 +3,9 @@ import QtQuick.Controls 1.4
 
 Rectangle {
     function timeLabelChanged(timeLabel) { playbackTime.text = timeLabel }
-    function volumeChanged(value) { volumeLabel.text = "Volume: " + value + "%" }
-    function tempoChanged(value) { tempoLabel.text = "Tempo: " + value + "bpm" }
-    function pitchChanged(value) { pitchLabel.text = "Pitch: " + value }
+    function volumeChanged(value) { volumeLabel.text = qsTr("Volume: %1\%").arg(value) }
+    function tempoChanged(value) { tempoLabel.text = qsTr("Tempo: %1bpm").arg(value) }
+    function pitchChanged(value) { pitchLabel.text = qsTr("Pitch: %1").arg(value) }
     
     width: menuBarWidth; height: 100
     anchors { left: parent.left; bottom: parent.bottom }
@@ -31,19 +31,19 @@ Rectangle {
 
             anchors { top: playbackTime.bottom; horizontalCenter: playbackTime.horizontalCenter }
             source: "qrc:/images/multimedia-pause.png"
-            text: "Pause"
+            text: qsTr("Pause")
             onActivated: sequencer.pause()
         }
         MultimediaButton {
             anchors { top: playbackTime.bottom; right: item12.left; rightMargin: -2 }
             source: "qrc:/images/multimedia-play.png"
-            text: "Play"
+            text: qsTr("Play")
             onActivated: sequencer.play()
         }
         MultimediaButton {
             anchors { top: playbackTime.bottom; left: item12.right; leftMargin: -2 }
             source: "qrc:/images/multimedia-stop.png"
-            text: "Stop"
+            text: qsTr("Stop")
             onActivated: sequencer.stop()
         }
     }
