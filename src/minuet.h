@@ -77,7 +77,6 @@ private:
     Ui::settingsBase settingsBase;
     MidiSequencer *m_midiSequencer;
     QQuickView *m_quickView;
-    QStringList m_exerciseCategories;
 };
 
 #endif // MINUET_H

@@ -13,7 +13,8 @@ Item {
 
             Text {
                 anchors { verticalCenter: parent.verticalCenter; left: parent.left; leftMargin: 10 }
-                text: modelData; color: "white"
+                //text: modelData.category.split('|')[0]; color: "white"
+                text: modelData.options[scrollView.depth].name; color: "white"
             }
             Rectangle {
                 width: parent.width; height: 1
@@ -27,7 +28,7 @@ Item {
             }
         }
     }
-    ScrollView {
+    StackView {
         id: scrollView
 
         width: menuBarWidth; height: parent.height - midiPlayer.height - midiPlayerLabels.height
@@ -87,5 +88,11 @@ Item {
     }
     PianoView {
         anchors { verticalCenter: midiPlayer.verticalCenter; bottomMargin: 10; horizontalCenter: background.horizontalCenter }
+    }
+    Component.onCompleted: {
+        console.log(exerciseCategories);
+        for (var prop in exerciseCategories) {
+            console.log("Object item:", prop, "=", exerciseCategories[prop])
+        }
     }
 }

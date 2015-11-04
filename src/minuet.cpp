@@ -75,13 +75,7 @@ void Minuet::configureExercises()
         QJsonParseError error;
         QJsonDocument document = QJsonDocument::fromJson(exerciseFile.readAll(), &error);
         QJsonArray exercises = document.object()["exercises"].toArray();
-        for (QJsonArray::const_iterator i = exercises.constBegin(); i < exercises.constEnd(); ++i) {
-            foreach (const QString &categoryName, i->toObject()["category"].toString().split('|')) {
-                if (!m_exerciseCategories.contains(categoryName))
-                    m_exerciseCategories << categoryName;
-            }
-        }
-        m_quickView->engine()->rootContext()->setContextProperty("exerciseCategories", m_exerciseCategories);
+        m_quickView->engine()->rootContext()->setContextProperty("exerciseCategories", document.object()["exercises"].toArray());
     }
 }
 
