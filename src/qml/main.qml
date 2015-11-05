@@ -25,6 +25,8 @@ Item {
                                 answerGrid.children[i].destroy();
                             }
                             var length = delegateRect.ListView.view.model[index].options.length
+                            exerciseController.setExerciseOptions(delegateRect.ListView.view.model[index].options);
+                            console.log(exerciseController.randomlyChooseExercise());
                             answerGrid.columns = Math.min(4, length)
                             answerGrid.rows = Math.ceil(length/4)
                             for (var i = 0; i < length; ++i)

@@ -20,65 +20,30 @@
 **
 ****************************************************************************/
 
-#ifndef MINUET_H
-#define MINUET_H
+#ifndef EXERCISECONTROLLER_H
+#define EXERCISECONTROLLER_H
 
-#include <QLoggingCategory>
-#include <KXmlGuiWindow>
-
-#include "ui_settingsbase.h"
-#include "minuetsettings.h"
-
-class QQuickView;
+#include <QtCore/QObject>
+#include <QtCore/QJsonArray>
 
 class MidiSequencer;
-class ExerciseController;
 
-Q_DECLARE_LOGGING_CATEGORY(MINUET)
-
-/**
- * This class serves as the main window for Minuet.  It handles the
- * menus, toolbars and status bars.
- *
- * @short Main window class
- * @author Sandro S. Andrade <sandroandrade@kde.org>
- * @version 0.1
- */
-class Minuet : public KXmlGuiWindow
+class ExerciseController : public QObject
 {
     Q_OBJECT
+
 public:
-    /**
-     * Default Constructor
-     */
-    Minuet();
-
-    /**
-     * Default Destructor
-     */
-    virtual ~Minuet();
+    ExerciseController(MidiSequencer *midiSequencer);
+    virtual ~ExerciseController();
     
-private:
-    void configureExercises();
-
-private slots:
-    /**
-     * Create a new window
-     */
-    void fileOpen();
-
-    /**
-     * Open the settings dialog
-     */
-    void settingsConfigure();
+    Q_INVOKABLE void setExerciseOptions(QJsonArray exerciseOptions);
+    Q_INVOKABLE QString randomlyChooseExercise();
+    Q_INVOKABLE void playChoosenExercise();
 
 private:
-    // this is the name of the root widget inside our Ui file
-    // you can rename it in designer and then change it here
-    Ui::settingsBase settingsBase;
     MidiSequencer *m_midiSequencer;
-    ExerciseController *m_exerciseController;
-    QQuickView *m_quickView;
+    QJsonArray m_exerciseOptions;
+    unsigned int m_chosenExercise;
 };
 
-#endif // MINUET_H
+#endif // EXERCISECONTROLLER_H

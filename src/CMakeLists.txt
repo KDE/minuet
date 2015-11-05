@@ -6,6 +6,7 @@ set(minuet_SRCS
     minuet.cpp
     midisequencer.cpp
     midisequenceroutputthread.cpp
+    exercisecontroller.cpp
 )
 
 qt5_add_resources(minuet_SRCS qml.qrc)

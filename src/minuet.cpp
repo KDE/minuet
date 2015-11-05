@@ -38,15 +38,18 @@
 #include <QtWidgets/QFileDialog>
 
 #include "midisequencer.h"
+#include "exercisecontroller.h"
 
 Minuet::Minuet() :
     KXmlGuiWindow(),
     m_midiSequencer(new MidiSequencer(this)),
+    m_exerciseController(new ExerciseController(m_midiSequencer)),
     m_quickView(new QQuickView)
 {
     
     configureExercises();
     m_quickView->engine()->rootContext()->setContextProperty("sequencer", m_midiSequencer);
+    m_quickView->engine()->rootContext()->setContextProperty("exerciseController", m_exerciseController);
     m_quickView->setSource(QUrl("qrc:/main.qml"));
     m_quickView->setResizeMode(QQuickView::SizeRootObjectToView);
     setCentralWidget(QWidget::createWindowContainer(m_quickView, this));
@@ -61,6 +64,7 @@ Minuet::Minuet() :
 Minuet::~Minuet()
 {
     delete m_quickView;
+    delete m_exerciseController;
 }
 
 void Minuet::configureExercises()
