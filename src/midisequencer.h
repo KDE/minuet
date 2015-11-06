@@ -50,6 +50,12 @@ public:
 
     void subscribeTo(const QString &portName);
     void openFile(const QString &fileName);
+    void appendEvent(drumstick::SequencerEvent *ev, unsigned long tick);
+    
+    enum EventSchedulingMode {
+        FROM_ENGINE = 0,
+        EXPLICIT
+    };
 
 Q_SIGNALS:
     void noteOn(int chan, int pitch, int vel);
@@ -59,7 +65,7 @@ Q_SIGNALS:
     void volumeChanged(unsigned int vol);
     void tempoChanged(unsigned int vol);
     void pitchChanged(unsigned int vol);
-
+    
 public Q_SLOTS:
     void play();
     void pause();
@@ -67,24 +73,25 @@ public Q_SLOTS:
     void setVolumeFactor(unsigned int vol);
     void setTempoFactor(unsigned int value);
     void setPitchShift(unsigned int value);
+    void setSong(Song *song);
     
-private Q_SLOTS:
     // Slots for events generated when reading a MIDI file
     void SMFHeader(int format, int ntrks, int division);
-    void SMFNoteOn(int chan, int pitch, int vel);
-    void SMFNoteOff(int chan, int pitch, int vel);
-    void SMFKeyPress(int chan, int pitch, int press);
-    void SMFCtlChange(int chan, int ctl, int value);
-    void SMFPitchBend(int chan, int value);
-    void SMFProgram(int chan, int patch);
-    void SMFChanPress(int chan, int press);
-    void SMFSysex(const QByteArray &data);
-    void SMFText(int typ, const QString &data);
-    void SMFTempo(int tempo);
-    void SMFTimeSig(int b0, int b1, int b2, int b3);
-    void SMFKeySig(int b0, int b1);
+    drumstick::SequencerEvent *SMFNoteOn(int chan, int pitch, int vel);
+    drumstick::SequencerEvent *SMFNoteOff(int chan, int pitch, int vel);
+    drumstick::SequencerEvent *SMFKeyPress(int chan, int pitch, int press);
+    drumstick::SequencerEvent *SMFCtlChange(int chan, int ctl, int value);
+    drumstick::SequencerEvent *SMFPitchBend(int chan, int value);
+    drumstick::SequencerEvent *SMFProgram(int chan, int patch);
+    drumstick::SequencerEvent *SMFChanPress(int chan, int press);
+    drumstick::SequencerEvent *SMFSysex(const QByteArray &data);
+    drumstick::SequencerEvent *SMFText(int typ, const QString &data);
+    drumstick::SequencerEvent *SMFTempo(int tempo);
+    drumstick::SequencerEvent *SMFTimeSig(int b0, int b1, int b2, int b3);
+    drumstick::SequencerEvent *SMFKeySig(int b0, int b1);
     void SMFError(const QString &errorStr);
 
+private Q_SLOTS:
     // Slots for events generated when playing a MIDI
     void eventReceived(drumstick::SequencerEvent *ev);
     
@@ -98,7 +105,7 @@ private:
     int m_inputPortId;
     int m_queueId;
     unsigned long m_tick;
-    Song m_song;
+    Song *m_song;
     drumstick::MidiPort *m_outputPort;
     drumstick::MidiPort *m_inputPort;
     drumstick::QSmf *m_smfReader;
@@ -106,6 +113,7 @@ private:
     drumstick::QueueTempo m_firstTempo;
     drumstick::MidiClient *m_client;
     MidiSequencerOutputThread *m_midiSequencerOutputThread;
+    EventSchedulingMode m_eventSchedulingMode;
 };
 
 #endif // MIDISEQUENCER_H

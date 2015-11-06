@@ -6,7 +6,7 @@ Item {
 
     Component {
         id: categoryDelegate
-
+        
         Rectangle {
             id: delegateRect
             width: parent.width; height: 50
@@ -25,8 +25,8 @@ Item {
                                 answerGrid.children[i].destroy();
                             }
                             var length = delegateRect.ListView.view.model[index].options.length
-                            exerciseController.setExerciseOptions(delegateRect.ListView.view.model[index].options);
-                            console.log(exerciseController.randomlyChooseExercise());
+                            exerciseController.setExerciseOptions(delegateRect.ListView.view.model[index].options)
+                            exerciseController.randomlyChooseExercise()
                             answerGrid.columns = Math.min(4, length)
                             answerGrid.rows = Math.ceil(length/4)
                             for (var i = 0; i < length; ++i)
@@ -142,10 +142,12 @@ Item {
                     Rectangle {
                         width: 120; height: 40; color: "white"; border.color: "black"; border.width: 2; radius: 5
                         Text { anchors.centerIn: parent; color: "black"; text: "play" }
+                        MouseArea { anchors.fill: parent; onClicked: exerciseController.playChoosenExercise() }
                     }
                     Rectangle {
                         width: 120; height: 40; color: "gray"; border.color: "black"; border.width: 2; radius: 5
                         Text { anchors.centerIn: parent; color: "white"; text: "give up" }
+                        MouseArea { anchors.fill: parent; onClicked: { exerciseController.randomlyChooseExercise(); exerciseController.playChoosenExercise() } }
                     }
                 }
                 Rectangle {

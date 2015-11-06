@@ -44,6 +44,7 @@ private:
     MidiSequencer *m_midiSequencer;
     QJsonArray m_exerciseOptions;
     unsigned int m_chosenExercise;
+    unsigned int m_chosenRootNote;
 };
 
 #endif // EXERCISECONTROLLER_H

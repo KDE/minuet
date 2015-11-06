@@ -98,7 +98,7 @@ void MidiSequencerOutputThread::setSong(Song *song)
     m_songPosition = 0;
     drumstick::QueueTempo firstTempo = m_Queue->getTempo();
     firstTempo.setPPQ(m_song->division());
-    firstTempo.setTempo(song->initialTempo());
+    firstTempo.setTempo(m_song->initialTempo());
     firstTempo.setTempoFactor(1.0);
     m_Queue->setTempo(firstTempo);
 }

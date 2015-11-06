@@ -25,10 +25,15 @@
 #include <QtCore/QDateTime>
 #include <QtCore/QJsonObject>
 
+#include <drumstick/alsaevent.h>
+
 #include "midisequencer.h"
+#include "song.h"
 
 ExerciseController::ExerciseController(MidiSequencer *midiSequencer) :
-    m_midiSequencer(midiSequencer)
+    m_midiSequencer(midiSequencer),
+    m_chosenExercise(0),
+    m_chosenRootNote(0)
 {
 }
 
@@ -45,9 +50,25 @@ QString ExerciseController::randomlyChooseExercise()
 {
     qsrand(QDateTime::currentDateTime().toTime_t());
     m_chosenExercise = qrand() % m_exerciseOptions.size();
+    int minRootNote = 21;
+    int maxRootNote = 104;
+    m_chosenRootNote = minRootNote + qrand() % (maxRootNote - minRootNote);
+
+    Song *song = new Song;
+    song->setHeader(0, 1, 60);
+    song->setInitialTempo(600000);
+    m_midiSequencer->setSong(song);
+    m_midiSequencer->appendEvent(m_midiSequencer->SMFTempo(600000), 0);
+    m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOn(1, m_chosenRootNote, 120), 0);
+    m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOff(1, m_chosenRootNote, 120), 60);
+    int sequenceFromRoot = m_exerciseOptions[m_chosenExercise].toObject()["sequenceFromRoot"].toString().toInt();
+    m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOn(1, m_chosenRootNote + sequenceFromRoot, 120), 60);
+    m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOff(1, m_chosenRootNote + sequenceFromRoot, 120), 120);
+
     return m_exerciseOptions[m_chosenExercise].toObject()["name"].toString();
 }
 
 void ExerciseController::playChoosenExercise()
 {
+    m_midiSequencer->play();
 }

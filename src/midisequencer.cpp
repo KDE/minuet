@@ -32,7 +32,9 @@
 
 MidiSequencer::MidiSequencer(QObject *parent) :
     QObject(parent),
-    m_tick(0)
+    m_tick(0),
+    m_song(0),
+    m_eventSchedulingMode(FROM_ENGINE)
 {
     // MidiClient configuration
     m_client = new drumstick::MidiClient(this);
@@ -99,6 +101,7 @@ MidiSequencer::~MidiSequencer()
     m_inputPort->detach();
     m_client->close();
     delete m_midiSequencerOutputThread;
+    delete m_song;
 }
 
 void MidiSequencer::subscribeTo(const QString &portName)
@@ -113,17 +116,33 @@ void MidiSequencer::subscribeTo(const QString &portName)
 void MidiSequencer::openFile(const QString &fileName)
 {
     m_tick = 0;
-    m_song.clear();
+    if (m_song) delete m_song;
+    m_song = new Song();
+    m_eventSchedulingMode = FROM_ENGINE;
     m_smfReader->readFromFile(fileName);
-    emit tempoChanged(6.0e7f / m_song.initialTempo());
-    m_song.sort();
-    m_midiSequencerOutputThread->setSong(&m_song);
+    emit tempoChanged(6.0e7f / m_song->initialTempo());
+    m_song->sort();
+    m_midiSequencerOutputThread->setSong(m_song);
+}
+
+void MidiSequencer::appendEvent(drumstick::SequencerEvent *ev, unsigned long tick)
+{
+    ev->setSource(m_outputPortId);
+    if (ev->getSequencerType() != SND_SEQ_EVENT_TEMPO)
+        ev->setSubscribers();
+    ev->scheduleTick(m_queueId, tick, false);
+    m_song->append(ev);
+    if (tick > m_tick)
+        m_tick = tick;
 }
 
 void MidiSequencer::play()
 {
-    if (!m_song.isEmpty() && !m_midiSequencerOutputThread->isRunning())
+    if (!m_song->isEmpty() && !m_midiSequencerOutputThread->isRunning()) {
+        if (m_eventSchedulingMode == EXPLICIT)
+            m_midiSequencerOutputThread->setSong(m_song);
         m_midiSequencerOutputThread->start();
+    }
 }
 
 void MidiSequencer::pause()
@@ -165,76 +184,104 @@ void MidiSequencer::setPitchShift(unsigned int value)
     emit pitchChanged(value);
 }
 
+void MidiSequencer::setSong(Song *song)
+{
+    delete m_song;
+    m_song = song;
+    m_eventSchedulingMode = EXPLICIT;
+}
+
 void MidiSequencer::SMFHeader(int format, int ntrks, int division)
 {
-    m_song.setHeader(format, ntrks, division);
+    m_song->setHeader(format, ntrks, division);
 }
 
-void MidiSequencer::SMFNoteOn(int chan, int pitch, int vel)
+drumstick::SequencerEvent *MidiSequencer::SMFNoteOn(int chan, int pitch, int vel)
 {
-    appendEvent(new drumstick::NoteOnEvent(chan, pitch, vel));
+    drumstick::SequencerEvent *ev = new drumstick::NoteOnEvent(chan, pitch, vel);
+    if (m_eventSchedulingMode == FROM_ENGINE) appendEvent(ev);
+    return ev;
 }
 
-void MidiSequencer::SMFNoteOff(int chan, int pitch, int vel)
+drumstick::SequencerEvent *MidiSequencer::SMFNoteOff(int chan, int pitch, int vel)
 {
-    appendEvent(new drumstick::NoteOffEvent(chan, pitch, vel));
+    drumstick::SequencerEvent *ev = new drumstick::NoteOffEvent(chan, pitch, vel);
+    if (m_eventSchedulingMode == FROM_ENGINE) appendEvent(ev);
+    return ev;
 }
 
-void MidiSequencer::SMFKeyPress(int chan, int pitch, int press)
+drumstick::SequencerEvent *MidiSequencer::SMFKeyPress(int chan, int pitch, int press)
 {
-    appendEvent(new drumstick::KeyPressEvent(chan, pitch, press));
+    drumstick::SequencerEvent *ev = new drumstick::KeyPressEvent(chan, pitch, press);
+    if (m_eventSchedulingMode == FROM_ENGINE) appendEvent(ev);
+    return ev;
 }
 
-void MidiSequencer::SMFCtlChange(int chan, int ctl, int value)
+drumstick::SequencerEvent *MidiSequencer::SMFCtlChange(int chan, int ctl, int value)
 {
-    appendEvent(new drumstick::ControllerEvent(chan, ctl, value));
+    drumstick::SequencerEvent *ev = new drumstick::ControllerEvent(chan, ctl, value);
+    if (m_eventSchedulingMode == FROM_ENGINE) appendEvent(ev);
+    return ev;
 }
 
-void MidiSequencer::SMFPitchBend(int chan, int value)
+drumstick::SequencerEvent *MidiSequencer::SMFPitchBend(int chan, int value)
 {
-    appendEvent(new drumstick::PitchBendEvent(chan, value));
+    drumstick::SequencerEvent *ev =new drumstick::PitchBendEvent(chan, value);
+    if (m_eventSchedulingMode == FROM_ENGINE) appendEvent(ev);
+    return ev;
 }
 
-void MidiSequencer::SMFProgram(int chan, int patch)
+drumstick::SequencerEvent *MidiSequencer::SMFProgram(int chan, int patch)
 {
-    appendEvent(new drumstick::ProgramChangeEvent(chan, patch));
+    drumstick::SequencerEvent *ev = new drumstick::ProgramChangeEvent(chan, patch);
+    if (m_eventSchedulingMode == FROM_ENGINE) appendEvent(ev);
+    return ev;
 }
 
-void MidiSequencer::SMFChanPress(int chan, int press)
+drumstick::SequencerEvent *MidiSequencer::SMFChanPress(int chan, int press)
 {
-    appendEvent(new drumstick::ChanPressEvent(chan, press));
+    drumstick::SequencerEvent *ev = new drumstick::ChanPressEvent(chan, press);
+    if (m_eventSchedulingMode == FROM_ENGINE) appendEvent(ev);
+    return ev;
 }
 
-void MidiSequencer::SMFSysex(const QByteArray &data)
+drumstick::SequencerEvent *MidiSequencer::SMFSysex(const QByteArray &data)
 {
-    appendEvent(new drumstick::SysExEvent(data));
+    drumstick::SequencerEvent *ev = new drumstick::SysExEvent(data);
+    if (m_eventSchedulingMode == FROM_ENGINE) appendEvent(ev);
+   return ev;
 }
 
-void MidiSequencer::SMFText(int typ, const QString &data)
+drumstick::SequencerEvent *MidiSequencer::SMFText(int typ, const QString &data)
 {
     Q_UNUSED(typ);
     Q_UNUSED(data);
+    return 0;
 }
 
-void MidiSequencer::SMFTempo(int tempo)
+drumstick::SequencerEvent *MidiSequencer::SMFTempo(int tempo)
 {
-    if (m_song.initialTempo() == 0)
-        m_song.setInitialTempo(tempo);
-    appendEvent(new drumstick::TempoEvent(m_queueId, tempo));
+    if (m_song->initialTempo() == 0)
+        m_song->setInitialTempo(tempo);
+    drumstick::SequencerEvent *ev = new drumstick::TempoEvent(m_queueId, tempo);
+    if (m_eventSchedulingMode == FROM_ENGINE) appendEvent(ev);
+    return ev;
 }
 
-void MidiSequencer::SMFTimeSig(int b0, int b1, int b2, int b3)
+drumstick::SequencerEvent *MidiSequencer::SMFTimeSig(int b0, int b1, int b2, int b3)
 {
     Q_UNUSED(b0);
     Q_UNUSED(b1);
     Q_UNUSED(b2);
     Q_UNUSED(b3);
+    return 0;
 }
 
-void MidiSequencer::SMFKeySig(int b0, int b1)
+drumstick::SequencerEvent *MidiSequencer::SMFKeySig(int b0, int b1)
 {
     Q_UNUSED(b0);
     Q_UNUSED(b1);
+    return 0;
 }
 
 void MidiSequencer::SMFError(const QString &errorStr)
@@ -281,14 +328,7 @@ void MidiSequencer::outputThreadStopped()
 
 void MidiSequencer::appendEvent(drumstick::SequencerEvent *ev)
 {
-    ev->setSource(m_outputPortId);
-    if (ev->getSequencerType() != SND_SEQ_EVENT_TEMPO)
-        ev->setSubscribers();
-    unsigned long tick = m_smfReader->getCurrentTime();
-    ev->scheduleTick(m_queueId, tick, false);
-    m_song.append(ev);
-    if (tick > m_tick)
-        m_tick = tick;
+    appendEvent(ev, m_smfReader->getCurrentTime());
 }
 
 #include "midisequencer.moc"
