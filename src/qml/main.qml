@@ -3,6 +3,17 @@ import QtQuick.Controls 1.4
 
 Item {
     property int menuBarWidth: 280
+    property string chosenExercise;
+    
+    Timer {
+        id: timer
+        interval: 4000; running: false; repeat: false
+        onTriggered: {
+            messageText.text = "Hear the interval and then choose an answer from options below!<br/>Click 'play' if you want to hear again!"
+            chosenExercise = exerciseController.randomlyChooseExercise()
+            exerciseController.playChoosenExercise()
+        }
+    }
 
     Component {
         id: categoryDelegate
@@ -15,24 +26,24 @@ Item {
             Text {
                 anchors { verticalCenter: parent.verticalCenter; left: parent.left; leftMargin: 10 }
                 text: modelData.name; color: "white"
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked:  {
-                        var colors = ["#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9", "#bc80bd", "#ccebc5", "#ffed6f"];
-                        if (delegateRect.ListView.view.model[index].options != undefined) {
-                            exerciseItem.visible = false;
-                            for (var i = 0; i < answerGrid.children.length; ++i) {
-                                answerGrid.children[i].destroy();
-                            }
-                            var length = delegateRect.ListView.view.model[index].options.length
-                            exerciseController.setExerciseOptions(delegateRect.ListView.view.model[index].options)
-                            exerciseController.randomlyChooseExercise()
-                            answerGrid.columns = Math.min(4, length)
-                            answerGrid.rows = Math.ceil(length/4)
-                            for (var i = 0; i < length; ++i)
-                                answerOption.createObject(answerGrid, {text: delegateRect.ListView.view.model[index].options[i].name, color: colors[i%12]})
-                            exerciseItem.visible = true;
+            }
+            MouseArea {
+                anchors.fill: parent
+                onClicked:  {
+                    var colors = ["#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9", "#bc80bd", "#ccebc5", "#ffed6f"];
+                    if (delegateRect.ListView.view.model[index].options != undefined) {
+                        exerciseItem.visible = false;
+                        for (var i = 0; i < answerGrid.children.length; ++i) {
+                            answerGrid.children[i].destroy();
                         }
+                        var length = delegateRect.ListView.view.model[index].options.length
+                        exerciseController.setExerciseOptions(delegateRect.ListView.view.model[index].options)
+                        chosenExercise = exerciseController.randomlyChooseExercise()
+                        answerGrid.columns = Math.min(4, length)
+                        answerGrid.rows = Math.ceil(length/4)
+                        for (var i = 0; i < length; ++i)
+                            answerOption.createObject(answerGrid, {text: delegateRect.ListView.view.model[index].options[i].name, color: colors[i%12]})
+                        exerciseItem.visible = true;
                     }
                 }
             }
@@ -117,7 +128,7 @@ Item {
     }
     Image {
         id: background
-
+        
         width: parent.width - menuBarWidth; height: parent.height
         anchors.right: parent.right
         source: "qrc:/images/minuet-background.png"
@@ -131,10 +142,12 @@ Item {
                 anchors { horizontalCenter: parent.horizontalCenter }
                 spacing: 20
                 Text {
+                    id: messageText
                     width: parent.width
                     horizontalAlignment: Text.AlignHCenter
                     font.pointSize: 24
-                    text: "Click 'play' to hear the interval and then choose an answer from options below!"
+                    textFormat: Text.RichText
+                    text: "Hear the interval and then choose an answer from options below!<br/>Click 'play' if you want to hear again!"
                 }
                 Row {
                     anchors { horizontalCenter: parent.horizontalCenter }
@@ -147,7 +160,7 @@ Item {
                     Rectangle {
                         width: 120; height: 40; color: "gray"; border.color: "black"; border.width: 2; radius: 5
                         Text { anchors.centerIn: parent; color: "white"; text: "give up" }
-                        MouseArea { anchors.fill: parent; onClicked: { exerciseController.randomlyChooseExercise(); exerciseController.playChoosenExercise() } }
+                        MouseArea { anchors.fill: parent; onClicked: { chosenExercise = exerciseController.randomlyChooseExercise(); exerciseController.playChoosenExercise() } }
                     }
                 }
                 Rectangle {
@@ -167,6 +180,17 @@ Item {
                                 property alias text: option.text
                                 width: 120; height: 40; border.color: "white"; border.width: 2; radius: 5
                                 Text { id: option; anchors.centerIn: parent; width: parent.width; horizontalAlignment: Qt.AlignHCenter; color: "black"; wrapMode: Text.Wrap }
+                                MouseArea {
+                                    anchors.fill: parent
+                                    onClicked: {
+                                        if (option.text == chosenExercise) {
+                                            messageText.text = "Congratulations!<br/>You answered correctly!"
+                                        } else {
+                                            messageText.text = "Ops, not this time!<br/>Try again!"
+                                        }
+                                        timer.start()
+                                    }
+                                }
                             }
                         }
                     }
