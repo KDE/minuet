@@ -4,15 +4,13 @@
         "name":"Ascending Melodic Intervals",
         "root":"21..104",
         "children":[{
-            "name":"Seconds",
-            "options":[{
+            "name":"Seconds", "options":[{
                 "name":"Minor Second", "sequenceFromRoot":"1"
             },{
                 "name":"Major Second", "sequenceFromRoot":"2"
             }]
         },{
-            "name":"Thirds",
-            "options":[{
+            "name":"Thirds", "options":[{
                 "name":"Minor Third", "sequenceFromRoot":"3"
             },{
                 "name":"Major Third", "sequenceFromRoot":"4"
