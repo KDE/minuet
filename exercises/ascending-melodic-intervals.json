@@ -25,35 +25,35 @@
             }]
         },{
             "name":"Sixths", "options":[{
-                "name":"Minor Sixth", "sequenceFromRoot":"5"
+                "name":"Minor Sixth", "sequenceFromRoot":"8"
             },{
-                "name":"Major Sixth", "sequenceFromRoot":"7"
+                "name":"Major Sixth", "sequenceFromRoot":"9"
             }]
         },{
             "name":"Sevenths", "options":[{
-                "name":"Minor Seventh", "sequenceFromRoot":"5"
+                "name":"Minor Seventh", "sequenceFromRoot":"10"
             },{
-                "name":"Major Seventh", "sequenceFromRoot":"7"
+                "name":"Major Seventh", "sequenceFromRoot":"11"
             }]
         },{
             "name":"Ninths", "options":[{
-                "name":"Minor Ninth", "sequenceFromRoot":"5"
+                "name":"Minor Ninth", "sequenceFromRoot":"13"
             },{
-                "name":"Major Ninth", "sequenceFromRoot":"7"
+                "name":"Major Ninth", "sequenceFromRoot":"14"
             }]
         },{
             "name":"Tenths", "options":[{
-                "name":"Minor Tenth", "sequenceFromRoot":"5"
+                "name":"Minor Tenth", "sequenceFromRoot":"15"
             },{
-                "name":"Major Tenth", "sequenceFromRoot":"7"
+                "name":"Major Tenth", "sequenceFromRoot":"16"
             }]
         },{
             "name":"Tritone and Sevenths", "options":[{
-                "name":"Tritone", "sequenceFromRoot":"5"
+                "name":"Tritone", "sequenceFromRoot":"6"
             },{
-                "name":"Minor Seventh", "sequenceFromRoot":"7"
+                "name":"Minor Seventh", "sequenceFromRoot":"10"
             },{
-                "name":"Major Seventh", "sequenceFromRoot":"7"
+                "name":"Major Seventh", "sequenceFromRoot":"11"
             }]
         },{
             "name":"Fourths, Fifths, and Octave", "options":[{
@@ -61,147 +61,147 @@
             },{
                 "name":"Perfect Fifth", "sequenceFromRoot":"7"
             },{
-                "name":"Perfect Octave", "sequenceFromRoot":"7"
+                "name":"Perfect Octave", "sequenceFromRoot":"12"
             }]
         },{
             "name":"Second and Thirds", "options":[{
-                "name":"Minor Second", "sequenceFromRoot":"5"
+                "name":"Minor Second", "sequenceFromRoot":"1"
             },{
-                "name":"Major Second", "sequenceFromRoot":"7"
+                "name":"Major Second", "sequenceFromRoot":"2"
             },{
-                "name":"Minor Third", "sequenceFromRoot":"5"
+                "name":"Minor Third", "sequenceFromRoot":"3"
             },{
-                "name":"Major Third", "sequenceFromRoot":"7"
+                "name":"Major Third", "sequenceFromRoot":"4"
             }]
         },{
             "name":"Sixths and Sevenths", "options":[{
-                "name":"Minor Sixth", "sequenceFromRoot":"5"
+                "name":"Minor Sixth", "sequenceFromRoot":"8"
             },{
-                "name":"Major Sixth", "sequenceFromRoot":"7"
+                "name":"Major Sixth", "sequenceFromRoot":"9"
             },{
-                "name":"Minor Seventh", "sequenceFromRoot":"5"
+                "name":"Minor Seventh", "sequenceFromRoot":"10"
             },{
-                "name":"Major Seventh", "sequenceFromRoot":"7"
+                "name":"Major Seventh", "sequenceFromRoot":"11"
             }]
         },{
             "name":"Sevenths and Ninths", "options":[{
-                "name":"Minor Seventh", "sequenceFromRoot":"5"
+                "name":"Minor Seventh", "sequenceFromRoot":"10"
             },{
-                "name":"Major Seventh", "sequenceFromRoot":"7"
+                "name":"Major Seventh", "sequenceFromRoot":"11"
             },{
-                "name":"Minor Ninth", "sequenceFromRoot":"5"
+                "name":"Minor Ninth", "sequenceFromRoot":"13"
             },{
-                "name":"Major Ninth", "sequenceFromRoot":"7"
+                "name":"Major Ninth", "sequenceFromRoot":"14"
             }]
         },{
             "name":"Second to Octave", "options":[{
-                "name":"Minor Second", "sequenceFromRoot":"5"
+                "name":"Minor Second", "sequenceFromRoot":"1"
             },{
-                "name":"Major Second", "sequenceFromRoot":"7"
+                "name":"Major Second", "sequenceFromRoot":"2"
             },{
-                "name":"Minor Third", "sequenceFromRoot":"5"
+                "name":"Minor Third", "sequenceFromRoot":"3"
             },{
-                "name":"Major Third", "sequenceFromRoot":"7"
+                "name":"Major Third", "sequenceFromRoot":"4"
             },{
                 "name":"Perfect Fourth", "sequenceFromRoot":"5"
             },{
-                "name":"Tritone", "sequenceFromRoot":"7"
+                "name":"Tritone", "sequenceFromRoot":"6"
             },{
-                "name":"Perfect Fifth", "sequenceFromRoot":"5"
+                "name":"Perfect Fifth", "sequenceFromRoot":"7"
             },{
-                "name":"Minor Sixth", "sequenceFromRoot":"7"
+                "name":"Minor Sixth", "sequenceFromRoot":"8"
             },{
-                "name":"Major Sixth", "sequenceFromRoot":"5"
+                "name":"Major Sixth", "sequenceFromRoot":"9"
             },{
-                "name":"Minor Seventh", "sequenceFromRoot":"7"
+                "name":"Minor Seventh", "sequenceFromRoot":"10"
             },{
-                "name":"Major Seventh", "sequenceFromRoot":"5"
+                "name":"Major Seventh", "sequenceFromRoot":"11"
             },{
-                "name":"Perfect Octave", "sequenceFromRoot":"7"
+                "name":"Perfect Octave", "sequenceFromRoot":"12"
             }]
         },{
             "name":"Second to Tenth", "options":[{
-                "name":"Minor Second", "sequenceFromRoot":"5"
+                "name":"Minor Second", "sequenceFromRoot":"1"
             },{
-                "name":"Major Second", "sequenceFromRoot":"7"
+                "name":"Major Second", "sequenceFromRoot":"2"
             },{
-                "name":"Minor Third", "sequenceFromRoot":"5"
+                "name":"Minor Third", "sequenceFromRoot":"3"
             },{
-                "name":"Major Third", "sequenceFromRoot":"7"
+                "name":"Major Third", "sequenceFromRoot":"4"
             },{
                 "name":"Perfect Fourth", "sequenceFromRoot":"5"
             },{
-                "name":"Tritone", "sequenceFromRoot":"7"
+                "name":"Tritone", "sequenceFromRoot":"6"
             },{
-                "name":"Perfect Fifth", "sequenceFromRoot":"5"
+                "name":"Perfect Fifth", "sequenceFromRoot":"7"
             },{
-                "name":"Minor Sixth", "sequenceFromRoot":"7"
+                "name":"Minor Sixth", "sequenceFromRoot":"8"
             },{
-                "name":"Major Sixth", "sequenceFromRoot":"5"
+                "name":"Major Sixth", "sequenceFromRoot":"9"
             },{
-                "name":"Minor Seventh", "sequenceFromRoot":"7"
+                "name":"Minor Seventh", "sequenceFromRoot":"10"
             },{
-                "name":"Major Seventh", "sequenceFromRoot":"5"
+                "name":"Major Seventh", "sequenceFromRoot":"11"
             },{
-                "name":"Perfect Octave", "sequenceFromRoot":"7"
+                "name":"Perfect Octave", "sequenceFromRoot":"12"
             },{
-                "name":"Minor Ninth", "sequenceFromRoot":"5"
+                "name":"Minor Ninth", "sequenceFromRoot":"13"
             },{
-                "name":"Major Ninth", "sequenceFromRoot":"7"
+                "name":"Major Ninth", "sequenceFromRoot":"14"
             },{
-                "name":"Minor Tenth", "sequenceFromRoot":"5"
+                "name":"Minor Tenth", "sequenceFromRoot":"15"
             },{
-                "name":"Major Tenth", "sequenceFromRoot":"7"
+                "name":"Major Tenth", "sequenceFromRoot":"16"
             }]
         },{
             "name":"Second to 15th", "options":[{
-                "name":"Minor Second", "sequenceFromRoot":"5"
+                "name":"Minor Second", "sequenceFromRoot":"1"
             },{
-                "name":"Major Second", "sequenceFromRoot":"7"
+                "name":"Major Second", "sequenceFromRoot":"2"
             },{
-                "name":"Minor Third", "sequenceFromRoot":"5"
+                "name":"Minor Third", "sequenceFromRoot":"3"
             },{
-                "name":"Major Third", "sequenceFromRoot":"7"
+                "name":"Major Third", "sequenceFromRoot":"4"
             },{
                 "name":"Perfect Fourth", "sequenceFromRoot":"5"
             },{
-                "name":"Tritone", "sequenceFromRoot":"7"
+                "name":"Tritone", "sequenceFromRoot":"6"
             },{
-                "name":"Perfect Fifth", "sequenceFromRoot":"5"
+                "name":"Perfect Fifth", "sequenceFromRoot":"7"
             },{
-                "name":"Minor Sixth", "sequenceFromRoot":"7"
+                "name":"Minor Sixth", "sequenceFromRoot":"8"
             },{
-                "name":"Major Sixth", "sequenceFromRoot":"5"
+                "name":"Major Sixth", "sequenceFromRoot":"9"
             },{
-                "name":"Minor Seventh", "sequenceFromRoot":"7"
+                "name":"Minor Seventh", "sequenceFromRoot":"10"
             },{
-                "name":"Major Seventh", "sequenceFromRoot":"5"
+                "name":"Major Seventh", "sequenceFromRoot":"11"
             },{
-                "name":"Perfect Octave", "sequenceFromRoot":"7"
+                "name":"Perfect Octave", "sequenceFromRoot":"12"
             },{
-                "name":"Minor Ninth", "sequenceFromRoot":"5"
+                "name":"Minor Ninth", "sequenceFromRoot":"13"
             },{
-                "name":"Major Ninth", "sequenceFromRoot":"7"
+                "name":"Major Ninth", "sequenceFromRoot":"14"
             },{
-                "name":"Minor Tenth", "sequenceFromRoot":"5"
+                "name":"Minor Tenth", "sequenceFromRoot":"15"
             },{
-                "name":"Major Tenth", "sequenceFromRoot":"7"
+                "name":"Major Tenth", "sequenceFromRoot":"16"
             },{
-                "name":"Perfect Eleventh", "sequenceFromRoot":"5"
+                "name":"Perfect Eleventh", "sequenceFromRoot":"17"
             },{
-                "name":"Octave + Tritone", "sequenceFromRoot":"7"
+                "name":"Octave + Tritone", "sequenceFromRoot":"18"
             },{
-                "name":"Perfect Twelfth", "sequenceFromRoot":"5"
+                "name":"Perfect Twelfth", "sequenceFromRoot":"19"
             },{
-                "name":"Minor Thirteenth", "sequenceFromRoot":"7"
+                "name":"Minor Thirteenth", "sequenceFromRoot":"20"
             },{
-                "name":"Major Thirteenth", "sequenceFromRoot":"5"
+                "name":"Major Thirteenth", "sequenceFromRoot":"21"
             },{
-                "name":"Minor Fourteenth", "sequenceFromRoot":"7"
+                "name":"Minor Fourteenth", "sequenceFromRoot":"22"
             },{
-                "name":"Major Fourteenth", "sequenceFromRoot":"5"
+                "name":"Major Fourteenth", "sequenceFromRoot":"23"
             },{
-                "name":"Perfect Double Octave", "sequenceFromRoot":"7"
+                "name":"Perfect Double Octave", "sequenceFromRoot":"24"
             }]
         }
         ]
