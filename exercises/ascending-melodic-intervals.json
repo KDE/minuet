@@ -203,31 +203,6 @@
             }]
         }
         ]
-    }]},{
-    "name":"Theory",
-    "children":[{
-        "name":"Name Intervals",
-        "children":[{
-            "name":"Unisons"
-        },{
-            "name":"Seconds"
-        },{
-            "name":"Thirds"
-        },{
-            "name":"Fourths"
-        },{
-            "name":"Fifths"
-        },{
-            "name":"Sixths"
-        },{
-            "name":"Sevenths"
-        },{
-            "name":"Octaves"
-        },{
-            "name":"Many Intervals"
-        },{
-            "name":"All Intervals"
-        }]
     }]}
     ]
 }
