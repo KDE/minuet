@@ -15,10 +15,7 @@ Item {
 
         width: 24; height: 24
         anchors.horizontalCenter: parent.horizontalCenter
-        MouseArea {
-            anchors.fill: parent
-            onClicked: item.activated()
-        }
+        MouseArea { anchors.fill: parent; onClicked: item.activated() }
     }
     Text {
         id: buttonText

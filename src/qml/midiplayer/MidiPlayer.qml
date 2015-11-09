@@ -1,13 +1,12 @@
 import QtQuick 2.5
-import QtQuick.Controls 1.4
 
 Rectangle {
     function timeLabelChanged(timeLabel) { playbackTime.text = timeLabel }
     function volumeChanged(value) { volumeLabel.text = qsTr("Volume: %1\%").arg(value) }
-    function tempoChanged(value) { tempoLabel.text = qsTr("Tempo: %1bpm").arg(value) }
+    function tempoChanged(value) { tempoLabel.text = qsTr("Tempo: %1 bpm").arg(value) }
     function pitchChanged(value) { pitchLabel.text = qsTr("Pitch: %1").arg(value) }
-    
-    width: menuBarWidth; height: 100
+
+    width: menuBarWidth; height: 120
     anchors { left: parent.left; bottom: parent.bottom }
     color: "black"
 
@@ -53,30 +52,58 @@ Rectangle {
         width: parent.width / 2 - 15; height: item1.height
         anchors { right: parent.right; rightMargin: 15; verticalCenter: parent.verticalCenter }
 
-        MultimediaSlider {
-            id: volumeSlider
+        Row {
+            height: parent.height
             anchors.right: parent.right
-            source: "qrc:/images/multimedia-volume.png"
-            maximumValue: 200
-            value: 100
-            onValueChanged: sequencer.setVolumeFactor(value)
+            spacing: 8
+            MultimediaSlider {
+                source: "qrc:/images/multimedia-pitch.png"
+                maximumValue: 12; minimumValue: -12; value: 0
+                onValueChanged: sequencer.setPitchShift(value)
+            }
+            MultimediaSlider {
+                source: "qrc:/images/multimedia-speed.png"
+                maximumValue: 200; minimumValue: 50; value: 100
+                onValueChanged: sequencer.setTempoFactor(value)
+            }
+            MultimediaSlider {
+                source: "qrc:/images/multimedia-volume.png"
+                maximumValue: 200; value: 100
+                onValueChanged: sequencer.setVolumeFactor(value)
+            }
         }
-        MultimediaSlider {
-            id: tempoSlider
-            anchors { right: volumeSlider.left; rightMargin: 8 }
-            source: "qrc:/images/multimedia-speed.png"
-            maximumValue: 200
-            minimumValue: 50
-            value: 100
-            onValueChanged: sequencer.setTempoFactor(value)
-        }
-        MultimediaSlider {
-            anchors { right: tempoSlider.left; rightMargin: 8 }
-            source: "qrc:/images/multimedia-pitch.png"
-            maximumValue: 12
-            minimumValue: -12
-            value: 0
-            onValueChanged: sequencer.setPitchShift(value)
+    }
+    Rectangle {
+        width: menuBarWidth; height: 20
+        anchors.bottom: parent.top
+        color: "#343434"
+        Row {
+            width: parent.width
+            anchors { verticalCenter: parent.verticalCenter; left: parent.left; leftMargin: 15 }
+            Text {
+                id: tempoLabel
+                width: parent.width / 3
+                font.pointSize: 8
+                horizontalAlignment: Text.AlignLeft
+                color: "white"
+                text: qsTr("Tempo:")
+            }
+            Text {
+                id: volumeLabel
+                width: parent.width / 3
+                font.pointSize: 8
+                horizontalAlignment: Text.AlignLeft
+                color: "white"
+                text: qsTr("Volume: 100%")
+            }
+            Text {
+                id: pitchLabel
+                width: parent.width / 3
+                font.pointSize: 8
+                horizontalAlignment: Text.AlignLeft
+                color: "white"
+                text: qsTr("Pitch: 0")
+            }
         }
     }
     Component.onCompleted: {

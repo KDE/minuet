@@ -6,7 +6,7 @@ Item {
     property alias minimumValue: slider.minimumValue;
     property alias maximumValue: slider.maximumValue;
     property alias value: slider.value;
-    
+
     width: sliderImage.width; height: parent.height
 
     Slider {

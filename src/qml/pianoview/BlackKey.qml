@@ -9,8 +9,5 @@ Rectangle {
     color: mouseArea.pressed ? "#475057" : "black"
     z: 1
 
-    MouseArea {
-        id: mouseArea
-        anchors.fill: parent
-    }
+    MouseArea { id: mouseArea; anchors.fill: parent }
 }

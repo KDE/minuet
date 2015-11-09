@@ -4,7 +4,7 @@ Item {
     property Item initialAnchor;
 
     width: 7*keyWidth; height: keyHeight
-    anchors { left: initialAnchor.right }
+    anchors.left: initialAnchor.right
 
     WhiteKey { id: whiteKey1 }
     BlackKey { anchor: whiteKey1 }

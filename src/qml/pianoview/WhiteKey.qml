@@ -7,10 +7,7 @@ Rectangle {
     border { width: 1; color: "black" }
     color: mouseArea.pressed ? "#475057" : "white"
 
-    MouseArea {
-        id: mouseArea
-        anchors.fill: parent
-    }
+    MouseArea { id: mouseArea; anchors.fill: parent }
 
     Component.onCompleted: if (anchor != null) anchors.left = anchor.right;
 }
