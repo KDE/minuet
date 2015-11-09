@@ -6,15 +6,50 @@ Rectangle {
     function tempoChanged(value) { tempoLabel.text = qsTr("Tempo: %1 bpm").arg(value) }
     function pitchChanged(value) { pitchLabel.text = qsTr("Pitch: %1").arg(value) }
 
-    width: menuBarWidth; height: 120
+    height: childrenRect.height + 15
     anchors { left: parent.left; bottom: parent.bottom }
     color: "black"
 
+    Rectangle {
+        id: labels
+
+        width: parent.width; height: 20
+        anchors.top: parent.top
+        color: "#343434"
+        Row {
+            width: parent.width
+            anchors { verticalCenter: parent.verticalCenter; left: parent.left; leftMargin: 15 }
+            Text {
+                id: tempoLabel
+                width: parent.width / 3
+                font.pointSize: 8
+                horizontalAlignment: Text.AlignLeft
+                color: "white"
+                text: qsTr("Tempo:")
+            }
+            Text {
+                id: volumeLabel
+                width: parent.width / 3
+                font.pointSize: 8
+                horizontalAlignment: Text.AlignLeft
+                color: "white"
+                text: qsTr("Volume: 100%")
+            }
+            Text {
+                id: pitchLabel
+                width: parent.width / 3
+                font.pointSize: 8
+                horizontalAlignment: Text.AlignLeft
+                color: "white"
+                text: qsTr("Pitch: 0")
+            }
+        }
+    }    
     Item {
         id: item1
 
         width: parent.width / 2 - 8; height: childrenRect.height
-        anchors { left: parent.left; leftMargin: 8; verticalCenter: parent.verticalCenter }
+        anchors { left: parent.left; leftMargin: 8; top: labels.bottom; topMargin: 10 }
 
         Text {
             id: playbackTime
@@ -50,7 +85,7 @@ Rectangle {
         id: item2
 
         width: parent.width / 2 - 15; height: item1.height
-        anchors { right: parent.right; rightMargin: 15; verticalCenter: parent.verticalCenter }
+        anchors { right: parent.right; rightMargin: 15; verticalCenter: item1.verticalCenter }
 
         Row {
             height: parent.height
@@ -70,39 +105,6 @@ Rectangle {
                 source: "qrc:/images/multimedia-volume.png"
                 maximumValue: 200; value: 100
                 onValueChanged: sequencer.setVolumeFactor(value)
-            }
-        }
-    }
-    Rectangle {
-        width: menuBarWidth; height: 20
-        anchors.bottom: parent.top
-        color: "#343434"
-        Row {
-            width: parent.width
-            anchors { verticalCenter: parent.verticalCenter; left: parent.left; leftMargin: 15 }
-            Text {
-                id: tempoLabel
-                width: parent.width / 3
-                font.pointSize: 8
-                horizontalAlignment: Text.AlignLeft
-                color: "white"
-                text: qsTr("Tempo:")
-            }
-            Text {
-                id: volumeLabel
-                width: parent.width / 3
-                font.pointSize: 8
-                horizontalAlignment: Text.AlignLeft
-                color: "white"
-                text: qsTr("Volume: 100%")
-            }
-            Text {
-                id: pitchLabel
-                width: parent.width / 3
-                font.pointSize: 8
-                horizontalAlignment: Text.AlignLeft
-                color: "white"
-                text: qsTr("Pitch: 0")
             }
         }
     }

@@ -11,6 +11,8 @@ Item {
     }
     MidiPlayer {
         id: midiPlayer
+        
+        width: menuBarWidth;
     }
     Image {
         id: background

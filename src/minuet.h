@@ -23,8 +23,10 @@
 #ifndef MINUET_H
 #define MINUET_H
 
-#include <QLoggingCategory>
 #include <KXmlGuiWindow>
+
+#include <QtCore/QJsonObject>
+#include <QtCore/QLoggingCategory>
 
 #include "ui_settingsbase.h"
 #include "minuetsettings.h"
@@ -60,6 +62,7 @@ public:
     
 private:
     void configureExercises();
+    QJsonArray mergeExercises(QJsonArray exercises, QJsonArray newExercises);
 
 private slots:
     /**
@@ -79,6 +82,7 @@ private:
     MidiSequencer *m_midiSequencer;
     ExerciseController *m_exerciseController;
     QQuickView *m_quickView;
+    QJsonObject m_exercises;
 };
 
 #endif // MINUET_H

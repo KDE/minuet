@@ -27,7 +27,6 @@
 
 #include <QtCore/QDebug>
 #include <QtCore/QJsonArray>
-#include <QtCore/QJsonObject>
 #include <QtCore/QJsonDocument>
 
 #include <QtQml/QQmlEngine>
@@ -77,10 +76,33 @@ void Minuet::configureExercises()
             return;
         }
         QJsonParseError error;
-        QJsonDocument document = QJsonDocument::fromJson(exerciseFile.readAll(), &error);
-        QJsonArray exercises = document.object()["exercises"].toArray();
-        m_quickView->engine()->rootContext()->setContextProperty("exerciseCategories", document.object()["exercises"].toArray());
+        if (m_exercises.length() == 0)
+            m_exercises = QJsonDocument::fromJson(exerciseFile.readAll(), &error).object();
+        else
+            m_exercises["exercises"] = mergeExercises(m_exercises["exercises"].toArray(),
+                                                      QJsonDocument::fromJson(exerciseFile.readAll(), &error).object()["exercises"].toArray());
     }
+    m_quickView->engine()->rootContext()->setContextProperty("exerciseCategories", m_exercises["exercises"].toArray());
+}
+
+QJsonArray Minuet::mergeExercises(QJsonArray exercises, QJsonArray newExercises)
+{
+    for (QJsonArray::ConstIterator i1 = newExercises.constBegin(); i1 < newExercises.constEnd(); ++i1) {
+        if (i1->isObject()) {
+            QJsonArray::ConstIterator i2;
+            for (i2 = exercises.constBegin(); i2 < exercises.constEnd(); ++i2) {
+                if (i2->isObject() && i1->isObject() && i2->toObject()["name"] == i1->toObject()["name"]) {
+                    QJsonObject jsonObject = exercises[i2-exercises.constBegin()].toObject();
+                    jsonObject["children"] = mergeExercises(i2->toObject()["children"].toArray(), i1->toObject()["children"].toArray());
+                    exercises[i2-exercises.constBegin()] = jsonObject;
+                    break;
+                }
+            }
+            if (i2 == exercises.constEnd())
+                exercises.append(*i1);
+        }
+    }
+    return exercises;
 }
 
 void Minuet::fileOpen()
