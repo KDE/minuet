@@ -21,11 +21,13 @@ Item {
         anchors.right: parent.right
         source: "qrc:/images/minuet-background.png"
         fillMode: Image.Tile
-        ExerciseView {
-            id: exerciseView
-            
-            minuetMenu: minuetMenu
-        }
+    }
+    ExerciseView {
+        id: exerciseView
+        
+        width: background.width; height: minuetMenu.height
+        anchors { top: background.top; horizontalCenter: background.horizontalCenter }
+        minuetMenu: minuetMenu
     }
     PianoView {
         anchors { verticalCenter: midiPlayer.verticalCenter; bottomMargin: 10; horizontalCenter: background.horizontalCenter }

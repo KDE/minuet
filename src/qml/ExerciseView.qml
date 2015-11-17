@@ -27,27 +27,25 @@ Item {
             answerGrid.children[i].destroy()
         chosenExercise = exerciseController.randomlyChooseExercise()
         var length = model.length
-        answerGrid.columns = Math.min(4, length)
-        answerGrid.rows = Math.ceil(length/4)
+        answerGrid.columns = Math.min(5, length)
+        answerGrid.rows = Math.ceil(length/5)
         var colors = ["#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9", "#bc80bd", "#ccebc5", "#ffed6f"]
         for (var i = 0; i < length; ++i)
             answerOption.createObject(answerGrid, {text: model[i].name, color: colors[i%12]})
         exerciseView.visible = true;
     }
 
-    width: parent.width; height: childrenRect.height
-    anchors.centerIn: background
     visible: false
 
     Column {
-        anchors { horizontalCenter: parent.horizontalCenter }
+        anchors.centerIn: parent
         spacing: 20
         Text {
             id: messageText
 
             width: parent.width
             horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 24
+            font.pointSize: 20
             textFormat: Text.RichText
             text: qsTr("Hear the interval and then choose an answer from options below!<br/>Click 'play' if you want to hear again!")
         }
