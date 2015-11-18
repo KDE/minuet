@@ -3,29 +3,18 @@ import QtQuick 2.5
 Item {
     id: exerciseView
 
-    property Item minuetMenu
-    property string chosenExercise;
+    property string chosenExercise
     
     signal answerHoverEnter(var chan, var pitch, var vel, var color)
     signal answerHoverExit(var chan, var pitch, var vel)
     
-    Timer {
-        id: timer
-        interval: 4000; running: false; repeat: false
-        onTriggered: {
-            sequencer.allNotesOff()
-            messageText.text = qsTr("Hear the interval and then choose an answer from options below!<br/>Click 'play' if you want to hear again!")
-            chosenExercise = exerciseController.randomlyChooseExercise()
-            exerciseController.playChoosenExercise()
-        }
-    }
-
     function clearExerciseGrid() {
         exerciseView.visible = false
         for (var i = 0; i < answerGrid.children.length; ++i)
             answerGrid.children[i].destroy()
     }
     function itemChanged(model) {
+        sequencer.allNotesOff()
         exerciseView.visible = false
         for (var i = 0; i < answerGrid.children.length; ++i)
             answerGrid.children[i].destroy()
@@ -36,11 +25,22 @@ Item {
         var colors = ["#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9", "#bc80bd", "#ccebc5", "#ffed6f"]
         for (var i = 0; i < length; ++i)
             answerOption.createObject(answerGrid, {text: model[i].name, sequenceFromRoot: model[i].sequenceFromRoot, color: colors[i%12]})
-        exerciseView.visible = true;
+        exerciseView.visible = true
     }
 
     visible: false
 
+    Timer {
+        id: timer
+
+        interval: 4000; running: false; repeat: false
+        onTriggered: {
+            sequencer.allNotesOff()
+            messageText.text = qsTr("Hear the interval and then choose an answer from options below!<br/>Click 'play' if you want to hear again!")
+            chosenExercise = exerciseController.randomlyChooseExercise()
+            exerciseController.playChoosenExercise()
+        }
+    }
     Column {
         anchors.centerIn: parent
         spacing: 20
@@ -79,9 +79,11 @@ Item {
                 spacing: 20; columns: 2; rows: 1
                 Component {
                     id: answerOption
+
                     Rectangle {
                         property alias text: option.text
-                        property int sequenceFromRoot;
+                        property int sequenceFromRoot
+
                         width: 120; height: 40; border.color: "white"; border.width: 2; radius: 5
                         Text { id: option; anchors.centerIn: parent; width: parent.width; horizontalAlignment: Qt.AlignHCenter; color: "black"; wrapMode: Text.Wrap }
                         MouseArea {
@@ -102,9 +104,5 @@ Item {
                 }
             }
         }
-    }
-    Component.onCompleted: {
-        minuetMenu.onBackspacePressed.connect(clearExerciseGrid)
-        minuetMenu.onItemChanged.connect(itemChanged)
     }
 }

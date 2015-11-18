@@ -54,7 +54,7 @@ Rectangle {
         Text {
             id: playbackTime
 
-            width: item1.width;
+            width: item1.width
             horizontalAlignment: Text.AlignHCenter
             text: "00:00.00"
             font.pointSize: 24
@@ -107,11 +107,5 @@ Rectangle {
                 onValueChanged: sequencer.setVolumeFactor(value)
             }
         }
-    }
-    Component.onCompleted: {
-        sequencer.timeLabelChanged.connect(timeLabelChanged)
-        sequencer.volumeChanged.connect(volumeChanged)
-        sequencer.tempoChanged.connect(tempoChanged)
-        sequencer.pitchChanged.connect(pitchChanged)
     }
 }

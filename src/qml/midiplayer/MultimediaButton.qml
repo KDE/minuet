@@ -3,8 +3,8 @@ import QtQuick 2.5
 Item {
     id: item
 
-    property alias source: buttonImage.source;
-    property alias text: buttonText.text;
+    property alias source: buttonImage.source
+    property alias text: buttonText.text
 
     signal activated
 

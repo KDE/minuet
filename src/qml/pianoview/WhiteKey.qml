@@ -1,7 +1,7 @@
 import QtQuick 2.5
 
 Rectangle {
-    property Item anchor;
+    property Item anchor
 
     width: keyWidth; height: keyHeight
     border { width: 1; color: "black" }
@@ -9,5 +9,5 @@ Rectangle {
 
     MouseArea { id: mouseArea; anchors.fill: parent }
 
-    Component.onCompleted: if (anchor != null) anchors.left = anchor.right;
+    Component.onCompleted: if (anchor != null) anchors.left = anchor.right
 }

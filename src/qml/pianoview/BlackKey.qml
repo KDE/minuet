@@ -1,7 +1,7 @@
 import QtQuick 2.5
 
 Rectangle {
-    property Item anchor;
+    property Item anchor
 
     width: 0.6*keyWidth; height: 0.6*keyHeight
     anchors { left: anchor.right; leftMargin: -(0.6*keyWidth)/2; top: anchor.top }

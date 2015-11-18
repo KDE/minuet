@@ -63,10 +63,11 @@ StackView {
 
     Keys.onPressed: {
         if (event.key == Qt.Key_Backspace && stackView.depth > 0) {
+            sequencer.allNotesOff()
             stackView.backspacePressed()
             stackView.pop()
         }
     }
 
-    Component.onCompleted: { stackView.push(categoryMenu.createObject(stackView, {model: exerciseCategories})); }
+    Component.onCompleted: { stackView.push(categoryMenu.createObject(stackView, {model: exerciseCategories})) }
 }

@@ -1,7 +1,7 @@
 import QtQuick 2.5
 
 Item {
-    property Item initialAnchor;
+    property Item initialAnchor
 
     width: 7*keyWidth; height: keyHeight
     anchors.left: initialAnchor.right
