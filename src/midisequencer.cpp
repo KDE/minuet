@@ -131,6 +131,7 @@ void MidiSequencer::appendEvent(drumstick::SequencerEvent *ev, unsigned long tic
     if (ev->getSequencerType() != SND_SEQ_EVENT_TEMPO)
         ev->setSubscribers();
     ev->scheduleTick(m_queueId, tick, false);
+    ev->setTag(1);
     m_song->append(ev);
     if (tick > m_tick)
         m_tick = tick;
@@ -295,10 +296,14 @@ void MidiSequencer::eventReceived(drumstick::SequencerEvent *ev)
     drumstick::KeyEvent *kev;
     if (!(kev = static_cast<drumstick::KeyEvent*>(ev)))
         return;
-    if (kev->getSequencerType() == SND_SEQ_EVENT_NOTEON)
+    if (kev->getSequencerType() == SND_SEQ_EVENT_NOTEON && kev->getTag() == 1)
         emit noteOn(kev->getChannel(), kev->getKey(), kev->getVelocity());
-    if (kev->getSequencerType() == SND_SEQ_EVENT_NOTEOFF)
-        emit noteOff(kev->getChannel(), kev->getKey(), kev->getVelocity());
+    if (kev->getSequencerType() == SND_SEQ_EVENT_NOTEOFF && kev->getTag() == 1) {
+        if (m_eventSchedulingMode == FROM_ENGINE)
+            emit noteOff(kev->getChannel(), kev->getKey(), kev->getVelocity());
+        else
+            emit noteHighlight(kev->getChannel(), kev->getKey(), kev->getVelocity(), QStringLiteral("#B3CADB"));
+    }
     
     if (m_tick != 0 && m_midiSequencerOutputThread->isRunning()) {
         const snd_seq_real_time_t *rt = m_queue->getStatus().getRealtime();

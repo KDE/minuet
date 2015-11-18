@@ -62,12 +62,20 @@ QString ExerciseController::randomlyChooseExercise()
     song->setInitialTempo(600000);
     m_midiSequencer->setSong(song);
     m_midiSequencer->appendEvent(m_midiSequencer->SMFTempo(600000), 0);
+    drumstick::SequencerEvent *ev;
     m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOn(1, m_chosenRootNote, 120), 0);
     m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOff(1, m_chosenRootNote, 120), 60);
-    m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOn(1, m_chosenRootNote + sequenceFromRoot, 120), 60);
-    m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOff(1, m_chosenRootNote + sequenceFromRoot, 120), 120);
+    m_midiSequencer->appendEvent(ev = m_midiSequencer->SMFNoteOn(1, m_chosenRootNote + sequenceFromRoot, 120), 60);
+    ev->setTag(0);
+    m_midiSequencer->appendEvent(ev = m_midiSequencer->SMFNoteOff(1, m_chosenRootNote + sequenceFromRoot, 120), 120);
+    ev->setTag(0);
 
     return m_exerciseOptions[m_chosenExercise].toObject()["name"].toString();
+}
+
+unsigned int ExerciseController::chosenRootNote()
+{
+    return m_chosenRootNote;
 }
 
 void ExerciseController::playChoosenExercise()

@@ -24,6 +24,7 @@ Item {
         clip: true
         PianoView {
             anchors { bottom: parent.bottom; bottomMargin: 5; horizontalCenter: parent.horizontalCenter }
+            exerciseView: exerciseView
         }
     }
     ExerciseView {

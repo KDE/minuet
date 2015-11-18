@@ -38,6 +38,7 @@ public:
     
     Q_INVOKABLE void setExerciseOptions(QJsonArray exerciseOptions);
     Q_INVOKABLE QString randomlyChooseExercise();
+    Q_INVOKABLE unsigned int chosenRootNote();
     Q_INVOKABLE void playChoosenExercise();
 
 private:

@@ -3,6 +3,7 @@ import QtQuick 2.5
 Rectangle {
     property int keyWidth: 20
     property int keyHeight: 3.4*keyWidth
+    property Item exerciseView
 
     width: 3*keyWidth+7*(7*keyWidth) + 20; height: keyHeight + 30
     radius: 5
@@ -20,6 +21,9 @@ Rectangle {
         }
         function noteOff(chan, pitch, vel) {
             highlightKey(pitch, ([1,3,6,8,10].indexOf(pitch % 12) > -1) ? "black":"white")
+        }
+        function noteHighlight(chan, pitch, vel, color) {
+            highlightKey(pitch, color)
         }
         function allNotesOff() {
             for (var index = 21; index <= 108; ++index)
@@ -62,7 +66,10 @@ Rectangle {
         Component.onCompleted: {
             sequencer.noteOn.connect(noteOn)
             sequencer.noteOff.connect(noteOff)
+            sequencer.noteHighlight.connect(noteHighlight)
             sequencer.allNotesOff.connect(allNotesOff)
+            exerciseView.answerHoverEnter.connect(noteHighlight)
+            exerciseView.answerHoverExit.connect(noteOff)
         }
     }
 }
