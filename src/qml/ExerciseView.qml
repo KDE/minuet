@@ -20,6 +20,7 @@ Item {
                 answerGrid.children[i].opacity = 0.25
             else
                 answerRectangle = answerGrid.children[i]
+        answerHoverEnter(0, exerciseController.chosenRootNote() + answerRectangle.sequenceFromRoot, 0, answerRectangle.color)
         animation1.target = answerRectangle
         animation2.target = answerRectangle
         animation3.target = answerRectangle
@@ -84,7 +85,6 @@ Item {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        sequencer.allNotesOff()
                         highlightRightAnswer()
                         timer.start()
                     }
