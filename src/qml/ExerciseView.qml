@@ -21,11 +21,7 @@ Item {
             else
                 answerRectangle = answerGrid.children[i]
         answerHoverEnter(0, exerciseController.chosenRootNote() + answerRectangle.sequenceFromRoot, 0, answerRectangle.color)
-        animation1.target = answerRectangle
-        animation2.target = answerRectangle
-        animation3.target = answerRectangle
-        animation4.target = answerRectangle
-        animation5.target = answerRectangle
+        anim1.target = anim2.target = anim3.target = anim4.target = anim5.target = answerRectangle
         animation.start()
 
     }
@@ -82,13 +78,7 @@ Item {
             Rectangle {
                 width: 120; height: 40; color: "gray"; border.color: "black"; border.width: 2; radius: 5
                 Text { anchors.centerIn: parent; color: "white"; text: qsTr("give up") }
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        highlightRightAnswer()
-                        timer.start()
-                    }
-                }
+                MouseArea { anchors.fill: parent; onClicked: { highlightRightAnswer(); timer.start() } }
             }
         }
         Rectangle {
@@ -115,58 +105,35 @@ Item {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                highlightRightAnswer()
                                 if (option.text == chosenExercise) {
                                     messageText.text = "Congratulations!<br/>You answered correctly!"
                                 } else {
                                     messageText.text = "Ops, not this time!<br/>Try again!"
                                 }
+                                answerHoverExit(0, exerciseController.chosenRootNote() + sequenceFromRoot, 0)
+                                highlightRightAnswer()
                                 timer.start()
                             }
                             hoverEnabled: true
                             onEntered: answerHoverEnter(0, exerciseController.chosenRootNote() + sequenceFromRoot, 0, color)
-                            onExited: answerHoverExit(0, exerciseController.chosenRootNote() + sequenceFromRoot, 0)
+                            onExited: if (!timer.running) answerHoverExit(0, exerciseController.chosenRootNote() + sequenceFromRoot, 0)
                         }
                     }
                 }
             }
         }
-        ParallelAnimation {
-            id: animation
-            SequentialAnimation {
-                PropertyAnimation {
-                    id: animation3
-                    property: "rotation"
-                    to: -45
-                    duration: 200
-                }
-                PropertyAnimation {
-                    id: animation4
-                    property: "rotation"
-                    to: 45
-                    duration: 200
-                }
-                PropertyAnimation {
-                    id: animation5
-                    property: "rotation"
-                    to: 0
-                    duration: 200
-                }
-            }
-            SequentialAnimation {
-                PropertyAnimation {
-                    id: animation1
-                    property: "scale"
-                    to: 1.2
-                    duration: 300
-                }
-                PropertyAnimation {
-                    id: animation2
-                    property: "scale"
-                    to: 1
-                    duration: 300
-                }
-            }
+        
+    }
+    ParallelAnimation {
+        id: animation
+        SequentialAnimation {
+            PropertyAnimation { id: anim1; property: "rotation"; to: -45; duration: 200 }
+            PropertyAnimation { id: anim2; property: "rotation"; to:  45; duration: 200 }
+            PropertyAnimation { id: anim3; property: "rotation"; to:   0; duration: 200 }
+        }
+        SequentialAnimation {
+            PropertyAnimation { id: anim4; property: "scale"; to: 1.2; duration: 300 }
+            PropertyAnimation { id: anim5; property: "scale"; to: 1.0; duration: 300 }
         }
     }
 }
