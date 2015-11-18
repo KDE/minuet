@@ -13,6 +13,21 @@ Item {
         for (var i = 0; i < answerGrid.children.length; ++i)
             answerGrid.children[i].destroy()
     }
+    function highlightRightAnswer() {
+        var answerRectangle;
+        for (var i = 0; i < answerGrid.children.length; ++i)
+            if (answerGrid.children[i].text != chosenExercise)
+                answerGrid.children[i].opacity = 0.25
+            else
+                answerRectangle = answerGrid.children[i]
+        animation1.target = answerRectangle
+        animation2.target = answerRectangle
+        animation3.target = answerRectangle
+        animation4.target = answerRectangle
+        animation5.target = answerRectangle
+        animation.start()
+
+    }
     function itemChanged(model) {
         sequencer.allNotesOff()
         exerciseView.visible = false
@@ -33,9 +48,11 @@ Item {
     Timer {
         id: timer
 
-        interval: 4000; running: false; repeat: false
+        interval: 3000; running: false; repeat: false
         onTriggered: {
             sequencer.allNotesOff()
+            for (var i = 0; i < answerGrid.children.length; ++i)
+                    answerGrid.children[i].opacity = 1
             messageText.text = qsTr("Hear the interval and then choose an answer from options below!<br/>Click 'play' if you want to hear again!")
             chosenExercise = exerciseController.randomlyChooseExercise()
             exerciseController.playChoosenExercise()
@@ -64,7 +81,14 @@ Item {
             Rectangle {
                 width: 120; height: 40; color: "gray"; border.color: "black"; border.width: 2; radius: 5
                 Text { anchors.centerIn: parent; color: "white"; text: qsTr("give up") }
-                MouseArea { anchors.fill: parent; onClicked: { sequencer.allNotesOff(); chosenExercise = exerciseController.randomlyChooseExercise(); exerciseController.playChoosenExercise() } }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        sequencer.allNotesOff()
+                        highlightRightAnswer()
+                        timer.start()
+                    }
+                }
             }
         }
         Rectangle {
@@ -81,6 +105,8 @@ Item {
                     id: answerOption
 
                     Rectangle {
+                        id: answerRectangle
+
                         property alias text: option.text
                         property int sequenceFromRoot
 
@@ -89,6 +115,7 @@ Item {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
+                                highlightRightAnswer()
                                 if (option.text == chosenExercise) {
                                     messageText.text = "Congratulations!<br/>You answered correctly!"
                                 } else {
@@ -97,10 +124,47 @@ Item {
                                 timer.start()
                             }
                             hoverEnabled: true
-                            onEntered: answerHoverEnter(0, exerciseController.chosenRootNote()+sequenceFromRoot, 0, color)
-                            onExited: answerHoverExit(0, exerciseController.chosenRootNote()+sequenceFromRoot, 0)
+                            onEntered: answerHoverEnter(0, exerciseController.chosenRootNote() + sequenceFromRoot, 0, color)
+                            onExited: answerHoverExit(0, exerciseController.chosenRootNote() + sequenceFromRoot, 0)
                         }
                     }
+                }
+            }
+        }
+        ParallelAnimation {
+            id: animation
+            SequentialAnimation {
+                PropertyAnimation {
+                    id: animation3
+                    property: "rotation"
+                    to: -45
+                    duration: 200
+                }
+                PropertyAnimation {
+                    id: animation4
+                    property: "rotation"
+                    to: 45
+                    duration: 200
+                }
+                PropertyAnimation {
+                    id: animation5
+                    property: "rotation"
+                    to: 0
+                    duration: 200
+                }
+            }
+            SequentialAnimation {
+                PropertyAnimation {
+                    id: animation1
+                    property: "scale"
+                    to: 1.2
+                    duration: 300
+                }
+                PropertyAnimation {
+                    id: animation2
+                    property: "scale"
+                    to: 1
+                    duration: 300
                 }
             }
         }
