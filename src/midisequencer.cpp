@@ -22,13 +22,13 @@
 
 #include "midisequencer.h"
 
+#include "midisequenceroutputthread.h"
+
 #include <drumstick/qsmf.h>
 #include <drumstick/alsaevent.h>
 #include <drumstick/alsaclient.h>
 
 #include <QtMath>
-
-#include "midisequenceroutputthread.h"
 
 MidiSequencer::MidiSequencer(QObject *parent) :
     QObject(parent),

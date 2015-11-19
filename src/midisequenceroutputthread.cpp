@@ -22,10 +22,10 @@
 
 #include "midisequenceroutputthread.h"
 
+#include "song.h"
+
 #include <drumstick/alsaqueue.h>
 #include <drumstick/alsaclient.h>
-
-#include "song.h"
 
 MidiSequencerOutputThread::MidiSequencerOutputThread(drumstick::MidiClient *client, int portId) :
     drumstick::SequencerOutputThread(client, portId),

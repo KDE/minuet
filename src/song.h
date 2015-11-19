@@ -23,7 +23,7 @@
 #ifndef SONG_H
 #define SONG_H
 
-#include <QStringList>
+#include <QtCore/QStringList>
 
 namespace drumstick {
     class SequencerEvent;

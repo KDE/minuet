@@ -23,13 +23,14 @@
 #ifndef MINUET_H
 #define MINUET_H
 
-#include <KXmlGuiWindow>
+#include <KXmlGui/KXmlGuiWindow>
+
+#include "ui_settingsgeneral.h"
+#include "ui_settingsmidi.h"
+#include "minuetsettings.h"
 
 #include <QtCore/QJsonObject>
 #include <QtCore/QLoggingCategory>
-
-#include "ui_settingsbase.h"
-#include "minuetsettings.h"
 
 class QQuickView;
 
@@ -49,6 +50,7 @@ Q_DECLARE_LOGGING_CATEGORY(MINUET)
 class Minuet : public KXmlGuiWindow
 {
     Q_OBJECT
+
 public:
     /**
      * Default Constructor
@@ -60,15 +62,19 @@ public:
      */
     virtual ~Minuet();
     
+protected:
+    virtual bool queryClose();
+
 private:
     void configureExercises();
     QJsonArray mergeExercises(QJsonArray exercises, QJsonArray newExercises);
 
-private slots:
+private Q_SLOTS:
     /**
      * Create a new window
      */
     void fileOpen();
+    void runWizard();
 
     /**
      * Open the settings dialog
@@ -78,11 +84,13 @@ private slots:
 private:
     // this is the name of the root widget inside our Ui file
     // you can rename it in designer and then change it here
-    Ui::settingsBase settingsBase;
+    Ui::SettingsGeneral m_settingsGeneral;
+    Ui::SettingsMidi m_settingsMidi;
     MidiSequencer *m_midiSequencer;
     ExerciseController *m_exerciseController;
     QQuickView *m_quickView;
     QJsonObject m_exercises;
+    KConfigGroup m_initialGroup;
 };
 
 #endif // MINUET_H

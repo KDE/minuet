@@ -4,16 +4,10 @@
      xmlns="http://www.kde.org/standards/kxmlgui/1.0"
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xsi:schemaLocation="http://www.kde.org/standards/kxmlgui/1.0
-                         http://www.kde.org/standards/kxmlgui/1.0/kxmlgui.xsd" >
+                         http://www.kde.org/standards/kxmlgui/1.0/kxmlgui.xsd">
 <MenuBar>
-  <ToolBar name="mainToolBar" noEdit="true" >
-    <text>About System Settings</text>
-    <ActionList name="viewActions" />
-    <Separator />
-    <ActionList name="configure" />
-    <Action name="help_toolbar_menu" />
-    <ActionList name="quit" />
-    <ActionList name="search" />
-  </ToolBar>
+    <Menu name="settings" >
+      <Action name="run_wizard" />
+    </Menu>
 </MenuBar>
 </gui>

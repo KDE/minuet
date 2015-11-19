@@ -2,5 +2,4 @@
 File=minuetsettings.kcfg
 ClassName=MinuetSettings
 Singleton=true
-# will create the necessary code for setting those variables
-Mutators=color_background,color_foreground
+Mutators=true

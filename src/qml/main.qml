@@ -27,12 +27,12 @@ Item {
             id: pianoView
             anchors { bottom: parent.bottom; bottomMargin: 5; horizontalCenter: parent.horizontalCenter }
         }
-    }
-    ExerciseView {
-        id: exerciseView
-        
-        width: background.width; height: minuetMenu.height + 20
-        anchors { top: background.top; horizontalCenter: background.horizontalCenter }
+        ExerciseView {
+            id: exerciseView
+            
+            width: background.width; height: minuetMenu.height + 20
+            anchors { top: background.top; horizontalCenter: background.horizontalCenter }
+        }
     }
 
     Component.onCompleted: {

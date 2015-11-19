@@ -22,13 +22,13 @@
 
 #include "exercisecontroller.h"
 
-#include <QtCore/QDateTime>
-#include <QtCore/QJsonObject>
+#include "midisequencer.h"
+#include "song.h"
 
 #include <drumstick/alsaevent.h>
 
-#include "midisequencer.h"
-#include "song.h"
+#include <QtCore/QDateTime>
+#include <QtCore/QJsonObject>
 
 ExerciseController::ExerciseController(MidiSequencer *midiSequencer) :
     m_midiSequencer(midiSequencer),

@@ -33,6 +33,8 @@ class Song;
 
 class MidiSequencerOutputThread : public drumstick::SequencerOutputThread
 {
+    Q_OBJECT
+
 public:
     MidiSequencerOutputThread(drumstick::MidiClient *client, int portId);
     virtual ~MidiSequencerOutputThread();

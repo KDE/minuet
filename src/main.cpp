@@ -22,13 +22,15 @@
 
 #include "minuet.h"
 
-#include <KAboutData>
-#include <KLocalizedString>
-
 #include <QtGui/QIcon>
+
 #include <QtWidgets/QApplication>
+
 #include <QtCore/QLoggingCategory>
 #include <QtCore/QCommandLineParser>
+
+#include <KAboutData>
+#include <KLocalizedString>
 
 Q_DECLARE_LOGGING_CATEGORY(MINUET)
 Q_LOGGING_CATEGORY(MINUET, "minuet")

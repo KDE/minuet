@@ -22,10 +22,11 @@
 
 #include "minuet.h"
 
-#include <KConfigDialog>
-#include <KActionCollection>
+#include "wizard.h"
+#include "midisequencer.h"
+#include "exercisecontroller.h"
 
-#include <QtCore/QDebug>
+#include <QtCore/QScopedPointer>
 #include <QtCore/QJsonArray>
 #include <QtCore/QJsonDocument>
 
@@ -36,16 +37,16 @@
 
 #include <QtWidgets/QFileDialog>
 
-#include "midisequencer.h"
-#include "exercisecontroller.h"
+#include <KXmlGui/KActionCollection>
+#include <KConfigWidgets/KConfigDialog>
 
 Minuet::Minuet() :
     KXmlGuiWindow(),
     m_midiSequencer(new MidiSequencer(this)),
     m_exerciseController(new ExerciseController(m_midiSequencer)),
-    m_quickView(new QQuickView)
+    m_quickView(new QQuickView),
+    m_initialGroup(KSharedConfig::openConfig(), "version")
 {
-    
     configureExercises();
     m_quickView->engine()->rootContext()->setContextProperty("sequencer", m_midiSequencer);
     m_quickView->engine()->rootContext()->setContextProperty("exerciseController", m_exerciseController);
@@ -56,14 +57,28 @@ Minuet::Minuet() :
     KStandardAction::open(this, SLOT(fileOpen()), actionCollection());
     KStandardAction::quit(qApp, SLOT(closeAllWindows()), actionCollection());
     KStandardAction::preferences(this, SLOT(settingsConfigure()), actionCollection());
-    setStandardToolBarMenuEnabled(false);
-    setupGUI();    
+
+    QAction *action = new QAction(i18n("Run Config Wizard"), this);
+    action->setIcon(QIcon::fromTheme(QStringLiteral("tools-wizard")));
+    connect(action, &QAction::triggered, this, &Minuet::runWizard);
+    actionCollection()->addAction(QStringLiteral("run_wizard"), action);
+
+    setupGUI();
+    
+    if (!m_initialGroup.exists())
+        runWizard();
 }
 
 Minuet::~Minuet()
 {
     delete m_quickView;
     delete m_exerciseController;
+}
+
+bool Minuet::queryClose()
+{
+    MinuetSettings::self()->save();
+    return true;
 }
 
 void Minuet::configureExercises()
@@ -108,7 +123,17 @@ QJsonArray Minuet::mergeExercises(QJsonArray exercises, QJsonArray newExercises)
 void Minuet::fileOpen()
 {
     QString fileName = QFileDialog::getOpenFileName(this, i18n("Open File"));
-    m_midiSequencer->openFile(fileName);
+    if (!fileName.isEmpty())
+        m_midiSequencer->openFile(fileName);
+}
+
+void Minuet::runWizard()
+{
+    QScopedPointer<Wizard> w (new Wizard(this));
+    if (w->exec() == QDialog::Accepted && w->isOk()) {
+        w->adjustSettings();
+        m_initialGroup.writeEntry("version", "1.0");
+    }
 }
 
 void Minuet::settingsConfigure()
@@ -120,8 +145,11 @@ void Minuet::settingsConfigure()
 
     KConfigDialog *dialog = new KConfigDialog(this, "settings", MinuetSettings::self());
     QWidget *generalSettingsDialog = new QWidget;
-    settingsBase.setupUi(generalSettingsDialog);
-    dialog->addPage(generalSettingsDialog, i18n("General"), "package_setting");
+    m_settingsGeneral.setupUi(generalSettingsDialog);
+    QWidget *midiSettingsDialog = new QWidget;
+    m_settingsMidi.setupUi(midiSettingsDialog);
+    dialog->addPage(generalSettingsDialog, i18n("General"), QStringLiteral("fileview-preview"));
+    dialog->addPage(midiSettingsDialog, i18n("MIDI"), QStringLiteral("media-playback-start"));
     dialog->setAttribute(Qt::WA_DeleteOnClose);
     dialog->show();
 }

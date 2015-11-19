@@ -20,6 +20,7 @@ find_package(KF5 REQUIRED COMPONENTS
     XmlGui
     ConfigWidgets
     DocTools
+    KIO
 )
 
 find_package(Drumstick REQUIRED COMPONENTS Alsa File RT)

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>settingsBase</class>
- <widget class="QWidget" name="settingsBase">
+ <class>SettingsGeneral</class>
+ <widget class="QWidget" name="SettingsGeneral">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -22,7 +22,7 @@
     </widget>
    </item>
    <item row="0" column="1">
-    <widget class="KColorButton" name="kcfg_color_background">
+    <widget class="KColorButton" name="kcfg_colorBackground">
      <property name="toolTip">
       <string>Choose a new background color</string>
      </property>
@@ -58,7 +58,7 @@ p, li { white-space: pre-wrap; }
     </widget>
    </item>
    <item row="1" column="1">
-    <widget class="KColorButton" name="kcfg_color_foreground">
+    <widget class="KColorButton" name="kcfg_colorForeground">
      <property name="toolTip">
       <string>Choose a new foreground color</string>
      </property>
@@ -106,7 +106,7 @@ p, li { white-space: pre-wrap; }
     </spacer>
    </item>
    <item row="2" column="1">
-    <widget class="QSpinBox" name="kcfg_val_time">
+    <widget class="QSpinBox" name="kcfg_valTime">
      <property name="toolTip">
       <string>Set the project age (in days)</string>
      </property>
