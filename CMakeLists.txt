@@ -23,7 +23,7 @@ find_package(KF5 REQUIRED COMPONENTS
     KIO
 )
 
-find_package(Drumstick REQUIRED COMPONENTS Alsa File RT)
+find_package(Drumstick REQUIRED COMPONENTS Alsa File)
 
 MESSAGE(STATUS "Drumstick_FOUND: " ${Drumstick_FOUND} ${DRUMSTICK_LIBRARIES})
 MESSAGE(STATUS "DrumstickFile_FOUND: " ${DrumstickFile_FOUND} ${DRUMSTICK_LIBRARIES})
