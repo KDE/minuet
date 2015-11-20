@@ -29,7 +29,6 @@
 #include "ui_settingsmidi.h"
 #include "minuetsettings.h"
 
-#include <QtCore/QJsonObject>
 #include <QtCore/QLoggingCategory>
 
 class QQuickView;
@@ -65,10 +64,6 @@ public:
 protected:
     virtual bool queryClose();
 
-private:
-    void configureExercises();
-    QJsonArray mergeExercises(QJsonArray exercises, QJsonArray newExercises);
-
 private Q_SLOTS:
     /**
      * Create a new window
@@ -89,7 +84,6 @@ private:
     MidiSequencer *m_midiSequencer;
     ExerciseController *m_exerciseController;
     QQuickView *m_quickView;
-    QJsonObject m_exercises;
     KConfigGroup m_initialGroup;
 };
 

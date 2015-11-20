@@ -24,7 +24,9 @@
 #define EXERCISECONTROLLER_H
 
 #include <QtCore/QObject>
+
 #include <QtCore/QJsonArray>
+#include <QtCore/QJsonObject>
 
 class MidiSequencer;
 
@@ -41,8 +43,15 @@ public:
     Q_INVOKABLE unsigned int chosenRootNote();
     Q_INVOKABLE void playChoosenExercise();
 
+    void configureExercises();
+    QJsonObject exercises() const;
+
+private:
+    QJsonArray mergeExercises(QJsonArray exercises, QJsonArray newExercises);
+
 private:
     MidiSequencer *m_midiSequencer;
+    QJsonObject m_exercises;
     QJsonArray m_exerciseOptions;
     unsigned int m_chosenExercise;
     unsigned int m_chosenRootNote;

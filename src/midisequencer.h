@@ -25,8 +25,6 @@
 
 #include <QtCore/QObject>
 
-#include <QtCore/QList>
-
 #include <drumstick/alsaqueue.h>
 
 #include "song.h"

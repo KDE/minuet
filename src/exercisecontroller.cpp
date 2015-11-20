@@ -23,12 +23,13 @@
 #include "exercisecontroller.h"
 
 #include "midisequencer.h"
-#include "song.h"
 
 #include <drumstick/alsaevent.h>
 
+#include <QtCore/QDir>
 #include <QtCore/QDateTime>
-#include <QtCore/QJsonObject>
+#include <QtCore/QJsonDocument>
+#include <QtCore/QStandardPaths>
 
 ExerciseController::ExerciseController(MidiSequencer *midiSequencer) :
     m_midiSequencer(midiSequencer),
@@ -81,4 +82,48 @@ unsigned int ExerciseController::chosenRootNote()
 void ExerciseController::playChoosenExercise()
 {
     m_midiSequencer->play();
+}
+
+void ExerciseController::configureExercises()
+{
+    QDir exercisesDir = QStandardPaths::locate(QStandardPaths::AppDataLocation, "exercises", QStandardPaths::LocateDirectory);
+    foreach (QString exercise, exercisesDir.entryList(QDir::Files)) {
+        QFile exerciseFile(exercisesDir.absoluteFilePath(exercise));
+        if (!exerciseFile.open(QIODevice::ReadOnly)) {
+            qWarning("Couldn't open exercise file.");
+            return;
+        }
+        QJsonParseError error;
+        if (m_exercises.length() == 0)
+            m_exercises = QJsonDocument::fromJson(exerciseFile.readAll(), &error).object();
+        else
+            m_exercises["exercises"] = mergeExercises(m_exercises["exercises"].toArray(),
+                                                      QJsonDocument::fromJson(exerciseFile.readAll(), &error).object()["exercises"].toArray());
+        exerciseFile.close();
+    }
+}
+
+QJsonObject ExerciseController::exercises() const
+{
+    return m_exercises;
+}
+
+QJsonArray ExerciseController::mergeExercises(QJsonArray exercises, QJsonArray newExercises)
+{
+    for (QJsonArray::ConstIterator i1 = newExercises.constBegin(); i1 < newExercises.constEnd(); ++i1) {
+        if (i1->isObject()) {
+            QJsonArray::ConstIterator i2;
+            for (i2 = exercises.constBegin(); i2 < exercises.constEnd(); ++i2) {
+                if (i2->isObject() && i1->isObject() && i2->toObject()["name"] == i1->toObject()["name"]) {
+                    QJsonObject jsonObject = exercises[i2-exercises.constBegin()].toObject();
+                    jsonObject["children"] = mergeExercises(i2->toObject()["children"].toArray(), i1->toObject()["children"].toArray());
+                    exercises[i2-exercises.constBegin()] = jsonObject;
+                    break;
+                }
+            }
+            if (i2 == exercises.constEnd())
+                exercises.append(*i1);
+        }
+    }
+    return exercises;
 }

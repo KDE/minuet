@@ -26,16 +26,10 @@
 #include "midisequencer.h"
 #include "exercisecontroller.h"
 
-#include <QtCore/QScopedPointer>
-#include <QtCore/QJsonArray>
-#include <QtCore/QJsonDocument>
-
 #include <QtQml/QQmlEngine>
 #include <QtQml/QQmlContext>
 
 #include <QtQuick/QQuickView>
-
-#include <QtWidgets/QFileDialog>
 
 #include <KXmlGui/KActionCollection>
 #include <KConfigWidgets/KConfigDialog>
@@ -47,7 +41,8 @@ Minuet::Minuet() :
     m_quickView(new QQuickView),
     m_initialGroup(KSharedConfig::openConfig(), "version")
 {
-    configureExercises();
+    m_exerciseController->configureExercises();
+    m_quickView->engine()->rootContext()->setContextProperty("exerciseCategories", m_exerciseController->exercises()["exercises"].toArray());
     m_quickView->engine()->rootContext()->setContextProperty("sequencer", m_midiSequencer);
     m_quickView->engine()->rootContext()->setContextProperty("exerciseController", m_exerciseController);
     m_quickView->setSource(QUrl("qrc:/main.qml"));
@@ -81,45 +76,6 @@ bool Minuet::queryClose()
     return true;
 }
 
-void Minuet::configureExercises()
-{
-    QDir exercisesDir = QStandardPaths::locate(QStandardPaths::AppDataLocation, "exercises", QStandardPaths::LocateDirectory);
-    foreach (QString exercise, exercisesDir.entryList(QDir::Files)) {
-        QFile exerciseFile(exercisesDir.absoluteFilePath(exercise));
-        if (!exerciseFile.open(QIODevice::ReadOnly)) {
-            qWarning("Couldn't open exercise file.");
-            return;
-        }
-        QJsonParseError error;
-        if (m_exercises.length() == 0)
-            m_exercises = QJsonDocument::fromJson(exerciseFile.readAll(), &error).object();
-        else
-            m_exercises["exercises"] = mergeExercises(m_exercises["exercises"].toArray(),
-                                                      QJsonDocument::fromJson(exerciseFile.readAll(), &error).object()["exercises"].toArray());
-        exerciseFile.close();
-    }
-    m_quickView->engine()->rootContext()->setContextProperty("exerciseCategories", m_exercises["exercises"].toArray());
-}
-
-QJsonArray Minuet::mergeExercises(QJsonArray exercises, QJsonArray newExercises)
-{
-    for (QJsonArray::ConstIterator i1 = newExercises.constBegin(); i1 < newExercises.constEnd(); ++i1) {
-        if (i1->isObject()) {
-            QJsonArray::ConstIterator i2;
-            for (i2 = exercises.constBegin(); i2 < exercises.constEnd(); ++i2) {
-                if (i2->isObject() && i1->isObject() && i2->toObject()["name"] == i1->toObject()["name"]) {
-                    QJsonObject jsonObject = exercises[i2-exercises.constBegin()].toObject();
-                    jsonObject["children"] = mergeExercises(i2->toObject()["children"].toArray(), i1->toObject()["children"].toArray());
-                    exercises[i2-exercises.constBegin()] = jsonObject;
-                    break;
-                }
-            }
-            if (i2 == exercises.constEnd())
-                exercises.append(*i1);
-        }
-    }
-    return exercises;
-}
 
 void Minuet::fileOpen()
 {
