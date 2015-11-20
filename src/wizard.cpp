@@ -25,6 +25,7 @@
 #include "minuetsettings.h"
 
 #include <QtCore/QTimer>
+#include <QtCore/QDirIterator>
 #include <QtCore/QStandardPaths>
 
 #include <QtWidgets/QLabel>
@@ -66,24 +67,75 @@ bool Wizard::isOk() const
 
 void Wizard::adjustSettings()
 {
-    if (!m_timidityPath.isEmpty()) MinuetSettings::setTimidityPath(m_timidityPath);
+    if (!m_timidityPath.isEmpty()) {
+        MinuetSettings::setTimidityPath(m_timidityPath);
+        if (MinuetSettings::timidityParameters().isEmpty())
+            MinuetSettings::setTimidityParameters(QStringLiteral("-iA"));
+    }
 }
 
 void Wizard::checkSystem()
 {
     m_systemCheckIsOk = false;
-    QSize itemSize(20, fontMetrics().height() * 2.5);
     m_systemCheck.programList->setColumnWidth(0, 30);
     m_systemCheck.programList->setIconSize(QSize(24, 24));
 
-    QTreeWidgetItem *item = new QTreeWidgetItem(m_systemCheck.programList, QStringList() << QString() << QStringLiteral("TiMidity++"));
-    item->setData(1, Qt::UserRole, i18n("Required for playing MIDI files and exercises"));
-    item->setSizeHint(0, itemSize);
-    item->setIcon(0, m_okIcon);
+    QTreeWidgetItem *item = addTreeWidgetItem(QStringLiteral("TiMidity++"), i18n("Required for playing MIDI files and exercises"));
     
     m_timidityPath = QStandardPaths::findExecutable(QStringLiteral("timidity"));
-    if (m_timidityPath.isEmpty())
+    if (m_timidityPath.isEmpty()) {
         item->setIcon(0, m_badIcon);
-    else
-        m_systemCheckIsOk = true;
+        return;
+    }
+
+    item = addTreeWidgetItem(i18n("TiMidity++ configuration file"), i18n("Required for setting up TiMidity++"));
+
+    QDirIterator it("/etc", QDirIterator::Subdirectories);
+    QString timidityConfig;
+    while (it.hasNext()) {
+        QString file = it.next();
+        if (file.contains("timidity.cfg")) {
+            timidityConfig = file;
+            break;
+        }
+    }
+    if (!timidityConfig.isEmpty()) {
+        QFile timidityConfigFile(timidityConfig);
+        if (!timidityConfigFile.open(QIODevice::ReadOnly)) {
+            qWarning("Couldn't open TiMidity configuration file.");
+            return;
+        }
+        bool sourceFound = false;
+        QTextStream in(&timidityConfigFile);
+        while (!in.atEnd())
+        {
+           QString line = timidityConfigFile.readLine().simplified();
+           if (line.contains("source") && !line.startsWith('#')) {
+               QRegularExpression regExp("/([^/]*)\\.cfg");
+               QRegularExpressionMatch match = regExp.match(line);
+               item = addTreeWidgetItem(i18n("TiMidity++ %1 sound source", match.captured(1)), i18n("Required for setting up TiMidity++ sound sources"));
+               sourceFound = true;
+           }
+        }
+        timidityConfigFile.close();
+        if (!sourceFound) {
+            item = addTreeWidgetItem(i18n("A TiMidity++ sound source"), i18n("No TiMidity++ sound source found! Sounds won't work!"));
+            item->setIcon(0, m_badIcon);
+            sourceFound = true;
+        }
+    } else {
+        item->setIcon(0, m_badIcon);
+    }
+    m_systemCheckIsOk = true;
+}
+
+QTreeWidgetItem *Wizard::addTreeWidgetItem(const QString &text, const QString &subText)
+{
+    QSize itemSize(20, fontMetrics().height() * 2.5);
+    QTreeWidgetItem *item = new QTreeWidgetItem(m_systemCheck.programList, QStringList() << QString() << text);
+    item->setData(1, Qt::UserRole, subText);
+    item->setSizeHint(0, itemSize);
+    item->setIcon(0, m_okIcon);
+
+    return item;
 }

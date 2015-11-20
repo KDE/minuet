@@ -24,7 +24,6 @@
     </entry>
     <entry name="timidityParameters" type="String">
       <label>TiMidity++ sequencer parameters</label>
-      <default>-iA</default>
     </entry>
   </group>
 </kcfg>

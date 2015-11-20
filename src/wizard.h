@@ -79,6 +79,9 @@ public:
 
 private Q_SLOTS:
     void checkSystem();
+    
+private:
+    QTreeWidgetItem *addTreeWidgetItem(const QString &text, const QString &subText);
 
 private:
     bool m_systemCheckIsOk;

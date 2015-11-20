@@ -96,6 +96,7 @@ void Minuet::configureExercises()
         else
             m_exercises["exercises"] = mergeExercises(m_exercises["exercises"].toArray(),
                                                       QJsonDocument::fromJson(exerciseFile.readAll(), &error).object()["exercises"].toArray());
+        exerciseFile.close();
     }
     m_quickView->engine()->rootContext()->setContextProperty("exerciseCategories", m_exercises["exercises"].toArray());
 }
