@@ -24,6 +24,7 @@
 #define SONG_H
 
 #include <QtCore/QList>
+#include <QtCore/QString>
 
 namespace drumstick {
     class SequencerEvent;

@@ -94,7 +94,7 @@ void Minuet::runWizard()
 
 void Minuet::settingsConfigure()
 {
-    qCDebug(MINUET) << "Minuet:settingsConfigure()";
+    //qCDebug(MINUET) << "Minuet:settingsConfigure()";
 
     if (KConfigDialog::showDialog("settings"))
         return;
