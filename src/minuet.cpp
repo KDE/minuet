@@ -76,7 +76,6 @@ bool Minuet::queryClose()
     return true;
 }
 
-
 void Minuet::fileOpen()
 {
     QString fileName = QFileDialog::getOpenFileName(this, i18n("Open File"));
