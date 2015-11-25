@@ -31,6 +31,8 @@
 #include <QtCore/QJsonDocument>
 #include <QtCore/QStandardPaths>
 
+#include <KI18n/KLocalizedString>
+
 ExerciseController::ExerciseController(MidiSequencer *midiSequencer) :
     m_midiSequencer(midiSequencer),
     m_chosenExercise(0),
@@ -84,23 +86,39 @@ void ExerciseController::playChoosenExercise()
     m_midiSequencer->play();
 }
 
-void ExerciseController::configureExercises()
+bool ExerciseController::configureExercises()
 {
+    m_errorString.clear();
     QDir exercisesDir = QStandardPaths::locate(QStandardPaths::AppDataLocation, "exercises", QStandardPaths::LocateDirectory);
     foreach (QString exercise, exercisesDir.entryList(QDir::Files)) {
         QFile exerciseFile(exercisesDir.absoluteFilePath(exercise));
         if (!exerciseFile.open(QIODevice::ReadOnly)) {
-            qWarning("Couldn't open exercise file.");
-            return;
+            m_errorString = i18n("Couldn't open exercise file \"%1\".").arg(exercisesDir.absoluteFilePath(exercise));
+            return false;
         }
         QJsonParseError error;
-        if (m_exercises.length() == 0)
-            m_exercises = QJsonDocument::fromJson(exerciseFile.readAll(), &error).object();
-        else
-            m_exercises["exercises"] = mergeExercises(m_exercises["exercises"].toArray(),
-                                                      QJsonDocument::fromJson(exerciseFile.readAll(), &error).object()["exercises"].toArray());
+        QJsonDocument jsonDocument = QJsonDocument::fromJson(exerciseFile.readAll(), &error);
+
+        if (error.error != QJsonParseError::NoError) {
+            m_errorString = error.errorString();
+            exerciseFile.close();
+            return false;
+        }
+        else {
+            if (m_exercises.length() == 0)
+                m_exercises = jsonDocument.object();
+            else
+                m_exercises["exercises"] = mergeExercises(m_exercises["exercises"].toArray(),
+                                                        jsonDocument.object()["exercises"].toArray());
+        }
         exerciseFile.close();
     }
+    return true;
+}
+
+QString ExerciseController::errorString() const
+{
+    return m_errorString;
 }
 
 QJsonObject ExerciseController::exercises() const

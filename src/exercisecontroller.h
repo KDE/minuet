@@ -43,7 +43,8 @@ public:
     Q_INVOKABLE unsigned int chosenRootNote();
     Q_INVOKABLE void playChoosenExercise();
 
-    void configureExercises();
+    bool configureExercises();
+    QString errorString() const;
     QJsonObject exercises() const;
 
 private:
@@ -55,6 +56,7 @@ private:
     QJsonArray m_exerciseOptions;
     unsigned int m_chosenExercise;
     unsigned int m_chosenRootNote;
+    QString m_errorString;
 };
 
 #endif // EXERCISECONTROLLER_H

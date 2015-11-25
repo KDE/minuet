@@ -45,7 +45,10 @@ Minuet::Minuet() :
     m_quickView(new QQuickView),
     m_initialGroup(KSharedConfig::openConfig(), "version")
 {
-    m_exerciseController->configureExercises();
+    if (!m_exerciseController->configureExercises())
+        QMessageBox::critical(0, i18n("Minuet startup"),
+                                 i18n("There was an error when parsing exercises JSON files: \"%1\".").arg(m_exerciseController->errorString()));
+
     m_quickView->engine()->rootContext()->setContextProperty("exerciseCategories", m_exerciseController->exercises()["exercises"].toArray());
     m_quickView->engine()->rootContext()->setContextProperty("sequencer", m_midiSequencer);
     m_quickView->engine()->rootContext()->setContextProperty("exerciseController", m_exerciseController);
@@ -83,7 +86,7 @@ void Minuet::startTimidity()
 	}
 	else {
 	    if (!waitForTimidityOutputPorts(3000))
-		error = "Error when waiting for TiMidity output ports!";
+		error = i18n("error when waiting for TiMidity output ports!");
 	    else
 		qCDebug(MINUET) << "TiMidity started!";
 	}
