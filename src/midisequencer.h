@@ -49,6 +49,7 @@ public:
     void subscribeTo(const QString &portName);
     void openFile(const QString &fileName);
     void appendEvent(drumstick::SequencerEvent *ev, unsigned long tick);
+    QStringList availableOutputPorts() const;
     
     enum EventSchedulingMode {
         FROM_ENGINE = 0,
@@ -93,12 +94,12 @@ public Q_SLOTS:
 private Q_SLOTS:
     // Slots for events generated when playing a MIDI
     void eventReceived(drumstick::SequencerEvent *ev);
-    
+
     void outputThreadStopped();
 
 private:
     void appendEvent(drumstick::SequencerEvent *ev);
-    
+
 private:
     int m_outputPortId;
     int m_inputPortId;
@@ -113,6 +114,7 @@ private:
     drumstick::MidiClient *m_client;
     MidiSequencerOutputThread *m_midiSequencerOutputThread;
     EventSchedulingMode m_eventSchedulingMode;
+    QString m_currentSubscribedPort;
 };
 
 #endif // MIDISEQUENCER_H

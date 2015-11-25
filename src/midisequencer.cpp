@@ -22,12 +22,15 @@
 
 #include "midisequencer.h"
 
+#include "minuetsettings.h"
 #include "midisequenceroutputthread.h"
 
 #include <drumstick/qsmf.h>
 #include <drumstick/alsaclient.h>
 
 #include <QtMath>
+#include <QtCore/QLoggingCategory>
+Q_DECLARE_LOGGING_CATEGORY(MINUET)
 
 MidiSequencer::MidiSequencer(QObject *parent) :
     QObject(parent),
@@ -88,9 +91,13 @@ MidiSequencer::MidiSequencer(QObject *parent) :
     m_midiSequencerOutputThread = new MidiSequencerOutputThread(m_client, m_outputPortId);
     connect(m_midiSequencerOutputThread, &MidiSequencerOutputThread::stopped, this, &MidiSequencer::outputThreadStopped);
 
-    // Subscribe to TiMidity and Minuet's virtual piano
-    subscribeTo("TiMidity:0");
-    subscribeTo("MinuetSequencer:1");
+    // Subscribe to Minuet's virtual piano
+    try {
+        m_outputPort->subscribeTo("MinuetSequencer:1");
+    } catch (const drumstick::SequencerError &err) {
+	qCDebug(MINUET) << "Subscribe error";
+        throw err;
+    }
 }
 
 MidiSequencer::~MidiSequencer()
@@ -106,8 +113,15 @@ MidiSequencer::~MidiSequencer()
 void MidiSequencer::subscribeTo(const QString &portName)
 {
     try {
+        if (!m_currentSubscribedPort.isEmpty()) {
+	  qCDebug(MINUET) << "Unsubscribing to" << m_currentSubscribedPort;
+	  m_outputPort->unsubscribeTo(m_currentSubscribedPort);
+	}
+	qCDebug(MINUET) << "Subscribing to" << portName;
         m_outputPort->subscribeTo(portName);
+	m_currentSubscribedPort = portName;
     } catch (const drumstick::SequencerError &err) {
+      	qCDebug(MINUET) << "Subscribe error";
         throw err;
     }
 }
@@ -134,6 +148,17 @@ void MidiSequencer::appendEvent(drumstick::SequencerEvent *ev, unsigned long tic
     m_song->append(ev);
     if (tick > m_tick)
         m_tick = tick;
+}
+
+QStringList MidiSequencer::availableOutputPorts() const
+{
+    QStringList availableOutputPorts;
+    QListIterator<drumstick::PortInfo> it(m_client->getAvailableOutputs());
+    while(it.hasNext()) {
+        drumstick::PortInfo p = it.next();
+        availableOutputPorts << QString("%1:%2").arg(p.getClientName()).arg(p.getPort());
+    }
+    return availableOutputPorts;
 }
 
 void MidiSequencer::play()

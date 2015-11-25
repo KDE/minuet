@@ -19,11 +19,14 @@
     </entry>
   </group>
   <group name="MIDI">
-    <entry name="timidityPath" type="Path">
+    <entry name="timidityPath" type="String">
       <label>path to TiMidity++ sequencer</label>
     </entry>
     <entry name="timidityParameters" type="String">
       <label>TiMidity++ sequencer parameters</label>
+    </entry>
+    <entry name="midiOutputPort" type="String">
+      <label>MIDI output port</label>
     </entry>
   </group>
 </kcfg>

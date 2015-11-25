@@ -57,7 +57,7 @@ Wizard::Wizard(QWidget *parent, Qt::WindowFlags flags) :
     m_systemCheck.programList->setItemDelegate(listViewDelegate);
     addPage(page2);
 
-    QTimer::singleShot(500, this, SLOT(checkSystem()));
+    QTimer::singleShot(500, this, &Wizard::checkSystem);
 }
 
 bool Wizard::isOk() const
@@ -71,6 +71,8 @@ void Wizard::adjustSettings()
         MinuetSettings::setTimidityPath(m_timidityPath);
         if (MinuetSettings::timidityParameters().isEmpty())
             MinuetSettings::setTimidityParameters(QStringLiteral("-iA"));
+        if (MinuetSettings::midiOutputPort().isEmpty())
+            MinuetSettings::setMidiOutputPort(QStringLiteral("TiMidity:0"));
     }
 }
 
@@ -121,10 +123,11 @@ void Wizard::checkSystem()
         if (!sourceFound) {
             item = addTreeWidgetItem(i18n("A TiMidity++ sound source"), i18n("No TiMidity++ sound source found! Sounds won't work!"));
             item->setIcon(0, m_badIcon);
-            sourceFound = true;
+            return;
         }
     } else {
         item->setIcon(0, m_badIcon);
+	return;
     }
     m_systemCheckIsOk = true;
 }

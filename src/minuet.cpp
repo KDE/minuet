@@ -29,6 +29,8 @@
 #include <QtQml/QQmlEngine>
 #include <QtQml/QQmlContext>
 
+#include <QtCore/QTimer>
+
 #include <QtQuick/QQuickView>
 
 #include <KXmlGui/KActionCollection>
@@ -62,12 +64,46 @@ Minuet::Minuet() :
     
     if (!m_initialGroup.exists())
         runWizard();
+
+    startTimidity();
+    subscribeToMidiOutputPort();
+}
+
+void Minuet::startTimidity()
+{
+    if (!m_midiSequencer->availableOutputPorts().contains(QStringLiteral("TiMidity:0"))) {
+	qCDebug(MINUET) << "Starting TiMidity at" << MinuetSettings::timidityPath().remove(QStringLiteral("file://"));
+	m_timidityProcess.setProgram(MinuetSettings::timidityPath().remove(QStringLiteral("file://")), QStringList() << MinuetSettings::timidityParameters());
+	m_timidityProcess.start();
+	if (!m_timidityProcess.waitForStarted(-1)) {
+	    qCDebug(MINUET) << "Error when starting TiMidity:" << m_timidityProcess.errorString();
+	}
+	else {
+	    while (!m_midiSequencer->availableOutputPorts().contains(QStringLiteral("TiMidity:0")));
+	    qCDebug(MINUET) << "TiMidity started!";
+	}
+    }
+    else
+      qCDebug(MINUET) << "TiMidity already running!";
+}
+
+void Minuet::subscribeToMidiOutputPort()
+{
+    QString midiOutputPort = MinuetSettings::midiOutputPort();
+    if (!midiOutputPort.isEmpty())
+        m_midiSequencer->subscribeTo(midiOutputPort);
 }
 
 Minuet::~Minuet()
 {
     delete m_quickView;
     delete m_exerciseController;
+    m_timidityProcess.kill();
+    qCDebug(MINUET) << "Stoping TiMidity!";
+    if (!m_timidityProcess.waitForFinished(-1))
+        qCDebug(MINUET) << "Error when stoping TiMidity:" << m_timidityProcess.errorString();
+    else
+	qCDebug(MINUET) << "TiMidity stoped!";
 }
 
 bool Minuet::queryClose()
@@ -94,8 +130,6 @@ void Minuet::runWizard()
 
 void Minuet::settingsConfigure()
 {
-    //qCDebug(MINUET) << "Minuet:settingsConfigure()";
-
     if (KConfigDialog::showDialog("settings"))
         return;
 
@@ -104,10 +138,14 @@ void Minuet::settingsConfigure()
     m_settingsGeneral.setupUi(generalSettingsDialog);
     QWidget *midiSettingsDialog = new QWidget;
     m_settingsMidi.setupUi(midiSettingsDialog);
+    m_settingsMidi.kcfg_midiOutputPort->setVisible(false);
+    m_settingsMidi.cboMidiOutputPort->insertItems(0, m_midiSequencer->availableOutputPorts());
+    m_settingsMidi.cboMidiOutputPort->setCurrentIndex(m_settingsMidi.cboMidiOutputPort->findText(MinuetSettings::midiOutputPort()));
     dialog->addPage(generalSettingsDialog, i18n("General"), QStringLiteral("fileview-preview"));
     dialog->addPage(midiSettingsDialog, i18n("MIDI"), QStringLiteral("media-playback-start"));
     dialog->setAttribute(Qt::WA_DeleteOnClose);
-    dialog->show();
+    if (dialog->exec() == QDialog::Accepted)
+	subscribeToMidiOutputPort();
 }
 
 #include "minuet.moc"

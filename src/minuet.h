@@ -23,6 +23,7 @@
 #ifndef MINUET_H
 #define MINUET_H
 
+#include <KCoreAddons/KProcess>
 #include <KXmlGui/KXmlGuiWindow>
 
 #include "ui_settingsgeneral.h"
@@ -64,6 +65,10 @@ public:
 protected:
     virtual bool queryClose();
 
+private:
+    void startTimidity();
+    void subscribeToMidiOutputPort();
+
 private Q_SLOTS:
     /**
      * Create a new window
@@ -85,6 +90,7 @@ private:
     ExerciseController *m_exerciseController;
     QQuickView *m_quickView;
     KConfigGroup m_initialGroup;
+    KProcess m_timidityProcess;
 };
 
 #endif // MINUET_H
