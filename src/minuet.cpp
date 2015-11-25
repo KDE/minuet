@@ -79,12 +79,25 @@ void Minuet::startTimidity()
 	    qCDebug(MINUET) << "Error when starting TiMidity:" << m_timidityProcess.errorString();
 	}
 	else {
-	    while (!m_midiSequencer->availableOutputPorts().contains(QStringLiteral("TiMidity:0")));
-	    qCDebug(MINUET) << "TiMidity started!";
+	    if (!waitForTimidityOutputPorts(3000))
+		qCDebug(MINUET) << "Error when waiting for TiMidity output ports!";
+	    else
+		qCDebug(MINUET) << "TiMidity started!";
 	}
     }
-    else
+    else {
       qCDebug(MINUET) << "TiMidity already running!";
+    }
+}
+
+bool Minuet::waitForTimidityOutputPorts(int msecs)
+{
+    QTime time;
+    time.start();
+    while (!m_midiSequencer->availableOutputPorts().contains(QStringLiteral("TiMidity:0")))
+      if (time.elapsed() > msecs)
+	return false;
+    return true;
 }
 
 void Minuet::subscribeToMidiOutputPort()

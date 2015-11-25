@@ -67,6 +67,7 @@ protected:
 
 private:
     void startTimidity();
+    bool waitForTimidityOutputPorts(int msecs);
     void subscribeToMidiOutputPort();
 
 private Q_SLOTS:
