@@ -114,8 +114,8 @@ void MidiSequencer::subscribeTo(const QString &portName)
 {
     try {
         if (!m_currentSubscribedPort.isEmpty()) {
-	  qCDebug(MINUET) << "Unsubscribing to" << m_currentSubscribedPort;
-	  m_outputPort->unsubscribeTo(m_currentSubscribedPort);
+            qCDebug(MINUET) << "Unsubscribing to" << m_currentSubscribedPort;
+            m_outputPort->unsubscribeTo(m_currentSubscribedPort);
 	}
 	qCDebug(MINUET) << "Subscribing to" << portName;
         m_outputPort->subscribeTo(portName);

@@ -33,6 +33,8 @@
 
 #include <QtQuick/QQuickView>
 
+#include <QtWidgets/QMessageBox>
+
 #include <KXmlGui/KActionCollection>
 #include <KConfigWidgets/KConfigDialog>
 
@@ -71,23 +73,26 @@ Minuet::Minuet() :
 
 void Minuet::startTimidity()
 {
+    QString error;
     if (!m_midiSequencer->availableOutputPorts().contains(QStringLiteral("TiMidity:0"))) {
 	qCDebug(MINUET) << "Starting TiMidity at" << MinuetSettings::timidityPath().remove(QStringLiteral("file://"));
 	m_timidityProcess.setProgram(MinuetSettings::timidityPath().remove(QStringLiteral("file://")), QStringList() << MinuetSettings::timidityParameters());
 	m_timidityProcess.start();
 	if (!m_timidityProcess.waitForStarted(-1)) {
-	    qCDebug(MINUET) << "Error when starting TiMidity:" << m_timidityProcess.errorString();
+	    error = m_timidityProcess.errorString();
 	}
 	else {
 	    if (!waitForTimidityOutputPorts(3000))
-		qCDebug(MINUET) << "Error when waiting for TiMidity output ports!";
+		error = "Error when waiting for TiMidity output ports!";
 	    else
 		qCDebug(MINUET) << "TiMidity started!";
 	}
     }
     else {
-      qCDebug(MINUET) << "TiMidity already running!";
+	qCDebug(MINUET) << "TiMidity already running!";
     }
+    if (!error.isEmpty())
+        QMessageBox::critical(this, i18n("Minuet startup"), i18n("There was an error when starting TiMidity: \"%1\". Please check Minuet settings!").arg(error));
 }
 
 bool Minuet::waitForTimidityOutputPorts(int msecs)
@@ -95,15 +100,15 @@ bool Minuet::waitForTimidityOutputPorts(int msecs)
     QTime time;
     time.start();
     while (!m_midiSequencer->availableOutputPorts().contains(QStringLiteral("TiMidity:0")))
-      if (msecs != -1 && time.elapsed() > msecs)
-	return false;
+	if (msecs != -1 && time.elapsed() > msecs)
+	    return false;
     return true;
 }
 
 void Minuet::subscribeToMidiOutputPort()
 {
     QString midiOutputPort = MinuetSettings::midiOutputPort();
-    if (!midiOutputPort.isEmpty())
+    if (!midiOutputPort.isEmpty() && m_midiSequencer->availableOutputPorts().contains(midiOutputPort))
         m_midiSequencer->subscribeTo(midiOutputPort);
 }
 
