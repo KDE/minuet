@@ -95,7 +95,7 @@ bool Minuet::waitForTimidityOutputPorts(int msecs)
     QTime time;
     time.start();
     while (!m_midiSequencer->availableOutputPorts().contains(QStringLiteral("TiMidity:0")))
-      if (time.elapsed() > msecs)
+      if (msecs != -1 && time.elapsed() > msecs)
 	return false;
     return true;
 }
