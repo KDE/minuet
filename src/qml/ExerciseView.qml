@@ -63,7 +63,7 @@ Item {
 
             width: parent.width
             horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 20
+            font.pointSize: 18
             textFormat: Text.RichText
             text: qsTr("Hear the interval and then choose an answer from options below!<br/>Click 'play' if you want to hear again!")
         }
@@ -82,7 +82,7 @@ Item {
             }
         }
         Rectangle {
-            width: answerGrid.columns*140; height: answerGrid.rows*60
+            width: answerGrid.columns*130+10; height: answerGrid.rows*50+10
             color: "#475057"
             radius: 5
             anchors { horizontalCenter: parent.horizontalCenter }
@@ -90,7 +90,7 @@ Item {
                 id: answerGrid
 
                 anchors.centerIn: parent
-                spacing: 20; columns: 2; rows: 1
+                spacing: 10; columns: 2; rows: 1
                 Component {
                     id: answerOption
 
