@@ -5,6 +5,7 @@ Item {
     id: exerciseView
 
     property string chosenExercise
+    property Item answerRectangle
     
     signal answerHoverEnter(var chan, var pitch, var vel, var color)
     signal answerHoverExit(var chan, var pitch, var vel)
@@ -15,14 +16,12 @@ Item {
             answerGrid.children[i].destroy()
     }
     function highlightRightAnswer() {
-        var answerRectangle;
         for (var i = 0; i < answerGrid.children.length; ++i)
             if (answerGrid.children[i].text != chosenExercise)
                 answerGrid.children[i].opacity = 0.25
             else
                 answerRectangle = answerGrid.children[i]
         answerHoverEnter(0, exerciseController.chosenRootNote() + answerRectangle.sequenceFromRoot, 0, answerRectangle.color)
-        anim1.target = anim2.target = anim3.target = anim4.target = anim5.target = answerRectangle
         animation.start()
 
     }
@@ -127,14 +126,16 @@ Item {
     }
     ParallelAnimation {
         id: animation
+        
+        loops: 2
         SequentialAnimation {
-            PropertyAnimation { id: anim1; property: "rotation"; to: -45; duration: 200 }
-            PropertyAnimation { id: anim2; property: "rotation"; to:  45; duration: 200 }
-            PropertyAnimation { id: anim3; property: "rotation"; to:   0; duration: 200 }
+            PropertyAnimation { target: answerRectangle; property: "rotation"; to: -45; duration: 200 }
+            PropertyAnimation { target: answerRectangle; property: "rotation"; to:  45; duration: 200 }
+            PropertyAnimation { target: answerRectangle; property: "rotation"; to:   0; duration: 200 }
         }
         SequentialAnimation {
-            PropertyAnimation { id: anim4; property: "scale"; to: 1.2; duration: 300 }
-            PropertyAnimation { id: anim5; property: "scale"; to: 1.0; duration: 300 }
+            PropertyAnimation { target: answerRectangle; property: "scale"; to: 1.2; duration: 300 }
+            PropertyAnimation { target: answerRectangle; property: "scale"; to: 1.0; duration: 300 }
         }
     }
 }
