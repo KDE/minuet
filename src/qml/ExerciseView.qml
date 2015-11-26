@@ -1,4 +1,5 @@
 import QtQuick 2.4
+import QtQuick.Controls 1.3
 
 Item {
     id: exerciseView
@@ -32,11 +33,11 @@ Item {
             answerGrid.children[i].destroy()
         chosenExercise = exerciseController.randomlyChooseExercise()
         var length = model.length
-        answerGrid.columns = Math.min(5, length)
-        answerGrid.rows = Math.ceil(length/5)
-        var colors = ["#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9", "#bc80bd", "#ccebc5", "#ffed6f"]
+        answerGrid.columns = Math.min(6, length)
+        answerGrid.rows = Math.ceil(length/6)
+        var colors = ["#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9", "#bc80bd", "#ccebc5", "#ffed6f", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"]
         for (var i = 0; i < length; ++i)
-            answerOption.createObject(answerGrid, {text: model[i].name, sequenceFromRoot: model[i].sequenceFromRoot, color: colors[i%12]})
+            answerOption.createObject(answerGrid, {text: model[i].name, sequenceFromRoot: model[i].sequenceFromRoot, color: colors[i%24]})
         exerciseView.visible = true
     }
 
@@ -70,15 +71,15 @@ Item {
         Row {
             anchors { horizontalCenter: parent.horizontalCenter }
             spacing: 20
-            Rectangle {
-                width: 120; height: 40; color: "white"; border.color: "black"; border.width: 2; radius: 5
-                Text { anchors.centerIn: parent; color: "black"; text: qsTr("play") }
-                MouseArea { anchors.fill: parent; onClicked: exerciseController.playChoosenExercise() }
+            Button {
+                width: 120; height: 40
+                text: qsTr("play")
+                onClicked: exerciseController.playChoosenExercise()
             }
-            Rectangle {
-                width: 120; height: 40; color: "gray"; border.color: "black"; border.width: 2; radius: 5
-                Text { anchors.centerIn: parent; color: "white"; text: qsTr("give up") }
-                MouseArea { anchors.fill: parent; onClicked: { highlightRightAnswer(); timer.start() } }
+            Button {
+                width: 120; height: 40
+                text: qsTr("give up")
+                onClicked: { highlightRightAnswer(); timer.start() }
             }
         }
         Rectangle {
@@ -100,7 +101,7 @@ Item {
                         property alias text: option.text
                         property int sequenceFromRoot
 
-                        width: 120; height: 40; border.color: "white"; border.width: 2; radius: 5
+                        width: 120; height: 40
                         Text { id: option; anchors.centerIn: parent; width: parent.width; horizontalAlignment: Qt.AlignHCenter; color: "black"; wrapMode: Text.Wrap }
                         MouseArea {
                             anchors.fill: parent
