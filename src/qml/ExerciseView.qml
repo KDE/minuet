@@ -27,10 +27,7 @@ Item {
     }
     function itemChanged(model) {
         sequencer.allNotesOff()
-        exerciseView.visible = false
-        for (var i = 0; i < answerGrid.children.length; ++i)
-            answerGrid.children[i].destroy()
-        chosenExercise = exerciseController.randomlyChooseExercise()
+        clearExerciseGrid()
         var length = model.length
         answerGrid.columns = Math.min(6, length)
         answerGrid.rows = Math.ceil(length/6)
@@ -38,23 +35,11 @@ Item {
         for (var i = 0; i < length; ++i)
             answerOption.createObject(answerGrid, {text: model[i].name, sequenceFromRoot: model[i].sequenceFromRoot, color: colors[i%24]})
         exerciseView.visible = true
+        exerciseView.state = "initial"
     }
 
     visible: false
 
-    Timer {
-        id: timer
-
-        interval: 3000; running: false; repeat: false
-        onTriggered: {
-            sequencer.allNotesOff()
-            for (var i = 0; i < answerGrid.children.length; ++i)
-                    answerGrid.children[i].opacity = 1
-            messageText.text = qsTr("Hear the interval and then choose an answer from options below!<br/>Click 'play' if you want to hear again!")
-            chosenExercise = exerciseController.randomlyChooseExercise()
-            exerciseController.playChoosenExercise()
-        }
-    }
     Column {
         anchors.centerIn: parent
         spacing: 20
@@ -71,21 +56,37 @@ Item {
             anchors { horizontalCenter: parent.horizontalCenter }
             spacing: 20
             Button {
+                id: newQuestionButton
+
                 width: 120; height: 40
-                text: qsTr("play")
+                text: qsTr("new question")
+                onClicked: {
+                    chosenExercise = exerciseController.randomlyChooseExercise()
+                    messageText.text = qsTr("Hear the interval and then choose an answer from options below!<br/>Click 'play' if you want to hear again!")
+                    exerciseController.playChoosenExercise()
+                    exerciseView.state = "waitingForAnswer"
+                }
+            }
+            Button {
+                id: playQuestionButton
+
+                width: 120; height: 40
+                text: qsTr("play question")
                 onClicked: exerciseController.playChoosenExercise()
             }
             Button {
+                id: giveUpButton
+
                 width: 120; height: 40
                 text: qsTr("give up")
-                onClicked: { highlightRightAnswer(); timer.start() }
+                onClicked: highlightRightAnswer()
             }
         }
         Rectangle {
             width: answerGrid.columns*130+10; height: answerGrid.rows*50+10
             color: "#475057"
             radius: 5
-            anchors { horizontalCenter: parent.horizontalCenter }
+            anchors.horizontalCenter: parent.horizontalCenter
             Grid {
                 id: answerGrid
 
@@ -112,18 +113,45 @@ Item {
                                 }
                                 answerHoverExit(0, exerciseController.chosenRootNote() + sequenceFromRoot, 0)
                                 highlightRightAnswer()
-                                timer.start()
                             }
                             hoverEnabled: true
                             onEntered: answerHoverEnter(0, exerciseController.chosenRootNote() + sequenceFromRoot, 0, color)
-                            onExited: if (!timer.running) answerHoverExit(0, exerciseController.chosenRootNote() + sequenceFromRoot, 0)
+                            onExited: answerHoverExit(0, exerciseController.chosenRootNote() + sequenceFromRoot, 0)
                         }
                     }
                 }
             }
         }
-        
     }
+    states: [
+        State {
+            name: "initial"
+            StateChangeScript {
+                script: {
+                    sequencer.allNotesOff()
+                    for (var i = 0; i < answerGrid.children.length; ++i)
+                        answerGrid.children[i].opacity = 1
+                    newQuestionButton.enabled = true
+                    playQuestionButton.enabled = false
+                    giveUpButton.enabled = false
+                    answerGrid.enabled = false
+                    answerGrid.opacity = 0.25
+                }
+            }
+        },
+        State {
+            name: "waitingForAnswer"
+            StateChangeScript {
+                script: {
+                    newQuestionButton.enabled = false
+                    playQuestionButton.enabled = true
+                    giveUpButton.enabled = true
+                    answerGrid.enabled = true
+                    answerGrid.opacity = 1
+                }
+            }
+        }
+    ]
     ParallelAnimation {
         id: animation
         
@@ -137,5 +165,7 @@ Item {
             PropertyAnimation { target: answerRectangle; property: "scale"; to: 1.2; duration: 300 }
             PropertyAnimation { target: answerRectangle; property: "scale"; to: 1.0; duration: 300 }
         }
+        
+        onStopped: exerciseView.state = "initial"
     }
 }
