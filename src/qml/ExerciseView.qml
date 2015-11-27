@@ -6,21 +6,23 @@ Item {
 
     property string chosenExercise
     property Item answerRectangle
-    
+
     signal answerHoverEnter(var chan, var pitch, var vel, var color)
     signal answerHoverExit(var chan, var pitch, var vel)
-    
+
     function clearExerciseGrid() {
         exerciseView.visible = false
         for (var i = 0; i < answerGrid.children.length; ++i)
             answerGrid.children[i].destroy()
     }
     function highlightRightAnswer() {
-        for (var i = 0; i < answerGrid.children.length; ++i)
+        for (var i = 0; i < answerGrid.children.length; ++i) {
+            answerGrid.children[i].enabled = false
             if (answerGrid.children[i].model.name != chosenExercise)
                 answerGrid.children[i].opacity = 0.25
             else
                 answerRectangle = answerGrid.children[i]
+        }
         answerHoverEnter(0, exerciseController.chosenRootNote() + parseInt(answerRectangle.model.sequenceFromRoot), 0, answerRectangle.color)
         animation.start()
     }
@@ -62,8 +64,8 @@ Item {
                 onClicked: {
                     chosenExercise = exerciseController.randomlyChooseExercise()
                     messageText.text = qsTr("Hear the interval and then choose an answer from options below!<br/>Click 'play' if you want to hear again!")
-                    exerciseController.playChoosenExercise()
                     exerciseView.state = "waitingForAnswer"
+                    exerciseController.playChoosenExercise()
                 }
             }
             Button {
@@ -122,7 +124,7 @@ Item {
                             }
                             hoverEnabled: true
                             onEntered: answerHoverEnter(0, exerciseController.chosenRootNote() + parseInt(model.sequenceFromRoot), 0, color)
-                            onExited: answerHoverExit(0, exerciseController.chosenRootNote() + parseInt(model.sequenceFromRoot), 0)
+                            onExited: if (!animation.running) answerHoverExit(0, exerciseController.chosenRootNote() + parseInt(model.sequenceFromRoot), 0)
                         }
                     }
                 }
@@ -134,9 +136,6 @@ Item {
             name: "initial"
             StateChangeScript {
                 script: {
-                    sequencer.allNotesOff()
-                    for (var i = 0; i < answerGrid.children.length; ++i)
-                        answerGrid.children[i].opacity = 1
                     newQuestionButton.enabled = true
                     playQuestionButton.enabled = false
                     giveUpButton.enabled = false
@@ -149,11 +148,27 @@ Item {
             name: "waitingForAnswer"
             StateChangeScript {
                 script: {
+                    sequencer.allNotesOff()
+                    for (var i = 0; i < answerGrid.children.length; ++i) {
+                        answerGrid.children[i].opacity = 1
+                        answerGrid.children[i].enabled = true
+                    }
                     newQuestionButton.enabled = false
                     playQuestionButton.enabled = true
                     giveUpButton.enabled = true
                     answerGrid.enabled = true
                     answerGrid.opacity = 1
+                }
+            }
+        },
+        State {
+            name: "nextQuestion"
+            StateChangeScript {
+                script: {
+                    newQuestionButton.enabled = true
+                    playQuestionButton.enabled = false
+                    giveUpButton.enabled = false
+                    answerGrid.enabled = false
                 }
             }
         }
@@ -172,6 +187,6 @@ Item {
             PropertyAnimation { target: answerRectangle; property: "scale"; to: 1.0; duration: 300 }
         }
         
-        onStopped: exerciseView.state = "initial"
+        onStopped: exerciseView.state = "nextQuestion"
     }
 }
