@@ -17,13 +17,12 @@ Item {
     }
     function highlightRightAnswer() {
         for (var i = 0; i < answerGrid.children.length; ++i)
-            if (answerGrid.children[i].text != chosenExercise)
+            if (answerGrid.children[i].model.name != chosenExercise)
                 answerGrid.children[i].opacity = 0.25
             else
                 answerRectangle = answerGrid.children[i]
-        answerHoverEnter(0, exerciseController.chosenRootNote() + answerRectangle.sequenceFromRoot, 0, answerRectangle.color)
+        answerHoverEnter(0, exerciseController.chosenRootNote() + parseInt(answerRectangle.model.sequenceFromRoot), 0, answerRectangle.color)
         animation.start()
-
     }
     function itemChanged(model) {
         sequencer.allNotesOff()
@@ -33,7 +32,7 @@ Item {
         answerGrid.rows = Math.ceil(length/6)
         var colors = ["#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9", "#bc80bd", "#ccebc5", "#ffed6f", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"]
         for (var i = 0; i < length; ++i)
-            answerOption.createObject(answerGrid, {text: model[i].name, sequenceFromRoot: model[i].sequenceFromRoot, color: colors[i%24]})
+            answerOption.createObject(answerGrid, {model: model[i], color: colors[i%24]})
         exerciseView.visible = true
         exerciseView.state = "initial"
     }
@@ -98,25 +97,32 @@ Item {
                     Rectangle {
                         id: answerRectangle
 
-                        property alias text: option.text
-                        property int sequenceFromRoot
+                        property var model
 
                         width: 120; height: 40
-                        Text { id: option; anchors.centerIn: parent; width: parent.width; horizontalAlignment: Qt.AlignHCenter; color: "black"; wrapMode: Text.Wrap }
+                        Text {
+                            id: option;
+
+                            text: model.name
+                            width: parent.width;
+                            anchors.centerIn: parent;
+                            horizontalAlignment: Qt.AlignHCenter;
+                            color: "black";
+                            wrapMode: Text.Wrap
+                        }
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                if (option.text == chosenExercise) {
+                                if (option.text == chosenExercise)
                                     messageText.text = "Congratulations!<br/>You answered correctly!"
-                                } else {
+                                else
                                     messageText.text = "Ops, not this time!<br/>Try again!"
-                                }
-                                answerHoverExit(0, exerciseController.chosenRootNote() + sequenceFromRoot, 0)
+                                answerHoverExit(0, exerciseController.chosenRootNote() + parseInt(model.sequenceFromRoot), 0)
                                 highlightRightAnswer()
                             }
                             hoverEnabled: true
-                            onEntered: answerHoverEnter(0, exerciseController.chosenRootNote() + sequenceFromRoot, 0, color)
-                            onExited: answerHoverExit(0, exerciseController.chosenRootNote() + sequenceFromRoot, 0)
+                            onEntered: answerHoverEnter(0, exerciseController.chosenRootNote() + parseInt(model.sequenceFromRoot), 0, color)
+                            onExited: answerHoverExit(0, exerciseController.chosenRootNote() + parseInt(model.sequenceFromRoot), 0)
                         }
                     }
                 }
