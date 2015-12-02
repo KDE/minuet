@@ -55,10 +55,10 @@ QString ExerciseController::randomlyChooseExercise()
     m_chosenExercise = qrand() % m_exerciseOptions.size();
     int minRootNote = 21;
     int maxRootNote = 104;
-    int sequenceFromRoot = m_exerciseOptions[m_chosenExercise].toObject()["sequenceFromRoot"].toString().toInt();
+    QString sequenceFromRoot = m_exerciseOptions[m_chosenExercise].toObject()["sequenceFromRoot"].toString();
     do
         m_chosenRootNote = minRootNote + qrand() % (maxRootNote - minRootNote);
-    while (m_chosenRootNote + sequenceFromRoot > 108);
+    while (m_chosenRootNote + sequenceFromRoot.split(' ').last().toInt() > 108);
 
     Song *song = new Song;
     song->setHeader(0, 1, 60);
@@ -68,10 +68,15 @@ QString ExerciseController::randomlyChooseExercise()
     drumstick::SequencerEvent *ev;
     m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOn(1, m_chosenRootNote, 120), 0);
     m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOff(1, m_chosenRootNote, 120), 60);
-    m_midiSequencer->appendEvent(ev = m_midiSequencer->SMFNoteOn(1, m_chosenRootNote + sequenceFromRoot, 120), 60);
-    ev->setTag(0);
-    m_midiSequencer->appendEvent(ev = m_midiSequencer->SMFNoteOff(1, m_chosenRootNote + sequenceFromRoot, 120), 120);
-    ev->setTag(0);
+    
+    unsigned int i = 1;
+    foreach(const QString &additionalNote, sequenceFromRoot.split(' ')) {
+        m_midiSequencer->appendEvent(ev = m_midiSequencer->SMFNoteOn(1, m_chosenRootNote + additionalNote.toInt(), 120), 60*i);
+        ev->setTag(0);
+        m_midiSequencer->appendEvent(ev = m_midiSequencer->SMFNoteOff(1, m_chosenRootNote + additionalNote.toInt(), 120), 60*(i+1));
+        ev->setTag(0);
+        ++i;
+    }
 
     return m_exerciseOptions[m_chosenExercise].toObject()["name"].toString();
 }
