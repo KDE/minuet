@@ -50,7 +50,14 @@ StackView {
                 z: 2
                 MouseArea {
                     anchors.fill: parent
-                    onClicked: stackView.push(categoryMenu.createObject(stackView, {model: delegateRect.ListView.view.model[index].children}))
+                    onClicked: {
+                        stackView.push(categoryMenu.createObject(stackView, {model: delegateRect.ListView.view.model[index].children}))
+                        var root = delegateRect.ListView.view.model[index].root
+                        if (root != undefined) {
+                            exerciseController.setMinRootNote(root.split('.')[0])
+                            exerciseController.setMaxRootNote(root.split('.')[2])
+                        }
+                    }
                 }
             }
         }

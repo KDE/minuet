@@ -36,7 +36,9 @@
 ExerciseController::ExerciseController(MidiSequencer *midiSequencer) :
     m_midiSequencer(midiSequencer),
     m_chosenExercise(0),
-    m_chosenRootNote(0)
+    m_chosenRootNote(0),
+    m_minRootNote(0),
+    m_maxRootNote(0)
 {
 }
 
@@ -49,15 +51,23 @@ void ExerciseController::setExerciseOptions(QJsonArray exerciseOptions)
     m_exerciseOptions = exerciseOptions;
 }
 
+void ExerciseController::setMinRootNote(unsigned int minRootNote)
+{
+    m_minRootNote = minRootNote;
+}
+
+void ExerciseController::setMaxRootNote(unsigned int maxRootNote)
+{
+    m_maxRootNote = maxRootNote;
+}
+
 QString ExerciseController::randomlyChooseExercise()
 {
     qsrand(QDateTime::currentDateTime().toTime_t());
     m_chosenExercise = qrand() % m_exerciseOptions.size();
-    int minRootNote = 21;
-    int maxRootNote = 104;
     QString sequenceFromRoot = m_exerciseOptions[m_chosenExercise].toObject()["sequenceFromRoot"].toString();
     do
-        m_chosenRootNote = minRootNote + qrand() % (maxRootNote - minRootNote);
+        m_chosenRootNote = m_minRootNote + qrand() % (m_maxRootNote - m_minRootNote);
     while (m_chosenRootNote + sequenceFromRoot.split(' ').last().toInt() > 108);
 
     Song *song = new Song;

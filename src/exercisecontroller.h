@@ -39,6 +39,8 @@ public:
     virtual ~ExerciseController();
     
     Q_INVOKABLE void setExerciseOptions(QJsonArray exerciseOptions);
+    Q_INVOKABLE void setMinRootNote(unsigned int minRootNote);
+    Q_INVOKABLE void setMaxRootNote(unsigned int maxRootNote);
     Q_INVOKABLE QString randomlyChooseExercise();
     Q_INVOKABLE unsigned int chosenRootNote();
     Q_INVOKABLE void playChoosenExercise();
@@ -56,6 +58,8 @@ private:
     QJsonArray m_exerciseOptions;
     unsigned int m_chosenExercise;
     unsigned int m_chosenRootNote;
+    unsigned int m_minRootNote;
+    unsigned int m_maxRootNote;
     QString m_errorString;
 };
 
