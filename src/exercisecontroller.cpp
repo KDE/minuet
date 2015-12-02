@@ -66,9 +66,16 @@ QString ExerciseController::randomlyChooseExercise()
     qsrand(QDateTime::currentDateTime().toTime_t());
     m_chosenExercise = qrand() % m_exerciseOptions.size();
     QString sequenceFromRoot = m_exerciseOptions[m_chosenExercise].toObject()["sequenceFromRoot"].toString();
+    int minNote = INT_MAX;
+    int maxNote = INT_MIN;
+    foreach(const QString &additionalNote, sequenceFromRoot.split(' ')) {
+        int note = additionalNote.toInt();
+        if (note > maxNote) maxNote = note;
+        if (note < minNote) minNote = note;
+    }
     do
         m_chosenRootNote = m_minRootNote + qrand() % (m_maxRootNote - m_minRootNote);
-    while (m_chosenRootNote + sequenceFromRoot.split(' ').last().toInt() > 108);
+    while (m_chosenRootNote + maxNote > 108 || m_chosenRootNote + minNote < 21);
 
     Song *song = new Song;
     song->setHeader(0, 1, 60);
