@@ -4,6 +4,8 @@ import QtQuick.Controls 1.3
 StackView {
     id: stackView
 
+    property Item selectedMenuItem
+
     signal backspacePressed
     signal itemChanged(var model)
 
@@ -24,22 +26,28 @@ StackView {
             id: delegateRect
 
             width: parent.width; height: 50
-            color: "#475057"
+            color: (selectedMenuItem == delegateRect) ? "#8393A0":"#475057"
 
             Text {
                 anchors { verticalCenter: parent.verticalCenter; left: parent.left; leftMargin: 10 }
                 text: modelData.name; color: "white"
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: itemClicked(delegateRect, index)
-                }
             }
             Rectangle { width: parent.width; height: 1; anchors.bottom: parent.bottom; color: "#181B1E" }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    if (!delegateRect.ListView.view.model[index].children) {
+                        itemClicked(delegateRect, index)
+                        selectedMenuItem = delegateRect
+                    }
+                }
+            }
             Image {
                 visible: delegateRect.ListView.view.model[index].children != undefined
                 width: 24; height: 24
                 anchors { verticalCenter: parent.verticalCenter; right: parent.right; rightMargin: 10 }
                 source: "qrc:/images/navigate-next.png"
+                z: 2
                 MouseArea {
                     anchors.fill: parent
                     onClicked: stackView.push(categoryMenu.createObject(stackView, {model: delegateRect.ListView.view.model[index].children}))
@@ -65,6 +73,7 @@ StackView {
         if (event.key == Qt.Key_Backspace && stackView.depth > 0) {
             sequencer.allNotesOff()
             stackView.backspacePressed()
+            selectedMenuItem = null
             stackView.pop()
         }
     }
