@@ -31,6 +31,8 @@
 #include <QtCore/QJsonDocument>
 #include <QtCore/QStandardPaths>
 
+#include <QtQml>
+
 #include <KI18n/KLocalizedString>
 
 ExerciseController::ExerciseController(MidiSequencer *midiSequencer) :
@@ -38,8 +40,10 @@ ExerciseController::ExerciseController(MidiSequencer *midiSequencer) :
     m_chosenExercise(0),
     m_chosenRootNote(0),
     m_minRootNote(0),
-    m_maxRootNote(0)
+    m_maxRootNote(0),
+    m_playMode(ScalePlayMode)
 {
+    qmlRegisterType<ExerciseController>("org.kde.minuet", 1, 0, "ExerciseController");
 }
 
 ExerciseController::~ExerciseController()
@@ -59,6 +63,11 @@ void ExerciseController::setMinRootNote(unsigned int minRootNote)
 void ExerciseController::setMaxRootNote(unsigned int maxRootNote)
 {
     m_maxRootNote = maxRootNote;
+}
+
+void ExerciseController::setPlayMode(PlayMode playMode)
+{
+    m_playMode = playMode;
 }
 
 QString ExerciseController::randomlyChooseExercise()
@@ -88,9 +97,9 @@ QString ExerciseController::randomlyChooseExercise()
     
     unsigned int i = 1;
     foreach(const QString &additionalNote, sequenceFromRoot.split(' ')) {
-        m_midiSequencer->appendEvent(ev = m_midiSequencer->SMFNoteOn(1, m_chosenRootNote + additionalNote.toInt(), 120), 60*i);
+        m_midiSequencer->appendEvent(ev = m_midiSequencer->SMFNoteOn(1, m_chosenRootNote + additionalNote.toInt(), 120), (m_playMode == ScalePlayMode) ? 60*i:0);
         ev->setTag(0);
-        m_midiSequencer->appendEvent(ev = m_midiSequencer->SMFNoteOff(1, m_chosenRootNote + additionalNote.toInt(), 120), 60*(i+1));
+        m_midiSequencer->appendEvent(ev = m_midiSequencer->SMFNoteOff(1, m_chosenRootNote + additionalNote.toInt(), 120), (m_playMode == ScalePlayMode) ? 60*(i+1):60);
         ev->setTag(0);
         ++i;
     }

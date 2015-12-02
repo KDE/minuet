@@ -57,6 +57,11 @@ StackView {
                             exerciseController.setMinRootNote(root.split('.')[0])
                             exerciseController.setMaxRootNote(root.split('.')[2])
                         }
+                        var playMode = delegateRect.ListView.view.model[index].playMode
+                        if (playMode != undefined) {
+                            if (playMode == "scale" ) exerciseController.setPlayMode(0) // ScalePlayMode
+                            if (playMode == "chord" ) exerciseController.setPlayMode(1) // ChordPlayMode
+                        }
                     }
                 }
             }

@@ -33,14 +33,21 @@ class MidiSequencer;
 class ExerciseController : public QObject
 {
     Q_OBJECT
+    Q_ENUMS(PlayMode)
 
 public:
-    ExerciseController(MidiSequencer *midiSequencer);
+    ExerciseController(MidiSequencer *midiSequencer = 0);
     virtual ~ExerciseController();
     
+    enum PlayMode {
+        ScalePlayMode = 0,
+        ChordPlayMode
+    };
+
     Q_INVOKABLE void setExerciseOptions(QJsonArray exerciseOptions);
     Q_INVOKABLE void setMinRootNote(unsigned int minRootNote);
     Q_INVOKABLE void setMaxRootNote(unsigned int maxRootNote);
+    Q_INVOKABLE void setPlayMode(PlayMode playMode);
     Q_INVOKABLE QString randomlyChooseExercise();
     Q_INVOKABLE unsigned int chosenRootNote();
     Q_INVOKABLE void playChoosenExercise();
@@ -48,7 +55,7 @@ public:
     bool configureExercises();
     QString errorString() const;
     QJsonObject exercises() const;
-
+    
 private:
     QJsonArray mergeExercises(QJsonArray exercises, QJsonArray newExercises);
 
@@ -60,6 +67,7 @@ private:
     unsigned int m_chosenRootNote;
     unsigned int m_minRootNote;
     unsigned int m_maxRootNote;
+    PlayMode m_playMode;
     QString m_errorString;
 };
 

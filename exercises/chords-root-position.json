@@ -1,0 +1,29 @@
+{
+  "exercises": [
+    {
+      "name": "Chords",
+      "root": "21..104",
+      "playMode": "chord",
+      "children": [
+        {
+          "name": "Root Position",
+          "children": [
+            {
+              "name": "Major and Minor Chords",
+              "options": [
+                {
+                  "name": "Major",
+                  "sequenceFromRoot": "4 7"
+                },
+                {
+                  "name": "Minor",
+                  "sequenceFromRoot": "3 7"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

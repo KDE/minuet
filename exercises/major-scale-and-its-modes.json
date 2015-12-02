@@ -3,9 +3,11 @@
     {
       "name": "Scales",
       "root": "21..104",
+      "playMode": "scale",
       "children": [
         {
             "name": "Major Scale and its Modes",
+            "playMode": "scale",
             "options": [
               {
                 "name": "Ionian",

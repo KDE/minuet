@@ -2,10 +2,11 @@
   "exercises": [
     {
       "name": "Intervals",
+      "root": "21..104",
+      "playMode": "scale",
       "children": [
         {
           "name": "Descending Melodic Intervals",
-          "root": "21..104",
           "children": [
             {
               "name": "Seconds",
