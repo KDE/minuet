@@ -322,12 +322,8 @@ void MidiSequencer::eventReceived(drumstick::SequencerEvent *ev)
         return;
     if (kev->getSequencerType() == SND_SEQ_EVENT_NOTEON && kev->getTag() == 1)
         emit noteOn(kev->getChannel(), kev->getKey(), kev->getVelocity());
-    if (kev->getSequencerType() == SND_SEQ_EVENT_NOTEOFF && kev->getTag() == 1) {
-        if (m_eventSchedulingMode == FROM_ENGINE)
-            emit noteOff(kev->getChannel(), kev->getKey(), kev->getVelocity());
-        else
-            emit noteHighlight(kev->getChannel(), kev->getKey(), kev->getVelocity(), QStringLiteral("#B3CADB"));
-    }
+    if (kev->getSequencerType() == SND_SEQ_EVENT_NOTEOFF && kev->getTag() == 1)
+        emit noteOff(kev->getChannel(), kev->getKey(), kev->getVelocity());
     
     if (m_tick != 0 && m_midiSequencerOutputThread->isRunning()) {
         const snd_seq_real_time_t *rt = m_queue->getStatus().getRealtime();

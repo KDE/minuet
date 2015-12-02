@@ -41,7 +41,6 @@ Item {
 
         sequencer.noteOn.connect(pianoView.noteOn)
         sequencer.noteOff.connect(pianoView.noteOff)
-        sequencer.noteHighlight.connect(pianoView.noteHighlight)
         sequencer.allNotesOff.connect(pianoView.allNotesOff)
 
         sequencer.timeLabelChanged.connect(midiPlayer.timeLabelChanged)
@@ -49,7 +48,7 @@ Item {
         sequencer.tempoChanged.connect(midiPlayer.tempoChanged)
         sequencer.pitchChanged.connect(midiPlayer.pitchChanged)
 
-        exerciseView.answerHoverEnter.connect(pianoView.noteHighlight)
-        exerciseView.answerHoverExit.connect(pianoView.noteOff)
+        exerciseView.answerHoverEnter.connect(pianoView.noteMark)
+        exerciseView.answerHoverExit.connect(pianoView.noteUnmark)
     }
 }

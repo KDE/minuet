@@ -58,7 +58,6 @@ public:
 
 Q_SIGNALS:
     void noteOn(int chan, int pitch, int vel);
-    void noteHighlight(int chan, int pitch, int vel, QString color);
     void noteOff(int chan, int pitch, int vel);
     void allNotesOff();
     void timeLabelChanged(QString timeLabel);

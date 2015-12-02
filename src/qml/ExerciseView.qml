@@ -23,7 +23,9 @@ Item {
             else
                 answerRectangle = answerGrid.children[i]
         }
-        answerHoverEnter(0, exerciseController.chosenRootNote() + parseInt(answerRectangle.model.sequenceFromRoot), 0, answerRectangle.color)
+        answerRectangle.model.sequenceFromRoot.split(' ').forEach(function(note) {
+            answerHoverEnter(0, exerciseController.chosenRootNote() + parseInt(note), 0, answerRectangle.color)
+        });
         animation.start()
     }
     function itemChanged(model) {
@@ -65,6 +67,7 @@ Item {
                     chosenExercise = exerciseController.randomlyChooseExercise()
                     messageText.text = qsTr("Hear the interval and then choose an answer from options below!<br/>Click 'play' if you want to hear again!")
                     exerciseView.state = "waitingForAnswer"
+                    answerHoverEnter(0, exerciseController.chosenRootNote(), 0, "white")
                     exerciseController.playChoosenExercise()
                 }
             }
@@ -115,6 +118,7 @@ Item {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
+                                onExited()
                                 if (option.text == chosenExercise)
                                     messageText.text = "Congratulations!<br/>You answered correctly!"
                                 else
@@ -123,8 +127,17 @@ Item {
                                 highlightRightAnswer()
                             }
                             hoverEnabled: true
-                            onEntered: answerHoverEnter(0, exerciseController.chosenRootNote() + parseInt(model.sequenceFromRoot), 0, color)
-                            onExited: if (!animation.running) answerHoverExit(0, exerciseController.chosenRootNote() + parseInt(model.sequenceFromRoot), 0)
+                            onEntered: {
+                                model.sequenceFromRoot.split(' ').forEach(function(note) {
+                                    answerHoverEnter(0, exerciseController.chosenRootNote() + parseInt(note), 0, color)
+                                })
+                            }
+                            onExited: {
+                                if (!animation.running)
+                                    model.sequenceFromRoot.split(' ').forEach(function(note) {
+                                        answerHoverExit(0, exerciseController.chosenRootNote() + parseInt(note), 0)
+                                    })
+                            }
                         }
                     }
                 }
