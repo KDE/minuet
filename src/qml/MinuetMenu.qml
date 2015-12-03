@@ -31,6 +31,7 @@ StackView {
             Text {
                 anchors { verticalCenter: parent.verticalCenter; left: parent.left; leftMargin: 10 }
                 text: modelData.name; color: "white"
+                width: parent.width - 2 * anchors.leftMargin; wrapMode: Text.Wrap
             }
             Rectangle { width: parent.width; height: 1; anchors.bottom: parent.bottom; color: "#181B1E" }
             MouseArea {
