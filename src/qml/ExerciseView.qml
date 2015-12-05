@@ -53,7 +53,7 @@ Item {
             horizontalAlignment: Text.AlignHCenter
             font.pointSize: 18
             textFormat: Text.RichText
-            text: qsTr("Hear the interval and then choose an answer from options below!<br/>Click 'play' if you want to hear again!")
+            text: qsTr("Hear the interval and then choose an answer from options below!<br/>Click 'play question' if you want to hear again!")
         }
         Row {
             anchors { horizontalCenter: parent.horizontalCenter }
@@ -65,7 +65,7 @@ Item {
                 text: qsTr("new question")
                 onClicked: {
                     chosenExercise = exerciseController.randomlyChooseExercise()
-                    messageText.text = qsTr("Hear the interval and then choose an answer from options below!<br/>Click 'play' if you want to hear again!")
+                    messageText.text = qsTr("Hear the interval and then choose an answer from options below!<br/>Click 'play question' if you want to hear again!")
                     exerciseView.state = "waitingForAnswer"
                     answerHoverEnter(0, exerciseController.chosenRootNote(), 0, "white")
                     exerciseController.playChoosenExercise()
