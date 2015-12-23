@@ -23,13 +23,12 @@
 #ifndef WIZARD_H
 #define WIZARD_H
 
-#include <QtWidgets/QItemDelegate>
+#include "ui_wizardsystemcheck.h"
 
 #include <QtGui/QPainter>
 
 #include <QtWidgets/QWizard>
-
-#include "ui_wizardsystemcheck.h"
+#include <QtWidgets/QItemDelegate>
 
 class WizardDelegate: public QItemDelegate
 {

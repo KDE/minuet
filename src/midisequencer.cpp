@@ -25,12 +25,16 @@
 #include "minuetsettings.h"
 #include "midisequenceroutputthread.h"
 
-#include <drumstick/qsmf.h>
-#include <drumstick/alsaclient.h>
+#include <KI18n/KLocalizedString>
 
 #include <QtMath>
 #include <QtCore/QLoggingCategory>
+#include <QtWidgets/QMessageBox>
+
 Q_DECLARE_LOGGING_CATEGORY(MINUET)
+
+#include <drumstick/qsmf.h>
+#include <drumstick/alsaclient.h>
 
 MidiSequencer::MidiSequencer(QObject *parent) :
     QObject(parent),
@@ -40,7 +44,15 @@ MidiSequencer::MidiSequencer(QObject *parent) :
 {
     // MidiClient configuration
     m_client = new drumstick::MidiClient(this);
-    m_client->open();
+    try {
+        m_client->open();
+    } catch (const drumstick::SequencerError &err) {
+//         QMessageBox::critical(qobject_cast<QWidget*>(this->parent()), i18n("Minuet startup"), i18n("Fatal error from the ALSA sequencer: %1. "
+//             "This usually happens when the kernel doesn't have ALSA support, "
+//             "or the device node (/dev/snd/seq) doesn't exists, "
+//             "or the kernel module (snd_seq) is not loaded. "
+//             "Please check your ALSA/MIDI configuration.").arg(err.qstrError()));
+    }
     m_client->setClientName("MinuetSequencer");
     m_client->setPoolOutput(50);
     // Connection for events generated when playing a MIDI

@@ -24,14 +24,14 @@
 
 #include "minuetsettings.h"
 
+#include <KI18n/KLocalizedString>
+
 #include <QtCore/QTimer>
 #include <QtCore/QDirIterator>
 #include <QtCore/QStandardPaths>
 
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QVBoxLayout>
-
-#include <KI18n/KLocalizedString>
 
 Wizard::Wizard(QWidget *parent, Qt::WindowFlags flags) :
     QWizard(parent, flags),

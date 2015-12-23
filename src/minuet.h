@@ -23,12 +23,12 @@
 #ifndef MINUET_H
 #define MINUET_H
 
-#include <KCoreAddons/KProcess>
-#include <KXmlGui/KXmlGuiWindow>
-
 #include "ui_settingsgeneral.h"
 #include "ui_settingsmidi.h"
 #include "minuetsettings.h"
+
+#include <KCoreAddons/KProcess>
+#include <KXmlGui/KXmlGuiWindow>
 
 #include <QtCore/QLoggingCategory>
 

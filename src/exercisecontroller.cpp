@@ -24,7 +24,7 @@
 
 #include "midisequencer.h"
 
-#include <drumstick/alsaevent.h>
+#include <KI18n/KLocalizedString>
 
 #include <QtCore/QDir>
 #include <QtCore/QDateTime>
@@ -33,7 +33,7 @@
 
 #include <QtQml>
 
-#include <KI18n/KLocalizedString>
+#include <drumstick/alsaevent.h>
 
 ExerciseController::ExerciseController(MidiSequencer *midiSequencer) :
     m_midiSequencer(midiSequencer),

@@ -26,6 +26,9 @@
 #include "midisequencer.h"
 #include "exercisecontroller.h"
 
+#include <KXmlGui/KActionCollection>
+#include <KConfigWidgets/KConfigDialog>
+
 #include <QtQml/QQmlEngine>
 #include <QtQml/QQmlContext>
 
@@ -34,9 +37,6 @@
 #include <QtQuick/QQuickView>
 
 #include <QtWidgets/QMessageBox>
-
-#include <KXmlGui/KActionCollection>
-#include <KConfigWidgets/KConfigDialog>
 
 Minuet::Minuet() :
     KXmlGuiWindow(),

@@ -24,7 +24,6 @@
 #define EXERCISECONTROLLER_H
 
 #include <QtCore/QObject>
-
 #include <QtCore/QJsonArray>
 #include <QtCore/QJsonObject>
 

@@ -22,9 +22,9 @@
 
 #include "minuet.h"
 
-#include <QtCore/QCommandLineParser>
-
 #include <KCoreAddons/KAboutData>
+
+#include <QtCore/QCommandLineParser>
 
 Q_DECLARE_LOGGING_CATEGORY(MINUET)
 Q_LOGGING_CATEGORY(MINUET, "minuet")

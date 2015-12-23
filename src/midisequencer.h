@@ -23,11 +23,11 @@
 #ifndef MIDISEQUENCER_H
 #define MIDISEQUENCER_H
 
+#include "song.h"
+
 #include <QtCore/QObject>
 
 #include <drumstick/alsaqueue.h>
-
-#include "song.h"
 
 namespace drumstick {
     class QSmf;
