@@ -30,6 +30,7 @@
 #include <QtMath>
 #include <QtCore/QLoggingCategory>
 #include <QtWidgets/QMessageBox>
+#include <QtWidgets/QApplication>
 
 Q_DECLARE_LOGGING_CATEGORY(MINUET)
 
@@ -47,11 +48,13 @@ MidiSequencer::MidiSequencer(QObject *parent) :
     try {
         m_client->open();
     } catch (const drumstick::SequencerError &err) {
-//         QMessageBox::critical(qobject_cast<QWidget*>(this->parent()), i18n("Minuet startup"), i18n("Fatal error from the ALSA sequencer: %1. "
-//             "This usually happens when the kernel doesn't have ALSA support, "
-//             "or the device node (/dev/snd/seq) doesn't exists, "
-//             "or the kernel module (snd_seq) is not loaded. "
-//             "Please check your ALSA/MIDI configuration.").arg(err.qstrError()));
+        QMessageBox::critical(qobject_cast<QWidget*>(this->parent()), i18n("Minuet startup"), i18n("Fatal error from the ALSA sequencer: \"%1\". "
+            "This usually happens when the kernel doesn't have ALSA support, "
+            "or the device node (/dev/snd/seq) doesn't exists, "
+            "or the kernel module (snd_seq) is not loaded. "
+            "Please check your ALSA/MIDI configuration."
+        , err.qstrError()));
+        QApplication::exit(-1);
     }
     m_client->setClientName("MinuetSequencer");
     m_client->setPoolOutput(50);

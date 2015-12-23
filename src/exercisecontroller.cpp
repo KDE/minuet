@@ -124,7 +124,7 @@ bool ExerciseController::configureExercises()
     foreach (QString exercise, exercisesDir.entryList(QDir::Files)) {
         QFile exerciseFile(exercisesDir.absoluteFilePath(exercise));
         if (!exerciseFile.open(QIODevice::ReadOnly)) {
-            m_errorString = i18n("Couldn't open exercise file \"%1\".").arg(exercisesDir.absoluteFilePath(exercise));
+            m_errorString = i18n("Couldn't open exercise file \"%1\".", exercisesDir.absoluteFilePath(exercise));
             return false;
         }
         QJsonParseError error;

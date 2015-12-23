@@ -33,6 +33,7 @@ target_link_libraries(minuet
     KF5::KIOWidgets
     drumstick-file
     drumstick-alsa
+    asound
 )
 
 install(TARGETS minuet ${INSTALL_TARGETS_DEFAULT_ARGS})

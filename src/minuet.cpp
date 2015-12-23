@@ -47,7 +47,7 @@ Minuet::Minuet() :
 {
     if (!m_exerciseController->configureExercises())
         QMessageBox::critical(0, i18n("Minuet startup"),
-                                 i18n("There was an error when parsing exercises JSON files: \"%1\".").arg(m_exerciseController->errorString()));
+                                 i18n("There was an error when parsing exercises JSON files: \"%1\".", m_exerciseController->errorString()));
 
     m_quickView->engine()->rootContext()->setContextProperty("exerciseCategories", m_exerciseController->exercises()["exercises"].toArray());
     m_quickView->engine()->rootContext()->setContextProperty("sequencer", m_midiSequencer);
@@ -95,7 +95,7 @@ void Minuet::startTimidity()
 	qCDebug(MINUET) << "TiMidity already running!";
     }
     if (!error.isEmpty())
-        QMessageBox::critical(this, i18n("Minuet startup"), i18n("There was an error when starting TiMidity: \"%1\". Please check Minuet settings!").arg(error));
+        QMessageBox::critical(this, i18n("Minuet startup"), i18n("There was an error when starting TiMidity: \"%1\". Is another application using the audio system? Also, please check Minuet settings!", error));
 }
 
 bool Minuet::waitForTimidityOutputPorts(int msecs)
