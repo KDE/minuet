@@ -1,7 +1,7 @@
 import QtQuick 2.4
 
 Rectangle {
-    property int keyWidth: 20
+    property int keyWidth: (parent.width - 80)/52
     property int keyHeight: 3.4*keyWidth
 
     function noteOn(chan, pitch, vel) {
