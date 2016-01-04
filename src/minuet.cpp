@@ -168,5 +168,3 @@ void Minuet::settingsConfigure()
     if (dialog->exec() == QDialog::Accepted)
 	subscribeToMidiOutputPort();
 }
-
-#include "minuet.moc"

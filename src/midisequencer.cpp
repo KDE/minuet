@@ -370,5 +370,3 @@ void MidiSequencer::appendEvent(drumstick::SequencerEvent *ev)
 {
     appendEvent(ev, m_smfReader->getCurrentTime());
 }
-
-#include "midisequencer.moc"

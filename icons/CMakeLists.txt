@@ -1,9 +1,9 @@
 set(minuet_ICONS
-  hi16-apps-minuet.png
-  hi22-apps-minuet.png
-  hi32-apps-minuet.png
-  hi48-apps-minuet.png
-  hisc-apps-minuet.svgz
+  16-apps-minuet.png
+  22-apps-minuet.png
+  32-apps-minuet.png
+  48-apps-minuet.png
+  sc-apps-minuet.svgz
 )
 
 ecm_install_icons(ICONS ${minuet_ICONS} DESTINATION ${ICON_INSTALL_DIR} THEME hicolor)
