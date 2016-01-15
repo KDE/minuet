@@ -84,15 +84,6 @@ Item {
             }
         }
 
-        Keys.onPressed: {
-            if (event.key == Qt.Key_Backspace && stackView.depth > 0) {
-                sequencer.allNotesOff()
-                minuetMenu.backspacePressed()
-                selectedMenuItem = null
-                stackView.pop()
-            }
-        }
-
         Component.onCompleted: { stackView.push(categoryMenu.createObject(stackView, {model: exerciseCategories})) }
     }
 }
