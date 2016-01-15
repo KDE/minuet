@@ -66,7 +66,7 @@ Minuet::Minuet() :
     connect(action, &QAction::triggered, this, &Minuet::runWizard);
     actionCollection()->addAction(QStringLiteral("run_wizard"), action);
 
-    setupGUI();
+    setupGUI(Keys | Save | Create);
     foreach (QToolBar *toolBar, findChildren<QToolBar*>())
         delete toolBar;
 

@@ -1,6 +1,8 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3
 
+import org.kde.plasma.core 2.0 as PlasmaCore
+
 StackView {
     id: stackView
 
@@ -22,47 +24,29 @@ StackView {
     Component {
         id: categoryDelegate
 
-        Rectangle {
+        Button {
             id: delegateRect
-
             width: parent.width; height: 50
-            color: (selectedMenuItem == delegateRect) ? "#8393A0":"#475057"
 
-            Text {
-                anchors { verticalCenter: parent.verticalCenter; left: parent.left; leftMargin: 10 }
-                text: modelData.name; color: "white"
-                width: parent.width - 2 * anchors.leftMargin; wrapMode: Text.Wrap
-            }
-            Rectangle { width: parent.width; height: 1; anchors.bottom: parent.bottom; color: "#181B1E" }
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    if (!delegateRect.ListView.view.model[index].children) {
-                        itemClicked(delegateRect, index)
-                        selectedMenuItem = delegateRect
-                    }
+            text: modelData.name
+            checkable: (!delegateRect.ListView.view.model[index].children) ? true:false
+            onClicked: {
+                if (!delegateRect.ListView.view.model[index].children) {
+                    if (selectedMenuItem != undefined) selectedMenuItem.checked = false
+                    itemClicked(delegateRect, index)
+                    selectedMenuItem = delegateRect
                 }
-            }
-            Image {
-                visible: delegateRect.ListView.view.model[index].children != undefined
-                width: 24; height: 24
-                anchors { verticalCenter: parent.verticalCenter; right: parent.right; rightMargin: 10 }
-                source: "qrc:/images/navigate-next.png"
-                z: 2
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        stackView.push(categoryMenu.createObject(stackView, {model: delegateRect.ListView.view.model[index].children}))
-                        var root = delegateRect.ListView.view.model[index].root
-                        if (root != undefined) {
-                            exerciseController.setMinRootNote(root.split('.')[0])
-                            exerciseController.setMaxRootNote(root.split('.')[2])
-                        }
-                        var playMode = delegateRect.ListView.view.model[index].playMode
-                        if (playMode != undefined) {
-                            if (playMode == "scale" ) exerciseController.setPlayMode(0) // ScalePlayMode
-                            if (playMode == "chord" ) exerciseController.setPlayMode(1) // ChordPlayMode
-                        }
+                else {
+                    stackView.push(categoryMenu.createObject(stackView, {model: delegateRect.ListView.view.model[index].children}))
+                    var root = delegateRect.ListView.view.model[index].root
+                    if (root != undefined) {
+                        exerciseController.setMinRootNote(root.split('.')[0])
+                        exerciseController.setMaxRootNote(root.split('.')[2])
+                    }
+                    var playMode = delegateRect.ListView.view.model[index].playMode
+                    if (playMode != undefined) {
+                        if (playMode == "scale" ) exerciseController.setPlayMode(0) // ScalePlayMode
+                        if (playMode == "chord" ) exerciseController.setPlayMode(1) // ChordPlayMode
                     }
                 }
             }
@@ -72,11 +56,12 @@ StackView {
         id: categoryMenu
         Rectangle {
             width: menuBarWidth; height: parent.height
-            color: "#475057"
+            color: theme.viewBackgroundColor
             property alias model: listView.model
             ListView {
                 id: listView
                 anchors.fill: parent
+                spacing: -2
                 delegate: categoryDelegate
             }
         }

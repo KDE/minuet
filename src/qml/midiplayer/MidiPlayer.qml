@@ -1,4 +1,5 @@
 import QtQuick 2.4
+import org.kde.plasma.core 2.0 as PlasmaCore
 
 Rectangle {
     function timeLabelChanged(timeLabel) { playbackTime.text = timeLabel }
@@ -15,7 +16,7 @@ Rectangle {
 
         width: parent.width; height: 20
         anchors.top: parent.top
-        color: "#343434"
+        color: theme.viewTextColor
         Row {
             width: parent.width
             anchors { verticalCenter: parent.verticalCenter; left: parent.left; leftMargin: 15 }
@@ -24,7 +25,7 @@ Rectangle {
                 width: parent.width / 3
                 font.pointSize: 8
                 horizontalAlignment: Text.AlignLeft
-                color: "white"
+                color: theme.viewBackgroundColor
                 text: qsTr("Tempo:")
             }
             Text {
@@ -32,7 +33,7 @@ Rectangle {
                 width: parent.width / 3
                 font.pointSize: 8
                 horizontalAlignment: Text.AlignLeft
-                color: "white"
+                color: theme.viewBackgroundColor
                 text: qsTr("Volume: 100%")
             }
             Text {
@@ -40,7 +41,7 @@ Rectangle {
                 width: parent.width / 3
                 font.pointSize: 8
                 horizontalAlignment: Text.AlignLeft
-                color: "white"
+                color: theme.viewBackgroundColor
                 text: qsTr("Pitch: 0")
             }
         }
