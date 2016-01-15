@@ -36,6 +36,7 @@
 
 #include <QtQuick/QQuickView>
 
+#include <QtWidgets/QToolBar>
 #include <QtWidgets/QMessageBox>
 
 Minuet::Minuet() :
@@ -66,7 +67,9 @@ Minuet::Minuet() :
     actionCollection()->addAction(QStringLiteral("run_wizard"), action);
 
     setupGUI();
-    
+    foreach (QToolBar *toolBar, findChildren<QToolBar*>())
+        delete toolBar;
+
     if (!m_initialGroup.exists())
         runWizard();
 
