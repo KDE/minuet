@@ -34,7 +34,7 @@ Item {
         id: stackView
 
         width: parent.width - breadcrumb.width; height: parent.height
-        anchors { left: breadcrumb.right; leftMargin: -1 }
+        anchors.left: breadcrumb.right
         clip: true
         focus: true
 
