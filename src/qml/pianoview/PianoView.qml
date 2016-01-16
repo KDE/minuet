@@ -17,14 +17,14 @@ Rectangle {
         noteMark.createObject(itemForPitch(pitch), { color: color })
     }
     function noteUnmark(chan, pitch, vel, color) {
-        var item = itemForPitch(pitch).children[1];
+        var item = itemForPitch(pitch).children[1]
         if (item != undefined)
             item.destroy()
     }
     function allNotesOff() {
         for (var index = 21; index <= 108; ++index) {
             noteOff(0, index, 0)
-            var markItem = itemForPitch(index).children[1];
+            var markItem = itemForPitch(index).children[1]
             if (markItem != undefined)
                 markItem.destroy()
         }
@@ -33,7 +33,7 @@ Rectangle {
         itemForPitch(pitch).color = color
     }
     function itemForPitch(pitch) {
-        var noteItem;
+        var noteItem
         if (pitch < 24) {
             noteItem = keyboard.children[pitch-21]
         } else if (pitch == 108) {
@@ -43,7 +43,7 @@ Rectangle {
             var octave = (pitch - 24 - note) / 12
             noteItem = keyboard.children[3+octave].children[note]
         }
-        return noteItem;
+        return noteItem
     }
 
     width: 3*keyWidth+7*(7*keyWidth) + 20; height: keyHeight + 30

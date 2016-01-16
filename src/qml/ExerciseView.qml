@@ -25,7 +25,7 @@ Item {
         }
         answerRectangle.model.sequenceFromRoot.split(' ').forEach(function(note) {
             answerHoverEnter(0, exerciseController.chosenRootNote() + parseInt(note), 0, answerRectangle.color)
-        });
+        })
         animation.start()
     }
     function itemChanged(model) {
@@ -106,13 +106,13 @@ Item {
 
                         width: 120; height: 40
                         Text {
-                            id: option;
+                            id: option
 
                             text: model.name
-                            width: parent.width;
-                            anchors.centerIn: parent;
-                            horizontalAlignment: Qt.AlignHCenter;
-                            color: "black";
+                            width: parent.width
+                            anchors.centerIn: parent
+                            horizontalAlignment: Qt.AlignHCenter
+                            color: "black"
                             wrapMode: Text.Wrap
                         }
                         MouseArea {

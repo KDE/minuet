@@ -1,5 +1,6 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3
+import QtQuick.Controls.Styles 1.1
 
 import org.kde.plasma.core 2.0 as PlasmaCore
 
@@ -21,7 +22,7 @@ Item {
 
     Button {
         id: breadcrumb
-        width: (stackView.depth > 1) ? 24:0; height: parent.height;
+        width: (stackView.depth > 1) ? 24:0; height: parent.height
         iconName: "go-previous"
         onClicked: {
             sequencer.allNotesOff()
@@ -67,6 +68,7 @@ Item {
                         }
                     }
                 }
+                style: MinuetButtonStyle{}
             }
         }
         Component {
