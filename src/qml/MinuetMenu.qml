@@ -44,7 +44,7 @@ Item {
 
             Button {
                 id: delegateRect
-                width: parent.width; height: 50
+                width: parent.width; height: 55
 
                 text: modelData.name
                 checkable: (!delegateRect.ListView.view.model[index].children) ? true:false

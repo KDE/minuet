@@ -56,10 +56,10 @@ ButtonStyle {
         Text {
             id:__buttonText
             width: parent.width
-            anchors.centerIn: parent
+            anchors { verticalCenter: parent.verticalCenter; left: parent.left; leftMargin: 10; right: parent.right; rightMargin: 10 }
             text: control.text
             color: control.activeFocus ? sysPalette.highlightedText : sysPalette.buttonText
-            horizontalAlignment: Qt.AlignHCenter
+            horizontalAlignment: Qt.AlignHLeft
             wrapMode: Text.Wrap
         }
         transform: Translate {x: control.pressed ? 1 : 0; y: control.pressed ? 1 : 0}
