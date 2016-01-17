@@ -72,9 +72,9 @@ void ExerciseController::setPlayMode(PlayMode playMode)
 
 QString ExerciseController::randomlyChooseExercise()
 {
-    qsrand(QDateTime::currentDateTime().toTime_t());
+    qsrand(QDateTime::currentDateTimeUtc().toTime_t());
     m_chosenExercise = qrand() % m_exerciseOptions.size();
-    QString sequenceFromRoot = m_exerciseOptions[m_chosenExercise].toObject()["sequenceFromRoot"].toString();
+    QString sequenceFromRoot = m_exerciseOptions[m_chosenExercise].toObject()[QStringLiteral("sequenceFromRoot")].toString();
     int minNote = INT_MAX;
     int maxNote = INT_MIN;
     foreach(const QString &additionalNote, sequenceFromRoot.split(' ')) {
@@ -104,7 +104,7 @@ QString ExerciseController::randomlyChooseExercise()
         ++i;
     }
 
-    return m_exerciseOptions[m_chosenExercise].toObject()["name"].toString();
+    return m_exerciseOptions[m_chosenExercise].toObject()[QStringLiteral("name")].toString();
 }
 
 unsigned int ExerciseController::chosenRootNote()
@@ -120,7 +120,7 @@ void ExerciseController::playChoosenExercise()
 bool ExerciseController::configureExercises()
 {
     m_errorString.clear();
-    QDir exercisesDir = QStandardPaths::locate(QStandardPaths::AppDataLocation, "exercises", QStandardPaths::LocateDirectory);
+    QDir exercisesDir = QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("exercises"), QStandardPaths::LocateDirectory);
     foreach (const QString &exercise, exercisesDir.entryList(QDir::Files)) {
         QFile exerciseFile(exercisesDir.absoluteFilePath(exercise));
         if (!exerciseFile.open(QIODevice::ReadOnly)) {
@@ -139,8 +139,8 @@ bool ExerciseController::configureExercises()
             if (m_exercises.length() == 0)
                 m_exercises = jsonDocument.object();
             else
-                m_exercises["exercises"] = mergeExercises(m_exercises["exercises"].toArray(),
-                                                        jsonDocument.object()["exercises"].toArray());
+                m_exercises[QStringLiteral("exercises")] = mergeExercises(m_exercises[QStringLiteral("exercises")].toArray(),
+                                                        jsonDocument.object()[QStringLiteral("exercises")].toArray());
         }
         exerciseFile.close();
     }
@@ -163,9 +163,9 @@ QJsonArray ExerciseController::mergeExercises(QJsonArray exercises, QJsonArray n
         if (i1->isObject()) {
             QJsonArray::ConstIterator i2;
             for (i2 = exercises.constBegin(); i2 < exercises.constEnd(); ++i2) {
-                if (i2->isObject() && i1->isObject() && i2->toObject()["name"] == i1->toObject()["name"]) {
+                if (i2->isObject() && i1->isObject() && i2->toObject()[QStringLiteral("name")] == i1->toObject()[QStringLiteral("name")]) {
                     QJsonObject jsonObject = exercises[i2-exercises.constBegin()].toObject();
-                    jsonObject["children"] = mergeExercises(i2->toObject()["children"].toArray(), i1->toObject()["children"].toArray());
+                    jsonObject[QStringLiteral("children")] = mergeExercises(i2->toObject()[QStringLiteral("children")].toArray(), i1->toObject()[QStringLiteral("children")].toArray());
                     exercises[i2-exercises.constBegin()] = jsonObject;
                     break;
                 }

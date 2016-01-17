@@ -56,7 +56,7 @@ MidiSequencer::MidiSequencer(QObject *parent) :
         , err.qstrError()));
         QApplication::exit(-1);
     }
-    m_client->setClientName("MinuetSequencer");
+    m_client->setClientName(QStringLiteral("MinuetSequencer"));
     m_client->setPoolOutput(50);
     // Connection for events generated when playing a MIDI
     connect(m_client, &drumstick::MidiClient::eventReceived, this, &MidiSequencer::eventReceived, Qt::QueuedConnection);
@@ -66,7 +66,7 @@ MidiSequencer::MidiSequencer(QObject *parent) :
     // Output port configuration
     m_outputPort = new drumstick::MidiPort(this);
     m_outputPort->attach(m_client);
-    m_outputPort->setPortName("Minuet Sequencer Output Port");
+    m_outputPort->setPortName(QStringLiteral("Minuet Sequencer Output Port"));
     m_outputPort->setCapability(SND_SEQ_PORT_CAP_READ | SND_SEQ_PORT_CAP_SUBS_READ);
     m_outputPort->setPortType(SND_SEQ_PORT_TYPE_APPLICATION | SND_SEQ_PORT_TYPE_MIDI_GENERIC);
     m_outputPortId = m_outputPort->getPortId();
@@ -74,7 +74,7 @@ MidiSequencer::MidiSequencer(QObject *parent) :
     // Input port configuration
     m_inputPort = new drumstick::MidiPort(this);
     m_inputPort->attach(m_client);
-    m_inputPort->setPortName("Minuet Sequencer Input Port");
+    m_inputPort->setPortName(QStringLiteral("Minuet Sequencer Input Port"));
     m_inputPort->setCapability(SND_SEQ_PORT_CAP_WRITE | SND_SEQ_PORT_CAP_SUBS_WRITE);
     m_inputPort->setPortType(SND_SEQ_PORT_TYPE_APPLICATION);
     m_inputPortId = m_inputPort->getPortId();
@@ -108,7 +108,7 @@ MidiSequencer::MidiSequencer(QObject *parent) :
 
     // Subscribe to Minuet's virtual piano
     try {
-        m_outputPort->subscribeTo("MinuetSequencer:1");
+        m_outputPort->subscribeTo(QStringLiteral("MinuetSequencer:1"));
     } catch (const drumstick::SequencerError &err) {
 	qCDebug(MINUET) << "Subscribe error";
         throw err;
@@ -171,7 +171,7 @@ QStringList MidiSequencer::availableOutputPorts() const
     QListIterator<drumstick::PortInfo> it(m_client->getAvailableOutputs());
     while(it.hasNext()) {
         drumstick::PortInfo p = it.next();
-        availableOutputPorts << QString("%1:%2").arg(p.getClientName()).arg(p.getPort());
+        availableOutputPorts << QStringLiteral("%1:%2").arg(p.getClientName()).arg(p.getPort());
     }
     return availableOutputPorts;
 }
@@ -198,7 +198,7 @@ void MidiSequencer::stop()
     m_midiSequencerOutputThread->stop();
     m_midiSequencerOutputThread->resetPosition();
     emit allNotesOff();
-    emit timeLabelChanged("00:00.00");
+    emit timeLabelChanged(QStringLiteral("00:00.00"));
 }
 
 void MidiSequencer::setVolumeFactor(unsigned int vol)
@@ -345,7 +345,7 @@ void MidiSequencer::eventReceived(drumstick::SequencerEvent *ev)
         int mins = rt->tv_sec / 60;
         int secs = rt->tv_sec % 60;
         int cnts = qFloor( rt->tv_nsec / 1.0e7 );
-        emit timeLabelChanged(QString("%1:%2.%3").arg(mins,2,10,fill).arg(secs,2,10,fill).arg(cnts,2,10,fill));
+        emit timeLabelChanged(QStringLiteral("%1:%2.%3").arg(mins,2,10,fill).arg(secs,2,10,fill).arg(cnts,2,10,fill));
     }
 }
 

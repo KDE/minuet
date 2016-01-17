@@ -51,10 +51,10 @@ Minuet::Minuet() :
         KMessageBox::error(0, i18n("Minuet startup"),
                                  i18n("There was an error when parsing exercises JSON files: \"%1\".", m_exerciseController->errorString()));
 
-    m_quickView->engine()->rootContext()->setContextProperty("exerciseCategories", m_exerciseController->exercises()["exercises"].toArray());
-    m_quickView->engine()->rootContext()->setContextProperty("sequencer", m_midiSequencer);
-    m_quickView->engine()->rootContext()->setContextProperty("exerciseController", m_exerciseController);
-    m_quickView->setSource(QUrl("qrc:/main.qml"));
+    m_quickView->engine()->rootContext()->setContextProperty(QStringLiteral("exerciseCategories"), m_exerciseController->exercises()[QStringLiteral("exercises")].toArray());
+    m_quickView->engine()->rootContext()->setContextProperty(QStringLiteral("sequencer"), m_midiSequencer);
+    m_quickView->engine()->rootContext()->setContextProperty(QStringLiteral("exerciseController"), m_exerciseController);
+    m_quickView->setSource(QUrl(QStringLiteral("qrc:/main.qml")));
     m_quickView->setResizeMode(QQuickView::SizeRootObjectToView);
     setCentralWidget(QWidget::createWindowContainer(m_quickView, this));
 
@@ -155,10 +155,10 @@ void Minuet::runWizard()
 
 void Minuet::settingsConfigure()
 {
-    if (KConfigDialog::showDialog("settings"))
+    if (KConfigDialog::showDialog(QStringLiteral("settings")))
         return;
 
-    QPointer<KConfigDialog> dialog = new KConfigDialog(this, "settings", MinuetSettings::self());
+    QPointer<KConfigDialog> dialog = new KConfigDialog(this, QStringLiteral("settings"), MinuetSettings::self());
     QWidget *midiSettingsDialog = new QWidget;
     m_settingsMidi.setupUi(midiSettingsDialog);
     m_settingsMidi.kcfg_midiOutputPort->setVisible(false);

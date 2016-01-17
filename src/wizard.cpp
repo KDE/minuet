@@ -92,11 +92,11 @@ void Wizard::checkSystem()
 
     item = addTreeWidgetItem(i18n("TiMidity++ configuration file"), i18n("Required for setting up TiMidity++"));
 
-    QDirIterator it("/etc", QDirIterator::Subdirectories);
+    QDirIterator it(QStringLiteral("/etc"), QDirIterator::Subdirectories);
     QString timidityConfig;
     while (it.hasNext()) {
         QString file = it.next();
-        if (file.contains(QRegularExpression("timidity(\\+\\+)?.cfg"))) {
+        if (file.contains(QRegularExpression(QStringLiteral("timidity(\\+\\+)?.cfg")))) {
             timidityConfig = file;
             break;
         }
@@ -112,8 +112,8 @@ void Wizard::checkSystem()
         while (!in.atEnd())
         {
            QString line = timidityConfigFile.readLine().simplified();
-           if (line.contains("source") && !line.startsWith('#')) {
-               QRegularExpression regExp("source ([^/]*)\\.cfg");
+           if (line.contains(QStringLiteral("source")) && !line.startsWith('#')) {
+               QRegularExpression regExp(QStringLiteral("source ([^/]*)\\.cfg"));
                QRegularExpressionMatch match = regExp.match(line);
                item = addTreeWidgetItem(i18n("TiMidity++ %1 sound source", match.captured(1)), i18n("Required for setting up TiMidity++ sound sources"));
                sourceFound = true;

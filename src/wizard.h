@@ -32,6 +32,8 @@
 
 class WizardDelegate: public QItemDelegate
 {
+    Q_OBJECT
+
 public:
     explicit WizardDelegate(QAbstractItemView *parent = 0)
         : QItemDelegate(parent)
