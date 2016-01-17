@@ -14,7 +14,6 @@ qt5_add_resources(minuet_SRCS qml.qrc)
 
 kconfig_add_kcfg_files(minuet_SRCS minuetsettings.kcfgc)
 ki18n_wrap_ui(minuet_SRCS
-    settingsgeneral.ui
     settingsmidi.ui
     wizardsystemcheck.ui
 )

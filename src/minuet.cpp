@@ -159,14 +159,11 @@ void Minuet::settingsConfigure()
         return;
 
     QPointer<KConfigDialog> dialog = new KConfigDialog(this, "settings", MinuetSettings::self());
-    QWidget *generalSettingsDialog = new QWidget;
-    m_settingsGeneral.setupUi(generalSettingsDialog);
     QWidget *midiSettingsDialog = new QWidget;
     m_settingsMidi.setupUi(midiSettingsDialog);
     m_settingsMidi.kcfg_midiOutputPort->setVisible(false);
     m_settingsMidi.cboMidiOutputPort->insertItems(0, m_midiSequencer->availableOutputPorts());
     m_settingsMidi.cboMidiOutputPort->setCurrentIndex(m_settingsMidi.cboMidiOutputPort->findText(MinuetSettings::midiOutputPort()));
-    dialog->addPage(generalSettingsDialog, i18nc("The general config group", "General"), QStringLiteral("fileview-preview"));
     dialog->addPage(midiSettingsDialog, i18n("MIDI"), QStringLiteral("media-playback-start"));
     dialog->setAttribute(Qt::WA_DeleteOnClose);
     if (dialog->exec() == QDialog::Accepted)

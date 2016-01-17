@@ -23,7 +23,6 @@
 #ifndef MINUET_H
 #define MINUET_H
 
-#include "ui_settingsgeneral.h"
 #include "ui_settingsmidi.h"
 #include "minuetsettings.h"
 
@@ -83,9 +82,6 @@ private Q_SLOTS:
     void settingsConfigure();
 
 private:
-    // this is the name of the root widget inside our Ui file
-    // you can rename it in designer and then change it here
-    Ui::SettingsGeneral m_settingsGeneral;
     Ui::SettingsMidi m_settingsMidi;
     MidiSequencer *m_midiSequencer;
     ExerciseController *m_exerciseController;
