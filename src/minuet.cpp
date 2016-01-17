@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2015 by Sandro S. Andrade <sandroandrade@kde.org>
+** Copyright (C) 2016 by Sandro S. Andrade <sandroandrade@kde.org>
 **
 ** This program is free software; you can redistribute it and/or
 ** modify it under the terms of the GNU General Public License as
@@ -27,17 +27,18 @@
 #include "exercisecontroller.h"
 
 #include <KXmlGui/KActionCollection>
+#include <KWidgetsAddons/KMessageBox>
 #include <KConfigWidgets/KConfigDialog>
 
-#include <QtQml/QQmlEngine>
-#include <QtQml/QQmlContext>
+#include <QQmlEngine>
+#include <QQmlContext>
 
-#include <QtCore/QTimer>
+#include <QTimer>
+#include <QPointer>
 
-#include <QtQuick/QQuickView>
+#include <QQuickView>
 
-#include <QtWidgets/QToolBar>
-#include <QtWidgets/QMessageBox>
+#include <QToolBar>
 
 Minuet::Minuet() :
     KXmlGuiWindow(),
@@ -47,7 +48,7 @@ Minuet::Minuet() :
     m_initialGroup(KSharedConfig::openConfig(), "version")
 {
     if (!m_exerciseController->configureExercises())
-        QMessageBox::critical(0, i18n("Minuet startup"),
+        KMessageBox::error(0, i18n("Minuet startup"),
                                  i18n("There was an error when parsing exercises JSON files: \"%1\".", m_exerciseController->errorString()));
 
     m_quickView->engine()->rootContext()->setContextProperty("exerciseCategories", m_exerciseController->exercises()["exercises"].toArray());
@@ -98,7 +99,7 @@ void Minuet::startTimidity()
 	qCDebug(MINUET) << "TiMidity already running!";
     }
     if (!error.isEmpty())
-        QMessageBox::critical(this, i18n("Minuet startup"), i18n("There was an error when starting TiMidity: \"%1\". Is another application using the audio system? Also, please check Minuet settings!", error));
+        KMessageBox::error(this, i18n("Minuet startup"), i18n("There was an error when starting TiMidity: \"%1\". Is another application using the audio system? Also, please check Minuet settings!", error));
 }
 
 bool Minuet::waitForTimidityOutputPorts(int msecs)
@@ -138,7 +139,7 @@ bool Minuet::queryClose()
 
 void Minuet::fileOpen()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, i18n("Open File"));
+    QString fileName = QFileDialog::getOpenFileName(this, i18n("Open File")); // krazy:exclude=qclasses
     if (!fileName.isEmpty())
         m_midiSequencer->openFile(fileName);
 }
@@ -157,7 +158,7 @@ void Minuet::settingsConfigure()
     if (KConfigDialog::showDialog("settings"))
         return;
 
-    KConfigDialog *dialog = new KConfigDialog(this, "settings", MinuetSettings::self());
+    QPointer<KConfigDialog> dialog = new KConfigDialog(this, "settings", MinuetSettings::self());
     QWidget *generalSettingsDialog = new QWidget;
     m_settingsGeneral.setupUi(generalSettingsDialog);
     QWidget *midiSettingsDialog = new QWidget;
@@ -165,9 +166,10 @@ void Minuet::settingsConfigure()
     m_settingsMidi.kcfg_midiOutputPort->setVisible(false);
     m_settingsMidi.cboMidiOutputPort->insertItems(0, m_midiSequencer->availableOutputPorts());
     m_settingsMidi.cboMidiOutputPort->setCurrentIndex(m_settingsMidi.cboMidiOutputPort->findText(MinuetSettings::midiOutputPort()));
-    dialog->addPage(generalSettingsDialog, i18n("General"), QStringLiteral("fileview-preview"));
+    dialog->addPage(generalSettingsDialog, i18nc("The general config group", "General"), QStringLiteral("fileview-preview"));
     dialog->addPage(midiSettingsDialog, i18n("MIDI"), QStringLiteral("media-playback-start"));
     dialog->setAttribute(Qt::WA_DeleteOnClose);
     if (dialog->exec() == QDialog::Accepted)
 	subscribeToMidiOutputPort();
+    delete dialog;
 }

@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2015 by Sandro S. Andrade <sandroandrade@kde.org>
+** Copyright (C) 2016 by Sandro S. Andrade <sandroandrade@kde.org>
 **
 ** This program is free software; you can redistribute it and/or
 ** modify it under the terms of the GNU General Public License as
@@ -26,12 +26,12 @@
 
 #include <KI18n/KLocalizedString>
 
-#include <QtCore/QTimer>
-#include <QtCore/QDirIterator>
-#include <QtCore/QStandardPaths>
+#include <QTimer>
+#include <QDirIterator>
+#include <QStandardPaths>
 
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QVBoxLayout>
+#include <QLabel>
+#include <QVBoxLayout>
 
 Wizard::Wizard(QWidget *parent, Qt::WindowFlags flags) :
     QWizard(parent, flags),

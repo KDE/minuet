@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2015 by Sandro S. Andrade <sandroandrade@kde.org>
+** Copyright (C) 2016 by Sandro S. Andrade <sandroandrade@kde.org>
 **
 ** This program is free software; you can redistribute it and/or
 ** modify it under the terms of the GNU General Public License as
@@ -25,7 +25,7 @@
 
 #include "song.h"
 
-#include <QtCore/QObject>
+#include <QObject>
 
 #include <drumstick/alsaqueue.h>
 
@@ -43,7 +43,7 @@ class MidiSequencer : public QObject
     Q_OBJECT
 
 public:
-    MidiSequencer(QObject *parent = 0);
+    explicit MidiSequencer(QObject *parent = 0);
     virtual ~MidiSequencer();
 
     void subscribeTo(const QString &portName);
@@ -117,3 +117,4 @@ private:
 };
 
 #endif // MIDISEQUENCER_H
+

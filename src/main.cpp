@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2015 by Sandro S. Andrade <sandroandrade@kde.org>
+** Copyright (C) 2016 by Sandro S. Andrade <sandroandrade@kde.org>
 **
 ** This program is free software; you can redistribute it and/or
 ** modify it under the terms of the GNU General Public License as
@@ -24,7 +24,7 @@
 
 #include <KCoreAddons/KAboutData>
 
-#include <QtCore/QCommandLineParser>
+#include <QCommandLineParser>
 
 Q_DECLARE_LOGGING_CATEGORY(MINUET)
 Q_LOGGING_CATEGORY(MINUET, "minuet")
@@ -39,7 +39,7 @@ int main(int argc, char **argv)
                           QStringLiteral("0.1"),
                           i18n("A KDE application for music education"),
                           KAboutLicense::GPL,
-                          i18n("(c) 2015, Sandro S. Andrade <sandroandrade@kde.org>"));
+                          i18n("(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"));
 
     aboutData.addAuthor(i18n("Sandro S. Andrade"),i18n("Author"), QStringLiteral("sandroandrade@kde.org"));
     application.setWindowIcon(QIcon::fromTheme("minuet"));

@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2015 by Sandro S. Andrade <sandroandrade@kde.org>
+** Copyright (C) 2016 by Sandro S. Andrade <sandroandrade@kde.org>
 **
 ** This program is free software; you can redistribute it and/or
 ** modify it under the terms of the GNU General Public License as
@@ -23,8 +23,8 @@
 #ifndef SONG_H
 #define SONG_H
 
-#include <QtCore/QList>
-#include <QtCore/QString>
+#include <QList>
+#include <QString>
 
 namespace drumstick {
     class SequencerEvent;

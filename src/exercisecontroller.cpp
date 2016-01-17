@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2015 by Sandro S. Andrade <sandroandrade@kde.org>
+** Copyright (C) 2016 by Sandro S. Andrade <sandroandrade@kde.org>
 **
 ** This program is free software; you can redistribute it and/or
 ** modify it under the terms of the GNU General Public License as
@@ -26,12 +26,12 @@
 
 #include <KI18n/KLocalizedString>
 
-#include <QtCore/QDir>
-#include <QtCore/QDateTime>
-#include <QtCore/QJsonDocument>
-#include <QtCore/QStandardPaths>
+#include <QDir>
+#include <QDateTime>
+#include <QJsonDocument>
+#include <QStandardPaths>
 
-#include <QtQml>
+#include <QtQml> // krazy:exclude=includes
 
 #include <drumstick/alsaevent.h>
 
@@ -121,7 +121,7 @@ bool ExerciseController::configureExercises()
 {
     m_errorString.clear();
     QDir exercisesDir = QStandardPaths::locate(QStandardPaths::AppDataLocation, "exercises", QStandardPaths::LocateDirectory);
-    foreach (QString exercise, exercisesDir.entryList(QDir::Files)) {
+    foreach (const QString &exercise, exercisesDir.entryList(QDir::Files)) {
         QFile exerciseFile(exercisesDir.absoluteFilePath(exercise));
         if (!exerciseFile.open(QIODevice::ReadOnly)) {
             m_errorString = i18n("Couldn't open exercise file \"%1\".", exercisesDir.absoluteFilePath(exercise));
@@ -176,3 +176,4 @@ QJsonArray ExerciseController::mergeExercises(QJsonArray exercises, QJsonArray n
     }
     return exercises;
 }
+

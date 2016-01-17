@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2015 by Sandro S. Andrade <sandroandrade@kde.org>
+** Copyright (C) 2016 by Sandro S. Andrade <sandroandrade@kde.org>
 **
 ** This program is free software; you can redistribute it and/or
 ** modify it under the terms of the GNU General Public License as
@@ -30,7 +30,7 @@
 #include <KCoreAddons/KProcess>
 #include <KXmlGui/KXmlGuiWindow>
 
-#include <QtCore/QLoggingCategory>
+#include <QLoggingCategory>
 
 class QQuickView;
 
@@ -95,3 +95,4 @@ private:
 };
 
 #endif // MINUET_H
+

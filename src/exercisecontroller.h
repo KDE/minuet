@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2015 by Sandro S. Andrade <sandroandrade@kde.org>
+** Copyright (C) 2016 by Sandro S. Andrade <sandroandrade@kde.org>
 **
 ** This program is free software; you can redistribute it and/or
 ** modify it under the terms of the GNU General Public License as
@@ -23,9 +23,9 @@
 #ifndef EXERCISECONTROLLER_H
 #define EXERCISECONTROLLER_H
 
-#include <QtCore/QObject>
-#include <QtCore/QJsonArray>
-#include <QtCore/QJsonObject>
+#include <QObject>
+#include <QJsonArray>
+#include <QJsonObject>
 
 class MidiSequencer;
 
@@ -35,7 +35,7 @@ class ExerciseController : public QObject
     Q_ENUMS(PlayMode)
 
 public:
-    ExerciseController(MidiSequencer *midiSequencer = 0);
+    explicit ExerciseController(MidiSequencer *midiSequencer = 0);
     virtual ~ExerciseController();
     
     enum PlayMode {
