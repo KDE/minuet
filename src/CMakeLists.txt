@@ -36,5 +36,5 @@ target_link_libraries(minuet
 )
 
 install(TARGETS minuet ${INSTALL_TARGETS_DEFAULT_ARGS})
-install(PROGRAMS minuet.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+install(PROGRAMS org.kde.minuet.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 install(FILES minuetui.rc DESTINATION ${KXMLGUI_INSTALL_DIR}/minuet)
