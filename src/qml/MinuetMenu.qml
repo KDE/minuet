@@ -71,13 +71,14 @@ Item {
                 text: modelData.name
                 checkable: (!delegateRect.ListView.view.model[index].children) ? true:false
                 onClicked: {
-                    if (!delegateRect.ListView.view.model[index].children) {
+                    var children = delegateRect.ListView.view.model[index].children
+                    if (!children) {
                         if (selectedMenuItem != undefined) selectedMenuItem.checked = false
                         itemClicked(delegateRect, index)
                         selectedMenuItem = delegateRect
                     }
                     else {
-                        stackView.push(categoryMenu.createObject(stackView, {model: delegateRect.ListView.view.model[index].children}))
+                        stackView.push(categoryMenu.createObject(stackView, {model: children}))
                         var root = delegateRect.ListView.view.model[index].root
                         if (root != undefined) {
                             exerciseController.setMinRootNote(root.split('.')[0])

@@ -29,6 +29,9 @@
 Q_DECLARE_LOGGING_CATEGORY(MINUET)
 Q_LOGGING_CATEGORY(MINUET, "minuet")
 
+//#include <QQmlDebuggingEnabler>
+//QQmlDebuggingEnabler enabler;
+
 int main(int argc, char **argv)
 {
     QApplication application(argc, argv);
