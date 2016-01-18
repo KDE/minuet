@@ -120,29 +120,32 @@ void ExerciseController::playChoosenExercise()
 bool ExerciseController::configureExercises()
 {
     m_errorString.clear();
-    QDir exercisesDir = QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("exercises"), QStandardPaths::LocateDirectory);
-    foreach (const QString &exercise, exercisesDir.entryList(QDir::Files)) {
-        QFile exerciseFile(exercisesDir.absoluteFilePath(exercise));
-        if (!exerciseFile.open(QIODevice::ReadOnly)) {
-            m_errorString = i18n("Couldn't open exercise file \"%1\".", exercisesDir.absoluteFilePath(exercise));
-            return false;
-        }
-        QJsonParseError error;
-        QJsonDocument jsonDocument = QJsonDocument::fromJson(exerciseFile.readAll(), &error);
+    QStringList exercisesDirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, QStringLiteral("exercises"), QStandardPaths::LocateDirectory);
+    foreach (const QString &exercisesDirString, exercisesDirs) {
+        QDir exercisesDir(exercisesDirString);
+        foreach (const QString &exercise, exercisesDir.entryList(QDir::Files)) {
+            QFile exerciseFile(exercisesDir.absoluteFilePath(exercise));
+            if (!exerciseFile.open(QIODevice::ReadOnly)) {
+                m_errorString = i18n("Couldn't open exercise file \"%1\".", exercisesDir.absoluteFilePath(exercise));
+                return false;
+            }
+            QJsonParseError error;
+            QJsonDocument jsonDocument = QJsonDocument::fromJson(exerciseFile.readAll(), &error);
 
-        if (error.error != QJsonParseError::NoError) {
-            m_errorString = error.errorString();
+            if (error.error != QJsonParseError::NoError) {
+                m_errorString = error.errorString();
+                exerciseFile.close();
+                return false;
+            }
+            else {
+                if (m_exercises.length() == 0)
+                    m_exercises = jsonDocument.object();
+                else
+                    m_exercises[QStringLiteral("exercises")] = mergeExercises(m_exercises[QStringLiteral("exercises")].toArray(),
+                                                            jsonDocument.object()[QStringLiteral("exercises")].toArray());
+            }
             exerciseFile.close();
-            return false;
         }
-        else {
-            if (m_exercises.length() == 0)
-                m_exercises = jsonDocument.object();
-            else
-                m_exercises[QStringLiteral("exercises")] = mergeExercises(m_exercises[QStringLiteral("exercises")].toArray(),
-                                                        jsonDocument.object()[QStringLiteral("exercises")].toArray());
-        }
-        exerciseFile.close();
     }
     return true;
 }
