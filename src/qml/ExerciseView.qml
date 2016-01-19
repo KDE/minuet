@@ -23,6 +23,8 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3
 
+import "MinuetJSUtils.js" as MinuetJSUtils
+
 Item {
     id: exerciseView
 
@@ -130,7 +132,9 @@ Item {
                         Text {
                             id: option
 
-                            text: model.name
+                            property string originalText: model.name;
+
+                            text: MinuetJSUtils.readTranslatedValue(model, "name")
                             width: parent.width
                             anchors.centerIn: parent
                             horizontalAlignment: Qt.AlignHCenter
@@ -141,7 +145,7 @@ Item {
                             anchors.fill: parent
                             onClicked: {
                                 onExited()
-                                if (option.text == chosenExercise)
+                                if (option.originalText == chosenExercise)
                                     messageText.text = "Congratulations!<br/>You answered correctly!"
                                 else
                                     messageText.text = "Ops, not this time!<br/>Try again!"

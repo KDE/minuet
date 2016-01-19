@@ -2,419 +2,520 @@
   "exercises": [
     {
       "name": "Intervals",
+      "name[pt_BR]": "Intervalos",
       "root": "21..104",
       "playMode": "scale",
       "children": [
         {
           "name": "Descending Melodic Intervals",
+          "name[pt_BR]": "Intervalos Melódicos Descendentes",
           "children": [
             {
               "name": "Seconds",
+              "name[pt_BR]": "Segundas",
               "options": [
                 {
                   "name": "Minor Second",
+                  "name[pt_BR]": "Segunda Menor",
                   "sequenceFromRoot": "-1"
                 },
                 {
                   "name": "Major Second",
+                  "name[pt_BR]": "Segunda Maior",
                   "sequenceFromRoot": "-2"
                 }
               ]
             },
             {
               "name": "Thirds",
+              "name[pt_BR]": "Terças",
               "options": [
                 {
                   "name": "Minor Third",
+                  "name[pt_BR]": "Terça Menor",
                   "sequenceFromRoot": "-3"
                 },
                 {
                   "name": "Major Third",
+                  "name[pt_BR]": "Terça Maior",
                   "sequenceFromRoot": "-4"
                 }
               ]
             },
             {
               "name": "Fourths and Fifths",
+              "name[pt_BR]": "Quartas e Quintas",
               "options": [
                 {
                   "name": "Perfect Fourth",
+                  "name[pt_BR]": "Quarta Perfeita",
                   "sequenceFromRoot": "-5"
                 },
                 {
                   "name": "Perfect Fifth",
+                  "name[pt_BR]": "Quinta Perfeita",
                   "sequenceFromRoot": "-7"
                 }
               ]
             },
             {
               "name": "Sixths",
+              "name[pt_BR]": "Sextas",
               "options": [
                 {
                   "name": "Minor Sixth",
+                  "name[pt_BR]": "Sexta Menor",
                   "sequenceFromRoot": "-8"
                 },
                 {
                   "name": "Major Sixth",
+                  "name[pt_BR]": "Sexta Maior",
                   "sequenceFromRoot": "-9"
                 }
               ]
             },
             {
               "name": "Sevenths",
+              "name[pt_BR]": "Sétimas",
               "options": [
                 {
                   "name": "Minor Seventh",
+                  "name[pt_BR]": "Sétima Menor",
                   "sequenceFromRoot": "-10"
                 },
                 {
                   "name": "Major Seventh",
+                  "name[pt_BR]": "Sétima Maior",
                   "sequenceFromRoot": "-11"
                 }
               ]
             },
             {
               "name": "Ninths",
+              "name[pt_BR]": "Nonas",
               "options": [
                 {
                   "name": "Minor Ninth",
+                  "name[pt_BR]": "Nona Menor",
                   "sequenceFromRoot": "-13"
                 },
                 {
                   "name": "Major Ninth",
+                  "name[pt_BR]": "Nona Maior",
                   "sequenceFromRoot": "-14"
                 }
               ]
             },
             {
               "name": "Tenths",
+              "name[pt_BR]": "Décimas",
               "options": [
                 {
                   "name": "Minor Tenth",
+                  "name[pt_BR]": "Décima Menor",
                   "sequenceFromRoot": "-15"
                 },
                 {
                   "name": "Major Tenth",
+                  "name[pt_BR]": "Décima Maior",
                   "sequenceFromRoot": "-16"
                 }
               ]
             },
             {
               "name": "Tritone and Sevenths",
+              "name[pt_BR]": "Trítono e Sétimas",
               "options": [
                 {
                   "name": "Tritone",
+                  "name[pt_BR]": "Trítono",
                   "sequenceFromRoot": "-6"
                 },
                 {
                   "name": "Minor Seventh",
+                  "name[pt_BR]": "Sétima Menor",
                   "sequenceFromRoot": "-10"
                 },
                 {
                   "name": "Major Seventh",
+                  "name[pt_BR]": "Sétima Maior",
                   "sequenceFromRoot": "-11"
                 }
               ]
             },
             {
               "name": "Fourths, Fifths, and Octave",
+              "name[pt_BR]": "Quartas, Quintas e Oitava",
               "options": [
                 {
                   "name": "Perfect Fourth",
+                  "name[pt_BR]": "Quarta Perfeita",
                   "sequenceFromRoot": "-5"
                 },
                 {
                   "name": "Perfect Fifth",
+                  "name[pt_BR]": "Quinta Perfeita",
                   "sequenceFromRoot": "-7"
                 },
                 {
                   "name": "Perfect Octave",
+                  "name[pt_BR]": "Oitava Perfeita",
                   "sequenceFromRoot": "-12"
                 }
               ]
             },
             {
               "name": "Second and Thirds",
+              "name[pt_BR]": "Segundas e Terças",
               "options": [
                 {
                   "name": "Minor Second",
+                  "name[pt_BR]": "Segunda Menor",
                   "sequenceFromRoot": "-1"
                 },
                 {
                   "name": "Major Second",
+                  "name[pt_BR]": "Segunda Maior",
                   "sequenceFromRoot": "-2"
                 },
                 {
                   "name": "Minor Third",
+                  "name[pt_BR]": "Terça Menor",
                   "sequenceFromRoot": "-3"
                 },
                 {
                   "name": "Major Third",
+                  "name[pt_BR]": "Terça Maior",
                   "sequenceFromRoot": "-4"
                 }
               ]
             },
             {
               "name": "Sixths and Sevenths",
+              "name[pt_BR]": "Sextas e Sétimas",
               "options": [
                 {
                   "name": "Minor Sixth",
+                  "name[pt_BR]": "Sexta Menor",
                   "sequenceFromRoot": "-8"
                 },
                 {
                   "name": "Major Sixth",
+                  "name[pt_BR]": "Sexta Maior",
                   "sequenceFromRoot": "-9"
                 },
                 {
                   "name": "Minor Seventh",
+                  "name[pt_BR]": "Sétima Menor",
                   "sequenceFromRoot": "-10"
                 },
                 {
                   "name": "Major Seventh",
+                  "name[pt_BR]": "Sétima Maior",
                   "sequenceFromRoot": "-11"
                 }
               ]
             },
             {
               "name": "Sevenths and Ninths",
+              "name[pt_BR]": "Sétimas e Nonas",
               "options": [
                 {
                   "name": "Minor Seventh",
+                  "name[pt_BR]": "Sétima Menor",
                   "sequenceFromRoot": "-10"
                 },
                 {
                   "name": "Major Seventh",
+                  "name[pt_BR]": "Sétima Maior",
                   "sequenceFromRoot": "-11"
                 },
                 {
                   "name": "Minor Ninth",
+                  "name[pt_BR]": "Nona Menor",
                   "sequenceFromRoot": "-13"
                 },
                 {
                   "name": "Major Ninth",
+                  "name[pt_BR]": "Nona Maior",
                   "sequenceFromRoot": "-14"
                 }
               ]
             },
             {
               "name": "Second to Octave",
+              "name[pt_BR]": "Segunda a Oitava",
               "options": [
                 {
                   "name": "Minor Second",
+                  "name[pt_BR]": "Segunda Menor",
                   "sequenceFromRoot": "-1"
                 },
                 {
                   "name": "Major Second",
+                  "name[pt_BR]": "Segunda Maior",
                   "sequenceFromRoot": "-2"
                 },
                 {
                   "name": "Minor Third",
+                  "name[pt_BR]": "Terça Menor",
                   "sequenceFromRoot": "-3"
                 },
                 {
                   "name": "Major Third",
+                  "name[pt_BR]": "Terça Maior",
                   "sequenceFromRoot": "-4"
                 },
                 {
                   "name": "Perfect Fourth",
+                  "name[pt_BR]": "Quarta Perfeita",
                   "sequenceFromRoot": "-5"
                 },
                 {
                   "name": "Tritone",
+                  "name[pt_BR]": "Trítono",
                   "sequenceFromRoot": "-6"
                 },
                 {
                   "name": "Perfect Fifth",
+                  "name[pt_BR]": "Quinta Perfeita",
                   "sequenceFromRoot": "-7"
                 },
                 {
                   "name": "Minor Sixth",
+                  "name[pt_BR]": "Sexta Menor",
                   "sequenceFromRoot": "-8"
                 },
                 {
                   "name": "Major Sixth",
+                  "name[pt_BR]": "Sexta Maior",
                   "sequenceFromRoot": "-9"
                 },
                 {
                   "name": "Minor Seventh",
+                  "name[pt_BR]": "Sétima Menor",
                   "sequenceFromRoot": "-10"
                 },
                 {
                   "name": "Major Seventh",
+                  "name[pt_BR]": "Sétima Maior",
                   "sequenceFromRoot": "-11"
                 },
                 {
                   "name": "Perfect Octave",
+                  "name[pt_BR]": "Oitava Perfeita",
                   "sequenceFromRoot": "-12"
                 }
               ]
             },
             {
               "name": "Second to Tenth",
+              "name[pt_BR]": "Segunda a Décima",
               "options": [
                 {
                   "name": "Minor Second",
+                  "name[pt_BR]": "Segunda Menor",
                   "sequenceFromRoot": "-1"
                 },
                 {
                   "name": "Major Second",
+                  "name[pt_BR]": "Segunda Maior",
                   "sequenceFromRoot": "-2"
                 },
                 {
                   "name": "Minor Third",
+                  "name[pt_BR]": "Terça Menor",
                   "sequenceFromRoot": "-3"
                 },
                 {
                   "name": "Major Third",
+                  "name[pt_BR]": "Terça Maior",
                   "sequenceFromRoot": "-4"
                 },
                 {
                   "name": "Perfect Fourth",
+                  "name[pt_BR]": "Quarta Perfeita",
                   "sequenceFromRoot": "-5"
                 },
                 {
                   "name": "Tritone",
+                  "name[pt_BR]": "Trítono",
                   "sequenceFromRoot": "-6"
                 },
                 {
                   "name": "Perfect Fifth",
+                  "name[pt_BR]": "Quinta Perfeita",
                   "sequenceFromRoot": "-7"
                 },
                 {
                   "name": "Minor Sixth",
+                  "name[pt_BR]": "Sexta Menor",
                   "sequenceFromRoot": "-8"
                 },
                 {
                   "name": "Major Sixth",
+                  "name[pt_BR]": "Sexta Maior",
                   "sequenceFromRoot": "-9"
                 },
                 {
                   "name": "Minor Seventh",
+                  "name[pt_BR]": "Sétima Menor",
                   "sequenceFromRoot": "-10"
                 },
                 {
                   "name": "Major Seventh",
+                  "name[pt_BR]": "Sétima Maior",
                   "sequenceFromRoot": "-11"
                 },
                 {
                   "name": "Perfect Octave",
+                  "name[pt_BR]": "Oitava Perfeita",
                   "sequenceFromRoot": "-12"
                 },
                 {
                   "name": "Minor Ninth",
+                  "name[pt_BR]": "Nona Menor",
                   "sequenceFromRoot": "-13"
                 },
                 {
                   "name": "Major Ninth",
+                  "name[pt_BR]": "Nona Maior",
                   "sequenceFromRoot": "-14"
                 },
                 {
                   "name": "Minor Tenth",
+                  "name[pt_BR]": "Décima Menor",
                   "sequenceFromRoot": "-15"
                 },
                 {
                   "name": "Major Tenth",
+                  "name[pt_BR]": "Décima Maior",
                   "sequenceFromRoot": "-16"
                 }
               ]
             },
             {
               "name": "Second to 15th",
+              "name[pt_BR]": "Segunda a Décima Quinta",
               "options": [
                 {
                   "name": "Minor Second",
+                  "name[pt_BR]": "Segunda Menor",
                   "sequenceFromRoot": "-1"
                 },
                 {
                   "name": "Major Second",
+                  "name[pt_BR]": "Segunda Maior",
                   "sequenceFromRoot": "-2"
                 },
                 {
                   "name": "Minor Third",
+                  "name[pt_BR]": "Terça Menor",
                   "sequenceFromRoot": "-3"
                 },
                 {
                   "name": "Major Third",
+                  "name[pt_BR]": "Terça Maior",
                   "sequenceFromRoot": "-4"
                 },
                 {
                   "name": "Perfect Fourth",
+                  "name[pt_BR]": "Quarta Perfeita",
                   "sequenceFromRoot": "-5"
                 },
                 {
                   "name": "Tritone",
+                  "name[pt_BR]": "Trítono",
                   "sequenceFromRoot": "-6"
                 },
                 {
                   "name": "Perfect Fifth",
+                  "name[pt_BR]": "Quinta Perfeita",
                   "sequenceFromRoot": "-7"
                 },
                 {
                   "name": "Minor Sixth",
+                  "name[pt_BR]": "Sexta Menor",
                   "sequenceFromRoot": "-8"
                 },
                 {
                   "name": "Major Sixth",
+                  "name[pt_BR]": "Sexta Maior",
                   "sequenceFromRoot": "-9"
                 },
                 {
                   "name": "Minor Seventh",
+                  "name[pt_BR]": "Sétima Menor",
                   "sequenceFromRoot": "-10"
                 },
                 {
                   "name": "Major Seventh",
+                  "name[pt_BR]": "Sétima Maior",
                   "sequenceFromRoot": "-11"
                 },
                 {
                   "name": "Perfect Octave",
+                  "name[pt_BR]": "Oitava Perfeita",
                   "sequenceFromRoot": "-12"
                 },
                 {
                   "name": "Minor Ninth",
+                  "name[pt_BR]": "Nona Menor",
                   "sequenceFromRoot": "-13"
                 },
                 {
                   "name": "Major Ninth",
+                  "name[pt_BR]": "Nona Maior",
                   "sequenceFromRoot": "-14"
                 },
                 {
                   "name": "Minor Tenth",
+                  "name[pt_BR]": "Décima Menor",
                   "sequenceFromRoot": "-15"
                 },
                 {
                   "name": "Major Tenth",
+                  "name[pt_BR]": "Décima Maior",
                   "sequenceFromRoot": "-16"
                 },
                 {
                   "name": "Perfect Eleventh",
+                  "name[pt_BR]": "Décima Primeira Perfeita",
                   "sequenceFromRoot": "-17"
                 },
                 {
                   "name": "Octave + Tritone",
+                  "name[pt_BR]": "Oitava + Trítono",
                   "sequenceFromRoot": "-18"
                 },
                 {
                   "name": "Perfect Twelfth",
+                  "name[pt_BR]": "Décima Segunda Perfeita",
                   "sequenceFromRoot": "-19"
                 },
                 {
                   "name": "Minor Thirteenth",
+                  "name[pt_BR]": "Décima Terceira Menor",
                   "sequenceFromRoot": "-20"
                 },
                 {
                   "name": "Major Thirteenth",
+                  "name[pt_BR]": "Décima Terceira Maior",
                   "sequenceFromRoot": "-21"
                 },
                 {
                   "name": "Minor Fourteenth",
+                  "name[pt_BR]": "Décima Quarta Menor",
                   "sequenceFromRoot": "-22"
                 },
                 {
                   "name": "Major Fourteenth",
+                  "name[pt_BR]": "Décima Quarta Maior",
                   "sequenceFromRoot": "-23"
                 },
                 {
                   "name": "Perfect Double Octave",
+                  "name[pt_BR]": "Dupla Oitava Perfeita",
                   "sequenceFromRoot": "-24"
                 }
               ]
