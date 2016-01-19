@@ -34,7 +34,7 @@
 
 <abstract>
 <para>
-&minuet; is an application for music education. It presents a large set of ear training exercises
+&minuet; is an application for music education. It features a set of ear training exercises
 regarding intervals, chords, and scales.
 </para>
 </abstract>
@@ -52,15 +52,6 @@ regarding intervals, chords, and scales.
 
 </bookinfo>
 
-<!-- The contents of the documentation begin here.  Label
-each chapter so with the id attribute. This is necessary for two reasons: it
-allows you to easily reference the chapter from other chapters of your
-document, and if there is no ID, the name of the generated HTML files will vary
-from time to time making it hard to manage for maintainers and for the CVS
-system. Any chapter labelled (OPTIONAL) may be left out at the author's
-discretion. Other chapters should not be left out in order to maintain a
-consistent documentation style across all KDE apps. -->
-
 <chapter id="introduction">
 <title>Introduction</title>
 
@@ -70,204 +61,212 @@ problems. Basically a long version of the abstract.  Don't include a
 revision history. (see installation appendix comment) -->
 
 <para>
-&minuet; is a program that lets you do absolutely nothing. Please report
-any problems or feature requests to the &kde; mailing lists.
+Welcome to &minuet;: the KDE software for music education. &minuet; aims at supporting
+students and teachers in many aspects of music education, such as ear
+training, first-sight reading, solfa, scales, rhythm, harmony, and improvisation. &minuet;
+makes extensive use of MIDI capabilities to provide a full-fledged set of features
+regarding volume, tempo, and pitch changes, which makes &minuet; a valuable tool for both
+novice and experienced musicians.
+</para>
+<para>
+&minuet; features a rich set of ear training's exercises and new ones can be <link linkend="creating-exercises">
+seamlessly added</link> in order to extend its funcionalities and adapt it to several
+music education contexts.
+</para>
+<para>
+<mediaobject>
+<imageobject><imagedata format="PNG" fileref="minuet-screenshot.png"/></imageobject>
+<caption><para>&minuet;'s ear training chord exercises</para></caption>
+</mediaobject>
 </para>
 </chapter>
 
-<chapter id="using-kapp">
+<chapter id="using-minuet">
 <title>Using &minuet;</title>
 
-<!-- This chapter should tell the user how to use your app. You should use as
-many sections (Chapter, Sect1, Sect3, etc...) as is necessary to fully document
-your application. -->
-
 <para>
-
-<!-- Note that all graphics should be in .png format. Use no gifs because of
-patent issues. -->
-
-<screenshot>
-<screeninfo>Here's a screenshot of &minuet;</screeninfo>
-	<mediaobject>
-	  <imageobject>
-	    <imagedata fileref="screenshot.png" format="PNG"/>
-	  </imageobject>
-	  <textobject>
-	    <phrase>Screenshot</phrase>
-	  </textobject>
-	</mediaobject>
-</screenshot>
+In the next three sections - <link linkend="starting-minuet">Starting &minuet;</link>, <link linkend="midi-configuration-wizard">&minuet;'s Configuration Wizard</link>, and <link linkend="minuet-exercises">&minuet; Exercises</link> - we will provide you the required steps to get &minuet; up and running.
 </para>
 
-
-<sect1 id="kapp-features">
-<title>More &minuet; features</title>
-
-<para>It slices! It dices! and it comes with a free toaster!</para>
+<sect1 id="starting-minuet">
+<title>Starting &minuet;</title>
 <para>
-The Squiggle Tool <guiicon><inlinemediaobject>
-	  <imageobject>
-	    <imagedata fileref="squiggle.png" format="PNG"/>
-	  </imageobject>
-	  <textobject>
-	    <phrase>Squiggle</phrase>
-	  </textobject>
-</inlinemediaobject></guiicon> is used to draw squiggly lines all over
-the &minuet; main window. It's not a bug, it's a feature!
+You can start &minuet; from the application launcher. Open the &kde; program menu by clicking on the
+application launcher icon on the toolbar at the bottom left of your
+screen. This will raise a menu. Move your
+cursor up the menu to the <menuchoice><guimenu>Applications</guimenu><guisubmenu>Education</guisubmenu><guisubmenu>Miscellaneous</guisubmenu>
+<guimenuitem>&minuet; (Music Education Software)</guimenuitem></menuchoice> menu item.
 </para>
-
 </sect1>
-</chapter>
 
-<chapter id="commands">
-<title>Command Reference</title>
-
-<!-- (OPTIONAL, BUT RECOMMENDED) This chapter should list all of the
-application windows and their menubar and toolbar commands for easy reference.
-Also include any keys that have a special function but have no equivalent in the
-menus or toolbars. 
-This may not be necessary for small apps or apps with no tool or menu bars.
-
-Don't bother users with well known kde menu items like Settings->Shortcuts etc. 
-
-Use cases for a command reference:
-
-Applications with many menu items (Kate/Konqueror) 
-Applications with different modes and menus (KWrite/Konqueror)
--> Enables search for menu items
-
-For Applications with default menu items and some special items where user 
-needs additional information use something like:
-"Apart from the common KDE menu items you find these action in the menu:
-
-File -> Special Action: Explanation of special action
-
-Tools -> Special Tool: Explanation of special tool
-
-Use variablelist markup for this
--->
-
-<sect1 id="kapp-mainwindow">
-<title>The main &minuet; window</title>
-
-<sect2>
-<title>The File Menu</title>
+<sect1 id="midi-configuration-wizard">
+<title>&minuet;'s Configuration Wizard</title>
 <para>
+When you run &minuet; for the first time, you are presented with a Configuration Wizard which verifies if all dependencies required to handle MIDI files are in place in your system. &minuet; uses <ulink url="http://timidity.sourceforge.net/">TiMidity++</ulink>/<ulink url="http://freepats.zenvoid.org/">Freepats</ulink> as default MIDI backend. Therefore, the Configuration Wizard evaluates if those technologies are correctly installed and configured.
+</para>
+<para>
+<mediaobject>
+<imageobject><imagedata format="PNG" fileref="configuration-wizard.png"/></imageobject>
+<caption><para>&minuet;'s first run Configuration Wizard</para></caption>
+</mediaobject>
+</para>
+<para>
+Should all Configuration Wizard's tests pass with success, &minuet; will automatically start and stop TiMidity++ during application start up and termination, respectively. You can execute the Configuration Wizard again at any time by accessing <menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Run Configuration Wizard</guimenuitem>
+</menuchoice>.
+</para>
+</sect1>
+
+<sect1 id="minuet-exercises">
+<title>&minuet; Exercises and Workflow</title>
+
+<para>
+&minuet;'s user interface entails four major components:
+</para>
+<para>
+<mediaobject>
+<imageobject><imagedata format="PNG" fileref="minuet-ui-components.png"/></imageobject>
+<caption><para>&minuet;'s UI components</para></caption>
+</mediaobject>
+</para>
 <variablelist>
-<varlistentry  id="file-new">
-<!-- Tip: With id's here, then you can use them like 
-"select <xref linkend="file-new"/> to open the file dialog"
-which will be expanded to:
-"select File->New (Ctrl+N) to open the file dialog"
--->
-<term><menuchoice>
-<shortcut>
-<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
-</shortcut>
-<guimenu>File</guimenu>
-<guimenuitem>New</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Creates a new document</action></para></listitem>
-</varlistentry>
+
 <varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo>
-</shortcut>
-<guimenu>File</guimenu>
-<guimenuitem>Save</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Saves the document</action></para></listitem>
+<term><guimenuitem>Navigation Menu</guimenuitem></term>
+<listitem><para>Allows for navigating in &minuet;'s exercise categories and selecting a particular exercise. The Navigation Menu is dinamically created based upon exercises specification files as described in <link linkend="creating-exercises">Creating Exercises</link>. &minuet;'s exercises are grouped according to classes such as intervals, scales, and chords.</para></listitem>
 </varlistentry>
+
 <varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>
-</shortcut>
+<term><guimenuitem>MIDI Player Controls</guimenuitem></term>
+<listitem><para>
+Provides the basic functionalities for handling MIDI playing. &minuet; is able to play arbitrary MIDI files by choosing <menuchoice>
 <guimenu>File</guimenu>
-<guimenuitem>Quit</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Quits</action> &minuet;</para></listitem>
+<guimenuitem>Open</guimenuitem>
+</menuchoice> and then clicking the <parameter>play</parameter> button<inlinemediaobject><imageobject><imagedata fileref="multimedia-play.png"/></imageobject></inlinemediaobject>. The execution can be paused by clicking the <parameter>pause</parameter> button<inlinemediaobject><imageobject><imagedata fileref="multimedia-pause.png"/></imageobject></inlinemediaobject>and resumed by clicking again the <parameter>play</parameter> button. The button <parameter>stop</parameter><inlinemediaobject><imageobject><imagedata fileref="multimedia-stop.png"/></imageobject></inlinemediaobject>interrupts the MIDI playing. MIDI Player Controls also provide sliders for changing the volume<inlinemediaobject><imageobject><imagedata fileref="multimedia-volume.png"/></imageobject></inlinemediaobject>, tempo<inlinemediaobject><imageobject><imagedata fileref="multimedia-speed.png"/></imageobject></inlinemediaobject>, and pitch<inlinemediaobject><imageobject><imagedata fileref="multimedia-pitch.png"/></imageobject></inlinemediaobject>of current MIDI playing.
+</para></listitem>
 </varlistentry>
+
+<varlistentry>
+<term><guimenuitem>Keyboard View</guimenuitem></term>
+<listitem><para>Exhibits MIDI <parameter>note on</parameter> events being sequenced by a MIDI file or by an exercise execution.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guimenuitem>Exercise View</guimenuitem></term>
+<listitem><para>Presents, for a given exercise, buttons for controlling exercise presentation and a set of exercise's possible answers. An exercise run begins by clicking the <parameter>new question</parameter> button. A randomly selected interval/chord/scale is played by &minuet; and then the student is expected to pick up an answer among the ones shown in the answer's grid. &minuet; always present - as a white small circle in Keyboard View - the first note of selected interval/scale or the root note of selected chord. By hovering a possible answer, &minuet; highlights its corresponding visual representation in Keyboard View. The remaining notes of the hovered answer are presented as small circles whose colors are the same of hoevered answer's button. The student can hear the exercise again by clicking the <parameter>play question</parameter> button, click the choosed answer button, or get the right answer by clicking the <parameter>give up</parameter> button. A new run of the same exercise can be started by clicking again the <parameter>new question</parameter> button.</para></listitem>
+</varlistentry>
+
 </variablelist>
-</para>
-
-</sect2>
-
-<sect2>
-<title>The Help Menu</title>
-
-<!-- Assuming you have a standard help menu (help, what's this, about -->
-<!-- &minuet;, about KDE) then the documentation is already written. -->
-<!-- The following entity is valid anywhere that a variablelist is -->
-<!-- valid.  -->
-
-&help.menu.documentation;
-
-</sect2>
-
 </sect1>
 </chapter>
 
-<chapter id="developers">
-<title>Developer's Guide to &minuet;</title>
-
-<!-- (OPTIONAL) A Programming/Scripting reference chapter should be
-used for apps that use plugins or that provide their own scripting hooks
-and/or development libraries. -->
+<chapter id="creating-exercises">
+<title>Creating new &minuet;'s exercises</title>
 
 <para>
-Programming &minuet; plugins is a joy to behold.
+&minuet;'s exercises are defined in exercise specification files, written in JSON format:
 </para>
-
+<para>
+<programlisting>
+{
+  "exercises": [
+    {
+      "name": "Intervals",
+      "root": "21..104",
+      "playMode": "scale",
+      "children": [
+        {
+          "name": "Ascending Melodic Intervals",
+          "children": [
+            {
+              "name": "Seconds",
+              "options": [
+                {
+                  "name": "Minor Second",
+                  "sequenceFromRoot": "1"
+                },
+                {
+                  "name": "Major Second",
+                  "sequenceFromRoot": "2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+</programlisting>
+</para>
+<para>
+&minuet;'s exercise specification files contain one top-level JSON object featuring the <parameter>exercises</parameter>
+array. Such an array defines a hierarchical structure of exercises, grouped by categories. Every category/exercise has a
+name. Category JSON objects contain a property named <parameter>children</parameter>, which describes the
+subcategories/exercises entailed by such a category. Exercise JSON objects contain a property named <parameter>
+options</parameter>, which defines the possible answers for such an exercise. In each exercise run, &minuet; randomly
+selects one answer among the possible ones and the student is expected to click the answer's button which corresponds to the
+selected answer.
+</para>
+<para>
+Any (sub)category may define a <parameter>root</parameter> parameter to specify the range from which the initial interval/chord/scale's
+note will be randomly choosed for all exercises in this category. Such range corresponds to standards MIDI note numbers and follows
+the format <parameter>&lt;min-value&gt;..&lt;max-value&gt;</parameter>. The example presented above uses all keyboard range as possible
+root notes (21..104). The <parameter>playMode</parameter> parameter indicates
+how possible answers should be played: as a <parameter>scale</parameter> (one note after the other) or as a <parameter>chord</parameter> (all
+notes ringing out simultaneously).
+</para>
+<para>
+Each exercise's option defines a name and the sequence of notes which should be played from the root note randomly selected in
+each exercise run. Such sequence of notes is defined as relative distances from the root note, describing the interval
+each note forms in conjunction with the root note. For example, for a major escale, the sequence of notes is "2 4 5 7 9 11 12",
+which respectively denotes the "whole whole half whole whole whole half" major scale structure. The <parameter>sequenceFromRoot</parameter> parameter may contain any notes in length. Also, &minuet;'s core ensures that only answers
+whose all notes lies within keyboard range are randomly selected.
+</para>
+<para>
+To provide a better infrastructure for organizing a large set of exercise specification files, &minuet;'s core supports the use
+of several specification files, which are automatically merged to compose the final exercise hierarchy presented in the
+Navigation Menu. Exercises are correctly merged as long as different specification files use the same (sub)category name
+when defining exercises. For now, &minuet;'s provides no GUI for creating exercise specifications so that you must manually create such JSON files. &minuet;'s exercise specification files may be installed system-wide in the <filename>/usr/share/minuet/exercises/</filename>
+directory or locally in the <filename>~/.local/share/minuet/exercises/</filename> directory.
+</para>
 
 </chapter>
 
-<chapter id="faq">
-<title>Questions and Answers</title>
+<chapter id="minuet-configuration">
+<title>&minuet; Configuration</title>
 
-<!-- (OPTIONAL but recommended) This chapter should include all of the silly
-(and not-so-silly) newbie questions that fill up your mailbox. This chapter
-should be reserved for BRIEF questions and answers! If one question uses more
-than a page or so then it should probably be part of the
-"Using this Application" chapter instead. You should use links to
-cross-reference questions to the parts of your documentation that answer them.
-This is also a great place to provide pointers to other FAQ's if your users
-must do some complicated configuration on other programs in order for your
-application work. -->
+<para>
+Some &minuet;'s MIDI settings may be configured in <menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Configure Minuet</guimenuitem>
+</menuchoice>:
+</para>
+<para>
+<mediaobject>
+<imageobject><imagedata format="PNG" fileref="minuet-configuration.png"/></imageobject>
+<caption><para>&minuet;'s settings</para></caption>
+</mediaobject>
+</para>
+<para>
+<parameter>TiMidity++</parameter> parameter contains the absolute path to TiMidity++ program. Such a path is automatically
+adjusted by &minuet;'s Configuration Wizard if your environment is sane but you can provide your own setting if you want.
+</para>
+<para>
+<parameter>TiMidity++ parameters</parameter>
+specifies the parameters to be used when starting TiMidity++ service. You should use the value provided by &minuet;'s Configuration
+Wizard unless you have a good reason to change it.
+</para>
+<para>
+Finally, <parameter>MIDI output port</parameter> parameter indicates the port
+&minuet; should use to play MIDI events. Again, &minuet;'s Configuration Wizard already gives you nice values for it but
+you are free to change it if using other MIDI sequencers like, for example, fluidsynth.
+</para>
 
-&reporting.bugs;
-&updating.documentation;
-
-<qandaset id="faqlist">
-<qandaentry>
-<question>
-<para>My Mouse doesn't work. How do I quit &minuet;?</para>
-</question>
-<answer>
-<para>You silly goose! Check out the <link linkend="commands">Commands
-Section</link> for the answer.</para>
-</answer>
-</qandaentry>
-<qandaentry>
-<question>
-<para>Why can I not twiddle my documents?</para>
-</question>
-<answer>
-<para>You can only twiddle your documents if you have the foobar.lib
-installed.</para>
-</answer>
-</qandaentry>
-</qandaset>
 </chapter>
 
 <chapter id="credits">
-
-<!-- Include credits for the programmers, documentation writers, and
-contributors here. The license for your software should then be included below
-the credits with a reference to the appropriate license file included in the KDE
-distribution. -->
 
 <title>Credits and License</title>
 
@@ -275,43 +274,25 @@ distribution. -->
 &minuet;
 </para>
 <para>
-Program copyright 2010-2014 John Q. Hacker <email>jqh@kde.org</email>
-</para>
-<para>
-Contributors:
-<itemizedlist>
-<listitem><para>Konqui the &kde; Dragon <email>konqui@kde.org</email></para>
-</listitem>
-<listitem><para>Tux the &Linux; Penguin <email>tux@linux.org</email></para>
-</listitem>
-</itemizedlist>
+Program copyright 2016 &Sandro.Andrade; <email>&Sandro.Andrade.mail;</email>
 </para>
 
 <para>
-Documentation Copyright &copy; 2012-2014 George N. Ugnacious <email>gnu@kde.org</email>
+Documentation Copyright &copy; 2016 &Sandro.Andrade; <email>&Sandro.Andrade.mail;</email>
 </para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
 
 &underFDL;               <!-- FDL: do not remove -->
 
-<!-- Determine which license your application is licensed under,
-     and delete all the remaining licenses below:
-
-     (NOTE:  All documentation are licensed under the FDL,
-     regardless of what license the application uses) -->
-
 &underGPL;        	 <!-- GPL License -->
-&underBSDLicense;        <!-- BSD License -->
-&underArtisticLicense;   <!-- BSD Artistic License -->
-&underX11License;        <!-- X11 License  -->
 
 </chapter>
 
 <appendix id="installation">
 <title>Installation</title>
 
-<sect1 id="getting-kapp">
+<sect1 id="getting-minuet">
 <title>How to obtain &minuet;</title>
 
 <!-- This first entity contains boiler plate for applications that are
@@ -337,23 +318,10 @@ information here.
 
 <para>
 In order to successfully use &minuet;, you need few libraries from
-&kf5; 5.1 (bar, baz). Foobar.lib is
-required in order to support the advanced &minuet; features. &minuet; uses
-about 5 megs of memory to run, but this may vary depending on your
-platform and configuration.
+&kf5; 5.18 (CoreAddons, I18n, XmlGui, ConfigWidgets, DocTools, KIO).
+In addition, &minuet; relies on the <ulink url="http://drumstick.sourceforge.net/">Drumstick library</ulink> for MIDI capabilities.
 </para>
 
-<para>
-All required libraries as well as &minuet; itself can be found
-on <ulink url="ftp://ftp.kapp.org">The &minuet; home page</ulink>.
-</para>
-
-<!-- For a list of updates, you may refer to the application web site
-or the ChangeLog file, or ... -->
-<para>
-You can find a list of changes at <ulink
-url="http://apps.kde.org/kapp">http://apps.kde.org/kapp</ulink>.
-</para>
 </sect1>
 
 <sect1 id="compilation">
@@ -364,14 +332,6 @@ url="http://apps.kde.org/kapp">http://apps.kde.org/kapp</ulink>.
 <!-- special handling, remove it, and replace with your own text. -->
 
 &install.compile.documentation;
-
-</sect1>
-
-<sect1 id="configuration">
-<title>Configuration</title>
-
-<para>Don't forget to tell your system to start the <filename>dtd</filename>
-dicer-toaster daemon first, or &minuet; won't work!</para>
 
 </sect1>
 

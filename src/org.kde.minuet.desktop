@@ -30,6 +30,6 @@ Exec=minuet
 Icon=minuet
 Type=Application
 X-DocPath=minuet/index.html
-GenericName=A KDE Application for music education
+GenericName=Music Education Software
 Terminal=false
 Categories=Qt;KDE;Education;X-KDE-Edu-Misc;

@@ -62,7 +62,7 @@ Minuet::Minuet() :
     KStandardAction::quit(qApp, SLOT(closeAllWindows()), actionCollection());
     KStandardAction::preferences(this, SLOT(settingsConfigure()), actionCollection());
 
-    QAction *action = new QAction(i18n("Run Config Wizard"), this);
+    QAction *action = new QAction(i18n("Run Configuration Wizard"), this);
     action->setIcon(QIcon::fromTheme(QStringLiteral("tools-wizard")));
     connect(action, &QAction::triggered, this, &Minuet::runWizard);
     actionCollection()->addAction(QStringLiteral("run_wizard"), action);

@@ -38,7 +38,7 @@ Wizard::Wizard(QWidget *parent, Qt::WindowFlags flags) :
     m_okIcon (QIcon::fromTheme(QStringLiteral("dialog-ok"))),
     m_badIcon (QIcon::fromTheme(QStringLiteral("dialog-close")))
 {
-    setWindowTitle(i18n("Config Wizard"));
+    setWindowTitle(i18n("Configuration Wizard"));
 
     QWizardPage *page1 = new QWizardPage;
     page1->setTitle(i18n("Welcome"));
