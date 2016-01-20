@@ -4,20 +4,6 @@
       xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
       http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
   <kcfgfile name="minuetrc"/>
-  <group name="General">
-    <entry name="colorBackground" type="Color">
-      <label>color of the background</label>
-      <default>black</default>
-    </entry>
-    <entry name="colorForeground" type="Color">
-      <label>color of the foreground</label>
-      <default>yellow</default>
-    </entry>
-    <entry name="valTime" type="Int">
-      <label>size of a ball</label>
-      <default>2</default>
-    </entry>
-  </group>
   <group name="MIDI">
     <entry name="timidityPath" type="String">
       <label>path to TiMidity++ sequencer</label>
