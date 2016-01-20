@@ -61,16 +61,16 @@ problems. Basically a long version of the abstract.  Don't include a
 revision history. (see installation appendix comment) -->
 
 <para>
-Welcome to &minuet;: the KDE software for music education. &minuet; aims at supporting
+Welcome to &minuet;: the &kde; software for music education. &minuet; aims at supporting
 students and teachers in many aspects of music education, such as ear
 training, first-sight reading, solfa, scales, rhythm, harmony, and improvisation. &minuet;
-makes extensive use of MIDI capabilities to provide a full-fledged set of features
+makes extensive use of &MIDI; capabilities to provide a full-fledged set of features
 regarding volume, tempo, and pitch changes, which makes &minuet; a valuable tool for both
 novice and experienced musicians.
 </para>
 <para>
 &minuet; features a rich set of ear training's exercises and new ones can be <link linkend="creating-exercises">
-seamlessly added</link> in order to extend its funcionalities and adapt it to several
+seamlessly added</link> in order to extend its functionalities and adapt it to several
 music education contexts.
 </para>
 <para>
@@ -102,7 +102,7 @@ cursor up the menu to the <menuchoice><guimenu>Applications</guimenu><guisubmenu
 <sect1 id="midi-configuration-wizard">
 <title>&minuet;'s Configuration Wizard</title>
 <para>
-When you run &minuet; for the first time, you are presented with a Configuration Wizard which verifies if all dependencies required to handle MIDI files are in place in your system. &minuet; uses <ulink url="http://timidity.sourceforge.net/">TiMidity++</ulink>/<ulink url="http://freepats.zenvoid.org/">Freepats</ulink> as default MIDI backend. Therefore, the Configuration Wizard evaluates if those technologies are correctly installed and configured.
+When you run &minuet; for the first time, you are presented with a Configuration Wizard which verifies if all dependencies required to handle &MIDI; files are in place in your system. &minuet; uses <ulink url="http://timidity.sourceforge.net/">TiMidity++</ulink>/<ulink url="http://freepats.zenvoid.org/">Freepats</ulink> as default &MIDI; backend. Therefore, the Configuration Wizard evaluates if those technologies are correctly installed and configured.
 </para>
 <para>
 <mediaobject>
@@ -134,27 +134,27 @@ Should all Configuration Wizard's tests pass with success, &minuet; will automat
 
 <varlistentry>
 <term><guimenuitem>Navigation Menu</guimenuitem></term>
-<listitem><para>Allows for navigating in &minuet;'s exercise categories and selecting a particular exercise. The Navigation Menu is dinamically created based upon exercises specification files as described in <link linkend="creating-exercises">Creating Exercises</link>. &minuet;'s exercises are grouped according to classes such as intervals, scales, and chords.</para></listitem>
+<listitem><para>Allows for navigating in &minuet;'s exercise categories and selecting a particular exercise. The Navigation Menu is dynamically created based upon exercises specification files as described in <link linkend="creating-exercises">Creating Exercises</link>. &minuet;'s exercises are grouped according to classes such as intervals, scales, and chords.</para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><guimenuitem>MIDI Player Controls</guimenuitem></term>
 <listitem><para>
-Provides the basic functionalities for handling MIDI playing. &minuet; is able to play arbitrary MIDI files by choosing <menuchoice>
+Provides the basic functionalities for handling &MIDI; playing. &minuet; is able to play arbitrary &MIDI; files by choosing <menuchoice>
 <guimenu>File</guimenu>
 <guimenuitem>Open</guimenuitem>
-</menuchoice> and then clicking the <parameter>play</parameter> button<inlinemediaobject><imageobject><imagedata fileref="multimedia-play.png"/></imageobject></inlinemediaobject>. The execution can be paused by clicking the <parameter>pause</parameter> button<inlinemediaobject><imageobject><imagedata fileref="multimedia-pause.png"/></imageobject></inlinemediaobject>and resumed by clicking again the <parameter>play</parameter> button. The button <parameter>stop</parameter><inlinemediaobject><imageobject><imagedata fileref="multimedia-stop.png"/></imageobject></inlinemediaobject>interrupts the MIDI playing. MIDI Player Controls also provide sliders for changing the volume<inlinemediaobject><imageobject><imagedata fileref="multimedia-volume.png"/></imageobject></inlinemediaobject>, tempo<inlinemediaobject><imageobject><imagedata fileref="multimedia-speed.png"/></imageobject></inlinemediaobject>, and pitch<inlinemediaobject><imageobject><imagedata fileref="multimedia-pitch.png"/></imageobject></inlinemediaobject>of current MIDI playing.
+</menuchoice> and then clicking the <parameter>play</parameter> button<inlinemediaobject><imageobject><imagedata fileref="multimedia-play.png"/></imageobject></inlinemediaobject>. The execution can be paused by clicking the <parameter>pause</parameter> button<inlinemediaobject><imageobject><imagedata fileref="multimedia-pause.png"/></imageobject></inlinemediaobject>and resumed by clicking again the <parameter>play</parameter> button. The button <parameter>stop</parameter><inlinemediaobject><imageobject><imagedata fileref="multimedia-stop.png"/></imageobject></inlinemediaobject>interrupts the &MIDI; playing. &MIDI; Player Controls also provide sliders for changing the volume<inlinemediaobject><imageobject><imagedata fileref="multimedia-volume.png"/></imageobject></inlinemediaobject>, tempo<inlinemediaobject><imageobject><imagedata fileref="multimedia-speed.png"/></imageobject></inlinemediaobject>, and pitch<inlinemediaobject><imageobject><imagedata fileref="multimedia-pitch.png"/></imageobject></inlinemediaobject>of current &MIDI; playing.
 </para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><guimenuitem>Keyboard View</guimenuitem></term>
-<listitem><para>Exhibits MIDI <parameter>note on</parameter> events being sequenced by a MIDI file or by an exercise execution.</para></listitem>
+<listitem><para>Exhibits &MIDI; <parameter>note on</parameter> events being sequenced by a &MIDI; file or by an exercise execution.</para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><guimenuitem>Exercise View</guimenuitem></term>
-<listitem><para>Presents, for a given exercise, buttons for controlling exercise presentation and a set of exercise's possible answers. An exercise run begins by clicking the <parameter>new question</parameter> button. A randomly selected interval/chord/scale is played by &minuet; and then the student is expected to pick up an answer among the ones shown in the answer's grid. &minuet; always present - as a white small circle in Keyboard View - the first note of selected interval/scale or the root note of selected chord. By hovering a possible answer, &minuet; highlights its corresponding visual representation in Keyboard View. The remaining notes of the hovered answer are presented as small circles whose colors are the same of hoevered answer's button. The student can hear the exercise again by clicking the <parameter>play question</parameter> button, click the choosed answer button, or get the right answer by clicking the <parameter>give up</parameter> button. A new run of the same exercise can be started by clicking again the <parameter>new question</parameter> button.</para></listitem>
+<listitem><para>Presents, for a given exercise, buttons for controlling exercise presentation and a set of exercise's possible answers. An exercise run begins by clicking the <parameter>new question</parameter> button. A randomly selected interval/chord/scale is played by &minuet; and then the student is expected to pick up an answer among the ones shown in the answer's grid. &minuet; always present - as a white small circle in Keyboard View - the first note of selected interval/scale or the root note of selected chord. By hovering a possible answer, &minuet; highlights its corresponding visual representation in Keyboard View. The remaining notes of the hovered answer are presented as small circles whose colors are the same of hovered answer's button. The student can hear the exercise again by clicking the <parameter>play question</parameter> button, click the chosen answer button, or get the right answer by clicking the <parameter>give up</parameter> button. A new run of the same exercise can be started by clicking again the <parameter>new question</parameter> button.</para></listitem>
 </varlistentry>
 
 </variablelist>
@@ -211,7 +211,7 @@ selected answer.
 </para>
 <para>
 Any (sub)category may define a <parameter>root</parameter> parameter to specify the range from which the initial interval/chord/scale's
-note will be randomly choosed for all exercises in this category. Such range corresponds to standards MIDI note numbers and follows
+note will be randomly chosen for all exercises in this category. Such range corresponds to standards &MIDI; note numbers and follows
 the format <parameter>&lt;min-value&gt;..&lt;max-value&gt;</parameter>. The example presented above uses all keyboard range as possible
 root notes (21..104). The <parameter>playMode</parameter> parameter indicates
 how possible answers should be played: as a <parameter>scale</parameter> (one note after the other) or as a <parameter>chord</parameter> (all
@@ -228,7 +228,7 @@ whose all notes lies within keyboard range are randomly selected.
 To provide a better infrastructure for organizing a large set of exercise specification files, &minuet;'s core supports the use
 of several specification files, which are automatically merged to compose the final exercise hierarchy presented in the
 Navigation Menu. Exercises are correctly merged as long as different specification files use the same (sub)category name
-when defining exercises. For now, &minuet;'s provides no GUI for creating exercise specifications so that you must manually create such JSON files. &minuet;'s exercise specification files may be installed system-wide in the <filename>/usr/share/minuet/exercises/</filename>
+when defining exercises. For now, &minuet;'s provides no &GUI; for creating exercise specifications so that you must manually create such JSON files. &minuet;'s exercise specification files may be installed system-wide in the <filename>/usr/share/minuet/exercises/</filename>
 directory or locally in the <filename>~/.local/share/minuet/exercises/</filename> directory.
 </para>
 
@@ -238,7 +238,7 @@ directory or locally in the <filename>~/.local/share/minuet/exercises/</filename
 <title>&minuet; Configuration</title>
 
 <para>
-Some &minuet;'s MIDI settings may be configured in <menuchoice>
+Some &minuet;'s &MIDI; settings may be configured in <menuchoice>
 <guimenu>Settings</guimenu>
 <guimenuitem>Configure Minuet</guimenuitem>
 </menuchoice>:
@@ -260,8 +260,8 @@ Wizard unless you have a good reason to change it.
 </para>
 <para>
 Finally, <parameter>MIDI output port</parameter> parameter indicates the port
-&minuet; should use to play MIDI events. Again, &minuet;'s Configuration Wizard already gives you nice values for it but
-you are free to change it if using other MIDI sequencers like, for example, fluidsynth.
+&minuet; should use to play &MIDI; events. Again, &minuet;'s Configuration Wizard already gives you nice values for it but
+you are free to change it if using other &MIDI; sequencers like, for example, fluidsynth.
 </para>
 
 </chapter>
@@ -292,17 +292,6 @@ Documentation Copyright &copy; 2016 &Sandro.Andrade; <email>&Sandro.Andrade.mail
 <appendix id="installation">
 <title>Installation</title>
 
-<sect1 id="getting-minuet">
-<title>How to obtain &minuet;</title>
-
-<!-- This first entity contains boiler plate for applications that are
-part of KDE archive.  You should remove it if you are releasing your
-application -->
-
-&install.intro.documentation;
-
-</sect1>
-
 <sect1 id="requirements">
 <title>Requirements</title>
 
@@ -319,19 +308,8 @@ information here.
 <para>
 In order to successfully use &minuet;, you need few libraries from
 &kf5; 5.18 (CoreAddons, I18n, XmlGui, ConfigWidgets, DocTools, KIO).
-In addition, &minuet; relies on the <ulink url="http://drumstick.sourceforge.net/">Drumstick library</ulink> for MIDI capabilities.
+In addition, &minuet; relies on the <ulink url="http://drumstick.sourceforge.net/">Drumstick library</ulink> for &MIDI; capabilities.
 </para>
-
-</sect1>
-
-<sect1 id="compilation">
-<title>Compilation and Installation</title>
-
-<!-- This entity contains the boilerplate text for standard -->
-<!-- compilation instructions.  If your application requires any -->
-<!-- special handling, remove it, and replace with your own text. -->
-
-&install.compile.documentation;
 
 </sect1>
 
