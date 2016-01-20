@@ -77,7 +77,7 @@ Item {
             horizontalAlignment: Text.AlignHCenter
             font.pointSize: 18
             textFormat: Text.RichText
-            text: qsTr("Hear the interval and then choose an answer from options below!<br/>Click 'play question' if you want to hear again!")
+            text: i18n("Hear the interval and then choose an answer from options below!<br/>Click 'play question' if you want to hear again!")
         }
         Row {
             anchors { horizontalCenter: parent.horizontalCenter }
@@ -86,10 +86,10 @@ Item {
                 id: newQuestionButton
 
                 width: 120; height: 40
-                text: qsTr("new question")
+                text: i18n("new question")
                 onClicked: {
                     chosenExercise = exerciseController.randomlyChooseExercise()
-                    messageText.text = qsTr("Hear the interval and then choose an answer from options below!<br/>Click 'play question' if you want to hear again!")
+                    messageText.text = i18n("Hear the interval and then choose an answer from options below!<br/>Click 'play question' if you want to hear again!")
                     exerciseView.state = "waitingForAnswer"
                     answerHoverEnter(0, exerciseController.chosenRootNote(), 0, "white")
                     exerciseController.playChoosenExercise()
@@ -99,14 +99,14 @@ Item {
                 id: playQuestionButton
 
                 width: 120; height: 40
-                text: qsTr("play question")
+                text: i18n("play question")
                 onClicked: exerciseController.playChoosenExercise()
             }
             Button {
                 id: giveUpButton
 
                 width: 120; height: 40
-                text: qsTr("give up")
+                text: i18n("give up")
                 onClicked: highlightRightAnswer()
             }
         }

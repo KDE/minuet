@@ -25,9 +25,9 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 
 Rectangle {
     function timeLabelChanged(timeLabel) { playbackTime.text = timeLabel }
-    function volumeChanged(value) { volumeLabel.text = qsTr("Volume: %1\%").arg(value) }
-    function tempoChanged(value) { tempoLabel.text = qsTr("Tempo: %1 bpm").arg(value) }
-    function pitchChanged(value) { pitchLabel.text = qsTr("Pitch: %1").arg(value) }
+    function volumeChanged(value) { volumeLabel.text = i18n("Volume: %1\%").arg(value) }
+    function tempoChanged(value) { tempoLabel.text = i18n("Tempo: %1 bpm").arg(value) }
+    function pitchChanged(value) { pitchLabel.text = i18n("Pitch: %1").arg(value) }
 
     height: childrenRect.height + 15
     anchors { left: parent.left; bottom: parent.bottom }
@@ -48,7 +48,7 @@ Rectangle {
                 font.pointSize: 8
                 horizontalAlignment: Text.AlignLeft
                 color: theme.viewBackgroundColor
-                text: qsTr("Tempo:")
+                text: i18n("Tempo:")
             }
             Text {
                 id: volumeLabel
@@ -56,7 +56,7 @@ Rectangle {
                 font.pointSize: 8
                 horizontalAlignment: Text.AlignLeft
                 color: theme.viewBackgroundColor
-                text: qsTr("Volume: 100%")
+                text: i18n("Volume: 100%")
             }
             Text {
                 id: pitchLabel
@@ -64,7 +64,7 @@ Rectangle {
                 font.pointSize: 8
                 horizontalAlignment: Text.AlignLeft
                 color: theme.viewBackgroundColor
-                text: qsTr("Pitch: 0")
+                text: i18n("Pitch: 0")
             }
         }
     }    
@@ -88,19 +88,19 @@ Rectangle {
 
             anchors { top: playbackTime.bottom; horizontalCenter: playbackTime.horizontalCenter }
             source: "qrc:/images/multimedia-pause.png"
-            text: qsTr("Pause")
+            text: i18n("Pause")
             onActivated: sequencer.pause()
         }
         MultimediaButton {
             anchors { top: playbackTime.bottom; right: item12.left; rightMargin: -2 }
             source: "qrc:/images/multimedia-play.png"
-            text: qsTr("Play")
+            text: i18n("Play")
             onActivated: sequencer.play()
         }
         MultimediaButton {
             anchors { top: playbackTime.bottom; left: item12.right; leftMargin: -2 }
             source: "qrc:/images/multimedia-stop.png"
-            text: qsTr("Stop")
+            text: i18n("Stop")
             onActivated: sequencer.stop()
         }
     }
