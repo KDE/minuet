@@ -1,9 +1,19 @@
 [Desktop Entry]
 Name=Minuet
+Name[gl]=Minuet
+Name[nl]=Minuet
+Name[pt]=Minuet
+Name[uk]=Minuet
+Name[x-test]=xxMinuetxx
 Exec=minuet
 Icon=minuet
 Type=Application
 X-DocPath=minuet/index.html
 GenericName=Music Education Software
+GenericName[gl]=Software de ensino musical
+GenericName[nl]=Software voor muziekonderwijs
+GenericName[pt]=Aplicação de Educação Musical
+GenericName[uk]=Програмне забезпечення для навчання музики
+GenericName[x-test]=xxMusic Education Softwarexx
 Terminal=false
 Categories=Qt;KDE;Education;X-KDE-Edu-Misc;
