@@ -1,5 +1,8 @@
 <?xml version="1.0" ?>
-<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY minuet "<application>Minuet</application>">
+  <!ENTITY Sandro.Andrade '<personname><firstname>Sandro</firstname><surname>Andrade</surname></personname>'>
+  <!ENTITY Sandro.Andrade.mail '<email>sandroandrade@kde.org</email>'>
   <!ENTITY kappname "&minuet;">
   <!ENTITY package "kdeedu">
   <!ENTITY % addindex "IGNORE">
