@@ -146,9 +146,9 @@ Item {
                             onClicked: {
                                 onExited()
                                 if (option.originalText == chosenExercise)
-                                    messageText.text = "Congratulations!<br/>You answered correctly!"
+                                    messageText.text = i18n("Congratulations!<br/>You answered correctly!")
                                 else
-                                    messageText.text = "Ops, not this time!<br/>Try again!"
+                                    messageText.text = i18n("Ops, not this time!<br/>Try again!")
                                 answerHoverExit(0, exerciseController.chosenRootNote() + parseInt(model.sequenceFromRoot), 0)
                                 highlightRightAnswer()
                             }

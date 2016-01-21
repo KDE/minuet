@@ -82,24 +82,24 @@ void Minuet::startTimidity()
 {
     QString error;
     if (!m_midiSequencer->availableOutputPorts().contains(QStringLiteral("TiMidity:0"))) {
-	qCDebug(MINUET) << "Starting TiMidity at" << MinuetSettings::timidityPath().remove(QStringLiteral("file://"));
-	m_timidityProcess.setProgram(MinuetSettings::timidityPath().remove(QStringLiteral("file://")), QStringList() << MinuetSettings::timidityParameters());
+	qCDebug(MINUET) << "Starting TiMidity++ at" << MinuetSettings::timidityLocation().remove(QStringLiteral("file://"));
+	m_timidityProcess.setProgram(MinuetSettings::timidityLocation().remove(QStringLiteral("file://")), QStringList() << MinuetSettings::timidityParameters());
 	m_timidityProcess.start();
 	if (!m_timidityProcess.waitForStarted(-1)) {
 	    error = m_timidityProcess.errorString();
 	}
 	else {
 	    if (!waitForTimidityOutputPorts(3000))
-		error = i18n("error when waiting for TiMidity output ports!");
+		error = i18n("error when waiting for TiMidity++ output ports!");
 	    else
-		qCDebug(MINUET) << "TiMidity started!";
+		qCDebug(MINUET) << "TiMidity++ started!";
 	}
     }
     else {
-	qCDebug(MINUET) << "TiMidity already running!";
+	qCDebug(MINUET) << "TiMidity++ already running!";
     }
     if (!error.isEmpty())
-        KMessageBox::error(this, i18n("Minuet startup"), i18n("There was an error when starting TiMidity: \"%1\". Is another application using the audio system? Also, please check Minuet settings!", error));
+        KMessageBox::error(this, i18n("Minuet startup"), i18n("There was an error when starting TiMidity++: \"%1\". Is another application using the audio system? Also, please check Minuet settings!", error));
 }
 
 bool Minuet::waitForTimidityOutputPorts(int msecs)
@@ -124,11 +124,11 @@ Minuet::~Minuet()
     delete m_quickView;
     delete m_exerciseController;
     m_timidityProcess.kill();
-    qCDebug(MINUET) << "Stoping TiMidity!";
+    qCDebug(MINUET) << "Stoping TiMidity++!";
     if (!m_timidityProcess.waitForFinished(-1))
-        qCDebug(MINUET) << "Error when stoping TiMidity:" << m_timidityProcess.errorString();
+        qCDebug(MINUET) << "Error when stoping TiMidity++:" << m_timidityProcess.errorString();
     else
-	qCDebug(MINUET) << "TiMidity stoped!";
+	qCDebug(MINUET) << "TiMidity++ stoped!";
 }
 
 bool Minuet::queryClose()

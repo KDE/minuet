@@ -14,12 +14,12 @@
    <item row="0" column="0">
     <widget class="QLabel" name="timidityLabel">
      <property name="text">
-      <string>TiMidity++</string>
+      <string>TiMidity++ location:</string>
      </property>
     </widget>
    </item>
    <item row="0" column="1">
-    <widget class="KUrlRequester" name="kcfg_timidityPath"/>
+    <widget class="KUrlRequester" name="kcfg_timidityLocation"/>
    </item>
    <item row="1" column="0">
     <widget class="QLabel" name="timidityParametersLabel">

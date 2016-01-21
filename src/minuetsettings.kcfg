@@ -5,8 +5,8 @@
       http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
   <kcfgfile name="minuetrc"/>
   <group name="MIDI">
-    <entry name="timidityPath" type="String">
-      <label>path to TiMidity++ sequencer</label>
+    <entry name="timidityLocation" type="String">
+      <label>TiMidity++ sequencer location</label>
     </entry>
     <entry name="timidityParameters" type="String">
       <label>TiMidity++ sequencer parameters</label>

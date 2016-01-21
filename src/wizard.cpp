@@ -68,7 +68,7 @@ bool Wizard::isOk() const
 void Wizard::adjustSettings()
 {
     if (!m_timidityPath.isEmpty()) {
-        MinuetSettings::setTimidityPath(m_timidityPath);
+        MinuetSettings::setTimidityLocation(m_timidityPath);
         if (MinuetSettings::timidityParameters().isEmpty())
             MinuetSettings::setTimidityParameters(QStringLiteral("-iA"));
         if (MinuetSettings::midiOutputPort().isEmpty())
@@ -104,7 +104,7 @@ void Wizard::checkSystem()
     if (!timidityConfig.isEmpty()) {
         QFile timidityConfigFile(timidityConfig);
         if (!timidityConfigFile.open(QIODevice::ReadOnly)) {
-            qWarning("Couldn't open TiMidity configuration file.");
+            qWarning("Couldn't open TiMidity++ configuration file.");
             return;
         }
         bool sourceFound = false;
