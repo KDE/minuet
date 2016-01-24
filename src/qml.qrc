@@ -10,7 +10,6 @@
         <file alias="MinuetMenu.qml">qml/MinuetMenu.qml</file>
         <file alias="ExerciseView.qml">qml/ExerciseView.qml</file>
         <file alias="MinuetButtonStyle.qml">qml/MinuetButtonStyle.qml</file>
-        <file alias="MinuetJSUtils.js">qml/MinuetJSUtils.js</file>
         <file alias="main.qml">qml/main.qml</file>
         <file alias="images/minuet-background.png">qml/images/minuet-background.png</file>
         <file alias="images/navigate-next.png">qml/images/navigate-next.png</file>

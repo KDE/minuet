@@ -26,8 +26,6 @@ import QtQuick.Controls.Styles 1.1
 
 import org.kde.plasma.core 2.0 as PlasmaCore
 
-import "MinuetJSUtils.js" as MinuetJSUtils
-
 Item {
     id: minuetMenu
 
@@ -70,7 +68,7 @@ Item {
                 id: delegateRect
                 width: parent.width; height: 55
 
-                text: MinuetJSUtils.readTranslatedValue(modelData, "name")
+                text: i18nc("technical term, do you have a musician friend?", modelData.name)
                 checkable: (!delegateRect.ListView.view.model[index].children) ? true:false
                 onClicked: {
                     var children = delegateRect.ListView.view.model[index].children

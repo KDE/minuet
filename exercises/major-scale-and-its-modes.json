@@ -2,48 +2,39 @@
   "exercises": [
     {
       "name": "Scales",
-      "name[pt_BR]": "Escalas",
       "root": "21..104",
       "playMode": "scale",
       "children": [
         {
             "name": "Major Scale and its Modes",
-            "name[pt_BR]": "Escala Maior e seus Modos",
             "playMode": "scale",
             "options": [
               {
                 "name": "Ionian",
-                "name[pt_BR]": "Jônico",
                 "sequenceFromRoot": "2 4 5 7 9 11 12"
               },
               {
                 "name": "Dorian",
-                "name[pt_BR]": "Dórico",
                 "sequenceFromRoot": "2 3 5 7 9 10 12"
               },
               {
                 "name": "Phrygian",
-                "name[pt_BR]": "Frígio",
                 "sequenceFromRoot": "1 3 5 7 8 10 12"
               },
               {
                 "name": "Lydian",
-                "name[pt_BR]": "Lídio",
                 "sequenceFromRoot": "2 4 6 7 9 11 12"
               },
               {
                 "name": "Mixolydian",
-                "name[pt_BR]": "Mixolídio",
                 "sequenceFromRoot": "2 4 5 7 9 10 12"
               },
               {
                 "name": "Aeolian",
-                "name[pt_BR]": "Eólio",
                 "sequenceFromRoot": "2 3 5 7 8 10 12"
               },
               {
                 "name": "Locrian",
-                "name[pt_BR]": "Lócrio",
                 "sequenceFromRoot": "1 3 5 6 8 10 12"
               }
            ]

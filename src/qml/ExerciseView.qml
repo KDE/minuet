@@ -23,8 +23,6 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3
 
-import "MinuetJSUtils.js" as MinuetJSUtils
-
 Item {
     id: exerciseView
 
@@ -134,7 +132,7 @@ Item {
 
                             property string originalText: model.name;
 
-                            text: MinuetJSUtils.readTranslatedValue(model, "name")
+                            text: i18nc("technical term, do you have a musician friend?", model.name)
                             width: parent.width
                             anchors.centerIn: parent
                             horizontalAlignment: Qt.AlignHCenter
