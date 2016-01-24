@@ -83,7 +83,7 @@ Item {
             Button {
                 id: newQuestionButton
 
-                width: 120; height: 40
+                width: 124; height: 44
                 text: i18n("new question")
                 onClicked: {
                     chosenExercise = exerciseController.randomlyChooseExercise()
@@ -96,14 +96,14 @@ Item {
             Button {
                 id: playQuestionButton
 
-                width: 120; height: 40
+                width: 124; height: 44
                 text: i18n("play question")
                 onClicked: exerciseController.playChoosenExercise()
             }
             Button {
                 id: giveUpButton
 
-                width: 120; height: 40
+                width: 124; height: 44
                 text: i18n("give up")
                 onClicked: highlightRightAnswer()
             }
