@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Minuet
 Name[ca]=Minuet
+Name[en_GB]=Minuet
 Name[gl]=Minuet
 Name[nl]=Minuet
 Name[pl]=Minuet
@@ -15,6 +16,7 @@ Type=Application
 X-DocPath=minuet/index.html
 GenericName=Music Education Software
 GenericName[ca]=Programari d'educació musical
+GenericName[en_GB]=Music Education Software
 GenericName[gl]=Software de ensino musical
 GenericName[nl]=Software voor muziekonderwijs
 GenericName[pl]=Muzyczne oprogramowanie edukacyjne 
