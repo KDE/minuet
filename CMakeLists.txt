@@ -34,3 +34,5 @@ add_subdirectory(doc)
 add_subdirectory(src)
 add_subdirectory(icons)
 add_subdirectory(exercises)
+
+install(FILES org.kde.minuet.appdata.xml DESTINATION ${SHARE_INSTALL_PREFIX}/appdata/)
