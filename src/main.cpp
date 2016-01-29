@@ -22,6 +22,8 @@
 
 #include "minuet.h"
 
+#include "minuet_version.h"
+
 #include <KCrash/KCrash>
 #include <KCoreAddons/KAboutData>
 
@@ -42,7 +44,7 @@ int main(int argc, char **argv)
     KLocalizedString::setApplicationDomain("minuet");
     KAboutData aboutData( QStringLiteral("minuet"),
                           i18n("Minuet"),
-                          QStringLiteral("0.1"),
+                          QStringLiteral(MINUET_VERSION_STRING),
                           i18n("A KDE application for music education"),
                           KAboutLicense::GPL,
                           i18n("(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"));
