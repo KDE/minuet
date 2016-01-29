@@ -21,6 +21,8 @@
 ****************************************************************************/
 
 import QtQuick 2.4
+import "pianoview"
+import "midiplayer"
 
 Item {
     property int menuBarWidth: 280
@@ -41,7 +43,7 @@ Item {
 
         width: parent.width - menuBarWidth; height: parent.height
         anchors.right: parent.right
-        source: "qrc:/images/minuet-background.png"
+        source: "images/minuet-background.png"
         fillMode: Image.Tile
         clip: true
 

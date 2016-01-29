@@ -87,19 +87,19 @@ Rectangle {
             id: item12
 
             anchors { top: playbackTime.bottom; horizontalCenter: playbackTime.horizontalCenter }
-            source: "qrc:/images/multimedia-pause.png"
+            source: "../images/multimedia-pause.png"
             text: i18n("Pause")
             onActivated: sequencer.pause()
         }
         MultimediaButton {
             anchors { top: playbackTime.bottom; right: item12.left; rightMargin: -2 }
-            source: "qrc:/images/multimedia-play.png"
+            source: "../images/multimedia-play.png"
             text: i18n("Play")
             onActivated: sequencer.play()
         }
         MultimediaButton {
             anchors { top: playbackTime.bottom; left: item12.right; leftMargin: -2 }
-            source: "qrc:/images/multimedia-stop.png"
+            source: "../images/multimedia-stop.png"
             text: i18n("Stop")
             onActivated: sequencer.stop()
         }
@@ -115,17 +115,17 @@ Rectangle {
             anchors.right: parent.right
             spacing: 8
             MultimediaSlider {
-                source: "qrc:/images/multimedia-pitch.png"
+                source: "../images/multimedia-pitch.png"
                 maximumValue: 12; minimumValue: -12; value: 0
                 onValueChanged: sequencer.setPitchShift(value)
             }
             MultimediaSlider {
-                source: "qrc:/images/multimedia-speed.png"
+                source: "../images/multimedia-speed.png"
                 maximumValue: 200; minimumValue: 50; value: 100
                 onValueChanged: sequencer.setTempoFactor(value)
             }
             MultimediaSlider {
-                source: "qrc:/images/multimedia-volume.png"
+                source: "../images/multimedia-volume.png"
                 maximumValue: 200; value: 100
                 onValueChanged: sequencer.setVolumeFactor(value)
             }

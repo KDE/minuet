@@ -54,7 +54,7 @@ Minuet::Minuet() :
     m_quickView->engine()->rootContext()->setContextProperty(QStringLiteral("exerciseCategories"), m_exerciseController->exercises()[QStringLiteral("exercises")].toArray());
     m_quickView->engine()->rootContext()->setContextProperty(QStringLiteral("sequencer"), m_midiSequencer);
     m_quickView->engine()->rootContext()->setContextProperty(QStringLiteral("exerciseController"), m_exerciseController);
-    m_quickView->setSource(QUrl(QStringLiteral("qrc:/main.qml")));
+    m_quickView->setSource(QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::DataLocation, QStringLiteral("qml/Main.qml"))));
     m_quickView->setResizeMode(QQuickView::SizeRootObjectToView);
     setCentralWidget(QWidget::createWindowContainer(m_quickView, this));
 

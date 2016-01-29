@@ -10,8 +10,6 @@ set(minuet_SRCS
     exercisecontroller.cpp
 )
 
-qt5_add_resources(minuet_SRCS qml.qrc)
-
 kconfig_add_kcfg_files(minuet_SRCS minuetsettings.kcfgc)
 ki18n_wrap_ui(minuet_SRCS
     settingsmidi.ui
@@ -36,5 +34,6 @@ target_link_libraries(minuet
 )
 
 install(TARGETS minuet ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(DIRECTORY qml DESTINATION ${KDE_INSTALL_DATADIR}/minuet)
 install(PROGRAMS org.kde.minuet.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 install(FILES minuetui.rc DESTINATION ${KXMLGUI_INSTALL_DIR}/minuet)
