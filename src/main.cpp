@@ -22,6 +22,7 @@
 
 #include "minuet.h"
 
+#include <KCrash/KCrash>
 #include <KCoreAddons/KAboutData>
 
 #include <QCommandLineParser>
@@ -35,6 +36,8 @@ Q_LOGGING_CATEGORY(MINUET, "minuet")
 int main(int argc, char **argv)
 {
     QApplication application(argc, argv);
+
+    KCrash::initialize();
 
     KLocalizedString::setApplicationDomain("minuet");
     KAboutData aboutData( QStringLiteral("minuet"),

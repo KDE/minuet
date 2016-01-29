@@ -28,6 +28,7 @@ target_link_libraries(minuet
     KF5::XmlGui
     KF5::ConfigWidgets
     KF5::KIOWidgets
+    KF5::Crash
     drumstick-file
     drumstick-alsa
     asound

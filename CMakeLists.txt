@@ -21,6 +21,7 @@ find_package(KF5 REQUIRED COMPONENTS
     ConfigWidgets
     DocTools
     KIO
+    Crash
 )
 
 find_package(Drumstick REQUIRED COMPONENTS Alsa File)
