@@ -23,15 +23,13 @@ target_link_libraries(minuet
     Qt5::Gui
     Qt5::Widgets
     Qt5::Quick
-    KF5::CoreAddons
     KF5::I18n
     KF5::XmlGui
-    KF5::ConfigWidgets
     KF5::KIOWidgets
     KF5::Crash
-    drumstick-file
-    drumstick-alsa
     asound
+    drumstick-alsa
+    drumstick-file
 )
 
 install(TARGETS minuet ${INSTALL_TARGETS_DEFAULT_ARGS})

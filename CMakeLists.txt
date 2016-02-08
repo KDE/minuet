@@ -29,13 +29,11 @@ ecm_setup_version(${KDE_APPLICATIONS_VERSION} VARIABLE_PREFIX MINUET
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Widgets Quick)
 
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
-    CoreAddons
     I18n
     XmlGui
-    ConfigWidgets
-    DocTools
     KIO
     Crash
+    DocTools
 )
 
 find_package(PkgConfig REQUIRED)
@@ -43,6 +41,15 @@ if(PKG_CONFIG_FOUND)
     message(STATUS "Program pkg-config found (${PKG_CONFIG_EXECUTABLE})")
 else()
     message(FATAL_ERROR "Program pkg-config not found")
+endif()
+
+pkg_check_modules(ALSA REQUIRED alsa>=1.0.0)
+if(ALSA_FOUND)
+    link_directories(${ALSA_LIBDIR})
+    include_directories(${ALSA_INCLUDEDIR})
+    #link_libraries(${ALSA_LIBRARIES})
+else()
+    message(FATAL_ERROR "Please install ALSA library and headers (libasound2)")
 endif()
 
 pkg_check_modules(DRUMSTICK_ALSA REQUIRED drumstick-alsa>=1.0.1)
@@ -61,15 +68,6 @@ if(DRUMSTICK_FILE_FOUND)
     #link_libraries(${DRUMSTICK_FILE_LIBRARIES})
 else()
     message(FATAL_ERROR "Please install drumstick libraries and headers (package drumstick-devel)")
-endif()
-
-pkg_check_modules(ALSA REQUIRED alsa>=1.0.0)
-if(ALSA_FOUND)
-    link_directories(${ALSA_LIBDIR})
-    include_directories(${ALSA_INCLUDEDIR})
-    #link_libraries(${ALSA_LIBRARIES})
-else()
-    message(FATAL_ERROR "Please install ALSA library and headers (libasound2)")
 endif()
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
