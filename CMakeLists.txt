@@ -13,7 +13,7 @@ set(QT_MIN_VERSION "5.5.0")
 set(KF5_MIN_VERSION "5.18.0")
 
 find_package(ECM ${ECM_MIN_VERSION} CONFIG REQUIRED)
-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
 include(ECMSetupVersion)
 include(ECMInstallIcons)
@@ -38,10 +38,39 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     Crash
 )
 
-find_package(Drumstick REQUIRED COMPONENTS Alsa File)
+find_package(PkgConfig REQUIRED)
+if(PKG_CONFIG_FOUND)
+    message(STATUS "Program pkg-config found (${PKG_CONFIG_EXECUTABLE})")
+else()
+    message(FATAL_ERROR "Program pkg-config not found")
+endif()
 
-MESSAGE(STATUS "Drumstick_FOUND: " ${Drumstick_FOUND} ${DRUMSTICK_LIBRARIES})
-MESSAGE(STATUS "DrumstickFile_FOUND: " ${DrumstickFile_FOUND} ${DRUMSTICK_LIBRARIES})
+pkg_check_modules(DRUMSTICK_ALSA REQUIRED drumstick-alsa>=1.0.2)
+if(DRUMSTICK_ALSA_FOUND)
+    link_directories(${DRUMSTICK_ALSA_LIBDIR})
+    include_directories(${DRUMSTICK_ALSA_INCLUDEDIR})
+    #link_libraries(${DRUMSTICK_ALSA_LIBRARIES})
+else()
+    message(FATAL_ERROR "Please install drumstick libraries and headers (package drumstick-devel)")
+endif()
+
+pkg_check_modules(DRUMSTICK_FILE REQUIRED drumstick-file>=1.0.2)
+if(DRUMSTICK_FILE_FOUND)
+    link_directories(${DRUMSTICK_FILE_LIBDIR})
+    include_directories(${DRUMSTICK_FILE_INCLUDEDIR})
+    #link_libraries(${DRUMSTICK_FILE_LIBRARIES})
+else()
+    message(FATAL_ERROR "Please install drumstick libraries and headers (package drumstick-devel)")
+endif()
+
+pkg_check_modules(ALSA REQUIRED alsa>=1.1.0)
+if(ALSA_FOUND)
+    link_directories(${ALSA_LIBDIR})
+    include_directories(${ALSA_INCLUDEDIR})
+    #link_libraries(${ALSA_LIBRARIES})
+else()
+    message(FATAL_ERROR "Please install ALSA library and headers (libasound2)")
+endif()
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
