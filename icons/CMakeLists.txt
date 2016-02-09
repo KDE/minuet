@@ -3,6 +3,7 @@ set(minuet_ICONS
   22-apps-minuet.png
   32-apps-minuet.png
   48-apps-minuet.png
+  64-apps-minuet.png
   sc-apps-minuet.svgz
 )
 
