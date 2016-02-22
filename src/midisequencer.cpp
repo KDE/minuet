@@ -178,7 +178,7 @@ QStringList MidiSequencer::availableOutputPorts() const
 
 void MidiSequencer::play()
 {
-    if (!m_song->isEmpty() && !m_midiSequencerOutputThread->isRunning()) {
+    if (m_song && !m_song->isEmpty() && !m_midiSequencerOutputThread->isRunning()) {
         if (m_eventSchedulingMode == EXPLICIT)
             m_midiSequencerOutputThread->setSong(m_song);
         m_midiSequencerOutputThread->start();
