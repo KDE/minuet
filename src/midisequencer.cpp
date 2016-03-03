@@ -185,8 +185,10 @@ void MidiSequencer::resetTimer()
 void MidiSequencer::play()
 {
     if (m_song && !m_song->isEmpty() && !m_midiSequencerOutputThread->isRunning()) {
-        if (m_eventSchedulingMode == EXPLICIT)
-            m_midiSequencerOutputThread->setSong(m_song);
+        if (m_eventSchedulingMode == EXPLICIT) {
+            if(m_midiSequencerOutputThread->getInitialPosition() == 0 || !m_midiSequencerOutputThread->hasNext())
+                m_midiSequencerOutputThread->setSong(m_song);
+        }
         m_midiSequencerOutputThread->start();
     }
 }
