@@ -95,6 +95,7 @@ private Q_SLOTS:
     void eventReceived(drumstick::SequencerEvent *ev);
 
     void outputThreadStopped();
+    void resetTimer();
 
 private:
     void appendEvent(drumstick::SequencerEvent *ev);

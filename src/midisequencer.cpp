@@ -105,6 +105,7 @@ MidiSequencer::MidiSequencer(QObject *parent) :
     // OutputThread
     m_midiSequencerOutputThread = new MidiSequencerOutputThread(m_client, m_outputPortId);
     connect(m_midiSequencerOutputThread, &MidiSequencerOutputThread::stopped, this, &MidiSequencer::outputThreadStopped);
+    connect(m_midiSequencerOutputThread, &MidiSequencerOutputThread::finished, this, &MidiSequencer::resetTimer);
 
     // Subscribe to Minuet's virtual piano
     try {
@@ -174,6 +175,11 @@ QStringList MidiSequencer::availableOutputPorts() const
         availableOutputPorts << QStringLiteral("%1:%2").arg(p.getClientName()).arg(p.getPort());
     }
     return availableOutputPorts;
+}
+
+void MidiSequencer::resetTimer()
+{
+    emit timeLabelChanged(QStringLiteral("00:00.00"));
 }
 
 void MidiSequencer::play()
