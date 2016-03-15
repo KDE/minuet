@@ -114,7 +114,7 @@ void MidiSequencerOutputThread::setVolumeFactor(unsigned int vol)
     }
 }
 
-void MidiSequencerOutputThread::setPitchShift(unsigned int value)
+void MidiSequencerOutputThread::setPitchShift(int value)
 {
     bool playing = isRunning();
     if (playing) {

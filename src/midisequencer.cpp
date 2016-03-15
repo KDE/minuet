@@ -233,7 +233,7 @@ void MidiSequencer::setTempoFactor(unsigned int value)
     emit tempoChanged(queueTempo.getRealBPM());
 }
 
-void MidiSequencer::setPitchShift(unsigned int value)
+void MidiSequencer::setPitchShift(int value)
 {
     m_midiSequencerOutputThread->setPitchShift(value);
     emit allNotesOff();

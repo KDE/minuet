@@ -46,7 +46,7 @@ public:
 
     void setSong(Song *song);
     void setVolumeFactor(unsigned int vol);
-    void setPitchShift(unsigned int value);
+    void setPitchShift(int value);
     void setPosition(unsigned int pos);
     void resetPosition();
 
@@ -64,7 +64,7 @@ private:
     drumstick::SequencerEvent *m_lastEvent;
     int m_volume[MIDI_CHANNELS];
     unsigned int m_volumeFactor;
-    unsigned int m_pitchShift;
+    int m_pitchShift;
     QListIterator<drumstick::SequencerEvent *>* m_songIterator;
 };
 

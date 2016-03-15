@@ -65,7 +65,7 @@ Q_SIGNALS:
     void timeLabelChanged(QString timeLabel);
     void volumeChanged(unsigned int vol);
     void tempoChanged(unsigned int vol);
-    void pitchChanged(unsigned int vol);
+    void pitchChanged(int vol);
     
 public Q_SLOTS:
     void play();
@@ -73,7 +73,7 @@ public Q_SLOTS:
     void stop();
     void setVolumeFactor(unsigned int vol);
     void setTempoFactor(unsigned int value);
-    void setPitchShift(unsigned int value);
+    void setPitchShift(int value);
     void setSong(Song *song);
     
     // Slots for events generated when reading a MIDI file
