@@ -48,13 +48,16 @@ MidiSequencer::MidiSequencer(QObject *parent) :
     try {
         m_client->open();
     } catch (const drumstick::SequencerError &err) {
-        KMessageBox::error(qobject_cast<QWidget*>(this->parent()), i18n("Minuet startup"), i18n("Fatal error from the ALSA sequencer: \"%1\". "
-            "This usually happens when the kernel doesn't have ALSA support, "
-            "or the device node (/dev/snd/seq) doesn't exists, "
-            "or the kernel module (snd_seq) is not loaded. "
-            "Please check your ALSA/MIDI configuration."
-        , err.qstrError()));
-        QApplication::exit(-1);
+        KMessageBox::error(qobject_cast<QWidget*>(this->parent()), i18n("Fatal error from the ALSA sequencer: \"%1\". "
+                "This usually happens when the kernel doesn't have ALSA support, "
+                "or the device node (/dev/snd/seq) doesn't exists, "
+                "or the kernel module (snd_seq) is not loaded, "
+                "or the user isn't a member of audio group. "
+                "Please check your ALSA/MIDI configuration."
+                , err.qstrError()),
+            i18n("Minuet startup"));
+        m_eventSchedulingMode = DAMAGED;
+        return;
     }
     m_client->setClientName(QStringLiteral("MinuetSequencer"));
     m_client->setPoolOutput(50);
@@ -175,6 +178,11 @@ QStringList MidiSequencer::availableOutputPorts() const
         availableOutputPorts << QStringLiteral("%1:%2").arg(p.getClientName()).arg(p.getPort());
     }
     return availableOutputPorts;
+}
+
+MidiSequencer::EventSchedulingMode MidiSequencer::schedulingMode() const
+{
+    return m_eventSchedulingMode;
 }
 
 void MidiSequencer::resetTimer()

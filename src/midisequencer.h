@@ -46,16 +46,18 @@ public:
     explicit MidiSequencer(QObject *parent = 0);
     virtual ~MidiSequencer();
 
+    enum EventSchedulingMode {
+        FROM_ENGINE = 0,
+        EXPLICIT,
+        DAMAGED
+    };
+
     void subscribeTo(const QString &portName);
     void openFile(const QString &fileName);
     void appendEvent(drumstick::SequencerEvent *ev, unsigned long tick);
     QStringList availableOutputPorts() const;
+    EventSchedulingMode schedulingMode() const;
     
-    enum EventSchedulingMode {
-        FROM_ENGINE = 0,
-        EXPLICIT
-    };
-
 Q_SIGNALS:
     void noteOn(int chan, int pitch, int vel);
     void noteOff(int chan, int pitch, int vel);

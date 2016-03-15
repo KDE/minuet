@@ -47,13 +47,20 @@ Minuet::Minuet() :
     m_quickView(new QQuickView),
     m_initialGroup(KSharedConfig::openConfig(), "version")
 {
-    if (!m_exerciseController->configureExercises())
-        KMessageBox::error(0, i18n("Minuet startup"),
-                                 i18n("There was an error when parsing exercises JSON files: \"%1\".", m_exerciseController->errorString()));
+    if (m_midiSequencer->schedulingMode() == MidiSequencer::DAMAGED) {
+        QTimer::singleShot(0, qApp, SLOT(quit()));
+        return;
+    }
 
-    m_quickView->engine()->rootContext()->setContextProperty(QStringLiteral("exerciseCategories"), m_exerciseController->exercises()[QStringLiteral("exercises")].toArray());
-    m_quickView->engine()->rootContext()->setContextProperty(QStringLiteral("sequencer"), m_midiSequencer);
-    m_quickView->engine()->rootContext()->setContextProperty(QStringLiteral("exerciseController"), m_exerciseController);
+    if (!m_exerciseController->configureExercises())
+        KMessageBox::error(this,
+                           i18n("There was an error when parsing exercises JSON files: \"%1\".", m_exerciseController->errorString()),
+                           i18n("Minuet startup"));
+
+    QQmlContext *rootContext = m_quickView->engine()->rootContext();
+    rootContext->setContextProperty(QStringLiteral("exerciseCategories"), m_exerciseController->exercises()[QStringLiteral("exercises")].toArray());
+    rootContext->setContextProperty(QStringLiteral("sequencer"), m_midiSequencer);
+    rootContext->setContextProperty(QStringLiteral("exerciseController"), m_exerciseController);
     m_quickView->setSource(QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::DataLocation, QStringLiteral("qml/Main.qml"))));
     m_quickView->setResizeMode(QQuickView::SizeRootObjectToView);
     setCentralWidget(QWidget::createWindowContainer(m_quickView, this));
@@ -99,7 +106,11 @@ void Minuet::startTimidity()
 	qCDebug(MINUET) << "TiMidity++ already running!";
     }
     if (!error.isEmpty())
-        KMessageBox::error(this, i18n("Minuet startup"), i18n("There was an error when starting TiMidity++: \"%1\". Is another application using the audio system? Also, please check Minuet settings!", error));
+        KMessageBox::error(this,
+                           i18n("There was an error when starting TiMidity++: \"%1\". "
+                                "Is another application using the audio system? "
+                                "Also, please check Minuet settings!", error),
+                           i18n("Minuet startup"));
 }
 
 bool Minuet::waitForTimidityOutputPorts(int msecs)

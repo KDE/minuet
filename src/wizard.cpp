@@ -120,6 +120,7 @@ void Wizard::checkSystem()
            }
         }
         timidityConfigFile.close();
+        m_systemCheckIsOk = true;
         if (!sourceFound) {
             item = addTreeWidgetItem(i18n("A TiMidity++ sound source"), i18n("No TiMidity++ sound source found! Sounds won't work!"));
             item->setIcon(0, m_badIcon);
@@ -129,7 +130,6 @@ void Wizard::checkSystem()
         item->setIcon(0, m_badIcon);
 	return;
     }
-    m_systemCheckIsOk = true;
 }
 
 QTreeWidgetItem *Wizard::addTreeWidgetItem(const QString &text, const QString &subText)
