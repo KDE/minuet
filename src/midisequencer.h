@@ -75,7 +75,8 @@ public Q_SLOTS:
     void setTempoFactor(unsigned int value);
     void setPitchShift(int value);
     void setSong(Song *song);
-    
+    void clearSong();
+
     // Slots for events generated when reading a MIDI file
     void SMFHeader(int format, int ntrks, int division);
     drumstick::SequencerEvent *SMFNoteOn(int chan, int pitch, int vel);

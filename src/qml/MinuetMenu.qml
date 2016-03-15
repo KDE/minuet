@@ -48,6 +48,7 @@ Item {
         iconName: "go-previous"
         onClicked: {
             sequencer.allNotesOff()
+	    sequencer.clearSong()
             minuetMenu.backspacePressed()
             selectedMenuItem = null
             stackView.pop()

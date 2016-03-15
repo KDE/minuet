@@ -157,6 +157,15 @@ void MidiSequencer::openFile(const QString &fileName)
     m_midiSequencerOutputThread->setSong(m_song);
 }
 
+void MidiSequencer::clearSong()
+{
+    if(m_eventSchedulingMode == EXPLICIT)
+    {
+        stop();
+        m_song->clear();
+    }
+}
+
 void MidiSequencer::appendEvent(drumstick::SequencerEvent *ev, unsigned long tick)
 {
     ev->setSource(m_outputPortId);
