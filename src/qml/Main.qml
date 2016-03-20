@@ -62,6 +62,7 @@ Item {
     Component.onCompleted: {
         minuetMenu.onBackspacePressed.connect(exerciseView.clearExerciseGrid)
         minuetMenu.onItemChanged.connect(exerciseView.itemChanged)
+        minuetMenu.typeSelected.connect(exerciseView.typeSelected)
 
         sequencer.noteOn.connect(pianoView.noteOn)
         sequencer.noteOff.connect(pianoView.noteOff)

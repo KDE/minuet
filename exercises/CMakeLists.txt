@@ -1,8 +1,8 @@
 set(minuet_CLASSES
-    ascending-melodic-intervals.json
-    descending-melodic-intervals.json
-    major-scale-and-its-modes.json
+    intervals-ascending-melodic.json
+    intervals-descending-melodic.json
     chords-root-position.json
+    scales-major-and-its-modes.json
 )
 
 install(FILES ${minuet_CLASSES} DESTINATION ${KDE_INSTALL_DATADIR}/minuet/exercises)
