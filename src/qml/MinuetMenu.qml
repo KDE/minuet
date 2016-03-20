@@ -33,6 +33,7 @@ Item {
 
     signal backspacePressed
     signal itemChanged(var model)
+    signal typeSelected(string type)
 
     function itemClicked(delegateRect, index) {
         var model = delegateRect.ListView.view.model[index].options
@@ -52,6 +53,8 @@ Item {
             minuetMenu.backspacePressed()
             selectedMenuItem = null
             stackView.pop()
+            if (stackView.depth == 1)
+                typeSelected("exercise")
         }
     }
     StackView {
@@ -72,6 +75,9 @@ Item {
                 text: i18nc("technical term, do you have a musician friend?", modelData.name)
                 checkable: (!delegateRect.ListView.view.model[index].children) ? true:false
                 onClicked: {
+                    var type = delegateRect.ListView.view.model[index].type
+                    if (type != undefined)
+                        typeSelected(type)
                     var children = delegateRect.ListView.view.model[index].children
                     if (!children) {
                         if (selectedMenuItem != undefined) selectedMenuItem.checked = false

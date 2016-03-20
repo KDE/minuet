@@ -27,6 +27,7 @@ Item {
     id: exerciseView
 
     property string chosenExercise
+    property string selectedType: "exercise"
     property Item answerRectangle
 
     signal answerHoverEnter(var chan, var pitch, var vel, var color)
@@ -62,6 +63,9 @@ Item {
         exerciseView.visible = true
         exerciseView.state = "initial"
     }
+    function typeSelected(type) {
+        selectedType = type
+    }
 
     visible: false
 
@@ -75,7 +79,7 @@ Item {
             horizontalAlignment: Text.AlignHCenter
             font.pointSize: 18
             textFormat: Text.RichText
-            text: i18n("Hear the interval and then choose an answer from options below!<br/>Click 'play question' if you want to hear again!")
+            text: i18n("Hear the %1 and then choose an answer from options below!<br/>Click 'play question' if you want to hear again!", selectedType)
         }
         Row {
             anchors { horizontalCenter: parent.horizontalCenter }
