@@ -1,0 +1,33 @@
+{
+  "exercises": [
+    {
+      "name": "Rhythm",
+      "playMode": "rhythm",
+      "type": "rhythm",
+      "template": "lilypond-templates/rhythm.ly.tmpl",
+      "children": [
+        {
+            "name": "Easy",
+            "options": [
+              {
+                "name": "quarter",
+                "sequence": "4"
+              },
+              {
+                "name": "eighth-eighth",
+                "sequence": "8 8"
+              },
+              {
+                "name": "eighth-dot-sixteenth",
+                "sequence": "8. 16"
+              },
+              {
+                "name": "sixteenth-eigth-dot",
+                "sequence": "16 8."
+              }
+           ]
+        }
+      ]
+    }
+  ]
+}

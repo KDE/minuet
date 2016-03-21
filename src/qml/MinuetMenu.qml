@@ -30,10 +30,11 @@ Item {
     id: minuetMenu
 
     property Item selectedMenuItem
+    property string type
 
-    signal backspacePressed
+    signal breadcrumbPressed
     signal itemChanged(var model)
-    signal typeSelected(string type)
+    signal exerciseTypeChanged(string type)
 
     function itemClicked(delegateRect, index) {
         var model = delegateRect.ListView.view.model[index].options
@@ -50,11 +51,12 @@ Item {
         onClicked: {
             sequencer.allNotesOff()
 	    sequencer.clearSong()
-            minuetMenu.backspacePressed()
+            minuetMenu.breadcrumbPressed()
             selectedMenuItem = null
             stackView.pop()
+            exerciseTypeChanged("exercise")
             if (stackView.depth == 1)
-                typeSelected("exercise")
+                type = "exercise"
         }
     }
     StackView {
@@ -75,12 +77,13 @@ Item {
                 text: i18nc("technical term, do you have a musician friend?", modelData.name)
                 checkable: (!delegateRect.ListView.view.model[index].children) ? true:false
                 onClicked: {
-                    var type = delegateRect.ListView.view.model[index].type
-                    if (type != undefined)
-                        typeSelected(type)
+                    var exerciseType = delegateRect.ListView.view.model[index].type
+                    if (exerciseType != undefined)
+                        type = exerciseType
                     var children = delegateRect.ListView.view.model[index].children
                     if (!children) {
                         if (selectedMenuItem != undefined) selectedMenuItem.checked = false
+                        exerciseTypeChanged(type)
                         itemClicked(delegateRect, index)
                         selectedMenuItem = delegateRect
                     }
@@ -93,8 +96,13 @@ Item {
                         }
                         var playMode = delegateRect.ListView.view.model[index].playMode
                         if (playMode != undefined) {
-                            if (playMode == "scale" ) exerciseController.setPlayMode(0) // ScalePlayMode
-                            if (playMode == "chord" ) exerciseController.setPlayMode(1) // ChordPlayMode
+                            if (playMode == "scale") exerciseController.setPlayMode(0) // ScalePlayMode
+                            if (playMode == "chord") exerciseController.setPlayMode(1) // ChordPlayMode
+                            exerciseController.setAnswerLength(1)
+                            if (playMode == "rhythm") {
+                                exerciseController.setPlayMode(2) // RhythmPlayMode
+                                exerciseController.setAnswerLength(4)
+                            }
                         }
                     }
                 }

@@ -25,7 +25,18 @@ import "pianoview"
 import "midiplayer"
 
 Item {
+    id: mainItem
+
     property int menuBarWidth: 280
+
+    function exerciseTypeChanged(type) {
+        pianoView.visible = (type != "rhythm" && type != "exercise")
+        rhythmAnswerView.visible = (type == "rhythm")
+    }
+    function exerciseViewStateChanged(state) {
+        if (state == "waitingForAnswer")
+            rhythmAnswerView.resetAnswers()
+    }
 
     MinuetMenu {
         id: minuetMenu
@@ -50,6 +61,14 @@ Item {
         PianoView {
             id: pianoView
             anchors { bottom: parent.bottom; bottomMargin: 5; horizontalCenter: parent.horizontalCenter }
+
+            visible: false
+        }
+        RhythmAnswerView {
+            id: rhythmAnswerView
+            anchors { bottom: parent.bottom; bottomMargin: 5; horizontalCenter: parent.horizontalCenter }
+
+            visible: false
         }
         ExerciseView {
             id: exerciseView
@@ -60,9 +79,11 @@ Item {
     }
 
     Component.onCompleted: {
-        minuetMenu.onBackspacePressed.connect(exerciseView.clearExerciseGrid)
-        minuetMenu.onItemChanged.connect(exerciseView.itemChanged)
-        minuetMenu.typeSelected.connect(exerciseView.typeSelected)
+        minuetMenu.breadcrumbPressed.connect(exerciseView.clearExerciseGrid)
+        minuetMenu.breadcrumbPressed.connect(rhythmAnswerView.resetAnswers)
+        minuetMenu.itemChanged.connect(exerciseView.itemChanged)
+        minuetMenu.exerciseTypeChanged.connect(exerciseView.changeExerciseType)
+        minuetMenu.exerciseTypeChanged.connect(mainItem.exerciseTypeChanged)
 
         sequencer.noteOn.connect(pianoView.noteOn)
         sequencer.noteOff.connect(pianoView.noteOff)
@@ -75,5 +96,10 @@ Item {
 
         exerciseView.answerHoverEnter.connect(pianoView.noteMark)
         exerciseView.answerHoverExit.connect(pianoView.noteUnmark)
+        exerciseView.answerClicked.connect(rhythmAnswerView.answerClicked)
+        exerciseView.onStateChanged.connect(mainItem.exerciseViewStateChanged)
+        exerciseView.showCorrectAnswer.connect(rhythmAnswerView.showCorrectAnswer)
+
+        rhythmAnswerView.answerCompleted.connect(exerciseView.checkAnswers)
     }
 }

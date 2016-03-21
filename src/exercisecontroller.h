@@ -40,14 +40,16 @@ public:
     
     enum PlayMode {
         ScalePlayMode = 0,
-        ChordPlayMode
+        ChordPlayMode,
+        RhythmPlayMode
     };
 
     Q_INVOKABLE void setExerciseOptions(QJsonArray exerciseOptions);
     Q_INVOKABLE void setMinRootNote(unsigned int minRootNote);
     Q_INVOKABLE void setMaxRootNote(unsigned int maxRootNote);
     Q_INVOKABLE void setPlayMode(PlayMode playMode);
-    Q_INVOKABLE QString randomlyChooseExercise();
+    Q_INVOKABLE void setAnswerLength(unsigned int answerLength);
+    Q_INVOKABLE QStringList randomlyChooseExercises();
     Q_INVOKABLE unsigned int chosenRootNote();
     Q_INVOKABLE void playChoosenExercise();
 
@@ -62,11 +64,12 @@ private:
     MidiSequencer *m_midiSequencer;
     QJsonObject m_exercises;
     QJsonArray m_exerciseOptions;
-    unsigned int m_chosenExercise;
-    unsigned int m_chosenRootNote;
     unsigned int m_minRootNote;
     unsigned int m_maxRootNote;
     PlayMode m_playMode;
+    unsigned int m_answerLength;
+    unsigned int m_chosenRootNote;
+    unsigned int m_chosenExercise;
     QString m_errorString;
 };
 
