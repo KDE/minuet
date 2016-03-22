@@ -31,6 +31,8 @@ Column {
         "exercise-images/unknown-rhythm.png"
     ]
     property int currentAnswer: 0
+    property var correctAnswers
+    property ExerciseView exerciseView
 
     signal answerCompleted(var answers)
 
@@ -38,10 +40,14 @@ Column {
         var temp = answers
         temp[currentAnswer] = answerImageSource
         currentAnswer++
-        if (currentAnswer == 4)
+        if (currentAnswer == 4) {
             answerCompleted(answers)
-        else
+            for (var i = 0; i < 4; ++i)
+                correctAnswerGrid.children[i].opacity = answers[i].toString().split("/").pop().split(".")[0] != correctAnswers[i] ? 1:0
+        }
+        else {
             temp[currentAnswer] = "exercise-images/current-rhythm.png"
+        }
         answers = temp
     }
     function resetAnswers() {
@@ -57,9 +63,39 @@ Column {
         for (var i = 0; i < 4; ++i)
             temp[i] = "exercise-images/" + chosenExercise[i] + ".png"
         answers = temp
+        backspaceButton.enabled = false
+    }
+    function fillCorrectAnswerGrid() {
+        for (var i = 0; i < 4; ++i)
+            correctAnswerGrid.children[i].opacity = 0
+        correctAnswers = exerciseView.chosenExercises
     }
 
-    spacing: 5
+    spacing: 10
+
+    Row {
+        id: correctAnswerGrid
+
+        anchors.horizontalCenter: parent.horizontalCenter
+        spacing: 10
+        Repeater {
+            model: 4
+
+            Rectangle {
+                id: correctAnswerRectangle
+
+                opacity: 0
+                width: 89; height: 59
+                Image {
+                    id: correctRhythmImage
+                    anchors.centerIn: parent
+
+                    source: (correctAnswers != undefined) ? "exercise-images/" + correctAnswers[index] + ".png":""
+                    fillMode: Image.Pad
+                }
+            }
+        }
+    }
 
     Rectangle {
         id: answerRect
@@ -105,7 +141,9 @@ Column {
         }
     }
     Button {
-        width: answerRect.width
+        id: backspaceButton
+
+        width: answerRect.width; height: 44
         anchors.horizontalCenter: parent.horizontalCenter
         text: i18n("backspace")
         enabled: currentAnswer > 0 && currentAnswer < 4

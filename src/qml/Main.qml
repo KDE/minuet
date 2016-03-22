@@ -66,9 +66,10 @@ Item {
         }
         RhythmAnswerView {
             id: rhythmAnswerView
-            anchors { bottom: parent.bottom; bottomMargin: 8; horizontalCenter: parent.horizontalCenter }
+            anchors { bottom: parent.bottom; bottomMargin: 14; horizontalCenter: parent.horizontalCenter }
 
             visible: false
+            exerciseView: exerciseView
         }
         ExerciseView {
             id: exerciseView
@@ -99,6 +100,7 @@ Item {
         exerciseView.answerClicked.connect(rhythmAnswerView.answerClicked)
         exerciseView.onStateChanged.connect(mainItem.exerciseViewStateChanged)
         exerciseView.showCorrectAnswer.connect(rhythmAnswerView.showCorrectAnswer)
+        exerciseView.onChosenExercisesChanged.connect(rhythmAnswerView.fillCorrectAnswerGrid)
 
         rhythmAnswerView.answerCompleted.connect(exerciseView.checkAnswers)
     }
