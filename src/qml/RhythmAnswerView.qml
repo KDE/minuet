@@ -108,7 +108,7 @@ Column {
         width: answerRect.width
         anchors.horizontalCenter: parent.horizontalCenter
         text: i18n("backspace")
-        enabled: currentAnswer > 0
+        enabled: currentAnswer > 0 && currentAnswer < 4
 
         onClicked: {
             if (currentAnswer > 0) {
