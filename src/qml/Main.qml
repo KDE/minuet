@@ -66,7 +66,7 @@ Item {
         }
         RhythmAnswerView {
             id: rhythmAnswerView
-            anchors { bottom: parent.bottom; bottomMargin: 5; horizontalCenter: parent.horizontalCenter }
+            anchors { bottom: parent.bottom; bottomMargin: 8; horizontalCenter: parent.horizontalCenter }
 
             visible: false
         }

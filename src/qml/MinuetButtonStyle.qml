@@ -24,6 +24,8 @@ import QtQuick 2.0
 import QtQuick.Controls.Styles 1.1
 
 ButtonStyle {
+    property int labelHorizontalAlignment
+
     function blendColors(clr0, clr1, p) {
         return Qt.tint(clr0, adjustAlpha(clr1, p));
     }
@@ -73,15 +75,15 @@ ButtonStyle {
 
     label: Item {
         opacity: control.enabled ? 1.0 : 0.5
-        implicitWidth: __buttonText.implicitWidth + 16
-        implicitHeight: __buttonText.implicitHeight + 8
+        implicitWidth: buttonText.implicitWidth + 16
+        implicitHeight: buttonText.implicitHeight + 8
         Text {
-            id:__buttonText
+            id: buttonText
             width: parent.width
             anchors { verticalCenter: parent.verticalCenter; left: parent.left; leftMargin: 10; right: parent.right; rightMargin: 10 }
             text: control.text
             color: control.activeFocus ? sysPalette.highlightedText : sysPalette.buttonText
-            horizontalAlignment: Qt.AlignHLeft
+            horizontalAlignment: labelHorizontalAlignment
             wrapMode: Text.Wrap
         }
         transform: Translate {x: control.pressed ? 1 : 0; y: control.pressed ? 1 : 0}
