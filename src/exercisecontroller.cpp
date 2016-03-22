@@ -134,10 +134,10 @@ QStringList ExerciseController::randomlyChooseExercises()
         }
         else {
             m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOn(9, 80, 120), barStart);
-            foreach(QString additionalNote, sequence.split(' ')) {
+            foreach(QString additionalNote, sequence.split(' ')) { // krazy:exclude=foreach
                 m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOn(9, 37, 120), barStart);
                 float dotted = 1;
-                if (additionalNote.endsWith(".")) {
+                if (additionalNote.endsWith('.')) {
                     dotted = 1.5;
                     additionalNote.chop(1);
                 }
