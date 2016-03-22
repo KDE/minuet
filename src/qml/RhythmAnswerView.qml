@@ -62,11 +62,12 @@ Column {
     spacing: 5
 
     Rectangle {
+        id: answerRect
+
         color: "#475057"
         radius: 5
         anchors.horizontalCenter: parent.horizontalCenter
-        width: answerGrid.width + 20
-        height: answerGrid.height + 20
+        width: answerGrid.width + 20; height: answerGrid.height + 20
         Row {
             id: answerGrid
 
@@ -104,6 +105,7 @@ Column {
         }
     }
     Button {
+        width: answerRect.width
         anchors.horizontalCenter: parent.horizontalCenter
         text: i18n("backspace")
         enabled: currentAnswer > 0
@@ -117,6 +119,6 @@ Column {
                 answers = temp
             }
         }
-        style: MinuetButtonStyle{}
+        style: MinuetButtonStyle{ labelHorizontalAlignment: Qt.AlignHCenter }
     }
 }
