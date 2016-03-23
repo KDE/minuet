@@ -27,13 +27,15 @@ Item {
     id: exerciseView
 
     property var chosenExercises
+    property var chosenColors: [4]
     property string exerciseType
     property Item answerRectangle
+    property var colors: ["#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9", "#bc80bd", "#ccebc5", "#ffed6f", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"]
 
     signal answerHoverEnter(var chan, var pitch, var vel, var color)
     signal answerHoverExit(var chan, var pitch, var vel)
-    signal answerClicked(var answerImageSource)
-    signal showCorrectAnswer(var chosenExercises)
+    signal answerClicked(var answerImageSource, var color)
+    signal showCorrectAnswer(var chosenExercises, var chosenColors)
 
     function clearExerciseGrid() {
         exerciseView.visible = false
@@ -59,9 +61,8 @@ Item {
         var length = model.length
         answerGrid.columns = Math.min(6, length)
         answerGrid.rows = Math.ceil(length/6)
-        var colors = ["#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9", "#bc80bd", "#ccebc5", "#ffed6f", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"]
         for (var i = 0; i < length; ++i)
-            answerOption.createObject(answerGrid, {model: model[i], color: colors[i%24]})
+            answerOption.createObject(answerGrid, {model: model[i], index: i, color: colors[i%24]})
         exerciseView.visible = true
         exerciseView.state = "initial"
     }
@@ -104,9 +105,15 @@ Item {
                 width: 124; height: 44
                 text: i18n("new question")
                 onClicked: {
-                    chosenExercises = exerciseController.randomlyChooseExercises()
-                    messageText.text = i18n("Hear the %1 and then choose an answer from options below!<br/>Click 'play question' if you want to hear again!", exerciseType)
                     exerciseView.state = "waitingForAnswer"
+                    chosenExercises = exerciseController.randomlyChooseExercises()
+                    for (var i = 0; i < chosenExercises.length; ++i)
+                        for (var j = 0; j < answerGrid.children.length; ++j)
+                            if (answerGrid.children[j].children[0].originalText == chosenExercises[i]) {
+                                chosenColors[i] = answerGrid.children[j].color
+                                break
+                            }
+                    messageText.text = i18n("Hear the %1 and then choose an answer from options below!<br/>Click 'play question' if you want to hear again!", exerciseType)
                     if (exerciseType != "rhythm")
                         answerHoverEnter(0, exerciseController.chosenRootNote(), 0, "white")
                     exerciseController.playChoosenExercise()
@@ -129,7 +136,7 @@ Item {
                         highlightRightAnswer()
                     }
                     else {
-                        showCorrectAnswer(chosenExercises)
+                        showCorrectAnswer(chosenExercises, chosenColors)
                         exerciseView.state = "nextQuestion"
                     }
                 }
@@ -153,6 +160,7 @@ Item {
                         id: answerRectangle
 
                         property var model
+                        property int index
 
                         width: (exerciseType != "rhythm") ? 120:89
                         height: (exerciseType != "rhythm") ? 40:59
@@ -163,7 +171,7 @@ Item {
 
                             visible: exerciseType != "rhythm"
                             text: i18nc("technical term, do you have a musician friend?", model.name)
-                            width: parent.width
+                            width: parent.width - 4
                             anchors.centerIn: parent
                             horizontalAlignment: Qt.AlignHCenter
                             color: "black"
@@ -190,18 +198,20 @@ Item {
                                     highlightRightAnswer()
                                 }
                                 else {
-                                    answerClicked(rhythmImage.source)
+                                    answerClicked(rhythmImage.source, colors[answerRectangle.index])
                                 }
                             }
                             hoverEnabled: true
                             onEntered: {
+                                answerRectangle.color = Qt.darker(answerRectangle.color, 1.1)
                                 if (exerciseType != "rhythm") {
                                     model.sequence.split(' ').forEach(function(note) {
-                                        answerHoverEnter(0, exerciseController.chosenRootNote() + parseInt(note), 0, color)
+                                        answerHoverEnter(0, exerciseController.chosenRootNote() + parseInt(note), 0, colors[answerRectangle.index])
                                     })
                                 }
                             }
                             onExited: {
+                                answerRectangle.color = colors[answerRectangle.index]
                                 if (exerciseType != "rhythm") {
                                     if (!animation.running)
                                         model.sequence.split(' ').forEach(function(note) {

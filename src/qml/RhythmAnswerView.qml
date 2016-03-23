@@ -32,38 +32,44 @@ Column {
     ]
     property int currentAnswer: 0
     property var correctAnswers
+    property var correctColors: [4]
     property ExerciseView exerciseView
+    property var colors: [4]
 
     signal answerCompleted(var answers)
 
-    function answerClicked(answerImageSource) {
-        var temp = answers
-        temp[currentAnswer] = answerImageSource
+    function answerClicked(answerImageSource, color) {
+        var tempAnswers = answers
+        tempAnswers[currentAnswer] = answerImageSource
+        var tempColors = colors
+        tempColors[currentAnswer] = color
+        colors = tempColors
         currentAnswer++
         if (currentAnswer == 4) {
             answerCompleted(answers)
-            for (var i = 0; i < 4; ++i)
+            correctColors = exerciseView.chosenColors
+            for (var i = 0; i < 4; ++i) {
                 correctAnswerGrid.children[i].opacity = answers[i].toString().split("/").pop().split(".")[0] != correctAnswers[i] ? 1:0
+            }
         }
         else {
-            temp[currentAnswer] = "exercise-images/current-rhythm.png"
+            tempAnswers[currentAnswer] = "exercise-images/current-rhythm.png"
         }
-        answers = temp
+        answers = tempAnswers
     }
     function resetAnswers() {
         currentAnswer = 0
-        var temp = answers
-        temp[0] = "exercise-images/current-rhythm.png"
-        for (var i = 1; i < 4; ++i)
-            temp[i] = "exercise-images/unknown-rhythm.png"
-        answers = temp
+        answers = ["exercise-images/current-rhythm.png", "exercise-images/unknown-rhythm.png", "exercise-images/unknown-rhythm.png", "exercise-images/unknown-rhythm.png"]
+        colors = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"]
+        correctColors = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"]
     }
-    function showCorrectAnswer(chosenExercise) {
-        var temp = answers
+    function showCorrectAnswer(chosenExercise, chosenColors) {
+        var tempAnswers = answers
         for (var i = 0; i < 4; ++i)
-            temp[i] = "exercise-images/" + chosenExercise[i] + ".png"
-        answers = temp
-        backspaceButton.enabled = false
+            tempAnswers[i] = "exercise-images/" + chosenExercise[i] + ".png"
+        answers = tempAnswers
+        colors = chosenColors
+        currentAnswer = 0
     }
     function fillCorrectAnswerGrid() {
         for (var i = 0; i < 4; ++i)
@@ -84,8 +90,9 @@ Column {
             Rectangle {
                 id: correctAnswerRectangle
 
-                opacity: 0
                 width: 89; height: 59
+                color: correctColors[index]
+                opacity: 0
                 Image {
                     id: correctRhythmImage
                     anchors.centerIn: parent
@@ -117,6 +124,7 @@ Column {
 
                     width: 89
                     height: 59
+                    color: colors[index]
                     Text {
                         id: option
 
@@ -150,11 +158,14 @@ Column {
 
         onClicked: {
             if (currentAnswer > 0) {
-                var temp = answers
-                temp[currentAnswer] = "exercise-images/unknown-rhythm.png"
+                var tempAnswers = answers
+                var tempColors = colors
+                tempAnswers[currentAnswer] = "exercise-images/unknown-rhythm.png"
                 currentAnswer--
-                temp[currentAnswer] = "exercise-images/current-rhythm.png"
-                answers = temp
+                tempAnswers[currentAnswer] = "exercise-images/current-rhythm.png"
+                tempColors[currentAnswer] = "#ffffff"
+                answers = tempAnswers
+                colors = tempColors
             }
         }
         style: MinuetButtonStyle{ labelHorizontalAlignment: Qt.AlignHCenter }
