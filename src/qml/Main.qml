@@ -85,6 +85,7 @@ Item {
         minuetMenu.itemChanged.connect(exerciseView.itemChanged)
         minuetMenu.exerciseTypeChanged.connect(exerciseView.changeExerciseType)
         minuetMenu.exerciseTypeChanged.connect(mainItem.exerciseTypeChanged)
+        minuetMenu.itemChanged.connect(rhythmAnswerView.resetAnswers)
 
         sequencer.noteOn.connect(pianoView.noteOn)
         sequencer.noteOff.connect(pianoView.noteOff)

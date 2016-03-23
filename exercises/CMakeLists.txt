@@ -4,6 +4,7 @@ set(minuet_EXERCISES
     chords-root-position.json
     scales-major-and-its-modes.json
     rhythm-easy.json
+    rhythm-medium.json
 )
 
 install(FILES ${minuet_EXERCISES} DESTINATION ${KDE_INSTALL_DATADIR}/minuet/exercises)

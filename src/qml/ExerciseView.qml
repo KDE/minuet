@@ -162,7 +162,7 @@ Item {
                         property var model
                         property int index
 
-                        width: (exerciseType != "rhythm") ? 120:89
+                        width: (exerciseType != "rhythm") ? 120:119
                         height: (exerciseType != "rhythm") ? 40:59
                         Text {
                             id: option

@@ -91,7 +91,7 @@ Column {
             Rectangle {
                 id: correctAnswerRectangle
 
-                width: 89; height: 59
+                width: 119; height: 59
                 color: correctColors[index]
                 opacity: 0
                 Image {
@@ -123,7 +123,7 @@ Column {
                 Rectangle {
                     id: answerRectangle
 
-                    width: 89
+                    width: 119
                     height: 59
                     color: colors[index]
                     Text {
