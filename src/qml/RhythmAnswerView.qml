@@ -32,9 +32,9 @@ Column {
     ]
     property int currentAnswer: 0
     property var correctAnswers
-    property var correctColors: [4]
+    property var correctColors: ["#ffffff", "#ffffff", "#ffffff", "#ffffff"]
     property ExerciseView exerciseView
-    property var colors: [4]
+    property var colors: ["#ffffff", "#ffffff", "#ffffff", "#ffffff"]
 
     signal answerCompleted(var answers)
 
@@ -60,6 +60,7 @@ Column {
     function resetAnswers() {
         currentAnswer = 0
         answers = ["exercise-images/current-rhythm.png", "exercise-images/unknown-rhythm.png", "exercise-images/unknown-rhythm.png", "exercise-images/unknown-rhythm.png"]
+        correctAnswers = undefined
         colors = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"]
         correctColors = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"]
     }
@@ -97,7 +98,7 @@ Column {
                     id: correctRhythmImage
                     anchors.centerIn: parent
 
-                    source: (correctAnswers != undefined) ? "exercise-images/" + correctAnswers[index] + ".png":""
+                    source: (correctAnswers != undefined && exerciseView.exerciseType == "rhythm") ? "exercise-images/" + correctAnswers[index] + ".png":""
                     fillMode: Image.Pad
                 }
             }
