@@ -57,9 +57,9 @@
     <p xml:lang="uk">Minuet — програма для навчання музиці. У ній передбачено набір вправ для розвитку слуху, зокрема вивчення інтервалів, акордів, гами тощо.</p>
     <p xml:lang="x-test">xxMinuet is an application for music education. It features a set of ear training exercises regarding intervals, chords, scales and more.xx</p>
   </description>
-  <url type="homepage">https://edu.kde.org/applications/all/minuet</url>
-  <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=minuet</url>
-  <url type="help">http://docs.kde.org/stable/en/kdeedu/minuet/index.html</url>
+  <url type="homepage">https://minuet.kde.org</url>
+  <url type="bugtracker">https://phabricator.kde.org/project/board/73/</url>
+  <url type="help">https://docs.kde.org/trunk5/en/kdeedu/minuet/index.html</url>
   <screenshots>
     <screenshot type="default">
       <image>https://edu.kde.org/images/screenshots/minuet.png</image>
