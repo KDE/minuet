@@ -30,11 +30,11 @@ Item {
     id: minuetMenu
 
     property Item selectedMenuItem
-    property string type
+    property string message
 
     signal breadcrumbPressed
     signal itemChanged(var model)
-    signal exerciseTypeChanged(string type)
+    signal userMessageChanged(string message)
 
     function itemClicked(delegateRect, index) {
         var model = delegateRect.ListView.view.model[index].options
@@ -54,9 +54,9 @@ Item {
             minuetMenu.breadcrumbPressed()
             selectedMenuItem = null
             stackView.pop()
-            exerciseTypeChanged("exercise")
+            userMessageChanged("exercise")
             if (stackView.depth == 1)
-                type = "exercise"
+                message = "exercise"
         }
     }
     StackView {
@@ -77,13 +77,13 @@ Item {
                 text: i18nc("technical term, do you have a musician friend?", modelData.name)
                 checkable: (!delegateRect.ListView.view.model[index].children) ? true:false
                 onClicked: {
-                    var exerciseType = delegateRect.ListView.view.model[index].type
-                    if (exerciseType != undefined)
-                        type = exerciseType
+                    var userMessage = delegateRect.ListView.view.model[index].userMessage
+                    if (userMessage != undefined)
+                        message = userMessage
                     var children = delegateRect.ListView.view.model[index].children
                     if (!children) {
                         if (selectedMenuItem != undefined) selectedMenuItem.checked = false
-                        exerciseTypeChanged(type)
+                        userMessageChanged(message)
                         itemClicked(delegateRect, index)
                         selectedMenuItem = delegateRect
                     }

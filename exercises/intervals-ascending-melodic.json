@@ -4,7 +4,7 @@
       "name": "Intervals",
       "root": "21..104",
       "playMode": "scale",
-      "type": "interval",
+      "userMessage": "the interval",
       "children": [
         {
           "name": "Ascending Melodic Intervals",

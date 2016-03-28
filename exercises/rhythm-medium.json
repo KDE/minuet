@@ -3,7 +3,7 @@
     {
       "name": "Rhythm",
       "playMode": "rhythm",
-      "type": "rhythm",
+      "userMessage": "the rhythm",
       "template": "lilypond-templates/rhythm.ly.tmpl",
       "children": [
         {

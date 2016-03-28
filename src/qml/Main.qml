@@ -29,9 +29,9 @@ Item {
 
     property int menuBarWidth: 280
 
-    function exerciseTypeChanged(type) {
-        pianoView.visible = (type != "rhythm" && type != "exercise")
-        rhythmAnswerView.visible = (type == "rhythm")
+    function userMessageChanged(message) {
+        pianoView.visible = (message != "the rhythm" && message != "exercise")
+        rhythmAnswerView.visible = (message == "the rhythm")
     }
     function exerciseViewStateChanged(state) {
         if (state == "waitingForAnswer")
@@ -83,8 +83,8 @@ Item {
         minuetMenu.breadcrumbPressed.connect(exerciseView.clearExerciseGrid)
         minuetMenu.breadcrumbPressed.connect(rhythmAnswerView.resetAnswers)
         minuetMenu.itemChanged.connect(exerciseView.itemChanged)
-        minuetMenu.exerciseTypeChanged.connect(exerciseView.changeExerciseType)
-        minuetMenu.exerciseTypeChanged.connect(mainItem.exerciseTypeChanged)
+        minuetMenu.userMessageChanged.connect(exerciseView.changeUserMessage)
+        minuetMenu.userMessageChanged.connect(mainItem.userMessageChanged)
         minuetMenu.itemChanged.connect(rhythmAnswerView.resetAnswers)
 
         sequencer.noteOn.connect(pianoView.noteOn)

@@ -28,7 +28,7 @@ Item {
 
     property var chosenExercises
     property var chosenColors: [4]
-    property string exerciseType
+    property string userMessage
     property Item answerRectangle
     property var colors: ["#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9", "#bc80bd", "#ccebc5", "#ffed6f", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"]
 
@@ -66,8 +66,8 @@ Item {
         exerciseView.visible = true
         exerciseView.state = "initial"
     }
-    function changeExerciseType(type) {
-        exerciseType = type
+    function changeUserMessage(message) {
+        userMessage = message
     }
     function checkAnswers(answers) {
         var answersOk = true
@@ -94,7 +94,8 @@ Item {
             horizontalAlignment: Text.AlignHCenter
             font.pointSize: 18
             textFormat: Text.RichText
-            text: i18n("Hear the %1 and then choose an answer from options below!<br/>Click 'play question' if you want to hear again!", exerciseType)
+            text: i18n("Hear %1 and then choose an answer from options below!<br/>Click 'play question' if you want to hear again!",
+                       i18nc("technical term, do you have a musician friend?", userMessage))
         }
         Row {
             anchors { horizontalCenter: parent.horizontalCenter }
@@ -113,11 +114,13 @@ Item {
                                 chosenColors[i] = answerGrid.children[j].color
                                 break
                             }
-                    messageText.text = i18n("Hear the %1 and then choose an answer from options below!<br/>Click 'play question' if you want to hear again!", exerciseType)
-                    if (exerciseType != "rhythm")
+                    messageText.text = i18n("Hear %1 and then choose an answer from options below!<br/>Click 'play question' if you want to hear again!",
+                                            i18nc("technical term, do you have a musician friend?", userMessage))
+                    if (userMessage != "the rhythm")
                         answerHoverEnter(0, exerciseController.chosenRootNote(), 0, "white")
                     exerciseController.playChoosenExercise()
                 }
+                style: MinuetButtonStyle{ labelHorizontalAlignment: Qt.AlignHCenter }
             }
             Button {
                 id: playQuestionButton
@@ -125,6 +128,7 @@ Item {
                 width: 124; height: 44
                 text: i18n("play question")
                 onClicked: exerciseController.playChoosenExercise()
+                style: MinuetButtonStyle{ labelHorizontalAlignment: Qt.AlignHCenter }
             }
             Button {
                 id: giveUpButton
@@ -132,7 +136,7 @@ Item {
                 width: 124; height: 44
                 text: i18n("give up")
                 onClicked: {
-                    if (exerciseType != "rhythm") {
+                    if (userMessage != "the rhythm") {
                         highlightRightAnswer()
                     }
                     else {
@@ -140,6 +144,7 @@ Item {
                         exerciseView.state = "nextQuestion"
                     }
                 }
+                style: MinuetButtonStyle{ labelHorizontalAlignment: Qt.AlignHCenter }
             }
         }
         Rectangle {
@@ -162,14 +167,14 @@ Item {
                         property var model
                         property int index
 
-                        width: (exerciseType != "rhythm") ? 120:119
-                        height: (exerciseType != "rhythm") ? 40:59
+                        width: (userMessage != "the rhythm") ? 120:119
+                        height: (userMessage != "the rhythm") ? 40:59
                         Text {
                             id: option
 
                             property string originalText: model.name
 
-                            visible: exerciseType != "rhythm"
+                            visible: userMessage != "the rhythm"
                             text: i18nc("technical term, do you have a musician friend?", model.name)
                             width: parent.width - 4
                             anchors.centerIn: parent
@@ -181,14 +186,14 @@ Item {
                             id: rhythmImage
                             anchors.centerIn: parent
 
-                            visible: exerciseType == "rhythm"
-                            source: (exerciseType == "rhythm") ? "exercise-images/" + model.name + ".png":""
+                            visible: userMessage == "the rhythm"
+                            source: (userMessage == "the rhythm") ? "exercise-images/" + model.name + ".png":""
                             fillMode: Image.Pad
                         }
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                if (exerciseType != "rhythm") {
+                                if (userMessage != "the rhythm") {
                                     onExited()
                                     if (option.originalText == chosenExercises[0])
                                         messageText.text = i18n("Congratulations!<br/>You answered correctly!")
@@ -204,7 +209,7 @@ Item {
                             hoverEnabled: true
                             onEntered: {
                                 answerRectangle.color = Qt.darker(answerRectangle.color, 1.1)
-                                if (exerciseType != "rhythm") {
+                                if (userMessage != "the rhythm") {
                                     model.sequence.split(' ').forEach(function(note) {
                                         answerHoverEnter(0, exerciseController.chosenRootNote() + parseInt(note), 0, colors[answerRectangle.index])
                                     })
@@ -212,7 +217,7 @@ Item {
                             }
                             onExited: {
                                 answerRectangle.color = colors[answerRectangle.index]
-                                if (exerciseType != "rhythm") {
+                                if (userMessage != "the rhythm") {
                                     if (!animation.running)
                                         model.sequence.split(' ').forEach(function(note) {
                                             answerHoverExit(0, exerciseController.chosenRootNote() + parseInt(note), 0)
