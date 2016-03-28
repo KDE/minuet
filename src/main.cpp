@@ -49,7 +49,8 @@ int main(int argc, char **argv)
                           KAboutLicense::GPL,
                           i18n("(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"));
 
-    aboutData.addAuthor(i18n("Sandro S. Andrade"),i18n("Author"), QStringLiteral("sandroandrade@kde.org"));
+    aboutData.addAuthor(i18n("Sandro S. Andrade"),i18n("Developer"), QStringLiteral("alessandro.longo@kdemail.net"));
+    aboutData.addAuthor(i18n("Alessandro Longo"),i18n("Minuet Icon Designer"), QStringLiteral("sandroandrade@kde.org"));
     application.setWindowIcon(QIcon::fromTheme(QStringLiteral("minuet")));
     QCommandLineParser parser;
     parser.addHelpOption();

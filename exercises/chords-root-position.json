@@ -4,7 +4,7 @@
       "name": "Chords",
       "root": "21..104",
       "playMode": "chord",
-      "type": "chord",
+      "userMessage": "the chord",
       "children": [
         {
           "name": "Root Position",
