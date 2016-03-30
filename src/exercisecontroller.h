@@ -26,6 +26,7 @@
 #include <QObject>
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QStringList>
 
 class MidiSequencer;
 

@@ -35,6 +35,7 @@
 
 #include <QTimer>
 #include <QPointer>
+#include <QStringList>
 
 #include <QQuickView>
 
