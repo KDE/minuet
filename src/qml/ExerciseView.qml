@@ -114,8 +114,9 @@ Item {
                                 chosenColors[i] = answerGrid.children[j].color
                                 break
                             }
-                    messageText.text = i18n("Hear %1 and then choose an answer from options below!<br/>Click 'play question' if you want to hear again!",
-                                            i18nc("technical term, do you have a musician friend?", userMessage))
+                    messageText.text = Qt.binding(function() {
+                        return i18n("Hear %1 and then choose an answer from options below!<br/>Click 'play question' if you want to hear again!", i18nc("technical term, do you have a musician friend?", userMessage))
+                    })
                     if (userMessage != "the rhythm")
                         answerHoverEnter(0, exerciseController.chosenRootNote(), 0, "white")
                     exerciseController.playChoosenExercise()
