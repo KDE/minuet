@@ -98,7 +98,7 @@ Column {
                     id: correctRhythmImage
                     anchors.centerIn: parent
 
-                    source: (correctAnswers != undefined && exerciseView.exerciseType == "rhythm") ? "exercise-images/" + correctAnswers[index] + ".png":""
+                    source: (correctAnswers != undefined && exerciseView.userMessage == "the rhythm") ? "exercise-images/" + correctAnswers[index] + ".png":""
                     fillMode: Image.Pad
                 }
             }
