@@ -66,7 +66,7 @@ Minuet::Minuet() :
     m_quickView->setResizeMode(QQuickView::SizeRootObjectToView);
     setCentralWidget(QWidget::createWindowContainer(m_quickView, this));
 
-    KStandardAction::open(this, SLOT(fileOpen()), actionCollection());
+//    KStandardAction::open(this, SLOT(fileOpen()), actionCollection());
     KStandardAction::quit(qApp, SLOT(closeAllWindows()), actionCollection());
     KStandardAction::preferences(this, SLOT(settingsConfigure()), actionCollection());
 
@@ -149,12 +149,14 @@ bool Minuet::queryClose()
     return true;
 }
 
+/*
 void Minuet::fileOpen()
 {
     QString fileName = QFileDialog::getOpenFileName(this, i18n("Open File")); // krazy:exclude=qclasses
     if (!fileName.isEmpty())
         m_midiSequencer->openFile(fileName);
 }
+*/
 
 void Minuet::runWizard()
 {

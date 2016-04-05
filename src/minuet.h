@@ -73,7 +73,7 @@ private Q_SLOTS:
     /**
      * Create a new window
      */
-    void fileOpen();
+//    void fileOpen();
     void runWizard();
 
     /**
