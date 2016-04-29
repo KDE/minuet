@@ -1,4 +1,4 @@
-#About Minuet
+# About Minuet
 
 Welcome to Minuet: the KDE software for music education. Minuet aims at supporting students and teachers in many aspects of music education, such as ear training, first-sight reading, solfa, scales, rhythm, harmony, and improvisation. Minuet makes extensive use of MIDI capabilities to provide a full-fledged set of features regarding volume, tempo, and pitch changes, which makes Minuet a valuable tool for both novice and experienced musicians.
 
@@ -6,7 +6,7 @@ Minuet features a rich set of ear training's exercises and new ones can be  seam
 
 ![](http://sandroandrade.org/content/images/minuet-screenshot.png)
 
-#How to build Minuet
+# How to build Minuet
 
     install KF5 and Drumstick
     $ git clone git://anongit.kde.org/minuet
@@ -23,7 +23,7 @@ Note: you can use another build path. Then cd in your build dir and:
 export KDE_SRC=path_to_your_src
 cmake $KDE_SRC -DCMAKE_INSTALL_PREFIX=$KDEDIRS -DCMAKE_BUILD_TYPE=Debug
 
-#How to Create Minuet Screencasts
+# How to Create Minuet Screencasts
 
 1) Start Minuet using qsynth as backend.
 2) Qsynth should be configured to use pulseaudio as audio backend.
