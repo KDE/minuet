@@ -223,7 +223,7 @@ notes ringing out simultaneously).
 <para>
 Each exercise's option defines a name and the sequence of notes which should be played from the root note randomly selected in
 each exercise run. Such sequence of notes is defined as relative distances from the root note, describing the interval
-each note forms in conjunction with the root note. For example, for a major escale, the sequence of notes is "2 4 5 7 9 11 12",
+each note forms in conjunction with the root note. For example, for a major scale, the sequence of notes is "2 4 5 7 9 11 12",
 which respectively denotes the "whole whole half whole whole whole half" major scale structure. The <parameter>sequenceFromRoot</parameter> parameter may contain any notes in length. Also, &minuet;'s core ensures that only answers
 whose all notes lies within keyboard range are randomly selected.
 </para>
