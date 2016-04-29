@@ -23,7 +23,6 @@
   <name xml:lang="uk">Minuet</name>
   <name xml:lang="x-test">xxMinuetxx</name>
   <name xml:lang="zh-CN">Minuet</name>
-  <name xml:lang="zh-TW">Minuet</name>
   <summary>Music Education Software</summary>
   <summary xml:lang="ast">Software educativu musical</summary>
   <summary xml:lang="ca">Programari d'educació musical</summary>
@@ -43,7 +42,6 @@
   <summary xml:lang="uk">Програмне забезпечення для навчання музики</summary>
   <summary xml:lang="x-test">xxMusic Education Softwarexx</summary>
   <summary xml:lang="zh-CN">音乐教育软件</summary>
-  <summary xml:lang="zh-TW">音樂教育軟體</summary>
   <description>
     <p>Minuet is an application for music education. It features a set of ear training exercises regarding intervals, chords, scales and more.</p>
     <p xml:lang="ast">Minuet ye una aplicación pa la educación musical. Tien como carauterístiques un conxuntu d'exercicios d'entrenamientu auditivu respeuto a intervalos, acordes, escales y más.</p>
@@ -62,7 +60,6 @@
     <p xml:lang="sv">Minuet är ett program för musikutbildning. Det innehåller ett antal gehörsövningar avseende tonhöjd, ackord, skalor med mera.</p>
     <p xml:lang="uk">Minuet — програма для навчання музиці. У ній передбачено набір вправ для розвитку слуху, зокрема вивчення інтервалів, акордів, гами тощо.</p>
     <p xml:lang="x-test">xxMinuet is an application for music education. It features a set of ear training exercises regarding intervals, chords, scales and more.xx</p>
-    <p xml:lang="zh-TW">Minuet 是一款音樂教育用的應用程式。裡面有一些關於音程、和弦、音階等的聽力訓練課程。</p>
   </description>
   <url type="homepage">https://minuet.kde.org</url>
   <url type="bugtracker">https://phabricator.kde.org/project/board/73/</url>
