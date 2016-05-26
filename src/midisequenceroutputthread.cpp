@@ -26,6 +26,8 @@
 
 #include <drumstick/alsaqueue.h>
 
+#include <cmath>
+
 MidiSequencerOutputThread::MidiSequencerOutputThread(drumstick::MidiClient *client, int portId) :
     drumstick::SequencerOutputThread(client, portId),
     m_client(client),
