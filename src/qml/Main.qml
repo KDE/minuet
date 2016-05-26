@@ -95,6 +95,7 @@ Item {
         sequencer.volumeChanged.connect(midiPlayer.volumeChanged)
         sequencer.tempoChanged.connect(midiPlayer.tempoChanged)
         sequencer.pitchChanged.connect(midiPlayer.pitchChanged)
+        sequencer.stateChanged.connect(midiPlayer.stateChanged)
 
         exerciseView.answerHoverEnter.connect(pianoView.noteMark)
         exerciseView.answerHoverExit.connect(pianoView.noteUnmark)

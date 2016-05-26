@@ -32,6 +32,8 @@
 #include <QLoggingCategory>
 #include <QApplication>
 
+#include <QtQml>
+
 Q_DECLARE_LOGGING_CATEGORY(MINUET)
 
 #include <drumstick/qsmf.h>
@@ -43,6 +45,7 @@ MidiSequencer::MidiSequencer(QObject *parent) :
     m_song(0),
     m_eventSchedulingMode(FROM_ENGINE)
 {
+    qmlRegisterType<MidiSequencer>("org.kde.minuet", 1, 0, "MidiSequencer");
     // MidiClient configuration
     m_client = new drumstick::MidiClient(this);
     try {
@@ -108,7 +111,7 @@ MidiSequencer::MidiSequencer(QObject *parent) :
     // OutputThread
     m_midiSequencerOutputThread = new MidiSequencerOutputThread(m_client, m_outputPortId);
     connect(m_midiSequencerOutputThread, &MidiSequencerOutputThread::stopped, this, &MidiSequencer::outputThreadStopped);
-    connect(m_midiSequencerOutputThread, &MidiSequencerOutputThread::finished, this, &MidiSequencer::resetTimer);
+    connect(m_midiSequencerOutputThread, &MidiSequencerOutputThread::finished, this, &MidiSequencer::resetMidiPlayer);
 
     // Subscribe to Minuet's virtual piano
     try {
@@ -194,9 +197,10 @@ MidiSequencer::EventSchedulingMode MidiSequencer::schedulingMode() const
     return m_eventSchedulingMode;
 }
 
-void MidiSequencer::resetTimer()
+void MidiSequencer::resetMidiPlayer()
 {
     emit timeLabelChanged(QStringLiteral("00:00.00"));
+    emit stateChanged(MidiSequencer::StoppedState);
 }
 
 void MidiSequencer::play()
@@ -207,6 +211,7 @@ void MidiSequencer::play()
                 m_midiSequencerOutputThread->setSong(m_song);
         }
         m_midiSequencerOutputThread->start();
+        emit stateChanged(MidiSequencer::PlayingState);
     }
 }
 
@@ -216,6 +221,7 @@ void MidiSequencer::pause()
         m_midiSequencerOutputThread->stop();
         m_midiSequencerOutputThread->setPosition(m_queue->getStatus().getTickTime());
     }
+    emit stateChanged(MidiSequencer::PausedState);
 }
 
 void MidiSequencer::stop()
@@ -224,6 +230,7 @@ void MidiSequencer::stop()
     m_midiSequencerOutputThread->resetPosition();
     emit allNotesOff();
     emit timeLabelChanged(QStringLiteral("00:00.00"));
+    emit stateChanged(MidiSequencer::StoppedState);
 }
 
 void MidiSequencer::setVolumeFactor(unsigned int vol)

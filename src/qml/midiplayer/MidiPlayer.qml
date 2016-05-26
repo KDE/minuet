@@ -22,12 +22,19 @@
 
 import QtQuick 2.4
 import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.minuet 1.0
 
 Rectangle {
     function timeLabelChanged(timeLabel) { playbackTime.text = timeLabel }
     function volumeChanged(value) { volumeLabel.text = i18n("Volume: %1\%").arg(value) }
     function tempoChanged(value) { tempoLabel.text = i18n("Tempo: %1 bpm").arg(value) }
     function pitchChanged(value) { pitchLabel.text = i18n("Pitch: %1").arg(value) }
+    function stateChanged(state) {
+        if (state == MidiSequencer.PlayingState)
+            item12.state = "Pause"
+        else
+            item12.state = "Play"
+    }
 
     height: childrenRect.height + 15
     anchors { left: parent.left; bottom: parent.bottom }
@@ -85,20 +92,33 @@ Rectangle {
         }
         MultimediaButton {
             id: item12
-
-            anchors { top: playbackTime.bottom; horizontalCenter: playbackTime.horizontalCenter }
-            source: "../images/multimedia-pause.png"
-            text: i18n("Pause")
-            onActivated: sequencer.pause()
+            anchors.horizontalCenterOffset: -30
+            anchors { top: playbackTime.bottom; horizontalCenter: playbackTime.horizontalCenter;}
+            state: "Play"
+            states: [
+                State {
+                    name: "Play"
+                    PropertyChanges {
+                        target: item12;
+                        text: i18n("Play")
+                        onActivated: sequencer.play();
+                        source: "../images/multimedia-play.png"
+                    }
+                },
+                State {
+                    name: "Pause"
+                    PropertyChanges {
+                        target: item12;
+                        text: i18n("Pause")
+                        onActivated: sequencer.pause();
+                        source: "../images/multimedia-pause.png"
+                    }
+                }
+            ]
         }
         MultimediaButton {
-            anchors { top: playbackTime.bottom; right: item12.left; rightMargin: -2 }
-            source: "../images/multimedia-play.png"
-            text: i18n("Play")
-            onActivated: sequencer.play()
-        }
-        MultimediaButton {
-            anchors { top: playbackTime.bottom; left: item12.right; leftMargin: -2 }
+            anchors.horizontalCenterOffset: +30
+            anchors { top: playbackTime.bottom; horizontalCenter: playbackTime.horizontalCenter;}
             source: "../images/multimedia-stop.png"
             text: i18n("Stop")
             onActivated: sequencer.stop()

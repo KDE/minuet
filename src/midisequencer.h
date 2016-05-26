@@ -51,6 +51,12 @@ public:
         EXPLICIT,
         DAMAGED
     };
+    enum State {
+        StoppedState = 0,
+        PlayingState,
+        PausedState
+    };
+    Q_ENUMS(State)
 
     void subscribeTo(const QString &portName);
     void openFile(const QString &fileName);
@@ -66,6 +72,7 @@ Q_SIGNALS:
     void volumeChanged(unsigned int vol);
     void tempoChanged(unsigned int vol);
     void pitchChanged(int vol);
+    void stateChanged(State state);
     
 public Q_SLOTS:
     void play();
@@ -98,7 +105,7 @@ private Q_SLOTS:
     void eventReceived(drumstick::SequencerEvent *ev);
 
     void outputThreadStopped();
-    void resetTimer();
+    void resetMidiPlayer();
 
 private:
     void appendEvent(drumstick::SequencerEvent *ev);
