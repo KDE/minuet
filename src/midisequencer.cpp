@@ -235,6 +235,8 @@ void MidiSequencer::setVolumeFactor(unsigned int vol)
 void MidiSequencer::setTempoFactor(unsigned int value)
 {
     float tempoFactor = (value*value + 100.0*value + 20000.0) / 40000.0;
+    m_midiSequencerOutputThread->setTempoFactor(tempoFactor);
+
     drumstick::QueueTempo queueTempo = m_queue->getTempo();
     queueTempo.setTempoFactor(tempoFactor);
     m_queue->setTempo(queueTempo);
