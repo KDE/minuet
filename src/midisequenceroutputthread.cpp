@@ -36,6 +36,7 @@ MidiSequencerOutputThread::MidiSequencerOutputThread(drumstick::MidiClient *clie
     m_lastEvent(0), 
     m_volumeFactor(100),
     m_pitchShift(0),
+    m_tempoFactor(1.0),
     m_songIterator(0)
 {
     for (int chan = 0; chan < MIDI_CHANNELS; ++chan)
@@ -100,7 +101,7 @@ void MidiSequencerOutputThread::setSong(Song *song)
     drumstick::QueueTempo firstTempo = m_Queue->getTempo();
     firstTempo.setPPQ(m_song->division());
     firstTempo.setTempo(m_song->initialTempo());
-    firstTempo.setTempoFactor(1.0);
+    firstTempo.setTempoFactor(m_tempoFactor);
     m_Queue->setTempo(firstTempo);
 }
 
@@ -129,6 +130,11 @@ void MidiSequencerOutputThread::setPitchShift(int value)
     m_pitchShift = value;
     if (playing)
         start();
+}
+
+void MidiSequencerOutputThread::setTempoFactor(float value)
+{
+    m_tempoFactor = value;
 }
 
 void MidiSequencerOutputThread::setPosition(unsigned int pos)
