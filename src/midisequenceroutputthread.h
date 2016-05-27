@@ -45,8 +45,10 @@ public:
     virtual unsigned int getInitialPosition() { return m_songPosition; }
 
     void setSong(Song *song);
-    void setVolumeFactor(unsigned int vol);
-    void setPitchShift(int value);
+    void setPitch(int value);
+    int pitch() const;
+    void setVolume(unsigned int volume);
+    unsigned int volume() const;
     void setPosition(unsigned int pos);
     void setTempoFactor(float value);
     void resetPosition();
@@ -63,8 +65,8 @@ private:
     Song *m_song;
     unsigned int m_songPosition;
     drumstick::SequencerEvent *m_lastEvent;
-    int m_volume[MIDI_CHANNELS];
-    unsigned int m_volumeFactor;
+    unsigned int m_volume;
+    int m_channelVolume[MIDI_CHANNELS];
     int m_pitchShift;
     float m_tempoFactor;
     QListIterator<drumstick::SequencerEvent *>* m_songIterator;

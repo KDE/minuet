@@ -42,6 +42,11 @@ class MidiSequencer : public QObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(int pitch READ pitch WRITE setPitch NOTIFY pitchChanged)
+    Q_PROPERTY(unsigned int volume READ volume WRITE setVolume NOTIFY volumeChanged)
+    Q_PROPERTY(unsigned int tempo READ tempo WRITE setTempo NOTIFY tempoChanged)
+    Q_PROPERTY(QString playbackLabel READ playbackLabel WRITE setPlaybackLabel NOTIFY playbackLabelChanged)
+
 public:
     explicit MidiSequencer(QObject *parent = 0);
     virtual ~MidiSequencer();
@@ -63,24 +68,30 @@ public:
     void appendEvent(drumstick::SequencerEvent *ev, unsigned long tick);
     QStringList availableOutputPorts() const;
     EventSchedulingMode schedulingMode() const;
-    
+ 
+    int pitch() const;
+    unsigned int volume() const;
+    unsigned int tempo() const;
+    QString playbackLabel() const;
+
 Q_SIGNALS:
     void noteOn(int chan, int pitch, int vel);
     void noteOff(int chan, int pitch, int vel);
     void allNotesOff();
-    void timeLabelChanged(QString timeLabel);
-    void volumeChanged(unsigned int vol);
-    void tempoChanged(unsigned int vol);
-    void pitchChanged(int vol);
+    void pitchChanged(int pitch);
+    void volumeChanged(unsigned int volume);
+    void tempoChanged(unsigned int tempo);
+    void playbackLabelChanged(QString playbackLabel);
     void stateChanged(State state);
     
 public Q_SLOTS:
     void play();
     void pause();
     void stop();
-    void setVolumeFactor(unsigned int vol);
-    void setTempoFactor(unsigned int value);
-    void setPitchShift(int value);
+    void setPitch(int pitch);
+    void setVolume(unsigned int volume);
+    void setTempo(unsigned int tempo);
+    void setPlaybackLabel(QString playbackLabel);
     void setSong(Song *song);
     void clearSong();
 
@@ -101,6 +112,7 @@ public Q_SLOTS:
     void SMFError(const QString &errorStr);
 
 private Q_SLOTS:
+
     // Slots for events generated when playing a MIDI
     void eventReceived(drumstick::SequencerEvent *ev);
 
@@ -125,6 +137,7 @@ private:
     MidiSequencerOutputThread *m_midiSequencerOutputThread;
     EventSchedulingMode m_eventSchedulingMode;
     QString m_currentSubscribedPort;
+    QString m_playbackLabel;
 };
 
 #endif // MIDISEQUENCER_H

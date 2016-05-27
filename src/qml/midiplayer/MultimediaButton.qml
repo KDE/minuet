@@ -30,7 +30,7 @@ Item {
 
     signal activated
 
-    width: playbackTime.contentWidth / 3; height: childrenRect.height
+    height: childrenRect.height
 
     Image {
         id: buttonImage

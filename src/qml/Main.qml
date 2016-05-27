@@ -79,6 +79,37 @@ Item {
         }
     }
 
+    Connections {
+        target: midiPlayer
+        onPlayActivated: sequencer.play()
+        onPauseActivated: sequencer.pause()
+        onStopActivated: sequencer.stop()
+    }
+
+    Binding {
+        target: sequencer
+        property: "pitch"
+        value: midiPlayer.pitch
+    }
+
+    Binding {
+        target: sequencer
+        property: "volume"
+        value: midiPlayer.volume
+    }
+
+    Binding {
+        target: sequencer
+        property: "tempo"
+        value: midiPlayer.tempo
+    }
+
+    Binding {
+        target: midiPlayer
+        property: "playbackLabel"
+        value: sequencer.playbackLabel
+    }
+
     Component.onCompleted: {
         minuetMenu.breadcrumbPressed.connect(exerciseView.clearExerciseGrid)
         minuetMenu.breadcrumbPressed.connect(rhythmAnswerView.resetAnswers)
@@ -91,10 +122,6 @@ Item {
         sequencer.noteOff.connect(pianoView.noteOff)
         sequencer.allNotesOff.connect(pianoView.allNotesOff)
 
-        sequencer.timeLabelChanged.connect(midiPlayer.timeLabelChanged)
-        sequencer.volumeChanged.connect(midiPlayer.volumeChanged)
-        sequencer.tempoChanged.connect(midiPlayer.tempoChanged)
-        sequencer.pitchChanged.connect(midiPlayer.pitchChanged)
         sequencer.stateChanged.connect(midiPlayer.stateChanged)
 
         exerciseView.answerHoverEnter.connect(pianoView.noteMark)

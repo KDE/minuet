@@ -34,13 +34,13 @@ MidiSequencerOutputThread::MidiSequencerOutputThread(drumstick::MidiClient *clie
     m_song(0),
     m_songPosition(0),
     m_lastEvent(0), 
-    m_volumeFactor(100),
+    m_volume(100),
     m_pitchShift(0),
     m_tempoFactor(1.0),
     m_songIterator(0)
 {
     for (int chan = 0; chan < MIDI_CHANNELS; ++chan)
-        m_volume[chan] = 100;
+        m_channelVolume[chan] = 100;
 }
 
 MidiSequencerOutputThread::~MidiSequencerOutputThread()
@@ -79,8 +79,8 @@ drumstick::SequencerEvent *MidiSequencerOutputThread::nextEvent()
             if (cev->getParam() == MIDI_CTL_MSB_MAIN_VOLUME) {
                 int chan = cev->getChannel();
                 int value = cev->getValue();
-                m_volume[chan] = value;
-                value = floor(value * m_volumeFactor / 100.0);
+                m_channelVolume[chan] = value;
+                value = floor(value * m_volume / 100.0);
                 if (value < 0) value = 0;
                 if (value > 127) value = 127;
                 cev->setValue(value);
@@ -105,19 +105,24 @@ void MidiSequencerOutputThread::setSong(Song *song)
     m_Queue->setTempo(firstTempo);
 }
 
-void MidiSequencerOutputThread::setVolumeFactor(unsigned int vol)
+void MidiSequencerOutputThread::setVolume(unsigned int volume)
 {
-    m_volumeFactor = vol;
+    m_volume = volume;
     for(int chan = 0; chan < MIDI_CHANNELS; ++chan) {
-        int value = m_volume[chan];
-        value = floor(value * m_volumeFactor / 100.0);
+        int value = m_channelVolume[chan];
+        value = floor(value * m_volume / 100.0);
         if (value < 0) value = 0;
         if (value > 127) value = 127;
         sendControllerEvent(chan, MIDI_CTL_MSB_MAIN_VOLUME, value);
     }
 }
 
-void MidiSequencerOutputThread::setPitchShift(int value)
+unsigned int MidiSequencerOutputThread::volume() const
+{
+    return m_volume;
+}
+
+void MidiSequencerOutputThread::setPitch(int value)
 {
     bool playing = isRunning();
     if (playing) {
@@ -130,6 +135,11 @@ void MidiSequencerOutputThread::setPitchShift(int value)
     m_pitchShift = value;
     if (playing)
         start();
+}
+
+int MidiSequencerOutputThread::pitch() const
+{
+    return m_pitchShift;
 }
 
 void MidiSequencerOutputThread::setTempoFactor(float value)

@@ -25,10 +25,15 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.minuet 1.0
 
 Rectangle {
-    function timeLabelChanged(timeLabel) { playbackTime.text = timeLabel }
-    function volumeChanged(value) { volumeLabel.text = i18n("Volume: %1\%").arg(value) }
-    function tempoChanged(value) { tempoLabel.text = i18n("Tempo: %1 bpm").arg(value) }
-    function pitchChanged(value) { pitchLabel.text = i18n("Pitch: %1").arg(value) }
+    property alias pitch: pitchSlider.value
+    property alias volume: volumeSlider.value
+    property alias tempo: tempoSlider.value
+    property alias playbackLabel: playbackLabelText.text
+
+    signal playActivated
+    signal pauseActivated
+    signal stopActivated
+
     function stateChanged(state) {
         if (state == MidiSequencer.PlayingState)
             item12.state = "Pause"
@@ -55,7 +60,7 @@ Rectangle {
                 font.pointSize: 8
                 horizontalAlignment: Text.AlignLeft
                 color: theme.viewBackgroundColor
-                text: i18n("Tempo:")
+                text: i18n("Tempo: %1 bpm").arg(Math.round(tempo))
             }
             Text {
                 id: volumeLabel
@@ -63,7 +68,7 @@ Rectangle {
                 font.pointSize: 8
                 horizontalAlignment: Text.AlignLeft
                 color: theme.viewBackgroundColor
-                text: i18n("Volume: 100%")
+                text: i18n("Volume: %1%").arg(Math.round(volume))
             }
             Text {
                 id: pitchLabel
@@ -71,7 +76,7 @@ Rectangle {
                 font.pointSize: 8
                 horizontalAlignment: Text.AlignLeft
                 color: theme.viewBackgroundColor
-                text: i18n("Pitch: 0")
+                text: i18n("Pitch: %1").arg(Math.round(pitch))
             }
         }
     }    
@@ -82,18 +87,19 @@ Rectangle {
         anchors { left: parent.left; leftMargin: 8; top: labels.bottom; topMargin: 10 }
 
         Text {
-            id: playbackTime
+            id: playbackLabelText
 
             width: item1.width
             horizontalAlignment: Text.AlignHCenter
-            text: "00:00.00"
             font.pointSize: 24
+            text: "TESTE"
             color: "#008000"
         }
         MultimediaButton {
             id: item12
+            width: playbackLabelText.contentWidth / 2
             anchors.horizontalCenterOffset: -30
-            anchors { top: playbackTime.bottom; horizontalCenter: playbackTime.horizontalCenter;}
+            anchors { top: playbackLabelText.bottom; horizontalCenter: playbackLabelText.horizontalCenter;}
             state: "Play"
             states: [
                 State {
@@ -101,7 +107,7 @@ Rectangle {
                     PropertyChanges {
                         target: item12;
                         text: i18n("Play")
-                        onActivated: sequencer.play();
+                        onActivated: playActivated();
                         source: "../images/multimedia-play.png"
                     }
                 },
@@ -110,18 +116,19 @@ Rectangle {
                     PropertyChanges {
                         target: item12;
                         text: i18n("Pause")
-                        onActivated: sequencer.pause();
+                        onActivated: pauseActivated();
                         source: "../images/multimedia-pause.png"
                     }
                 }
             ]
         }
         MultimediaButton {
+            width: playbackLabelText.contentWidth / 2
             anchors.horizontalCenterOffset: +30
-            anchors { top: playbackTime.bottom; horizontalCenter: playbackTime.horizontalCenter;}
+            anchors { top: playbackLabelText.bottom; horizontalCenter: playbackLabelText.horizontalCenter;}
             source: "../images/multimedia-stop.png"
             text: i18n("Stop")
-            onActivated: sequencer.stop()
+            onActivated: stopActivated()
         }
     }
     Item {
@@ -135,19 +142,22 @@ Rectangle {
             anchors.right: parent.right
             spacing: 8
             MultimediaSlider {
+                id: pitchSlider
+
                 source: "../images/multimedia-pitch.png"
                 maximumValue: 12; minimumValue: -12; value: 0
-                onValueChanged: sequencer.setPitchShift(value)
             }
             MultimediaSlider {
+                id: tempoSlider
+
                 source: "../images/multimedia-speed.png"
                 maximumValue: 200; minimumValue: 50; value: 100
-                onValueChanged: sequencer.setTempoFactor(value)
             }
             MultimediaSlider {
+                id: volumeSlider
+
                 source: "../images/multimedia-volume.png"
                 maximumValue: 200; value: 100
-                onValueChanged: sequencer.setVolumeFactor(value)
             }
         }
     }

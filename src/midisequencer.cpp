@@ -120,6 +120,7 @@ MidiSequencer::MidiSequencer(QObject *parent) :
 	qCDebug(MINUET) << "Subscribe error";
         throw err;
     }
+    setPlaybackLabel(QStringLiteral("00:00.00"));
 }
 
 MidiSequencer::~MidiSequencer()
@@ -199,8 +200,28 @@ MidiSequencer::EventSchedulingMode MidiSequencer::schedulingMode() const
 
 void MidiSequencer::resetMidiPlayer()
 {
-    emit timeLabelChanged(QStringLiteral("00:00.00"));
+    setPlaybackLabel(QStringLiteral("00:00.00"));
     emit stateChanged(MidiSequencer::StoppedState);
+}
+
+int MidiSequencer::pitch() const
+{
+    return m_midiSequencerOutputThread->pitch();
+}
+
+unsigned int MidiSequencer::volume() const
+{
+    return m_midiSequencerOutputThread->volume();
+}
+
+unsigned int MidiSequencer::tempo() const
+{
+    return m_queue->getTempo().getRealBPM();
+}
+
+QString MidiSequencer::playbackLabel() const
+{
+    return m_playbackLabel;
 }
 
 void MidiSequencer::play()
@@ -229,19 +250,30 @@ void MidiSequencer::stop()
     m_midiSequencerOutputThread->stop();
     m_midiSequencerOutputThread->resetPosition();
     emit allNotesOff();
-    emit timeLabelChanged(QStringLiteral("00:00.00"));
+    setPlaybackLabel(QStringLiteral("00:00.00"));
     emit stateChanged(MidiSequencer::StoppedState);
 }
 
-void MidiSequencer::setVolumeFactor(unsigned int vol)
+void MidiSequencer::setPitch(int pitch)
 {
-    m_midiSequencerOutputThread->setVolumeFactor(vol);
-    emit volumeChanged(vol);
+    if (m_midiSequencerOutputThread->pitch() != pitch) {
+        m_midiSequencerOutputThread->setPitch(pitch);
+        emit allNotesOff();
+        emit pitchChanged(pitch);
+    }
 }
 
-void MidiSequencer::setTempoFactor(unsigned int value)
+void MidiSequencer::setVolume(unsigned int volume)
 {
-    float tempoFactor = (value*value + 100.0*value + 20000.0) / 40000.0;
+    if (m_midiSequencerOutputThread->volume() != volume) {
+        m_midiSequencerOutputThread->setVolume(volume);
+        emit volumeChanged(volume);
+    }
+}
+
+void MidiSequencer::setTempo(unsigned int tempo)
+{
+    float tempoFactor = (tempo*tempo + 100.0*tempo + 20000.0) / 40000.0;
     m_midiSequencerOutputThread->setTempoFactor(tempoFactor);
 
     drumstick::QueueTempo queueTempo = m_queue->getTempo();
@@ -251,11 +283,12 @@ void MidiSequencer::setTempoFactor(unsigned int value)
     emit tempoChanged(queueTempo.getRealBPM());
 }
 
-void MidiSequencer::setPitchShift(int value)
+void MidiSequencer::setPlaybackLabel(QString playbackLabel)
 {
-    m_midiSequencerOutputThread->setPitchShift(value);
-    emit allNotesOff();
-    emit pitchChanged(value);
+    if (m_playbackLabel != playbackLabel) {
+        m_playbackLabel = playbackLabel;
+        emit playbackLabelChanged(m_playbackLabel);
+    }
 }
 
 void MidiSequencer::setSong(Song *song)
@@ -379,7 +412,7 @@ void MidiSequencer::eventReceived(drumstick::SequencerEvent *ev)
         int mins = rt->tv_sec / 60;
         int secs = rt->tv_sec % 60;
         int cnts = qFloor( rt->tv_nsec / 1.0e7 );
-        emit timeLabelChanged(QStringLiteral("%1:%2.%3").arg(mins,2,10,fill).arg(secs,2,10,fill).arg(cnts,2,10,fill));
+        setPlaybackLabel(QStringLiteral("%1:%2.%3").arg(mins,2,10,fill).arg(secs,2,10,fill).arg(cnts,2,10,fill));
     }
 }
 
