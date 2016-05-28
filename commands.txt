@@ -1,0 +1,31 @@
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
+export ANT=/usr/bin/ant
+export Qt5_android=/home/ayush/Qt5.5.1/5.5/android_armv7
+export ANDROID_SDK_ROOT=/home/ayush/android/android-sdk-linux/
+export PATH=$ANDROID_SDK_ROOT/platform-tools/:$PATH
+export ANDROID_NDK=/home/ayush/android/android-ndk-r11/
+
+export minuetandroid_DIR=`pwd`
+mkdir -p export
+cd export/
+export minuetandroid_PRODUCT_DIR=`pwd`
+#mkdir -p ../../build/minuetandroid
+#cd ../../build/minuetandroid
+
+    cmake "${minuetandroid_DIR}" -DCMAKE_TOOLCHAIN_FILE=/usr/share/ECM/toolchain/Android.cmake \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_PREFIX_PATH="${Qt5_android}" \
+        -DCMAKE_INSTALL_PREFIX="${minuetandroid_PRODUCT_DIR}" \
+        -DQTANDROID_EXPORTED_TARGET=minuetandroid \
+        -DANDROID_APK_DIR="${minuetandroid_DIR}"/minuetandroid/data \
+	-DKF5I18n_DIR=/opt/android/kde/install/lib/cmake/KF5I18n/ 
+#	-DKF5Config_DIR=/opt/android/kde/install/lib/cmake/KF5Config/ \	
+#     	-DKF5_HOST_TOOLING=/opt/android/kde/install/lib/cmake/KF5Config/
+make install/strip
+    
+#mkdir "${minuetandroid_PRODUCT_DIR}"/share
+mkdir -p "${minuetandroid_PRODUCT_DIR}"/lib/qml
+
+make create-apk-minuetandroid
+
+adb install -r minuetandroid_build_apk/bin/QtApp-debug.apk

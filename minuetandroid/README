@@ -1,0 +1,48 @@
+Hello KWorld
+============
+
+Small example "Hello world" app for creating a Qt-based app with CMake and ECM for Android.
+
+Prerequisites
+-------------
+Setup of Android development environment, see https://community.kde.org/Android/Environment
+ECM >= 5.17.0 installed
+
+Instructions
+------------
+
+Prepare build dir and product dir, starting from toplevel dir of this project:
+    export minuetandroid_DIR=`pwd`
+    mkdir -p ../export/minuetandroid
+    cd ../export/minuetandroid
+    export minuetandroid_PRODUCT_DIR=`pwd`
+    mkdir -p ../../build/minuetandroid
+    cd ../../build/minuetandroid
+
+Configure the build:
+    cmake -DCMAKE_TOOLCHAIN_FILE=/usr/share/ECM/toolchain/Android.cmake \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_PREFIX_PATH="${Qt5_android}" \
+        -DCMAKE_INSTALL_PREFIX="${minuetandroid_PRODUCT_DIR}" \
+        -DQTANDROID_EXPORTED_TARGET=minuetandroid \
+        -DANDROID_APK_DIR="${minuetandroid_DIR}"/data \
+        "${minuetandroid_DIR}"
+
+CMAKE_TOOLCHAIN_FILE: see http://api.kde.org/ecm/toolchain/Android.html
+CMAKE_INSTALL_PREFIX: needs to be absolute path currently
+QTANDROID_EXPORTED_TARGET & ANDROID_APK_DIR: see http://api.kde.org/ecm/toolchain/Android.html, "Deploying Qt Applications"
+
+Build and install the result in the product dir:
+    make install/strip
+"install/strip" makes sure the binaries only have minimal stuff needed to run.
+
+Workaround for ECM < 5.22:
+ECM/toolchain/Android.cmake expects some dirs to exist. so manually create them now:
+#    mkdir "${minuetandroid_PRODUCT_DIR}"/share
+    mkdir -p "${minuetandroid_PRODUCT_DIR}"/lib/qml
+
+Create the APK finally:
+    make create-apk-minuetandroid
+
+Deploy it, e.g. via android debugger:
+    adb install -r minuetandroid_build_apk/bin/QtApp-debug.apk
