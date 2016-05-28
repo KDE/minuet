@@ -63,10 +63,10 @@ Column {
         colors = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"]
         correctColors = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"]
     }
-    function showCorrectAnswer(chosenExercise, chosenColors) {
+    function showCorrectAnswer(chosenExercises, chosenColors) {
         var tempAnswers = answers
         for (var i = 0; i < 4; ++i)
-            tempAnswers[i] = "exercise-images/" + chosenExercise[i] + ".png"
+            tempAnswers[i] = "exercise-images/" + chosenExercises[i] + ".png"
         answers = tempAnswers
         colors = chosenColors
         currentAnswer = 0

@@ -21,6 +21,7 @@
 ****************************************************************************/
 
 import QtQuick 2.4
+
 import "pianoview"
 import "midiplayer"
 
@@ -33,8 +34,8 @@ Item {
         pianoView.visible = (message != "the rhythm" && message != "exercise")
         rhythmAnswerView.visible = (message == "the rhythm")
     }
-    function exerciseViewStateChanged(state) {
-        if (state == "waitingForAnswer")
+    function exerciseViewStateChanged() {
+        if (exerciseView.state == "waitingForAnswer")
             rhythmAnswerView.resetAnswers()
     }
 
@@ -78,12 +79,6 @@ Item {
             anchors { top: background.top; horizontalCenter: background.horizontalCenter }
         }
     }
-    Connections {
-        target: midiPlayer
-        onPlayActivated: sequencer.play()
-        onPauseActivated: sequencer.pause()
-        onStopActivated: sequencer.stop()
-    }
     Binding {
         target: sequencer
         property: "pitch"
@@ -109,26 +104,41 @@ Item {
         property: "sequencerState"
         value: sequencer.state
     }
-
-    Component.onCompleted: {
-        minuetMenu.breadcrumbPressed.connect(exerciseView.clearExerciseGrid)
-        minuetMenu.breadcrumbPressed.connect(rhythmAnswerView.resetAnswers)
-        minuetMenu.itemChanged.connect(exerciseView.itemChanged)
-        minuetMenu.userMessageChanged.connect(exerciseView.changeUserMessage)
-        minuetMenu.userMessageChanged.connect(mainItem.userMessageChanged)
-        minuetMenu.itemChanged.connect(rhythmAnswerView.resetAnswers)
-
-        sequencer.noteOn.connect(pianoView.noteOn)
-        sequencer.noteOff.connect(pianoView.noteOff)
-        sequencer.allNotesOff.connect(pianoView.allNotesOff)
-
-        exerciseView.answerHoverEnter.connect(pianoView.noteMark)
-        exerciseView.answerHoverExit.connect(pianoView.noteUnmark)
-        exerciseView.answerClicked.connect(rhythmAnswerView.answerClicked)
-        exerciseView.onStateChanged.connect(mainItem.exerciseViewStateChanged)
-        exerciseView.showCorrectAnswer.connect(rhythmAnswerView.showCorrectAnswer)
-        exerciseView.onChosenExercisesChanged.connect(rhythmAnswerView.fillCorrectAnswerGrid)
-
-        rhythmAnswerView.answerCompleted.connect(exerciseView.checkAnswers)
+    Connections {
+        target: midiPlayer
+        onPlayActivated: sequencer.play()
+        onPauseActivated: sequencer.pause()
+        onStopActivated: sequencer.stop()
+    }
+    Connections {
+        target: sequencer
+        onNoteOn: pianoView.noteOn(chan, pitch, vel)
+        onNoteOff: pianoView.noteOff(chan, pitch, vel)
+        onAllNotesOff: pianoView.allNotesOff()
+    }
+    Connections {
+        target: minuetMenu
+        onItemChanged: exerciseView.itemChanged(model)
+        onBreadcrumbPressed: exerciseView.clearExerciseGrid()
+        onUserMessageChanged: exerciseView.changeUserMessage(message)
+    }
+    Connections {
+        target: minuetMenu
+        onItemChanged: rhythmAnswerView.resetAnswers(model)
+        onBreadcrumbPressed: rhythmAnswerView.resetAnswers()
+        onUserMessageChanged: mainItem.userMessageChanged(message)
+    }
+    Connections {
+        target: exerciseView
+        onAnswerHoverEnter: pianoView.noteMark(chan, pitch, vel, color)
+        onAnswerHoverExit: pianoView.noteUnmark(chan, pitch, vel)
+        onAnswerClicked: rhythmAnswerView.answerClicked(answerImageSource, color)
+        onStateChanged: mainItem.exerciseViewStateChanged()
+        onShowCorrectAnswer: rhythmAnswerView.showCorrectAnswer(chosenExercises, chosenColors)
+        onChosenExercisesChanged: rhythmAnswerView.fillCorrectAnswerGrid()
+    }
+    Connections {
+        target: rhythmAnswerView
+        onAnswerCompleted: exerciseView.checkAnswers(answers)
     }
 }
