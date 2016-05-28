@@ -110,6 +110,12 @@ Item {
         value: sequencer.playbackLabel
     }
 
+    Binding {
+        target: midiPlayer
+        property: "sequencerState"
+        value: sequencer.state
+    }
+
     Component.onCompleted: {
         minuetMenu.breadcrumbPressed.connect(exerciseView.clearExerciseGrid)
         minuetMenu.breadcrumbPressed.connect(rhythmAnswerView.resetAnswers)
@@ -121,8 +127,6 @@ Item {
         sequencer.noteOn.connect(pianoView.noteOn)
         sequencer.noteOff.connect(pianoView.noteOff)
         sequencer.allNotesOff.connect(pianoView.allNotesOff)
-
-        sequencer.stateChanged.connect(midiPlayer.stateChanged)
 
         exerciseView.answerHoverEnter.connect(pianoView.noteMark)
         exerciseView.answerHoverExit.connect(pianoView.noteUnmark)

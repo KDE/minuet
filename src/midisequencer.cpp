@@ -43,7 +43,8 @@ MidiSequencer::MidiSequencer(QObject *parent) :
     QObject(parent),
     m_tick(0),
     m_song(0),
-    m_eventSchedulingMode(FROM_ENGINE)
+    m_eventSchedulingMode(FROM_ENGINE),
+    m_state(StoppedState)
 {
     qmlRegisterType<MidiSequencer>("org.kde.minuet", 1, 0, "MidiSequencer");
     // MidiClient configuration
@@ -156,7 +157,6 @@ void MidiSequencer::openFile(const QString &fileName)
     m_song = new Song();
     m_eventSchedulingMode = FROM_ENGINE;
     m_smfReader->readFromFile(fileName);
-    emit tempoChanged(6.0e7f / m_song->initialTempo());
     m_song->sort();
     m_midiSequencerOutputThread->setSong(m_song);
 }
@@ -201,7 +201,7 @@ MidiSequencer::EventSchedulingMode MidiSequencer::schedulingMode() const
 void MidiSequencer::resetMidiPlayer()
 {
     setPlaybackLabel(QStringLiteral("00:00.00"));
-    emit stateChanged(MidiSequencer::StoppedState);
+    setState(StoppedState);
 }
 
 int MidiSequencer::pitch() const
@@ -224,6 +224,11 @@ QString MidiSequencer::playbackLabel() const
     return m_playbackLabel;
 }
 
+MidiSequencer::State MidiSequencer::state() const
+{
+    return m_state;
+}
+
 void MidiSequencer::play()
 {
     if (m_song && !m_song->isEmpty() && !m_midiSequencerOutputThread->isRunning()) {
@@ -232,7 +237,7 @@ void MidiSequencer::play()
                 m_midiSequencerOutputThread->setSong(m_song);
         }
         m_midiSequencerOutputThread->start();
-        emit stateChanged(MidiSequencer::PlayingState);
+        setState(PlayingState);
     }
 }
 
@@ -242,7 +247,7 @@ void MidiSequencer::pause()
         m_midiSequencerOutputThread->stop();
         m_midiSequencerOutputThread->setPosition(m_queue->getStatus().getTickTime());
     }
-    emit stateChanged(MidiSequencer::PausedState);
+    setState(PausedState);
 }
 
 void MidiSequencer::stop()
@@ -251,15 +256,15 @@ void MidiSequencer::stop()
     m_midiSequencerOutputThread->resetPosition();
     emit allNotesOff();
     setPlaybackLabel(QStringLiteral("00:00.00"));
-    emit stateChanged(MidiSequencer::StoppedState);
+    setState(StoppedState);
 }
 
 void MidiSequencer::setPitch(int pitch)
 {
     if (m_midiSequencerOutputThread->pitch() != pitch) {
         m_midiSequencerOutputThread->setPitch(pitch);
+        emit pitchChanged();
         emit allNotesOff();
-        emit pitchChanged(pitch);
     }
 }
 
@@ -267,7 +272,7 @@ void MidiSequencer::setVolume(unsigned int volume)
 {
     if (m_midiSequencerOutputThread->volume() != volume) {
         m_midiSequencerOutputThread->setVolume(volume);
-        emit volumeChanged(volume);
+        emit volumeChanged();
     }
 }
 
@@ -280,15 +285,21 @@ void MidiSequencer::setTempo(unsigned int tempo)
     queueTempo.setTempoFactor(tempoFactor);
     m_queue->setTempo(queueTempo);
     m_client->drainOutput();
-    emit tempoChanged(queueTempo.getRealBPM());
+    emit tempoChanged();
 }
 
 void MidiSequencer::setPlaybackLabel(QString playbackLabel)
 {
     if (m_playbackLabel != playbackLabel) {
         m_playbackLabel = playbackLabel;
-        emit playbackLabelChanged(m_playbackLabel);
+        emit playbackLabelChanged();
     }
+}
+
+void MidiSequencer::setState(State state)
+{
+    m_state = state;
+    emit stateChanged();
 }
 
 void MidiSequencer::setSong(Song *song)

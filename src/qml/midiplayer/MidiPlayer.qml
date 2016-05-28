@@ -29,17 +29,11 @@ Rectangle {
     property alias volume: volumeSlider.value
     property alias tempo: tempoSlider.value
     property alias playbackLabel: playbackLabelText.text
+    property int sequencerState
 
     signal playActivated
     signal pauseActivated
     signal stopActivated
-
-    function stateChanged(state) {
-        if (state == MidiSequencer.PlayingState)
-            item12.state = "Pause"
-        else
-            item12.state = "Play"
-    }
 
     height: childrenRect.height + 15
     anchors { left: parent.left; bottom: parent.bottom }
@@ -92,40 +86,26 @@ Rectangle {
             width: item1.width
             horizontalAlignment: Text.AlignHCenter
             font.pointSize: 24
-            text: "TESTE"
             color: "#008000"
         }
         MultimediaButton {
             id: item12
             width: playbackLabelText.contentWidth / 2
             anchors.horizontalCenterOffset: -30
-            anchors { top: playbackLabelText.bottom; horizontalCenter: playbackLabelText.horizontalCenter;}
-            state: "Play"
-            states: [
-                State {
-                    name: "Play"
-                    PropertyChanges {
-                        target: item12;
-                        text: i18n("Play")
-                        onActivated: playActivated();
-                        source: "../images/multimedia-play.png"
-                    }
-                },
-                State {
-                    name: "Pause"
-                    PropertyChanges {
-                        target: item12;
-                        text: i18n("Pause")
-                        onActivated: pauseActivated();
-                        source: "../images/multimedia-pause.png"
-                    }
-                }
-            ]
+            anchors { top: playbackLabelText.bottom; horizontalCenter: playbackLabelText.horizontalCenter }
+            text: (sequencerState != MidiSequencer.PlayingState) ? i18n("Play"):i18n("Pause")
+            source: (sequencerState != MidiSequencer.PlayingState) ? "../images/multimedia-play.png":"../images/multimedia-pause.png"
+            onActivated: {
+                if (sequencerState == MidiSequencer.StoppedState || sequencerState == MidiSequencer.PausedState)
+                    playActivated()
+                else
+                    pauseActivated()
+            }
         }
         MultimediaButton {
             width: playbackLabelText.contentWidth / 2
             anchors.horizontalCenterOffset: +30
-            anchors { top: playbackLabelText.bottom; horizontalCenter: playbackLabelText.horizontalCenter;}
+            anchors { top: playbackLabelText.bottom; horizontalCenter: playbackLabelText.horizontalCenter }
             source: "../images/multimedia-stop.png"
             text: i18n("Stop")
             onActivated: stopActivated()

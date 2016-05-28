@@ -46,6 +46,8 @@ class MidiSequencer : public QObject
     Q_PROPERTY(unsigned int volume READ volume WRITE setVolume NOTIFY volumeChanged)
     Q_PROPERTY(unsigned int tempo READ tempo WRITE setTempo NOTIFY tempoChanged)
     Q_PROPERTY(QString playbackLabel READ playbackLabel WRITE setPlaybackLabel NOTIFY playbackLabelChanged)
+    Q_ENUMS(State)
+    Q_PROPERTY(State state READ state NOTIFY stateChanged)
 
 public:
     explicit MidiSequencer(QObject *parent = 0);
@@ -61,29 +63,29 @@ public:
         PlayingState,
         PausedState
     };
-    Q_ENUMS(State)
 
     void subscribeTo(const QString &portName);
     void openFile(const QString &fileName);
     void appendEvent(drumstick::SequencerEvent *ev, unsigned long tick);
     QStringList availableOutputPorts() const;
     EventSchedulingMode schedulingMode() const;
- 
+
     int pitch() const;
     unsigned int volume() const;
     unsigned int tempo() const;
     QString playbackLabel() const;
+    State state() const;
 
 Q_SIGNALS:
     void noteOn(int chan, int pitch, int vel);
     void noteOff(int chan, int pitch, int vel);
     void allNotesOff();
-    void pitchChanged(int pitch);
-    void volumeChanged(unsigned int volume);
-    void tempoChanged(unsigned int tempo);
-    void playbackLabelChanged(QString playbackLabel);
-    void stateChanged(State state);
-    
+    void pitchChanged();
+    void volumeChanged();
+    void tempoChanged();
+    void playbackLabelChanged();
+    void stateChanged();
+
 public Q_SLOTS:
     void play();
     void pause();
@@ -92,6 +94,7 @@ public Q_SLOTS:
     void setVolume(unsigned int volume);
     void setTempo(unsigned int tempo);
     void setPlaybackLabel(QString playbackLabel);
+    void setState(State state);
     void setSong(Song *song);
     void clearSong();
 
@@ -138,6 +141,7 @@ private:
     EventSchedulingMode m_eventSchedulingMode;
     QString m_currentSubscribedPort;
     QString m_playbackLabel;
+    State m_state;
 };
 
 #endif // MIDISEQUENCER_H
