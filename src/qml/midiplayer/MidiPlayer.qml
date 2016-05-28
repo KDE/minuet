@@ -49,7 +49,6 @@ Rectangle {
             width: parent.width
             anchors { verticalCenter: parent.verticalCenter; left: parent.left; leftMargin: 15 }
             Text {
-                id: tempoLabel
                 width: parent.width / 3
                 font.pointSize: 8
                 horizontalAlignment: Text.AlignLeft
@@ -57,7 +56,6 @@ Rectangle {
                 text: i18n("Tempo: %1 bpm").arg(Math.round(tempo))
             }
             Text {
-                id: volumeLabel
                 width: parent.width / 3
                 font.pointSize: 8
                 horizontalAlignment: Text.AlignLeft
@@ -65,7 +63,6 @@ Rectangle {
                 text: i18n("Volume: %1%").arg(Math.round(volume))
             }
             Text {
-                id: pitchLabel
                 width: parent.width / 3
                 font.pointSize: 8
                 horizontalAlignment: Text.AlignLeft
@@ -83,13 +80,12 @@ Rectangle {
         Text {
             id: playbackLabelText
 
-            width: item1.width
+            width: parent.width
             horizontalAlignment: Text.AlignHCenter
             font.pointSize: 24
             color: "#008000"
         }
         MultimediaButton {
-            id: item12
             width: playbackLabelText.contentWidth / 2
             anchors.horizontalCenterOffset: -30
             anchors { top: playbackLabelText.bottom; horizontalCenter: playbackLabelText.horizontalCenter }
@@ -112,8 +108,6 @@ Rectangle {
         }
     }
     Item {
-        id: item2
-
         width: parent.width / 2 - 15; height: item1.height
         anchors { right: parent.right; rightMargin: 15; verticalCenter: item1.verticalCenter }
 

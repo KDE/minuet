@@ -74,8 +74,8 @@ Rectangle {
 
     Item {
         id: keyboard
-        anchors { horizontalCenter: parent.horizontalCenter; bottom: parent.bottom; bottomMargin: 5 }
 
+        anchors { horizontalCenter: parent.horizontalCenter; bottom: parent.bottom; bottomMargin: 5 }
         width: 3*keyWidth+7*(7*keyWidth); height: keyHeight
 
         WhiteKey { id: whiteKeyA }
@@ -89,7 +89,6 @@ Rectangle {
         Octave { id: octave6; initialAnchor: octave5 }
         Octave { id: octave7; initialAnchor: octave6 }
         WhiteKey { id: whiteKeyC; anchor: octave7 }
-
         Rectangle {
             width: 3*keyWidth+7*(7*keyWidth); height: 2
             anchors { left: whiteKeyA.left; bottom: whiteKeyA.top }

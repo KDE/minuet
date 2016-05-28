@@ -87,6 +87,7 @@ Item {
     Column {
         anchors.centerIn: parent
         spacing: 20
+
         Text {
             id: messageText
 
@@ -100,6 +101,7 @@ Item {
         Row {
             anchors { horizontalCenter: parent.horizontalCenter }
             spacing: 20
+
             Button {
                 id: newQuestionButton
 
@@ -154,6 +156,7 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             width: answerGrid.width + 20
             height: answerGrid.height + 20
+
             Grid {
                 id: answerGrid
 
@@ -170,6 +173,7 @@ Item {
 
                         width: (userMessage != "the rhythm") ? 120:119
                         height: (userMessage != "the rhythm") ? 40:59
+
                         Text {
                             id: option
 
@@ -185,8 +189,8 @@ Item {
                         }
                         Image {
                             id: rhythmImage
-                            anchors.centerIn: parent
 
+                            anchors.centerIn: parent
                             visible: userMessage == "the rhythm"
                             source: (userMessage == "the rhythm") ? "exercise-images/" + model.name + ".png":""
                             fillMode: Image.Pad
@@ -277,6 +281,7 @@ Item {
         id: animation
         
         loops: 2
+
         SequentialAnimation {
             PropertyAnimation { target: answerRectangle; property: "rotation"; to: -45; duration: 200 }
             PropertyAnimation { target: answerRectangle; property: "rotation"; to:  45; duration: 200 }

@@ -48,9 +48,8 @@ Column {
         if (currentAnswer == 4) {
             answerCompleted(answers)
             correctColors = exerciseView.chosenColors
-            for (var i = 0; i < 4; ++i) {
+            for (var i = 0; i < 4; ++i)
                 correctAnswerGrid.children[i].opacity = answers[i].toString().split("/").pop().split(".")[0] != correctAnswers[i] ? 1:0
-            }
         }
         else {
             tempAnswers[currentAnswer] = "exercise-images/current-rhythm.png"
@@ -85,6 +84,7 @@ Column {
 
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: 10
+
         Repeater {
             model: 4
 
@@ -94,10 +94,11 @@ Column {
                 width: 119; height: 59
                 color: correctColors[index]
                 opacity: 0
+
                 Image {
                     id: correctRhythmImage
-                    anchors.centerIn: parent
 
+                    anchors.centerIn: parent
                     source: (correctAnswers != undefined && exerciseView.userMessage == "the rhythm") ? "exercise-images/" + correctAnswers[index] + ".png":""
                     fillMode: Image.Pad
                 }
@@ -112,6 +113,7 @@ Column {
         radius: 5
         anchors.horizontalCenter: parent.horizontalCenter
         width: answerGrid.width + 20; height: answerGrid.height + 20
+
         Row {
             id: answerGrid
 
@@ -126,6 +128,7 @@ Column {
                     width: 119
                     height: 59
                     color: colors[index]
+
                     Text {
                         id: option
 
@@ -156,7 +159,6 @@ Column {
         anchors.horizontalCenter: parent.horizontalCenter
         text: i18n("backspace")
         enabled: currentAnswer > 0 && currentAnswer < 4
-
         onClicked: {
             if (currentAnswer > 0) {
                 var tempAnswers = answers

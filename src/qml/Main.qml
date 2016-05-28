@@ -60,14 +60,14 @@ Item {
 
         PianoView {
             id: pianoView
-            anchors { bottom: parent.bottom; bottomMargin: 5; horizontalCenter: parent.horizontalCenter }
 
+            anchors { bottom: parent.bottom; bottomMargin: 5; horizontalCenter: parent.horizontalCenter }
             visible: false
         }
         RhythmAnswerView {
             id: rhythmAnswerView
+            
             anchors { bottom: parent.bottom; bottomMargin: 14; horizontalCenter: parent.horizontalCenter }
-
             visible: false
             exerciseView: exerciseView
         }
@@ -78,38 +78,32 @@ Item {
             anchors { top: background.top; horizontalCenter: background.horizontalCenter }
         }
     }
-
     Connections {
         target: midiPlayer
         onPlayActivated: sequencer.play()
         onPauseActivated: sequencer.pause()
         onStopActivated: sequencer.stop()
     }
-
     Binding {
         target: sequencer
         property: "pitch"
         value: midiPlayer.pitch
     }
-
     Binding {
         target: sequencer
         property: "volume"
         value: midiPlayer.volume
     }
-
     Binding {
         target: sequencer
         property: "tempo"
         value: midiPlayer.tempo
     }
-
     Binding {
         target: midiPlayer
         property: "playbackLabel"
         value: sequencer.playbackLabel
     }
-
     Binding {
         target: midiPlayer
         property: "sequencerState"

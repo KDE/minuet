@@ -38,9 +38,11 @@ ButtonStyle {
 
     background: Item {
         property color borderColor: blendColors(sysPalette.windowText, sysPalette.window, 0.75)
+
         opacity: control.enabled ? 1.0 : 0.5
         implicitHeight: 32
         implicitWidth: 96
+
         Rectangle {
             anchors.centerIn: parent
             implicitHeight: parent.height - 2
@@ -77,8 +79,11 @@ ButtonStyle {
         opacity: control.enabled ? 1.0 : 0.5
         implicitWidth: buttonText.implicitWidth + 16
         implicitHeight: buttonText.implicitHeight + 8
+        transform: Translate {x: control.pressed ? 1 : 0; y: control.pressed ? 1 : 0}
+
         Text {
             id: buttonText
+
             width: parent.width
             anchors { verticalCenter: parent.verticalCenter; left: parent.left; leftMargin: 10; right: parent.right; rightMargin: 10 }
             text: control.text
@@ -86,6 +91,5 @@ ButtonStyle {
             horizontalAlignment: labelHorizontalAlignment
             wrapMode: Text.Wrap
         }
-        transform: Translate {x: control.pressed ? 1 : 0; y: control.pressed ? 1 : 0}
     }
 }

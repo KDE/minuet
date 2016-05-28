@@ -46,11 +46,12 @@ Item {
 
     Button {
         id: breadcrumb
+
         width: (stackView.depth > 1) ? 24:0; height: parent.height
         iconName: "go-previous"
         onClicked: {
             sequencer.allNotesOff()
-	    sequencer.clearSong()
+            sequencer.clearSong()
             minuetMenu.breadcrumbPressed()
             selectedMenuItem = null
             stackView.pop()
@@ -72,8 +73,8 @@ Item {
 
             Button {
                 id: delegateRect
-                width: parent.width; height: 55
 
+                width: parent.width; height: 55
                 text: i18nc("technical term, do you have a musician friend?", modelData.name)
                 checkable: (!delegateRect.ListView.view.model[index].children) ? true:false
                 onClicked: {
@@ -106,15 +107,18 @@ Item {
                         }
                     }
                 }
-                style: MinuetButtonStyle{}
+                style: MinuetButtonStyle {}
             }
         }
         Component {
             id: categoryMenu
+
             Rectangle {
+                property alias model: listView.model
+
                 width: stackView.width; height: parent.height
                 color: theme.viewBackgroundColor
-                property alias model: listView.model
+
                 ListView {
                     id: listView
                     anchors.fill: parent
