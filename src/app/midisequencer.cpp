@@ -25,8 +25,8 @@
 #include "minuetsettings.h"
 #include "midisequenceroutputthread.h"
 
-#include <KI18n/KLocalizedString>
-#include <KWidgetsAddons/KMessageBox>
+#include <KLocalizedString>
+#include <KMessageBox>
 
 #include <QtMath>
 #include <QLoggingCategory>

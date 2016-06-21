@@ -20,25 +20,16 @@
 **
 ****************************************************************************/
 
-#ifndef MINUET_ISOUNDBACKEND_H
-#define MINUET_ISOUNDBACKEND_H
+#include "fluidsynthsoundbackend.h"
 
-#include <QtCore/QObject>
-
-#include "minuetinterfacesexport.h"
-
-namespace Minuet
+FluidSynthSoundBackend::FluidSynthSoundBackend(QObject *parent)
+    : Minuet::IPlugin(parent)
 {
-
-class MINUETINTERFACES_EXPORT ISoundBackend : public QObject
-{
-    Q_OBJECT
-
-public:
-    explicit ISoundBackend(QObject *parent = 0);
-    ~ISoundBackend() override;
-};
-
 }
 
-#endif
+FluidSynthSoundBackend::~FluidSynthSoundBackend()
+{
+}
+
+#include "moc_fluidsynthsoundbackend.cpp"
+

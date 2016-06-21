@@ -24,8 +24,8 @@
 
 #include "minuet_version.h"
 
-#include <KCrash/KCrash>
-#include <KCoreAddons/KAboutData>
+#include <KCrash>
+#include <KAboutData>
 
 #include <QCommandLineParser>
 

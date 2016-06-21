@@ -35,7 +35,7 @@ class MINUETINTERFACES_EXPORT IPluginController : public QObject
     Q_OBJECT
 
 public:
-    IPluginController(QObject *parent);
+    explicit IPluginController(QObject *parent = 0);
     ~IPluginController() override;
 };
 

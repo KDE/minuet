@@ -35,10 +35,12 @@ class MINUETINTERFACES_EXPORT IPlugin : public QObject
     Q_OBJECT
 
 public:
-    IPlugin(QObject *parent);
+    explicit IPlugin(QObject *parent = 0);
     ~IPlugin() override;
 };
 
 }
+
+Q_DECLARE_INTERFACE(Minuet::IPlugin, "org.kde.minuet.IPlugin")
 
 #endif

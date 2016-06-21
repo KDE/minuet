@@ -38,6 +38,7 @@ bool Core::initialize()
         return true;
 
     m_self = new Core;
+
     return true;
 }
 
@@ -62,6 +63,7 @@ Core::Core(QObject *parent)
       m_exerciseController(new ExerciseController)
 
 {
+    ((PluginController *)m_pluginController.data())->initialize();
 }
 
 }

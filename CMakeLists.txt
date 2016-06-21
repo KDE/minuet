@@ -31,6 +31,7 @@ ecm_setup_version(${KDE_APPLICATIONS_VERSION} VARIABLE_PREFIX MINUET
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Widgets Quick)
 
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+    CoreAddons
     I18n
     XmlGui
     KIO

@@ -1,0 +1,12 @@
+{
+    "KPlugin": {
+        "Category": "Sound Backends", 
+        "Description": "This plugin provides Minuet with a FluidSynth-based implementation of sound backend.", 
+        "Icon": "utilities-terminal", 
+        "Id": "minuetfluidsynthsoundbackend", 
+        "Name": "FluidSynth-based Audio Backend", 
+        "ServiceTypes": [
+            "Minuet/Plugin"
+        ]
+    } 
+}

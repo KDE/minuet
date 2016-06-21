@@ -20,25 +20,20 @@
 **
 ****************************************************************************/
 
-#ifndef MINUET_ISOUNDBACKEND_H
-#define MINUET_ISOUNDBACKEND_H
+#ifndef MINUET_FLUIDSYNTHSOUNDBACKEND_H
+#define MINUET_FLUIDSYNTHSOUNDBACKEND_H
 
-#include <QtCore/QObject>
+#include <interfaces/iplugin.h>
 
-#include "minuetinterfacesexport.h"
-
-namespace Minuet
-{
-
-class MINUETINTERFACES_EXPORT ISoundBackend : public QObject
+class FluidSynthSoundBackend : public Minuet::IPlugin
 {
     Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.kde.minuet.IPlugin" FILE "fluidsynthsoundbackend.json")
+    Q_INTERFACES(Minuet::IPlugin)
 
 public:
-    explicit ISoundBackend(QObject *parent = 0);
-    ~ISoundBackend() override;
+    explicit FluidSynthSoundBackend(QObject *parent = 0);
+    ~FluidSynthSoundBackend() override;
 };
-
-}
 
 #endif

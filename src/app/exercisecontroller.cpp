@@ -24,7 +24,7 @@
 
 #include "midisequencer.h"
 
-#include <KI18n/KLocalizedString>
+#include <KLocalizedString>
 
 #include <QDir>
 #include <QDateTime>

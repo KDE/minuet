@@ -26,9 +26,9 @@
 #include "midisequencer.h"
 #include "exercisecontroller.h"
 
-#include <KXmlGui/KActionCollection>
-#include <KWidgetsAddons/KMessageBox>
-#include <KConfigWidgets/KConfigDialog>
+#include <KActionCollection>
+#include <KMessageBox>
+#include <KConfigDialog>
 
 #include <QQmlEngine>
 #include <QQmlContext>

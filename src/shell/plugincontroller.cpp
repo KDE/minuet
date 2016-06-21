@@ -22,16 +22,46 @@
 
 #include "plugincontroller.h"
 
+#include <KPluginLoader>
+
+#include <interfaces/iplugin.h>
+
+#include <QDebug>
+
 namespace Minuet
 {
 
 PluginController::PluginController(QObject *parent)
     : IPluginController(parent)
 {
+    m_plugins = KPluginLoader::findPlugins(QStringLiteral("minuet"), [&](const KPluginMetaData &meta) {
+        if (!meta.serviceTypes().contains(QStringLiteral("Minuet/Plugin"))) {
+            qDebug() << "Plugin" << meta.fileName() << "is installed into the minuet plugin directory, but does not have"
+                " \"Minuet/Plugin\" set as the service type. This plugin will not be loaded.";
+            return false;
+        }
+        return true;
+    });
 }
 
 PluginController::~PluginController()
 {
+}
+
+bool PluginController::initialize()
+{
+    foreach (const KPluginMetaData &pluginMetaData, m_plugins)
+    {
+        if (m_loadedPlugins.value(pluginMetaData))
+            continue;
+
+        KPluginLoader loader(pluginMetaData.fileName());
+        IPlugin *plugin = qobject_cast<IPlugin *>(loader.instance());
+        if (plugin)
+            m_loadedPlugins.insert(pluginMetaData, plugin);
+    }
+
+    return true;
 }
 
 }

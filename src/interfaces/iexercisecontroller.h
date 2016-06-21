@@ -35,7 +35,7 @@ class MINUETINTERFACES_EXPORT IExerciseController : public QObject
     Q_OBJECT
 
 public:
-    IExerciseController(QObject *parent);
+    explicit IExerciseController(QObject *parent = 0);
     ~IExerciseController() override;
 };
 

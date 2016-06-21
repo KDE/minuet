@@ -26,8 +26,8 @@
 #include "ui_settingsmidi.h"
 #include "minuetsettings.h"
 
-#include <KCoreAddons/KProcess>
-#include <KXmlGui/KXmlGuiWindow>
+#include <KProcess>
+#include <KXmlGuiWindow>
 
 #include <QLoggingCategory>
 

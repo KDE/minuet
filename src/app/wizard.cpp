@@ -24,7 +24,7 @@
 
 #include "minuetsettings.h"
 
-#include <KI18n/KLocalizedString>
+#include <KLocalizedString>
 
 #include <QTimer>
 #include <QDirIterator>

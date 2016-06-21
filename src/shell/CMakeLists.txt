@@ -11,6 +11,7 @@ generate_export_header(minuetshell EXPORT_FILE_NAME minuetshellexport.h)
 
 target_link_libraries(minuetshell
     Minuet::Interfaces
+    KF5::CoreAddons
 )
 
 install(TARGETS
