@@ -4,7 +4,7 @@ set(minuet_SRCS
     main.cpp
     song.cpp
     wizard.cpp
-    minuet.cpp
+    minuetmainwindow.cpp
     midisequencer.cpp
     midisequenceroutputthread.cpp
     exercisecontroller.cpp
@@ -27,6 +27,7 @@ target_link_libraries(minuet
     KF5::XmlGui
     KF5::KIOWidgets
     KF5::Crash
+    Minuet::Shell
     asound
     drumstick-alsa
     drumstick-file

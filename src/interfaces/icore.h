@@ -31,7 +31,7 @@ namespace Minuet
 {
 
 class IPluginController;
-class IMidiBackend;
+class ISoundBackend;
 class IExerciseController;
 
 class MINUETINTERFACES_EXPORT ICore : public QObject
@@ -44,7 +44,7 @@ public:
     static ICore *self();
 
     virtual Minuet::IPluginController *pluginController() = 0;
-    virtual Minuet::IMidiBackend *midiBackend() = 0;
+    virtual Minuet::ISoundBackend *soundBackend() = 0;
     virtual Minuet::IExerciseController *exerciseController() = 0;
 
 protected:

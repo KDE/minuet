@@ -20,25 +20,19 @@
 **
 ****************************************************************************/
 
-#ifndef MINUET_IMIDIBACKEND_H
-#define MINUET_IMIDIBACKEND_H
-
-#include <QtCore/QObject>
-
-#include "minuetinterfacesexport.h"
+#include "isoundbackend.h"
 
 namespace Minuet
 {
 
-class MINUETINTERFACES_EXPORT IMidiBackend : public QObject
+ISoundBackend::ISoundBackend(QObject *parent)
+    : QObject(parent)
 {
-    Q_OBJECT
+}
 
-public:
-    IMidiBackend(QObject *parent);
-    ~IMidiBackend() override;
-};
+ISoundBackend::~ISoundBackend()
+{
+}
 
 }
 
-#endif

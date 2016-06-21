@@ -2,7 +2,7 @@ set(minuetinterfaces_LIB_SRCS
     icore.cpp
     iplugin.cpp
     iplugincontroller.cpp
-    imidibackend.cpp
+    isoundbackend.cpp
     iexercisecontroller.cpp
 )
 
@@ -14,9 +14,6 @@ generate_export_header(minuetinterfaces EXPORT_FILE_NAME minuetinterfacesexport.
 target_link_libraries(minuetinterfaces
     Qt5::Core
 )
-
-get_target_property(VAR minuetinterfaces INCLUDE_DIRECTORIES)
-MESSAGE(STATUS "TESTE" "${VAR}")
 
 install(TARGETS
     minuetinterfaces
@@ -33,7 +30,7 @@ install(FILES
     icore.h
     iplugin.h
     iplugincontroller.h
-    imidibackend.h
+    isoundbackend.h
     iexercisecontroller.h
     DESTINATION ${KDE_INSTALL_INCLUDEDIR}/minuet/interfaces
     COMPONENT Devel

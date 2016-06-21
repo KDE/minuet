@@ -22,35 +22,45 @@
 
 #include "core.h"
 
+#include "plugincontroller.h"
+#include "exercisecontroller.h"
+
 namespace Minuet
 {
+
+Core::~Core()
+{
+}
 
 bool Core::initialize()
 {
     if (m_self)
         return true;
 
-    m_self = new Core();
+    m_self = new Core;
     return true;
 }
 
 IPluginController *Core::pluginController()
 {
-    return 0;
+    return m_pluginController.data();
 }
 
-IMidiBackend *Core::midiBackend()
+ISoundBackend *Core::soundBackend()
 {
     return 0;
 }
 
 IExerciseController *Core::exerciseController()
 {
-    return 0;
+    return m_exerciseController.data();
 }
 
 Core::Core(QObject *parent)
-    : ICore(parent)
+    : ICore(parent),
+      m_pluginController(new PluginController),
+      m_exerciseController(new ExerciseController)
+
 {
 }
 

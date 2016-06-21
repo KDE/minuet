@@ -35,14 +35,19 @@ class MINUETSHELL_EXPORT Core : public ICore
     Q_OBJECT
 
 public:
+    virtual ~Core();
+
     static bool initialize();
 
     virtual IPluginController *pluginController() override;
-    virtual IMidiBackend *midiBackend() override;
+    virtual ISoundBackend *soundBackend() override;
     virtual IExerciseController *exerciseController() override;
 
 private:
     Core(QObject *parent = 0);
+
+    QScopedPointer<IPluginController> m_pluginController;
+    QScopedPointer<IExerciseController> m_exerciseController;
 };
 
 }

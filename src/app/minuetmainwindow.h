@@ -20,8 +20,8 @@
 **
 ****************************************************************************/
 
-#ifndef MINUET_H
-#define MINUET_H
+#ifndef MINUETMAINWINDOW_H
+#define MINUETMAINWINDOW_H
 
 #include "ui_settingsmidi.h"
 #include "minuetsettings.h"
@@ -46,7 +46,7 @@ Q_DECLARE_LOGGING_CATEGORY(MINUET)
  * @author Sandro S. Andrade <sandroandrade@kde.org>
  * @version 0.1
  */
-class Minuet : public KXmlGuiWindow
+class MinuetMainWindow : public KXmlGuiWindow
 {
     Q_OBJECT
 
@@ -54,12 +54,12 @@ public:
     /**
      * Default Constructor
      */
-    Minuet();
+    MinuetMainWindow();
 
     /**
      * Default Destructor
      */
-    virtual ~Minuet();
+    virtual ~MinuetMainWindow();
     
 protected:
     virtual bool queryClose();
@@ -90,5 +90,5 @@ private:
     KProcess m_timidityProcess;
 };
 
-#endif // MINUET_H
+#endif // MINUETMAINWINDOW_H
 

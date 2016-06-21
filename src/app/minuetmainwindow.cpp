@@ -20,7 +20,7 @@
 **
 ****************************************************************************/
 
-#include "minuet.h"
+#include "minuetmainwindow.h"
 
 #include "wizard.h"
 #include "midisequencer.h"
@@ -41,7 +41,7 @@
 
 #include <QToolBar>
 
-Minuet::Minuet() :
+MinuetMainWindow::MinuetMainWindow() :
     KXmlGuiWindow(),
     m_midiSequencer(new MidiSequencer(this)),
     m_exerciseController(new ExerciseController(m_midiSequencer)),
@@ -72,7 +72,7 @@ Minuet::Minuet() :
 
     QAction *action = new QAction(i18n("Run Configuration Wizard"), this);
     action->setIcon(QIcon::fromTheme(QStringLiteral("tools-wizard")));
-    connect(action, &QAction::triggered, this, &Minuet::runWizard);
+    connect(action, &QAction::triggered, this, &MinuetMainWindow::runWizard);
     actionCollection()->addAction(QStringLiteral("run_wizard"), action);
 
     setupGUI(Keys | Save | Create);
@@ -86,7 +86,7 @@ Minuet::Minuet() :
     subscribeToMidiOutputPort();
 }
 
-void Minuet::startTimidity()
+void MinuetMainWindow::startTimidity()
 {
     QString error;
     if (!m_midiSequencer->availableOutputPorts().contains(QStringLiteral("TiMidity:0"))) {
@@ -114,7 +114,7 @@ void Minuet::startTimidity()
                            i18n("Minuet startup"));
 }
 
-bool Minuet::waitForTimidityOutputPorts(int msecs)
+bool MinuetMainWindow::waitForTimidityOutputPorts(int msecs)
 {
     QTime time;
     time.start();
@@ -124,14 +124,14 @@ bool Minuet::waitForTimidityOutputPorts(int msecs)
     return true;
 }
 
-void Minuet::subscribeToMidiOutputPort()
+void MinuetMainWindow::subscribeToMidiOutputPort()
 {
     QString midiOutputPort = MinuetSettings::midiOutputPort();
     if (!midiOutputPort.isEmpty() && m_midiSequencer->availableOutputPorts().contains(midiOutputPort))
         m_midiSequencer->subscribeTo(midiOutputPort);
 }
 
-Minuet::~Minuet()
+MinuetMainWindow::~MinuetMainWindow()
 {
     delete m_quickView;
     delete m_exerciseController;
@@ -143,14 +143,14 @@ Minuet::~Minuet()
 	qCDebug(MINUET) << "TiMidity++ stoped!";
 }
 
-bool Minuet::queryClose()
+bool MinuetMainWindow::queryClose()
 {
     MinuetSettings::self()->save();
     return true;
 }
 
 /*
-void Minuet::fileOpen()
+void MinuetMainWindow::fileOpen()
 {
     QString fileName = QFileDialog::getOpenFileName(this, i18n("Open File")); // krazy:exclude=qclasses
     if (!fileName.isEmpty())
@@ -158,7 +158,7 @@ void Minuet::fileOpen()
 }
 */
 
-void Minuet::runWizard()
+void MinuetMainWindow::runWizard()
 {
     QScopedPointer<Wizard> w (new Wizard(this));
     if (w->exec() == QDialog::Accepted && w->isOk()) {
@@ -167,7 +167,7 @@ void Minuet::runWizard()
     }
 }
 
-void Minuet::settingsConfigure()
+void MinuetMainWindow::settingsConfigure()
 {
     if (KConfigDialog::showDialog(QStringLiteral("settings")))
         return;

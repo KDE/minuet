@@ -37,7 +37,7 @@ class MINUETSHELL_EXPORT ExerciseController : public IExerciseController
     Q_OBJECT
 
 public:
-    ExerciseController(QObject *parent);
+    ExerciseController(QObject *parent = 0);
     ~ExerciseController() override;
 };
 

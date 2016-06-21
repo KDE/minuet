@@ -35,7 +35,7 @@ class MINUETSHELL_EXPORT PluginController : public IPluginController
     Q_OBJECT
 
 public:
-    PluginController(QObject *parent);
+    PluginController(QObject *parent = 0);
     ~PluginController() override;
 };
 
