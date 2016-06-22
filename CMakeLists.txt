@@ -28,15 +28,22 @@ ecm_setup_version(${KDE_APPLICATIONS_VERSION} VARIABLE_PREFIX MINUET
                   VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/src/app/minuet_version.h"
 )
 
-find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Widgets Quick)
+find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
+    Core
+    Widgets
+    Quick
+#    Gui
+)
 
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
-    CoreAddons
-    I18n
+    DocTools
     XmlGui
+    I18n
+    CoreAddons
+    Completion
+    WidgetsAddons
     KIO
     Crash
-    DocTools
 )
 
 find_package(PkgConfig REQUIRED)

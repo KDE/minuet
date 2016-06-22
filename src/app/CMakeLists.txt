@@ -5,13 +5,11 @@ set(minuet_SRCS
 add_executable(minuet ${minuet_SRCS})
 
 target_link_libraries(minuet
-    Qt5::Core
-    Qt5::Gui
     Qt5::Widgets
-    KF5::XmlGui
-    KF5::KIOWidgets
     KF5::Crash
+    KF5::CoreAddons
     KF5::I18n
+    Minuet::Interfaces
     Minuet::Shell
 )
 

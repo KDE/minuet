@@ -26,13 +26,12 @@ generate_export_header(minuetshell EXPORT_FILE_NAME minuetshellexport.h)
 
 target_link_libraries(minuetshell
     Qt5::Core
-    Qt5::Gui
-    Qt5::Quick
     Qt5::Widgets
+    Qt5::Quick
     KF5::CoreAddons
+    KF5::Completion
     KF5::WidgetsAddons
     KF5::KIOWidgets
-    KF5::Completion
     KF5::XmlGui
     KF5::I18n
     asound
