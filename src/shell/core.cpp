@@ -24,6 +24,7 @@
 
 #include "plugincontroller.h"
 #include "exercisecontroller.h"
+#include "uicontroller.h"
 
 namespace Minuet
 {
@@ -57,13 +58,20 @@ IExerciseController *Core::exerciseController()
     return m_exerciseController.data();
 }
 
+IUiController *Core::uiController()
+{
+    return m_uiController.data();
+}
+
 Core::Core(QObject *parent)
     : ICore(parent),
       m_pluginController(new PluginController),
-      m_exerciseController(new ExerciseController)
+      m_exerciseController(new ExerciseController),
+      m_uiController(new UiController)
 
 {
     ((PluginController *)m_pluginController.data())->initialize();
+    ((UiController *)m_uiController.data())->initialize();
 }
 
 }

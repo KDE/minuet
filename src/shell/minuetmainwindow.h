@@ -34,7 +34,10 @@
 class QQuickView;
 
 class MidiSequencer;
-class ExerciseController;
+
+namespace Minuet {
+    class ExerciseController;
+}
 
 Q_DECLARE_LOGGING_CATEGORY(MINUET)
 
@@ -84,7 +87,7 @@ private Q_SLOTS:
 private:
     Ui::SettingsMidi m_settingsMidi;
     MidiSequencer *m_midiSequencer;
-    ExerciseController *m_exerciseController;
+    Minuet::ExerciseController *m_exerciseController;
     QQuickView *m_quickView;
     KConfigGroup m_initialGroup;
     KProcess m_timidityProcess;

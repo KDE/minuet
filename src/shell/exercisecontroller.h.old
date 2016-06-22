@@ -20,38 +20,23 @@
 **
 ****************************************************************************/
 
-#ifndef MINUET_ICORE_H
-#define MINUET_ICORE_H
+#ifndef MINUET_EXERCISECONTROLLER_H
+#define MINUET_EXERCISECONTROLLER_H
 
-#include <QtCore/QObject>
+#include <interfaces/iexercisecontroller.h>
 
-#include "minuetinterfacesexport.h"
+#include "minuetshellexport.h"
 
 namespace Minuet
 {
 
-class IPluginController;
-class ISoundBackend;
-class IExerciseController;
-class IUiController;
-
-class MINUETINTERFACES_EXPORT ICore : public QObject
+class MINUETSHELL_EXPORT ExerciseController : public IExerciseController
 {
     Q_OBJECT
 
 public:
-    ~ICore() override;
-
-    static ICore *self();
-
-    virtual Minuet::IPluginController *pluginController() = 0;
-    virtual Minuet::ISoundBackend *soundBackend() = 0;
-    virtual Minuet::IExerciseController *exerciseController() = 0;
-    virtual Minuet::IUiController *uiController() = 0;
-
-protected:
-    ICore(QObject *parent = 0);
-    static ICore *m_self;
+    ExerciseController(QObject *parent = 0);
+    ~ExerciseController() override;
 };
 
 }

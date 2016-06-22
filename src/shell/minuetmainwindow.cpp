@@ -32,6 +32,10 @@
 
 #include <QQmlEngine>
 #include <QQmlContext>
+#include <QLoggingCategory>
+
+Q_DECLARE_LOGGING_CATEGORY(MINUET)
+Q_LOGGING_CATEGORY(MINUET, "minuet")
 
 #include <QTimer>
 #include <QPointer>
@@ -44,7 +48,7 @@
 MinuetMainWindow::MinuetMainWindow() :
     KXmlGuiWindow(),
     m_midiSequencer(new MidiSequencer(this)),
-    m_exerciseController(new ExerciseController(m_midiSequencer)),
+    m_exerciseController(new Minuet::ExerciseController(m_midiSequencer)),
     m_quickView(new QQuickView),
     m_initialGroup(KSharedConfig::openConfig(), "version")
 {

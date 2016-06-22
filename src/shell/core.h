@@ -42,12 +42,14 @@ public:
     virtual IPluginController *pluginController() override;
     virtual ISoundBackend *soundBackend() override;
     virtual IExerciseController *exerciseController() override;
+    virtual IUiController *uiController() override;
 
 private:
     Core(QObject *parent = 0);
 
     QScopedPointer<IPluginController> m_pluginController;
     QScopedPointer<IExerciseController> m_exerciseController;
+    QScopedPointer<IUiController> m_uiController;
 };
 
 }

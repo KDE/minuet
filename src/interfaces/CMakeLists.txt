@@ -2,6 +2,7 @@ set(minuetinterfaces_LIB_SRCS
     icore.cpp
     iplugin.cpp
     iplugincontroller.cpp
+    iuicontroller.cpp
     isoundbackend.cpp
     iexercisecontroller.cpp
 )
@@ -30,6 +31,7 @@ install(FILES
     icore.h
     iplugin.h
     iplugincontroller.h
+    iuicontroller.h
     isoundbackend.h
     iexercisecontroller.h
     DESTINATION ${KDE_INSTALL_INCLUDEDIR}/minuet/interfaces

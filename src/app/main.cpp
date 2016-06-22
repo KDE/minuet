@@ -20,17 +20,15 @@
 **
 ****************************************************************************/
 
-#include "minuetmainwindow.h"
-
 #include "minuet_version.h"
 
 #include <KCrash>
 #include <KAboutData>
+#include <KLocalizedString>
 
 #include <QCommandLineParser>
-
-Q_DECLARE_LOGGING_CATEGORY(MINUET)
-Q_LOGGING_CATEGORY(MINUET, "minuet")
+#include <QApplication>
+#include <QIcon>
 
 //#include <QQmlDebuggingEnabler>
 //QQmlDebuggingEnabler enabler;
@@ -64,7 +62,5 @@ int main(int argc, char **argv)
 
     Minuet::Core::initialize();
 
-    MinuetMainWindow *appwindow = new MinuetMainWindow;
-    appwindow->show();
     return application.exec();
 }

@@ -118,7 +118,7 @@ MidiSequencer::MidiSequencer(QObject *parent) :
     try {
         m_outputPort->subscribeTo(QStringLiteral("MinuetSequencer:1"));
     } catch (const drumstick::SequencerError &err) {
-	qCDebug(MINUET) << "Subscribe error";
+//	qCDebug(MINUET) << "Subscribe error";
         throw err;
     }
     setPlaybackLabel(QStringLiteral("00:00.00"));
@@ -138,14 +138,14 @@ void MidiSequencer::subscribeTo(const QString &portName)
 {
     try {
         if (!m_currentSubscribedPort.isEmpty()) {
-            qCDebug(MINUET) << "Unsubscribing to" << m_currentSubscribedPort;
+//            qCDebug(MINUET) << "Unsubscribing to" << m_currentSubscribedPort;
             m_outputPort->unsubscribeTo(m_currentSubscribedPort);
 	}
-	qCDebug(MINUET) << "Subscribing to" << portName;
+//	qCDebug(MINUET) << "Subscribing to" << portName;
         m_outputPort->subscribeTo(portName);
 	m_currentSubscribedPort = portName;
     } catch (const drumstick::SequencerError &err) {
-      	qCDebug(MINUET) << "Subscribe error";
+//      	qCDebug(MINUET) << "Subscribe error";
         throw err;
     }
 }
