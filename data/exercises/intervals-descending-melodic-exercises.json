@@ -1,0 +1,78 @@
+{
+  "exercises": [
+    {
+      "name": "Intervals",
+      "root": "21..104",
+      "playMode": "scale",
+      "userMessage": "the interval",
+      "children": [
+        {
+          "name": "Descending Melodic Intervals",
+          "filter-tags": ["interval", "descending"],
+          "children": [
+            {
+              "name": "Seconds",
+              "or-tags": ["2"]
+            },
+            {
+              "name": "Thirds",
+              "or-tags": ["3"]
+            },
+            {
+              "name": "Fourths and Fifths",
+              "or-tags": ["4", "5"]
+            },
+            {
+              "name": "Sixths",
+              "or-tags": ["6"]
+            },
+            {
+              "name": "Sevenths",
+              "or-tags": ["7"]
+            },
+            {
+              "name": "Ninths",
+              "or-tags": ["9"]
+            },
+            {
+              "name": "Tenths",
+              "or-tags": ["10"]
+            },
+            {
+              "name": "Tritone and Sevenths",
+              "or-tags": ["tritone", "7"]
+            },
+            {
+              "name": "Fourths, Fifths, and Octave",
+              "or-tags": ["4", "5", "8"]
+            },
+            {
+              "name": "Seconds and Thirds",
+              "or-tags": ["2", "3"]
+            },
+            {
+              "name": "Sixths and Sevenths",
+              "or-tags": ["6", "7"]
+            },
+            {
+              "name": "Sevenths and Ninths",
+              "or-tags": ["7", "9"]
+            },
+            {
+              "name": "Second to Octave",
+              "or-tags": ["2", "3", "4", "tritone", "5", "6", "7", "8"]
+            },
+            {
+              "name": "Second to Tenth",
+              "or-tags": ["2", "3", "4", "tritone", "5", "6", "7", "8", "9", "10"]
+            },
+            {
+              "name": "Second to 15th",
+              "or-tags": ["2", "3", "4", "tritone", "5", "6", "7", "8", "9", "10", "11", "8+tritone", "12", "13", "14", "double8"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

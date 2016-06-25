@@ -57,7 +57,7 @@ MinuetMainWindow::MinuetMainWindow() :
         return;
     }
 
-    if (!m_exerciseController->configureExercises())
+    if (!m_exerciseController->initialize())
         KMessageBox::error(this,
                            i18n("There was an error when parsing exercises JSON files: \"%1\".", m_exerciseController->errorString()),
                            i18n("Minuet startup"));

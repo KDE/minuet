@@ -1,0 +1,118 @@
+{
+  "definitions": [
+    {
+      "tags": ["chord", "root-position", "minor", "triad"],
+      "name": "Minor",
+      "sequence": "3 7"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "triad"],
+      "name": "Major",
+      "sequence": "4 7"
+    },
+    {
+      "tags": ["chord", "root-position", "minor", "7", "seventh"],
+      "name": "Minor 7",
+      "sequence": "3 7 10"
+    },
+    {
+      "tags": ["chord", "root-position", "dominant", "7", "seventh"],
+      "name": "Dominant 7",
+      "sequence": "4 7 10"
+    },
+    {
+      "tags": ["chord", "root-position", "diminished", "triad"],
+      "name": "Diminished",
+      "sequence": "3 6"
+    },
+    {
+      "tags": ["chord", "root-position", "augmented", "triad"],
+      "name": "Augmented",
+      "sequence": "4 8"
+    },
+    {
+      "tags": ["chord", "root-position", "minor", "9", "extended"],
+      "name": "Minor 9",
+      "sequence": "3 7 10 14"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "9", "extended"],
+      "name": "Major 9",
+      "sequence": "4 7 10 14"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "7", "9", "altered"],
+      "name": "Major 7(b9)",
+      "sequence": "4 7 10 13"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "7", "seventh"],
+      "name": "Major maj7",
+      "sequence": "4 7 11"
+    },{
+      "tags": ["chord", "root-position", "major", "7", "9", "extended"],
+      "name": "Major maj7(9)",
+      "sequence": "4 7 11 14"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "7", "extended"],
+      "name": "Major Seventh",
+      "sequence": "4 7 11"
+    },
+    {
+      "tags": ["chord", "root-position", "diminished", "7", "seventh"],
+      "name": "Diminished Seventh",
+      "sequence": "3 6 9"
+    },
+    {
+      "tags": ["chord", "root-position", "diminished", "7", "seventh"],
+      "name": "Half Diminished Seventh",
+      "sequence": "3 6 10"
+    },
+    {
+      "tags": ["chord", "root-position", "minor", "7", "altered"],
+      "name": "Minor maj7",
+      "sequence": "3 7 11"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "5", "7", "altered"],
+      "name": "Major maj7(b5)",
+      "sequence": "4 6 11"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "7", "altered"],
+      "name": "Major 7",
+      "sequence": "4 7 10"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "5", "7", "altered"],
+      "name": "Major 7(b5)",
+      "sequence": "4 6 10"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "5", "7", "altered"],
+      "name": "Major 7(#5)",
+      "sequence": "4 8 10"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "7", "9", "altered"],
+      "name": "Major 9",
+      "sequence": "4 7 10 14"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "7", "9", "altered"],
+      "name": "Major 7(#9)",
+      "sequence": "4 7 10 15"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "7", "9", "altered"],
+      "name": "Major 7(b9)",
+      "sequence": "4 7 10 13"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "7", "9", "altered"],
+      "name": "Major 7(#5/b9)",
+      "sequence": "4 8 10 13"
+    }
+  ]
+}

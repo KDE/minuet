@@ -45,6 +45,8 @@ public:
     explicit ExerciseController(MidiSequencer *midiSequencer = 0);
     virtual ~ExerciseController();
     
+    bool initialize();
+
     enum PlayMode {
         ScalePlayMode = 0,
         ChordPlayMode,
@@ -60,16 +62,19 @@ public:
     Q_INVOKABLE unsigned int chosenRootNote();
     Q_INVOKABLE void playChoosenExercise();
 
-    bool configureExercises();
     QString errorString() const;
     QJsonObject exercises() const;
     
 private:
-    QJsonArray mergeExercises(QJsonArray exercises, QJsonArray newExercises);
+    bool mergeDefinitions();
+    bool mergeExercises();
+    QJsonArray applyDefinitions(QJsonArray exercises, QJsonArray definitions);
+    QJsonArray mergeJsonFiles(QJsonArray oldFile, QJsonArray newFile, QString commonKey = "", QString mergeKey = "");
 
 private:
     MidiSequencer *m_midiSequencer;
     QJsonObject m_exercises;
+    QJsonObject m_definitions;
     QJsonArray m_exerciseOptions;
     unsigned int m_minRootNote;
     unsigned int m_maxRootNote;

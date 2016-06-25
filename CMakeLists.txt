@@ -87,7 +87,7 @@ include_directories(${minuet_SOURCE_DIR}/src/ ${minuet_BINARY_DIR}/src)
 add_subdirectory(doc)
 add_subdirectory(src)
 add_subdirectory(icons)
-add_subdirectory(exercises)
+add_subdirectory(data)
 
 install(FILES org.kde.minuet.appdata.xml DESTINATION ${SHARE_INSTALL_PREFIX}/appdata/)
 

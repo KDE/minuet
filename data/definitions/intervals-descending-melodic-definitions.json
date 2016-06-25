@@ -1,0 +1,124 @@
+{
+  "definitions": [
+    {
+      "tags": ["interval", "descending", "2", "minor"],
+      "name": "Minor Second",
+      "sequence": "-1"
+    },
+    {
+      "tags": ["interval", "descending", "2", "major"],
+      "name": "Major Second",
+      "sequence": "-2"
+    },
+    {
+      "tags": ["interval", "descending", "3", "minor"],
+      "name": "Minor Third",
+      "sequence": "-3"
+    },
+    {
+      "tags": ["interval", "descending", "3", "major"],
+      "name": "Major Third",
+      "sequence": "-4"
+    },
+    {
+      "tags": ["interval", "descending", "4"],
+      "name": "Perfect Fourth",
+      "sequence": "-5"
+    },
+    {
+      "tags": ["interval", "descending", "tritone"],
+      "name": "Tritone",
+      "sequence": "-6"
+    },
+    {
+      "tags": ["interval", "descending", "5"],
+      "name": "Perfect Fifth",
+      "sequence": "-7"
+    },
+    {
+      "tags": ["interval", "descending", "6", "minor"],
+      "name": "Minor Sixth",
+      "sequence": "-8"
+    },
+    {
+      "tags": ["interval", "descending", "6", "major"],
+      "name": "Major Sixth",
+      "sequence": "-9"
+    },
+    {
+      "tags": ["interval", "descending", "7", "minor"],
+      "name": "Minor Seventh",
+      "sequence": "-10"
+    },
+    {
+      "tags": ["interval", "descending", "7", "major"],
+      "name": "Major Seventh",
+      "sequence": "-11"
+    },
+    {
+      "tags": ["interval", "descending", "8"],
+      "name": "Perfect Octave",
+      "sequence": "-12"
+    },
+    {
+      "tags": ["interval", "descending", "9", "minor"],
+      "name": "Minor Ninth",
+      "sequence": "-13"
+    },
+    {
+      "tags": ["interval", "descending", "9", "major"],
+      "name": "Major Ninth",
+      "sequence": "-14"
+    },
+    {
+      "tags": ["interval", "descending", "10", "minor"],
+      "name": "Minor Tenth",
+      "sequence": "-15"
+    },
+    {
+      "tags": ["interval", "descending", "10", "major"],
+      "name": "Major Tenth",
+      "sequence": "-16"
+    },
+    {
+      "tags": ["interval", "descending", "11"],
+        "name": "Perfect Eleventh",
+        "sequence": "-17"
+    },
+    {
+      "tags": ["interval", "descending", "8+tritone"],
+      "name": "Octave + Tritone",
+      "sequence": "-18"
+    },
+    {
+      "tags": ["interval", "descending", "12"],
+      "name": "Perfect Twelfth",
+      "sequence": "-19"
+    },
+    {
+      "tags": ["interval", "descending", "13", "minor"],
+      "name": "Minor Thirteenth",
+      "sequence": "-20"
+    },
+    {
+      "tags": ["interval", "descending", "13", "major"],
+      "name": "Major Thirteenth",
+      "sequence": "-21"
+    },
+    {
+      "tags": ["interval", "descending", "14", "minor"],
+      "name": "Minor Fourteenth",
+      "sequence": "-22"
+    },
+    {
+      "tags": ["interval", "descending", "14", "major"],
+      "name": "Major Fourteenth",
+      "sequence": "-23"
+    },
+    {
+      "tags": ["interval", "descending", "double8"],
+      "name": "Perfect Double Octave",
+      "sequence": "-24"
+    }
+  ]
+}
