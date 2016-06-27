@@ -66,12 +66,15 @@ public:
     QJsonObject exercises() const;
     
 private:
-    bool mergeDefinitions();
-    bool mergeExercises();
+    bool mergeJsonFiles(const QString directoryName, QJsonObject &targetObject, bool applyDefinitionsFlag = false, QString commonKey = "", QString mergeKey = "");
     QJsonArray applyDefinitions(QJsonArray exercises, QJsonArray definitions);
-    QJsonArray mergeJsonFiles(QJsonArray oldFile, QJsonArray newFile, QString commonKey = "", QString mergeKey = "");
+    enum DefinitionFilteringMode {
+        AndFiltering = 0,
+        OrFiltering
+    };
+    void filterDefinitions(QJsonArray &definitions, QJsonObject &exerciseObject, const QString &filterTagsKey, DefinitionFilteringMode definitionFilteringMode);
+    QJsonArray mergeJsonArrays(QJsonArray oldFile, QJsonArray newFile, QString commonKey = "", QString mergeKey = "");
 
-private:
     MidiSequencer *m_midiSequencer;
     QJsonObject m_exercises;
     QJsonObject m_definitions;
