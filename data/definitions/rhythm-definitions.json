@@ -1,0 +1,44 @@
+{
+  "definitions": [
+    {
+      "tags": ["rhythm", "easy", "medium"],
+      "name": "quarter",
+      "sequence": "4"
+    },
+    {
+      "tags": ["rhythm", "easy", "medium"],
+      "name": "eighth-eighth",
+      "sequence": "8 8"
+    },
+    {
+      "tags": ["rhythm", "easy", "medium"],
+      "name": "eighth-dot-sixteenth",
+      "sequence": "8. 16"
+    },
+    {
+      "tags": ["rhythm", "easy", "medium"],
+      "name": "sixteenth-eighth-dot",
+      "sequence": "16 8."
+    },
+    {
+      "tags": ["rhythm", "medium"],
+      "name": "sixteenth-sixteenth-sixteenth-sixteenth",
+      "sequence": "16 16 16 16"
+    },
+    {
+      "tags": ["rhythm", "medium"],
+      "name": "eighth-sixteenth-sixteenth",
+      "sequence": "8 16 16"
+    },
+    {
+      "tags": ["rhythm", "medium"],
+      "name": "sixteenth-eighth-sixteenth",
+      "sequence": "16 8 16"
+    },
+    {
+      "tags": ["rhythm", "medium"],
+      "name": "sixteenth-sixteenth-eighth",
+      "sequence": "16 16 8"
+    }
+  ]
+}

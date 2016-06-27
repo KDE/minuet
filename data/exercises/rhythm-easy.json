@@ -1,0 +1,16 @@
+{
+  "exercises": [
+    {
+      "name": "Rhythm",
+      "playMode": "rhythm",
+      "userMessage": "the rhythm",
+      "template": "lilypond-templates/rhythm.ly.tmpl",
+      "children": [
+        {
+            "name": "Easy",
+            "and-tags": ["rhythm", "easy"]
+        }
+      ]
+    }
+  ]
+}
