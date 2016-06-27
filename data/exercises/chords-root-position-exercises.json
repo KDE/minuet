@@ -8,36 +8,36 @@
       "children": [
         {
           "name": "Root Position",
-          "filter-tags": ["chord", "root-position"],
+          "and-tags": ["chord", "root-position"],
           "children": [
             {
               "name": "Minor and Major Chords",
-              "filter-tags": ["triad"],
+              "and-tags": ["triad"],
               "or-tags": ["minor", "major"]
             },
             {
               "name": "Minor 7 and Dominant 7 Chords",
-              "filter-tags": ["7"],
+              "and-tags": ["7"],
               "or-tags": ["minor", "dominant"]
             },
             {
               "name": "Diminished and Augmented Chords",
-              "filter-tags": ["triad"],
+              "and-tags": ["triad"],
               "or-tags": ["diminished", "augmented"]
             },
             {
               "name": "Minor 9 and Major 9 Chords",
-              "filter-tags": ["9"],
+              "and-tags": ["9"],
               "or-tags": ["minor", "major"]
             },
             {
               "name": "Major 7(b9) and Major maj7(9) Chords",
-              "filter-tags": ["7", "9"],
+              "and-tags": ["7", "9"],
               "or-tags": ["major"]
             },
             {
               "name": "Major Seventh, Diminished Seventh, and Half Diminished Seventh Chords",
-              "filter-tags": ["7"],
+              "and-tags": ["7"],
               "or-tags": ["major", "diminished"]
             },
             {
@@ -46,11 +46,11 @@
             },
             {
               "name": "Altered Chords",
-              "filter-tags": ["altered"]
+              "and-tags": ["altered"]
             },
             {
               "name": "Chords with 7 in their name",
-              "filter-tags": ["7"]
+              "and-tags": ["7"]
             },
             {
               "name": "Minor, Major, Diminished, and Augmented Chords",

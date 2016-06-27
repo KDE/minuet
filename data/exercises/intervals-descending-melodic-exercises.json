@@ -8,7 +8,7 @@
       "children": [
         {
           "name": "Descending Melodic Intervals",
-          "filter-tags": ["interval", "descending"],
+          "and-tags": ["interval", "descending"],
           "children": [
             {
               "name": "Seconds",

@@ -58,9 +58,11 @@ bool ExerciseController::initialize()
 {
     bool definitions = mergeDefinitions();
     bool exercises = mergeExercises();
-    m_exercises[QStringLiteral("exercises")] = applyDefinitions(m_exercises[QStringLiteral("exercises")].toArray(),
-                                                                m_definitions[QStringLiteral("definitions")].toArray());
-    
+
+    QFile file("merged-exercises.json");
+    file.open(QIODevice::WriteOnly);
+    file.write(QJsonDocument(m_exercises).toJson());
+    file.close();
     return definitions & exercises;
 }
 
@@ -241,11 +243,15 @@ bool ExerciseController::mergeExercises()
                 return false;
             }
             else {
+                QJsonObject jsonObject = jsonDocument.object();
+                jsonObject[QStringLiteral("exercises")] = applyDefinitions(jsonObject[QStringLiteral("exercises")].toArray(),
+                                                                           m_definitions[QStringLiteral("definitions")].toArray());
+
                 if (m_exercises.length() == 0)
-                    m_exercises = jsonDocument.object();
+                    m_exercises = jsonObject;
                 else
                     m_exercises[QStringLiteral("exercises")] = mergeJsonFiles(m_exercises[QStringLiteral("exercises")].toArray(),
-                                                            jsonDocument.object()[QStringLiteral("exercises")].toArray(), "name", "children");
+                                                            jsonObject[QStringLiteral("exercises")].toArray(), "name", "children");
             }
             exerciseFile.close();
         }
@@ -255,16 +261,21 @@ bool ExerciseController::mergeExercises()
 
 QJsonArray ExerciseController::applyDefinitions(QJsonArray exercises, QJsonArray definitions)
 {
-    for (QJsonArray::ConstIterator i1 = exercises.constBegin(); i1 < exercises.constEnd(); ++i1) {
+    QJsonArray::const_iterator exercisesBegin = exercises.constBegin();
+    QJsonArray::const_iterator exercisesEnd = exercises.constEnd();
+    for (QJsonArray::ConstIterator i1 = exercisesBegin; i1 < exercisesEnd; ++i1) {
         if (i1->isObject()) {
-            QJsonObject jsonObject = i1->toObject();
+            QJsonObject exerciseObject = i1->toObject();
             QJsonArray filteredDefinitions = definitions;
-            if (jsonObject.keys().contains(QStringLiteral("filter-tags")) && jsonObject[QStringLiteral("filter-tags")].isArray()) {
-                QJsonArray filterTags = jsonObject["filter-tags"].toArray();
-                jsonObject.remove("filter-tags");
+            QStringList exerciseObjectKeys = exerciseObject.keys();
+            if (exerciseObjectKeys.contains(QStringLiteral("and-tags")) && exerciseObject[QStringLiteral("and-tags")].isArray()) {
+                QJsonArray filterTags = exerciseObject["and-tags"].toArray();
+                exerciseObject.remove("and-tags");
                 for (QJsonArray::Iterator i2 = filteredDefinitions.begin(); i2 < filteredDefinitions.end(); ++i2) {
-                    for (QJsonArray::ConstIterator i3 = filterTags.constBegin(); i3 < filterTags.constEnd(); ++i3) {
-                        if (!i2->toObject()["tags"].toArray().contains(*i3)) {
+                    QJsonArray tagArray = i2->toObject()["tags"].toArray();
+                    QJsonArray::const_iterator filterTagsEnd = filterTags.constEnd();
+                    for (QJsonArray::ConstIterator i3 = filterTags.constBegin(); i3 < filterTagsEnd; ++i3) {
+                        if (!tagArray.contains(*i3)) {
                             i2 = filteredDefinitions.erase(i2);
                             i2--;
                             break;
@@ -272,37 +283,38 @@ QJsonArray ExerciseController::applyDefinitions(QJsonArray exercises, QJsonArray
                     }
                 }
             }
-            QJsonArray options;
-            if (jsonObject.keys().contains(QStringLiteral("or-tags")) && jsonObject[QStringLiteral("or-tags")].isArray()) {
-                QJsonArray orTags = jsonObject[QStringLiteral("or-tags")].toArray();
-                jsonObject.remove(QStringLiteral("or-tags"));
-                for (QJsonArray::ConstIterator i2 = filteredDefinitions.constBegin(); i2 < filteredDefinitions.constEnd(); ++i2) {
-                    QJsonArray definitionTags = i2->toObject()["tags"].toArray();
-                    for (QJsonArray::ConstIterator i3 = orTags.constBegin(); i3 < orTags.constEnd(); ++i3) {
-                        if (definitionTags.contains(i3->toString())) {
-                            QJsonObject obj = i2->toObject();
-                            obj.remove("tags");
-                            options.append(obj);
-                            break;
-                        }
+            if (exerciseObjectKeys.contains(QStringLiteral("or-tags")) && exerciseObject[QStringLiteral("or-tags")].isArray()) {
+                QJsonArray orTags = exerciseObject[QStringLiteral("or-tags")].toArray();
+                exerciseObject.remove(QStringLiteral("or-tags"));
+                for (QJsonArray::Iterator i2 = filteredDefinitions.begin(); i2 < filteredDefinitions.end(); ++i2) {
+                    QJsonObject definitionObject = i2->toObject();
+                    QJsonArray tagArray = definitionObject["tags"].toArray();
+                    bool contains = false;
+                    QJsonArray::const_iterator orTagsEnd = orTags.constEnd();
+                    for (QJsonArray::ConstIterator i3 = orTags.constBegin(); i3 < orTagsEnd; ++i3)
+                        if (tagArray.contains(*i3))
+                            contains = true;
+                    filteredDefinitions[i2-filteredDefinitions.begin()] = definitionObject;
+                    if (!contains) {
+                        i2 = filteredDefinitions.erase(i2);
+                        i2--;
                     }
                 }
-                jsonObject.insert("options", options);
+            }
+            if (exerciseObjectKeys.contains(QStringLiteral("children"))) {
+                exerciseObject[QStringLiteral("children")] = applyDefinitions(exerciseObject[QStringLiteral("children")].toArray(), filteredDefinitions);
             }
             else {
-                if (jsonObject.keys().contains(QStringLiteral("children"))) {
-                    jsonObject[QStringLiteral("children")] = applyDefinitions(jsonObject[QStringLiteral("children")].toArray(), filteredDefinitions);
+                QJsonArray::const_iterator filteredDefinitionsBegin = filteredDefinitions.constBegin();
+                QJsonArray::const_iterator filteredDefinitionsEnd = filteredDefinitions.constEnd();
+                for (QJsonArray::ConstIterator i = filteredDefinitions.constBegin(); i < filteredDefinitionsEnd; ++i) {
+                    QJsonObject definitionObject = i->toObject();
+                    definitionObject.remove("tags");
+                    filteredDefinitions[i-filteredDefinitionsBegin] = definitionObject;
                 }
-                else {
-                    for (QJsonArray::ConstIterator i2 = filteredDefinitions.constBegin(); i2 < filteredDefinitions.constEnd(); ++i2) {
-                        QJsonObject obj = i2->toObject();
-                        obj.remove("tags");
-                        options.append(obj);
-                        jsonObject.insert("options", options);
-                    }
-                }
+                exerciseObject.insert("options", filteredDefinitions);
             }
-            exercises[i1-exercises.constBegin()] = jsonObject;
+            exercises[i1-exercisesBegin] = exerciseObject;
         }
     }
     return exercises;
@@ -310,20 +322,23 @@ QJsonArray ExerciseController::applyDefinitions(QJsonArray exercises, QJsonArray
 
 QJsonArray ExerciseController::mergeJsonFiles(QJsonArray oldFile, QJsonArray newFile, QString commonKey, QString mergeKey)
 {
-    for (QJsonArray::ConstIterator i1 = newFile.constBegin(); i1 < newFile.constEnd(); ++i1) {
+    QJsonArray::const_iterator newFileEnd = newFile.constEnd();;
+    for (QJsonArray::ConstIterator i1 = newFile.constBegin(); i1 < newFileEnd; ++i1) {
         if (i1->isObject()) {
+            QJsonObject newFileObject = i1->toObject();
             QJsonArray::ConstIterator i2;
-            for (i2 = oldFile.constBegin(); i2 < oldFile.constEnd(); ++i2) {
-                if (i2->isObject() && i1->isObject() && !commonKey.isEmpty() && i2->toObject()[commonKey] == i1->toObject()[commonKey]) {
+            QJsonArray::const_iterator oldFileEnd = oldFile.constEnd();
+            for (i2 = oldFile.constBegin(); i2 < oldFileEnd; ++i2) {
+                QJsonObject oldFileObject = i2->toObject();
+                if (i2->isObject() && i1->isObject() && !commonKey.isEmpty() && oldFileObject[commonKey] == newFileObject[commonKey]) {
                     QJsonObject jsonObject = oldFile[i2-oldFile.constBegin()].toObject();
-                    jsonObject[mergeKey] = mergeJsonFiles(i2->toObject()[mergeKey].toArray(), i1->toObject()[mergeKey].toArray(), commonKey, mergeKey);
+                    jsonObject[mergeKey] = mergeJsonFiles(oldFileObject[mergeKey].toArray(), newFileObject[mergeKey].toArray(), commonKey, mergeKey);
                     oldFile[i2-oldFile.constBegin()] = jsonObject;
                     break;
                 }
             }
-            if (i2 == oldFile.constEnd()) {
+            if (i2 == oldFile.constEnd())
                 oldFile.append(*i1);
-            }
         }
     }
     return oldFile;
