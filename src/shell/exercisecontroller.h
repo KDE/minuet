@@ -84,7 +84,6 @@ private:
     PlayMode m_playMode;
     unsigned int m_answerLength;
     unsigned int m_chosenRootNote;
-    unsigned int m_chosenExercise;
     QString m_errorString;
 };
 

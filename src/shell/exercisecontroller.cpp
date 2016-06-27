@@ -44,8 +44,7 @@ ExerciseController::ExerciseController(MidiSequencer *midiSequencer) :
     m_maxRootNote(0),
     m_playMode(ScalePlayMode),
     m_answerLength(1),
-    m_chosenRootNote(0),
-    m_chosenExercise(0)
+    m_chosenRootNote(0)
 {
     m_exercises["exercises"] = QJsonArray();
     m_exercises["definitions"] = QJsonArray();
@@ -115,8 +114,8 @@ QStringList ExerciseController::randomlyChooseExercises()
     }
 
     for (unsigned int i = 0; i < m_answerLength; ++i) {
-        m_chosenExercise = qrand() % m_exerciseOptions.size();
-        QString sequence = m_exerciseOptions[m_chosenExercise].toObject()[QStringLiteral("sequence")].toString();
+        unsigned int chosenExercise = qrand() % m_exerciseOptions.size();
+        QString sequence = m_exerciseOptions[chosenExercise].toObject()[QStringLiteral("sequence")].toString();
 
         if (m_playMode != RhythmPlayMode) {
             int minNote = INT_MAX;
@@ -163,7 +162,7 @@ QStringList ExerciseController::randomlyChooseExercises()
             }
         }
 
-        chosenExercises << m_exerciseOptions[m_chosenExercise].toObject()[QStringLiteral("name")].toString();
+        chosenExercises << m_exerciseOptions[chosenExercise].toObject()[QStringLiteral("name")].toString();
     }
     if (m_playMode == RhythmPlayMode) {
         m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOn(9, 80, 120), barStart);

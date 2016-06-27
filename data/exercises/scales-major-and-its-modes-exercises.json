@@ -1,0 +1,16 @@
+{
+  "exercises": [
+    {
+      "name": "Scales",
+      "root": "21..104",
+      "playMode": "scale",
+      "userMessage": "the scale",
+      "children": [
+        {
+          "name": "Major Scale and its Modes",
+          "and-tags": ["scale", "major"]
+        }
+      ]
+    }
+  ]
+}
