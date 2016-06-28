@@ -40,10 +40,7 @@ namespace Minuet
     
 ExerciseController::ExerciseController(MidiSequencer *midiSequencer) :
     m_midiSequencer(midiSequencer),
-    m_minRootNote(0),
-    m_maxRootNote(0),
     m_playMode(ScalePlayMode),
-    m_answerLength(1),
     m_chosenRootNote(0)
 {
     m_exercises["exercises"] = QJsonArray();
@@ -68,35 +65,17 @@ bool ExerciseController::initialize()
     return definitionsMerge & exercisesMerge;
 }
 
-void ExerciseController::setExerciseOptions(QJsonArray exerciseOptions)
-{
-    m_exerciseOptions = exerciseOptions;
-}
-
-void ExerciseController::setMinRootNote(unsigned int minRootNote)
-{
-    m_minRootNote = minRootNote;
-}
-
-void ExerciseController::setMaxRootNote(unsigned int maxRootNote)
-{
-    m_maxRootNote = maxRootNote;
-}
-
 void ExerciseController::setPlayMode(PlayMode playMode)
 {
     m_playMode = playMode;
 }
 
-void ExerciseController::setAnswerLength(unsigned int answerLength)
+void ExerciseController::randomlySelectOptions()
 {
-    m_answerLength = answerLength;
-}
+    while (!m_selectedOptions.isEmpty())
+        m_selectedOptions.removeFirst();
 
-QStringList ExerciseController::randomlyChooseExercises()
-{
     qsrand(QDateTime::currentDateTimeUtc().toTime_t());
-    QStringList chosenExercises;
 
     Song *song = new Song;
     song->setHeader(0, 1, 60);
@@ -114,8 +93,8 @@ QStringList ExerciseController::randomlyChooseExercises()
     }
 
     for (unsigned int i = 0; i < m_answerLength; ++i) {
-        unsigned int chosenExercise = qrand() % m_exerciseOptions.size();
-        QString sequence = m_exerciseOptions[chosenExercise].toObject()[QStringLiteral("sequence")].toString();
+        unsigned int chosenExercise = qrand() % m_currentExercise.size();
+        QString sequence = m_currentExercise[chosenExercise].toObject()[QStringLiteral("sequence")].toString();
 
         if (m_playMode != RhythmPlayMode) {
             int minNote = INT_MAX;
@@ -162,13 +141,11 @@ QStringList ExerciseController::randomlyChooseExercises()
             }
         }
 
-        chosenExercises << m_exerciseOptions[chosenExercise].toObject()[QStringLiteral("name")].toString();
+        m_selectedOptions.append(m_currentExercise[chosenExercise]);
     }
     if (m_playMode == RhythmPlayMode) {
         m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOn(9, 80, 120), barStart);
     }
-
-    return chosenExercises;
 }
 
 unsigned int ExerciseController::chosenRootNote()

@@ -39,7 +39,7 @@ Item {
     function itemClicked(delegateRect, index) {
         var model = delegateRect.ListView.view.model[index].options
         if (model != undefined) {
-            exerciseController.setExerciseOptions(model)
+            exerciseController.currentExercise = model
             minuetMenu.itemChanged(model)
         }
     }
@@ -92,17 +92,17 @@ Item {
                         stackView.push(categoryMenu.createObject(stackView, {model: children}))
                         var root = delegateRect.ListView.view.model[index].root
                         if (root != undefined) {
-                            exerciseController.setMinRootNote(root.split('.')[0])
-                            exerciseController.setMaxRootNote(root.split('.')[2])
+                            exerciseController.minRootNote = parseInt(root.split('.')[0])
+                            exerciseController.maxRootNote = parseInt(root.split('.')[2])
                         }
                         var playMode = delegateRect.ListView.view.model[index].playMode
                         if (playMode != undefined) {
                             if (playMode == "scale") exerciseController.setPlayMode(0) // ScalePlayMode
                             if (playMode == "chord") exerciseController.setPlayMode(1) // ChordPlayMode
-                            exerciseController.setAnswerLength(1)
+                            exerciseController.answerLength = 1
                             if (playMode == "rhythm") {
                                 exerciseController.setPlayMode(2) // RhythmPlayMode
-                                exerciseController.setAnswerLength(4)
+                                exerciseController.answerLength = 4
                             }
                         }
                     }

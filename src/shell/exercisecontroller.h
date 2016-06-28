@@ -25,9 +25,8 @@
 
 #include <interfaces/iexercisecontroller.h>
 
-#include <QJsonArray>
-#include <QJsonObject>
 #include <QStringList>
+#include <QJsonObject>
 
 #include "minuetshellexport.h"
 
@@ -35,7 +34,7 @@ class MidiSequencer;
 
 namespace Minuet
 {
-    
+ 
 class MINUETSHELL_EXPORT ExerciseController : public IExerciseController
 {
     Q_OBJECT
@@ -44,7 +43,7 @@ class MINUETSHELL_EXPORT ExerciseController : public IExerciseController
 public:
     explicit ExerciseController(MidiSequencer *midiSequencer = 0);
     virtual ~ExerciseController();
-    
+ 
     bool initialize();
 
     enum PlayMode {
@@ -53,18 +52,16 @@ public:
         RhythmPlayMode
     };
 
-    Q_INVOKABLE void setExerciseOptions(QJsonArray exerciseOptions);
-    Q_INVOKABLE void setMinRootNote(unsigned int minRootNote);
-    Q_INVOKABLE void setMaxRootNote(unsigned int maxRootNote);
     Q_INVOKABLE void setPlayMode(PlayMode playMode);
-    Q_INVOKABLE void setAnswerLength(unsigned int answerLength);
-    Q_INVOKABLE QStringList randomlyChooseExercises();
     Q_INVOKABLE unsigned int chosenRootNote();
     Q_INVOKABLE void playChoosenExercise();
 
     QString errorString() const;
-    QJsonObject exercises() const;
-    
+    virtual QJsonObject exercises() const override;
+
+public Q_SLOTS:
+    virtual void randomlySelectOptions();
+ 
 private:
     bool mergeJsonFiles(const QString directoryName, QJsonObject &targetObject, bool applyDefinitionsFlag = false, QString commonKey = "", QString mergeKey = "");
     QJsonArray applyDefinitions(QJsonArray exercises, QJsonArray definitions);
@@ -78,11 +75,7 @@ private:
     MidiSequencer *m_midiSequencer;
     QJsonObject m_exercises;
     QJsonObject m_definitions;
-    QJsonArray m_exerciseOptions;
-    unsigned int m_minRootNote;
-    unsigned int m_maxRootNote;
     PlayMode m_playMode;
-    unsigned int m_answerLength;
     unsigned int m_chosenRootNote;
     QString m_errorString;
 };
