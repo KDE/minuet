@@ -38,7 +38,6 @@ namespace Minuet
 class MINUETSHELL_EXPORT ExerciseController : public IExerciseController
 {
     Q_OBJECT
-    Q_ENUMS(PlayMode)
 
 public:
     explicit ExerciseController(MidiSequencer *midiSequencer = 0);
@@ -46,13 +45,6 @@ public:
  
     bool initialize();
 
-    enum PlayMode {
-        ScalePlayMode = 0,
-        ChordPlayMode,
-        RhythmPlayMode
-    };
-
-    Q_INVOKABLE void setPlayMode(PlayMode playMode);
     Q_INVOKABLE unsigned int chosenRootNote();
     Q_INVOKABLE void playChoosenExercise();
 
@@ -75,7 +67,6 @@ private:
     MidiSequencer *m_midiSequencer;
     QJsonObject m_exercises;
     QJsonObject m_definitions;
-    PlayMode m_playMode;
     unsigned int m_chosenRootNote;
     QString m_errorString;
 };

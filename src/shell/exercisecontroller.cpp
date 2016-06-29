@@ -40,7 +40,6 @@ namespace Minuet
     
 ExerciseController::ExerciseController(MidiSequencer *midiSequencer) :
     m_midiSequencer(midiSequencer),
-    m_playMode(ScalePlayMode),
     m_chosenRootNote(0)
 {
     m_exercises["exercises"] = QJsonArray();
@@ -65,11 +64,6 @@ bool ExerciseController::initialize()
     return definitionsMerge & exercisesMerge;
 }
 
-void ExerciseController::setPlayMode(PlayMode playMode)
-{
-    m_playMode = playMode;
-}
-
 void ExerciseController::randomlySelectOptions()
 {
     while (!m_selectedOptions.isEmpty())
@@ -77,74 +71,25 @@ void ExerciseController::randomlySelectOptions()
 
     qsrand(QDateTime::currentDateTimeUtc().toTime_t());
 
-    Song *song = new Song;
-    song->setHeader(0, 1, 60);
-    song->setInitialTempo(600000);
-    m_midiSequencer->setSong(song);
-    m_midiSequencer->appendEvent(m_midiSequencer->SMFTempo(600000), 0);
+    int minNote = INT_MAX;
+    int maxNote = INT_MIN;
+    for (quint8 i = 0; i < m_answerLength; ++i) {
+        quint8 chosenExercise = qrand() % m_currentExercise.size();
 
-    unsigned int barStart = 0;
-    if (m_playMode == RhythmPlayMode) {
-        m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOn(9, 80, 120), 0);
-        m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOn(9, 80, 120), 60);
-        m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOn(9, 80, 120), 120);
-        m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOn(9, 80, 120), 180);
-        barStart = 240;
-    }
-
-    for (unsigned int i = 0; i < m_answerLength; ++i) {
-        unsigned int chosenExercise = qrand() % m_currentExercise.size();
         QString sequence = m_currentExercise[chosenExercise].toObject()[QStringLiteral("sequence")].toString();
-
-        if (m_playMode != RhythmPlayMode) {
-            int minNote = INT_MAX;
-            int maxNote = INT_MIN;
-            foreach(const QString &additionalNote, sequence.split(' ')) {
-                int note = additionalNote.toInt();
-                if (note > maxNote) maxNote = note;
-                if (note < minNote) minNote = note;
-            }
-            do
-                m_chosenRootNote = m_minRootNote + qrand() % (m_maxRootNote - m_minRootNote);
-            while (m_chosenRootNote + maxNote > 108 || m_chosenRootNote + minNote < 21);
-
-            m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOn(1, m_chosenRootNote, 120), barStart);
-            m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOff(1, m_chosenRootNote, 120), barStart + 60);
- 
-            unsigned int j = 1;
-            drumstick::SequencerEvent *ev;
-            foreach(const QString &additionalNote, sequence.split(' ')) {
-                m_midiSequencer->appendEvent(ev = m_midiSequencer->SMFNoteOn(1,
-                                                                   m_chosenRootNote + additionalNote.toInt(),
-                                                                   120),
-                                                                   (m_playMode == ScalePlayMode) ? barStart+60*j:barStart);
-                ev->setTag(0);
-                m_midiSequencer->appendEvent(ev = m_midiSequencer->SMFNoteOff(1,
-                                                                   m_chosenRootNote + additionalNote.toInt(),
-                                                                   120),
-                                                                   (m_playMode == ScalePlayMode) ? barStart+60*(j+1):barStart+60);
-                ev->setTag(0);
-                ++j;
-            }
-            barStart += 60;
+        foreach(const QString &additionalNote, sequence.split(' ')) {
+            int note = additionalNote.toInt();
+            if (note > maxNote) maxNote = note;
+            if (note < minNote) minNote = note;
         }
-        else {
-            m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOn(9, 80, 120), barStart);
-            foreach(QString additionalNote, sequence.split(' ')) { // krazy:exclude=foreach
-                m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOn(9, 37, 120), barStart);
-                float dotted = 1;
-                if (additionalNote.endsWith('.')) {
-                    dotted = 1.5;
-                    additionalNote.chop(1);
-                }
-                barStart += dotted*60*(4.0/additionalNote.toInt());
-            }
-        }
+        do
+            m_chosenRootNote = m_minRootNote + qrand() % (m_maxRootNote - m_minRootNote);
+        while (m_chosenRootNote + maxNote > 108 || m_chosenRootNote + minNote < 21);
 
+        QJsonObject jsonObject = m_currentExercise[chosenExercise].toObject();
+        jsonObject["rootNote"] = QString::number(m_chosenRootNote);
+        m_currentExercise[chosenExercise] = jsonObject;
         m_selectedOptions.append(m_currentExercise[chosenExercise]);
-    }
-    if (m_playMode == RhythmPlayMode) {
-        m_midiSequencer->appendEvent(m_midiSequencer->SMFNoteOn(9, 80, 120), barStart);
     }
 }
 

@@ -97,8 +97,8 @@ Item {
                         }
                         var playMode = delegateRect.ListView.view.model[index].playMode
                         if (playMode != undefined) {
-                            if (playMode == "scale") exerciseController.setPlayMode(0) // ScalePlayMode
-                            if (playMode == "chord") exerciseController.setPlayMode(1) // ChordPlayMode
+                            if (playMode == "scale") sequencer.setPlayMode(0) // ScalePlayMode
+                            if (playMode == "chord") sequencer.setPlayMode(1) // ChordPlayMode
                             exerciseController.answerLength = 1
                             if (playMode == "rhythm") {
                                 exerciseController.setPlayMode(2) // RhythmPlayMode

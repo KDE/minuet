@@ -111,6 +111,7 @@ Item {
                     exerciseView.state = "waitingForAnswer"
                     exerciseController.randomlySelectOptions()
                     var selectedOptions = exerciseController.selectedOptions
+                    sequencer.generateSong(selectedOptions)
                     var newChosenExercises = [];
                     for (var i = 0; i < selectedOptions.length; ++i)
                         newChosenExercises.push(selectedOptions[i].name);

@@ -44,7 +44,8 @@ MidiSequencer::MidiSequencer(QObject *parent) :
     m_tick(0),
     m_song(0),
     m_eventSchedulingMode(FROM_ENGINE),
-    m_state(StoppedState)
+    m_state(StoppedState),
+    m_playMode(ScalePlayMode)
 {
     qmlRegisterType<MidiSequencer>("org.kde.minuet", 1, 0, "MidiSequencer");
     // MidiClient configuration
@@ -168,6 +169,71 @@ void MidiSequencer::clearSong()
         stop();
         m_song->clear();
     }
+}
+
+void MidiSequencer::generateSong(QJsonArray selectedOptions)
+{
+    Song *song = new Song;
+    song->setHeader(0, 1, 60);
+    song->setInitialTempo(600000);
+    setSong(song);
+    appendEvent(SMFTempo(600000), 0);
+
+    unsigned int barStart = 0;
+    if (m_playMode == RhythmPlayMode) {
+        appendEvent(SMFNoteOn(9, 80, 120), 0);
+        appendEvent(SMFNoteOn(9, 80, 120), 60);
+        appendEvent(SMFNoteOn(9, 80, 120), 120);
+        appendEvent(SMFNoteOn(9, 80, 120), 180);
+        barStart = 240;
+    }
+
+    for (int i = 0; i < selectedOptions.size(); ++i) {
+        QString sequence = selectedOptions[i].toObject()[QStringLiteral("sequence")].toString();
+
+        unsigned int m_chosenRootNote = selectedOptions[i].toObject()[QStringLiteral("rootNote")].toString().toInt();
+        if (m_playMode != RhythmPlayMode) {
+             appendEvent(SMFNoteOn(1, m_chosenRootNote, 120), barStart);
+             appendEvent(SMFNoteOff(1, m_chosenRootNote, 120), barStart + 60);
+ 
+            unsigned int j = 1;
+            drumstick::SequencerEvent *ev;
+            foreach(const QString &additionalNote, sequence.split(' ')) {
+                appendEvent(ev = SMFNoteOn(1,
+                                           m_chosenRootNote + additionalNote.toInt(),
+                                           120),
+                                           (m_playMode == ScalePlayMode) ? barStart+60*j:barStart);
+                ev->setTag(0);
+                appendEvent(ev = SMFNoteOff(1,
+                                            m_chosenRootNote + additionalNote.toInt(),
+                                            120),
+                                            (m_playMode == ScalePlayMode) ? barStart+60*(j+1):barStart+60);
+                ev->setTag(0);
+                ++j;
+            }
+            barStart += 60;
+        }
+        else {
+            appendEvent(SMFNoteOn(9, 80, 120), barStart);
+            foreach(QString additionalNote, sequence.split(' ')) { // krazy:exclude=foreach
+                appendEvent(SMFNoteOn(9, 37, 120), barStart);
+                float dotted = 1;
+                if (additionalNote.endsWith('.')) {
+                    dotted = 1.5;
+                    additionalNote.chop(1);
+                }
+                barStart += dotted*60*(4.0/additionalNote.toInt());
+            }
+        }
+    }
+    if (m_playMode == RhythmPlayMode) {
+        appendEvent(SMFNoteOn(9, 80, 120), barStart);
+    }
+}
+
+void MidiSequencer::setPlayMode(PlayMode playMode)
+{
+    m_playMode = playMode;
 }
 
 void MidiSequencer::appendEvent(drumstick::SequencerEvent *ev, unsigned long tick)

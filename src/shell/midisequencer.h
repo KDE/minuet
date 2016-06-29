@@ -48,6 +48,7 @@ class MidiSequencer : public QObject
     Q_PROPERTY(QString playbackLabel READ playbackLabel WRITE setPlaybackLabel NOTIFY playbackLabelChanged)
     Q_ENUMS(State)
     Q_PROPERTY(State state READ state NOTIFY stateChanged)
+    Q_ENUMS(PlayMode)
 
 public:
     explicit MidiSequencer(QObject *parent = 0);
@@ -62,6 +63,11 @@ public:
         StoppedState = 0,
         PlayingState,
         PausedState
+    };
+    enum PlayMode {
+        ScalePlayMode = 0,
+        ChordPlayMode,
+        RhythmPlayMode
     };
 
     void subscribeTo(const QString &portName);
@@ -97,6 +103,8 @@ public Q_SLOTS:
     void setState(State state);
     void setSong(Song *song);
     void clearSong();
+    void generateSong(QJsonArray selectedOptions);
+    void setPlayMode(PlayMode playMode);
 
     // Slots for events generated when reading a MIDI file
     void SMFHeader(int format, int ntrks, int division);
@@ -142,6 +150,7 @@ private:
     QString m_currentSubscribedPort;
     QString m_playbackLabel;
     State m_state;
+    PlayMode m_playMode;
 };
 
 #endif // MIDISEQUENCER_H
