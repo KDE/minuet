@@ -25,6 +25,16 @@
 
 #include <interfaces/isoundbackend.h>
 
+namespace drumstick {
+    class MidiClient;
+    class MidiPort;
+    class SequencerEvent;
+    class MidiQueue;
+}
+
+class MidiSequencerOutputThread;
+class Song;
+
 class DrumstickSoundBackend : public Minuet::ISoundBackend
 {
     Q_OBJECT
@@ -44,6 +54,24 @@ public Q_SLOTS:
     virtual void play() override;
     virtual void pause() override;
     virtual void stop() override;
+
+private Q_SLOTS:
+    void eventReceived(drumstick::SequencerEvent *ev);
+    void outputThreadStopped();
+
+private:
+    void appendEvent(drumstick::SequencerEvent *ev, unsigned long tick);
+
+    drumstick::MidiClient *m_client;
+    drumstick::MidiPort *m_outputPort;
+    int m_outputPortId;
+    drumstick::MidiPort *m_inputPort;
+    int m_inputPortId;
+    MidiSequencerOutputThread *m_midiSequencerOutputThread;
+    unsigned long m_tick;
+    drumstick::MidiQueue *m_queue;
+    int m_queueId;
+    QScopedPointer<Song> m_song;
 };
 
 #endif

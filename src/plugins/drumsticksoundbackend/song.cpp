@@ -20,46 +20,62 @@
 **
 ****************************************************************************/
 
-#include "isoundbackend.h"
+#include "song.h"
 
-namespace Minuet
+#include <drumstick/alsaevent.h>
+
+static inline bool eventLessThan(const drumstick::SequencerEvent *s1, const drumstick::SequencerEvent *s2)
 {
+    return s1->getTick() < s2->getTick();
+}
 
-ISoundBackend::ISoundBackend(QObject *parent)
-    : IPlugin(parent),
-    m_state(StoppedState)
+Song::Song() :
+    QList<drumstick::SequencerEvent *>(),
+    m_format(0),
+    m_ntrks(0),
+    m_division(0),
+    m_initialTempo(0)
 {
 }
 
-ISoundBackend::~ISoundBackend()
+Song::~Song()
 {
+    clear();
 }
 
-QString ISoundBackend::playbackLabel() const
+void Song::sort() 
 {
-    return m_playbackLabel;
+    qStableSort(begin(), end(), eventLessThan);
 }
 
-ISoundBackend::State ISoundBackend::state() const
+void Song::clear()
 {
-    return m_state;
+    while (!isEmpty())
+        delete takeFirst();
+    m_fileName.clear();
+    m_format = 0;
+    m_ntrks = 0;
+    m_division = 0;
 }
 
-void ISoundBackend::setPlaybackLabel(const QString &playbackLabel)
+void Song::setHeader(int format, int ntrks, int division)
 {
-    if (m_playbackLabel != playbackLabel) {
-        m_playbackLabel = playbackLabel;
-        emit playbackLabelChanged(m_playbackLabel);
-    }
+    m_format = format;
+    m_ntrks = ntrks;
+    m_division = division;
 }
 
-void ISoundBackend::setState(State state)
+void Song::setInitialTempo(int initialTempo)
 {
-    if (m_state != state) {
-        m_state = state;
-        emit stateChanged(m_state);
-    }
+    m_initialTempo = initialTempo;
 }
 
+void Song::setDivision(int division)
+{
+    m_division = division;
 }
 
+void Song::setFileName(const QString &fileName)
+{
+    m_fileName = fileName;
+}

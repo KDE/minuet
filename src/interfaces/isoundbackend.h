@@ -39,9 +39,22 @@ class MINUETINTERFACES_EXPORT ISoundBackend : public IPlugin
     Q_PROPERTY(int pitch MEMBER m_pitch NOTIFY pitchChanged)
     Q_PROPERTY(quint8 volume MEMBER m_volume NOTIFY volumeChanged)
     Q_PROPERTY(quint8 tempo MEMBER m_tempo NOTIFY tempoChanged)
+    Q_PROPERTY(QString playbackLabel READ playbackLabel NOTIFY playbackLabelChanged)
+    Q_ENUMS(State)
+    Q_PROPERTY(State state READ state NOTIFY stateChanged)
 
 public:
     ~ISoundBackend() override;
+
+    QString playbackLabel() const;
+
+    enum State {
+        StoppedState = 0,
+        PlayingState,
+        PausedState
+    };
+    
+    ISoundBackend::State state() const;
 
 public Q_SLOTS:
     virtual void prepareFromExerciseOptions(QJsonArray selectedOptions, const QString &playMode) = 0;
@@ -50,18 +63,24 @@ public Q_SLOTS:
     virtual void play() = 0;
     virtual void pause() = 0;
     virtual void stop() = 0;
-
+    
 Q_SIGNALS:
     void pitchChanged(int newPitch);
     void volumeChanged(quint8 newVolume);
     void tempoChanged(quint8 newTempo);
+    void playbackLabelChanged(QString newPlaybackLabel);
+    void stateChanged(State newState);
 
 protected:
     explicit ISoundBackend(QObject *parent = 0);
+    void setPlaybackLabel(const QString &playbackLabel);
+    void setState(State state);
 
     int m_pitch;
     quint8 m_volume;
     quint8 m_tempo;
+    QString m_playbackLabel;
+    State m_state;
 };
 
 }

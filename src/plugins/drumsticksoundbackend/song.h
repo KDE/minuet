@@ -20,46 +20,41 @@
 **
 ****************************************************************************/
 
-#include "isoundbackend.h"
+#ifndef SONG_H
+#define SONG_H
 
-namespace Minuet
-{
+#include <QList>
+#include <QString>
 
-ISoundBackend::ISoundBackend(QObject *parent)
-    : IPlugin(parent),
-    m_state(StoppedState)
-{
+namespace drumstick {
+    class SequencerEvent;
 }
 
-ISoundBackend::~ISoundBackend()
+class Song : public QList<drumstick::SequencerEvent *>
 {
-}
+public:
+    Song();
+    virtual ~Song();
+    
+    void clear();
+    void sort();
+    void setHeader(int format, int ntrks, int division);
+    void setInitialTempo(int initialTempo);
+    void setDivision(int division);
+    void setFileName(const QString &fileName);
+    
+    int format() const { return m_format; }
+    int tracks() const { return m_ntrks; }
+    int division() const { return m_division; }
+    int initialTempo() const { return m_initialTempo; }
+    QString fileName() const { return m_fileName; }
 
-QString ISoundBackend::playbackLabel() const
-{
-    return m_playbackLabel;
-}
+private:    
+    int m_format;
+    int m_ntrks;
+    int m_division;   
+    int m_initialTempo;
+    QString m_fileName;
+};
 
-ISoundBackend::State ISoundBackend::state() const
-{
-    return m_state;
-}
-
-void ISoundBackend::setPlaybackLabel(const QString &playbackLabel)
-{
-    if (m_playbackLabel != playbackLabel) {
-        m_playbackLabel = playbackLabel;
-        emit playbackLabelChanged(m_playbackLabel);
-    }
-}
-
-void ISoundBackend::setState(State state)
-{
-    if (m_state != state) {
-        m_state = state;
-        emit stateChanged(m_state);
-    }
-}
-
-}
-
+#endif // SONG_H

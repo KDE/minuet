@@ -142,7 +142,6 @@ private:
     drumstick::MidiPort *m_inputPort;
     drumstick::QSmf *m_smfReader;
     drumstick::MidiQueue *m_queue;
-    drumstick::QueueTempo m_firstTempo;
     drumstick::MidiClient *m_client;
     MidiSequencerOutputThread *m_midiSequencerOutputThread;
     EventSchedulingMode m_eventSchedulingMode;

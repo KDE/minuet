@@ -89,7 +89,6 @@ MidiSequencer::MidiSequencer(QObject *parent) :
 
     // MidiQueue configuration
     m_queue = m_client->createQueue();
-    m_firstTempo = m_queue->getTempo();
     m_queueId = m_queue->getId();
 
     // SMFReader configuration
