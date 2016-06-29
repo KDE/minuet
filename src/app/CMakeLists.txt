@@ -14,5 +14,4 @@ target_link_libraries(minuet
 )
 
 install(TARGETS minuet ${INSTALL_TARGETS_DEFAULT_ARGS})
-install(DIRECTORY qml DESTINATION ${KDE_INSTALL_DATADIR}/minuet)
 install(PROGRAMS org.kde.minuet.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
