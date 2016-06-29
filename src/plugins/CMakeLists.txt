@@ -1,1 +1,2 @@
+add_subdirectory(drumsticksoundbackend)
 add_subdirectory(fluidsynthsoundbackend)

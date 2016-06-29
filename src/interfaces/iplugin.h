@@ -35,8 +35,10 @@ class MINUETINTERFACES_EXPORT IPlugin : public QObject
     Q_OBJECT
 
 public:
-    explicit IPlugin(QObject *parent = 0);
     ~IPlugin() override;
+
+protected:
+    explicit IPlugin(QObject *parent = 0);
 };
 
 }

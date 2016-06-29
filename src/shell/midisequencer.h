@@ -123,7 +123,6 @@ public Q_SLOTS:
     void SMFError(const QString &errorStr);
 
 private Q_SLOTS:
-
     // Slots for events generated when playing a MIDI
     void eventReceived(drumstick::SequencerEvent *ev);
 

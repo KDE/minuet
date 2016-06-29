@@ -35,8 +35,10 @@ class MINUETINTERFACES_EXPORT IUiController : public QObject
     Q_OBJECT
 
 public:
-    explicit IUiController(QObject *parent = 0);
     ~IUiController() override;
+
+protected:
+    explicit IUiController(QObject *parent = 0);
 };
 
 }

@@ -23,17 +23,27 @@
 #ifndef MINUET_FLUIDSYNTHSOUNDBACKEND_H
 #define MINUET_FLUIDSYNTHSOUNDBACKEND_H
 
-#include <interfaces/iplugin.h>
+#include <interfaces/isoundbackend.h>
 
-class FluidSynthSoundBackend : public Minuet::IPlugin
+class FluidSynthSoundBackend : public Minuet::ISoundBackend
 {
     Q_OBJECT
+
     Q_PLUGIN_METADATA(IID "org.kde.minuet.IPlugin" FILE "fluidsynthsoundbackend.json")
     Q_INTERFACES(Minuet::IPlugin)
+    Q_INTERFACES(Minuet::ISoundBackend)
 
 public:
     explicit FluidSynthSoundBackend(QObject *parent = 0);
-    ~FluidSynthSoundBackend() override;
+    virtual ~FluidSynthSoundBackend() override;
+
+public Q_SLOTS:
+    virtual void prepareFromExerciseOptions(QJsonArray selectedOptions, const QString &playMode) override;
+    virtual void prepareFromMidiFile(const QString &fileName) override;
+
+    virtual void play() override;
+    virtual void pause() override;
+    virtual void stop() override;
 };
 
 #endif

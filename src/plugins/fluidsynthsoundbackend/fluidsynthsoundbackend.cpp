@@ -23,11 +23,34 @@
 #include "fluidsynthsoundbackend.h"
 
 FluidSynthSoundBackend::FluidSynthSoundBackend(QObject *parent)
-    : Minuet::IPlugin(parent)
+    : Minuet::ISoundBackend(parent)
 {
 }
 
 FluidSynthSoundBackend::~FluidSynthSoundBackend()
+{
+}
+
+void FluidSynthSoundBackend::prepareFromExerciseOptions(QJsonArray selectedOptions, const QString &playMode)
+{
+    Q_UNUSED(selectedOptions)
+    Q_UNUSED(playMode)
+}
+
+void FluidSynthSoundBackend::prepareFromMidiFile(const QString &fileName)
+{
+    Q_UNUSED(fileName)
+}
+
+void FluidSynthSoundBackend::play()
+{
+}
+
+void FluidSynthSoundBackend::pause()
+{
+}
+
+void FluidSynthSoundBackend::stop()
 {
 }
 

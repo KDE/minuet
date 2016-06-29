@@ -44,10 +44,13 @@ public:
     virtual IExerciseController *exerciseController() override;
     virtual IUiController *uiController() override;
 
+    void setSoundBackend(ISoundBackend *soundBackend);
+
 private:
     Core(QObject *parent = 0);
 
     QScopedPointer<IPluginController> m_pluginController;
+    ISoundBackend *m_soundBackend;
     QScopedPointer<IExerciseController> m_exerciseController;
     QScopedPointer<IUiController> m_uiController;
 };

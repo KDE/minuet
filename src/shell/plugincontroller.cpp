@@ -25,6 +25,9 @@
 #include <KPluginLoader>
 
 #include <interfaces/iplugin.h>
+#include <interfaces/isoundbackend.h>
+
+#include "core.h"
 
 #include <QDebug>
 
@@ -48,7 +51,7 @@ PluginController::~PluginController()
 {
 }
 
-bool PluginController::initialize()
+bool PluginController::initialize(Core *core)
 {
     foreach (const KPluginMetaData &pluginMetaData, m_plugins)
     {
@@ -57,8 +60,14 @@ bool PluginController::initialize()
 
         KPluginLoader loader(pluginMetaData.fileName());
         IPlugin *plugin = qobject_cast<IPlugin *>(loader.instance());
-        if (plugin)
+        if (plugin) {
             m_loadedPlugins.insert(pluginMetaData, plugin);
+            ISoundBackend *soundBackend = 0;
+            if (!core->soundBackend() && (soundBackend = qobject_cast<ISoundBackend *>(plugin))) {
+                qDebug() << "Setting soundbackend to" << soundBackend->metaObject()->className();
+                core->setSoundBackend(soundBackend);
+            }
+        }
     }
 
     return true;

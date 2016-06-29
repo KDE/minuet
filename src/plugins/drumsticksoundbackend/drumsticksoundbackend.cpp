@@ -20,67 +20,38 @@
 **
 ****************************************************************************/
 
-#include "core.h"
+#include "drumsticksoundbackend.h"
 
-#include "plugincontroller.h"
-#include "exercisecontroller.h"
-#include "uicontroller.h"
-
-#include <interfaces/isoundbackend.h>
-
-namespace Minuet
-{
-
-Core::~Core()
+DrumstickSoundBackend::DrumstickSoundBackend(QObject *parent)
+    : Minuet::ISoundBackend(parent)
 {
 }
 
-bool Core::initialize()
+DrumstickSoundBackend::~DrumstickSoundBackend()
 {
-    if (m_self)
-        return true;
-
-    m_self = new Core;
-
-    return true;
 }
 
-IPluginController *Core::pluginController()
+void DrumstickSoundBackend::prepareFromExerciseOptions(QJsonArray selectedOptions, const QString &playMode)
 {
-    return m_pluginController.data();
+    Q_UNUSED(selectedOptions)
+    Q_UNUSED(playMode)
 }
 
-ISoundBackend *Core::soundBackend()
+void DrumstickSoundBackend::prepareFromMidiFile(const QString &fileName)
 {
-    return m_soundBackend;
+    Q_UNUSED(fileName)
 }
 
-IExerciseController *Core::exerciseController()
+void DrumstickSoundBackend::play()
 {
-    return m_exerciseController.data();
 }
 
-IUiController *Core::uiController()
+void DrumstickSoundBackend::pause()
 {
-    return m_uiController.data();
 }
 
-void Core::setSoundBackend(ISoundBackend *soundBackend)
+void DrumstickSoundBackend::stop()
 {
-    m_soundBackend = soundBackend;
 }
 
-Core::Core(QObject *parent)
-    : ICore(parent),
-      m_pluginController(new PluginController),
-      m_soundBackend(0),
-      m_exerciseController(new ExerciseController),
-      m_uiController(new UiController)
-
-{
-    ((PluginController *)m_pluginController.data())->initialize(this);
-    ((UiController *)m_uiController.data())->initialize();
-}
-
-}
-
+#include "moc_drumsticksoundbackend.cpp"

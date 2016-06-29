@@ -26,7 +26,7 @@ namespace Minuet
 {
 
 ISoundBackend::ISoundBackend(QObject *parent)
-    : QObject(parent)
+    : IPlugin(parent)
 {
 }
 

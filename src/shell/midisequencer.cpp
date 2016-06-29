@@ -191,21 +191,21 @@ void MidiSequencer::generateSong(QJsonArray selectedOptions)
     for (int i = 0; i < selectedOptions.size(); ++i) {
         QString sequence = selectedOptions[i].toObject()[QStringLiteral("sequence")].toString();
 
-        unsigned int m_chosenRootNote = selectedOptions[i].toObject()[QStringLiteral("rootNote")].toString().toInt();
+        unsigned int chosenRootNote = selectedOptions[i].toObject()[QStringLiteral("rootNote")].toString().toInt();
         if (m_playMode != RhythmPlayMode) {
-             appendEvent(SMFNoteOn(1, m_chosenRootNote, 120), barStart);
-             appendEvent(SMFNoteOff(1, m_chosenRootNote, 120), barStart + 60);
+             appendEvent(SMFNoteOn(1, chosenRootNote, 120), barStart);
+             appendEvent(SMFNoteOff(1, chosenRootNote, 120), barStart + 60);
  
             unsigned int j = 1;
             drumstick::SequencerEvent *ev;
             foreach(const QString &additionalNote, sequence.split(' ')) {
                 appendEvent(ev = SMFNoteOn(1,
-                                           m_chosenRootNote + additionalNote.toInt(),
+                                           chosenRootNote + additionalNote.toInt(),
                                            120),
                                            (m_playMode == ScalePlayMode) ? barStart+60*j:barStart);
                 ev->setTag(0);
                 appendEvent(ev = SMFNoteOff(1,
-                                            m_chosenRootNote + additionalNote.toInt(),
+                                            chosenRootNote + additionalNote.toInt(),
                                             120),
                                             (m_playMode == ScalePlayMode) ? barStart+60*(j+1):barStart+60);
                 ev->setTag(0);

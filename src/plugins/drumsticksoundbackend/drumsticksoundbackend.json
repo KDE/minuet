@@ -1,0 +1,12 @@
+{
+    "KPlugin": {
+        "Category": "Sound Backends", 
+        "Description": "This plugin provides Minuet with a Drumstick-based implementation of sound backend.", 
+        "Icon": "utilities-terminal", 
+        "Id": "minuetdrumsticksoundbackend", 
+        "Name": "Drumstick-based Audio Backend", 
+        "ServiceTypes": [
+            "Minuet/Plugin"
+        ]
+    } 
+}

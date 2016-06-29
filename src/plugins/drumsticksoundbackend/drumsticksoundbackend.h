@@ -20,67 +20,30 @@
 **
 ****************************************************************************/
 
-#include "core.h"
-
-#include "plugincontroller.h"
-#include "exercisecontroller.h"
-#include "uicontroller.h"
+#ifndef MINUET_DRUMSTICKSOUNDBACKEND_H
+#define MINUET_DRUMSTICKSOUNDBACKEND_H
 
 #include <interfaces/isoundbackend.h>
 
-namespace Minuet
+class DrumstickSoundBackend : public Minuet::ISoundBackend
 {
+    Q_OBJECT
 
-Core::~Core()
-{
-}
+    Q_PLUGIN_METADATA(IID "org.kde.minuet.IPlugin" FILE "drumsticksoundbackend.json")
+    Q_INTERFACES(Minuet::IPlugin)
+    Q_INTERFACES(Minuet::ISoundBackend)
 
-bool Core::initialize()
-{
-    if (m_self)
-        return true;
+public:
+    explicit DrumstickSoundBackend(QObject *parent = 0);
+    virtual ~DrumstickSoundBackend() override;
 
-    m_self = new Core;
+public Q_SLOTS:
+    virtual void prepareFromExerciseOptions(QJsonArray selectedOptions, const QString &playMode) override;
+    virtual void prepareFromMidiFile(const QString &fileName) override;
 
-    return true;
-}
+    virtual void play() override;
+    virtual void pause() override;
+    virtual void stop() override;
+};
 
-IPluginController *Core::pluginController()
-{
-    return m_pluginController.data();
-}
-
-ISoundBackend *Core::soundBackend()
-{
-    return m_soundBackend;
-}
-
-IExerciseController *Core::exerciseController()
-{
-    return m_exerciseController.data();
-}
-
-IUiController *Core::uiController()
-{
-    return m_uiController.data();
-}
-
-void Core::setSoundBackend(ISoundBackend *soundBackend)
-{
-    m_soundBackend = soundBackend;
-}
-
-Core::Core(QObject *parent)
-    : ICore(parent),
-      m_pluginController(new PluginController),
-      m_soundBackend(0),
-      m_exerciseController(new ExerciseController),
-      m_uiController(new UiController)
-
-{
-    ((PluginController *)m_pluginController.data())->initialize(this);
-    ((UiController *)m_uiController.data())->initialize();
-}
-
-}
-
+#endif

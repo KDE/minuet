@@ -32,6 +32,7 @@
 namespace Minuet
 {
 
+class Core;
 class IPlugin;
 
 class MINUETSHELL_EXPORT PluginController : public IPluginController
@@ -42,7 +43,7 @@ public:
     PluginController(QObject *parent = 0);
     ~PluginController() override;
 
-    bool initialize();
+    bool initialize(Core *core);
 
 private:
     QVector<KPluginMetaData> m_plugins;

@@ -23,22 +23,49 @@
 #ifndef MINUET_ISOUNDBACKEND_H
 #define MINUET_ISOUNDBACKEND_H
 
-#include <QtCore/QObject>
+#include "iplugin.h"
+
+#include <QJsonArray>
 
 #include "minuetinterfacesexport.h"
 
 namespace Minuet
 {
 
-class MINUETINTERFACES_EXPORT ISoundBackend : public QObject
+class MINUETINTERFACES_EXPORT ISoundBackend : public IPlugin
 {
     Q_OBJECT
 
+    Q_PROPERTY(int pitch MEMBER m_pitch NOTIFY pitchChanged)
+    Q_PROPERTY(quint8 volume MEMBER m_volume NOTIFY volumeChanged)
+    Q_PROPERTY(quint8 tempo MEMBER m_tempo NOTIFY tempoChanged)
+
 public:
-    explicit ISoundBackend(QObject *parent = 0);
     ~ISoundBackend() override;
+
+public Q_SLOTS:
+    virtual void prepareFromExerciseOptions(QJsonArray selectedOptions, const QString &playMode) = 0;
+    virtual void prepareFromMidiFile(const QString &fileName) = 0;
+
+    virtual void play() = 0;
+    virtual void pause() = 0;
+    virtual void stop() = 0;
+
+Q_SIGNALS:
+    void pitchChanged(int newPitch);
+    void volumeChanged(quint8 newVolume);
+    void tempoChanged(quint8 newTempo);
+
+protected:
+    explicit ISoundBackend(QObject *parent = 0);
+
+    int m_pitch;
+    quint8 m_volume;
+    quint8 m_tempo;
 };
 
 }
+
+Q_DECLARE_INTERFACE(Minuet::ISoundBackend, "org.kde.minuet.ISoundBackend")
 
 #endif

@@ -50,7 +50,7 @@ public:
     virtual Minuet::IUiController *uiController() = 0;
 
 protected:
-    ICore(QObject *parent = 0);
+    explicit ICore(QObject *parent = 0);
     static ICore *m_self;
 };
 
