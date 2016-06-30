@@ -49,6 +49,8 @@ PluginController::PluginController(QObject *parent)
 
 PluginController::~PluginController()
 {
+    qDeleteAll(m_loadedPlugins.values().begin(), m_loadedPlugins.values().end());
+    m_loadedPlugins.clear();
 }
 
 bool PluginController::initialize(Core *core)

@@ -22,8 +22,6 @@
 
 #include "exercisecontroller.h"
 
-#include "midisequencer.h"
-
 #include <KLocalizedString>
 
 #include <QDir>

@@ -23,7 +23,6 @@
 #include "minuetmainwindow.h"
 
 #include "wizard.h"
-#include "exercisecontroller.h"
 
 #include <KActionCollection>
 #include <KMessageBox>

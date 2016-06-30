@@ -25,7 +25,6 @@
 
 #include "ui_settingsmidi.h"
 #include "minuetsettings.h"
-#include "midisequencer.h"
 
 #include <KXmlGuiWindow>
 

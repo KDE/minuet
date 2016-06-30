@@ -7,9 +7,6 @@ set(minuetshell_LIB_SRCS
     exercisecontroller.cpp
     minuetmainwindow.cpp
     wizard.cpp
-    midisequencer.cpp
-    song.cpp
-    midisequenceroutputthread.cpp
 )
 
 ki18n_wrap_ui(minuetshell_LIB_SRCS
@@ -58,9 +55,6 @@ install(FILES
     exercisecontroller.h
     minuetmainwindow.h
     wizard.h
-    midisequencer.h
-    song.h
-    midisequenceroutputthread.h
     DESTINATION ${KDE_INSTALL_INCLUDEDIR}/minuet/shell
     COMPONENT Devel
 )

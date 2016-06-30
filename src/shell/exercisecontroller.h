@@ -30,8 +30,6 @@
 
 #include "minuetshellexport.h"
 
-class MidiSequencer;
-
 namespace Minuet
 {
 
