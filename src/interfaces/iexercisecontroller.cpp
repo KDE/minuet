@@ -22,6 +22,8 @@
 
 #include "iexercisecontroller.h"
 
+#include <QtQml>
+
 namespace Minuet
 {
 
@@ -31,6 +33,7 @@ IExerciseController::IExerciseController(QObject *parent)
       m_maxRootNote(0),
       m_answerLength(1)
 {
+    qmlRegisterInterface<IExerciseController>("IExerciseController");
 }
 
 IExerciseController::~IExerciseController()

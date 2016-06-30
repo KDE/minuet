@@ -40,7 +40,7 @@ class MINUETINTERFACES_EXPORT ICore : public QObject
     Q_OBJECT
 
     Q_PROPERTY(IPluginController * pluginController READ pluginController);
-    Q_PROPERTY(ISoundBackend * soundBackend READ soundBackend);
+    Q_PROPERTY(ISoundBackend * soundBackend READ soundBackend NOTIFY soundBackendChanged);
     Q_PROPERTY(IExerciseController * exerciseController READ exerciseController);
     Q_PROPERTY(IUiController * uiController READ uiController);
 
@@ -53,6 +53,9 @@ public:
     virtual Minuet::ISoundBackend *soundBackend() = 0;
     virtual Minuet::IExerciseController *exerciseController() = 0;
     virtual Minuet::IUiController *uiController() = 0;
+
+Q_SIGNALS:
+    void soundBackendChanged(ISoundBackend *newSoundBackend);
 
 protected:
     explicit ICore(QObject *parent = 0);

@@ -34,22 +34,23 @@ class MidiSequencer;
 
 namespace Minuet
 {
+
+class Core;
  
 class MINUETSHELL_EXPORT ExerciseController : public IExerciseController
 {
     Q_OBJECT
 
 public:
-    explicit ExerciseController(MidiSequencer *midiSequencer = 0);
+    explicit ExerciseController(QObject *parent= 0);
     virtual ~ExerciseController();
  
-    bool initialize();
+    bool initialize(Core *core);
 
     Q_INVOKABLE unsigned int chosenRootNote();
-    Q_INVOKABLE void playChoosenExercise();
 
     QString errorString() const;
-    virtual QJsonObject exercises() const override;
+    virtual QJsonArray exercises() const override;
 
 public Q_SLOTS:
     virtual void randomlySelectOptions();
@@ -64,7 +65,6 @@ private:
     void filterDefinitions(QJsonArray &definitions, QJsonObject &exerciseObject, const QString &filterTagsKey, DefinitionFilteringMode definitionFilteringMode);
     QJsonArray mergeJsonArrays(QJsonArray oldFile, QJsonArray newFile, QString commonKey = "", QString mergeKey = "");
 
-    MidiSequencer *m_midiSequencer;
     QJsonObject m_exercises;
     QJsonObject m_definitions;
     unsigned int m_chosenRootNote;

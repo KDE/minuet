@@ -47,7 +47,7 @@ MidiSequencer::MidiSequencer(QObject *parent) :
     m_state(StoppedState),
     m_playMode(ScalePlayMode)
 {
-    qmlRegisterType<MidiSequencer>("org.kde.minuet", 1, 0, "MidiSequencer");
+    qmlRegisterUncreatableType<MidiSequencer>("org.kde.minuet", 1, 0, "MidiSequencer", "MidiSequencer can't be instantiated");
     // MidiClient configuration
     m_client = new drumstick::MidiClient(this);
     try {

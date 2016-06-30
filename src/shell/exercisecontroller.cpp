@@ -38,8 +38,8 @@
 namespace Minuet
 {
     
-ExerciseController::ExerciseController(MidiSequencer *midiSequencer) :
-    m_midiSequencer(midiSequencer),
+ExerciseController::ExerciseController(QObject *parent) :
+    IExerciseController(parent),
     m_chosenRootNote(0)
 {
     m_exercises["exercises"] = QJsonArray();
@@ -51,7 +51,7 @@ ExerciseController::~ExerciseController()
 {
 }
 
-bool ExerciseController::initialize()
+bool ExerciseController::initialize(Core *core)
 {
     bool definitionsMerge = mergeJsonFiles("definitions", m_definitions);
     bool exercisesMerge = mergeJsonFiles("exercises", m_exercises, true, "name", "children");
@@ -98,19 +98,14 @@ unsigned int ExerciseController::chosenRootNote()
     return m_chosenRootNote;
 }
 
-void ExerciseController::playChoosenExercise()
-{
-    m_midiSequencer->play();
-}
-
 QString ExerciseController::errorString() const
 {
     return m_errorString;
 }
 
-QJsonObject ExerciseController::exercises() const
+QJsonArray ExerciseController::exercises() const
 {
-    return m_exercises;
+    return m_exercises[QStringLiteral("exercises")].toArray();
 }
 
 bool ExerciseController::mergeJsonFiles(const QString directoryName, QJsonObject &targetObject, bool applyDefinitionsFlag, QString commonKey, QString mergeKey)

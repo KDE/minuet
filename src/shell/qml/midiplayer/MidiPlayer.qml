@@ -89,10 +89,10 @@ Rectangle {
             width: playbackLabelText.contentWidth / 2
             anchors.horizontalCenterOffset: -30
             anchors { top: playbackLabelText.bottom; horizontalCenter: playbackLabelText.horizontalCenter }
-            text: (sequencerState != MidiSequencer.PlayingState) ? i18n("Play"):i18n("Pause")
-            source: (sequencerState != MidiSequencer.PlayingState) ? "../images/multimedia-play.png":"../images/multimedia-pause.png"
+            text: (sequencerState != ISoundBackend.PlayingState) ? i18n("Play"):i18n("Pause")
+            source: (sequencerState != ISoundBackend.PlayingState) ? "../images/multimedia-play.png":"../images/multimedia-pause.png"
             onActivated: {
-                if (sequencerState == MidiSequencer.StoppedState || sequencerState == MidiSequencer.PausedState)
+                if (sequencerState == ISoundBackend.StoppedState || sequencerState == MidiSequencer.PausedState)
                     playActivated()
                 else
                     pauseActivated()

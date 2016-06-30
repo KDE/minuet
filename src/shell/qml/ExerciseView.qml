@@ -51,12 +51,12 @@ Item {
                 answerRectangle = answerGrid.children[i]
         }
         answerRectangle.model.sequence.split(' ').forEach(function(note) {
-            answerHoverEnter(0, exerciseController.chosenRootNote() + parseInt(note), 0, answerRectangle.color)
+            answerHoverEnter(0, core.exerciseController.chosenRootNote() + parseInt(note), 0, answerRectangle.color)
         })
         animation.start()
     }
     function itemChanged(model) {
-        sequencer.allNotesOff()
+//        sequencer.allNotesOff()
         clearExerciseGrid()
         var length = model.length
         answerGrid.columns = Math.min(6, length)
@@ -109,9 +109,9 @@ Item {
                 text: i18n("new question")
                 onClicked: {
                     exerciseView.state = "waitingForAnswer"
-                    exerciseController.randomlySelectOptions()
-                    var selectedOptions = exerciseController.selectedOptions
-                    sequencer.generateSong(selectedOptions)
+                    core.exerciseController.randomlySelectOptions()
+                    var selectedOptions = core.exerciseController.selectedOptions
+                    core.soundBackend.prepareFromExerciseOptions(selectedOptions, "scale")
                     var newChosenExercises = [];
                     for (var i = 0; i < selectedOptions.length; ++i)
                         newChosenExercises.push(selectedOptions[i].name);
@@ -126,8 +126,8 @@ Item {
                         return i18n("Hear %1 and then choose an answer from options below!<br/>Click 'play question' if you want to hear again!", i18nc("technical term, do you have a musician friend?", userMessage))
                     })
                     if (userMessage != "the rhythm")
-                        answerHoverEnter(0, exerciseController.chosenRootNote(), 0, "white")
-                    exerciseController.playChoosenExercise()
+                        answerHoverEnter(0, core.exerciseController.chosenRootNote(), 0, "white")
+                    core.soundBackend.play()
                 }
                 style: MinuetButtonStyle{ labelHorizontalAlignment: Qt.AlignHCenter }
             }
@@ -136,7 +136,7 @@ Item {
 
                 width: 124; height: 44
                 text: i18n("play question")
-                onClicked: exerciseController.playChoosenExercise()
+                onClicked: core.soundBackend.play()
                 style: MinuetButtonStyle{ labelHorizontalAlignment: Qt.AlignHCenter }
             }
             Button {
@@ -210,7 +210,7 @@ Item {
                                         messageText.text = i18n("Congratulations!<br/>You answered correctly!")
                                     else
                                         messageText.text = i18n("Oops, not this time!<br/>Try again!")
-                                    answerHoverExit(0, exerciseController.chosenRootNote() + parseInt(model.sequence), 0)
+                                    answerHoverExit(0, core.exerciseController.chosenRootNote() + parseInt(model.sequence), 0)
                                     highlightRightAnswer()
                                 }
                                 else {
@@ -222,7 +222,7 @@ Item {
                                 answerRectangle.color = Qt.darker(answerRectangle.color, 1.1)
                                 if (userMessage != "the rhythm") {
                                     model.sequence.split(' ').forEach(function(note) {
-                                        answerHoverEnter(0, exerciseController.chosenRootNote() + parseInt(note), 0, colors[answerRectangle.index])
+                                        answerHoverEnter(0, core.exerciseController.chosenRootNote() + parseInt(note), 0, colors[answerRectangle.index])
                                     })
                                 }
                             }
@@ -231,7 +231,7 @@ Item {
                                 if (userMessage != "the rhythm") {
                                     if (!animation.running)
                                         model.sequence.split(' ').forEach(function(note) {
-                                            answerHoverExit(0, exerciseController.chosenRootNote() + parseInt(note), 0)
+                                            answerHoverExit(0, core.exerciseController.chosenRootNote() + parseInt(note), 0)
                                         })
                                 }
                             }
@@ -258,7 +258,7 @@ Item {
             name: "waitingForAnswer"
             StateChangeScript {
                 script: {
-                    sequencer.allNotesOff()
+//                    sequencer.allNotesOff()
                     for (var i = 0; i < answerGrid.children.length; ++i) {
                         answerGrid.children[i].opacity = 1
                         answerGrid.children[i].enabled = true

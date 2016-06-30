@@ -22,12 +22,14 @@
 
 #include "uicontroller.h"
 
+#include "core.h"
+
 namespace Minuet
 {
 
 UiController::UiController(QObject *parent)
     : IUiController(parent),
-      m_mainWindow(new MinuetMainWindow)
+      m_mainWindow(new MinuetMainWindow(qobject_cast<Core *>(parent)))
 {
 }
 
@@ -35,7 +37,7 @@ UiController::~UiController()
 {
 }
 
-bool UiController::initialize()
+bool UiController::initialize(Core *core)
 {
     m_mainWindow->show();
     return true;

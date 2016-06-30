@@ -49,10 +49,10 @@ public:
 private:
     Core(QObject *parent = 0);
 
-    QScopedPointer<IPluginController> m_pluginController;
+    IPluginController *m_pluginController;
     ISoundBackend *m_soundBackend;
-    QScopedPointer<IExerciseController> m_exerciseController;
-    QScopedPointer<IUiController> m_uiController;
+    IExerciseController *m_exerciseController;
+    IUiController *m_uiController;
 };
 
 }

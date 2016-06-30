@@ -23,7 +23,6 @@
 #include "minuetmainwindow.h"
 
 #include "wizard.h"
-#include "midisequencer.h"
 #include "exercisecontroller.h"
 
 #include <KActionCollection>
@@ -45,27 +44,16 @@ Q_LOGGING_CATEGORY(MINUET, "minuet")
 
 #include <QToolBar>
 
-MinuetMainWindow::MinuetMainWindow() :
-    KXmlGuiWindow(),
-    m_midiSequencer(new MidiSequencer(this)),
-    m_exerciseController(new Minuet::ExerciseController(m_midiSequencer)),
+#include "core.h"
+
+MinuetMainWindow::MinuetMainWindow(Minuet::Core *core, QWidget *parent, Qt::WindowFlags f) :
+    KXmlGuiWindow(parent, f),
     m_quickView(new QQuickView),
     m_initialGroup(KSharedConfig::openConfig(), "version")
 {
-    if (m_midiSequencer->schedulingMode() == MidiSequencer::DAMAGED) {
-        QTimer::singleShot(0, qApp, SLOT(quit()));
-        return;
-    }
-
-    if (!m_exerciseController->initialize())
-        KMessageBox::error(this,
-                           i18n("There was an error when parsing exercises JSON files: \"%1\".", m_exerciseController->errorString()),
-                           i18n("Minuet startup"));
-
     QQmlContext *rootContext = m_quickView->engine()->rootContext();
-    rootContext->setContextProperty(QStringLiteral("exerciseCategories"), m_exerciseController->exercises()[QStringLiteral("exercises")].toArray());
-    rootContext->setContextProperty(QStringLiteral("sequencer"), m_midiSequencer);
-    rootContext->setContextProperty(QStringLiteral("exerciseController"), m_exerciseController);
+    rootContext->setContextProperty(QStringLiteral("core"), core);
+
     m_quickView->setSource(QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::DataLocation, QStringLiteral("qml/Main.qml"))));
     m_quickView->setResizeMode(QQuickView::SizeRootObjectToView);
     setCentralWidget(QWidget::createWindowContainer(m_quickView, this));
@@ -85,66 +73,11 @@ MinuetMainWindow::MinuetMainWindow() :
 
     if (!m_initialGroup.exists())
         runWizard();
-
-    startTimidity();
-    subscribeToMidiOutputPort();
-}
-
-void MinuetMainWindow::startTimidity()
-{
-    QString error;
-    if (!m_midiSequencer->availableOutputPorts().contains(QStringLiteral("TiMidity:0"))) {
-	qCDebug(MINUET) << "Starting TiMidity++ at" << MinuetSettings::timidityLocation().remove(QStringLiteral("file://"));
-	m_timidityProcess.setProgram(MinuetSettings::timidityLocation().remove(QStringLiteral("file://")), QStringList() << MinuetSettings::timidityParameters());
-	m_timidityProcess.start();
-	if (!m_timidityProcess.waitForStarted(-1)) {
-	    error = m_timidityProcess.errorString();
-	}
-	else {
-	    if (!waitForTimidityOutputPorts(3000))
-		error = i18n("error when waiting for TiMidity++ output ports!");
-	    else
-		qCDebug(MINUET) << "TiMidity++ started!";
-	}
-    }
-    else {
-	qCDebug(MINUET) << "TiMidity++ already running!";
-    }
-    if (!error.isEmpty())
-        KMessageBox::error(this,
-                           i18n("There was an error when starting TiMidity++: \"%1\". "
-                                "Is another application using the audio system? "
-                                "Also, please check Minuet settings!", error),
-                           i18n("Minuet startup"));
-}
-
-bool MinuetMainWindow::waitForTimidityOutputPorts(int msecs)
-{
-    QTime time;
-    time.start();
-    while (!m_midiSequencer->availableOutputPorts().contains(QStringLiteral("TiMidity:0")))
-	if (msecs != -1 && time.elapsed() > msecs)
-	    return false;
-    return true;
-}
-
-void MinuetMainWindow::subscribeToMidiOutputPort()
-{
-    QString midiOutputPort = MinuetSettings::midiOutputPort();
-    if (!midiOutputPort.isEmpty() && m_midiSequencer->availableOutputPorts().contains(midiOutputPort))
-        m_midiSequencer->subscribeTo(midiOutputPort);
 }
 
 MinuetMainWindow::~MinuetMainWindow()
 {
     delete m_quickView;
-    delete m_exerciseController;
-    m_timidityProcess.kill();
-    qCDebug(MINUET) << "Stoping TiMidity++!";
-    if (!m_timidityProcess.waitForFinished(-1))
-        qCDebug(MINUET) << "Error when stoping TiMidity++:" << m_timidityProcess.errorString();
-    else
-	qCDebug(MINUET) << "TiMidity++ stoped!";
 }
 
 bool MinuetMainWindow::queryClose()
@@ -152,15 +85,6 @@ bool MinuetMainWindow::queryClose()
     MinuetSettings::self()->save();
     return true;
 }
-
-/*
-void MinuetMainWindow::fileOpen()
-{
-    QString fileName = QFileDialog::getOpenFileName(this, i18n("Open File")); // krazy:exclude=qclasses
-    if (!fileName.isEmpty())
-        m_midiSequencer->openFile(fileName);
-}
-*/
 
 void MinuetMainWindow::runWizard()
 {
@@ -180,11 +104,8 @@ void MinuetMainWindow::settingsConfigure()
     QWidget *midiSettingsDialog = new QWidget;
     m_settingsMidi.setupUi(midiSettingsDialog);
     m_settingsMidi.kcfg_midiOutputPort->setVisible(false);
-    m_settingsMidi.cboMidiOutputPort->insertItems(0, m_midiSequencer->availableOutputPorts());
     m_settingsMidi.cboMidiOutputPort->setCurrentIndex(m_settingsMidi.cboMidiOutputPort->findText(MinuetSettings::midiOutputPort()));
     dialog->addPage(midiSettingsDialog, i18n("MIDI"), QStringLiteral("media-playback-start"));
     dialog->setAttribute(Qt::WA_DeleteOnClose);
-    if (dialog->exec() == QDialog::Accepted)
-	subscribeToMidiOutputPort();
     delete dialog;
 }

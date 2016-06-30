@@ -25,18 +25,16 @@
 
 #include "ui_settingsmidi.h"
 #include "minuetsettings.h"
+#include "midisequencer.h"
 
-#include <KProcess>
 #include <KXmlGuiWindow>
 
 #include <QLoggingCategory>
 
 class QQuickView;
 
-class MidiSequencer;
-
 namespace Minuet {
-    class ExerciseController;
+    class Core;
 }
 
 Q_DECLARE_LOGGING_CATEGORY(MINUET)
@@ -57,7 +55,7 @@ public:
     /**
      * Default Constructor
      */
-    MinuetMainWindow();
+    MinuetMainWindow(Minuet::Core *core, QWidget *parent=0, Qt::WindowFlags f=KDE_DEFAULT_WINDOWFLAGS);
 
     /**
      * Default Destructor
@@ -66,11 +64,6 @@ public:
     
 protected:
     virtual bool queryClose();
-
-private:
-    void startTimidity();
-    bool waitForTimidityOutputPorts(int msecs);
-    void subscribeToMidiOutputPort();
 
 private Q_SLOTS:
     /**
@@ -86,11 +79,8 @@ private Q_SLOTS:
 
 private:
     Ui::SettingsMidi m_settingsMidi;
-    MidiSequencer *m_midiSequencer;
-    Minuet::ExerciseController *m_exerciseController;
     QQuickView *m_quickView;
     KConfigGroup m_initialGroup;
-    KProcess m_timidityProcess;
 };
 
 #endif // MINUETMAINWINDOW_H

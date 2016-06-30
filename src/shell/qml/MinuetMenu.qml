@@ -39,7 +39,7 @@ Item {
     function itemClicked(delegateRect, index) {
         var model = delegateRect.ListView.view.model[index].options
         if (model != undefined) {
-            exerciseController.currentExercise = model
+            core.exerciseController.currentExercise = model
             minuetMenu.itemChanged(model)
         }
     }
@@ -50,8 +50,8 @@ Item {
         width: (stackView.depth > 1) ? 24:0; height: parent.height
         iconName: "go-previous"
         onClicked: {
-            sequencer.allNotesOff()
-            sequencer.clearSong()
+//            sequencer.allNotesOff()
+//            sequencer.clearSong()
             minuetMenu.breadcrumbPressed()
             selectedMenuItem = null
             stackView.pop()
@@ -92,17 +92,17 @@ Item {
                         stackView.push(categoryMenu.createObject(stackView, {model: children}))
                         var root = delegateRect.ListView.view.model[index].root
                         if (root != undefined) {
-                            exerciseController.minRootNote = parseInt(root.split('.')[0])
-                            exerciseController.maxRootNote = parseInt(root.split('.')[2])
+                            core.exerciseController.minRootNote = parseInt(root.split('.')[0])
+                            core.exerciseController.maxRootNote = parseInt(root.split('.')[2])
                         }
                         var playMode = delegateRect.ListView.view.model[index].playMode
                         if (playMode != undefined) {
-                            if (playMode == "scale") sequencer.setPlayMode(0) // ScalePlayMode
-                            if (playMode == "chord") sequencer.setPlayMode(1) // ChordPlayMode
-                            exerciseController.answerLength = 1
+//                            if (playMode == "scale") sequencer.setPlayMode(0) // ScalePlayMode
+//                            if (playMode == "chord") sequencer.setPlayMode(1) // ChordPlayMode
+                            core.exerciseController.answerLength = 1
                             if (playMode == "rhythm") {
-                                exerciseController.setPlayMode(2) // RhythmPlayMode
-                                exerciseController.answerLength = 4
+                                core.exerciseController.setPlayMode(2) // RhythmPlayMode
+                                core.exerciseController.answerLength = 4
                             }
                         }
                     }
@@ -128,6 +128,6 @@ Item {
             }
         }
 
-        Component.onCompleted: { stackView.push(categoryMenu.createObject(stackView, {model: exerciseCategories})) }
+        Component.onCompleted: { stackView.push(categoryMenu.createObject(stackView, {model: core.exerciseController.exercises})) }
     }
 }

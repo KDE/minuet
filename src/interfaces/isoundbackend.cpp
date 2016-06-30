@@ -22,6 +22,8 @@
 
 #include "isoundbackend.h"
 
+#include <QtQml>
+
 namespace Minuet
 {
 
@@ -29,6 +31,8 @@ ISoundBackend::ISoundBackend(QObject *parent)
     : IPlugin(parent),
     m_state(StoppedState)
 {
+    qmlRegisterInterface<ISoundBackend>("ISoundBackend");
+    qmlRegisterUncreatableType<ISoundBackend>("org.kde.minuet", 1, 0, "ISoundBackend", "ISoundBackend cannot be instantiated");
 }
 
 ISoundBackend::~ISoundBackend()

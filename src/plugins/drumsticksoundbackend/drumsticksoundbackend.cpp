@@ -23,6 +23,7 @@
 #include "drumsticksoundbackend.h"
 
 #include <QtMath>
+#include <QTime>
 #include <QJsonObject>
 
 #include <drumstick/alsaqueue.h>
@@ -84,7 +85,11 @@ DrumstickSoundBackend::DrumstickSoundBackend(QObject *parent)
     connect(m_midiSequencerOutputThread, &MidiSequencerOutputThread::stopped, this, &DrumstickSoundBackend::outputThreadStopped);
     connect(m_midiSequencerOutputThread, &MidiSequencerOutputThread::finished, this, [=]() {
         setPlaybackLabel(QStringLiteral("00:00.00"));
+        setState(StoppedState);
     });
+
+    startTimidity();
+    m_outputPort->subscribeTo("TiMidity:0");
 }
 
 DrumstickSoundBackend::~DrumstickSoundBackend()
@@ -233,6 +238,57 @@ void DrumstickSoundBackend::appendEvent(drumstick::SequencerEvent *ev, unsigned 
     m_song->append(ev);
     if (tick > m_tick)
         m_tick = tick;
+}
+
+void DrumstickSoundBackend::startTimidity()
+{
+    QString error;
+    if (!availableOutputPorts().contains(QStringLiteral("TiMidity:0"))) {
+//        qCDebug(MINUET) << "Starting TiMidity++ at" << MinuetSettings::timidityLocation().remove(QStringLiteral("file://"));
+//        m_timidityProcess.setProgram(MinuetSettings::timidityLocation().remove(QStringLiteral("file://")), QStringList() << MinuetSettings::timidityParameters());
+        m_timidityProcess.setProgram("/usr/bin/timidity", QStringList() << "-iA");
+        m_timidityProcess.start();
+        if (!m_timidityProcess.waitForStarted(-1)) {
+            error = m_timidityProcess.errorString();
+        }
+        else {
+            if (!waitForTimidityOutputPorts(3000))
+//                error = i18n("error when waiting for TiMidity++ output ports!");
+                error = "error when waiting for TiMidity++ output ports!";
+            else
+                qCDebug(MINUET) << "TiMidity++ started!";
+        }
+    }
+    else {
+        qCDebug(MINUET) << "TiMidity++ already running!";
+    }
+//    if (!error.isEmpty())
+//        KMessageBox::error(this,
+//                           i18n("There was an error when starting TiMidity++: \"%1\". "
+//                                "Is another application using the audio system? "
+//                                "Also, please check Minuet settings!", error),
+//                           i18n("Minuet startup"));
+}
+
+bool DrumstickSoundBackend::waitForTimidityOutputPorts(int msecs)
+{
+    QTime time;
+    time.start();
+    while (!availableOutputPorts().contains(QStringLiteral("TiMidity:0")))
+        if (msecs != -1 && time.elapsed() > msecs)
+            return false;
+    return true;
+}
+
+QStringList DrumstickSoundBackend::availableOutputPorts() const
+{
+    QStringList availableOutputPorts;
+    QListIterator<drumstick::PortInfo> it(m_client->getAvailableOutputs());
+    while(it.hasNext()) {
+        drumstick::PortInfo p = it.next();
+        availableOutputPorts << QStringLiteral("%1:%2").arg(p.getClientName()).arg(p.getPort());
+    }
+    return availableOutputPorts;
 }
 
 #include "moc_drumsticksoundbackend.cpp"

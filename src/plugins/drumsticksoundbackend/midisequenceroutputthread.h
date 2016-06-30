@@ -53,9 +53,6 @@ public:
     void setTempoFactor(float value);
     void resetPosition();
 
-Q_SIGNALS:
-    void allNotesoff();
-
 private:
     void allNotesOff();
     void sendControllerEvent(int chan, int control, int value);

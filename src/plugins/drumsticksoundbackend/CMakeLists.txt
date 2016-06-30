@@ -14,6 +14,7 @@ target_link_libraries(minuetdrumsticksoundbackend
     drumstick-alsa
     drumstick-file
     Minuet::Interfaces
+    KF5::CoreAddons
 )
 
 install(TARGETS minuetdrumsticksoundbackend DESTINATION ${PLUGIN_INSTALL_DIR}/minuet/)

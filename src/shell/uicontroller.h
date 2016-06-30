@@ -32,6 +32,8 @@
 namespace Minuet
 {
 
+class Core;
+
 class MINUETSHELL_EXPORT UiController : public IUiController
 {
     Q_OBJECT
@@ -40,7 +42,7 @@ public:
     UiController(QObject *parent = 0);
     ~UiController() override;
 
-    bool initialize();
+    bool initialize(Core *core);
 
 private:
     QScopedPointer<MinuetMainWindow> m_mainWindow;

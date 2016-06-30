@@ -47,7 +47,7 @@ bool Core::initialize()
 
 IPluginController *Core::pluginController()
 {
-    return m_pluginController.data();
+    return m_pluginController;
 }
 
 ISoundBackend *Core::soundBackend()
@@ -57,29 +57,34 @@ ISoundBackend *Core::soundBackend()
 
 IExerciseController *Core::exerciseController()
 {
-    return m_exerciseController.data();
+    return m_exerciseController;
 }
 
 IUiController *Core::uiController()
 {
-    return m_uiController.data();
+    return m_uiController;
 }
 
 void Core::setSoundBackend(ISoundBackend *soundBackend)
 {
-    m_soundBackend = soundBackend;
+    if (m_soundBackend != soundBackend) {
+        m_soundBackend = soundBackend;
+        emit soundBackendChanged(m_soundBackend);
+    }
 }
 
 Core::Core(QObject *parent)
     : ICore(parent),
-      m_pluginController(new PluginController),
-      m_soundBackend(0),
-      m_exerciseController(new ExerciseController),
-      m_uiController(new UiController)
-
+      m_soundBackend(0)
 {
-    ((PluginController *)m_pluginController.data())->initialize(this);
-    ((UiController *)m_uiController.data())->initialize();
+    m_pluginController = new PluginController(this);
+    ((PluginController *)m_pluginController)->initialize(this);
+
+    m_exerciseController = new ExerciseController(this);
+    ((ExerciseController *)m_exerciseController)->initialize(this);
+
+    m_uiController = new UiController(this);
+    ((UiController *)m_uiController)->initialize(this);
 }
 
 }

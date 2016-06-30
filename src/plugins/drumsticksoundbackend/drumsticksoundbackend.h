@@ -25,6 +25,13 @@
 
 #include <interfaces/isoundbackend.h>
 
+#include <QLoggingCategory>
+
+#include <KProcess>
+
+Q_DECLARE_LOGGING_CATEGORY(MINUET)
+Q_LOGGING_CATEGORY(MINUET, "minuet")
+
 namespace drumstick {
     class MidiClient;
     class MidiPort;
@@ -61,6 +68,9 @@ private Q_SLOTS:
 
 private:
     void appendEvent(drumstick::SequencerEvent *ev, unsigned long tick);
+    void startTimidity();
+    bool waitForTimidityOutputPorts(int msecs);
+    QStringList availableOutputPorts() const;
 
     drumstick::MidiClient *m_client;
     drumstick::MidiPort *m_outputPort;
@@ -72,6 +82,8 @@ private:
     drumstick::MidiQueue *m_queue;
     int m_queueId;
     QScopedPointer<Song> m_song;
+
+    KProcess m_timidityProcess;
 };
 
 #endif

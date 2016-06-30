@@ -80,42 +80,42 @@ Item {
         }
     }
     Binding {
-        target: sequencer
+        target: core.soundBackend
         property: "pitch"
         value: midiPlayer.pitch
     }
     Binding {
-        target: sequencer
+        target: core.soundBackend
         property: "volume"
         value: midiPlayer.volume
     }
     Binding {
-        target: sequencer
+        target: core.soundBackend
         property: "tempo"
         value: midiPlayer.tempo
     }
     Binding {
         target: midiPlayer
         property: "playbackLabel"
-        value: sequencer.playbackLabel
+        value: core.soundBackend.playbackLabel
     }
     Binding {
         target: midiPlayer
         property: "sequencerState"
-        value: sequencer.state
+        value: core.soundBackend.state
     }
     Connections {
         target: midiPlayer
-        onPlayActivated: sequencer.play()
-        onPauseActivated: sequencer.pause()
-        onStopActivated: sequencer.stop()
+        onPlayActivated: core.soundBackend.play()
+        onPauseActivated: core.soundBackend.pause()
+        onStopActivated: core.soundBackend.stop()
     }
-    Connections {
-        target: sequencer
-        onNoteOn: pianoView.noteOn(chan, pitch, vel)
-        onNoteOff: pianoView.noteOff(chan, pitch, vel)
-        onAllNotesOff: pianoView.allNotesOff()
-    }
+//    Connections {
+//        target: sequencer
+//        onNoteOn: pianoView.noteOn(chan, pitch, vel)
+//        onNoteOff: pianoView.noteOff(chan, pitch, vel)
+//        onAllNotesOff: pianoView.allNotesOff()
+//    }
     Connections {
         target: minuetMenu
         onItemChanged: exerciseView.itemChanged(model)

@@ -36,6 +36,7 @@ class MINUETINTERFACES_EXPORT IExerciseController : public QObject
     Q_OBJECT
     Q_PROPERTY(quint8 minRootNote MEMBER m_minRootNote)
     Q_PROPERTY(quint8 maxRootNote MEMBER m_maxRootNote)
+    Q_PROPERTY(QJsonArray exercises READ exercises)
     Q_PROPERTY(QJsonArray currentExercise MEMBER m_currentExercise)
     Q_PROPERTY(quint8 answerLength MEMBER m_answerLength)
     Q_PROPERTY(QJsonArray selectedOptions MEMBER m_selectedOptions)
@@ -43,7 +44,7 @@ class MINUETINTERFACES_EXPORT IExerciseController : public QObject
 public:
     virtual ~IExerciseController() override;
 
-    virtual QJsonObject exercises() const = 0;
+    virtual QJsonArray exercises() const = 0;
 
 public Q_SLOTS:
     virtual void randomlySelectOptions() = 0;
