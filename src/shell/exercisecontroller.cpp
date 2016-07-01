@@ -65,8 +65,8 @@ bool ExerciseController::initialize(Core *core)
 
 void ExerciseController::randomlySelectOptions()
 {
-    while (!m_selectedOptions.isEmpty())
-        m_selectedOptions.removeFirst();
+    while (!m_selectedExerciseOptions.isEmpty())
+        m_selectedExerciseOptions.removeFirst();
 
     qsrand(QDateTime::currentDateTimeUtc().toTime_t());
 
@@ -89,9 +89,9 @@ void ExerciseController::randomlySelectOptions()
         QJsonObject jsonObject = exerciseOptions[chosenExerciseOption].toObject();
         jsonObject["rootNote"] = QString::number(m_chosenRootNote);
         exerciseOptions[chosenExerciseOption] = jsonObject;
-        m_selectedOptions.append(exerciseOptions[chosenExerciseOption]);
+        m_selectedExerciseOptions.append(exerciseOptions[chosenExerciseOption]);
     }
-    emit selectedOptionsChanged(m_selectedOptions);
+    emit selectedExerciseOptionsChanged(m_selectedExerciseOptions);
 }
 
 unsigned int ExerciseController::chosenRootNote()

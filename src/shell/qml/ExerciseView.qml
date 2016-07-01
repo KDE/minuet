@@ -110,11 +110,11 @@ Item {
                 onClicked: {
                     exerciseView.state = "waitingForAnswer"
                     core.exerciseController.randomlySelectOptions()
-                    var selectedOptions = core.exerciseController.selectedOptions
-                    core.soundBackend.prepareFromExerciseOptions(selectedOptions, "scale")
+                    var selectedExerciseOptions = core.exerciseController.selectedExerciseOptions
+                    core.soundBackend.prepareFromExerciseOptions(selectedExerciseOptions, "scale")
                     var newChosenExercises = [];
-                    for (var i = 0; i < selectedOptions.length; ++i)
-                        newChosenExercises.push(selectedOptions[i].name);
+                    for (var i = 0; i < selectedExerciseOptions.length; ++i)
+                        newChosenExercises.push(selectedExerciseOptions[i].name);
                     chosenExercises = newChosenExercises
                     for (var i = 0; i < chosenExercises.length; ++i)
                         for (var j = 0; j < answerGrid.children.length; ++j)

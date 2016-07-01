@@ -40,9 +40,9 @@ IExerciseController::~IExerciseController()
 {
 }
 
-QJsonArray IExerciseController::selectedOptions() const
+QJsonArray IExerciseController::selectedExerciseOptions() const
 {
-    return m_selectedOptions;
+    return m_selectedExerciseOptions;
 }
 
 }

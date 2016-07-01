@@ -81,8 +81,8 @@ Q_SIGNALS:
     void volumeChanged(quint8 newVolume);
     void tempoChanged(quint8 newTempo);
     void playbackLabelChanged(QString newPlaybackLabel);
-    void stateChanged(State newState);
     void playModeChanged(PlayMode newPlayMode);
+    void stateChanged(State newState);
 
 protected:
     explicit ISoundBackend(QObject *parent = 0);

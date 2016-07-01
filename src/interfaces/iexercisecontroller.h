@@ -40,20 +40,20 @@ class MINUETINTERFACES_EXPORT IExerciseController : public QObject
     Q_PROPERTY(QJsonArray exercises READ exercises)
     Q_PROPERTY(QJsonObject currentExercise MEMBER m_currentExercise NOTIFY currentExerciseChanged)
     Q_PROPERTY(quint8 answerLength MEMBER m_answerLength)
-    Q_PROPERTY(QJsonArray selectedOptions READ selectedOptions NOTIFY selectedOptionsChanged)
+    Q_PROPERTY(QJsonArray selectedExerciseOptions READ selectedExerciseOptions NOTIFY selectedExerciseOptionsChanged)
 
 public:
     virtual ~IExerciseController() override;
 
     virtual QJsonArray exercises() const = 0;
-    QJsonArray selectedOptions() const;
+    QJsonArray selectedExerciseOptions() const;
 
 public Q_SLOTS:
     virtual void randomlySelectOptions() = 0;
 
 Q_SIGNALS:
     void currentExerciseChanged(QJsonObject newCurrentExercise);
-    void selectedOptionsChanged(QJsonArray newSelectedOptions);
+    void selectedExerciseOptionsChanged(QJsonArray newSelectedExerciseOptions);
 
 protected:
     explicit IExerciseController(QObject *parent = 0);
@@ -62,7 +62,7 @@ protected:
     quint8 m_maxRootNote;
     QJsonObject m_currentExercise;
     quint8 m_answerLength;
-    QJsonArray m_selectedOptions;
+    QJsonArray m_selectedExerciseOptions;
 };
 
 }

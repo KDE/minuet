@@ -126,7 +126,7 @@ Item {
     }
     Connections {
         target: core.exerciseController
-        onSelectedOptionsChanged: pianoView.clearAllMarks()
+        onSelectedExerciseOptionsChanged: pianoView.clearAllMarks()
         onCurrentExerciseChanged: pianoView.clearAllMarks()
     }
 }

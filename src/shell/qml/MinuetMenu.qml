@@ -30,7 +30,7 @@ Item {
     id: minuetMenu
 
     property string message
-    property var currentExercise
+    readonly property alias currentExercise: stackView.currentExercise
 
     signal backPressed
     signal userMessageChanged(string message)
@@ -52,6 +52,7 @@ Item {
     StackView {
         id: stackView
 
+        property var currentExercise
         property Item currentExerciseMenuItem
 
         width: parent.width - breadcrumb.width; height: parent.height
@@ -76,7 +77,7 @@ Item {
                     if (!children) {
                         if (stackView.currentExerciseMenuItem != undefined) stackView.currentExerciseMenuItem.checked = false
                         userMessageChanged(message)
-                        currentExercise = delegateRect.ListView.view.model[index]
+                        stackView.currentExercise = delegateRect.ListView.view.model[index]
                         stackView.currentExerciseMenuItem = delegateRect
                     }
                     else {
