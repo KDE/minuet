@@ -27,11 +27,10 @@
 #include <KLocalizedString>
 
 #include <QTimer>
-#include <QDirIterator>
-#include <QStandardPaths>
-
 #include <QLabel>
 #include <QVBoxLayout>
+#include <QDirIterator>
+#include <QStandardPaths>
 
 Wizard::Wizard(QWidget *parent, Qt::WindowFlags flags) :
     QWizard(parent, flags),

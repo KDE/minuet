@@ -23,10 +23,10 @@
 #ifndef MINUET_IEXERCISECONTROLLER_H
 #define MINUET_IEXERCISECONTROLLER_H
 
-#include <QtCore/QObject>
-#include <QtCore/QJsonArray>
-
 #include "minuetinterfacesexport.h"
+
+#include <QObject>
+#include <QJsonArray>
 
 namespace Minuet
 {

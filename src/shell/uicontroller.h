@@ -23,11 +23,10 @@
 #ifndef MINUET_UICONTROLLER_H
 #define MINUET_UICONTROLLER_H
 
-#include <interfaces/iuicontroller.h>
-
 #include "minuetmainwindow.h"
-
 #include "minuetshellexport.h"
+
+#include <interfaces/iuicontroller.h>
 
 namespace Minuet
 {

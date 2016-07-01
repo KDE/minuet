@@ -22,9 +22,9 @@
 
 #include "core.h"
 
+#include "uicontroller.h"
 #include "plugincontroller.h"
 #include "exercisecontroller.h"
-#include "uicontroller.h"
 
 #include <interfaces/isoundbackend.h>
 

@@ -23,9 +23,9 @@
 #ifndef MINUET_IPLUGINCONTROLLER_H
 #define MINUET_IPLUGINCONTROLLER_H
 
-#include <QtCore/QObject>
-
 #include "minuetinterfacesexport.h"
+
+#include <QObject>
 
 namespace Minuet
 {

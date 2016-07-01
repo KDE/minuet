@@ -22,7 +22,7 @@
 
 #include "iexercisecontroller.h"
 
-#include <QtQml>
+#include <qqml.h>
 
 namespace Minuet
 {

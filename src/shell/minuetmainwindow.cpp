@@ -23,27 +23,23 @@
 #include "minuetmainwindow.h"
 
 #include "wizard.h"
+#include "core.h"
 
-#include <KActionCollection>
 #include <KMessageBox>
 #include <KConfigDialog>
+#include <KActionCollection>
 
+#include <QTimer>
+#include <QPointer>
+#include <QToolBar>
 #include <QQmlEngine>
+#include <QQuickView>
 #include <QQmlContext>
+#include <QStringList>
 #include <QLoggingCategory>
 
 Q_DECLARE_LOGGING_CATEGORY(MINUET)
 Q_LOGGING_CATEGORY(MINUET, "minuet")
-
-#include <QTimer>
-#include <QPointer>
-#include <QStringList>
-
-#include <QQuickView>
-
-#include <QToolBar>
-
-#include "core.h"
 
 MinuetMainWindow::MinuetMainWindow(Minuet::Core *core, QWidget *parent, Qt::WindowFlags f) :
     KXmlGuiWindow(parent, f),

@@ -25,9 +25,9 @@
 
 #include "iplugin.h"
 
-#include <QJsonArray>
-
 #include "minuetinterfacesexport.h"
+
+#include <QJsonArray>
 
 namespace Minuet
 {

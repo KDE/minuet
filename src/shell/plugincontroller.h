@@ -25,9 +25,9 @@
 
 #include <interfaces/iplugincontroller.h>
 
-#include <KPluginMetaData>
-
 #include "minuetshellexport.h"
+
+#include <KPluginMetaData>
 
 namespace Minuet
 {

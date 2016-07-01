@@ -22,16 +22,15 @@
 
 #include "exercisecontroller.h"
 
+#include <drumstick/alsaevent.h>
+
 #include <KLocalizedString>
 
 #include <QDir>
+#include <qqml.h>
 #include <QDateTime>
 #include <QJsonDocument>
 #include <QStandardPaths>
-
-#include <QtQml> // krazy:exclude=includes
-
-#include <drumstick/alsaevent.h>
 
 namespace Minuet
 {

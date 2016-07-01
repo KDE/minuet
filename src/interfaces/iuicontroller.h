@@ -23,9 +23,9 @@
 #ifndef MINUET_IUICONTROLLER_H
 #define MINUET_IUICONTROLLER_H
 
-#include <QtCore/QObject>
-
 #include "minuetinterfacesexport.h"
+
+#include <QObject>
 
 namespace Minuet
 {

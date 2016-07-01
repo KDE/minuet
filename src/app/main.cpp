@@ -22,18 +22,18 @@
 
 #include "minuet_version.h"
 
+#include <shell/core.h>
+
 #include <KCrash>
 #include <KAboutData>
 #include <KLocalizedString>
 
-#include <QCommandLineParser>
-#include <QApplication>
 #include <QIcon>
+#include <QApplication>
+#include <QCommandLineParser>
 
 //#include <QQmlDebuggingEnabler>
 //QQmlDebuggingEnabler enabler;
-
-#include <shell/core.h>
 
 int main(int argc, char **argv)
 {

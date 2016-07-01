@@ -25,9 +25,8 @@
 
 #include "ui_wizardsystemcheck.h"
 
-#include <QPainter>
-
 #include <QWizard>
+#include <QPainter>
 #include <QItemDelegate>
 
 class WizardDelegate: public QItemDelegate

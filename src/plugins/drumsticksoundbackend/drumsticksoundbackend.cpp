@@ -22,15 +22,15 @@
 
 #include "drumsticksoundbackend.h"
 
-#include <QtMath>
-#include <QTime>
-#include <QJsonObject>
+#include "song.h"
+#include "midisequenceroutputthread.h"
 
 #include <drumstick/alsaqueue.h>
 #include <drumstick/alsaclient.h>
 
-#include "song.h"
-#include "midisequenceroutputthread.h"
+#include <QTime>
+#include <QtMath>
+#include <QJsonObject>
 
 DrumstickSoundBackend::DrumstickSoundBackend(QObject *parent)
     : Minuet::ISoundBackend(parent),

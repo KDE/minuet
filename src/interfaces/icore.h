@@ -23,9 +23,9 @@
 #ifndef MINUET_ICORE_H
 #define MINUET_ICORE_H
 
-#include <QtCore/QObject>
-
 #include "minuetinterfacesexport.h"
+
+#include <QObject>
 
 namespace Minuet
 {

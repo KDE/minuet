@@ -25,10 +25,10 @@
 
 #include <interfaces/iexercisecontroller.h>
 
+#include "minuetshellexport.h"
+
 #include <QStringList>
 #include <QJsonObject>
-
-#include "minuetshellexport.h"
 
 namespace Minuet
 {

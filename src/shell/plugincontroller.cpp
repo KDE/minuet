@@ -22,12 +22,12 @@
 
 #include "plugincontroller.h"
 
-#include <KPluginLoader>
+#include "core.h"
 
 #include <interfaces/iplugin.h>
 #include <interfaces/isoundbackend.h>
 
-#include "core.h"
+#include <KPluginLoader>
 
 #include <QDebug>
 

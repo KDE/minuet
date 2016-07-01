@@ -25,9 +25,9 @@
 
 #include <interfaces/isoundbackend.h>
 
-#include <QLoggingCategory>
-
 #include <KProcess>
+
+#include <QLoggingCategory>
 
 Q_DECLARE_LOGGING_CATEGORY(MINUET)
 Q_LOGGING_CATEGORY(MINUET, "minuet")
