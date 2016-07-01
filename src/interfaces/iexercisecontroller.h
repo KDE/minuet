@@ -27,6 +27,7 @@
 
 #include <QObject>
 #include <QJsonArray>
+#include <QJsonObject>
 
 namespace Minuet
 {
@@ -37,7 +38,7 @@ class MINUETINTERFACES_EXPORT IExerciseController : public QObject
     Q_PROPERTY(quint8 minRootNote MEMBER m_minRootNote)
     Q_PROPERTY(quint8 maxRootNote MEMBER m_maxRootNote)
     Q_PROPERTY(QJsonArray exercises READ exercises)
-    Q_PROPERTY(QJsonArray currentExercise MEMBER m_currentExercise)
+    Q_PROPERTY(QJsonObject currentExercise MEMBER m_currentExercise)
     Q_PROPERTY(quint8 answerLength MEMBER m_answerLength)
     Q_PROPERTY(QJsonArray selectedOptions MEMBER m_selectedOptions)
 
@@ -54,7 +55,7 @@ protected:
 
     quint8 m_minRootNote;
     quint8 m_maxRootNote;
-    QJsonArray m_currentExercise;
+    QJsonObject m_currentExercise;
     quint8 m_answerLength;
     QJsonArray m_selectedOptions;
 };

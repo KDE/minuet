@@ -29,20 +29,11 @@ import org.kde.minuet 1.0
 Item {
     id: minuetMenu
 
-    property Item selectedMenuItem
     property string message
+    readonly property alias currentExercise: stackView.currentExercise
 
-    signal breadcrumbPressed
-    signal itemChanged(var model)
+    signal backPressed
     signal userMessageChanged(string message)
-
-    function itemClicked(delegateRect, index) {
-        var model = delegateRect.ListView.view.model[index].options
-        if (model != undefined) {
-            core.exerciseController.currentExercise = model
-            minuetMenu.itemChanged(model)
-        }
-    }
 
     Button {
         id: breadcrumb
@@ -50,10 +41,8 @@ Item {
         width: (stackView.depth > 1) ? 24:0; height: parent.height
         iconName: "go-previous"
         onClicked: {
-//            sequencer.allNotesOff()
-//            sequencer.clearSong()
-            minuetMenu.breadcrumbPressed()
-            selectedMenuItem = null
+            backPressed()
+            stackView.currentExerciseMenuItem = null
             stackView.pop()
             userMessageChanged("exercise")
             if (stackView.depth == 1)
@@ -62,6 +51,9 @@ Item {
     }
     StackView {
         id: stackView
+
+        property var currentExercise
+        property Item currentExerciseMenuItem
 
         width: parent.width - breadcrumb.width; height: parent.height
         anchors.left: breadcrumb.right
@@ -83,10 +75,10 @@ Item {
                         message = userMessage
                     var children = delegateRect.ListView.view.model[index].children
                     if (!children) {
-                        if (selectedMenuItem != undefined) selectedMenuItem.checked = false
+                        if (stackView.currentExerciseMenuItem != undefined) stackView.currentExerciseMenuItem.checked = false
                         userMessageChanged(message)
-                        itemClicked(delegateRect, index)
-                        selectedMenuItem = delegateRect
+                        stackView.currentExercise = delegateRect.ListView.view.model[index]
+                        stackView.currentExerciseMenuItem = delegateRect
                     }
                     else {
                         stackView.push(categoryMenu.createObject(stackView, {model: children}))

@@ -75,7 +75,7 @@ public Q_SLOTS:
     virtual void play() = 0;
     virtual void pause() = 0;
     virtual void stop() = 0;
-    
+
 Q_SIGNALS:
     void pitchChanged(qint8 newPitch);
     void volumeChanged(quint8 newVolume);

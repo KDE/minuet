@@ -55,14 +55,14 @@ Item {
         })
         animation.start()
     }
-    function itemChanged(model) {
-//        sequencer.allNotesOff()
+    function setCurrentExercise(currentExercise) {
         clearExerciseGrid()
-        var length = model.length
+        var currentExerciseOptions = currentExercise["options"];
+        var length = currentExerciseOptions.length
         answerGrid.columns = Math.min(6, length)
         answerGrid.rows = Math.ceil(length/6)
         for (var i = 0; i < length; ++i)
-            answerOption.createObject(answerGrid, {model: model[i], index: i, color: colors[i%24]})
+            answerOption.createObject(answerGrid, {model: currentExerciseOptions[i], index: i, color: colors[i%24]})
         exerciseView.visible = true
         exerciseView.state = "initial"
     }

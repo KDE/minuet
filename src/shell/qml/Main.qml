@@ -44,11 +44,21 @@ Item {
 
         width: menuBarWidth; height: parent.height - midiPlayer.height
         anchors { left: parent.left; top: parent.top }
+
+        onCurrentExerciseChanged: { exerciseView.setCurrentExercise(currentExercise); rhythmAnswerView.resetAnswers() }
+        onBackPressed: { core.soundBackend.stop(); exerciseView.clearExerciseGrid() }
+        onUserMessageChanged: { exerciseView.changeUserMessage(message); mainItem.userMessageChanged(message) }
     }
     MidiPlayer {
         id: midiPlayer
         
         width: menuBarWidth
+        playbackLabel: core.soundBackend.playbackLabel
+        soundBackendState: core.soundBackend.state
+
+        onPlayActivated: core.soundBackend.play()
+        onPauseActivated: core.soundBackend.pause()
+        onStopActivated: core.soundBackend.stop()
     }
     Image {
         id: background
@@ -71,13 +81,27 @@ Item {
             anchors { bottom: parent.bottom; bottomMargin: 14; horizontalCenter: parent.horizontalCenter }
             visible: false
             exerciseView: exerciseView
+
+            onAnswerCompleted: exerciseView.checkAnswers(answers)
         }
         ExerciseView {
             id: exerciseView
             
             width: background.width; height: minuetMenu.height + 20
             anchors { top: background.top; horizontalCenter: background.horizontalCenter }
+
+            onAnswerHoverEnter: pianoView.noteMark(chan, pitch, vel, color)
+            onAnswerHoverExit: pianoView.noteUnmark(chan, pitch, vel)
+            onAnswerClicked: rhythmAnswerView.answerClicked(answerImageSource, color)
+            onStateChanged: mainItem.exerciseViewStateChanged()
+            onShowCorrectAnswer: rhythmAnswerView.showCorrectAnswer(chosenExercises, chosenColors)
+            onChosenExercisesChanged: rhythmAnswerView.fillCorrectAnswerGrid()
         }
+    }
+    Binding {
+        target: core.exerciseController
+        property: "currentExercise"
+        value: minuetMenu.currentExercise
     }
     Binding {
         target: core.soundBackend
@@ -94,51 +118,10 @@ Item {
         property: "tempo"
         value: midiPlayer.tempo
     }
-    Binding {
-        target: midiPlayer
-        property: "playbackLabel"
-        value: core.soundBackend.playbackLabel
-    }
-    Binding {
-        target: midiPlayer
-        property: "sequencerState"
-        value: core.soundBackend.state
-    }
-    Connections {
-        target: midiPlayer
-        onPlayActivated: core.soundBackend.play()
-        onPauseActivated: core.soundBackend.pause()
-        onStopActivated: core.soundBackend.stop()
-    }
 //    Connections {
 //        target: sequencer
 //        onNoteOn: pianoView.noteOn(chan, pitch, vel)
 //        onNoteOff: pianoView.noteOff(chan, pitch, vel)
 //        onAllNotesOff: pianoView.allNotesOff()
 //    }
-    Connections {
-        target: minuetMenu
-        onItemChanged: exerciseView.itemChanged(model)
-        onBreadcrumbPressed: exerciseView.clearExerciseGrid()
-        onUserMessageChanged: exerciseView.changeUserMessage(message)
-    }
-    Connections {
-        target: minuetMenu
-        onItemChanged: rhythmAnswerView.resetAnswers(model)
-        onBreadcrumbPressed: rhythmAnswerView.resetAnswers()
-        onUserMessageChanged: mainItem.userMessageChanged(message)
-    }
-    Connections {
-        target: exerciseView
-        onAnswerHoverEnter: pianoView.noteMark(chan, pitch, vel, color)
-        onAnswerHoverExit: pianoView.noteUnmark(chan, pitch, vel)
-        onAnswerClicked: rhythmAnswerView.answerClicked(answerImageSource, color)
-        onStateChanged: mainItem.exerciseViewStateChanged()
-        onShowCorrectAnswer: rhythmAnswerView.showCorrectAnswer(chosenExercises, chosenColors)
-        onChosenExercisesChanged: rhythmAnswerView.fillCorrectAnswerGrid()
-    }
-    Connections {
-        target: rhythmAnswerView
-        onAnswerCompleted: exerciseView.checkAnswers(answers)
-    }
 }

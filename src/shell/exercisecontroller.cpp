@@ -73,9 +73,10 @@ void ExerciseController::randomlySelectOptions()
     int minNote = INT_MAX;
     int maxNote = INT_MIN;
     for (quint8 i = 0; i < m_answerLength; ++i) {
-        quint8 chosenExercise = qrand() % m_currentExercise.size();
+        QJsonArray exerciseOptions = m_currentExercise[QStringLiteral("options")].toArray();
+        quint8 chosenExerciseOption = qrand() % exerciseOptions.size();
 
-        QString sequence = m_currentExercise[chosenExercise].toObject()[QStringLiteral("sequence")].toString();
+        QString sequence = exerciseOptions[chosenExerciseOption].toObject()[QStringLiteral("sequence")].toString();
         foreach(const QString &additionalNote, sequence.split(' ')) {
             int note = additionalNote.toInt();
             if (note > maxNote) maxNote = note;
@@ -85,10 +86,10 @@ void ExerciseController::randomlySelectOptions()
             m_chosenRootNote = m_minRootNote + qrand() % (m_maxRootNote - m_minRootNote);
         while (m_chosenRootNote + maxNote > 108 || m_chosenRootNote + minNote < 21);
 
-        QJsonObject jsonObject = m_currentExercise[chosenExercise].toObject();
+        QJsonObject jsonObject = exerciseOptions[chosenExerciseOption].toObject();
         jsonObject["rootNote"] = QString::number(m_chosenRootNote);
-        m_currentExercise[chosenExercise] = jsonObject;
-        m_selectedOptions.append(m_currentExercise[chosenExercise]);
+        exerciseOptions[chosenExerciseOption] = jsonObject;
+        m_selectedOptions.append(exerciseOptions[chosenExerciseOption]);
     }
 }
 

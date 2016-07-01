@@ -26,11 +26,11 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.minuet 1.0
 
 Rectangle {
-    property alias pitch: pitchSlider.value
-    property alias volume: volumeSlider.value
-    property alias tempo: tempoSlider.value
+    readonly property alias pitch: pitchSlider.value
+    readonly property alias volume: volumeSlider.value
+    readonly property alias tempo: tempoSlider.value
     property alias playbackLabel: playbackLabelText.text
-    property int sequencerState
+    property int soundBackendState
 
     signal playActivated
     signal pauseActivated
@@ -90,10 +90,10 @@ Rectangle {
             width: playbackLabelText.contentWidth / 2
             anchors.horizontalCenterOffset: -30
             anchors { top: playbackLabelText.bottom; horizontalCenter: playbackLabelText.horizontalCenter }
-            text: (sequencerState != ISoundBackend.PlayingState) ? i18n("Play"):i18n("Pause")
-            source: (sequencerState != ISoundBackend.PlayingState) ? "../images/multimedia-play.png":"../images/multimedia-pause.png"
+            text: (soundBackendState != ISoundBackend.PlayingState) ? i18n("Play"):i18n("Pause")
+            source: (soundBackendState != ISoundBackend.PlayingState) ? "../images/multimedia-play.png":"../images/multimedia-pause.png"
             onActivated: {
-                if (sequencerState == ISoundBackend.StoppedState || sequencerState == ISoundBackend.PausedState)
+                if (soundBackendState == ISoundBackend.StoppedState || soundBackendState == ISoundBackend.PausedState)
                     playActivated()
                 else
                     pauseActivated()
