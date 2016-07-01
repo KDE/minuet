@@ -31,10 +31,14 @@ FluidSynthSoundBackend::~FluidSynthSoundBackend()
 {
 }
 
-void FluidSynthSoundBackend::prepareFromExerciseOptions(QJsonArray selectedOptions, const QString &playMode)
+void FluidSynthSoundBackend::setTempo (quint8 tempo)
+{
+    Q_UNUSED(tempo);
+}
+
+void FluidSynthSoundBackend::prepareFromExerciseOptions(QJsonArray selectedOptions)
 {
     Q_UNUSED(selectedOptions)
-    Q_UNUSED(playMode)
 }
 
 void FluidSynthSoundBackend::prepareFromMidiFile(const QString &fileName)

@@ -38,7 +38,9 @@ public:
     virtual ~FluidSynthSoundBackend() override;
 
 public Q_SLOTS:
-    virtual void prepareFromExerciseOptions(QJsonArray selectedOptions, const QString &playMode) override;
+    virtual void setTempo (quint8 tempo);
+
+    virtual void prepareFromExerciseOptions(QJsonArray selectedOptions) override;
     virtual void prepareFromMidiFile(const QString &fileName) override;
 
     virtual void play() override;

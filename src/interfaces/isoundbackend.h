@@ -38,8 +38,10 @@ class MINUETINTERFACES_EXPORT ISoundBackend : public IPlugin
 
     Q_PROPERTY(int pitch MEMBER m_pitch NOTIFY pitchChanged)
     Q_PROPERTY(quint8 volume MEMBER m_volume NOTIFY volumeChanged)
-    Q_PROPERTY(quint8 tempo MEMBER m_tempo NOTIFY tempoChanged)
+    Q_PROPERTY(quint8 tempo MEMBER m_tempo WRITE setTempo NOTIFY tempoChanged)
     Q_PROPERTY(QString playbackLabel READ playbackLabel NOTIFY playbackLabelChanged)
+    Q_ENUMS(PlayMode)
+    Q_PROPERTY(PlayMode playMode MEMBER m_playMode NOTIFY playModeChanged)
     Q_ENUMS(State)
     Q_PROPERTY(State state READ state NOTIFY stateChanged)
 
@@ -47,6 +49,12 @@ public:
     ~ISoundBackend() override;
 
     QString playbackLabel() const;
+
+    enum PlayMode {
+        ScalePlayMode = 0,
+        ChordPlayMode,
+        RhythmPlayMode
+    };
 
     enum State {
         StoppedState = 0,
@@ -57,7 +65,9 @@ public:
     ISoundBackend::State state() const;
 
 public Q_SLOTS:
-    virtual void prepareFromExerciseOptions(QJsonArray selectedOptions, const QString &playMode) = 0;
+    virtual void setTempo (quint8 tempo) = 0;
+
+    virtual void prepareFromExerciseOptions(QJsonArray selectedOptions) = 0;
     virtual void prepareFromMidiFile(const QString &fileName) = 0;
 
     virtual void play() = 0;
@@ -70,6 +80,7 @@ Q_SIGNALS:
     void tempoChanged(quint8 newTempo);
     void playbackLabelChanged(QString newPlaybackLabel);
     void stateChanged(State newState);
+    void playModeChanged(PlayMode newPlayMode);
 
 protected:
     explicit ISoundBackend(QObject *parent = 0);
@@ -81,6 +92,7 @@ protected:
     quint8 m_tempo;
     QString m_playbackLabel;
     State m_state;
+    PlayMode m_playMode;
 };
 
 }

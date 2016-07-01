@@ -24,6 +24,8 @@ import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.1
 
+import org.kde.minuet 1.0
+
 Item {
     id: minuetMenu
 
@@ -95,11 +97,11 @@ Item {
                         }
                         var playMode = delegateRect.ListView.view.model[index].playMode
                         if (playMode != undefined) {
-//                            if (playMode == "scale") sequencer.setPlayMode(0) // ScalePlayMode
-//                            if (playMode == "chord") sequencer.setPlayMode(1) // ChordPlayMode
+                            if (playMode == "scale") core.soundBackend.playMode = ISoundBackend.ScalePlayMode
+                            if (playMode == "chord") core.soundBackend.playMode = ISoundBackend.ChordPlayMode
                             core.exerciseController.answerLength = 1
                             if (playMode == "rhythm") {
-                                core.exerciseController.setPlayMode(2) // RhythmPlayMode
+                                core.soundBackend.playMode = ISoundBackend.RhythmPlayMode
                                 core.exerciseController.answerLength = 4
                             }
                         }

@@ -22,6 +22,7 @@
 
 import QtQuick 2.4
 import org.kde.plasma.core 2.0 as PlasmaCore
+
 import org.kde.minuet 1.0
 
 Rectangle {
@@ -92,7 +93,7 @@ Rectangle {
             text: (sequencerState != ISoundBackend.PlayingState) ? i18n("Play"):i18n("Pause")
             source: (sequencerState != ISoundBackend.PlayingState) ? "../images/multimedia-play.png":"../images/multimedia-pause.png"
             onActivated: {
-                if (sequencerState == ISoundBackend.StoppedState || sequencerState == MidiSequencer.PausedState)
+                if (sequencerState == ISoundBackend.StoppedState || sequencerState == ISoundBackend.PausedState)
                     playActivated()
                 else
                     pauseActivated()

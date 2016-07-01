@@ -34,7 +34,7 @@
 
 DrumstickSoundBackend::DrumstickSoundBackend(QObject *parent)
     : Minuet::ISoundBackend(parent),
-    m_song(0)
+      m_song(0)
 {
     // MidiClient configuration
     m_client = new drumstick::MidiClient(this);
@@ -60,7 +60,7 @@ DrumstickSoundBackend::DrumstickSoundBackend(QObject *parent)
     m_client->setRealTimeInput(false);
     m_client->startSequencerInput();
 
-    // Output port configuration
+    // Output port configuration (to TiMidity)
     m_outputPort = new drumstick::MidiPort(this);
     m_outputPort->attach(m_client);
     m_outputPort->setPortName(QStringLiteral("Minuet Sequencer Output Port"));
@@ -68,7 +68,7 @@ DrumstickSoundBackend::DrumstickSoundBackend(QObject *parent)
     m_outputPort->setPortType(SND_SEQ_PORT_TYPE_APPLICATION | SND_SEQ_PORT_TYPE_MIDI_GENERIC);
     m_outputPortId = m_outputPort->getPortId();
 
-    // Input port configuration
+    // Input port configuration (from ALSA)
     m_inputPort = new drumstick::MidiPort(this);
     m_inputPort->attach(m_client);
     m_inputPort->setPortName(QStringLiteral("Minuet Sequencer Input Port"));
@@ -88,6 +88,15 @@ DrumstickSoundBackend::DrumstickSoundBackend(QObject *parent)
         setState(StoppedState);
     });
 
+    // Subscribe to Minuet's virtual piano
+    try {
+        m_outputPort->subscribeTo(QStringLiteral("MinuetSequencer:1"));
+    } catch (const drumstick::SequencerError &err) {
+        qCDebug(MINUET) << "Subscribe error";
+        throw err;
+    }
+    setPlaybackLabel(QStringLiteral("00:00.00"));
+
     startTimidity();
     m_outputPort->subscribeTo("TiMidity:0");
 }
@@ -99,9 +108,29 @@ DrumstickSoundBackend::~DrumstickSoundBackend()
     m_inputPort->detach();
     m_client->close();
     delete m_midiSequencerOutputThread;
+    m_timidityProcess.kill();
+    qCDebug(MINUET) << "Stoping TiMidity++!";
+    if (!m_timidityProcess.waitForFinished(-1))
+        qCDebug(MINUET) << "Error when stoping TiMidity++:" << m_timidityProcess.errorString();
+    else
+        qCDebug(MINUET) << "TiMidity++ stoped!";
 }
 
-void DrumstickSoundBackend::prepareFromExerciseOptions(QJsonArray selectedOptions, const QString &playMode)
+void DrumstickSoundBackend::setTempo (quint8 tempo)
+{
+    float tempoFactor = (tempo*tempo + 100.0*tempo + 20000.0) / 40000.0;
+    m_midiSequencerOutputThread->setTempoFactor(tempoFactor);
+
+    drumstick::QueueTempo queueTempo = m_queue->getTempo();
+    queueTempo.setTempoFactor(tempoFactor);
+    m_queue->setTempo(queueTempo);
+    m_client->drainOutput();
+
+    m_tempo = tempo;
+    emit tempoChanged(m_tempo);
+}
+
+void DrumstickSoundBackend::prepareFromExerciseOptions(QJsonArray selectedOptions)
 {
     Song *song = new Song;
     song->setHeader(0, 1, 60);
@@ -113,7 +142,7 @@ void DrumstickSoundBackend::prepareFromExerciseOptions(QJsonArray selectedOption
     appendEvent(new drumstick::TempoEvent(m_queueId, 600000), 0);
 
     unsigned int barStart = 0;
-    if (playMode == "rhythm") {
+    if (m_playMode == RhythmPlayMode) {
         appendEvent(new drumstick::NoteOnEvent(9, 80, 120), 0);
         appendEvent(new drumstick::NoteOnEvent(9, 80, 120), 60);
         appendEvent(new drumstick::NoteOnEvent(9, 80, 120), 120);
@@ -125,18 +154,18 @@ void DrumstickSoundBackend::prepareFromExerciseOptions(QJsonArray selectedOption
         QString sequence = selectedOptions[i].toObject()[QStringLiteral("sequence")].toString();
 
         unsigned int chosenRootNote = selectedOptions[i].toObject()[QStringLiteral("rootNote")].toString().toInt();
-        if (playMode != "rhythm") {
+        if (m_playMode != RhythmPlayMode) {
              appendEvent(new drumstick::NoteOnEvent(1, chosenRootNote, 120), barStart);
-             appendEvent(new drumstick::NoteOnEvent(1, chosenRootNote, 120), barStart + 60);
+             appendEvent(new drumstick::NoteOffEvent(1, chosenRootNote, 120), barStart + 60);
  
             unsigned int j = 1;
             drumstick::SequencerEvent *ev;
             foreach(const QString &additionalNote, sequence.split(' ')) {
                 appendEvent(ev = new drumstick::NoteOnEvent(1, chosenRootNote + additionalNote.toInt(), 120),
-                                                            (playMode == "scale") ? barStart+60*j:barStart);
+                                                            (m_playMode == ScalePlayMode) ? barStart+60*j:barStart);
                 ev->setTag(0);
                 appendEvent(ev = new drumstick::NoteOffEvent(1, chosenRootNote + additionalNote.toInt(), 120),
-                                                             (playMode == "scale") ? barStart+60*(j+1):barStart+60);
+                                                             (m_playMode == ScalePlayMode) ? barStart+60*(j+1):barStart+60);
                 ev->setTag(0);
                 ++j;
             }
@@ -155,7 +184,7 @@ void DrumstickSoundBackend::prepareFromExerciseOptions(QJsonArray selectedOption
             }
         }
     }
-    if (playMode == "rhythm")
+    if (m_playMode == RhythmPlayMode)
         appendEvent(new drumstick::NoteOnEvent(9, 80, 120), barStart);
 }
 

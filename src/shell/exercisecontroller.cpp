@@ -51,6 +51,8 @@ ExerciseController::~ExerciseController()
 
 bool ExerciseController::initialize(Core *core)
 {
+    Q_UNUSED(core)
+
     bool definitionsMerge = mergeJsonFiles("definitions", m_definitions);
     bool exercisesMerge = mergeJsonFiles("exercises", m_exercises, true, "name", "children");
 

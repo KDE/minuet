@@ -39,6 +39,8 @@ UiController::~UiController()
 
 bool UiController::initialize(Core *core)
 {
+    Q_UNUSED(core);
+
     m_mainWindow->show();
     return true;
 }
