@@ -122,7 +122,7 @@ unsigned int MidiSequencerOutputThread::volume() const
     return m_volume;
 }
 
-void MidiSequencerOutputThread::setPitch(int value)
+void MidiSequencerOutputThread::setPitch(qint8 value)
 {
     bool playing = isRunning();
     if (playing) {
@@ -137,7 +137,7 @@ void MidiSequencerOutputThread::setPitch(int value)
         start();
 }
 
-int MidiSequencerOutputThread::pitch() const
+qint8 MidiSequencerOutputThread::pitch() const
 {
     return m_pitchShift;
 }

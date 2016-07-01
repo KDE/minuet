@@ -116,6 +116,22 @@ DrumstickSoundBackend::~DrumstickSoundBackend()
         qCDebug(MINUET) << "TiMidity++ stoped!";
 }
 
+void DrumstickSoundBackend::setPitch(qint8 pitch)
+{
+    if (m_midiSequencerOutputThread->pitch() != pitch) {
+        m_midiSequencerOutputThread->setPitch(pitch);
+        emit pitchChanged(pitch);
+    }
+}
+
+void DrumstickSoundBackend::setVolume(quint8 volume)
+{
+    if (m_midiSequencerOutputThread->volume() != volume) {
+        m_midiSequencerOutputThread->setVolume(volume);
+        emit volumeChanged(volume);
+    }
+}
+
 void DrumstickSoundBackend::setTempo (quint8 tempo)
 {
     float tempoFactor = (tempo*tempo + 100.0*tempo + 20000.0) / 40000.0;

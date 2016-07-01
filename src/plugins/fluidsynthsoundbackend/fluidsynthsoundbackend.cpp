@@ -31,6 +31,16 @@ FluidSynthSoundBackend::~FluidSynthSoundBackend()
 {
 }
 
+void FluidSynthSoundBackend::setPitch(qint8 pitch)
+{
+    Q_UNUSED(pitch);
+}
+
+void FluidSynthSoundBackend::setVolume(quint8 volume)
+{
+    Q_UNUSED(volume);
+}
+
 void FluidSynthSoundBackend::setTempo (quint8 tempo)
 {
     Q_UNUSED(tempo);

@@ -55,6 +55,8 @@ public:
     virtual ~DrumstickSoundBackend() override;
 
 public Q_SLOTS:
+    virtual void setPitch(qint8 pitch);
+    virtual void setVolume(quint8 volume);
     virtual void setTempo (quint8 tempo);
 
     virtual void prepareFromExerciseOptions(QJsonArray selectedOptions) override;

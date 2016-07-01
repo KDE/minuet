@@ -36,8 +36,8 @@ class MINUETINTERFACES_EXPORT ISoundBackend : public IPlugin
 {
     Q_OBJECT
 
-    Q_PROPERTY(int pitch MEMBER m_pitch NOTIFY pitchChanged)
-    Q_PROPERTY(quint8 volume MEMBER m_volume NOTIFY volumeChanged)
+    Q_PROPERTY(qint8 pitch MEMBER m_pitch WRITE setPitch NOTIFY pitchChanged)
+    Q_PROPERTY(quint8 volume MEMBER m_volume WRITE setVolume NOTIFY volumeChanged)
     Q_PROPERTY(quint8 tempo MEMBER m_tempo WRITE setTempo NOTIFY tempoChanged)
     Q_PROPERTY(QString playbackLabel READ playbackLabel NOTIFY playbackLabelChanged)
     Q_ENUMS(PlayMode)
@@ -65,7 +65,9 @@ public:
     ISoundBackend::State state() const;
 
 public Q_SLOTS:
-    virtual void setTempo (quint8 tempo) = 0;
+    virtual void setPitch(qint8 pitch) = 0;
+    virtual void setVolume(quint8 tempo) = 0;
+    virtual void setTempo(quint8 tempo) = 0;
 
     virtual void prepareFromExerciseOptions(QJsonArray selectedOptions) = 0;
     virtual void prepareFromMidiFile(const QString &fileName) = 0;
@@ -75,7 +77,7 @@ public Q_SLOTS:
     virtual void stop() = 0;
     
 Q_SIGNALS:
-    void pitchChanged(int newPitch);
+    void pitchChanged(qint8 newPitch);
     void volumeChanged(quint8 newVolume);
     void tempoChanged(quint8 newTempo);
     void playbackLabelChanged(QString newPlaybackLabel);
@@ -87,7 +89,7 @@ protected:
     void setPlaybackLabel(const QString &playbackLabel);
     void setState(State state);
 
-    int m_pitch;
+    qint8 m_pitch;
     quint8 m_volume;
     quint8 m_tempo;
     QString m_playbackLabel;
