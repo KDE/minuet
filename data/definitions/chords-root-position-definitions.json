@@ -96,11 +96,6 @@
     },
     {
       "tags": ["chord", "root-position", "major", "7", "9", "altered"],
-      "name": "Major 9",
-      "sequence": "4 7 10 14"
-    },
-    {
-      "tags": ["chord", "root-position", "major", "7", "9", "altered"],
       "name": "Major 7(#9)",
       "sequence": "4 7 10 15"
     },

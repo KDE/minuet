@@ -43,7 +43,7 @@ Rectangle {
         if (item != undefined)
             item.destroy()
     }
-    function allNotesOff() {
+    function clearAllMarks() {
         for (var index = 21; index <= 108; ++index) {
             noteOff(0, index, 0)
             var markItem = itemForPitch(index).children[1]

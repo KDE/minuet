@@ -129,7 +129,7 @@ void MidiSequencerOutputThread::setPitch(qint8 value)
         stop();
         unsigned int pos = m_Queue->getStatus().getTickTime();
         m_Queue->clear();
-        allNotesOff();
+        mute();
         setPosition(pos);
     }
     m_pitchShift = value;
@@ -164,7 +164,7 @@ void MidiSequencerOutputThread::resetPosition()
     }
 }
 
-void MidiSequencerOutputThread::allNotesOff()
+void MidiSequencerOutputThread::mute()
 {
     for(int chan = 0; chan < MIDI_CHANNELS; ++chan) {
         sendControllerEvent(chan, MIDI_CTL_ALL_NOTES_OFF, 0);

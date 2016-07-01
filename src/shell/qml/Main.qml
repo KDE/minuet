@@ -45,9 +45,20 @@ Item {
         width: menuBarWidth; height: parent.height - midiPlayer.height
         anchors { left: parent.left; top: parent.top }
 
-        onCurrentExerciseChanged: { exerciseView.setCurrentExercise(currentExercise); rhythmAnswerView.resetAnswers() }
-        onBackPressed: { core.soundBackend.stop(); exerciseView.clearExerciseGrid() }
-        onUserMessageChanged: { exerciseView.changeUserMessage(message); mainItem.userMessageChanged(message) }
+        onCurrentExerciseChanged: {
+            exerciseView.setCurrentExercise(currentExercise)
+            rhythmAnswerView.resetAnswers()
+            core.exerciseController.currentExercise = currentExercise
+        }
+        onBackPressed: {
+            core.soundBackend.stop()
+            exerciseView.clearExerciseGrid()
+            pianoView.clearAllMarks()
+        }
+        onUserMessageChanged: {
+            exerciseView.changeUserMessage(message)
+            mainItem.userMessageChanged(message)
+        }
     }
     MidiPlayer {
         id: midiPlayer
@@ -99,11 +110,6 @@ Item {
         }
     }
     Binding {
-        target: core.exerciseController
-        property: "currentExercise"
-        value: minuetMenu.currentExercise
-    }
-    Binding {
         target: core.soundBackend
         property: "pitch"
         value: midiPlayer.pitch
@@ -118,10 +124,9 @@ Item {
         property: "tempo"
         value: midiPlayer.tempo
     }
-//    Connections {
-//        target: sequencer
-//        onNoteOn: pianoView.noteOn(chan, pitch, vel)
-//        onNoteOff: pianoView.noteOff(chan, pitch, vel)
-//        onAllNotesOff: pianoView.allNotesOff()
-//    }
+    Connections {
+        target: core.exerciseController
+        onSelectedOptionsChanged: pianoView.clearAllMarks()
+        onCurrentExerciseChanged: pianoView.clearAllMarks()
+    }
 }

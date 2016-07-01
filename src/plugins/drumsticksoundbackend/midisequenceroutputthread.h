@@ -54,7 +54,7 @@ public:
     void resetPosition();
 
 private:
-    void allNotesOff();
+    void mute();
     void sendControllerEvent(int chan, int control, int value);
     
 private:

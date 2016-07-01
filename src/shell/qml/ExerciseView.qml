@@ -258,7 +258,6 @@ Item {
             name: "waitingForAnswer"
             StateChangeScript {
                 script: {
-//                    sequencer.allNotesOff()
                     for (var i = 0; i < answerGrid.children.length; ++i) {
                         answerGrid.children[i].opacity = 1
                         answerGrid.children[i].enabled = true

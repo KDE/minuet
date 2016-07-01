@@ -91,6 +91,7 @@ void ExerciseController::randomlySelectOptions()
         exerciseOptions[chosenExerciseOption] = jsonObject;
         m_selectedOptions.append(exerciseOptions[chosenExerciseOption]);
     }
+    emit selectedOptionsChanged(m_selectedOptions);
 }
 
 unsigned int ExerciseController::chosenRootNote()
