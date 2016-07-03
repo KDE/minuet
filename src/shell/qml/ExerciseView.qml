@@ -109,7 +109,7 @@ Item {
                 text: i18n("new question")
                 onClicked: {
                     exerciseView.state = "waitingForAnswer"
-                    core.exerciseController.randomlySelectOptions()
+                    core.exerciseController.randomlySelectExerciseOptions()
                     var selectedExerciseOptions = core.exerciseController.selectedExerciseOptions
                     core.soundBackend.prepareFromExerciseOptions(selectedExerciseOptions, "scale")
                     var newChosenExercises = [];

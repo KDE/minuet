@@ -63,7 +63,7 @@ bool ExerciseController::initialize(Core *core)
     return definitionsMerge & exercisesMerge;
 }
 
-void ExerciseController::randomlySelectOptions()
+void ExerciseController::randomlySelectExerciseOptions()
 {
     while (!m_selectedExerciseOptions.isEmpty())
         m_selectedExerciseOptions.removeFirst();

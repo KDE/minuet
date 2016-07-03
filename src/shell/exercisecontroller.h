@@ -51,7 +51,7 @@ public:
     virtual QJsonArray exercises() const override;
 
 public Q_SLOTS:
-    virtual void randomlySelectOptions();
+    virtual void randomlySelectExerciseOptions();
  
 private:
     bool mergeJsonFiles(const QString directoryName, QJsonObject &targetObject, bool applyDefinitionsFlag = false, QString commonKey = "", QString mergeKey = "");
