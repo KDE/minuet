@@ -42,7 +42,7 @@ public Q_SLOTS:
     virtual void setVolume(quint8 volume);
     virtual void setTempo(quint8 tempo);
 
-    virtual void prepareFromExerciseOptions(QJsonArray selectedOptions) override;
+    virtual void prepareFromExerciseOptions(QJsonArray selectedExerciseOptions) override;
     virtual void prepareFromMidiFile(const QString &fileName) override;
 
     virtual void play() override;

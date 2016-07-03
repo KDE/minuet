@@ -146,7 +146,7 @@ void DrumstickSoundBackend::setTempo (quint8 tempo)
     emit tempoChanged(m_tempo);
 }
 
-void DrumstickSoundBackend::prepareFromExerciseOptions(QJsonArray selectedOptions)
+void DrumstickSoundBackend::prepareFromExerciseOptions(QJsonArray selectedExerciseOptions)
 {
     Song *song = new Song;
     song->setHeader(0, 1, 60);
@@ -166,10 +166,10 @@ void DrumstickSoundBackend::prepareFromExerciseOptions(QJsonArray selectedOption
         barStart = 240;
     }
 
-    for (int i = 0; i < selectedOptions.size(); ++i) {
-        QString sequence = selectedOptions[i].toObject()[QStringLiteral("sequence")].toString();
+    for (int i = 0; i < selectedExerciseOptions.size(); ++i) {
+        QString sequence = selectedExerciseOptions[i].toObject()[QStringLiteral("sequence")].toString();
 
-        unsigned int chosenRootNote = selectedOptions[i].toObject()[QStringLiteral("rootNote")].toString().toInt();
+        unsigned int chosenRootNote = selectedExerciseOptions[i].toObject()[QStringLiteral("rootNote")].toString().toInt();
         if (m_playMode != RhythmPlayMode) {
              appendEvent(new drumstick::NoteOnEvent(1, chosenRootNote, 120), barStart);
              appendEvent(new drumstick::NoteOffEvent(1, chosenRootNote, 120), barStart + 60);

@@ -46,9 +46,9 @@ void FluidSynthSoundBackend::setTempo (quint8 tempo)
     Q_UNUSED(tempo);
 }
 
-void FluidSynthSoundBackend::prepareFromExerciseOptions(QJsonArray selectedOptions)
+void FluidSynthSoundBackend::prepareFromExerciseOptions(QJsonArray selectedExerciseOptions)
 {
-    Q_UNUSED(selectedOptions)
+    Q_UNUSED(selectedExerciseOptions)
 }
 
 void FluidSynthSoundBackend::prepareFromMidiFile(const QString &fileName)

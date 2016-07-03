@@ -69,7 +69,7 @@ public Q_SLOTS:
     virtual void setVolume(quint8 tempo) = 0;
     virtual void setTempo(quint8 tempo) = 0;
 
-    virtual void prepareFromExerciseOptions(QJsonArray selectedOptions) = 0;
+    virtual void prepareFromExerciseOptions(QJsonArray selectedExerciseOptions) = 0;
     virtual void prepareFromMidiFile(const QString &fileName) = 0;
 
     virtual void play() = 0;
