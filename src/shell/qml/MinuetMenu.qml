@@ -29,11 +29,9 @@ import org.kde.minuet 1.0
 Item {
     id: minuetMenu
 
-    property string message
     readonly property alias currentExercise: stackView.currentExercise
 
     signal backPressed
-    signal userMessageChanged(string message)
 
     Button {
         id: breadcrumb
@@ -41,12 +39,10 @@ Item {
         width: (stackView.depth > 1) ? 24:0; height: parent.height
         iconName: "go-previous"
         onClicked: {
-            backPressed()
             stackView.currentExerciseMenuItem = null
+            core.exerciseController.currentExercise = {}
             stackView.pop()
-            userMessageChanged("exercise")
-            if (stackView.depth == 1)
-                message = "exercise"
+            backPressed()
         }
     }
     StackView {
@@ -70,23 +66,14 @@ Item {
                 text: i18nc("technical term, do you have a musician friend?", modelData.name)
                 checkable: (!delegateRect.ListView.view.model[index].children) ? true:false
                 onClicked: {
-                    var userMessage = delegateRect.ListView.view.model[index].userMessage
-                    if (userMessage != undefined)
-                        message = userMessage
                     var children = delegateRect.ListView.view.model[index].children
                     if (!children) {
                         if (stackView.currentExerciseMenuItem != undefined) stackView.currentExerciseMenuItem.checked = false
-                        userMessageChanged(message)
                         stackView.currentExercise = delegateRect.ListView.view.model[index]
                         stackView.currentExerciseMenuItem = delegateRect
                     }
                     else {
                         stackView.push(categoryMenu.createObject(stackView, {model: children}))
-                        var root = delegateRect.ListView.view.model[index].root
-                        if (root != undefined) {
-                            core.exerciseController.minRootNote = parseInt(root.split('.')[0])
-                            core.exerciseController.maxRootNote = parseInt(root.split('.')[2])
-                        }
                     }
                 }
                 style: MinuetButtonStyle {}

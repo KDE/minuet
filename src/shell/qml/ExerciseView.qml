@@ -28,7 +28,6 @@ Item {
 
     property var chosenExercises
     property var chosenColors: [4]
-    property string userMessage
     property Item answerRectangle
     property var colors: ["#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9", "#bc80bd", "#ccebc5", "#ffed6f", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"]
 
@@ -66,9 +65,6 @@ Item {
         exerciseView.visible = true
         exerciseView.state = "initial"
     }
-    function changeUserMessage(message) {
-        userMessage = message
-    }
     function checkAnswers(answers) {
         var answersOk = true
         for(var i = 0; i < 4; ++i) {
@@ -95,8 +91,8 @@ Item {
             horizontalAlignment: Text.AlignHCenter
             font.pointSize: 18
             textFormat: Text.RichText
-            text: i18n("Hear %1 and then choose an answer from options below!<br/>Click 'play question' if you want to hear again!",
-                       i18nc("technical term, do you have a musician friend?", userMessage))
+            text: i18n("%1<br/>Click 'play question' if you want to hear again!",
+                       i18nc("technical term, do you have a musician friend?", core.exerciseController.currentExercise["userMessage"]))
         }
         Row {
             anchors { horizontalCenter: parent.horizontalCenter }
@@ -125,9 +121,9 @@ Item {
                                 break
                             }
                     messageText.text = Qt.binding(function() {
-                        return i18n("Hear %1 and then choose an answer from options below!<br/>Click 'play question' if you want to hear again!", i18nc("technical term, do you have a musician friend?", userMessage))
+                        return i18n("%1<br/>Click 'play question' if you want to hear again!", i18nc("technical term, do you have a musician friend?", core.exerciseController.currentExercise["userMessage"]))
                     })
-                    if (userMessage != "the rhythm")
+                    if (core.exerciseController.currentExercise["playMode"] != "rhythm")
                         answerHoverEnter(0, core.exerciseController.chosenRootNote(), 0, "white")
                     core.soundBackend.play()
                 }
@@ -147,7 +143,7 @@ Item {
                 width: 124; height: 44
                 text: i18n("give up")
                 onClicked: {
-                    if (userMessage != "the rhythm") {
+                    if (core.exerciseController.currentExercise["playMode"] != "rhythm") {
                         highlightRightAnswer()
                     }
                     else {
@@ -179,15 +175,15 @@ Item {
                         property var model
                         property int index
 
-                        width: (userMessage != "the rhythm") ? 120:119
-                        height: (userMessage != "the rhythm") ? 40:59
+                        width: (core.exerciseController.currentExercise["playMode"] != "rhythm") ? 120:119
+                        height: (core.exerciseController.currentExercise["playMode"] != "rhythm") ? 40:59
 
                         Text {
                             id: option
 
                             property string originalText: model.name
 
-                            visible: userMessage != "the rhythm"
+                            visible: core.exerciseController.currentExercise["playMode"] != "rhythm"
                             text: i18nc("technical term, do you have a musician friend?", model.name)
                             width: parent.width - 4
                             anchors.centerIn: parent
@@ -199,14 +195,14 @@ Item {
                             id: rhythmImage
 
                             anchors.centerIn: parent
-                            visible: userMessage == "the rhythm"
-                            source: (userMessage == "the rhythm") ? "exercise-images/" + model.name + ".png":""
+                            visible: core.exerciseController.currentExercise["playMode"] == "rhythm"
+                            source: (core.exerciseController.currentExercise["playMode"] == "rhythm") ? "exercise-images/" + model.name + ".png":""
                             fillMode: Image.Pad
                         }
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                if (userMessage != "the rhythm") {
+                                if (core.exerciseController.currentExercise["playMode"] != "rhythm") {
                                     onExited()
                                     if (option.originalText == chosenExercises[0])
                                         messageText.text = i18n("Congratulations!<br/>You answered correctly!")
@@ -222,7 +218,7 @@ Item {
                             hoverEnabled: true
                             onEntered: {
                                 answerRectangle.color = Qt.darker(answerRectangle.color, 1.1)
-                                if (userMessage != "the rhythm") {
+                                if (core.exerciseController.currentExercise["playMode"] != "rhythm") {
                                     model.sequence.split(' ').forEach(function(note) {
                                         answerHoverEnter(0, core.exerciseController.chosenRootNote() + parseInt(note), 0, colors[answerRectangle.index])
                                     })
@@ -230,7 +226,7 @@ Item {
                             }
                             onExited: {
                                 answerRectangle.color = colors[answerRectangle.index]
-                                if (userMessage != "the rhythm") {
+                                if (core.exerciseController.currentExercise["playMode"] != "rhythm") {
                                     if (!animation.running)
                                         model.sequence.split(' ').forEach(function(note) {
                                             answerHoverExit(0, core.exerciseController.chosenRootNote() + parseInt(note), 0)

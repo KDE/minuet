@@ -30,10 +30,6 @@ Item {
 
     property int menuBarWidth: 280
 
-    function userMessageChanged(message) {
-        pianoView.visible = (message != "the rhythm" && message != "exercise")
-        rhythmAnswerView.visible = (message == "the rhythm")
-    }
     function exerciseViewStateChanged() {
         if (exerciseView.state == "waitingForAnswer")
             rhythmAnswerView.resetAnswers()
@@ -54,10 +50,6 @@ Item {
             core.soundBackend.stop()
             exerciseView.clearExerciseGrid()
             pianoView.clearAllMarks()
-        }
-        onUserMessageChanged: {
-            exerciseView.changeUserMessage(message)
-            mainItem.userMessageChanged(message)
         }
     }
     MidiPlayer {
@@ -84,13 +76,13 @@ Item {
             id: pianoView
 
             anchors { bottom: parent.bottom; bottomMargin: 5; horizontalCenter: parent.horizontalCenter }
-            visible: false
+            visible: (Object.keys(core.exerciseController.currentExercise).length > 0 && core.exerciseController.currentExercise["playMode"] != "rhythm")
         }
         RhythmAnswerView {
             id: rhythmAnswerView
             
             anchors { bottom: parent.bottom; bottomMargin: 14; horizontalCenter: parent.horizontalCenter }
-            visible: false
+            visible: (core.exerciseController.currentExercise["playMode"] == "rhythm")
             exerciseView: exerciseView
 
             onAnswerCompleted: exerciseView.checkAnswers(answers)

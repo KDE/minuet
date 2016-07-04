@@ -175,7 +175,8 @@ QJsonArray ExerciseController::applyDefinitions(QJsonArray exercises, QJsonArray
             }
             else {
                 foreach(const QString &key, collectedProperties.keys())
-                    exerciseObject.insert(key, collectedProperties[key]);
+                    if (!exerciseObject.contains(key))
+                        exerciseObject.insert(key, collectedProperties[key]);
                 exerciseObject.insert("options", filteredDefinitions);
             }
             exercises[i1-exercisesBegin] = exerciseObject;
