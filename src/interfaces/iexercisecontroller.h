@@ -35,8 +35,6 @@ namespace Minuet
 class MINUETINTERFACES_EXPORT IExerciseController : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(quint8 minRootNote MEMBER m_minRootNote)
-    Q_PROPERTY(quint8 maxRootNote MEMBER m_maxRootNote)
     Q_PROPERTY(QJsonArray exercises READ exercises)
     Q_PROPERTY(QJsonObject currentExercise MEMBER m_currentExercise NOTIFY currentExerciseChanged)
     Q_PROPERTY(quint8 answerLength MEMBER m_answerLength)
@@ -58,8 +56,6 @@ Q_SIGNALS:
 protected:
     explicit IExerciseController(QObject *parent = 0);
 
-    quint8 m_minRootNote;
-    quint8 m_maxRootNote;
     QJsonObject m_currentExercise;
     quint8 m_answerLength;
     QJsonArray m_selectedExerciseOptions;

@@ -87,16 +87,6 @@ Item {
                             core.exerciseController.minRootNote = parseInt(root.split('.')[0])
                             core.exerciseController.maxRootNote = parseInt(root.split('.')[2])
                         }
-                        var playMode = delegateRect.ListView.view.model[index].playMode
-                        if (playMode != undefined) {
-                            if (playMode == "scale") core.soundBackend.playMode = ISoundBackend.ScalePlayMode
-                            if (playMode == "chord") core.soundBackend.playMode = ISoundBackend.ChordPlayMode
-                            core.exerciseController.answerLength = 1
-                            if (playMode == "rhythm") {
-                                core.soundBackend.playMode = ISoundBackend.RhythmPlayMode
-                                core.exerciseController.answerLength = 4
-                            }
-                        }
                     }
                 }
                 style: MinuetButtonStyle {}

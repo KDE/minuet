@@ -40,7 +40,7 @@ ExerciseController::ExerciseController(QObject *parent) :
     m_chosenRootNote(0)
 {
     m_exercises["exercises"] = QJsonArray();
-    m_exercises["definitions"] = QJsonArray();
+    m_definitions["definitions"] = QJsonArray();
     qmlRegisterType<ExerciseController>("org.kde.minuet", 1, 0, "ExerciseController");
 }
 
@@ -82,9 +82,14 @@ void ExerciseController::randomlySelectExerciseOptions()
             if (note > maxNote) maxNote = note;
             if (note < minNote) minNote = note;
         }
-        do
-            m_chosenRootNote = m_minRootNote + qrand() % (m_maxRootNote - m_minRootNote);
-        while (m_chosenRootNote + maxNote > 108 || m_chosenRootNote + minNote < 21);
+        if (m_currentExercise["playMode"].toString() != "rhythm") {
+            QStringList exerciseRoots = m_currentExercise["root"].toString().split('.');
+            quint8 exerciseMinRoot = exerciseRoots.first().toInt();
+            quint8 exerciseMaxRoot = exerciseRoots.last().toInt();
+            do
+                m_chosenRootNote = exerciseMinRoot + qrand() % (exerciseMaxRoot - exerciseMinRoot);
+            while (m_chosenRootNote + maxNote > 108 || m_chosenRootNote + minNote < 21);
+        }
 
         QJsonObject jsonObject = exerciseOptions[chosenExerciseOption].toObject();
         jsonObject["rootNote"] = QString::number(m_chosenRootNote);
@@ -146,7 +151,7 @@ bool ExerciseController::mergeJsonFiles(const QString directoryName, QJsonObject
     return true;
 }
 
-QJsonArray ExerciseController::applyDefinitions(QJsonArray exercises, QJsonArray definitions)
+QJsonArray ExerciseController::applyDefinitions(QJsonArray exercises, QJsonArray definitions, QJsonObject collectedProperties)
 {
     QJsonArray::const_iterator exercisesBegin = exercises.constBegin();
     QJsonArray::const_iterator exercisesEnd = exercises.constEnd();
@@ -159,11 +164,20 @@ QJsonArray ExerciseController::applyDefinitions(QJsonArray exercises, QJsonArray
                 filterDefinitions(filteredDefinitions, exerciseObject, "and-tags", AndFiltering);
             if (exerciseObjectKeys.contains(QStringLiteral("or-tags")) && exerciseObject[QStringLiteral("or-tags")].isArray())
                 filterDefinitions(filteredDefinitions, exerciseObject, "or-tags", OrFiltering);
-            if (exerciseObjectKeys.contains(QStringLiteral("children")))
+            if (exerciseObjectKeys.contains(QStringLiteral("children"))) {
+                foreach(const QString &key, exerciseObjectKeys)
+                    if (key != "name" && key != "children" && key != "and-tags" && key != "or-tags") {
+                        collectedProperties.insert(key, exerciseObject[key]);
+                        exerciseObject.remove(key);
+                    }
                 exerciseObject[QStringLiteral("children")] = applyDefinitions(exerciseObject[QStringLiteral("children")].toArray(),
-                                                                              filteredDefinitions);
-            else
+                                                                              filteredDefinitions, collectedProperties);
+            }
+            else {
+                foreach(const QString &key, collectedProperties.keys())
+                    exerciseObject.insert(key, collectedProperties[key]);
                 exerciseObject.insert("options", filteredDefinitions);
+            }
             exercises[i1-exercisesBegin] = exerciseObject;
         }
     }

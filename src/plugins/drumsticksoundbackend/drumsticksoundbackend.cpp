@@ -146,7 +146,7 @@ void DrumstickSoundBackend::setTempo (quint8 tempo)
     emit tempoChanged(m_tempo);
 }
 
-void DrumstickSoundBackend::prepareFromExerciseOptions(QJsonArray selectedExerciseOptions)
+void DrumstickSoundBackend::prepareFromExerciseOptions(QJsonArray selectedExerciseOptions, const QString &playMode)
 {
     Song *song = new Song;
     song->setHeader(0, 1, 60);
@@ -158,7 +158,7 @@ void DrumstickSoundBackend::prepareFromExerciseOptions(QJsonArray selectedExerci
     appendEvent(new drumstick::TempoEvent(m_queueId, 600000), 0);
 
     unsigned int barStart = 0;
-    if (m_playMode == RhythmPlayMode) {
+    if (playMode == "rhythm") {
         appendEvent(new drumstick::NoteOnEvent(9, 80, 120), 0);
         appendEvent(new drumstick::NoteOnEvent(9, 80, 120), 60);
         appendEvent(new drumstick::NoteOnEvent(9, 80, 120), 120);
@@ -170,7 +170,7 @@ void DrumstickSoundBackend::prepareFromExerciseOptions(QJsonArray selectedExerci
         QString sequence = selectedExerciseOptions[i].toObject()[QStringLiteral("sequence")].toString();
 
         unsigned int chosenRootNote = selectedExerciseOptions[i].toObject()[QStringLiteral("rootNote")].toString().toInt();
-        if (m_playMode != RhythmPlayMode) {
+        if (playMode != "rhythm") {
              appendEvent(new drumstick::NoteOnEvent(1, chosenRootNote, 120), barStart);
              appendEvent(new drumstick::NoteOffEvent(1, chosenRootNote, 120), barStart + 60);
  
@@ -178,10 +178,10 @@ void DrumstickSoundBackend::prepareFromExerciseOptions(QJsonArray selectedExerci
             drumstick::SequencerEvent *ev;
             foreach(const QString &additionalNote, sequence.split(' ')) {
                 appendEvent(ev = new drumstick::NoteOnEvent(1, chosenRootNote + additionalNote.toInt(), 120),
-                                                            (m_playMode == ScalePlayMode) ? barStart+60*j:barStart);
+                                                            (playMode == "scale") ? barStart+60*j:barStart);
                 ev->setTag(0);
                 appendEvent(ev = new drumstick::NoteOffEvent(1, chosenRootNote + additionalNote.toInt(), 120),
-                                                             (m_playMode == ScalePlayMode) ? barStart+60*(j+1):barStart+60);
+                                                             (playMode == "scale") ? barStart+60*(j+1):barStart+60);
                 ev->setTag(0);
                 ++j;
             }
@@ -200,7 +200,7 @@ void DrumstickSoundBackend::prepareFromExerciseOptions(QJsonArray selectedExerci
             }
         }
     }
-    if (m_playMode == RhythmPlayMode)
+    if (playMode == "rhythm")
         appendEvent(new drumstick::NoteOnEvent(9, 80, 120), barStart);
 }
 

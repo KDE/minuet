@@ -55,7 +55,7 @@ public Q_SLOTS:
  
 private:
     bool mergeJsonFiles(const QString directoryName, QJsonObject &targetObject, bool applyDefinitionsFlag = false, QString commonKey = "", QString mergeKey = "");
-    QJsonArray applyDefinitions(QJsonArray exercises, QJsonArray definitions);
+    QJsonArray applyDefinitions(QJsonArray exercises, QJsonArray definitions, QJsonObject collectedProperties = QJsonObject());
     enum DefinitionFilteringMode {
         AndFiltering = 0,
         OrFiltering
