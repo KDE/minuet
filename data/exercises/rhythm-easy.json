@@ -5,6 +5,7 @@
       "playMode": "rhythm",
       "userMessage": "Hear the rhythm and then choose an answer from options below",
       "template": "lilypond-templates/rhythm.ly.tmpl",
+      "numberOfSelectedOptions": 4,
       "children": [
         {
             "name": "Easy",

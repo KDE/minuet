@@ -72,7 +72,8 @@ void ExerciseController::randomlySelectExerciseOptions()
 
     int minNote = INT_MAX;
     int maxNote = INT_MIN;
-    for (quint8 i = 0; i < m_answerLength; ++i) {
+    quint8 numberOfSelectedOptions = m_currentExercise[QStringLiteral("numberOfSelectedOptions")].toInt();
+    for (quint8 i = 0; i < numberOfSelectedOptions; ++i) {
         QJsonArray exerciseOptions = m_currentExercise[QStringLiteral("options")].toArray();
         quint8 chosenExerciseOption = qrand() % exerciseOptions.size();
 

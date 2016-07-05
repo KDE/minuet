@@ -37,7 +37,6 @@ class MINUETINTERFACES_EXPORT IExerciseController : public QObject
     Q_OBJECT
     Q_PROPERTY(QJsonArray exercises READ exercises)
     Q_PROPERTY(QJsonObject currentExercise MEMBER m_currentExercise NOTIFY currentExerciseChanged)
-    Q_PROPERTY(quint8 answerLength MEMBER m_answerLength)
     Q_PROPERTY(QJsonArray selectedExerciseOptions READ selectedExerciseOptions NOTIFY selectedExerciseOptionsChanged)
 
 public:
@@ -57,7 +56,6 @@ protected:
     explicit IExerciseController(QObject *parent = 0);
 
     QJsonObject m_currentExercise;
-    quint8 m_answerLength;
     QJsonArray m_selectedExerciseOptions;
 };
 

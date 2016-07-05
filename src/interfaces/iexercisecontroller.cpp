@@ -28,8 +28,7 @@ namespace Minuet
 {
 
 IExerciseController::IExerciseController(QObject *parent)
-    : QObject(parent),
-      m_answerLength(1)
+    : QObject(parent)
 {
     qmlRegisterInterface<IExerciseController>("IExerciseController");
 }

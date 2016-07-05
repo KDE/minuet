@@ -106,7 +106,6 @@ Item {
                 onClicked: {
                     exerciseView.state = "waitingForAnswer"
                     var playMode = core.exerciseController.currentExercise["playMode"]
-                    core.exerciseController.answerLength = (playMode == "rhythm") ? 4:1
                     core.exerciseController.randomlySelectExerciseOptions()
                     var selectedExerciseOptions = core.exerciseController.selectedExerciseOptions
                     core.soundBackend.prepareFromExerciseOptions(selectedExerciseOptions, playMode)

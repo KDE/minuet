@@ -5,6 +5,7 @@
       "root": "21..104",
       "playMode": "chord",
       "userMessage": "Hear the chord and then choose an answer from options below",
+      "numberOfSelectedOptions": 1,
       "children": [
         {
           "name": "Root Position",
