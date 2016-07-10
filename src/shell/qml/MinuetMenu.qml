@@ -26,8 +26,6 @@ import QtQuick.Controls 2.0
 Item {
     id: minuetMenu
 
-    readonly property alias currentExercise: stackView.currentExercise
-
     signal backPressed
 
     Button {
@@ -36,7 +34,6 @@ Item {
         width: (stackView.depth > 1) ? 24:0; height: parent.height
         text: "<"
         onClicked: {
-            stackView.currentExerciseMenuItem = null
             core.exerciseController.currentExercise = {}
             stackView.pop()
             backPressed()
@@ -45,36 +42,11 @@ Item {
     StackView {
         id: stackView
 
-        property var currentExercise
-        property Item currentExerciseMenuItem
-
         width: parent.width - breadcrumb.width; height: parent.height
         anchors.left: breadcrumb.right
         clip: true
         focus: true
 
-        Component {
-            id: categoryDelegate
-
-            Button {
-                id: delegateRect
-
-                width: parent.width; height: 55
-                text: i18nc("technical term, do you have a musician friend?", modelData.name)
-                checkable: (!delegateRect.ListView.view.model[index].children) ? true:false
-                onClicked: {
-                    var children = delegateRect.ListView.view.model[index].children
-                    if (!children) {
-                        if (stackView.currentExerciseMenuItem != undefined) stackView.currentExerciseMenuItem.checked = false
-                        stackView.currentExercise = delegateRect.ListView.view.model[index]
-                        stackView.currentExerciseMenuItem = delegateRect
-                    }
-                    else {
-                        stackView.push(categoryMenu.createObject(stackView, {model: children}))
-                    }
-                }
-            }
-        }
         Component {
             id: categoryMenu
 
@@ -88,7 +60,30 @@ Item {
                     id: listView
                     anchors.fill: parent
                     spacing: -2
-                    delegate: categoryDelegate
+                    delegate: ItemDelegate {
+                        id: control
+                        text: i18nc("technical term, do you have a musician friend?", modelData.name)
+                        width: parent.width
+                        onClicked: {
+                            var children = ListView.view.model[index].children
+                            if (!children)
+                                core.exerciseController.currentExercise = ListView.view.model[index]
+                            else
+                                stackView.push(categoryMenu.createObject(stackView, {model: children}))
+                        }
+                        contentItem: Text {
+                            leftPadding: control.mirrored ? (control.indicator ? control.indicator.width : 0) + control.spacing : 0
+                            rightPadding: !control.mirrored ? (control.indicator ? control.indicator.width : 0) + control.spacing : 0
+
+                            text: control.text
+                            font: control.font
+                            color: control.enabled ? "#26282a" : "#bdbebf"
+                            wrapMode: Text.WordWrap
+                            visible: control.text
+                            horizontalAlignment: Text.AlignLeft
+                            verticalAlignment: Text.AlignVCenter
+                        }
+                    }
                 }
             }
         }

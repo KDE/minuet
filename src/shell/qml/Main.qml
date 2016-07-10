@@ -41,11 +41,6 @@ Item {
         width: menuBarWidth; height: parent.height - midiPlayer.height
         anchors { left: parent.left; top: parent.top }
 
-        onCurrentExerciseChanged: {
-            exerciseView.setCurrentExercise(currentExercise)
-            rhythmAnswerView.resetAnswers()
-            core.exerciseController.currentExercise = currentExercise
-        }
         onBackPressed: {
             core.soundBackend.stop()
             exerciseView.clearExerciseGrid()

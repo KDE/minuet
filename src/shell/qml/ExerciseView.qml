@@ -54,15 +54,18 @@ Item {
         })
         animation.start()
     }
-    function setCurrentExercise(currentExercise) {
+    function setCurrentExercise() {
+        var currentExercise = core.exerciseController.currentExercise
         clearExerciseGrid()
         var currentExerciseOptions = currentExercise["options"];
-        var length = currentExerciseOptions.length
-        answerGrid.columns = Math.min(6, length)
-        answerGrid.rows = Math.ceil(length/6)
-        for (var i = 0; i < length; ++i)
-            answerOption.createObject(answerGrid, {model: currentExerciseOptions[i], index: i, color: colors[i%24]})
-        exerciseView.visible = true
+        if (currentExerciseOptions != undefined) {
+            var length = currentExerciseOptions.length
+            answerGrid.columns = Math.min(6, length)
+            answerGrid.rows = Math.ceil(length/6)
+            for (var i = 0; i < length; ++i)
+                answerOption.createObject(answerGrid, {model: currentExerciseOptions[i], index: i, color: colors[i%24]})
+            exerciseView.visible = true
+        }
         exerciseView.state = "initial"
     }
     function checkAnswers(answers) {
@@ -91,8 +94,6 @@ Item {
             horizontalAlignment: Text.AlignHCenter
             font.pointSize: 18
             textFormat: Text.RichText
-            text: i18n("%1<br/>Click 'play question' if you want to hear again!",
-                       i18nc("technical term, do you have a musician friend?", core.exerciseController.currentExercise["userMessage"]))
         }
         Row {
             anchors { horizontalCenter: parent.horizontalCenter }
@@ -119,9 +120,6 @@ Item {
                                 chosenColors[i] = answerGrid.children[j].color
                                 break
                             }
-                    messageText.text = Qt.binding(function() {
-                        return i18n("%1<br/>Click 'play question' if you want to hear again!", i18nc("technical term, do you have a musician friend?", core.exerciseController.currentExercise["userMessage"]))
-                    })
                     if (core.exerciseController.currentExercise["playMode"] != "rhythm")
                         answerHoverEnter(0, core.exerciseController.chosenRootNote(), 0, "white")
                     core.soundBackend.play()
@@ -245,6 +243,8 @@ Item {
                     giveUpButton.enabled = false
                     answerGrid.enabled = false
                     answerGrid.opacity = 0.25
+                    messageText.text = i18n("%1<br/>Click 'play question' if you want to hear again!",
+                                       i18nc("technical term, do you have a musician friend?", core.exerciseController.currentExercise["userMessage"]))
                 }
             }
         },
@@ -261,6 +261,8 @@ Item {
                     giveUpButton.enabled = true
                     answerGrid.enabled = true
                     answerGrid.opacity = 1
+                    messageText.text = i18n("%1<br/>Click 'play question' if you want to hear again!",
+                                       i18nc("technical term, do you have a musician friend?", core.exerciseController.currentExercise["userMessage"]))
                 }
             }
         },
@@ -292,5 +294,9 @@ Item {
         }
         
         onStopped: exerciseView.state = "nextQuestion"
+    }
+    Connections {
+        target: core.exerciseController
+        onCurrentExerciseChanged: setCurrentExercise()
     }
 }

@@ -62,6 +62,8 @@ Column {
         correctAnswers = undefined
         colors = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"]
         correctColors = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"]
+        for (var i = 0; i < 4; ++i)
+            correctAnswerGrid.children[i].opacity = 0
     }
     function showCorrectAnswer(chosenExercises, chosenColors) {
         var tempAnswers = answers
@@ -171,5 +173,9 @@ Column {
                 colors = tempColors
             }
         }
+    }
+    Connections {
+        target: core.exerciseController
+        onCurrentExerciseChanged: resetAnswers()
     }
 }
