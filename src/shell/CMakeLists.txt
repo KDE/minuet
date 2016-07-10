@@ -31,9 +31,6 @@ target_link_libraries(minuetshell
     KF5::KIOWidgets
     KF5::XmlGui
     KF5::I18n
-    asound
-    drumstick-alsa
-    drumstick-file
     Minuet::Interfaces
 )
 

@@ -46,40 +46,6 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     Crash
 )
 
-find_package(PkgConfig REQUIRED)
-if(PKG_CONFIG_FOUND)
-    message(STATUS "Program pkg-config found (${PKG_CONFIG_EXECUTABLE})")
-else()
-    message(FATAL_ERROR "Program pkg-config not found")
-endif()
-
-pkg_check_modules(ALSA REQUIRED alsa>=1.0.0)
-if(ALSA_FOUND)
-    link_directories(${ALSA_LIBDIR})
-    include_directories(${ALSA_INCLUDEDIR})
-    #link_libraries(${ALSA_LIBRARIES})
-else()
-    message(FATAL_ERROR "Please install ALSA library and headers (libasound2)")
-endif()
-
-pkg_check_modules(DRUMSTICK_ALSA REQUIRED drumstick-alsa>=1.0.1)
-if(DRUMSTICK_ALSA_FOUND)
-    link_directories(${DRUMSTICK_ALSA_LIBDIR})
-    include_directories(${DRUMSTICK_ALSA_INCLUDEDIR})
-    #link_libraries(${DRUMSTICK_ALSA_LIBRARIES})
-else()
-    message(FATAL_ERROR "Please install drumstick libraries and headers (package drumstick-devel)")
-endif()
-
-pkg_check_modules(DRUMSTICK_FILE REQUIRED drumstick-file>=1.0.1)
-if(DRUMSTICK_FILE_FOUND)
-    link_directories(${DRUMSTICK_FILE_LIBDIR})
-    include_directories(${DRUMSTICK_FILE_INCLUDEDIR})
-    #link_libraries(${DRUMSTICK_FILE_LIBRARIES})
-else()
-    message(FATAL_ERROR "Please install drumstick libraries and headers (package drumstick-devel)")
-endif()
-
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 include_directories(${minuet_SOURCE_DIR}/src/ ${minuet_BINARY_DIR}/src)

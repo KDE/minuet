@@ -22,8 +22,6 @@
 
 #include "exercisecontroller.h"
 
-#include <drumstick/alsaevent.h>
-
 #include <KLocalizedString>
 
 #include <QDir>
