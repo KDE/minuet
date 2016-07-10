@@ -32,7 +32,7 @@ ISoundBackend::ISoundBackend(QObject *parent)
     m_state(StoppedState)
 {
     qmlRegisterInterface<ISoundBackend>("ISoundBackend");
-    qmlRegisterUncreatableType<ISoundBackend>("org.kde.minuet", 1, 0, "ISoundBackend", "ISoundBackend cannot be instantiated");
+    qmlRegisterUncreatableType<ISoundBackend>("org.kde.minuet.isoundbackend", 1, 0, "ISoundBackend", "ISoundBackend cannot be instantiated");
 }
 
 ISoundBackend::~ISoundBackend()

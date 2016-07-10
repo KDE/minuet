@@ -39,7 +39,6 @@ ExerciseController::ExerciseController(QObject *parent) :
 {
     m_exercises["exercises"] = QJsonArray();
     m_definitions["definitions"] = QJsonArray();
-    qmlRegisterType<ExerciseController>("org.kde.minuet", 1, 0, "ExerciseController");
 }
 
 ExerciseController::~ExerciseController()
