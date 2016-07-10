@@ -20,13 +20,13 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.4
-import QtQuick.Controls 1.3
+import QtQuick 2.7
+import QtQuick.Controls 2.0
 
 Item {
     property alias source: sliderImage.source
-    property alias minimumValue: slider.minimumValue
-    property alias maximumValue: slider.maximumValue
+    property alias minimumValue: slider.from
+    property alias maximumValue: slider.to
     property alias value: slider.value
 
     width: sliderImage.width; height: parent.height
@@ -36,7 +36,7 @@ Item {
         
         height: parent.height - sliderImage.height - 5
         orientation: Qt.Vertical
-        activeFocusOnPress: true
+//        activeFocusOnPress: true
     }
     Image {
         id: sliderImage

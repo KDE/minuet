@@ -20,7 +20,7 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.4
+import QtQuick 2.7
 
 Rectangle {
     property int keyWidth: (parent.width - 80)/52

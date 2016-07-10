@@ -20,8 +20,8 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.4
-import QtQuick.Controls 1.3
+import QtQuick 2.7
+import QtQuick.Controls 2.0
 
 Item {
     id: exerciseView
@@ -126,7 +126,6 @@ Item {
                         answerHoverEnter(0, core.exerciseController.chosenRootNote(), 0, "white")
                     core.soundBackend.play()
                 }
-                style: MinuetButtonStyle{ labelHorizontalAlignment: Qt.AlignHCenter }
             }
             Button {
                 id: playQuestionButton
@@ -134,7 +133,6 @@ Item {
                 width: 124; height: 44
                 text: i18n("play question")
                 onClicked: core.soundBackend.play()
-                style: MinuetButtonStyle{ labelHorizontalAlignment: Qt.AlignHCenter }
             }
             Button {
                 id: giveUpButton
@@ -150,7 +148,6 @@ Item {
                         exerciseView.state = "nextQuestion"
                     }
                 }
-                style: MinuetButtonStyle{ labelHorizontalAlignment: Qt.AlignHCenter }
             }
         }
         Rectangle {

@@ -20,9 +20,8 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.4
-import QtQuick.Controls 1.3
-import QtQuick.Controls.Styles 1.1
+import QtQuick 2.7
+import QtQuick.Controls 2.0
 
 Item {
     id: minuetMenu
@@ -35,7 +34,7 @@ Item {
         id: breadcrumb
 
         width: (stackView.depth > 1) ? 24:0; height: parent.height
-        iconName: "go-previous"
+        text: "<"
         onClicked: {
             stackView.currentExerciseMenuItem = null
             core.exerciseController.currentExercise = {}
@@ -74,7 +73,6 @@ Item {
                         stackView.push(categoryMenu.createObject(stackView, {model: children}))
                     }
                 }
-                style: MinuetButtonStyle {}
             }
         }
         Component {

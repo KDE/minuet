@@ -20,8 +20,8 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.4
-import QtQuick.Controls 1.3
+import QtQuick 2.7
+import QtQuick.Controls 2.0
 
 Column {
     property var answers: [
@@ -171,6 +171,5 @@ Column {
                 colors = tempColors
             }
         }
-        style: MinuetButtonStyle{ labelHorizontalAlignment: Qt.AlignHCenter }
     }
 }
