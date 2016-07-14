@@ -13,8 +13,8 @@ else()
     message(FATAL_ERROR "Please install ALSA library and headers (libasound2)")
 endif()
 
-pkg_check_modules(DRUMSTICK_ALSA drumstick-alsa>=1.0.1)
-pkg_check_modules(DRUMSTICK_FILE drumstick-file>=1.0.1)
+pkg_check_modules(DRUMSTICK_ALSA REQUIRED drumstick-alsa>=1.0.1)
+pkg_check_modules(DRUMSTICK_FILE REQUIRED drumstick-file>=1.0.1)
 
 if(DRUMSTICK_ALSA_FOUND)
     link_directories(${DRUMSTICK_ALSA_LIBDIR})
@@ -34,7 +34,7 @@ if(ALSA_FOUND AND DRUMSTICK_ALSA_FOUND AND DRUMSTICK_FILE_FOUND)
     add_subdirectory(drumsticksoundbackend)
 endif()
 
-pkg_check_modules(FLUIDSYNTH fluidsynth>=1.1.6)
+pkg_check_modules(FLUIDSYNTH REQUIRED fluidsynth>=1.1.6)
 
 if(NOT FLUIDSYNTH_FOUND)
     message(WARNING "Please install fluidsynth libraries and headers (package fluidsynth) if you want to build fluidsynth soundbackend")
