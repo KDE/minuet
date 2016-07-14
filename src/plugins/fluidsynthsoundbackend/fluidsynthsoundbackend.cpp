@@ -22,9 +22,13 @@
 
 #include "fluidsynthsoundbackend.h"
 
+#include <fluidsynth.h>
+
 FluidSynthSoundBackend::FluidSynthSoundBackend(QObject *parent)
     : Minuet::ISoundBackend(parent)
 {
+    fluid_settings_t* settings;
+    settings = new_fluid_settings();
 }
 
 FluidSynthSoundBackend::~FluidSynthSoundBackend()
