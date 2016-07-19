@@ -20,36 +20,37 @@
 **
 ****************************************************************************/
 
-#ifndef MINUET_PLUGINCONTROLLER_H
-#define MINUET_PLUGINCONTROLLER_H
+#ifndef MINUET_CORE_H
+#define MINUET_CORE_H
 
-#include <interfaces/iplugincontroller.h>
-
-#include "minuetshellexport.h"
-
-#include <KPluginMetaData>
+#include <interfaces/icore.h>
 
 namespace Minuet
 {
 
-class Core;
-class IPlugin;
-
-class MINUETSHELL_EXPORT PluginController : public IPluginController
+class Core : public ICore
 {
     Q_OBJECT
 
 public:
-    PluginController(QObject *parent = 0);
-    ~PluginController() override;
+    virtual ~Core();
 
-    bool initialize(Core *core);
+    static bool initialize();
+
+    virtual IPluginController *pluginController() override;
+    virtual ISoundBackend *soundBackend() override;
+    virtual IExerciseController *exerciseController() override;
+    virtual IUiController *uiController() override;
+
+    void setSoundBackend(ISoundBackend *soundBackend);
 
 private:
-    QVector<KPluginMetaData> m_plugins;
+    Core(QObject *parent = 0);
 
-    typedef QHash<KPluginMetaData, IPlugin *> InfoToPluginMap;
-    InfoToPluginMap m_loadedPlugins;
+    IPluginController *m_pluginController;
+    ISoundBackend *m_soundBackend;
+    IExerciseController *m_exerciseController;
+    IUiController *m_uiController;
 };
 
 }

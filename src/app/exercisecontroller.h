@@ -25,8 +25,6 @@
 
 #include <interfaces/iexercisecontroller.h>
 
-#include "minuetshellexport.h"
-
 #include <QStringList>
 #include <QJsonObject>
 
@@ -35,7 +33,7 @@ namespace Minuet
 
 class Core;
  
-class MINUETSHELL_EXPORT ExerciseController : public IExerciseController
+class ExerciseController : public IExerciseController
 {
     Q_OBJECT
 

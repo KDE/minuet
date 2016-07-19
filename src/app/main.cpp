@@ -22,7 +22,7 @@
 
 #include "minuet_version.h"
 
-#include <shell/core.h>
+#include "core.h"
 
 #include <KCrash>
 #include <KAboutData>

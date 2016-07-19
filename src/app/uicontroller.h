@@ -24,7 +24,6 @@
 #define MINUET_UICONTROLLER_H
 
 #include "minuetmainwindow.h"
-#include "minuetshellexport.h"
 
 #include <interfaces/iuicontroller.h>
 
@@ -33,7 +32,7 @@ namespace Minuet
 
 class Core;
 
-class MINUETSHELL_EXPORT UiController : public IUiController
+class UiController : public IUiController
 {
     Q_OBJECT
 
