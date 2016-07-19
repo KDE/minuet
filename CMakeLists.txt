@@ -55,7 +55,7 @@ add_subdirectory(src)
 add_subdirectory(icons)
 add_subdirectory(data)
 
-install(FILES org.kde.minuet.appdata.xml DESTINATION ${SHARE_INSTALL_PREFIX}/appdata/)
+install(FILES org.kde.minuet.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 
 install(EXPORT MinuetTargets
     DESTINATION "${KDE_INSTALL_CMAKEPACKAGEDIR}/Minuet"
