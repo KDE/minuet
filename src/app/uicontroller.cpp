@@ -29,7 +29,7 @@ namespace Minuet
 
 UiController::UiController(QObject *parent)
     : IUiController(parent),
-      m_mainWindow(new MinuetMainWindow(qobject_cast<Core *>(parent)))
+      m_mainWindow(new MainWindow(qobject_cast<Core *>(parent)))
 {
 }
 

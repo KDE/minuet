@@ -20,8 +20,8 @@
 **
 ****************************************************************************/
 
-#ifndef MINUETMAINWINDOW_H
-#define MINUETMAINWINDOW_H
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
 #include "ui_settingsmidi.h"
 #include "minuetsettings.h"
@@ -46,7 +46,7 @@ Q_DECLARE_LOGGING_CATEGORY(MINUET)
  * @author Sandro S. Andrade <sandroandrade@kde.org>
  * @version 0.1
  */
-class MinuetMainWindow : public KXmlGuiWindow
+class MainWindow : public KXmlGuiWindow
 {
     Q_OBJECT
 
@@ -54,23 +54,17 @@ public:
     /**
      * Default Constructor
      */
-    MinuetMainWindow(Minuet::Core *core, QWidget *parent=0, Qt::WindowFlags f=KDE_DEFAULT_WINDOWFLAGS);
+    MainWindow(Minuet::Core *core, QWidget *parent=0, Qt::WindowFlags f=KDE_DEFAULT_WINDOWFLAGS);
 
     /**
      * Default Destructor
      */
-    virtual ~MinuetMainWindow();
+    virtual ~MainWindow();
     
 protected:
     virtual bool queryClose();
 
 private Q_SLOTS:
-    /**
-     * Create a new window
-     */
-//    void fileOpen();
-    void runWizard();
-
     /**
      * Open the settings dialog
      */
@@ -82,5 +76,5 @@ private:
     KConfigGroup m_initialGroup;
 };
 
-#endif // MINUETMAINWINDOW_H
+#endif // MAINWINDOW_H
 

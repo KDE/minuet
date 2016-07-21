@@ -3,14 +3,12 @@ set(minuet_SRCS
     plugincontroller.cpp
     uicontroller.cpp
     exercisecontroller.cpp
-    minuetmainwindow.cpp
-    wizard.cpp
+    mainwindow.cpp
     main.cpp
 )
 
 ki18n_wrap_ui(minuet_SRCS
     settingsmidi.ui
-    wizardsystemcheck.ui
 )
 
 kconfig_add_kcfg_files(minuet_SRCS minuetsettings.kcfgc)

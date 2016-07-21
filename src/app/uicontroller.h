@@ -23,7 +23,7 @@
 #ifndef MINUET_UICONTROLLER_H
 #define MINUET_UICONTROLLER_H
 
-#include "minuetmainwindow.h"
+#include "mainwindow.h"
 
 #include <interfaces/iuicontroller.h>
 
@@ -43,7 +43,7 @@ public:
     bool initialize(Core *core);
 
 private:
-    QScopedPointer<MinuetMainWindow> m_mainWindow;
+    QScopedPointer<MainWindow> m_mainWindow;
 };
 
 }

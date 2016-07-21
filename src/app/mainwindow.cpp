@@ -20,10 +20,10 @@
 **
 ****************************************************************************/
 
-#include "minuetmainwindow.h"
+#include "mainwindow.h"
 
-#include "wizard.h"
 #include "core.h"
+#include "minuet_version.h"
 
 #include <KMessageBox>
 #include <KConfigDialog>
@@ -41,7 +41,7 @@
 Q_DECLARE_LOGGING_CATEGORY(MINUET)
 Q_LOGGING_CATEGORY(MINUET, "minuet")
 
-MinuetMainWindow::MinuetMainWindow(Minuet::Core *core, QWidget *parent, Qt::WindowFlags f) :
+MainWindow::MainWindow(Minuet::Core *core, QWidget *parent, Qt::WindowFlags f) :
     KXmlGuiWindow(parent, f),
     m_quickView(new QQuickView),
     m_initialGroup(KSharedConfig::openConfig(), "version")
@@ -53,44 +53,26 @@ MinuetMainWindow::MinuetMainWindow(Minuet::Core *core, QWidget *parent, Qt::Wind
     m_quickView->setResizeMode(QQuickView::SizeRootObjectToView);
     setCentralWidget(QWidget::createWindowContainer(m_quickView, this));
 
-//    KStandardAction::open(this, SLOT(fileOpen()), actionCollection());
     KStandardAction::quit(qApp, SLOT(closeAllWindows()), actionCollection());
     KStandardAction::preferences(this, SLOT(settingsConfigure()), actionCollection());
-
-    QAction *action = new QAction(i18n("Run Configuration Wizard"), this);
-    action->setIcon(QIcon::fromTheme(QStringLiteral("tools-wizard")));
-    connect(action, &QAction::triggered, this, &MinuetMainWindow::runWizard);
-    actionCollection()->addAction(QStringLiteral("run_wizard"), action);
 
     setupGUI(Keys | Save | Create);
     foreach (QToolBar *toolBar, findChildren<QToolBar*>())
         delete toolBar;
-
-    if (!m_initialGroup.exists())
-        runWizard();
 }
 
-MinuetMainWindow::~MinuetMainWindow()
+MainWindow::~MainWindow()
 {
     delete m_quickView;
 }
 
-bool MinuetMainWindow::queryClose()
+bool MainWindow::queryClose()
 {
     MinuetSettings::self()->save();
     return true;
 }
 
-void MinuetMainWindow::runWizard()
-{
-    QScopedPointer<Wizard> w (new Wizard(this));
-    if (w->exec() == QDialog::Accepted && w->isOk()) {
-        w->adjustSettings();
-        m_initialGroup.writeEntry("version", "1.0");
-    }
-}
-
-void MinuetMainWindow::settingsConfigure()
+void MainWindow::settingsConfigure()
 {
     if (KConfigDialog::showDialog(QStringLiteral("settings")))
         return;
@@ -102,5 +84,6 @@ void MinuetMainWindow::settingsConfigure()
     m_settingsMidi.cboMidiOutputPort->setCurrentIndex(m_settingsMidi.cboMidiOutputPort->findText(MinuetSettings::midiOutputPort()));
     dialog->addPage(midiSettingsDialog, i18n("MIDI"), QStringLiteral("media-playback-start"));
     dialog->setAttribute(Qt::WA_DeleteOnClose);
+    dialog->exec();
     delete dialog;
 }
