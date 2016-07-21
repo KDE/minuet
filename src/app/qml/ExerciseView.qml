@@ -109,7 +109,8 @@ Item {
                     var playMode = core.exerciseController.currentExercise["playMode"]
                     core.exerciseController.randomlySelectExerciseOptions()
                     var selectedExerciseOptions = core.exerciseController.selectedExerciseOptions
-                    core.soundBackend.prepareFromExerciseOptions(selectedExerciseOptions, playMode)
+                    core.soundBackend.playMode = playMode
+                    core.soundBackend.prepareFromExerciseOptions(selectedExerciseOptions)
                     var newChosenExercises = [];
                     for (var i = 0; i < selectedExerciseOptions.length; ++i)
                         newChosenExercises.push(selectedExerciseOptions[i].name);
@@ -120,7 +121,7 @@ Item {
                                 chosenColors[i] = answerGrid.children[j].color
                                 break
                             }
-                    if (core.exerciseController.currentExercise["playMode"] != "rhythm")
+                    if (playMode != "rhythm")
                         answerHoverEnter(0, core.exerciseController.chosenRootNote(), 0, "white")
                     core.soundBackend.play()
                 }

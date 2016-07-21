@@ -25,6 +25,8 @@
 
 #include <interfaces/isoundbackend.h>
 
+#include <fluidsynth.h>
+
 class FluidSynthSoundBackend : public Minuet::ISoundBackend
 {
     Q_OBJECT
@@ -42,12 +44,23 @@ public Q_SLOTS:
     virtual void setVolume(quint8 volume);
     virtual void setTempo(quint8 tempo);
 
-    virtual void prepareFromExerciseOptions(QJsonArray selectedExerciseOptions, const QString &playMode) override;
+    virtual void prepareFromExerciseOptions(QJsonArray selectedExerciseOptions) override;
     virtual void prepareFromMidiFile(const QString &fileName) override;
 
     virtual void play() override;
     virtual void pause() override;
     virtual void stop() override;
+
+private:
+    void appendEvent(int channel, short key, short velocity, unsigned int duration);
+
+private:
+    fluid_synth_t *m_synth;
+    fluid_audio_driver_t *m_adriver;
+    fluid_sequencer_t *m_sequencer;
+    short m_synthSeqID;
+    QScopedPointer<QList<fluid_event_t *>> m_song;
 };
 
 #endif
+

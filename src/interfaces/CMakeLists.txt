@@ -10,6 +10,8 @@ set(minuetinterfaces_LIB_SRCS
 add_library(minuetinterfaces ${minuetinterfaces_LIB_SRCS})
 add_library(Minuet::Interfaces ALIAS minuetinterfaces)
 
+set_target_properties(minuetinterfaces PROPERTIES VERSION 0.0.0 SOVERSION 0)
+
 generate_export_header(minuetinterfaces EXPORT_FILE_NAME minuetinterfacesexport.h)
 
 target_link_libraries(minuetinterfaces

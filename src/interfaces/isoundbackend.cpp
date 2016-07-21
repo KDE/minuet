@@ -49,6 +49,19 @@ ISoundBackend::State ISoundBackend::state() const
     return m_state;
 }
 
+QString ISoundBackend::playMode() const
+{
+    return m_playMode;
+}
+
+void ISoundBackend::setPlayMode(QString playMode)
+{
+    if (m_playMode != playMode) {
+        m_playMode = playMode;
+        emit playModeChanged(m_playMode);
+    }
+}
+
 void ISoundBackend::setPlaybackLabel(const QString &playbackLabel)
 {
     if (m_playbackLabel != playbackLabel) {

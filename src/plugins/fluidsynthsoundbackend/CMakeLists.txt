@@ -11,3 +11,4 @@ target_link_libraries(minuetfluidsynthsoundbackend
 )
 
 install(TARGETS minuetfluidsynthsoundbackend DESTINATION ${PLUGIN_INSTALL_DIR}/minuet/)
+install(FILES GeneralUser-v1.47.sf2 DESTINATION ${KDE_INSTALL_DATADIR}/minuet/soundfonts)
