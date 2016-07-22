@@ -28,20 +28,18 @@ namespace Minuet
 {
 
 ISoundBackend::ISoundBackend(QObject *parent)
-    : IPlugin(parent),
-    m_state(StoppedState)
+    : IPlugin(parent)
 {
+    qRegisterMetaType<State>("State");
     qmlRegisterInterface<ISoundBackend>("ISoundBackend");
     qmlRegisterUncreatableType<ISoundBackend>("org.kde.minuet.isoundbackend", 1, 0, "ISoundBackend", "ISoundBackend cannot be instantiated");
+
+    setPlaybackLabel(QStringLiteral("00:00.00"));
+    setState(StoppedState);
 }
 
 ISoundBackend::~ISoundBackend()
 {
-}
-
-QString ISoundBackend::playbackLabel() const
-{
-    return m_playbackLabel;
 }
 
 ISoundBackend::State ISoundBackend::state() const
@@ -49,17 +47,9 @@ ISoundBackend::State ISoundBackend::state() const
     return m_state;
 }
 
-QString ISoundBackend::playMode() const
+QString ISoundBackend::playbackLabel() const
 {
-    return m_playMode;
-}
-
-void ISoundBackend::setPlayMode(QString playMode)
-{
-    if (m_playMode != playMode) {
-        m_playMode = playMode;
-        emit playModeChanged(m_playMode);
-    }
+    return m_playbackLabel;
 }
 
 void ISoundBackend::setPlaybackLabel(const QString &playbackLabel)

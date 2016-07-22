@@ -40,9 +40,9 @@ public:
     virtual ~FluidSynthSoundBackend() override;
 
 public Q_SLOTS:
-    virtual void setPitch(qint8 pitch);
-    virtual void setVolume(quint8 volume);
-    virtual void setTempo(quint8 tempo);
+    virtual void setPitch(qint8 pitch) override;
+    virtual void setVolume(quint8 volume) override;
+    virtual void setTempo(quint8 tempo) override;
 
     virtual void prepareFromExerciseOptions(QJsonArray selectedExerciseOptions) override;
     virtual void prepareFromMidiFile(const QString &fileName) override;
@@ -50,15 +50,24 @@ public Q_SLOTS:
     virtual void play() override;
     virtual void pause() override;
     virtual void stop() override;
+    virtual void reset() override;
 
 private:
     void appendEvent(int channel, short key, short velocity, unsigned int duration);
+    static void sequencerCallback(unsigned int time, fluid_event_t *event, fluid_sequencer_t *seq, void *data);
+    void resetEngine();
+    void deleteEngine();
 
 private:
-    fluid_synth_t *m_synth;
-    fluid_audio_driver_t *m_adriver;
+    fluid_settings_t *m_settings;
+    fluid_audio_driver_t *m_audioDriver;
     fluid_sequencer_t *m_sequencer;
+    fluid_synth_t *m_synth;
+
     short m_synthSeqID;
+    short m_callbackSeqID;
+    static unsigned int m_initialTime;
+
     QScopedPointer<QList<fluid_event_t *>> m_song;
 };
 

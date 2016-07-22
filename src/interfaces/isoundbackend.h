@@ -36,33 +36,35 @@ class MINUETINTERFACES_EXPORT ISoundBackend : public IPlugin
 {
     Q_OBJECT
 
+    // Read-write properties with simple mutators
+    Q_PROPERTY(QString playMode MEMBER m_playMode NOTIFY playModeChanged)
+
+    // Read-write properties with custom mutators
     Q_PROPERTY(qint8 pitch MEMBER m_pitch WRITE setPitch NOTIFY pitchChanged)
     Q_PROPERTY(quint8 volume MEMBER m_volume WRITE setVolume NOTIFY volumeChanged)
     Q_PROPERTY(quint8 tempo MEMBER m_tempo WRITE setTempo NOTIFY tempoChanged)
-    Q_PROPERTY(QString playbackLabel READ playbackLabel NOTIFY playbackLabelChanged)
+
+    // Read-only properties
     Q_ENUMS(State)
     Q_PROPERTY(State state READ state NOTIFY stateChanged)
-    Q_PROPERTY(QString playMode READ playMode WRITE setPlayMode NOTIFY playModeChanged)
+    Q_PROPERTY(QString playbackLabel READ playbackLabel NOTIFY playbackLabelChanged)
 
 public:
     ~ISoundBackend() override;
-
-    QString playbackLabel() const;
 
     enum State {
         StoppedState = 0,
         PlayingState,
         PausedState
     };
-    
     ISoundBackend::State state() const;
-    QString playMode() const;
+
+    QString playbackLabel() const;
 
 public Q_SLOTS:
     virtual void setPitch(qint8 pitch) = 0;
     virtual void setVolume(quint8 volume) = 0;
     virtual void setTempo(quint8 tempo) = 0;
-    void setPlayMode(QString playMode);
 
     virtual void prepareFromExerciseOptions(QJsonArray selectedExerciseOptions) = 0;
     virtual void prepareFromMidiFile(const QString &fileName) = 0;
@@ -70,17 +72,19 @@ public Q_SLOTS:
     virtual void play() = 0;
     virtual void pause() = 0;
     virtual void stop() = 0;
+    virtual void reset() = 0;
 
 Q_SIGNALS:
+    void playModeChanged(QString newPlayMode);
     void pitchChanged(qint8 newPitch);
     void volumeChanged(quint8 newVolume);
     void tempoChanged(quint8 newTempo);
-    void playbackLabelChanged(QString newPlaybackLabel);
     void stateChanged(State newState);
-    void playModeChanged(QString newPlayMode);
+    void playbackLabelChanged(QString newPlaybackLabel);
 
 protected:
     explicit ISoundBackend(QObject *parent = 0);
+
     void setPlaybackLabel(const QString &playbackLabel);
     void setState(State state);
 

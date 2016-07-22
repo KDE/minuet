@@ -42,7 +42,7 @@ Item {
         anchors { left: parent.left; top: parent.top }
 
         onBackPressed: {
-            core.soundBackend.stop()
+            core.soundBackend.reset()
             exerciseView.clearExerciseGrid()
             pianoView.clearAllMarks()
         }
