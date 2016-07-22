@@ -27,8 +27,11 @@
 
 #include <QObject>
 
-namespace Minuet
-{
+namespace KTextEditor {
+    class ConfigPage;
+}
+
+namespace Minuet {
 
 class MINUETINTERFACES_EXPORT IPlugin : public QObject
 {
@@ -37,8 +40,12 @@ class MINUETINTERFACES_EXPORT IPlugin : public QObject
 public:
     ~IPlugin() override;
 
+    virtual QList<KTextEditor::ConfigPage *> configPages() const;
+
 protected:
     explicit IPlugin(QObject *parent = 0);
+
+    QList<KTextEditor::ConfigPage *> m_configPages;
 };
 
 }

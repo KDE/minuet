@@ -1,11 +1,17 @@
 set(fluidsynthsoundbackend_PLUGIN_SRCS
     fluidsynthsoundbackend.cpp
+    fluidsynthconfigpage.cpp
+)
+
+ki18n_wrap_ui(fluidsynthsoundbackend_PLUGIN_SRCS
+    fluidsynthsettings.ui
 )
 
 add_library(minuetfluidsynthsoundbackend MODULE ${fluidsynthsoundbackend_PLUGIN_SRCS})
 
 target_link_libraries(minuetfluidsynthsoundbackend
     Qt5::Core
+    KF5::TextEditor
     Minuet::Interfaces
     fluidsynth
 )

@@ -25,13 +25,10 @@
 
 #include <interfaces/iplugincontroller.h>
 
-#include <KPluginMetaData>
-
 namespace Minuet
 {
 
 class Core;
-class IPlugin;
 
 class PluginController : public IPluginController
 {
@@ -43,10 +40,11 @@ public:
 
     bool initialize(Core *core);
 
+    virtual InfoToPluginMap loadedPlugins() const;
+
 private:
     QVector<KPluginMetaData> m_plugins;
 
-    typedef QHash<KPluginMetaData, IPlugin *> InfoToPluginMap;
     InfoToPluginMap m_loadedPlugins;
 };
 

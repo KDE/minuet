@@ -20,25 +20,31 @@
 **
 ****************************************************************************/
 
-#include "iplugin.h"
+#ifndef MINUET_FLUIDSYNTHCONFIGPAGE_H
+#define MINUET_FLUIDSYNTHCONFIGPAGE_H
 
-namespace Minuet
+#include <KTextEditor/ConfigPage>
+
+#include "ui_fluidsynthsettings.h"
+
+class FluidSynthConfigPage : public KTextEditor::ConfigPage
 {
+    Q_OBJECT
 
-IPlugin::IPlugin(QObject *parent)
-    : QObject(parent)
-{
-}
+public:
+    explicit FluidSynthConfigPage(QWidget *parent = 0);
 
-IPlugin::~IPlugin()
-{
-}
+    virtual QIcon icon() const override;
+    virtual QString name() const override;
 
-QList<KTextEditor::ConfigPage *> IPlugin::configPages() const
-{
-    return m_configPages;
-}
+public Q_SLOTS:
+    virtual void apply() override;
+    virtual void defaults() override;
+    virtual void reset() override;
 
-}
+private:
+    Ui::FluidSynthSettings m_settings;
+};
 
-#include "moc_iplugin.cpp"
+#endif
+

@@ -20,25 +20,34 @@
 **
 ****************************************************************************/
 
-#include "iplugin.h"
+#include "fluidsynthconfigpage.h"
 
-namespace Minuet
+FluidSynthConfigPage::FluidSynthConfigPage(QWidget *parent)
+    : KTextEditor::ConfigPage(parent)
 {
+    m_settings.setupUi(parent);
+}
 
-IPlugin::IPlugin(QObject *parent)
-    : QObject(parent)
+QIcon FluidSynthConfigPage::icon() const
+{
+    return QIcon::fromTheme(QStringLiteral("media-playback-start"));
+}
+
+QString FluidSynthConfigPage::name() const
+{
+    return QStringLiteral("FluidSynth");
+}
+
+void FluidSynthConfigPage::apply()
 {
 }
 
-IPlugin::~IPlugin()
+void FluidSynthConfigPage::defaults()
 {
 }
 
-QList<KTextEditor::ConfigPage *> IPlugin::configPages() const
+void FluidSynthConfigPage::reset()
 {
-    return m_configPages;
 }
 
-}
-
-#include "moc_iplugin.cpp"
+#include "moc_fluidsynthconfigpage.cpp"

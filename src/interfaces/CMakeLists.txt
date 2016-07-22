@@ -17,6 +17,7 @@ generate_export_header(minuetinterfaces EXPORT_FILE_NAME minuetinterfacesexport.
 target_link_libraries(minuetinterfaces
     Qt5::Core
     Qt5::Quick
+    KF5::TextEditor
 )
 
 install(TARGETS

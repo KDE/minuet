@@ -25,10 +25,14 @@
 
 #include "minuetinterfacesexport.h"
 
+#include <KPluginMetaData>
+
 #include <QObject>
 
 namespace Minuet
 {
+
+class IPlugin;
 
 class MINUETINTERFACES_EXPORT IPluginController : public QObject
 {
@@ -36,6 +40,9 @@ class MINUETINTERFACES_EXPORT IPluginController : public QObject
 
 public:
     ~IPluginController() override;
+
+    typedef QHash<KPluginMetaData, IPlugin *> InfoToPluginMap;
+    virtual InfoToPluginMap loadedPlugins() const = 0;
 
 protected:
     explicit IPluginController(QObject *parent = 0);

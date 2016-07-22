@@ -75,5 +75,10 @@ bool PluginController::initialize(Core *core)
     return true;
 }
 
+IPluginController::InfoToPluginMap PluginController::loadedPlugins() const
+{
+    return m_loadedPlugins;
+}
+
 }
 
