@@ -31,7 +31,6 @@ Column {
         "exercise-images/unknown-rhythm.png"
     ]
     property int currentAnswer: 0
-    property var correctAnswers
     property var correctColors: ["#ffffff", "#ffffff", "#ffffff", "#ffffff"]
     property ExerciseView exerciseView
     property var colors: ["#ffffff", "#ffffff", "#ffffff", "#ffffff"]
@@ -48,8 +47,9 @@ Column {
         if (currentAnswer == 4) {
             answerCompleted(answers)
             correctColors = exerciseView.chosenColors
+            var selectedExerciseOptions = core.exerciseController.selectedExerciseOptions
             for (var i = 0; i < 4; ++i)
-                correctAnswerGrid.children[i].opacity = answers[i].toString().split("/").pop().split(".")[0] != correctAnswers[i] ? 1:0
+                correctAnswerGrid.children[i].opacity = answers[i].toString().split("/").pop().split(".")[0] != selectedExerciseOptions[i].name ? 1:0
         }
         else {
             tempAnswers[currentAnswer] = "exercise-images/current-rhythm.png"
@@ -59,7 +59,6 @@ Column {
     function resetAnswers() {
         currentAnswer = 0
         answers = ["exercise-images/current-rhythm.png", "exercise-images/unknown-rhythm.png", "exercise-images/unknown-rhythm.png", "exercise-images/unknown-rhythm.png"]
-        correctAnswers = undefined
         colors = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"]
         correctColors = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"]
         for (var i = 0; i < 4; ++i)
@@ -68,15 +67,10 @@ Column {
     function showCorrectAnswer(chosenExercises, chosenColors) {
         var tempAnswers = answers
         for (var i = 0; i < 4; ++i)
-            tempAnswers[i] = "exercise-images/" + chosenExercises[i] + ".png"
+            tempAnswers[i] = "exercise-images/" + chosenExercises[i].name + ".png"
         answers = tempAnswers
         colors = chosenColors
         currentAnswer = 0
-    }
-    function fillCorrectAnswerGrid() {
-        for (var i = 0; i < 4; ++i)
-            correctAnswerGrid.children[i].opacity = 0
-        correctAnswers = exerciseView.chosenExercises
     }
 
     spacing: 10
@@ -101,7 +95,7 @@ Column {
                     id: correctRhythmImage
 
                     anchors.centerIn: parent
-                    source: (correctAnswers != undefined && core.exerciseController.currentExercise["playMode"] == "rhythm") ? "exercise-images/" + correctAnswers[index] + ".png":""
+                    source: (core.exerciseController.selectedExerciseOptions != undefined && core.exerciseController.selectedExerciseOptions[index] != undefined && core.exerciseController.currentExercise["playMode"] == "rhythm") ? "exercise-images/" + core.exerciseController.selectedExerciseOptions[index].name + ".png":""
                     fillMode: Image.Pad
                 }
             }

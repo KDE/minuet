@@ -21,13 +21,18 @@
 ****************************************************************************/
 
 import QtQuick 2.7
+import QtQuick.Controls 2.0
 
 import "pianoview"
 import "midiplayer"
 
-Item {
+ApplicationWindow {
     id: mainItem
-
+    visible: true
+    width: 640
+    height: 480
+    title: qsTr("Minuet")
+    
     property int menuBarWidth: 280
 
     function exerciseViewStateChanged() {
@@ -43,7 +48,6 @@ Item {
 
         onBackPressed: {
             core.soundBackend.reset()
-            exerciseView.clearExerciseGrid()
             pianoView.clearAllMarks()
         }
     }
@@ -71,13 +75,13 @@ Item {
             id: pianoView
 
             anchors { bottom: parent.bottom; bottomMargin: 5; horizontalCenter: parent.horizontalCenter }
-            visible: (Object.keys(core.exerciseController.currentExercise).length > 0 && core.exerciseController.currentExercise["playMode"] != "rhythm")
+            visible: minuetMenu.currentExercise != undefined && minuetMenu.currentExercise["playMode"] != "rhythm"
         }
         RhythmAnswerView {
             id: rhythmAnswerView
             
             anchors { bottom: parent.bottom; bottomMargin: 14; horizontalCenter: parent.horizontalCenter }
-            visible: (core.exerciseController.currentExercise["playMode"] == "rhythm")
+            visible: minuetMenu.currentExercise != undefined && minuetMenu.currentExercise["playMode"] == "rhythm"
             exerciseView: exerciseView
 
             onAnswerCompleted: exerciseView.checkAnswers(answers)
@@ -87,13 +91,14 @@ Item {
             
             width: background.width; height: minuetMenu.height + 20
             anchors { top: background.top; horizontalCenter: background.horizontalCenter }
+            
+            currentExercise: minuetMenu.currentExercise
 
             onAnswerHoverEnter: pianoView.noteMark(chan, pitch, vel, color)
             onAnswerHoverExit: pianoView.noteUnmark(chan, pitch, vel)
             onAnswerClicked: rhythmAnswerView.answerClicked(answerImageSource, color)
             onStateChanged: mainItem.exerciseViewStateChanged()
             onShowCorrectAnswer: rhythmAnswerView.showCorrectAnswer(chosenExercises, chosenColors)
-            onChosenExercisesChanged: rhythmAnswerView.fillCorrectAnswerGrid()
         }
     }
     Binding {
@@ -110,6 +115,16 @@ Item {
         target: core.soundBackend
         property: "tempo"
         value: midiPlayer.tempo
+    }
+    Binding {
+        target: core.exerciseController
+        property: "currentExercise"
+        value: minuetMenu.currentExercise
+    }
+    Binding {
+        target: core.soundBackend
+        property: "playMode"
+        value: (minuetMenu.currentExercise != undefined) ? minuetMenu.currentExercise["playMode"]:""
     }
     Connections {
         target: core.exerciseController

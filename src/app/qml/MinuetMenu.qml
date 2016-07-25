@@ -26,6 +26,7 @@ import QtQuick.Controls 2.0
 Item {
     id: minuetMenu
 
+    property var currentExercise: undefined
     signal backPressed
 
     Button {
@@ -34,7 +35,7 @@ Item {
         width: (stackView.depth > 1) ? 24:0; height: parent.height
         text: "<"
         onClicked: {
-            core.exerciseController.currentExercise = {}
+            currentExercise = undefined
             stackView.pop()
             backPressed()
         }
@@ -67,7 +68,7 @@ Item {
                         onClicked: {
                             var children = ListView.view.model[index].children
                             if (!children)
-                                core.exerciseController.currentExercise = ListView.view.model[index]
+                                minuetMenu.currentExercise = ListView.view.model[index]
                             else
                                 stackView.push(categoryMenu.createObject(stackView, {model: children}))
                         }
