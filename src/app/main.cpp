@@ -50,7 +50,7 @@ int main(int argc, char **argv)
                           i18n("(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"));
 
     aboutData.addAuthor(i18n("Sandro S. Andrade"),i18n("Developer"), QStringLiteral("sandroandrade@kde.org"));
-    aboutData.addAuthor(i18n("Alessandro Longo"),i18n("Minuet Icon Designer"), QStringLiteral("alessandro.longo@kdemail.net"));
+    aboutData.addAuthor(i18n("Alessandro Longo"),i18n("Minuet Icons Designer"), QStringLiteral("alessandro.longo@kdemail.net"));
     application.setWindowIcon(QIcon::fromTheme(QStringLiteral("minuet")));
     QCommandLineParser parser;
     parser.addHelpOption();

@@ -52,10 +52,10 @@ bool ExerciseController::initialize(Core *core)
     bool definitionsMerge = mergeJsonFiles("definitions", m_definitions);
     bool exercisesMerge = mergeJsonFiles("exercises", m_exercises, true, "name", "children");
 
-//     QFile file("merged-exercises.json");
-//     file.open(QIODevice::WriteOnly);
-//     file.write(QJsonDocument(m_exercises).toJson());
-//     file.close();
+     QFile file("merged-exercises.json");
+     file.open(QIODevice::WriteOnly);
+     file.write(QJsonDocument(m_exercises).toJson());
+     file.close();
 
     return definitionsMerge & exercisesMerge;
 }
@@ -164,7 +164,7 @@ QJsonArray ExerciseController::applyDefinitions(QJsonArray exercises, QJsonArray
                 filterDefinitions(filteredDefinitions, exerciseObject, "or-tags", OrFiltering);
             if (exerciseObjectKeys.contains(QStringLiteral("children"))) {
                 foreach(const QString &key, exerciseObjectKeys)
-                    if (key != "name" && key != "children" && key != "and-tags" && key != "or-tags") {
+                    if (key != "name" && key != "children" && key != "and-tags" && key != "or-tags" && !key.startsWith('_')) {
                         collectedProperties.insert(key, exerciseObject[key]);
                         exerciseObject.remove(key);
                     }

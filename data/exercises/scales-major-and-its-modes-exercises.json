@@ -6,6 +6,7 @@
       "playMode": "scale",
       "userMessage": "Hear the scale and then choose an answer from options below",
       "numberOfSelectedOptions": 1,
+      "_icon": "minuet-scales.svg",
       "children": [
         {
           "name": "Major Scale and its Modes",

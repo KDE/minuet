@@ -23,6 +23,8 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 
+import org.kde.plasma.core 2.0 as PlasmaCore
+
 Item {
     id: minuetMenu
 
@@ -66,23 +68,34 @@ Item {
                         text: i18nc("technical term, do you have a musician friend?", modelData.name)
                         width: parent.width
                         onClicked: {
-                            var children = ListView.view.model[index].children
+                            var children = modelData.children
                             if (!children)
-                                minuetMenu.currentExercise = ListView.view.model[index]
+                                minuetMenu.currentExercise = modelData
                             else
                                 stackView.push(categoryMenu.createObject(stackView, {model: children}))
                         }
-                        contentItem: Text {
-                            leftPadding: control.mirrored ? (control.indicator ? control.indicator.width : 0) + control.spacing : 0
-                            rightPadding: !control.mirrored ? (control.indicator ? control.indicator.width : 0) + control.spacing : 0
+                        contentItem: Row {
+                            spacing: 5
+                            PlasmaCore.IconItem {
+                                source: modelData._icon
+                                visible: modelData._icon != undefined
+                                anchors.verticalCenter: parent.verticalCenter
+                                width: 30
+                                height: 30
+                            }
+                            Text {
+                                leftPadding: control.mirrored ? (control.indicator ? control.indicator.width : 0) + control.spacing : 0
+                                rightPadding: !control.mirrored ? (control.indicator ? control.indicator.width : 0) + control.spacing : 0
 
-                            text: control.text
-                            font: control.font
-                            color: control.enabled ? "#26282a" : "#bdbebf"
-                            wrapMode: Text.WordWrap
-                            visible: control.text
-                            horizontalAlignment: Text.AlignLeft
-                            verticalAlignment: Text.AlignVCenter
+                                text: control.text
+                                font: control.font
+                                color: control.enabled ? "#26282a" : "#bdbebf"
+                                wrapMode: Text.WordWrap
+                                anchors.verticalCenter: parent.verticalCenter
+                                visible: control.text
+                                horizontalAlignment: Text.AlignLeft
+                                verticalAlignment: Text.AlignVCenter
+                            }
                         }
                     }
                 }
