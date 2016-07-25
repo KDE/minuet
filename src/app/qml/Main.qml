@@ -88,10 +88,10 @@ ApplicationWindow {
         }
         ExerciseView {
             id: exerciseView
-            
+
             width: background.width; height: minuetMenu.height + 20
             anchors { top: background.top; horizontalCenter: background.horizontalCenter }
-            
+
             currentExercise: minuetMenu.currentExercise
 
             onAnswerHoverEnter: pianoView.noteMark(chan, pitch, vel, color)

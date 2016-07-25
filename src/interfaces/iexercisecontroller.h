@@ -37,13 +37,14 @@ class MINUETINTERFACES_EXPORT IExerciseController : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QJsonArray exercises READ exercises)
-    Q_PROPERTY(QVariantMap currentExercise MEMBER m_currentExercise NOTIFY currentExerciseChanged)
+    Q_PROPERTY(QVariantMap currentExercise MEMBER m_currentExercise WRITE setCurrentExercise NOTIFY currentExerciseChanged)
     Q_PROPERTY(QJsonArray selectedExerciseOptions READ selectedExerciseOptions NOTIFY selectedExerciseOptionsChanged)
 
 public:
     virtual ~IExerciseController() override;
 
     virtual QJsonArray exercises() const = 0;
+    void setCurrentExercise(QVariantMap currentExercise);
     QJsonArray selectedExerciseOptions() const;
 
 public Q_SLOTS:

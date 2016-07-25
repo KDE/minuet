@@ -52,23 +52,21 @@ Item {
     }
     onCurrentExerciseChanged: {
         exerciseView.state = "hidden"
-        if (exerciseView.currentExercise != undefined) {
-            var currentExerciseOptions = exerciseView.currentExercise["options"];
+        if (currentExercise != undefined) {
+            var currentExerciseOptions = currentExercise["options"];
             if (currentExerciseOptions != undefined) {
                 var length = currentExerciseOptions.length
-                answerGrid.columns = Math.min(6, length)
-                answerGrid.rows = Math.ceil(length/6)
                 for (var i = 0; i < length; ++i)
                     answerOption.createObject(answerGrid, {model: currentExerciseOptions[i], index: i, color: colors[i%24]})
-                exerciseView.visible = true
+                exerciseView.state = "initial"
             }
-            exerciseView.state = "initial"
         }
     }
     function checkAnswers(answers) {
         var answersOk = true
         var chosenExercises = core.exerciseController.selectedExerciseOptions
-        for(var i = 0; i < 4; ++i) {
+        var numberOfSelectedOptions = core.exerciseController.currentExercise.numberOfSelectedOptions
+        for(var i = 0; i < numberOfSelectedOptions; ++i) {
             if (answers[i].toString().split("/").pop().split(".")[0] != chosenExercises[i].name)
                 answersOk = false
         }
@@ -78,8 +76,6 @@ Item {
             messageText.text = i18n("Oops, not this time! Try again!")
         exerciseView.state = "nextQuestion"
     }
-
-    visible: false
 
     Column {
         anchors.centerIn: parent
@@ -91,7 +87,7 @@ Item {
             width: parent.width
             horizontalAlignment: Text.AlignHCenter
             font.pointSize: 18
-            text: (exerciseView.currentExercise != undefined) ? i18nc("technical term, do you have a musician friend?", exerciseView.currentExercise["userMessage"]):""
+            text: (currentExercise != undefined) ? i18nc("technical term, do you have a musician friend?", currentExercise["userMessage"]):""
         }
         Text {
             id: messageText
@@ -124,7 +120,7 @@ Item {
                                 chosenColors[i] = answerGrid.children[j].color
                                 break
                             }
-                    if (exerciseView.currentExercise["playMode"] != "rhythm")
+                    if (currentExercise["playMode"] != "rhythm")
                         answerHoverEnter(0, core.exerciseController.chosenRootNote(), 0, "white")
                     core.soundBackend.play()
                 }
@@ -142,7 +138,7 @@ Item {
                 width: 124; height: 44
                 text: i18n("give up")
                 onClicked: {
-                    if (exerciseView.currentExercise["playMode"] != "rhythm") {
+                    if (currentExercise["playMode"] != "rhythm") {
                         highlightRightAnswer()
                     }
                     else {
@@ -163,8 +159,12 @@ Item {
                 id: answerGrid
 
                 anchors.centerIn: parent
-                spacing: 10; columns: 2; rows: 1
+                spacing: 10
                 enabled: exerciseView.state == "waitingForAnswer"
+
+                columns: (currentExercise != undefined) ? Math.min(6, currentExercise["options"].length):0
+                rows: (currentExercise != undefined) ? Math.ceil(currentExercise["options"].length/6):0
+
                 Component {
                     id: answerOption
 
@@ -174,15 +174,15 @@ Item {
                         property var model
                         property int index
 
-                        width: (exerciseView.currentExercise != undefined && exerciseView.currentExercise["playMode"] != "rhythm") ? 120:119
-                        height: (exerciseView.currentExercise != undefined && exerciseView.currentExercise["playMode"] != "rhythm") ? 40:59
+                        width: (currentExercise != undefined && currentExercise["playMode"] != "rhythm") ? 120:119
+                        height: (currentExercise != undefined && currentExercise["playMode"] != "rhythm") ? 40:59
 
                         Text {
                             id: option
 
                             property string originalText: model.name
 
-                            visible: exerciseView.currentExercise != undefined && exerciseView.currentExercise["playMode"] != "rhythm"
+                            visible: currentExercise != undefined && currentExercise["playMode"] != "rhythm"
                             text: i18nc("technical term, do you have a musician friend?", model.name)
                             width: parent.width - 4
                             anchors.centerIn: parent
@@ -194,14 +194,14 @@ Item {
                             id: rhythmImage
 
                             anchors.centerIn: parent
-                            visible: exerciseView.currentExercise != undefined && exerciseView.currentExercise["playMode"] == "rhythm"
-                            source: (exerciseView.currentExercise != undefined && exerciseView.currentExercise["playMode"] == "rhythm") ? "exercise-images/" + model.name + ".png":""
+                            visible: currentExercise != undefined && currentExercise["playMode"] == "rhythm"
+                            source: (currentExercise != undefined && currentExercise["playMode"] == "rhythm") ? "exercise-images/" + model.name + ".png":""
                             fillMode: Image.Pad
                         }
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                if (exerciseView.currentExercise["playMode"] != "rhythm") {
+                                if (currentExercise["playMode"] != "rhythm") {
                                     onExited()
                                     if (option.originalText == core.exerciseController.selectedExerciseOptions[0].name)
                                         messageText.text = i18n("Congratulations, you answered correctly!")
@@ -217,7 +217,7 @@ Item {
                             hoverEnabled: true
                             onEntered: {
                                 answerRectangle.color = Qt.darker(answerRectangle.color, 1.1)
-                                if (exerciseView.currentExercise["playMode"] != "rhythm") {
+                                if (currentExercise["playMode"] != "rhythm") {
                                     model.sequence.split(' ').forEach(function(note) {
                                         answerHoverEnter(0, core.exerciseController.chosenRootNote() + parseInt(note), 0, colors[answerRectangle.index])
                                     })
@@ -225,7 +225,7 @@ Item {
                             }
                             onExited: {
                                 answerRectangle.color = colors[answerRectangle.index]
-                                if (exerciseView.currentExercise["playMode"] != "rhythm") {
+                                if (currentExercise["playMode"] != "rhythm") {
                                     if (!animation.running)
                                         model.sequence.split(' ').forEach(function(note) {
                                             answerHoverExit(0, core.exerciseController.chosenRootNote() + parseInt(note), 0)
@@ -253,6 +253,7 @@ Item {
             name: "initial"
             StateChangeScript {
                 script: {
+                    exerciseView.visible = true
                     newQuestionButton.enabled = true
                     playQuestionButton.enabled = false
                     giveUpButton.enabled = false
