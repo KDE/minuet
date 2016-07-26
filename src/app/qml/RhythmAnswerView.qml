@@ -31,6 +31,7 @@ Column {
         "exercise-images/unknown-rhythm.png"
     ]
     property int currentAnswer: 0
+    property int numberOfSelectedOptions: core.exerciseController.currentExercise["numberOfSelectedOptions"]
     property var correctColors: ["#ffffff", "#ffffff", "#ffffff", "#ffffff"]
     property ExerciseView exerciseView
     property var colors: ["#ffffff", "#ffffff", "#ffffff", "#ffffff"]
@@ -44,11 +45,11 @@ Column {
         tempColors[currentAnswer] = color
         colors = tempColors
         currentAnswer++
-        if (currentAnswer == 4) {
+        if (currentAnswer == numberOfSelectedOptions) {
             answerCompleted(answers)
             correctColors = exerciseView.chosenColors
             var selectedExerciseOptions = core.exerciseController.selectedExerciseOptions
-            for (var i = 0; i < 4; ++i)
+            for (var i = 0; i < numberOfSelectedOptions; ++i)
                 correctAnswerGrid.children[i].opacity = answers[i].toString().split("/").pop().split(".")[0] != selectedExerciseOptions[i].name ? 1:0
         }
         else {
@@ -61,12 +62,12 @@ Column {
         answers = ["exercise-images/current-rhythm.png", "exercise-images/unknown-rhythm.png", "exercise-images/unknown-rhythm.png", "exercise-images/unknown-rhythm.png"]
         colors = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"]
         correctColors = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"]
-        for (var i = 0; i < 4; ++i)
+        for (var i = 0; i < numberOfSelectedOptions; ++i)
             correctAnswerGrid.children[i].opacity = 0
     }
     function showCorrectAnswer(chosenExercises, chosenColors) {
         var tempAnswers = answers
-        for (var i = 0; i < 4; ++i)
+        for (var i = 0; i < numberOfSelectedOptions; ++i)
             tempAnswers[i] = "exercise-images/" + chosenExercises[i].name + ".png"
         answers = tempAnswers
         colors = chosenColors
@@ -82,7 +83,7 @@ Column {
         spacing: 10
 
         Repeater {
-            model: 4
+            model: numberOfSelectedOptions
 
             Rectangle {
                 id: correctAnswerRectangle
@@ -116,7 +117,7 @@ Column {
             anchors.centerIn: parent
             spacing: 10
             Repeater {
-                model: 4
+                model: numberOfSelectedOptions
 
                 Rectangle {
                     id: answerRectangle
@@ -154,7 +155,7 @@ Column {
         width: answerRect.width; height: 44
         anchors.horizontalCenter: parent.horizontalCenter
         text: i18n("backspace")
-        enabled: currentAnswer > 0 && currentAnswer < 4
+        enabled: currentAnswer > 0 && currentAnswer < numberOfSelectedOptions
         onClicked: {
             if (currentAnswer > 0) {
                 var tempAnswers = answers
