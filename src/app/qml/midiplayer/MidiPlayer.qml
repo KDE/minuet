@@ -120,18 +120,21 @@ Rectangle {
                 id: pitchSlider
 
                 source: "../images/multimedia-pitch.png"
+                tooltipText: "Pitch"
                 maximumValue: 12; minimumValue: -12; value: 0
             }
             MultimediaSlider {
                 id: tempoSlider
 
                 source: "../images/multimedia-speed.png"
+                tooltipText: "Tempo (bpm)"
                 maximumValue: 200; minimumValue: 50; value: 100
             }
             MultimediaSlider {
                 id: volumeSlider
 
                 source: "../images/multimedia-volume.png"
+                tooltipText: "Volume (%)"
                 maximumValue: 200; value: 100
             }
         }

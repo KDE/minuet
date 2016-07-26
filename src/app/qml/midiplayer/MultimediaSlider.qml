@@ -28,6 +28,7 @@ Item {
     property alias minimumValue: slider.from
     property alias maximumValue: slider.to
     property alias value: slider.value
+    property string tooltipText
 
     width: sliderImage.width; height: parent.height
 
@@ -36,7 +37,22 @@ Item {
         
         height: parent.height - sliderImage.height - 5
         orientation: Qt.Vertical
-//        activeFocusOnPress: true
+        stepSize: 1
+        hoverEnabled: true
+        ToolTip.visible: hovered
+        ToolTip.text: tooltipText
+        handle: Rectangle {
+            x: slider.leftPadding + (horizontal ? slider.visualPosition * (slider.availableWidth - width) : (slider.availableWidth - width) / 2)
+            y: slider.topPadding + (horizontal ? (slider.availableHeight - height) / 2 : slider.visualPosition * (slider.availableHeight - height))
+            implicitWidth: 16
+            implicitHeight: 16
+            radius: width / 2
+            color: slider.enabled ? (slider.pressed ? (slider.visualFocus ? "#cce0ff" : "#f6f6f6") : (slider.visualFocus ? "#f0f6ff" : "#ffffff")) : "#fdfdfd"
+            border.width: slider.visualFocus ? 2 : 1
+            border.color: slider.enabled ? (slider.visualFocus ? "#0066ff" : (slider.pressed ? "#808080" : "#909090")) : "#d6d6d6"
+
+            readonly property bool horizontal: slider.orientation === Qt.Horizontal
+        }
     }
     Image {
         id: sliderImage
