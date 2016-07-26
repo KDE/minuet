@@ -105,10 +105,6 @@ Item {
 
                 width: 124; height: 44
                 text: i18n("new question")
-                ToolTip {
-                    visible: exerciseView.state == "initial"
-                    text: "click here!"
-                }
                 onClicked: {
                     exerciseView.state = "waitingForAnswer"
                     core.exerciseController.randomlySelectExerciseOptions()

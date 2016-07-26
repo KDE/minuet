@@ -62,9 +62,10 @@ Item {
                 ListView {
                     id: listView
                     anchors.fill: parent
-                    spacing: -2
+                    ScrollIndicator.vertical: ScrollIndicator { }
                     delegate: ItemDelegate {
                         id: control
+                        height: 50
                         text: i18nc("technical term, do you have a musician friend?", modelData.name)
                         width: parent.width
                         onClicked: {
@@ -90,11 +91,23 @@ Item {
                                 text: control.text
                                 font: control.font
                                 color: control.enabled ? "#26282a" : "#bdbebf"
+                                width: parent.width
                                 wrapMode: Text.WordWrap
                                 anchors.verticalCenter: parent.verticalCenter
                                 visible: control.text
                                 horizontalAlignment: Text.AlignLeft
                                 verticalAlignment: Text.AlignVCenter
+                            }
+                        }
+                        background: Rectangle {
+                            implicitWidth: 100
+                            implicitHeight: 50
+                            color: control.visualFocus ? (control.pressed ? "#cce0ff" : "#e5efff") : (control.down ? "#bdbebf" : "#eeeeee")
+                            Rectangle {
+                                width: parent.width
+                                height: 1
+                                color: "#cccccc"
+                                anchors.bottom: parent.bottom
                             }
                         }
                     }

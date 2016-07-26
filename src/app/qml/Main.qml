@@ -33,7 +33,7 @@ ApplicationWindow {
     height: 480
     title: qsTr("Minuet")
     
-    property int menuBarWidth: 280
+    property int menuBarWidth: 300
 
     function exerciseViewStateChanged() {
         if (exerciseView.state == "waitingForAnswer")
