@@ -22,17 +22,12 @@
 
 #include "mainwindow.h"
 
-#include <interfaces/icore.h>
-#include <interfaces/iplugin.h>
-#include <interfaces/iplugincontroller.h>
-
 #include "core.h"
 #include "minuet_version.h"
 
 #include <KMessageBox>
 #include <KConfigDialog>
 #include <KActionCollection>
-#include <KTextEditor/ConfigPage>
 
 #include <QTimer>
 #include <QPointer>
@@ -88,13 +83,7 @@ void MainWindow::settingsConfigure()
     m_settingsMidi.setupUi(midiSettingsDialog);
     m_settingsMidi.kcfg_midiOutputPort->setVisible(false);
     m_settingsMidi.cboMidiOutputPort->setCurrentIndex(m_settingsMidi.cboMidiOutputPort->findText(MinuetSettings::midiOutputPort()));
-    dialog->addPage(midiSettingsDialog, i18n("General"), QStringLiteral("go-home"));
-
-    foreach (Minuet::IPlugin *plugin, Minuet::ICore::self()->pluginController()->loadedPlugins().values())
-        foreach (KTextEditor::ConfigPage *configPage, plugin->configPages()) {
-            KPageWidgetItem *item = dialog->addPage(configPage, configPage->name());
-            item->setIcon(configPage->icon());
-        }
+    dialog->addPage(midiSettingsDialog, i18n("MIDI"), QStringLiteral("media-playback-start"));
 
     dialog->setAttribute(Qt::WA_DeleteOnClose);
     dialog->exec();

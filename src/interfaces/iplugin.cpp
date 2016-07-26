@@ -34,11 +34,6 @@ IPlugin::~IPlugin()
 {
 }
 
-QList<KTextEditor::ConfigPage *> IPlugin::configPages() const
-{
-    return m_configPages;
-}
-
 }
 
 #include "moc_iplugin.cpp"

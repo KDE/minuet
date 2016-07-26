@@ -29,8 +29,6 @@
 
 #include <functional>
 
-#include "fluidsynthconfigpage.h"
-
 unsigned int FluidSynthSoundBackend::m_initialTime = 0;
 
 FluidSynthSoundBackend::FluidSynthSoundBackend(QObject *parent)
@@ -40,8 +38,6 @@ FluidSynthSoundBackend::FluidSynthSoundBackend(QObject *parent)
       m_song(0)
 {
     m_tempo = 120;
-
-    m_configPages << new FluidSynthConfigPage(new QWidget);
 
     m_settings = new_fluid_settings();
     fluid_settings_setstr(m_settings, "synth.reverb.active", "no");
