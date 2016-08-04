@@ -6,7 +6,7 @@
       "userMessage": "Hear the rhythm and then choose an answer from options below",
       "template": "lilypond-templates/rhythm.ly.tmpl",
       "numberOfSelectedOptions": 4,
-      "_icon": "minuet-rhythm.svg",
+      "_icon": "minuet-rhythms.svg",
       "children": [
         {
             "name": "Easy",
