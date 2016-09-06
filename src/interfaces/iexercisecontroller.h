@@ -27,7 +27,8 @@
 
 #include <QObject>
 #include <QJsonArray>
-#include <QJsonObject>
+#include <QVariantMap>
+#include <QDebug>
 
 namespace Minuet
 {
@@ -36,26 +37,27 @@ class MINUETINTERFACES_EXPORT IExerciseController : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QJsonArray exercises READ exercises)
-    Q_PROPERTY(QJsonObject currentExercise MEMBER m_currentExercise NOTIFY currentExerciseChanged)
+    Q_PROPERTY(QVariantMap currentExercise MEMBER m_currentExercise WRITE setCurrentExercise NOTIFY currentExerciseChanged)
     Q_PROPERTY(QJsonArray selectedExerciseOptions READ selectedExerciseOptions NOTIFY selectedExerciseOptionsChanged)
 
 public:
     virtual ~IExerciseController() override;
 
     virtual QJsonArray exercises() const = 0;
+    void setCurrentExercise(QVariantMap currentExercise);
     QJsonArray selectedExerciseOptions() const;
 
 public Q_SLOTS:
     virtual void randomlySelectExerciseOptions() = 0;
 
 Q_SIGNALS:
-    void currentExerciseChanged(QJsonObject newCurrentExercise);
+    void currentExerciseChanged(QVariantMap newCurrentExercise);
     void selectedExerciseOptionsChanged(QJsonArray newSelectedExerciseOptions);
 
 protected:
     explicit IExerciseController(QObject *parent = 0);
 
-    QJsonObject m_currentExercise;
+    QVariantMap m_currentExercise;
     QJsonArray m_selectedExerciseOptions;
 };
 

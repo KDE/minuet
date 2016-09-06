@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SettingsMidi</class>
+ <widget class="QWidget" name="SettingsMidi">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>374</width>
+    <height>200</height>
+   </rect>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="timidityLabel">
+     <property name="text">
+      <string>TiMidity++ location:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="KUrlRequester" name="kcfg_timidityLocation"/>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="timidityParametersLabel">
+     <property name="text">
+      <string>TiMidity++ parameters:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="KLineEdit" name="kcfg_timidityParameters"/>
+   </item>
+   <item row="4" column="1">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>109</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="midiOutputPortLabel">
+     <property name="text">
+      <string>MIDI output port:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QComboBox" name="cboMidiOutputPort"/>
+   </item>
+   <item row="3" column="1">
+    <widget class="KLineEdit" name="kcfg_midiOutputPort"/>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>KUrlRequester</class>
+   <extends>QWidget</extends>
+   <header>kurlrequester.h</header>
+  </customwidget>
+ </customwidgets>
+ <includes>
+  <include location="local">kcolorbutton.h</include>
+ </includes>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>cboMidiOutputPort</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>kcfg_midiOutputPort</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>175</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>183</x>
+     <y>143</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

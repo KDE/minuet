@@ -27,8 +27,7 @@
 
 #include <QObject>
 
-namespace Minuet
-{
+namespace Minuet {
 
 class MINUETINTERFACES_EXPORT IPlugin : public QObject
 {
