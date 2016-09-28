@@ -2,11 +2,35 @@
     "KPlugin": {
         "Category": "Sound Backends", 
         "Description": "This plugin provides Minuet with a FluidSynth-based implementation of sound backend.", 
+        "Description[ca@valencia]": "Este connector proporciona el Minuet amb una implementació del dorsal de so basada en el FluidSynth.", 
+        "Description[ca]": "Aquest connector proporciona el Minuet amb una implementació del dorsal de so basada en el FluidSynth.", 
+        "Description[es]": "Este complemento le proporciona a Minuet una implementación de motor de sonido basada en FluidSynth.", 
+        "Description[et]": "See plugin pakub Minuetile FluidSynthi-põhist heli-taustaprogrammi.", 
+        "Description[nl]": "Deze plug-in biedt Minuet een op FluidSynth gebaseerde implementatie van een backend voor geluid.", 
+        "Description[pl]": "Ta wtyczka dostarcza Minuetowi implementację silnika dźwięku opartą na FluidSynth", 
+        "Description[pt]": "Este 'plugin' oferece ao Minuet uma infra-estrutura de som implementada com base no FluidSynth.", 
+        "Description[pt_BR]": "Este plug-in fornece ao Minuet uma implementação de infraestrutura de som baseada no FluidSynth", 
+        "Description[sk]": "Tento plugin poskytuje Minuet s implementáciou zvukového backendu založeného na FluidSynthe.", 
+        "Description[sv]": "Insticksprogrammet tillhandahåller en implementering av ljudgränssnitt baserat på FluidSynth åt Minuet.", 
+        "Description[uk]": "Цей додаток забезпечує роботу Minuet із реалізацією звукового модуля на основі FluidSynth.", 
+        "Description[x-test]": "xxThis plugin provides Minuet with a FluidSynth-based implementation of sound backend.xx", 
         "Icon": "utilities-terminal", 
         "Id": "minuetfluidsynthsoundbackend", 
         "Name": "FluidSynth-based Audio Backend", 
+        "Name[ca@valencia]": "Dorsal d'àudio basat en el FluidSynth", 
+        "Name[ca]": "Dorsal d'àudio basat en el FluidSynth", 
+        "Name[es]": "Motor de sonido basado en FluidSynth", 
+        "Name[et]": "FluidSynthi põhine heli-taustaprogramm", 
+        "Name[nl]": "Op FluidSynth gebaseerde backend", 
+        "Name[pl]": "Silnik dźwięku oparty na FluidSynth", 
+        "Name[pt]": "Infra-Estrutura de Áudio Baseada no FluidSynth", 
+        "Name[pt_BR]": "Infraestrutura de áudio baseada no FluidSynth", 
+        "Name[sk]": "Zvukový backend založený na FluidSynthe", 
+        "Name[sv]": "FluidSynth-baserat ljudgränssnitt", 
+        "Name[uk]": "Звуковий модуль на основі FluidSynth", 
+        "Name[x-test]": "xxFluidSynth-based Audio Backendxx", 
         "ServiceTypes": [
             "Minuet/Plugin"
         ]
-    } 
+    }
 }
