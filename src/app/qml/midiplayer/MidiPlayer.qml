@@ -71,7 +71,7 @@ Rectangle {
                 text: i18n("Pitch: %1").arg(Math.round(pitch))
             }
         }
-    }    
+    }
     Item {
         id: item1
 
@@ -135,7 +135,7 @@ Rectangle {
 
                 source: "../images/multimedia-volume.png"
                 tooltipText: "Volume (%)"
-                maximumValue: 200; value: 100
+                maximumValue: 200; minimumValue: 50; value: 100
             }
         }
     }

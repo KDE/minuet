@@ -45,6 +45,8 @@ FluidSynthSoundBackend::FluidSynthSoundBackend(QObject *parent)
 
     m_synth = new_fluid_synth(m_settings);
 
+    fluid_synth_cc(m_synth, 1, 100, 0);
+
     int fluid_res = fluid_synth_sfload(m_synth, QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("soundfonts/GeneralUser-v1.47.sf2")).toLatin1(), 1);
     if (fluid_res == FLUID_FAILED)
         qDebug() << "Error when loading soundfont!";
@@ -61,17 +63,22 @@ FluidSynthSoundBackend::~FluidSynthSoundBackend()
 
 void FluidSynthSoundBackend::setPitch(qint8 pitch)
 {
-    Q_UNUSED(pitch);
+    m_pitch = pitch;
+    fluid_synth_cc(m_synth, 1, 101, 0);
+    fluid_synth_cc(m_synth, 1, 6, 12);
+    float accurate_pitch = (m_pitch + 12) * (2.0 / 3) * 1024;
+    fluid_synth_pitch_bend(m_synth, 1, qMin(qRound(accurate_pitch), 16 * 1024 - 1));
 }
 
 void FluidSynthSoundBackend::setVolume(quint8 volume)
 {
-    Q_UNUSED(volume);
+    m_volume = volume;
+    fluid_synth_cc(m_synth, 1, 7, m_volume * 127 / 200);
 }
 
 void FluidSynthSoundBackend::setTempo (quint8 tempo)
 {
-    Q_UNUSED(tempo);
+    m_tempo = tempo;
 }
 
 void FluidSynthSoundBackend::prepareFromExerciseOptions(QJsonArray selectedExerciseOptions)
