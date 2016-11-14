@@ -14,6 +14,7 @@
         "Description[sv]": "Insticksprogrammet tillhandahåller en implementering av ljudgränssnitt baserat på FluidSynth åt Minuet.", 
         "Description[uk]": "Цей додаток забезпечує роботу Minuet із реалізацією звукового модуля на основі FluidSynth.", 
         "Description[x-test]": "xxThis plugin provides Minuet with a FluidSynth-based implementation of sound backend.xx", 
+        "Description[zh_CN]": "本插件为 Minuet 提供基于 FluidSynth 实现的声音后端。", 
         "Icon": "utilities-terminal", 
         "Id": "minuetfluidsynthsoundbackend", 
         "Name": "FluidSynth-based Audio Backend", 
@@ -30,6 +31,7 @@
         "Name[sv]": "FluidSynth-baserat ljudgränssnitt", 
         "Name[uk]": "Звуковий модуль на основі FluidSynth", 
         "Name[x-test]": "xxFluidSynth-based Audio Backendxx", 
+        "Name[zh_CN]": "基于 FluidSynth 的音频后端", 
         "ServiceTypes": [
             "Minuet/Plugin"
         ]
