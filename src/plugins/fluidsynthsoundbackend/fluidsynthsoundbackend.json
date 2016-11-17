@@ -15,6 +15,7 @@
         "Description[uk]": "Цей додаток забезпечує роботу Minuet із реалізацією звукового модуля на основі FluidSynth.", 
         "Description[x-test]": "xxThis plugin provides Minuet with a FluidSynth-based implementation of sound backend.xx", 
         "Description[zh_CN]": "本插件为 Minuet 提供基于 FluidSynth 实现的声音后端。", 
+        "Description[zh_TW]": "這個外掛程式提供 Minuet 一個基於 FluidSynth 實作的音訊後端。", 
         "Icon": "utilities-terminal", 
         "Id": "minuetfluidsynthsoundbackend", 
         "Name": "FluidSynth-based Audio Backend", 
@@ -32,6 +33,7 @@
         "Name[uk]": "Звуковий модуль на основі FluidSynth", 
         "Name[x-test]": "xxFluidSynth-based Audio Backendxx", 
         "Name[zh_CN]": "基于 FluidSynth 的音频后端", 
+        "Name[zh_TW]": "基於 FluidSynth 的音訊後端", 
         "ServiceTypes": [
             "Minuet/Plugin"
         ]
