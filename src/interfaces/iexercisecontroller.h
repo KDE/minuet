@@ -23,7 +23,7 @@
 #ifndef MINUET_IEXERCISECONTROLLER_H
 #define MINUET_IEXERCISECONTROLLER_H
 
-#include "minuetinterfacesexport.h"
+#include <interfaces/minuetinterfacesexport.h>
 
 #include <QObject>
 #include <QJsonArray>

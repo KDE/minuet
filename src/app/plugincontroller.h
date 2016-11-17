@@ -25,7 +25,9 @@
 
 #include <interfaces/iplugincontroller.h>
 
+#ifndef Q_OS_ANDROID
 #include <KPluginMetaData>
+#endif
 
 namespace Minuet
 {
@@ -44,10 +46,12 @@ public:
     bool initialize(Core *core);
 
 private:
+#ifndef Q_OS_ANDROID
     QVector<KPluginMetaData> m_plugins;
 
     typedef QHash<KPluginMetaData, IPlugin *> InfoToPluginMap;
     InfoToPluginMap m_loadedPlugins;
+#endif
 };
 
 }

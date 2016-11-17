@@ -23,7 +23,7 @@
 #ifndef MINUET_IPLUGINCONTROLLER_H
 #define MINUET_IPLUGINCONTROLLER_H
 
-#include "minuetinterfacesexport.h"
+#include <interfaces/minuetinterfacesexport.h>
 
 #include <QObject>
 
@@ -35,7 +35,7 @@ class MINUETINTERFACES_EXPORT IPluginController : public QObject
     Q_OBJECT
 
 public:
-    ~IPluginController() override;
+    virtual ~IPluginController() override;
 
 protected:
     explicit IPluginController(QObject *parent = 0);

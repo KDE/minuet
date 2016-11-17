@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MinuetTheme" parent="android:style/Theme.Holo">
+        <!-- This disables the black preview screen -->
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+</resources>

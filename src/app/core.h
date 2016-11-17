@@ -33,22 +33,22 @@ class Core : public ICore
     Q_OBJECT
 
 public:
-    virtual ~Core();
+    virtual ~Core() override;
 
     static bool initialize();
 
     virtual IPluginController *pluginController() override;
-    virtual ISoundBackend *soundBackend() override;
+    virtual ISoundController *soundController() override;
     virtual IExerciseController *exerciseController() override;
     virtual IUiController *uiController() override;
 
-    void setSoundBackend(ISoundBackend *soundBackend);
+    void setSoundController(ISoundController *soundController);
 
 private:
     Core(QObject *parent = 0);
 
     IPluginController *m_pluginController;
-    ISoundBackend *m_soundBackend;
+    ISoundController *m_soundController;
     IExerciseController *m_exerciseController;
     IUiController *m_uiController;
 };

@@ -24,10 +24,16 @@
 
 #include "core.h"
 
-#include <interfaces/iplugin.h>
-#include <interfaces/isoundbackend.h>
+#if defined(Q_OS_ANDROID)
+#include "../plugins/csoundsoundcontroller/csoundsoundcontroller.h"
+#endif
 
+#include <interfaces/iplugin.h>
+#include <interfaces/isoundcontroller.h>
+
+#if !defined(Q_OS_ANDROID)
 #include <KPluginLoader>
+#endif
 
 #include <QDebug>
 
@@ -37,6 +43,7 @@ namespace Minuet
 PluginController::PluginController(QObject *parent)
     : IPluginController(parent)
 {
+#if !defined(Q_OS_ANDROID)
     m_plugins = KPluginLoader::findPlugins(QStringLiteral("minuet"), [&](const KPluginMetaData &meta) {
         if (!meta.serviceTypes().contains(QStringLiteral("Minuet/Plugin"))) {
             qDebug() << "Plugin" << meta.fileName() << "is installed into the minuet plugin directory, but does not have"
@@ -45,16 +52,20 @@ PluginController::PluginController(QObject *parent)
         }
         return true;
     });
+#endif
 }
 
 PluginController::~PluginController()
 {
+#if !defined(Q_OS_ANDROID)
     qDeleteAll(m_loadedPlugins.values().begin(), m_loadedPlugins.values().end());
     m_loadedPlugins.clear();
+#endif
 }
 
 bool PluginController::initialize(Core *core)
 {
+#if !defined(Q_OS_ANDROID)
     foreach (const KPluginMetaData &pluginMetaData, m_plugins)
     {
         if (m_loadedPlugins.value(pluginMetaData))
@@ -64,14 +75,20 @@ bool PluginController::initialize(Core *core)
         IPlugin *plugin = qobject_cast<IPlugin *>(loader.instance());
         if (plugin) {
             m_loadedPlugins.insert(pluginMetaData, plugin);
-            ISoundBackend *soundBackend = 0;
-            if (!core->soundBackend() && (soundBackend = qobject_cast<ISoundBackend *>(plugin))) {
-                qDebug() << "Setting soundbackend to" << soundBackend->metaObject()->className();
-                core->setSoundBackend(soundBackend);
+            ISoundController *soundController = 0;
+            if (!core->soundController() && (soundController = qobject_cast<ISoundController *>(plugin))) {
+                qDebug() << "Setting soundcontroller to" << soundController->metaObject()->className();
+                core->setSoundController(soundController);
             }
         }
     }
-
+#else
+        ISoundController *soundController = 0;
+        if (!core->soundController() && (soundController = new CsoundSoundController)) {
+            qDebug() << "Setting soundcontroller to" << soundController->metaObject()->className();
+            core->setSoundController(soundController);
+        }
+#endif
     return true;
 }
 

@@ -26,7 +26,7 @@
 #include "plugincontroller.h"
 #include "exercisecontroller.h"
 
-#include <interfaces/isoundbackend.h>
+#include <interfaces/isoundcontroller.h>
 
 namespace Minuet
 {
@@ -50,9 +50,9 @@ IPluginController *Core::pluginController()
     return m_pluginController;
 }
 
-ISoundBackend *Core::soundBackend()
+ISoundController *Core::soundController()
 {
-    return m_soundBackend;
+    return m_soundController;
 }
 
 IExerciseController *Core::exerciseController()
@@ -65,17 +65,17 @@ IUiController *Core::uiController()
     return m_uiController;
 }
 
-void Core::setSoundBackend(ISoundBackend *soundBackend)
+void Core::setSoundController(ISoundController *soundController)
 {
-    if (m_soundBackend != soundBackend) {
-        m_soundBackend = soundBackend;
-        emit soundBackendChanged(m_soundBackend);
+    if (m_soundController != soundController) {
+        m_soundController = soundController;
+        emit soundControllerChanged(m_soundController);
     }
 }
 
 Core::Core(QObject *parent)
     : ICore(parent),
-      m_soundBackend(0)
+      m_soundController(0)
 {
     m_pluginController = new PluginController(this);
     ((PluginController *)m_pluginController)->initialize(this);

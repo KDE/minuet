@@ -24,6 +24,8 @@
 
 #include "core.h"
 
+#include <QStandardPaths>
+
 #include <QQmlContext>
 #include <QQmlApplicationEngine>
 
@@ -31,8 +33,7 @@ namespace Minuet
 {
 
 UiController::UiController(QObject *parent)
-    : IUiController(parent)//,
-      //m_mainWindow(new MainWindow(qobject_cast<Core *>(parent)))
+    : IUiController(parent)
 {
 }
 
@@ -45,9 +46,8 @@ bool UiController::initialize(Core *core)
     QQmlApplicationEngine *engine = new QQmlApplicationEngine(this);
     QQmlContext *rootContext = engine->rootContext();
     rootContext->setContextProperty(QStringLiteral("core"), core);
-    engine->load(QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::DataLocation, QStringLiteral("qml/Main.qml"))));
+    engine->load(QUrl("qrc:/Main.qml"));
 
-    //m_mainWindow->show();
     return true;
 }
 

@@ -7,7 +7,7 @@
 ** published by the Free Software Foundation; either version 2 of
 ** the License or (at your option) version 3 or any later version
 ** accepted by the membership of KDE e.V. (or its successor approved
-** by the membership of KDE e.V.), which shall act as a proxy 
+** by the membership of KDE e.V.), which shall act as a proxy
 ** defined in Section 14 of version 3 of the license.
 **
 ** This program is distributed in the hope that it will be useful,
@@ -22,113 +22,180 @@
 
 import QtQuick 2.7
 import QtQuick.Controls 2.0
-
-import "pianoview"
-import "midiplayer"
+import QtQuick.Layouts 1.3
+import QtQuick.Window 2.0
 
 ApplicationWindow {
-    id: mainItem
+    id: applicationWindow
     visible: true
-    width: 640
-    height: 480
-    title: qsTr("Minuet")
-    
-    property int menuBarWidth: 300
+    width: Screen.desktopAvailableWidth; height: Screen.desktopAvailableHeight
 
-    function exerciseViewStateChanged() {
-        if (exerciseView.state == "waitingForAnswer")
-            rhythmAnswerView.resetAnswers()
-    }
+    property string titleText: "Minuet"
 
-    MinuetMenu {
-        id: minuetMenu
+    Component {
+        id: androidToolBar
+        ToolBar {
+            RowLayout {
+                spacing: 20
+                anchors.fill: parent
+                height: parent.height / 5
 
-        width: menuBarWidth; height: parent.height - midiPlayer.height
-        anchors { left: parent.left; top: parent.top }
+                ToolButton {
+                    contentItem: Image {
+                        fillMode: Image.Pad
+                        horizontalAlignment: Image.AlignHCenter
+                        verticalAlignment: Image.AlignVCenter
+                        source: "qrc:/menu.png"
+                    }
+                    onClicked: drawer.open()
+                }
 
-        onBackPressed: {
-            core.soundBackend.reset()
-            pianoView.clearAllMarks()
+                Label {
+                    text: titleText
+                    elide: Label.ElideRight
+                    font { weight: Font.Bold; pixelSize: 16 }
+                    horizontalAlignment: Qt.AlignHCenter
+                    verticalAlignment: Qt.AlignVCenter
+                    Layout.fillWidth: true
+                }
+
+                ToolButton {
+                    contentItem: Image {
+                        fillMode: Image.Pad
+                        horizontalAlignment: Image.AlignHCenter
+                        verticalAlignment: Image.AlignVCenter
+                        source: "qrc:/more_vert.png"
+                    }
+                    onClicked: optionsMenu.open()
+
+                    Menu {
+                        id: optionsMenu
+                        x: parent.width - width
+                        transformOrigin: Menu.TopRight
+                        MenuItem {
+                            text: "About"
+                            onTriggered: aboutDialog.open()
+                        }
+                    }
+                }
+            }
         }
     }
-    MidiPlayer {
-        id: midiPlayer
-        
-        width: menuBarWidth
-        playbackLabel: core.soundBackend.playbackLabel
-        soundBackendState: core.soundBackend.state
 
-        onPlayActivated: core.soundBackend.play()
-        onPauseActivated: core.soundBackend.pause()
-        onStopActivated: core.soundBackend.stop()
-    }
-    Image {
-        id: background
+    Item {
+        id: mainContainer
+        anchors { right: parent.right; top: parent.top; bottom: parent.bottom; left: (Qt.platform.os == "android") ? parent.left:drawer.right; margins: Screen.width >= 1024 ? 20:5 }
 
-        width: parent.width - menuBarWidth; height: parent.height
-        anchors.right: parent.right
-        source: "images/minuet-background.png"
-        fillMode: Image.Tile
-        clip: true
-
-        PianoView {
-            id: pianoView
-
-            anchors { bottom: parent.bottom; bottomMargin: 5; horizontalCenter: parent.horizontalCenter }
-            visible: minuetMenu.currentExercise != undefined && minuetMenu.currentExercise["playMode"] != "rhythm"
-        }
-        RhythmAnswerView {
-            id: rhythmAnswerView
-            
-            anchors { bottom: parent.bottom; bottomMargin: 14; horizontalCenter: parent.horizontalCenter }
-            visible: minuetMenu.currentExercise != undefined && minuetMenu.currentExercise["playMode"] == "rhythm"
-            exerciseView: exerciseView
-
-            onAnswerCompleted: exerciseView.checkAnswers(answers)
+        Image {
+            source: "qrc:/qml/images/minuet-background.png"
+            anchors.fill: parent
+            fillMode: Image.Tile
         }
         ExerciseView {
             id: exerciseView
-
-            width: background.width; height: minuetMenu.height + 20
-            anchors { top: background.top; horizontalCenter: background.horizontalCenter }
+            anchors.fill: parent
 
             currentExercise: minuetMenu.currentExercise
+        }
+/*      THIS IS THE DASHBOARD
+        Frame {
+            id: frame
+            anchors { fill: parent; margins: 15 }
+            Label {
+                id: greetings
+                width: parent.width
+                wrapMode: Text.WordWrap
+                horizontalAlignment: Text.AlignHCenter
+                text: "Hi, what kind of ear training exercise do you want to practice today?"
+                font { family: "Roboto" }
+            }
+            Grid {
+                rows: 2
+                columns: 2
+                anchors.centerIn: parent
+                spacing: 40
+                Repeater {
+                    model: [
+                        { icon: "qrc:/minuet-chords.svg", title: "Chords" },
+                        { icon: "qrc:/minuet-intervals.svg", title: "Intervals" },
+                        { icon: "qrc:/minuet-rhythms.svg", title: "Rhythms" },
+                        { icon: "qrc:/minuet-scales.svg", title: "Scales" }
+                    ]
+                    Column {
+                        Image {
+                            source: modelData.icon
+                            fillMode: Image.PreserveAspectFit
+                            sourceSize.width: frame.width/4;
+                            width: frame.width/4; height: width
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    frame.visible = true
+                                    stackView.currentExerciseMenuItem = null
+                                    exerciseController.currentExercise ={}
+                                    titleText = "Minuet"
+                                    
+                                    while (stackView.depth > 1) {
+                                        stackView.pop()
+                                        minuetMenu.exerciseArray.pop()
+                                        currentExerciseParent.text = minuetMenu.exerciseArray.toString()
+                                        minuetMenu.backPressed()
+                                    }
+                                    
+                                    for (var i = 0; i < exerciseController.exercises.length; ++i) {
+                                        if (exerciseController.exercises[i].name == modelData.title) {
+                                            frame.visible = true
+                                            stackView.push(categoryMenu.createObject(stackView, {model: exerciseController.exercises[i].children}))
+                                            currentExerciseParent.text = exerciseController.exercises[i].name
+                                            minuetMenu.exerciseArray.push(exerciseController.exercises[i].name)
+                                            break
+                                        }
+                                    }
+                                    drawer.open()
+                                }
+                            }
+                        }
+                        Label {
+                            width: frame.width/4
+                            wrapMode: Text.WordWrap
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            horizontalAlignment: Text.AlignHCenter
+                            text: modelData.title
+                            font { family: "Roboto" }
+                        }
+                    }
+                }
+            }
+        }
+*/
+    }
 
-            onAnswerHoverEnter: pianoView.noteMark(chan, pitch, vel, color)
-            onAnswerHoverExit: pianoView.noteUnmark(chan, pitch, vel)
-            onAnswerClicked: rhythmAnswerView.answerClicked(answerImageSource, color)
-            onStateChanged: mainItem.exerciseViewStateChanged()
-            onShowCorrectAnswer: rhythmAnswerView.showCorrectAnswer(chosenExercises, chosenColors)
+    MinuetMenuContainer {
+        id: drawer
+
+        MinuetMenu {
+            id: minuetMenu
+            onBackPressed: core.soundController.reset()
+            onCurrentExerciseChanged: if (Qt.platform.os == "android") drawer.close()
         }
     }
-    Binding {
-        target: core.soundBackend
-        property: "pitch"
-        value: midiPlayer.pitch
+
+    AboutDialog {
+        id: aboutDialog
     }
-    Binding {
-        target: core.soundBackend
-        property: "volume"
-        value: midiPlayer.volume
-    }
-    Binding {
-        target: core.soundBackend
-        property: "tempo"
-        value: midiPlayer.tempo
-    }
+    
     Binding {
         target: core.exerciseController
         property: "currentExercise"
         value: minuetMenu.currentExercise
     }
+    
     Binding {
-        target: core.soundBackend
+        target: core.soundController
         property: "playMode"
         value: (minuetMenu.currentExercise != undefined) ? minuetMenu.currentExercise["playMode"]:""
     }
-    Connections {
-        target: core.exerciseController
-        onSelectedExerciseOptionsChanged: pianoView.clearAllMarks()
-        onCurrentExerciseChanged: pianoView.clearAllMarks()
-    }
+    
+    Component.onCompleted: if (Qt.platform.os == "android") header = androidToolBar.createObject(applicationWindow)
 }
