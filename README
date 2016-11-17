@@ -8,7 +8,7 @@ Minuet features a rich set of ear training's exercises and new ones can be  seam
 
 # How to build Minuet
 
-    install KF5 and FluidSynth
+    install KF5 and Drumstick
     $ git clone git://anongit.kde.org/minuet
     $ cd minuet
     $ mkdir build

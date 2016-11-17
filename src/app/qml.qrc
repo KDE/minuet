@@ -1,0 +1,44 @@
+<RCC>
+    <qresource prefix="/">
+        <!-- QML files -->
+        <file alias="Main.qml">qml/Main.qml</file>
+        <file alias="AboutDialog.qml">qml/AboutDialog.qml</file>
+        <file alias="MinuetMenu.qml">qml/MinuetMenu.qml</file>
+        <file alias="MinuetMenuContainer.qml">qml/MinuetMenuContainer.qml</file>
+        <file alias="ImageItemDelegate.qml">qml/ImageItemDelegate.qml</file>
+        <file alias="+android/MinuetMenuContainer.qml">+android/qml/MinuetMenuContainer.qml</file>
+        <file alias="ExerciseView.qml">qml/ExerciseView.qml</file>
+        <file alias="BlackKey.qml">qml/PianoView/BlackKey.qml</file>
+        <file alias="Octave.qml">qml/PianoView/Octave.qml</file>
+        <file alias="PianoView.qml">qml/PianoView/PianoView.qml</file>
+        <file alias="WhiteKey.qml">qml/PianoView/WhiteKey.qml</file>
+
+        <!-- Images -->
+        <file>qml/images/minuet-background.png</file>
+        <file>qml/images/minuet-drawer.png</file>
+        <file alias="menu.png">qml/images/menu.png</file>
+        <file alias="keyboard_arrow_left.png">qml/images/keyboard_arrow_left.png</file>
+        <file alias="more_vert.png">qml/images/more_vert.png</file>
+        <file alias="minuet.png">icons/64-apps-minuet.png</file>
+        <file alias="minuet-chords.svg">icons/22-actions-minuet-chords.svg</file>
+        <file alias="minuet-intervals.svg">icons/22-actions-minuet-intervals.svg</file>
+        <file alias="minuet-rhythms.svg">icons/22-actions-minuet-rhythms.svg</file>
+        <file alias="minuet-scales.svg">icons/22-actions-minuet-scales.svg</file>
+
+        <file alias="exercise-images/current-rhythm.png">../../data/exercise-images/current-rhythm.png</file>
+        <file alias="exercise-images/eighth-dot-sixteenth.png">../../data/exercise-images/eighth-dot-sixteenth.png</file>
+        <file alias="exercise-images/eighth-eighth.png">../../data/exercise-images/eighth-eighth.png</file>
+        <file alias="exercise-images/eighth-sixteenth-sixteenth.png">../../data/exercise-images/eighth-sixteenth-sixteenth.png</file>
+        <file alias="exercise-images/quarter.png">../../data/exercise-images/quarter.png</file>
+        <file alias="exercise-images/sixteenth-eighth-dot.png">../../data/exercise-images/sixteenth-eighth-dot.png</file>
+        <file alias="exercise-images/sixteenth-eighth-sixteenth.png">../../data/exercise-images/sixteenth-eighth-sixteenth.png</file>
+        <file alias="exercise-images/sixteenth-sixteenth-eighth.png">../../data/exercise-images/sixteenth-sixteenth-eighth.png</file>
+        <file alias="exercise-images/sixteenth-sixteenth-sixteenth-sixteenth.png">../../data/exercise-images/sixteenth-sixteenth-sixteenth-sixteenth.png</file>
+        <file alias="exercise-images/unknown-rhythm.png">../../data/exercise-images/unknown-rhythm.png</file>
+
+        <!-- Qt Quick Controls 2 configuration files -->
+        <file>qtquickcontrols2.conf</file>
+        <file>+android/qtquickcontrols2.conf</file>
+        <file>+windows/qtquickcontrols2.conf</file>
+    </qresource>
+</RCC>

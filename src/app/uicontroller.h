@@ -23,8 +23,6 @@
 #ifndef MINUET_UICONTROLLER_H
 #define MINUET_UICONTROLLER_H
 
-#include "mainwindow.h"
-
 #include <interfaces/iuicontroller.h>
 
 namespace Minuet
@@ -41,9 +39,6 @@ public:
     ~UiController() override;
 
     bool initialize(Core *core);
-
-private:
-    QScopedPointer<MainWindow> m_mainWindow;
 };
 
 }

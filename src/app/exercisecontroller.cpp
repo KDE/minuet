@@ -22,7 +22,9 @@
 
 #include "exercisecontroller.h"
 
+#if !defined(Q_OS_ANDROID)
 #include <KLocalizedString>
+#endif
 
 #include <QDir>
 #include <qqml.h>
@@ -52,10 +54,10 @@ bool ExerciseController::initialize(Core *core)
     bool definitionsMerge = mergeJsonFiles("definitions", m_definitions);
     bool exercisesMerge = mergeJsonFiles("exercises", m_exercises, true, "name", "children");
 
-     QFile file("merged-exercises.json");
-     file.open(QIODevice::WriteOnly);
-     file.write(QJsonDocument(m_exercises).toJson());
-     file.close();
+//    QFile file("merged-exercises.json");
+//    file.open(QIODevice::WriteOnly);
+//    file.write(QJsonDocument(m_exercises).toJson());
+//    file.close();
 
     return definitionsMerge & exercisesMerge;
 }
@@ -115,13 +117,24 @@ QJsonArray ExerciseController::exercises() const
 bool ExerciseController::mergeJsonFiles(const QString directoryName, QJsonObject &targetObject, bool applyDefinitionsFlag, QString commonKey, QString mergeKey)
 {
     m_errorString.clear();
+#if defined(Q_OS_ANDROID)
+    QStringList jsonDirs;
+    jsonDirs += "/data/data/org.kde.minuet/qt-reserved-files/share/minuet/" + directoryName;
+#elif defined(Q_OS_LINUX)
     QStringList jsonDirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, directoryName, QStandardPaths::LocateDirectory);
+#elif defined(Q_OS_WIN)
+    QStringList jsonDirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, QStringLiteral("minuet/") + directoryName, QStandardPaths::LocateDirectory);
+#endif
     foreach (const QString &jsonDirString, jsonDirs) {
         QDir jsonDir(jsonDirString);
         foreach (const QString &json, jsonDir.entryList(QDir::Files)) {
             QFile jsonFile(jsonDir.absoluteFilePath(json));
             if (!jsonFile.open(QIODevice::ReadOnly)) {
+#if !defined(Q_OS_ANDROID)
                 m_errorString = i18n("Couldn't open json file \"%1\".", jsonDir.absoluteFilePath(json));
+#else
+                m_errorString = QStringLiteral("Couldn't open json file \"%1\".").arg(jsonDir.absoluteFilePath(json));
+#endif
                 return false;
             }
             QJsonParseError error;

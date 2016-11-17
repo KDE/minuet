@@ -23,7 +23,7 @@
 #ifndef MINUET_IUICONTROLLER_H
 #define MINUET_IUICONTROLLER_H
 
-#include "minuetinterfacesexport.h"
+#include <interfaces/minuetinterfacesexport.h>
 
 #include <QObject>
 
@@ -35,7 +35,7 @@ class MINUETINTERFACES_EXPORT IUiController : public QObject
     Q_OBJECT
 
 public:
-    ~IUiController() override;
+    virtual ~IUiController() override;
 
 protected:
     explicit IUiController(QObject *parent = 0);

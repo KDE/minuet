@@ -36,4 +36,4 @@ IPlugin::~IPlugin()
 
 }
 
-#include "moc_iplugin.cpp"
+//#include "moc_iplugin.cpp"
