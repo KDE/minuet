@@ -97,7 +97,7 @@ Flickable {
                 model: 7
 
                 Label {
-                    text: "Octave " + (1 + modelData)
+                    text: i18nc("technical term, do you have a musician friend?", "Octave") + " " + (1 + modelData)
                     width: 7 * keyWidth
                     color: "white"
                     height: parent.height

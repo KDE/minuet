@@ -53,7 +53,7 @@ Item {
                 for (var i = 0; i < length; ++i)
                     answerOption.createObject(answerGrid, {model: currentExerciseOptions[i], index: i, color: internal.colors[i%24]})
             }
-            messageText.text = "Click 'new question' to start!"
+            messageText.text = i18n("Click 'new question' to start!")
             exerciseView.state = "waitingForNewQuestion"
         }
     }
@@ -75,7 +75,7 @@ Item {
                 break
             }
         }
-        messageText.text = (internal.answersAreRight) ? "Congratulations, you answered correctly!":"Oops, not this time! Try again!"
+        messageText.text = (internal.answersAreRight) ? i18n("Congratulations, you answered correctly!"):i18n("Oops, not this time! Try again!")
         if (currentExercise.numberOfSelectedOptions == 1)
             highlightRightAnswer()
         else
@@ -112,8 +112,7 @@ Item {
             font.pointSize: Screen.width >= 1024 ? 18:14
             anchors.horizontalCenter: parent.horizontalCenter
             wrapMode: Text.WordWrap
-            //text: (currentExercise != undefined) ? i18nc("technical term, do you have a musician friend?", currentExercise["userMessage"]):""
-            text: (currentExercise != undefined) ? currentExercise["userMessage"]:""
+            text: (currentExercise != undefined) ? i18nc("technical term, do you have a musician friend?", currentExercise["userMessage"]):""
         }
         Text {
             id: messageText
@@ -131,7 +130,7 @@ Item {
                 id: newPlayQuestionButton
 
                 width: 120; height: 40
-                text: (exerciseView.state == "waitingForNewQuestion") ? "new question":"play question"
+                text: (exerciseView.state == "waitingForNewQuestion") ? i18n("new question"):i18n("play question")
                 enabled: !animation.running
 
                 onClicked: {
@@ -152,8 +151,7 @@ Item {
                 id: giveUpButton
 
                 width: 120; height: 40
-                //text: i18n("give up")
-                text: "give up"
+                text: i18n("give up")
                 enabled: exerciseView.state == "waitingForAnswer" && !animation.running
 
                 onClicked: {
@@ -164,8 +162,7 @@ Item {
         GroupBox {
             id: availableAnswers
 
-            //title: qsTr("Available Answers")
-            title: "Available Answers"
+            title: i18n("Available Answers")
             anchors.horizontalCenter: parent.horizontalCenter
             Layout.preferredWidth: parent.width
             Layout.fillHeight: true
@@ -201,8 +198,7 @@ Item {
                                 property string originalText: model.name
 
                                 visible: currentExercise != undefined && currentExercise["playMode"] != "rhythm"
-                                //text: i18nc("technical term, do you have a musician friend?", model.name)
-                                text: model.name
+                                text: i18nc("technical term, do you have a musician friend?", model.name)
                                 width: parent.width - 4
                                 anchors.centerIn: parent
                                 horizontalAlignment: Qt.AlignHCenter
@@ -259,8 +255,7 @@ Item {
         GroupBox {
             id: yourAnswers
 
-            //title: qsTr("Your Answer(s)")
-            title: "Your Answer(s)"
+            title: i18n("Your Answer(s)")
             Layout.preferredWidth: parent.width
             anchors.horizontalCenter: parent.horizontalCenter
 
@@ -275,7 +270,7 @@ Item {
         Button {
             id: backspaceButton
 
-            text: "backspace"
+            text: i18n("backspace")
             anchors.horizontalCenter: parent.horizontalCenter
             visible: currentExercise != undefined && currentExercise["playMode"] == "rhythm"
             enabled: internal.currentAnswer > 0 && internal.currentAnswer < 4

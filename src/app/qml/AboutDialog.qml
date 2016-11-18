@@ -73,7 +73,7 @@ Popup {
 
         Loader {
             sourceComponent: aboutLabel
-            onLoaded: item.text = "Minuet is a <a href='http://kde.org'>KDE</a> " + "application for music education."
+            onLoaded: item.text = "Minuet is a <a href='http://kde.org'>KDE</a> application for music education."
         }
 
         Loader {

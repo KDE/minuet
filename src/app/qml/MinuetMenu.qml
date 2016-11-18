@@ -83,7 +83,7 @@ Item {
                 currentExercise = undefined
                 stackView.pop()
                 internal.exercisePath.pop()
-                currentExerciseParent.text = internal.exercisePath.toString()
+                currentExerciseParent.text = i18nc("technical term, do you have a musician friend?", internal.exercisePath.toString())
                 backPressed()
                 /*
                 titleText = "Minuet"
@@ -107,8 +107,7 @@ Item {
                 delegate: ImageItemDelegate {
                     id: control
                     width: parent.width; height: 50
-//                    text: i18nc("technical term, do you have a musician friend?", modelData.name)
-                    text: modelData.name
+                    text: i18nc("technical term, do you have a musician friend?", modelData.name)
                     onClicked: {
                         var children = modelData.children
                         if (!children) {
@@ -117,7 +116,7 @@ Item {
                         else {
                             internal.exercisePath.push(modelData.name)
                             stackView.push(categoryMenu.createObject(stackView, {model: children}))
-                            currentExerciseParent.text = modelData.name
+                            currentExerciseParent.text = i18nc("technical term, do you have a musician friend?", modelData.name)
                         }
                     }
                 }
