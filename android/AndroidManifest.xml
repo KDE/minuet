@@ -6,7 +6,6 @@
 		     android:theme="@style/MinuetTheme">
                 <activity android:name="org.qtproject.qt5.android.bindings.QtActivity"
                           android:label="Minuet"
-			  android:screenOrientation="portrait"
                           android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|locale|fontScale|keyboard|keyboardHidden|navigation">
                         <intent-filter>
                                 <action android:name="android.intent.action.MAIN"/>

@@ -29,6 +29,10 @@
 #include <QQmlContext>
 #include <QQmlApplicationEngine>
 
+#ifndef Q_OS_ANDROID
+#include <KLocalizedContext>
+#endif
+
 namespace Minuet
 {
 
@@ -46,6 +50,11 @@ bool UiController::initialize(Core *core)
     QQmlApplicationEngine *engine = new QQmlApplicationEngine(this);
     QQmlContext *rootContext = engine->rootContext();
     rootContext->setContextProperty(QStringLiteral("core"), core);
+#ifndef Q_OS_ANDROID
+    rootContext->setContextObject(new KLocalizedContext(engine));
+#else
+    rootContext->setContextObject(new DummyAndroidLocalizer(engine));
+#endif
     engine->load(QUrl("qrc:/Main.qml"));
 
     return true;

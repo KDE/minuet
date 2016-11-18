@@ -25,6 +25,28 @@
 
 #include <interfaces/iuicontroller.h>
 
+#ifdef Q_OS_ANDROID
+#include <QVariant>
+
+class DummyAndroidLocalizer : public QObject
+{
+    Q_OBJECT
+
+public:
+    explicit DummyAndroidLocalizer(QObject *parent = 0) : QObject(parent) { }
+
+    Q_INVOKABLE QString i18n (const QString &message, const QVariant &p1=QVariant(), const QVariant &p2=QVariant(), const QVariant &p3=QVariant(), const QVariant &p4=QVariant(), const QVariant &p5=QVariant(), const QVariant &p6=QVariant(), const QVariant &p7=QVariant(), const QVariant &p8=QVariant(), const QVariant &p9=QVariant(), const QVariant &p10=QVariant()) const
+    {
+        return message;
+    }
+
+    Q_INVOKABLE QString i18nc (const QString &context, const QString &message, const QVariant &p1=QVariant(), const QVariant &p2=QVariant(), const QVariant &p3=QVariant(), const QVariant &p4=QVariant(), const QVariant &p5=QVariant(), const QVariant &p6=QVariant(), const QVariant &p7=QVariant(), const QVariant &p8=QVariant(), const QVariant &p9=QVariant(), const QVariant &p10=QVariant()) const
+    {
+        return message;
+    }
+};
+#endif
+
 namespace Minuet
 {
 

@@ -89,7 +89,7 @@ Flickable {
 
         Row {
             id: octaveNumber
-            width: parent.width; height: 20
+            width: parent.width; height: 18
             anchors.left: parent.left
             anchors.leftMargin: 2 * keyWidth
 
@@ -97,7 +97,7 @@ Flickable {
                 model: 7
 
                 Label {
-                    text: "Octave " + (1 + modelData)
+                    text: i18nc("technical term, do you have a musician friend?", "Octave") + " " + (1 + modelData)
                     width: 7 * keyWidth
                     color: "white"
                     height: parent.height

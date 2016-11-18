@@ -55,7 +55,9 @@ include_directories(${minuet_SOURCE_DIR}/src/ ${minuet_BINARY_DIR}/src/)
 
 add_subdirectory(src)
 add_subdirectory(data)
-add_subdirectory(doc)
+IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
+    add_subdirectory(doc)
+ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     install(FILES org.kde.minuet.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
