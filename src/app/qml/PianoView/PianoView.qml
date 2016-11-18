@@ -89,7 +89,7 @@ Flickable {
 
         Row {
             id: octaveNumber
-            width: parent.width; height: 20
+            width: parent.width; height: 18
             anchors.left: parent.left
             anchors.leftMargin: 2 * keyWidth
 

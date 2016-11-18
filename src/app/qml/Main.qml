@@ -24,6 +24,7 @@ import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.0
+import QtQuick.Controls.Material 2.0
 
 ApplicationWindow {
     id: applicationWindow
@@ -35,6 +36,8 @@ ApplicationWindow {
     Component {
         id: androidToolBar
         ToolBar {
+            Material.primary: "#181818"
+            Material.foreground: "white"
             RowLayout {
                 spacing: 20
                 anchors.fill: parent
@@ -177,7 +180,7 @@ ApplicationWindow {
         MinuetMenu {
             id: minuetMenu
             onBackPressed: core.soundController.reset()
-            onCurrentExerciseChanged: if (Qt.platform.os == "android") drawer.close()
+            onCurrentExerciseChanged: if (Qt.platform.os == "android" && currentExercise != undefined) drawer.close()
         }
     }
 

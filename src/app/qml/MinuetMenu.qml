@@ -24,9 +24,9 @@ import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
 
-ColumnLayout {
+Item {
     anchors.fill: parent
-    spacing: 0
+    //spacing: 0
 
     property var currentExercise: undefined
     
@@ -38,14 +38,18 @@ ColumnLayout {
     }
 
     Image {
+        id: image
+
         source: "qrc:/qml/images/minuet-drawer.png"
-        Layout.preferredWidth: parent.width; Layout.preferredHeight: 0.53125 * Layout.preferredWidth
+        width: parent.width; height: 0.53125 * width
         fillMode: Image.PreserveAspectFit
-//        visible: Qt.platform.os == "android"
     }
 
     Item {
-        Layout.preferredWidth: parent.width; Layout.preferredHeight: (stackView.depth > 1) ? 50:0
+        id: breadcrumb
+
+        width: parent.width; height: (stackView.depth > 1) ? 50:0
+        anchors.top: image.bottom
         clip: true
         RowLayout {
             anchors.fill: parent
@@ -53,6 +57,7 @@ ColumnLayout {
                 id: backButton
 
                 fillMode: Image.Pad
+                width: 24; height: 24
                 horizontalAlignment: Image.AlignHCenter
                 verticalAlignment: Image.AlignVCenter
                 source: "qrc:/keyboard_arrow_left.png"
@@ -90,7 +95,8 @@ ColumnLayout {
     StackView {
         id: stackView
 
-        Layout.preferredWidth: parent.width; Layout.fillHeight: true
+        width: parent.width; height: parent.height - image.height - breadcrumb.height
+        anchors.top: breadcrumb.bottom
         clip: true
         focus: true
 
