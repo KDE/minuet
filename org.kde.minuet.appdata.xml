@@ -12,8 +12,10 @@
   <name xml:lang="de">Minuet</name>
   <name xml:lang="en-GB">Minuet</name>
   <name xml:lang="es">Minuet</name>
+  <name xml:lang="et">Minuet</name>
   <name xml:lang="gl">Minuet</name>
   <name xml:lang="nl">Minuet</name>
+  <name xml:lang="nn">Minuet</name>
   <name xml:lang="pl">Minuet</name>
   <name xml:lang="pt">Minuet</name>
   <name xml:lang="pt-BR">Minuet</name>
@@ -23,6 +25,7 @@
   <name xml:lang="uk">Minuet</name>
   <name xml:lang="x-test">xxMinuetxx</name>
   <name xml:lang="zh-CN">Minuet</name>
+  <name xml:lang="zh-TW">Minuet</name>
   <summary>Music Education Software</summary>
   <summary xml:lang="ast">Software educativu musical</summary>
   <summary xml:lang="ca">Programari d'educació musical</summary>
@@ -32,8 +35,10 @@
   <summary xml:lang="de">Musik-Lernprogramm</summary>
   <summary xml:lang="en-GB">Music Education Software</summary>
   <summary xml:lang="es">Software de aprendizaje musical</summary>
+  <summary xml:lang="et">Muusika õpitarkvara</summary>
   <summary xml:lang="gl">Software de ensino musical</summary>
   <summary xml:lang="nl">Software voor muziekonderwijs</summary>
+  <summary xml:lang="nn">Pedagogisk musikkprogram</summary>
   <summary xml:lang="pl">Muzyczne oprogramowanie edukacyjne </summary>
   <summary xml:lang="pt">Aplicação de Educação Musical</summary>
   <summary xml:lang="pt-BR">Software para Ensino de Música</summary>
@@ -42,6 +47,7 @@
   <summary xml:lang="uk">Програмне забезпечення для навчання музики</summary>
   <summary xml:lang="x-test">xxMusic Education Softwarexx</summary>
   <summary xml:lang="zh-CN">音乐教育软件</summary>
+  <summary xml:lang="zh-TW">音樂教育軟體</summary>
   <description>
     <p>Minuet is an application for music education. It features a set of ear training exercises regarding intervals, chords, scales and more.</p>
     <p xml:lang="ast">Minuet ye una aplicación pa la educación musical. Tien como carauterístiques un conxuntu d'exercicios d'entrenamientu auditivu respeuto a intervalos, acordes, escales y más.</p>
@@ -51,8 +57,10 @@
     <p xml:lang="de">Minuet ist ein Musik-Lernprogramm. Es bietet Hörübungen zu Intervallen, Akkorden, Tonleitern und mehr.</p>
     <p xml:lang="en-GB">Minuet is an application for music education. It features a set of ear training exercises regarding intervals, chords, scales and more.</p>
     <p xml:lang="es">Minuet es una aplicación para el aprendizaje musical. Contiene un conjunto de ejercicios de entrenamiento auditivo que contemplan el uso de intervalos, acordes y escalas, entre otras cosas.</p>
+    <p xml:lang="et">Minuet on muusikaõpetuseks mõeldud rakendus. See pakub valikut kuulamisharjutusi intervallide, akordide, heliredeli ja muu sellise kohta.</p>
     <p xml:lang="gl">Minuet é un programa para ensino musical. Conta cunha serie de exercicios de adestramento con intervalos, acordes, escalas e máis.</p>
     <p xml:lang="nl">Minuet is een toepassing voor muziekonderwijs. Het biedt een set mogelijkheden voor trainingsoefeningen voor het gehoor betreffende intervallen, akkoorden, toonladders en meer.</p>
+    <p xml:lang="nn">Minuet er eit program for musikkopplæring, med funksjonar for lytteøvingar for intervall, akkordar og skalaar, med meir.</p>
     <p xml:lang="pl">Minuet jest aplikacją edukacyjną dla muzyków. Zapewnia zestaw ćwiczeń dla ucha, które dotyczą interwałów, akordów, skal i więcej.</p>
     <p xml:lang="pt">O Minuet é uma aplicação para educação musical. Oferece um conjunto de exercícios de treino da audição no que diz respeito aos intervalos, acordes, escalas entre outros.</p>
     <p xml:lang="pt-BR">Minuet é um software para educação musical. Ele oferece um conjunto de exercícios para treinamento de ouvido, incluindo intervalos, acordes, escalas, entre outros.</p>
@@ -60,6 +68,8 @@
     <p xml:lang="sv">Minuet är ett program för musikutbildning. Det innehåller ett antal gehörsövningar avseende tonhöjd, ackord, skalor med mera.</p>
     <p xml:lang="uk">Minuet — програма для навчання музиці. У ній передбачено набір вправ для розвитку слуху, зокрема вивчення інтервалів, акордів, гами тощо.</p>
     <p xml:lang="x-test">xxMinuet is an application for music education. It features a set of ear training exercises regarding intervals, chords, scales and more.xx</p>
+    <p xml:lang="zh-CN">Minuet 是款音乐教育应用，具有一系列有关音程、和弦、音阶等的视听练耳测试。</p>
+    <p xml:lang="zh-TW">Minuet 是一款音樂教育用的應用程式。裡面有一些關於音程、和弦、音階等的聽力訓練課程。</p>
   </description>
   <url type="homepage">https://minuet.kde.org</url>
   <url type="bugtracker">https://phabricator.kde.org/project/board/73/</url>
