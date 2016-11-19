@@ -5,7 +5,6 @@
         "Icon": "utilities-terminal", 
         "Id": "minuetcsoundsoundcontroller", 
         "Name": "CSound-based Audio Controller", 
-        "Name[x-test]": "xxCSound-based Audio Controllerxx", 
         "ServiceTypes": [
             "Minuet/Plugin"
         ]
