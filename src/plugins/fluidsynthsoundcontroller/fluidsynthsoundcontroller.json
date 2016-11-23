@@ -2,6 +2,7 @@
     "KPlugin": {
         "Category": "Sound Controllers", 
         "Description": "This plugin provides Minuet with a FluidSynth-based implementation of sound controller.", 
+        "Description[ca@valencia]": "Este connector proporciona el Minuet amb una implementació del dorsal de so basada en el FluidSynth.", 
         "Description[ca]": "Aquest connector proporciona el Minuet amb una implementació del dorsal de so basada en el FluidSynth.", 
         "Description[es]": "Este complemento le proporciona a Minuet una implementación de controlador de sonido basada en FluidSynth.", 
         "Description[fr]": "Ce module fournit à Minuet une implémentation de contrôleur audio utilisant FluidSynth.", 
@@ -13,6 +14,7 @@
         "Icon": "utilities-terminal", 
         "Id": "minuetfluidsynthsoundcontroller", 
         "Name": "FluidSynth-based Audio Controller", 
+        "Name[ca@valencia]": "Controlador d'àudio basat en el FluidSynth", 
         "Name[ca]": "Controlador d'àudio basat en el FluidSynth", 
         "Name[es]": "Controlador de sonido basado en FluidSynth", 
         "Name[fr]": "Contrôleur audio utilisant FluidSynth", 
