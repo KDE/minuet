@@ -1,10 +1,7 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-  <!ENTITY minuet "<application>Minuet</application>">
   <!ENTITY Sandro.Andrade '<personname><firstname>Sandro</firstname><surname>Andrade</surname></personname>'>
   <!ENTITY Sandro.Andrade.mail '<email>sandroandrade@kde.org</email>'>
-  <!ENTITY kappname "&minuet;">
-  <!ENTITY package "kdeedu">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE">
 ]>
@@ -31,9 +28,9 @@
 </copyright>
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2016-01-17</date>
+<date>2016-12-09</date>
 
-<releaseinfo>Minuet 00.01 (Applications 16.04)</releaseinfo>
+<releaseinfo>Applications 16.12</releaseinfo>
 
 <abstract>
 <para>
@@ -57,11 +54,6 @@ regarding intervals, chords, and scales.
 
 <chapter id="introduction">
 <title>Introduction</title>
-
-<!-- The introduction chapter contains a brief introduction for the
-application that explains what it does and where to report
-problems. Basically a long version of the abstract.  Don't include a
-revision history. (see installation appendix comment) -->
 
 <para>
 Welcome to &minuet;: the &kde; software for music education. &minuet; aims at supporting
@@ -88,7 +80,7 @@ music education contexts.
 <title>Using &minuet;</title>
 
 <para>
-In the next three sections - <link linkend="starting-minuet">Starting &minuet;</link>, <link linkend="midi-configuration-wizard">&minuet;'s Configuration Wizard</link>, and <link linkend="minuet-exercises">&minuet; Exercises</link> - we will provide you the required steps to get &minuet; up and running.
+In the next two sections - <link linkend="starting-minuet">Starting &minuet;</link> and <link linkend="minuet-exercises">&minuet; Exercises</link> - we will provide you the required steps to get &minuet; up and running.
 </para>
 
 <sect1 id="starting-minuet">
@@ -102,30 +94,11 @@ cursor up the menu to the <menuchoice><guimenu>Applications</guimenu><guisubmenu
 </para>
 </sect1>
 
-<sect1 id="midi-configuration-wizard">
-<title>&minuet;'s Configuration Wizard</title>
-<para>
-When you run &minuet; for the first time, you are presented with a Configuration Wizard which verifies if all dependencies required to handle &MIDI; files are in place in your system. &minuet; uses <ulink url="http://timidity.sourceforge.net/">TiMidity++</ulink>/<ulink url="http://freepats.zenvoid.org/">Freepats</ulink> as default &MIDI; backend. Therefore, the Configuration Wizard evaluates if those technologies are correctly installed and configured.
-</para>
-<para>
-<mediaobject>
-<imageobject><imagedata format="PNG" fileref="configuration-wizard.png"/></imageobject>
-<caption><para>&minuet;'s first run Configuration Wizard</para></caption>
-</mediaobject>
-</para>
-<para>
-Should all Configuration Wizard's tests pass with success, &minuet; will automatically start and stop TiMidity++ during application start up and termination, respectively. You can execute the Configuration Wizard again at any time by accessing <menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Run Configuration Wizard</guimenuitem>
-</menuchoice>.
-</para>
-</sect1>
-
 <sect1 id="minuet-exercises">
 <title>&minuet; Exercises and Workflow</title>
 
 <para>
-&minuet;'s user interface entails four major components:
+&minuet;'s user interface entails three major components:
 </para>
 <para>
 <mediaobject>
@@ -138,16 +111,6 @@ Should all Configuration Wizard's tests pass with success, &minuet; will automat
 <varlistentry>
 <term><guimenuitem>Navigation Menu</guimenuitem></term>
 <listitem><para>Allows for navigating in &minuet;'s exercise categories and selecting a particular exercise. The Navigation Menu is dynamically created based upon exercises specification files as described in <link linkend="creating-exercises">Creating Exercises</link>. &minuet;'s exercises are grouped according to classes such as intervals, scales, and chords.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guimenuitem>MIDI Player Controls</guimenuitem></term>
-<listitem><para>
-Provides the basic functionalities for handling &MIDI; playing. &minuet; is able to play arbitrary &MIDI; files by choosing <menuchoice>
-<guimenu>File</guimenu>
-<guimenuitem>Open</guimenuitem>
-</menuchoice> and then clicking the <parameter>play</parameter> button<inlinemediaobject><imageobject><imagedata fileref="multimedia-play.png"/></imageobject></inlinemediaobject>. The execution can be paused by clicking the <parameter>pause</parameter> button<inlinemediaobject><imageobject><imagedata fileref="multimedia-pause.png"/></imageobject></inlinemediaobject>and resumed by clicking again the <parameter>play</parameter> button. The button <parameter>stop</parameter><inlinemediaobject><imageobject><imagedata fileref="multimedia-stop.png"/></imageobject></inlinemediaobject>interrupts the &MIDI; playing. &MIDI; Player Controls also provide sliders for changing the volume<inlinemediaobject><imageobject><imagedata fileref="multimedia-volume.png"/></imageobject></inlinemediaobject>, tempo<inlinemediaobject><imageobject><imagedata fileref="multimedia-speed.png"/></imageobject></inlinemediaobject>, and pitch<inlinemediaobject><imageobject><imagedata fileref="multimedia-pitch.png"/></imageobject></inlinemediaobject>of current &MIDI; playing.
-</para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -231,40 +194,8 @@ whose all notes lies within keyboard range are randomly selected.
 To provide a better infrastructure for organizing a large set of exercise specification files, &minuet;'s core supports the use
 of several specification files, which are automatically merged to compose the final exercise hierarchy presented in the
 Navigation Menu. Exercises are correctly merged as long as different specification files use the same (sub)category name
-when defining exercises. For now, &minuet;'s provides no &GUI; for creating exercise specifications so that you must manually create such JSON files. &minuet;'s exercise specification files may be installed system-wide in the <filename>/usr/share/minuet/exercises/</filename>
-directory or locally in the <filename>~/.local/share/minuet/exercises/</filename> directory.
-</para>
-
-</chapter>
-
-<chapter id="minuet-configuration">
-<title>&minuet; Configuration</title>
-
-<para>
-Some &minuet;'s &MIDI; settings may be configured in <menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Configure Minuet</guimenuitem>
-</menuchoice>:
-</para>
-<para>
-<mediaobject>
-<imageobject><imagedata format="PNG" fileref="minuet-configuration.png"/></imageobject>
-<caption><para>&minuet;'s settings</para></caption>
-</mediaobject>
-</para>
-<para>
-<parameter>TiMidity++</parameter> parameter contains the absolute path to TiMidity++ program. Such a path is automatically
-adjusted by &minuet;'s Configuration Wizard if your environment is sane but you can provide your own setting if you want.
-</para>
-<para>
-<parameter>TiMidity++ parameters</parameter>
-specifies the parameters to be used when starting TiMidity++ service. You should use the value provided by &minuet;'s Configuration
-Wizard unless you have a good reason to change it.
-</para>
-<para>
-Finally, <parameter>MIDI output port</parameter> parameter indicates the port
-&minuet; should use to play &MIDI; events. Again, &minuet;'s Configuration Wizard already gives you nice values for it but
-you are free to change it if using other &MIDI; sequencers like, for example, fluidsynth.
+when defining exercises. For now, &minuet;'s provides no &GUI; for creating exercise specifications so that you must manually create such JSON files. &minuet;'s exercise specification files may be installed system-wide or locally in the <filename class="directory">minuet/exercises/</filename>
+directory located in <userinput><command>qtpaths</command> <option>--path GenericDataLocation</option></userinput>
 </para>
 
 </chapter>
@@ -277,11 +208,11 @@ you are free to change it if using other &MIDI; sequencers like, for example, fl
 &minuet;
 </para>
 <para>
-Program copyright 2016 &Sandro.Andrade; <email>&Sandro.Andrade.mail;</email>
+Program copyright 2016 &Sandro.Andrade; &Sandro.Andrade.mail;
 </para>
 
 <para>
-Documentation Copyright &copy; 2016 &Sandro.Andrade; <email>&Sandro.Andrade.mail;</email>
+Documentation Copyright &copy; 2016 &Sandro.Andrade; &Sandro.Andrade.mail;
 </para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
@@ -291,32 +222,6 @@ Documentation Copyright &copy; 2016 &Sandro.Andrade; <email>&Sandro.Andrade.mail
 &underGPL;        	 <!-- GPL License -->
 
 </chapter>
-
-<appendix id="installation">
-<title>Installation</title>
-
-<sect1 id="requirements">
-<title>Requirements</title>
-
-<!--
-List any special requirements for your application here. This should include:
-.Libraries or other software that is not included in kdesupport or kf5
-.Hardware requirements like amount of RAM, disk space, graphics card
-capabilities, screen resolution, special expansion cards, etc.
-.Operating systems the app will run on. If your app is designed only for a
-specific OS, (you wrote a graphical LILO configurator for example) put this
-information here.
--->
-
-<para>
-In order to successfully use &minuet;, you need few libraries from
-&kf5; 5.18 (CoreAddons, I18n, XmlGui, ConfigWidgets, DocTools, KIO).
-In addition, &minuet; relies on the <ulink url="http://drumstick.sourceforge.net/">Drumstick library</ulink> for &MIDI; capabilities.
-</para>
-
-</sect1>
-
-</appendix>
 
 &documentation.index;
 </book>
