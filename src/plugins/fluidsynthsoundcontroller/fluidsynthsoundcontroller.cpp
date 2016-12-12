@@ -36,7 +36,7 @@ FluidSynthSoundController::FluidSynthSoundController(QObject *parent)
       m_sequencer(0),
       m_song(0)
 {
-    m_tempo = 120;
+    m_tempo = 60;
 
     m_settings = new_fluid_settings();
     fluid_settings_setstr(m_settings, "synth.reverb.active", "no");
