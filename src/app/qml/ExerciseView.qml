@@ -39,19 +39,29 @@ Item {
         property var colors: ["#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9", "#bc80bd", "#ccebc5", "#ffed6f", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"]
         property Item rightAnswerRectangle
         property variant userAnswers: []
-        property var answersAreRight
+        property bool answersAreRight
+
+        onCurrentAnswerChanged: {
+            for (var i = 0; i < yourAnswersParent.children.length; ++i)
+                yourAnswersParent.children[i].destroy()
+            yourAnswersParent.children = ""
+            for (var i = 0; i < currentAnswer; ++i) {
+                var newObject = answerOption.createObject(yourAnswersParent, {"model": userAnswers[i].model, "index": userAnswers[i].index, "position": i, "color": userAnswers[i].color, "border.width": 2})
+            }
+        }
     }
 
     onCurrentExerciseChanged: {
         clearUserAnswers()
         for (var i = 0; i < answerGrid.children.length; ++i)
             answerGrid.children[i].destroy()
+        answerGrid.children = ""
         if (currentExercise != undefined) {
             var currentExerciseOptions = currentExercise["options"];
             if (currentExerciseOptions != undefined) {
                 var length = currentExerciseOptions.length
                 for (var i = 0; i < length; ++i)
-                    answerOption.createObject(answerGrid, {model: currentExerciseOptions[i], index: i, color: internal.colors[i%24]})
+                    answerOption.createObject(answerGrid, {"model": currentExerciseOptions[i], "index": i, "color": internal.colors[i%24]})
             }
             messageText.text = i18n("Click 'new question' to start!")
             exerciseView.state = "waitingForNewQuestion"
@@ -62,6 +72,7 @@ Item {
         pianoView.clearAllMarks()
         for (var i = 0; i < yourAnswersParent.children.length; ++i)
             yourAnswersParent.children[i].destroy()
+        yourAnswersParent.children = ""
         internal.currentAnswer = 0
         internal.userAnswers = []
     }
@@ -70,9 +81,12 @@ Item {
         var rightAnswers = core.exerciseController.selectedExerciseOptions
         internal.answersAreRight = true
         for (var i = 0; i < currentExercise.numberOfSelectedOptions; ++i) {
-            if (internal.userAnswers[i] != rightAnswers[i].name) {
+            if (internal.userAnswers[i].name != rightAnswers[i].name) {
+                yourAnswersParent.children[i].border.color = "red"
                 internal.answersAreRight = false
-                break
+            }
+            else {
+                yourAnswersParent.children[i].border.color = "green"
             }
         }
         messageText.text = (internal.answersAreRight) ? i18n("Congratulations, you answered correctly!"):i18n("Oops, not this time! Try again!")
@@ -188,6 +202,7 @@ Item {
 
                             property var model
                             property int index
+                            property int position
 
                             width: (currentExercise != undefined && currentExercise["playMode"] != "rhythm") ? 120:119
                             height: (currentExercise != undefined && currentExercise["playMode"] != "rhythm") ? 40:59
@@ -218,31 +233,54 @@ Item {
                                 onClicked: {
                                     if (exerciseView.state == "waitingForAnswer" && !animation.running) {
                                         onExited()
+                                        internal.userAnswers.push({"name": option.originalText, "model": answerRectangle.model, "index": answerRectangle.index, "color": answerRectangle.color})
                                         internal.currentAnswer++
-                                        internal.userAnswers.push(option.originalText)
-                                        answerOption.createObject(yourAnswersParent, {model: answerRectangle.model, index: answerRectangle.index, color: answerRectangle.color})
                                         if (internal.currentAnswer == currentExercise.numberOfSelectedOptions)
                                             checkAnswers()
                                     }
                                 }
                                 hoverEnabled: Qt.platform.os != "android" &&
-                                              currentExercise != undefined && currentExercise["playMode"] != "rhythm" &&
                                               !animation.running
                                 onEntered: {
                                     answerRectangle.color = Qt.darker(answerRectangle.color, 1.1)
                                     if (currentExercise["playMode"] != "rhythm") {
-                                        model.sequence.split(' ').forEach(function(note) {
-                                            pianoView.noteMark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0, internal.colors[answerRectangle.index])
-                                        })
+                                        if (parent.parent == answerGrid) {
+                                            model.sequence.split(' ').forEach(function(note) {
+                                                pianoView.noteMark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0, internal.colors[answerRectangle.index])
+                                            })
+                                        }
+                                    }
+                                    else {
+                                        var rightAnswers = core.exerciseController.selectedExerciseOptions
+                                        if (parent.parent == yourAnswersParent && internal.userAnswers[position].name != rightAnswers[position].name) {
+                                            parent.border.color = "green"
+                                            for (var i = 0; i < answerGrid.children.length; ++i) {
+                                                if (answerGrid.children[i].model.name == rightAnswers[position].name) {
+                                                    parent.color = answerGrid.children[i].color
+                                                    break
+                                                }
+                                            }
+                                            rhythmImage.source = "exercise-images/" + rightAnswers[position].name + ".png"
+                                        }
                                     }
                                 }
                                 onExited: {
                                     answerRectangle.color = internal.colors[answerRectangle.index]
                                     if (currentExercise["playMode"] != "rhythm") {
-                                        if (!animation.running)
-                                            model.sequence.split(' ').forEach(function(note) {
-                                                pianoView.noteUnmark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0)
-                                            })
+                                        if (parent.parent == answerGrid) {
+                                            if (!animation.running)
+                                                model.sequence.split(' ').forEach(function(note) {
+                                                    pianoView.noteUnmark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0)
+                                                })
+                                        }
+                                    }
+                                    else {
+                                        var rightAnswers = core.exerciseController.selectedExerciseOptions
+                                        if (parent.parent == yourAnswersParent && internal.userAnswers[position].name != rightAnswers[position].name) {
+                                            parent.border.color = "red"
+                                            parent.color = internal.userAnswers[position].color
+                                            rhythmImage.source = "exercise-images/" + internal.userAnswers[position].name + ".png"
+                                        }
                                     }
                                 }
                             }
@@ -258,13 +296,22 @@ Item {
             title: i18n("Your Answer(s)")
             Layout.preferredWidth: parent.width
             anchors.horizontalCenter: parent.horizontalCenter
-
             contentHeight: ((currentExercise != undefined && currentExercise["playMode"] != "rhythm") ? 40:59)
 
-            Row {
-                id: yourAnswersParent
-                anchors.centerIn: parent
-                spacing: Screen.width >= 1024 ? 10:5
+            Flickable {
+                width: (currentExercise != undefined) ? Math.min(parent.width, internal.currentAnswer*130):0; height: parent.height
+                anchors.horizontalCenter: parent.horizontalCenter
+                contentWidth: (currentExercise != undefined) ? internal.currentAnswer*130:0
+                boundsBehavior: Flickable.StopAtBounds
+                clip: true
+
+                Row {
+                    id: yourAnswersParent
+                    anchors.centerIn: parent
+                    spacing: Screen.width >= 1024 ? 10:5
+                }
+
+                ScrollIndicator.horizontal: ScrollIndicator { active: true }
             }
         }
         Button {
@@ -273,8 +320,9 @@ Item {
             text: i18n("backspace")
             anchors.horizontalCenter: parent.horizontalCenter
             visible: currentExercise != undefined && currentExercise["playMode"] == "rhythm"
-            enabled: internal.currentAnswer > 0 && internal.currentAnswer < 4
+            enabled: internal.currentAnswer > 0 && internal.currentAnswer < currentExercise.numberOfSelectedOptions
             onClicked: {
+                internal.userAnswers.pop()
                 internal.currentAnswer--
             }
         }
