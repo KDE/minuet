@@ -45,9 +45,8 @@ Item {
             for (var i = 0; i < yourAnswersParent.children.length; ++i)
                 yourAnswersParent.children[i].destroy()
             yourAnswersParent.children = ""
-            for (var i = 0; i < currentAnswer; ++i) {
-                var newObject = answerOption.createObject(yourAnswersParent, {"model": userAnswers[i].model, "index": userAnswers[i].index, "position": i, "color": userAnswers[i].color, "border.width": 2})
-            }
+            for (var i = 0; i < currentAnswer; ++i)
+                answerOption.createObject(yourAnswersParent, {"model": userAnswers[i].model, "index": userAnswers[i].index, "position": i, "color": userAnswers[i].color, "border.width": 2})
         }
     }
 
@@ -169,7 +168,18 @@ Item {
                 enabled: exerciseView.state == "waitingForAnswer" && !animation.running
 
                 onClicked: {
-                    exerciseView.state = "waitingForNewQuestion"
+                    var rightAnswers = core.exerciseController.selectedExerciseOptions
+                    internal.userAnswers = []
+                    for (var i = 0; i < currentExercise.numberOfSelectedOptions; ++i) {
+                        for (var j = 0; j < answerGrid.children.length; ++j) {
+                            if (answerGrid.children[j].model.name == rightAnswers[i].name) {
+                                internal.userAnswers.push({"name": rightAnswers[i].name, "model": answerGrid.children[j].model, "index": j, "color": internal.colors[j]})
+                                break
+                            }
+                        }
+                    }
+                    internal.currentAnswer = currentExercise.numberOfSelectedOptions
+                    checkAnswers()
                 }
             }
         }
