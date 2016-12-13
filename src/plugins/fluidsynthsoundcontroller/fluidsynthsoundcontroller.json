@@ -17,6 +17,7 @@
         "Icon": "utilities-terminal", 
         "Id": "minuetfluidsynthsoundcontroller", 
         "Name": "FluidSynth-based Audio Controller", 
+        "Name[ast]": "Controlador d'audiu basáu en FluidSynth", 
         "Name[ca@valencia]": "Controlador d'àudio basat en el FluidSynth", 
         "Name[ca]": "Controlador d'àudio basat en el FluidSynth", 
         "Name[es]": "Controlador de sonido basado en FluidSynth", 
