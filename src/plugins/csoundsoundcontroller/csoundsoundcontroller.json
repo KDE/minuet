@@ -2,7 +2,6 @@
     "KPlugin": {
         "Category": "Sound Controllers", 
         "Description": "This plugin provides Minuet with a CSound-based implementation of sound controller.", 
-        "Description[ast]": "Esti complementu apurre Minuet con una controladora de soníu basada na implementación de CSound.", 
         "Description[ca@valencia]": "Este connector proporciona el Minuet amb una implementació del dorsal de so basada en el CSound.", 
         "Description[ca]": "Aquest connector proporciona el Minuet amb una implementació del dorsal de so basada en el CSound.", 
         "Description[es]": "Este complemento le proporciona a Minuet una implementación de controlador de sonido basada en FluidSynth.", 
@@ -18,7 +17,6 @@
         "Icon": "utilities-terminal", 
         "Id": "minuetcsoundsoundcontroller", 
         "Name": "CSound-based Audio Controller", 
-        "Name[ast]": "Controladora d'audiu basáu en CSound", 
         "Name[ca@valencia]": "Controlador d'àudio basat en el CSound", 
         "Name[ca]": "Controlador d'àudio basat en el CSound", 
         "Name[es]": "Controlador de sonido basado en CSound", 
