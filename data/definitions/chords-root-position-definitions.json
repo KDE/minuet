@@ -41,11 +41,6 @@
       "sequence": "4 7 10 14"
     },
     {
-      "tags": ["chord", "root-position", "major", "7", "9", "altered"],
-      "name": "Major 7(b9)",
-      "sequence": "4 7 10 13"
-    },
-    {
       "tags": ["chord", "root-position", "major", "7", "seventh"],
       "name": "Major maj7",
       "sequence": "4 7 11"
