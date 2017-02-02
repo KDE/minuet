@@ -40,6 +40,7 @@ Item {
         property Item rightAnswerRectangle
         property variant userAnswers: []
         property bool answersAreRight
+        property bool giveUp
 
         onCurrentAnswerChanged: {
             for (var i = 0; i < yourAnswersParent.children.length; ++i)
@@ -88,11 +89,12 @@ Item {
                 yourAnswersParent.children[i].border.color = "green"
             }
         }
-        messageText.text = (internal.answersAreRight) ? i18n("Congratulations, you answered correctly!"):i18n("Oops, not this time! Try again!")
+        messageText.text = (internal.giveUp) ? i18n("Here is the answer") : (internal.answersAreRight) ? i18n("Congratulations, you answered correctly!"):i18n("Oops, not this time! Try again!")
         if (currentExercise.numberOfSelectedOptions == 1)
             highlightRightAnswer()
         else
             exerciseView.state = "waitingForNewQuestion"
+        internal.giveUp = false
     }
     
     function highlightRightAnswer() {
@@ -168,6 +170,7 @@ Item {
                 enabled: exerciseView.state == "waitingForAnswer" && !animation.running
 
                 onClicked: {
+                	internal.giveUp = true
                     var rightAnswers = core.exerciseController.selectedExerciseOptions
                     internal.userAnswers = []
                     for (var i = 0; i < currentExercise.numberOfSelectedOptions; ++i) {
