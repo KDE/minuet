@@ -256,7 +256,7 @@ Item {
                                               !animation.running
                                 onEntered: {
                                     answerRectangle.color = Qt.darker(answerRectangle.color, 1.1)
-                                    if (currentExercise["playMode"] != "rhythm") {
+                                    if (currentExercise["playMode"] != "rhythm" && exerciseView.state == "waitingForAnswer") {
                                         if (parent.parent == answerGrid) {
                                             model.sequence.split(' ').forEach(function(note) {
                                                 pianoView.noteMark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0, internal.colors[answerRectangle.index])
