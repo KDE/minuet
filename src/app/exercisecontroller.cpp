@@ -131,7 +131,7 @@ bool ExerciseController::mergeJsonFiles(const QString directoryName, QJsonObject
             QFile jsonFile(jsonDir.absoluteFilePath(json));
             if (!jsonFile.open(QIODevice::ReadOnly)) {
 #if !defined(Q_OS_ANDROID)
-                m_errorString = i18n("Couldn't open json file \"%1\".", jsonDir.absoluteFilePath(json));
+                m_errorString = i18n("Could not open JSON file \"%1\".", jsonDir.absoluteFilePath(json));
 #else
                 m_errorString = QStringLiteral("Couldn't open json file \"%1\".").arg(jsonDir.absoluteFilePath(json));
 #endif

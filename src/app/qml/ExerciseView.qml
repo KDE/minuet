@@ -67,7 +67,7 @@ Item {
                 for (var i = 0; i < length; ++i)
                     answerOption.createObject(answerGrid, {"model": currentExerciseOptions[i], "index": i, "color": internal.colors[i%24]})
             }
-            messageText.text = i18n("Click 'new question' to start!")
+            messageText.text = i18n("Click 'New Question' to start!")
             exerciseView.state = "waitingForNewQuestion"
         }
     }
@@ -97,7 +97,7 @@ Item {
         }
         messageText.text = (internal.giveUp) ? i18n("Here is the answer") : (internal.answersAreRight) ? i18n("Congratulations, you answered correctly!"):i18n("Oops, not this time! Try again!")
         if (internal.currentExercise == internal.maximumExercises) {
-            messageText.text = i18n("You answered correctly ") + internal.correctAnswers * 100 / internal.maximumExercises + "%"
+            messageText.text = i18n("You answered correctly %1%", internal.correctAnswers * 100 / internal.maximumExercises)
             resetTest()
         }
 
@@ -143,7 +143,7 @@ Item {
     function generateNewQuestion () {
         clearUserAnswers()
         if (internal.isTest)
-            messageText.text = i18n("Question ") + (internal.currentExercise + 1) + i18n(" out of ") + internal.maximumExercises
+            messageText.text = i18n("Question %1 out of %2", internal.currentExercise + 1, internal.maximumExercises)
         else
             messageText.text = ""
         core.exerciseController.randomlySelectExerciseOptions()
@@ -187,7 +187,7 @@ Item {
                 id: newPlayQuestionButton
 
                 width: 120; height: 40
-                text: (exerciseView.state == "waitingForNewQuestion") ? i18n("new question"):i18n("play question")
+                text: (exerciseView.state == "waitingForNewQuestion") ? i18n("New Question"):i18n("Play Question")
                 enabled: !animation.running
 
                 onClicked: {
@@ -201,7 +201,7 @@ Item {
                 id: giveUpButton
 
                 width: 120; height: 40
-                text: i18n("give up")
+                text: i18n("Give Up")
                 enabled: exerciseView.state == "waitingForAnswer" && !animation.running
 
                 onClicked: {
@@ -226,7 +226,7 @@ Item {
                 id: testButton
 
                 width: 120; height: 40
-                text: internal.isTest ? i18n("stop test") : i18n("start test")
+                text: internal.isTest ? i18n("Stop Test") : i18n("Start Test")
                 enabled: true
 
                 onClicked: {
@@ -239,7 +239,7 @@ Item {
                     } else {
                         resetTest()
                         exerciseView.state = "waitingForNewQuestion"
-                        messageText.text = i18n("Click 'new question' to start")
+                        messageText.text = i18n("Click 'New Question' to start")
                     }
                 }
             }
@@ -388,7 +388,7 @@ Item {
         Button {
             id: backspaceButton
 
-            text: i18n("backspace")
+            text: i18n("Backspace")
             anchors.horizontalCenter: parent.horizontalCenter
             visible: currentExercise != undefined && currentExercise["playMode"] == "rhythm"
             enabled: internal.currentAnswer > 0 && internal.currentAnswer < currentExercise.numberOfSelectedOptions
