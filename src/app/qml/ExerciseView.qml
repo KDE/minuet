@@ -41,6 +41,10 @@ Item {
         property variant userAnswers: []
         property bool answersAreRight
         property bool giveUp
+        property bool isTest: false
+        property int correctAnswers: 0
+        property int currentExercise: 0
+        property int maximumExercises: 10
 
         onCurrentAnswerChanged: {
             for (var i = 0; i < yourAnswersParent.children.length; ++i)
@@ -87,9 +91,16 @@ Item {
             }
             else {
                 yourAnswersParent.children[i].border.color = "green"
+                if (internal.isTest)
+                    internal.correctAnswers++
             }
         }
         messageText.text = (internal.giveUp) ? i18n("Here is the answer") : (internal.answersAreRight) ? i18n("Congratulations, you answered correctly!"):i18n("Oops, not this time! Try again!")
+        if (internal.currentExercise == internal.maximumExercises) {
+            messageText.text = i18n("You answered correctly ") + internal.correctAnswers * 100 / internal.maximumExercises + "%"
+            resetTest()
+        }
+
         if (currentExercise.numberOfSelectedOptions == 1)
             highlightRightAnswer()
         else
@@ -112,6 +123,37 @@ Item {
             pianoView.noteMark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0, internal.rightAnswerRectangle.color)
         })
         animation.start()
+    }
+
+    function resetTest() {
+        internal.isTest = false
+        internal.correctAnswers = 0
+        internal.currentExercise = 0
+    }
+
+    function nextTestExercise() {
+        for (var i = 0; i < answerGrid.children.length; ++i)
+            answerGrid.children[i].opacity = 1
+        pianoView.clearAllMarks()
+        clearUserAnswers()
+        generateNewQuestion(true)
+        core.soundController.play()
+    }
+
+    function generateNewQuestion () {
+        clearUserAnswers()
+        if (internal.isTest)
+            messageText.text = i18n("Question ") + (internal.currentExercise + 1) + i18n(" out of ") + internal.maximumExercises
+        else
+            messageText.text = ""
+        core.exerciseController.randomlySelectExerciseOptions()
+        var chosenExercises = core.exerciseController.selectedExerciseOptions
+        core.soundController.prepareFromExerciseOptions(chosenExercises)
+        if (currentExercise["playMode"] != "rhythm")
+            pianoView.noteMark(0, core.exerciseController.chosenRootNote(), 0, "white")
+        exerciseView.state = "waitingForAnswer"
+        if (internal.isTest)
+            internal.currentExercise++
     }
 
 
@@ -150,14 +192,7 @@ Item {
 
                 onClicked: {
                     if (exerciseView.state == "waitingForNewQuestion") {
-                        clearUserAnswers()
-                        messageText.text = ""
-                        core.exerciseController.randomlySelectExerciseOptions()
-                        var chosenExercises = core.exerciseController.selectedExerciseOptions
-                        core.soundController.prepareFromExerciseOptions(chosenExercises)
-                        if (currentExercise["playMode"] != "rhythm")
-                            pianoView.noteMark(0, core.exerciseController.chosenRootNote(), 0, "white")
-                        exerciseView.state = "waitingForAnswer"
+                        generateNewQuestion()
                     }
                     core.soundController.play()
                 }
@@ -170,6 +205,8 @@ Item {
                 enabled: exerciseView.state == "waitingForAnswer" && !animation.running
 
                 onClicked: {
+                    if (internal.isTest)
+                        internal.correctAnswers--
                 	internal.giveUp = true
                     var rightAnswers = core.exerciseController.selectedExerciseOptions
                     internal.userAnswers = []
@@ -183,6 +220,27 @@ Item {
                     }
                     internal.currentAnswer = currentExercise.numberOfSelectedOptions
                     checkAnswers()
+                }
+            }
+            Button {
+                id: testButton
+
+                width: 120; height: 40
+                text: internal.isTest ? i18n("stop test") : i18n("start test")
+                enabled: true
+
+                onClicked: {
+                    if (!internal.isTest) {
+                        resetTest()
+                        internal.isTest = true
+                        generateNewQuestion()
+                        if (internal.isTest)
+                            core.soundController.play()
+                    } else {
+                        resetTest()
+                        exerciseView.state = "waitingForNewQuestion"
+                        messageText.text = i18n("Click 'new question' to start")
+                    }
                 }
             }
         }
@@ -376,7 +434,12 @@ Item {
         }
 
         onStopped: {
-            exerciseView.state = "waitingForNewQuestion"
+            exerciseView.state = internal.isTest ? "waitingForAnswer" : "waitingForNewQuestion"
+            if (internal.isTest) {
+                nextTestExercise()
+                if (internal.currentExercise == internal.maximumExercises+1)
+                   internal.isTest = false
+            }
         }
     }
     Connections {
