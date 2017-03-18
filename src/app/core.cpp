@@ -22,6 +22,8 @@
 
 #include "core.h"
 
+#include <qqml.h>
+
 #include "uicontroller.h"
 #include "plugincontroller.h"
 #include "exercisecontroller.h"
@@ -39,6 +41,10 @@ bool Core::initialize()
 {
     if (m_self)
         return true;
+
+    qRegisterMetaType<Minuet::ISoundController::State>("State");
+    qmlRegisterInterface<Minuet::ISoundController>("ISoundController");
+    qmlRegisterUncreatableType<Minuet::ISoundController>("org.kde.minuet.isoundcontroller", 1, 0, "ISoundController", "ISoundController cannot be instantiated");
 
     m_self = new Core;
 
@@ -78,13 +84,22 @@ Core::Core(QObject *parent)
       m_soundController(0)
 {
     m_pluginController = new PluginController(this);
-    ((PluginController *)m_pluginController)->initialize(this);
+    if (!((PluginController *)m_pluginController)->initialize(this)) {
+        qCritical() << m_pluginController->errorString();
+        exit(-1);
+    }
 
     m_exerciseController = new ExerciseController(this);
-    ((ExerciseController *)m_exerciseController)->initialize(this);
+    if (!((ExerciseController *)m_exerciseController)->initialize(this)) {
+        qCritical() << m_exerciseController->errorString();
+        exit(-2);
+    }
 
     m_uiController = new UiController(this);
-    ((UiController *)m_uiController)->initialize(this);
+    if (!((UiController *)m_uiController)->initialize(this)) {
+        qCritical() << m_uiController->errorString();
+        exit(-3);
+    }
 }
 
 }

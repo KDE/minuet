@@ -51,6 +51,7 @@ bool ExerciseController::initialize(Core *core)
 {
     Q_UNUSED(core)
 
+    m_errorString.clear();
     bool definitionsMerge = mergeJsonFiles("definitions", m_definitions);
     bool exercisesMerge = mergeJsonFiles("exercises", m_exercises, true, "name", "children");
 
@@ -60,6 +61,11 @@ bool ExerciseController::initialize(Core *core)
 //    file.close();
 
     return definitionsMerge & exercisesMerge;
+}
+
+QString ExerciseController::errorString() const
+{
+    return m_errorString;
 }
 
 void ExerciseController::randomlySelectExerciseOptions()
@@ -104,11 +110,6 @@ unsigned int ExerciseController::chosenRootNote()
     return m_chosenRootNote;
 }
 
-QString ExerciseController::errorString() const
-{
-    return m_errorString;
-}
-
 QJsonArray ExerciseController::exercises() const
 {
     return m_exercises[QStringLiteral("exercises")].toArray();
@@ -116,7 +117,6 @@ QJsonArray ExerciseController::exercises() const
 
 bool ExerciseController::mergeJsonFiles(const QString directoryName, QJsonObject &targetObject, bool applyDefinitionsFlag, QString commonKey, QString mergeKey)
 {
-    m_errorString.clear();
 #if defined(Q_OS_ANDROID)
     QStringList jsonDirs;
     jsonDirs += "/data/data/org.kde.minuet/qt-reserved-files/share/minuet/" + directoryName;
@@ -141,7 +141,7 @@ bool ExerciseController::mergeJsonFiles(const QString directoryName, QJsonObject
             QJsonDocument jsonDocument = QJsonDocument::fromJson(jsonFile.readAll(), &error);
 
             if (error.error != QJsonParseError::NoError) {
-                m_errorString = error.errorString();
+                m_errorString += QStringLiteral("Error when parsing JSON file '%1'. ").arg(jsonDir.absoluteFilePath(json));
                 jsonFile.close();
                 return false;
             }

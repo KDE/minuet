@@ -47,6 +47,7 @@ UiController::~UiController()
 
 bool UiController::initialize(Core *core)
 {
+    m_errorString.clear();
     QQmlApplicationEngine *engine = new QQmlApplicationEngine(this);
     QQmlContext *rootContext = engine->rootContext();
     rootContext->setContextProperty(QStringLiteral("core"), core);
@@ -58,6 +59,11 @@ bool UiController::initialize(Core *core)
     engine->load(QUrl("qrc:/Main.qml"));
 
     return true;
+}
+
+QString UiController::errorString() const
+{
+    return m_errorString;
 }
 
 }

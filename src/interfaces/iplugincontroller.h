@@ -36,6 +36,8 @@ class MINUETINTERFACES_EXPORT IPluginController : public QObject
 
 public:
     virtual ~IPluginController() override;
+    
+    virtual QString errorString() const = 0;
 
 protected:
     explicit IPluginController(QObject *parent = 0);

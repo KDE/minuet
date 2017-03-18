@@ -22,18 +22,12 @@
 
 #include "isoundcontroller.h"
 
-#include <qqml.h>
-
 namespace Minuet
 {
 
 ISoundController::ISoundController(QObject *parent)
     : IPlugin(parent)
 {
-    qRegisterMetaType<State>("State");
-    qmlRegisterInterface<ISoundController>("ISoundController");
-    qmlRegisterUncreatableType<ISoundController>("org.kde.minuet.isoundcontroller", 1, 0, "ISoundController", "ISoundController cannot be instantiated");
-
     setPlaybackLabel(QStringLiteral("00:00.00"));
     setState(StoppedState);
 }

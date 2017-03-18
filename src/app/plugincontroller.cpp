@@ -46,7 +46,7 @@ PluginController::PluginController(QObject *parent)
 #if !defined(Q_OS_ANDROID)
     m_plugins = KPluginLoader::findPlugins(QStringLiteral("minuet"), [&](const KPluginMetaData &meta) {
         if (!meta.serviceTypes().contains(QStringLiteral("Minuet/Plugin"))) {
-            qDebug() << "Plugin" << meta.fileName() << "is installed into the minuet plugin directory, but does not have"
+            qWarning() << "Plugin" << meta.fileName() << "is installed into the minuet plugin directory, but does not have"
                 " \"Minuet/Plugin\" set as the service type. This plugin will not be loaded.";
             return false;
         }
@@ -65,7 +65,9 @@ PluginController::~PluginController()
 
 bool PluginController::initialize(Core *core)
 {
+    m_errorString.clear();
 #if !defined(Q_OS_ANDROID)
+    ISoundController *soundController = 0;
     foreach (const KPluginMetaData &pluginMetaData, m_plugins)
     {
         if (m_loadedPlugins.value(pluginMetaData))
@@ -75,21 +77,29 @@ bool PluginController::initialize(Core *core)
         IPlugin *plugin = qobject_cast<IPlugin *>(loader.instance());
         if (plugin) {
             m_loadedPlugins.insert(pluginMetaData, plugin);
-            ISoundController *soundController = 0;
             if (!core->soundController() && (soundController = qobject_cast<ISoundController *>(plugin))) {
-                qDebug() << "Setting soundcontroller to" << soundController->metaObject()->className();
+                qInfo() << "Setting soundcontroller to" << soundController->metaObject()->className();
                 core->setSoundController(soundController);
             }
         }
     }
+    if (!soundController) {
+        m_errorString = QStringLiteral("Could not find a suitable SoundController plugin!");
+        return false;
+    }
 #else
         ISoundController *soundController = 0;
         if (!core->soundController() && (soundController = new CsoundSoundController)) {
-            qDebug() << "Setting soundcontroller to" << soundController->metaObject()->className();
+            qInfo() << "Setting soundcontroller to" << soundController->metaObject()->className();
             core->setSoundController(soundController);
         }
 #endif
     return true;
+}
+
+QString PluginController::errorString() const
+{
+    return m_errorString;
 }
 
 }

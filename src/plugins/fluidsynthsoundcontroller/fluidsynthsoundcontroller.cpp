@@ -53,7 +53,7 @@ FluidSynthSoundController::FluidSynthSoundController(QObject *parent)
     int fluid_res = fluid_synth_sfload(m_synth, QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("minuet/soundfonts/GeneralUser-v1.47.sf2")).toLatin1(), 1);
 #endif
     if (fluid_res == FLUID_FAILED)
-        qDebug() << "Error when loading soundfont!";
+        qCritical() << "Error when loading soundfont!";
 
     resetEngine();
 }
@@ -226,7 +226,7 @@ void FluidSynthSoundController::resetEngine()
         m_audioDriver = new_fluid_audio_driver(m_settings, m_synth);
     }
     if (!m_audioDriver) {
-        qDebug() << "Couldn't start audio driver!";
+        qCritical() << "Couldn't start audio driver!";
     }
 
     m_sequencer = new_fluid_sequencer2(0);

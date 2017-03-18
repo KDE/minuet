@@ -42,8 +42,9 @@ class PluginController : public IPluginController
 public:
     PluginController(QObject *parent = 0);
     ~PluginController() override;
-
+    
     bool initialize(Core *core);
+    virtual QString errorString() const;
 
 private:
 #ifndef Q_OS_ANDROID
@@ -52,6 +53,7 @@ private:
     typedef QHash<KPluginMetaData, IPlugin *> InfoToPluginMap;
     InfoToPluginMap m_loadedPlugins;
 #endif
+    QString m_errorString;
 };
 
 }

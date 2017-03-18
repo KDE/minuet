@@ -42,10 +42,10 @@ public:
     virtual ~ExerciseController();
  
     bool initialize(Core *core);
+    virtual QString errorString() const;
 
     Q_INVOKABLE unsigned int chosenRootNote();
 
-    QString errorString() const;
     virtual QJsonArray exercises() const override;
 
 public Q_SLOTS:

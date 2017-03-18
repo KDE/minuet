@@ -42,6 +42,8 @@ class MINUETINTERFACES_EXPORT IExerciseController : public QObject
 
 public:
     virtual ~IExerciseController() override;
+    
+    virtual QString errorString() const = 0;
 
     virtual QJsonArray exercises() const = 0;
     void setCurrentExercise(QVariantMap currentExercise);
