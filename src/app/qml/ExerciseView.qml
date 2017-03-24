@@ -67,6 +67,7 @@ Item {
                 for (var i = 0; i < length; ++i)
                     answerOption.createObject(answerGrid, {"model": currentExerciseOptions[i], "index": i, "color": internal.colors[i%24]})
             }
+            sheetMusicView.spaced = (currentExercise["playMode"] == "chord") ? false:true
             messageText.text = i18n("Click 'New Question' to start!")
             exerciseView.state = "waitingForNewQuestion"
         }
@@ -418,6 +419,7 @@ Item {
                 id: pianoView
                 visible: currentExercise != undefined && currentExercise["playMode"] != "rhythm"
             }
+            ScrollIndicator.horizontal: ScrollIndicator { active: true }
         }
         
         SheetMusicView {

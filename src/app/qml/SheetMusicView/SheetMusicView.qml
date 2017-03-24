@@ -3,6 +3,7 @@ import QtQuick 2.7
 Score {
     property alias model: sequence.model
     property alias clef: clef
+    property alias spaced: sequence.spaced
     
     function clearAllMarks() {
         clef.type = 0
@@ -17,5 +18,5 @@ Score {
 //    clef: clef
     Clef { id: clef; type: 1 }
 
-    Sequence { id: sequence; spaced: true }
+    Sequence { id: sequence }
 }
