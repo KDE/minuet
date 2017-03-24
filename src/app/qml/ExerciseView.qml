@@ -74,6 +74,7 @@ Item {
 
     function clearUserAnswers() {
         pianoView.clearAllMarks()
+        sheetMusicView.clearAllMarks()
         for (var i = 0; i < yourAnswersParent.children.length; ++i)
             yourAnswersParent.children[i].destroy()
         yourAnswersParent.children = ""
@@ -119,9 +120,13 @@ Item {
                 answerGrid.children[i].opacity = 1
             }
         }
+        var array = [core.exerciseController.chosenRootNote()]
         internal.rightAnswerRectangle.model.sequence.split(' ').forEach(function(note) {
             pianoView.noteMark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0, internal.rightAnswerRectangle.color)
+            array.push(core.exerciseController.chosenRootNote() + parseInt(note))
         })
+        console.log("RODANDO:" + array)
+        sheetMusicView.model = array
         animation.start()
     }
 
@@ -135,6 +140,7 @@ Item {
         for (var i = 0; i < answerGrid.children.length; ++i)
             answerGrid.children[i].opacity = 1
         pianoView.clearAllMarks()
+        sheetMusicView.clearAllMarks()
         clearUserAnswers()
         generateNewQuestion(true)
         core.soundController.play()
@@ -149,8 +155,11 @@ Item {
         core.exerciseController.randomlySelectExerciseOptions()
         var chosenExercises = core.exerciseController.selectedExerciseOptions
         core.soundController.prepareFromExerciseOptions(chosenExercises)
-        if (currentExercise["playMode"] != "rhythm")
+        if (currentExercise["playMode"] != "rhythm") {
             pianoView.noteMark(0, core.exerciseController.chosenRootNote(), 0, "white")
+            sheetMusicView.model = [core.exerciseController.chosenRootNote()]
+            sheetMusicView.clef.type = (core.exerciseController.chosenRootNote() >= 60) ? 0:1
+        }
         exerciseView.state = "waitingForAnswer"
         if (internal.isTest)
             internal.currentExercise++
@@ -310,15 +319,17 @@ Item {
                                             checkAnswers()
                                     }
                                 }
-                                hoverEnabled: Qt.platform.os != "android" &&
-                                              !animation.running
+                                hoverEnabled: Qt.platform.os != "android" && !animation.running
                                 onEntered: {
                                     answerRectangle.color = Qt.darker(answerRectangle.color, 1.1)
                                     if (currentExercise["playMode"] != "rhythm" && exerciseView.state == "waitingForAnswer") {
                                         if (parent.parent == answerGrid) {
+                                            var array = [core.exerciseController.chosenRootNote()]
                                             model.sequence.split(' ').forEach(function(note) {
+                                                array.push(core.exerciseController.chosenRootNote() + parseInt(note))
                                                 pianoView.noteMark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0, internal.colors[answerRectangle.index])
                                             })
+                                            sheetMusicView.model = array
                                         }
                                     }
                                     else {
@@ -343,6 +354,7 @@ Item {
                                                 model.sequence.split(' ').forEach(function(note) {
                                                     pianoView.noteUnmark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0)
                                                 })
+                                            sheetMusicView.model = [core.exerciseController.chosenRootNote()]
                                         }
                                     }
                                     else {
@@ -397,10 +409,21 @@ Item {
                 internal.currentAnswer--
             }
         }
-        PianoView {
-            id: pianoView
+        Flickable {
+
+            id: pianoViewFlickable
+            Layout.preferredWidth: parent.width/2 - 10
+            anchors { left: parent.left; bottom: parent.bottom; bottomMargin: 10 }
+            PianoView {
+                id: pianoView
+                visible: currentExercise != undefined && currentExercise["playMode"] != "rhythm"
+            }
+        }
+        
+        SheetMusicView {
+            id: sheetMusicView
+            anchors { right: parent.right; verticalCenter: pianoViewFlickable.verticalCenter }
             visible: currentExercise != undefined && currentExercise["playMode"] != "rhythm"
-            anchors.horizontalCenter: parent.horizontalCenter
         }
     }
     states: [
@@ -445,5 +468,9 @@ Item {
     Connections {
         target: core.exerciseController
         onSelectedExerciseOptionsChanged: pianoView.clearAllMarks()
+    }
+    Connections {
+        target: core.exerciseController
+        onSelectedExerciseOptionsChanged: sheetMusicView.clearAllMarks()
     }
 }

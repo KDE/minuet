@@ -2,7 +2,7 @@
   "exercises": [
     {
       "name": "Chords",
-      "root": "21..104",
+      "root": "41..67",
       "playMode": "chord",
       "userMessage": "Hear the chord and then choose an answer from options below",
       "numberOfSelectedOptions": 1,
