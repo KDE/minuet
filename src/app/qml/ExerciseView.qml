@@ -126,7 +126,6 @@ Item {
             pianoView.noteMark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0, internal.rightAnswerRectangle.color)
             array.push(core.exerciseController.chosenRootNote() + parseInt(note))
         })
-        console.log("RODANDO:" + array)
         sheetMusicView.model = array
         animation.start()
     }
