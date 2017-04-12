@@ -2,15 +2,15 @@
   "exercises": [
     {
       "name": "Scales",
-      "root": "41..67",
+      "root": "11..67",
       "playMode": "scale",
       "userMessage": "Hear the scale and then choose an answer from options below",
       "numberOfSelectedOptions": 1,
       "_icon": "minuet-scales.svg",
       "children": [
         {
-          "name": "Major Scale and its Modes",
-          "and-tags": ["scale", "major", "diatonic"]
+          "name": "Bebop Scales",
+          "and-tags": ["scale", "bebop"]
         }
       ]
     }

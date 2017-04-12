@@ -9,8 +9,8 @@
       "_icon": "minuet-scales.svg",
       "children": [
         {
-          "name": "Major Scale and its Modes",
-          "and-tags": ["scale", "major", "diatonic"]
+          "name": "Harmonic Major Scale and its Modes",
+          "and-tags": ["scale", "harmonic", "major"]
         }
       ]
     }

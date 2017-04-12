@@ -1,0 +1,29 @@
+{
+  "definitions": [
+    {
+      "tags": ["scale", "ascending", "major", "pentatonic"],
+      "name": "Major Pentatonic",
+      "sequence": "2 4 7 9"
+    },
+    {
+      "tags": ["scale", "ascending", "major", "pentatonic"],
+      "name": "Suspended Pentatonic",
+      "sequence": "2 5 7 10"
+    },
+    {
+      "tags": ["scale", "ascending", "major", "pentatonic"],
+      "name": "Man Gong",
+      "sequence": "3 5 8 10"
+    },
+    {
+      "tags": ["scale", "ascending", "major", "pentatonic"],
+      "name": "Ritusen",
+      "sequence": "2 5 7 9"
+    },
+    {
+      "tags": ["scale", "ascending", "major", "pentatonic"],
+      "name": "Minor Pentatonic",
+      "sequence": "3 5 7 10"
+    }
+  ]
+}

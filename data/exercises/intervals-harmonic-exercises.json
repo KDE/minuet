@@ -3,14 +3,14 @@
     {
       "name": "Intervals",
       "root": "41..67",
-      "playMode": "scale",
+      "playMode": "chord",
       "userMessage": "Hear the interval and then choose an answer from options below",
       "numberOfSelectedOptions": 1,
       "_icon": "minuet-intervals.svg",
       "children": [
         {
-          "name": "Ascending Melodic Intervals",
-          "and-tags": ["interval", "ascending"],
+          "name": "Harmonic Intervals",
+          "and-tags": ["interval", "harmonic"],
           "children": [
             {
               "name": "Seconds",

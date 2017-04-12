@@ -1,0 +1,39 @@
+{
+  "definitions": [
+    {
+      "tags": ["scale", "ascending", "minor", "harmonic"],
+      "name": "Harmonic Minor",
+      "sequence": "2 3 5 7 8 11 12"
+    },
+    {
+      "tags": ["scale", "ascending", "minor", "harmonic"],
+      "name": "Locrian #6",
+      "sequence": "1 3 5 6 9 10 12"
+    },
+    {
+      "tags": ["scale", "ascending", "minor", "harmonic"],
+      "name": "Ionian Augmented",
+      "sequence": "2 4 5 8 9 11 12"
+    },
+    {
+      "tags": ["scale", "ascending", "minor", "harmonic"],
+      "name": "Romanian",
+      "sequence": "2 3 6 7 9 10 12"
+    },
+    {
+      "tags": ["scale", "ascending", "minor", "harmonic"],
+      "name": "Phrygian Dominant",
+      "sequence": "1 4 5 7 8 10 12"
+    },
+    {
+      "tags": ["scale", "ascending", "minor", "harmonic"],
+      "name": "Lydian #2",
+      "sequence": "3 4 6 7 9 11 12"
+    },
+    {
+      "tags": ["scale", "ascending", "minor", "harmonic"],
+      "name": "Ultralocrian",
+      "sequence": "1 3 4 6 8 9 12"
+    }
+  ]
+}
