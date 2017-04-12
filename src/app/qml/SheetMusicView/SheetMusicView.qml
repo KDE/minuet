@@ -10,12 +10,11 @@ Score {
         sequence.model = []
     }
 
-    width: childrenRect.width; height: childrenRect.height
+    width: childrenRect.width
     FontLoader { id: bravura; source: "Bravura.otf" }
     antialiasing: true
     spacing: 10
 
-//    clef: clef
     Clef { id: clef; type: 1 }
 
     Sequence { id: sequence }

@@ -157,6 +157,7 @@ Item {
         core.soundController.prepareFromExerciseOptions(chosenExercises)
         if (currentExercise["playMode"] != "rhythm") {
             pianoView.noteMark(0, core.exerciseController.chosenRootNote(), 0, "white")
+            pianoView.scrollToNote(core.exerciseController.chosenRootNote())
             sheetMusicView.model = [core.exerciseController.chosenRootNote()]
             sheetMusicView.clef.type = (core.exerciseController.chosenRootNote() >= 60) ? 0:1
         }
@@ -409,22 +410,23 @@ Item {
                 internal.currentAnswer--
             }
         }
-        Flickable {
-
-            id: pianoViewFlickable
-            Layout.preferredWidth: parent.width/2 - 10
-            anchors { left: parent.left; bottom: parent.bottom; bottomMargin: 10 }
+        Row {
+            anchors.horizontalCenter: parent.horizontalCenter
+            Layout.preferredWidth: parent.width
+            spacing: (parent.width/2 - sheetMusicView.width)/2
             PianoView {
                 id: pianoView
+                width: parent.width/2 - 10
+                visible: currentExercise != undefined && currentExercise["playMode"] != "rhythm"
+                ScrollIndicator.horizontal: ScrollIndicator { active: true }
+            }
+            SheetMusicView {
+                id: sheetMusicView
+
+                height: pianoView.height
+                anchors { bottom: parent.bottom; bottomMargin: 15 }
                 visible: currentExercise != undefined && currentExercise["playMode"] != "rhythm"
             }
-            ScrollIndicator.horizontal: ScrollIndicator { active: true }
-        }
-        
-        SheetMusicView {
-            id: sheetMusicView
-            anchors { right: parent.right; verticalCenter: pianoViewFlickable.verticalCenter }
-            visible: currentExercise != undefined && currentExercise["playMode"] != "rhythm"
         }
     }
     states: [

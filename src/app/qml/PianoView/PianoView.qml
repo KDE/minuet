@@ -26,8 +26,8 @@ import QtQuick.Controls 2.0
 Flickable {
     id: flickable
 
-    width: Math.min(parent.width, piano.width); height: keyHeight + 30
-    anchors { horizontalCenter: parent.horizontalCenter; bottom: parent.bottom }//; margins: exerciseContainer.anchors.margins }
+    width: Math.min(parent.width, piano.width)
+    height: keyHeight + 30
     contentWidth: piano.width
     boundsBehavior: Flickable.OvershootBounds
     clip: true
@@ -61,6 +61,9 @@ Flickable {
             if (markItem != undefined)
                 markItem.destroy()
         }
+    }
+    function scrollToNote(pitch) {
+        flickable.contentX = flickable.contentWidth/88*(pitch-21) - flickable.width/2
     }
     function highlightKey(pitch, color) {
         itemForPitch(pitch).color = color

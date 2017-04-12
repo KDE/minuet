@@ -9,7 +9,7 @@ Item {
     Row {
         spacing: 0
         Repeater {
-            model: 25
+            model: 20
             BravuraText { text: "\ue014" }
         }
     }
