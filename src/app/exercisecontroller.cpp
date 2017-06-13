@@ -120,10 +120,10 @@ bool ExerciseController::mergeJsonFiles(const QString directoryName, QJsonObject
 #if defined(Q_OS_ANDROID)
     QStringList jsonDirs;
     jsonDirs += "/data/data/org.kde.minuet/qt-reserved-files/share/minuet/" + directoryName;
-#elif defined(Q_OS_LINUX)
-    QStringList jsonDirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, directoryName, QStandardPaths::LocateDirectory);
 #elif defined(Q_OS_WIN)
     QStringList jsonDirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, QStringLiteral("minuet/") + directoryName, QStandardPaths::LocateDirectory);
+#else
+    QStringList jsonDirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, directoryName, QStandardPaths::LocateDirectory);
 #endif
     foreach (const QString &jsonDirString, jsonDirs) {
         QDir jsonDir(jsonDirString);
