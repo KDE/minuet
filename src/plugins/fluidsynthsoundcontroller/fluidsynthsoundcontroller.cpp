@@ -46,12 +46,12 @@ FluidSynthSoundController::FluidSynthSoundController(QObject *parent)
 
     fluid_synth_cc(m_synth, 1, 100, 0);
 
-#ifdef Q_OS_LINUX
-    int fluid_res = fluid_synth_sfload(m_synth, QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("soundfonts/GeneralUser-v1.47.sf2")).toLatin1(), 1);
-#endif
 #ifdef Q_OS_WIN
-    int fluid_res = fluid_synth_sfload(m_synth, QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("minuet/soundfonts/GeneralUser-v1.47.sf2")).toLatin1(), 1);
+    const QString sf_path = QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("minuet/soundfonts/GeneralUser-v1.47.sf2"));
+#else
+    const QString sf_path = QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("soundfonts/GeneralUser-v1.47.sf2"));
 #endif
+    int fluid_res = fluid_synth_sfload(m_synth, sf_path.toLatin1(), 1);
     if (fluid_res == FLUID_FAILED)
         qCritical() << "Error when loading soundfont!";
 
