@@ -13,6 +13,7 @@
         "Description[pt]": "Este 'plugin' oferece ao Minuet uma infra-estrutura de som implementada com base no CSound.",
         "Description[sk]": "Tento plugin poskytuje Minuet s implementáciou zvukového ovládača založeného na CSound.",
         "Description[sv]": "Insticksprogrammet tillhandahåller en implementering av ljudgränssnitt baserat på CSound åt Minuet.",
+        "Description[tr]": "Bu eklenti, ses denetçisinin CSound temelli uygulaması ile birlikte Minuet sağlar.",
         "Description[uk]": "Цей додаток забезпечує роботу Minuet із реалізацією звукового контролера на основі CSound.",
         "Description[x-test]": "xxThis plugin provides Minuet with a CSound-based implementation of sound controller.xx",
         "Icon": "utilities-terminal",
@@ -29,6 +30,7 @@
         "Name[pt]": "Controlador de Áudio Baseado no CSound",
         "Name[sk]": "Zvukový ovládač založený na CSound",
         "Name[sv]": "CSound-baserat ljudgränssnitt",
+        "Name[tr]": "CSound temelli Ses Denetçisi",
         "Name[uk]": "Звуковий контролер на основі CSound",
         "Name[x-test]": "xxCSound-based Audio Controllerxx",
         "ServiceTypes": [
