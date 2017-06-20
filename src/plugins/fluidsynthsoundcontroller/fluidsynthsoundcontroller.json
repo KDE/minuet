@@ -13,6 +13,7 @@
         "Description[pt]": "Este 'plugin' oferece ao Minuet um controlador de som implementada com base no FluidSynth.",
         "Description[sk]": "Tento plugin poskytuje Minuet s implementáciou zvukového ovládača založeného na FluidSynthe.",
         "Description[sv]": "Insticksprogrammet tillhandahåller en implementering av ljudgränssnitt baserat på FluidSynth åt Minuet.",
+        "Description[tr]": "Bu eklenti, ses denetçisinin FluidSynth temelli uygulaması ile birlikte Minuet sağlar.",
         "Description[uk]": "Цей додаток забезпечує роботу Minuet із реалізацією звукового контролера на основі FluidSynth.",
         "Description[x-test]": "xxThis plugin provides Minuet with a FluidSynth-based implementation of sound controller.xx",
         "Icon": "utilities-terminal",
@@ -29,6 +30,7 @@
         "Name[pt]": "Controlador de Áudio Baseado no FluidSynth",
         "Name[sk]": "Zvukový ovládač založený na FluidSynthe",
         "Name[sv]": "FluidSynth-baserat ljudgränssnitt",
+        "Name[tr]": "FluidSynth temelli Ses Denetçisi",
         "Name[uk]": "Звуковий контролер на основі FluidSynth",
         "Name[x-test]": "xxFluidSynth-based Audio Controllerxx",
         "ServiceTypes": [
