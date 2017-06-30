@@ -8,19 +8,16 @@
         <file alias="ImageItemDelegate.qml">qml/ImageItemDelegate.qml</file>
         <file alias="+android/MinuetMenuContainer.qml">+android/qml/MinuetMenuContainer.qml</file>
         <file alias="ExerciseView.qml">qml/ExerciseView.qml</file>
-        <file alias="BlackKey.qml">qml/PianoView/BlackKey.qml</file>
-        <file alias="Octave.qml">qml/PianoView/Octave.qml</file>
-        <file alias="PianoView.qml">qml/PianoView/PianoView.qml</file>
-        <file alias="WhiteKey.qml">qml/PianoView/WhiteKey.qml</file>
 
         <!-- SheetMusicView -->
-	<file alias="Bravura.otf">qml/SheetMusicView/Bravura.otf</file>
-	<file alias="BravuraText.qml">qml/SheetMusicView/BravuraText.qml</file>
-	<file alias="Clef.qml">qml/SheetMusicView/Clef.qml</file>
-	<file alias="Note.qml">qml/SheetMusicView/Note.qml</file>
-	<file alias="Score.qml">qml/SheetMusicView/Score.qml</file>
-	<file alias="Sequence.qml">qml/SheetMusicView/Sequence.qml</file>
-	<file alias="SheetMusicView.qml">qml/SheetMusicView/SheetMusicView.qml</file>
+    <file alias="InstrumentView.qml">qml/InstrumentView/InstrumentView.qml</file>
+    <file alias="Bravura.otf">qml/SheetMusicView/Bravura.otf</file>
+    <file alias="BravuraText.qml">qml/SheetMusicView/BravuraText.qml</file>
+    <file alias="Clef.qml">qml/SheetMusicView/Clef.qml</file>
+    <file alias="Note.qml">qml/SheetMusicView/Note.qml</file>
+    <file alias="Score.qml">qml/SheetMusicView/Score.qml</file>
+    <file alias="Sequence.qml">qml/SheetMusicView/Sequence.qml</file>
+    <file alias="SheetMusicView.qml">qml/SheetMusicView/SheetMusicView.qml</file>
 
         <!-- Images -->
         <file>qml/images/minuet-background.png</file>

@@ -24,6 +24,7 @@
 #define MINUET_UICONTROLLER_H
 
 #include <interfaces/iuicontroller.h>
+#include <QQmlApplicationEngine>
 
 #ifdef Q_OS_ANDROID
 #include <QVariant>
@@ -59,8 +60,10 @@ class UiController : public IUiController
 public:
     UiController(QObject *parent = 0);
     ~UiController() override;
+    QQmlApplicationEngine *engine;
 
     bool initialize(Core *core);
+    bool initializePlugins();
     virtual QString errorString() const;
 
 private:

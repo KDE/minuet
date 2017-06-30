@@ -71,3 +71,5 @@ IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     install(PROGRAMS org.kde.minuet.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
     install(TARGETS minuet RUNTIME DESTINATION bin)
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
+
+add_subdirectory(plugins)

@@ -29,6 +29,17 @@
 #include <QQmlContext>
 #include <QQmlApplicationEngine>
 
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
+#include <QDebug>
+#include <QFile>
+#include <QDir>
+#include <QStandardPaths>
+#include <QQmlContext>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QJsonDocument>
+
 #ifndef Q_OS_ANDROID
 #include <KLocalizedContext>
 #endif
@@ -45,10 +56,33 @@ UiController::~UiController()
 {
 }
 
+bool UiController::initializePlugins()
+{
+    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+
+    QString directoryName = "plugins";
+    QString minuet_dir = QStandardPaths::locate(QStandardPaths::AppDataLocation, directoryName, QStandardPaths::LocateDirectory);
+    QDir dir(minuet_dir);
+    qDebug()<<qApp->applicationDirPath();
+    QString contents;
+    QJsonArray mergedArray;
+    foreach(const QString &fileName, dir.entryList(QStringList() << "*.json")) {
+        QFile dfile(dir.absoluteFilePath(fileName));
+        dfile.open(QIODevice::ReadOnly);
+        QJsonObject jsonObject = QJsonDocument::fromJson(dfile.readAll()).object();
+        QDir pluginDir(dir);
+        pluginDir.cd(fileName.split('.').first());
+        jsonObject["pluginName"] = pluginDir.absolutePath();
+        mergedArray.append(jsonObject);
+        dfile.close();
+    }
+    engine->rootContext()->setContextProperty("contents", mergedArray);
+}
+
 bool UiController::initialize(Core *core)
 {
     m_errorString.clear();
-    QQmlApplicationEngine *engine = new QQmlApplicationEngine(this);
+    engine = new QQmlApplicationEngine(this);
     QQmlContext *rootContext = engine->rootContext();
     rootContext->setContextProperty(QStringLiteral("core"), core);
 #ifndef Q_OS_ANDROID
@@ -56,6 +90,8 @@ bool UiController::initialize(Core *core)
 #else
     rootContext->setContextObject(new DummyAndroidLocalizer(engine));
 #endif
+
+    initializePlugins();
     engine->load(QUrl("qrc:/Main.qml"));
 
     return true;
