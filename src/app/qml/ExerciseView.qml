@@ -31,6 +31,8 @@ Item {
     visible: currentExercise != undefined
 
     property var currentExercise
+    property var chosenExercises
+    property alias instrumentView: instrumentView
     
     QtObject {
         id: internal
@@ -81,6 +83,7 @@ Item {
         yourAnswersParent.children = ""
         internal.currentAnswer = 0
         internal.userAnswers = []
+        instrumentView.clean()
     }
 
     function checkAnswers() {
@@ -109,7 +112,7 @@ Item {
             exerciseView.state = "waitingForNewQuestion"
         internal.giveUp = false
     }
-    
+
     function highlightRightAnswer() {
         var chosenExercises = core.exerciseController.selectedExerciseOptions
         for (var i = 0; i < answerGrid.children.length; ++i) {
@@ -122,8 +125,8 @@ Item {
             }
         }
         var array = [core.exerciseController.chosenRootNote()]
-        internal.rightAnswerRectangle.model.sequence.split(' ').forEach(function(note) {
-            instrumentView.noteMark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0, internal.rightAnswerRectangle.color)
+        instrumentView.markNotes(internal.rightAnswerRectangle.model, internal.rightAnswerRectangle.color)
+        internal.rightAnswerRectangle.model.sequence[0].split(' ').forEach(function(note) {
             array.push(core.exerciseController.chosenRootNote() + parseInt(note))
         })
         sheetMusicView.model = array
@@ -153,10 +156,10 @@ Item {
         else
             messageText.text = ""
         core.exerciseController.randomlySelectExerciseOptions()
-        var chosenExercises = core.exerciseController.selectedExerciseOptions
+        chosenExercises = core.exerciseController.selectedExerciseOptions
         core.soundController.prepareFromExerciseOptions(chosenExercises)
         if (currentExercise["playMode"] != "rhythm") {
-            instrumentView.noteMark(0, core.exerciseController.chosenRootNote(), 0, "white")
+            instrumentView.setRoot(0, core.exerciseController.chosenRootNote(), 0, "white")
             instrumentView.scrollToNote(core.exerciseController.chosenRootNote())
             sheetMusicView.model = [core.exerciseController.chosenRootNote()]
             sheetMusicView.clef.type = (core.exerciseController.chosenRootNote() >= 60) ? 0:1
@@ -166,6 +169,15 @@ Item {
             internal.currentExercise++
     }
 
+    function applyCurrentQuestion() {
+        core.soundController.prepareFromExerciseOptions(chosenExercises)
+        if (currentExercise["playMode"] != "rhythm") {
+            instrumentView.setRoot(0, core.exerciseController.chosenRootNote(), 0, "white")
+            instrumentView.scrollToNote(core.exerciseController.chosenRootNote())
+            sheetMusicView.model = [core.exerciseController.chosenRootNote()]
+            sheetMusicView.clef.type = (core.exerciseController.chosenRootNote() >= 60) ? 0:1
+        }
+    }
 
     ColumnLayout {
         anchors.fill: parent
@@ -326,9 +338,9 @@ Item {
                                     if (currentExercise["playMode"] != "rhythm" && exerciseView.state == "waitingForAnswer") {
                                         if (parent.parent == answerGrid) {
                                             var array = [core.exerciseController.chosenRootNote()]
-                                            model.sequence.split(' ').forEach(function(note) {
+                                            instrumentView.markNotes(model, internal.colors[answerRectangle.index])
+                                            model.sequence[0].split(' ').forEach(function(note) {
                                                 array.push(core.exerciseController.chosenRootNote() + parseInt(note))
-                                                instrumentView.noteMark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0, internal.colors[answerRectangle.index])
                                             })
                                             sheetMusicView.model = array
                                         }
@@ -352,9 +364,7 @@ Item {
                                     if (currentExercise["playMode"] != "rhythm") {
                                         if (parent.parent == answerGrid) {
                                             if (!animation.running)
-                                                model.sequence.split(' ').forEach(function(note) {
-                                                    instrumentView.noteUnmark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0)
-                                                })
+                                                instrumentView.unmarkNotes(model.sequence)
                                             sheetMusicView.model = [core.exerciseController.chosenRootNote()]
                                         }
                                     }
@@ -420,6 +430,11 @@ Item {
                 width: parent.width/2 - 10
                 height: 150
                 visible: currentExercise != undefined && currentExercise["playMode"] != "rhythm"
+
+                onSourceChanged: {
+                    if (chosenExercises)
+                        applyCurrentQuestion()
+                }
             }
 
             SheetMusicView {
@@ -477,5 +492,7 @@ Item {
     Connections {
         target: core.exerciseController
         onSelectedExerciseOptionsChanged: sheetMusicView.clearAllMarks()
+    }
+    Component.onCompleted: {
     }
 }

@@ -180,7 +180,7 @@ ApplicationWindow {
         MinuetMenu {
             id: minuetMenu
             onBackPressed: {
-                exerciseView.resetTest()
+                instrumentView.resetTest()
                 core.soundController.reset()
             }
             onCurrentExerciseChanged: if (Qt.platform.os == "android" && currentExercise != undefined) drawer.close()

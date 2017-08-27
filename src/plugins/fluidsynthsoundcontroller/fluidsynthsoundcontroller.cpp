@@ -95,7 +95,7 @@ void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedEx
             appendEvent(9, 80, 127, 1000*(60.0/m_tempo));
 
     for (int i = 0; i < selectedExerciseOptions.size(); ++i) {
-        QString sequence = selectedExerciseOptions[i].toObject()[QStringLiteral("sequence")].toString();
+        QString sequence = selectedExerciseOptions[i].toObject()[QStringLiteral("sequence")].toArray()[0].toString();
 
         unsigned int chosenRootNote = selectedExerciseOptions[i].toObject()[QStringLiteral("rootNote")].toString().toInt();
         if (m_playMode != "rhythm") {

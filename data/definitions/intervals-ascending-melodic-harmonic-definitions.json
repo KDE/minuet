@@ -3,122 +3,122 @@
     {
       "tags": ["interval", "ascending", "harmonic", "2", "minor"],
       "name": "Minor Second",
-      "sequence": "1"
+      "sequence": ["1"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "2", "major"],
       "name": "Major Second",
-      "sequence": "2"
+      "sequence": ["2"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "3", "minor"],
       "name": "Minor Third",
-      "sequence": "3"
+      "sequence": ["3"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "3", "major"],
       "name": "Major Third",
-      "sequence": "4"
+      "sequence": ["4"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "4"],
       "name": "Perfect Fourth",
-      "sequence": "5"
+      "sequence": ["5"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "tritone"],
       "name": "Tritone",
-      "sequence": "6"
+      "sequence": ["6"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "5"],
       "name": "Perfect Fifth",
-      "sequence": "7"
+      "sequence": ["7"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "6", "minor"],
       "name": "Minor Sixth",
-      "sequence": "8"
+      "sequence": ["8"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "6", "major"],
       "name": "Major Sixth",
-      "sequence": "9"
+      "sequence": ["9"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "7", "minor"],
       "name": "Minor Seventh",
-      "sequence": "10"
+      "sequence": ["10"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "7", "major"],
       "name": "Major Seventh",
-      "sequence": "11"
+      "sequence": ["11"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "8"],
       "name": "Perfect Octave",
-      "sequence": "12"
+      "sequence": ["12"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "9", "minor"],
       "name": "Minor Ninth",
-      "sequence": "13"
+      "sequence": ["13"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "9", "major"],
       "name": "Major Ninth",
-      "sequence": "14"
+      "sequence": ["14"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "10", "minor"],
       "name": "Minor Tenth",
-      "sequence": "15"
+      "sequence": ["15"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "10", "major"],
       "name": "Major Tenth",
-      "sequence": "16"
+      "sequence": ["16"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "11"],
         "name": "Perfect Eleventh",
-        "sequence": "17"
+        "sequence": ["17"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "8+tritone"],
       "name": "Octave + Tritone",
-      "sequence": "18"
+      "sequence": ["18"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "12"],
       "name": "Perfect Twelfth",
-      "sequence": "19"
+      "sequence": ["19"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "13", "minor"],
       "name": "Minor Thirteenth",
-      "sequence": "20"
+      "sequence": ["20"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "13", "major"],
       "name": "Major Thirteenth",
-      "sequence": "21"
+      "sequence": ["21"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "14", "minor"],
       "name": "Minor Fourteenth",
-      "sequence": "22"
+      "sequence": ["22"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "14", "major"],
       "name": "Major Fourteenth",
-      "sequence": "23"
+      "sequence": ["23"]
     },
     {
       "tags": ["interval", "ascending", "harmonic", "double8"],
       "name": "Perfect Double Octave",
-      "sequence": "24"
+      "sequence": ["24"]
     }
   ]
 }

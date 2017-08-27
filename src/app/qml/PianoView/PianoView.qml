@@ -7,7 +7,7 @@
 ** published by the Free Software Foundation; either version 2 of
 ** the License or (at your option) version 3 or any later version
 ** accepted by the membership of KDE e.V. (or its successor approved
-** by the membership of KDE e.V.), which shall act as a proxy
+** by the membership of KDE e.V.), which shall act as a proxy 
 ** defined in Section 14 of version 3 of the license.
 **
 ** This program is distributed in the hope that it will be useful,
@@ -35,24 +35,6 @@ Flickable {
     property int keyWidth: Math.max(16, (parent.width - 80) / 52)
     property int keyHeight: 3.4 * keyWidth
 
-    function markNotes(model, color) {
-        model.sequence[0].split(' ').forEach(function(note) {
-            var sum = core.exerciseController.chosenRootNote() + parseInt(note)
-            flickable.noteMark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0, color)
-        })
-    }
-
-    function unmarkNotes(sequence) {
-        sequence[0].split(' ').forEach(function(note) {
-            noteUnmark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0)
-        })
-    }
-
-    function setRoot(chan, pitch, vel, color) {
-        flickable.noteMark(0, pitch, 0, color)
-    }
-    function clean() {
-    }
     function noteOn(chan, pitch, vel) {
         if (vel > 0)
             highlightKey(pitch, "#778692")
