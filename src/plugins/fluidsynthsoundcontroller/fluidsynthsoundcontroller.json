@@ -34,11 +34,13 @@
         "Name[nn]": "FluidSynth-basert lydmotor",
         "Name[pl]": "Sterownik dźwięku oparty na FluidSynth",
         "Name[pt]": "Controlador de Áudio Baseado no FluidSynth",
+        "Name[ru]": "Звуковой контроллер на основе FluidSynth",
         "Name[sk]": "Zvukový ovládač založený na FluidSynthe",
         "Name[sv]": "FluidSynth-baserat ljudgränssnitt",
         "Name[tr]": "FluidSynth temelli Ses Denetçisi",
         "Name[uk]": "Звуковий контролер на основі FluidSynth",
         "Name[x-test]": "xxFluidSynth-based Audio Controllerxx",
+        "Name[zh_CN]": "基于 FluidSynth 的音频控制器",
         "Name[zh_TW]": "基於 FluidSynth 的音訊控制器",
         "ServiceTypes": [
             "Minuet/Plugin"
