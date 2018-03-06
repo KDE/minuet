@@ -1,5 +1,3 @@
-include_directories(${FLUIDSYNTH_INCLUDE_DIRS})
-
 set(fluidsynthsoundcontroller_PLUGIN_SRCS
     fluidsynthsoundcontroller.cpp
 )
@@ -9,7 +7,7 @@ add_library(minuetfluidsynthsoundcontroller MODULE ${fluidsynthsoundcontroller_P
 target_link_libraries(minuetfluidsynthsoundcontroller
     Qt5::Core
     Minuet::Interfaces
-    ${FLUIDSYNTH_LIBRARIES}
+    FluidSynth::FluidSynth
 )
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
