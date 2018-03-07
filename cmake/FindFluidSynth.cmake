@@ -62,8 +62,9 @@ endif()
 find_package(PkgConfig QUIET)
 pkg_check_modules(PC_FluidSynth QUIET fluidsynth>=${FluidSynth_FIND_VERSION})
 
+# The Windows library may be called fluidsynth_debug
 find_library(FluidSynth_LIBRARIES
-  NAMES fluidsynth
+  NAMES fluidsynth fluidsynth_debug
   HINTS ${PC_FluidSynth_LIBDIR}
 )
 
