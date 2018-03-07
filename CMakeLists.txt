@@ -15,7 +15,7 @@ set(ECM_MIN_VERSION "5.15.0")
 set(QT_MIN_VERSION "5.7.0")
 
 find_package(ECM ${ECM_MIN_VERSION} CONFIG REQUIRED)
-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${minuet_SOURCE_DIR}/cmake)
 
 include(GenerateExportHeader)
 include(ECMSetupVersion)
@@ -45,8 +45,14 @@ IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
         CoreAddons
         I18n
         Crash
-	DocTools
+        DocTools
     )
+
+find_package(FluidSynth 1.1.6)
+set_package_properties(FluidSynth PROPERTIES
+    TYPE OPTIONAL
+    PURPOSE "Needed if you want to build the fluidsynth sound controller"
+)
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
