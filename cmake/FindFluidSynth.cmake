@@ -73,13 +73,13 @@ find_path(FluidSynth_INCLUDE_DIRS
   HINTS ${PC_FluidSynth_INCLUDEDIR}
 )
 
-#set(FluidSynth_VERSION "${PC_FluidSynth_VERSION}")
+set(FluidSynth_VERSION "${PC_FluidSynth_VERSION}")
 
 if(NOT FluidSynth_VERSION)
   if(EXISTS "${FluidSynth_INCLUDE_DIRS}/fluidsynth/version.h")
     file(STRINGS "${FluidSynth_INCLUDE_DIRS}/fluidsynth/version.h" _FLUIDSYNTH_VERSION_H
-         REGEX "^#define[ ]+FLUIDSYNTH_VERSION[ ]+\"[0-9].[0-9].[0-9]\"")
-    string(REGEX REPLACE "^#define[ ]+FLUIDSYNTH_VERSION[ ]+\"([0-9].[0-9].[0-9])\".*" "\\1" FluidSynth_VERSION "${_FLUIDSYNTH_VERSION_H}")
+         REGEX "^#define[ ]+FLUIDSYNTH_VERSION.*$")
+    string(REGEX REPLACE "^#define[ ]+FLUIDSYNTH_VERSION[ ]+\"([0-9]+.[0-9]+.[0-9]+)\".*" "\\1" FluidSynth_VERSION "${_FLUIDSYNTH_VERSION_H}")
     unset(_FLUIDSYNTH_VERSION_H)
   endif()
 endif()
