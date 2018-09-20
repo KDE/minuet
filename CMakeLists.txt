@@ -40,6 +40,9 @@ find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Svg
 )
 
+find_package(Qt5 CONFIG QUIET OPTIONAL_COMPONENTS QuickCompiler)
+
+
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
         CoreAddons
