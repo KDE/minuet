@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
 project(minuet)
 
 set(CMAKE_AUTOMOC ON)
+cmake_policy(SET CMP0071 OLD)
 
 # KDE Application Version, managed by release script
 set (KDE_APPLICATIONS_VERSION_MAJOR "18")
@@ -50,12 +51,7 @@ IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
         Crash
         DocTools
     )
-
-find_package(FluidSynth 1.1.6)
-set_package_properties(FluidSynth PROPERTIES
-    TYPE OPTIONAL
-    PURPOSE "Needed if you want to build the fluidsynth sound controller"
-)
+    find_package(FluidSynth 1.1.6 REQUIRED)
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
