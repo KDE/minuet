@@ -13,4 +13,4 @@ set(minuet_EXERCISES
     rhythm-medium.json
 )
 
-install(FILES ${minuet_EXERCISES} DESTINATION ${KDE_INSTALL_DATADIR}/minuet/exercises)
+install(FILES ${minuet_EXERCISES} DESTINATION ${CMAKE_INSTALL_PREFIX}/minuet/exercises)

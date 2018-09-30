@@ -1,8 +1,11 @@
-export BASE_DIR=$HOME
-export ANDROID_NDK=$BASE_DIR/android-ndk-r11c
-export ANDROID_SDK_ROOT=$BASE_DIR/android-sdk-linux
-export Qt5_android=$BASE_DIR/Qt5.7.0/5.7/android_armv7
-export PATH=$BASE_DIR/android-sdk-linux/platform-tools/:$PATH
+export BASE_DIR=/data
+export ANDROID_NDK=$BASE_DIR/android-ndk-r10e
+export ANDROID_SDK_ROOT=$BASE_DIR/sdk-tools-linux-4333796
+export Qt5_android=$BASE_DIR/Qt/5.11.2/android_armv7
+export PATH=$BASE_DIR/sdk-tools-linux-4333796/platform-tools/:$PATH
 export ANT=/usr/bin/ant
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk/
-export INSTALL_DIR=/home/android-devel/usr/
+export INSTALL_DIR=/home/pdv/install-dir/usr
+export CMAKE_SYSROOT=$BASE_DIR/android-ndk-r10e/platforms/android-17/arch-arm/
+export CSOUND_ANDROID_ROOT=/home/pdv/tmp/csound-android-6.11.0/
+export CSOUND_ROOT=/home/pdv/tmp/csound/

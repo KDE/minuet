@@ -7,7 +7,7 @@ find_library(CSOUND_SND NAMES libsndfile.so HINTS ${CSOUND_LIBS_DIR} CMAKE_FIND_
 set(CSOUND_LIBS ${CSOUND_ANDROID} ${CSOUND_SHARED} ${CSOUND_SND})
 
 include_directories($ENV{CSOUND_ROOT}/include)
-include_directories($ENV{CSOUND_ROOT}/android/CsoundAndroid/jni/)
+include_directories($ENV{CSOUND_ROOT}/Android/CsoundAndroid/jni/)
 
 set(csoundsoundcontroller_PLUGIN_SRCS
     csengine.cpp
