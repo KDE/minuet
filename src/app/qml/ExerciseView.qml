@@ -175,9 +175,10 @@ Item {
             id: userMessage
 
             Layout.preferredWidth: parent.width
+            Layout.alignment: Qt.AlignHCenter
+
             horizontalAlignment: Text.AlignHCenter
             font.pointSize: Screen.width >= 1024 ? 18:14
-            anchors.horizontalCenter: parent.horizontalCenter
             wrapMode: Text.WordWrap
             text: (currentExercise != undefined) ? i18nc("technical term, do you have a musician friend?", currentExercise["userMessage"]):""
         }
@@ -186,11 +187,11 @@ Item {
 
             font.pointSize: Screen.width >= 1024 ? 18:14
             Layout.preferredWidth: parent.width
+            Layout.alignment: Qt.AlignHCenter
             horizontalAlignment: Text.AlignHCenter
-            anchors.horizontalCenter: parent.horizontalCenter
         }
         Row {
-            anchors.horizontalCenter: parent.horizontalCenter
+            Layout.alignment: Qt.AlignHCenter
             spacing: 10
 
             Button {
@@ -258,8 +259,8 @@ Item {
             id: availableAnswers
 
             title: i18n("Available Answers")
-            anchors.horizontalCenter: parent.horizontalCenter
             Layout.preferredWidth: parent.width
+            Layout.alignment: Qt.AlignHCenter
             Layout.fillHeight: true
 
             Flickable {
@@ -379,7 +380,7 @@ Item {
 
             title: i18n("Your Answer(s)")
             Layout.preferredWidth: parent.width
-            anchors.horizontalCenter: parent.horizontalCenter
+            Layout.alignment: Qt.AlignHCenter
             contentHeight: ((currentExercise != undefined && currentExercise["playMode"] != "rhythm") ? 40:59)
 
             Flickable {
@@ -402,7 +403,7 @@ Item {
             id: backspaceButton
 
             text: i18n("Backspace")
-            anchors.horizontalCenter: parent.horizontalCenter
+            Layout.alignment: Qt.AlignHCenter
             visible: currentExercise != undefined && currentExercise["playMode"] == "rhythm"
             enabled: internal.currentAnswer > 0 && internal.currentAnswer < currentExercise.numberOfSelectedOptions
             onClicked: {
@@ -411,8 +412,8 @@ Item {
             }
         }
         Row {
-            anchors.horizontalCenter: parent.horizontalCenter
             Layout.preferredWidth: parent.width
+            Layout.alignment: Qt.AlignHCenter
             spacing: (parent.width/2 - sheetMusicView.width)/2
             PianoView {
                 id: pianoView
