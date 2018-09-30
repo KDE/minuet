@@ -45,7 +45,7 @@ Flickable {
         highlightKey(pitch, ([1,3,6,8,10].indexOf(pitch % 12) > -1) ? "black":"white")
     }
     function noteMark(chan, pitch, vel, color) {
-        noteMark.createObject(itemForPitch(pitch), { color: color })
+        noteMarkComponent.createObject(itemForPitch(pitch), { color: color })
     }
     function noteUnmark(chan, pitch, vel, color) {
         if(itemForPitch(pitch)!= undefined){
@@ -133,7 +133,7 @@ Flickable {
         }
 
         Component {
-            id: noteMark
+            id: noteMarkComponent
 
             Rectangle {
                 width: keyWidth - 4; height: keyWidth - 4
