@@ -11,4 +11,4 @@ set(minuet_DEFINITIONS
     rhythm-definitions.json
 )
 
-install(FILES ${minuet_DEFINITIONS} DESTINATION ${CMAKE_INSTALL_PREFIX}/minuet/definitions)
+install(FILES ${minuet_DEFINITIONS} DESTINATION ${KDE_INSTALL_DATADIR}/minuet/definitions)
