@@ -7,5 +7,3 @@ export ANT=/usr/bin/ant
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk/
 export INSTALL_DIR=/home/pdv/install-dir/usr
 export CMAKE_SYSROOT=$BASE_DIR/android-ndk-r10e/platforms/android-17/arch-arm/
-export CSOUND_ANDROID_ROOT=/home/pdv/tmp/csound-android-6.11.0/
-export CSOUND_ROOT=/home/pdv/tmp/csound/
