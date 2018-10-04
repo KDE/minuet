@@ -24,7 +24,7 @@
 #define CSENGINE_H
 
 #include <QThread>
-#include "AndroidCsound.hpp"
+#include <AndroidCsound.hpp>
 
 class CsEngine : public QThread
 {
