@@ -42,6 +42,8 @@ target_link_libraries(minuetcsoundsoundcontroller
     ${CSOUND_LIBS}
 )
 
+add_dependencies(minuetcsoundsoundcontroller CsoundForAndroid Csound)
+
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     install(TARGETS minuetcsoundsoundcontroller DESTINATION ${PLUGIN_INSTALL_DIR}/minuet/)
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
