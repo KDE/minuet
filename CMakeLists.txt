@@ -22,10 +22,8 @@ include(GenerateExportHeader)
 include(ECMSetupVersion)
 include(ECMInstallIcons)
 include(ECMAddAppIcon)
-IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
-    include(KDEInstallDirs)
-    include(KDECMakeSettings)
-ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
+include(KDEInstallDirs)
+include(KDECMakeSettings)
 include(FeatureSummary)
 
 ecm_setup_version(${KDE_APPLICATIONS_VERSION} VARIABLE_PREFIX MINUET
