@@ -3,7 +3,9 @@ cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
 project(minuet)
 
 set(CMAKE_AUTOMOC ON)
-cmake_policy(SET CMP0071 OLD)
+if(${CMAKE_VERSION} VERSION_GREATER "3.10.0")
+    cmake_policy(SET CMP0071 OLD)
+endif()
 
 # KDE Application Version, managed by release script
 set (KDE_APPLICATIONS_VERSION_MAJOR "18")
