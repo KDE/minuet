@@ -80,6 +80,7 @@
   <url type="homepage">https://minuet.kde.org</url>
   <url type="bugtracker">https://phabricator.kde.org/project/board/73/</url>
   <url type="help">https://docs.kde.org/?application=minuet</url>
+  <url type="donation">https://www.kde.org/community/donations/?app=minuet&amp;source=appdata</url>
   <screenshots>
     <screenshot type="default">
       <caption>Training with Minuet</caption>
