@@ -76,7 +76,7 @@ ApplicationWindow {
                         x: parent.width - width
                         transformOrigin: Menu.TopRight
                         MenuItem {
-                            text: "About"
+                            text: i18n("About")
                             onTriggered: aboutDialog.open()
                         }
                     }
