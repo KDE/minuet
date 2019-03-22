@@ -6,11 +6,7 @@ set(minuet_SRCS
     exercisecontroller.cpp
 )
 
-if (Qt5QuickCompiler_FOUND)
-    qtquick_compiler_add_resources(minuet_qml_SRCS qml.qrc)
-else ()
-    qt5_add_resources(minuet_qml_SRCS qml.qrc)
-endif()
+qt5_add_resources(minuet_SRCS qml.qrc)
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     set(minuet_ICONS_PNG
@@ -44,7 +40,7 @@ IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     ecm_install_icons(ICONS ${minuet_ICONS_PNG} ${minuet_ICONS_SVG} DESTINATION ${ICON_INSTALL_DIR} THEME hicolor)
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 
-add_executable(minuet ${minuet_SRCS} ${minuet_qml_SRCS})
+add_executable(minuet ${minuet_SRCS})
 
 target_link_libraries(minuet
     Qt5::Core
