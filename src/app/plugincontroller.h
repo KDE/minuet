@@ -27,6 +27,7 @@
 
 #ifndef Q_OS_ANDROID
 #include <KPluginMetaData>
+#include <QVector>
 #endif
 
 namespace Minuet
