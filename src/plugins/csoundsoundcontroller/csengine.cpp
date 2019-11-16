@@ -26,6 +26,7 @@
 #include <QStringList>
 #include <QDir>
 #include <QStandardPaths>
+#include <QCoreApplication>
 
 CsEngine::CsEngine()
 {
@@ -35,15 +36,26 @@ CsEngine::CsEngine()
 void CsEngine::run()
 {
     cs.setOpenSlCallbacks(); // for android audio to work
-    cs.Compile(m_fileName);
-    cs.Start();
-    cs.Perform();
-    cs.Cleanup();
-    cs.Reset();
-    cs.Stop();
+    QFile file(m_fileName);
+    file.open(QIODevice::ReadOnly);
+    qDebug() << "Template: ";
+    while (!file.atEnd())
+      qDebug() << file.readLine();
+    file.close();
+    qWarning() << "Dir " << QDir::currentPath() << " contains sf_GMbank.sf2? " << QDir::current().entryList(QDir::Files).contains("sf_GMbank.sf2");
+    qWarning() << "Dir " << QCoreApplication::applicationDirPath() << " contains libfluidOpcodes.so? " << QDir(QCoreApplication::applicationDirPath()).entryList(QDir::Files).contains("libfluidOpcodes.so");
+    qDebug() << "READING " << QDir::currentPath() + "/template.csd";
+    qDebug() << "SOUNDFONT EXISTS? " << QFile("/data/data/org.kde.minuet/files/sf_GMbank.sf2").exists() << " " << QFileInfo("/data/data/org.kde.minuet/files/sf_GMbank.sf2").size() << "b";
+    if (cs.Compile(m_fileName)) {
+        cs.Start();
+        cs.Perform();
+        cs.Cleanup();
+        cs.Reset();
+        cs.Stop();
+    }
 }
 
 void CsEngine::stop()
 {
-    cs.Stop();
+//    cs.Stop();
 }

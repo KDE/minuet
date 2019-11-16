@@ -42,8 +42,28 @@ void CsoundSoundController::openExerciseFile()
 {
     QStringList templateList;
     templateList.append(QStringLiteral("assets:/share/template.csd"));
-    templateList.append(QStringLiteral("assets:/share/template_rhythm.csd"));
+//    templateList.append(QStringLiteral("assets:/share/template_rhythm.csd"));
 
+    qDebug() << "DIRPATH: " << QCoreApplication::applicationDirPath();
+    qDebug() << "ASSETSPATH: " << QDir("assets:/").canonicalPath();
+    qDebug() << "QStandardPaths::ApplicationsLocation: " << QStandardPaths::standardLocations(QStandardPaths::ApplicationsLocation);
+    qDebug() << "QStandardPaths::GenericDataLocation: " << QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
+    qDebug() << "QStandardPaths::AppDataLocation: " << QStandardPaths::standardLocations(QStandardPaths::AppDataLocation);
+    qDebug() << "QStandardPaths::AppLocalDataLocation: " << QStandardPaths::standardLocations(QStandardPaths::AppLocalDataLocation);
+    qDebug() << "QStandardPaths::AppConfigLocation: " << QStandardPaths::standardLocations(QStandardPaths::AppConfigLocation);
+    QDir appDir(QCoreApplication::applicationDirPath());
+    qDebug() << "Contains libfluidOpcodes.so? " << appDir.entryList(QDir::Files).contains("libfluidOpcodes.so");
+    qDebug() << "DIRPATH: " << appDir << " Contents: " << appDir.entryList(QDir::AllEntries);
+    appDir.cdUp();
+    qDebug() << "DIRPATH: " << appDir << " Contents: " << appDir.entryList(QDir::AllEntries);
+    appDir.cdUp();
+    qDebug() << "DIRPATH: " << appDir << " Contents: " << appDir.entryList(QDir::AllEntries);
+    QDir reserved("/data/data/org.kde.minuet/qt-reserved-files/");
+    qDebug() << "RESERVED: " << reserved << " Contents: " << reserved.entryList(QDir::AllEntries);
+
+    QDirIterator it("/", QDirIterator::Subdirectories);
+    while (it.hasNext())
+        qDebug() << "FILE: " << it.next();
     foreach (const QString &templateString, templateList) {
         QFile sfile(templateString);
         if (!sfile.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -56,6 +76,7 @@ void CsoundSoundController::openExerciseFile()
 
         while (!in.atEnd()) {
             lineData = in.readLine();
+            lineData.replace("APPDIRPATH", QCoreApplication::applicationDirPath());
             tempBeginLine = tempBeginLine + lineData + "\n";
             if (lineData.contains("<CsScore>")) {
                 m_begLine.append(tempBeginLine);
@@ -69,6 +90,8 @@ void CsoundSoundController::openExerciseFile()
         }
         m_endLine.append(tempEndLine);
     }
+    qDebug() << "m_begLine: " << m_begLine;
+    qDebug() << "m_endLine: " << m_endLine;
 }
 
 void CsoundSoundController::appendEvent(QList<unsigned int> midiNotes, QList<float> barStartInfo, QString playMode)
@@ -79,6 +102,7 @@ void CsoundSoundController::appendEvent(QList<unsigned int> midiNotes, QList<flo
     QString fifthParam = QStringLiteral("100");
     QFile m_csdFileOpen(QStringLiteral("./template.csd"));
 
+    qDebug() << "CREATING " << QDir::currentPath() + "/template.csd";
     if(!m_csdFileOpen.isOpen()) {
         m_csdFileOpen.open(QIODevice::ReadWrite | QIODevice::Text);
     }
@@ -92,12 +116,12 @@ void CsoundSoundController::appendEvent(QList<unsigned int> midiNotes, QList<flo
 
     for(int i=0; i<midiNotes.count(); i++) {
         QString initScore = QString("i 1 %1 %2 %3 %4\n").arg(QString::number(barStartInfo.at(i))).arg(QString::number(1)).arg(QString::number(midiNotes.at(i))).arg(fifthParam);
-        content += initScore;
+//        content += initScore;
     }
 
     if (playMode != "rhythm") {
         QString instrInit = "i 99 0 " + QString::number(barStartInfo.at(barStartInfo.count()-1)+1) + "\ne\n";//instrument will be active till the end of the notes +1 second
-        content += instrInit;
+//        content += instrInit;
     }
 
     QString templateContent = m_begLine[templateNumber] + content + m_endLine[templateNumber];

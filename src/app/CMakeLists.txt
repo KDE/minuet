@@ -40,7 +40,19 @@ IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     ecm_install_icons(ICONS ${minuet_ICONS_PNG} ${minuet_ICONS_SVG} DESTINATION ${ICON_INSTALL_DIR} THEME hicolor)
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 
-add_executable(minuet ${minuet_SRCS})
+if(ANDROID)
+    include(../../cmake/qt-android-mk-apk.cmake)
+    add_library(minuet SHARED ${minuet_SRCS})
+    qt_android_build_apk(
+        TARGET ${PROJECT_NAME}
+        PACKAGE_NAME org.kde.minuet
+        QML_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR}
+        ANDROID_EXTRA_FILES ${CMAKE_CURRENT_SOURCE_DIR}/../../android
+        EXTRA_LIBS ../plugins/csoundsoundcontroller/libminuetcsoundsoundcontroller.so,../interfaces/libminuetinterfaces.so,../../src/plugins/csoundsoundcontroller/Csound-prefix/src/Csound/Android/CsoundAndroid/libs/arm64-v8a/libcsoundandroid.so,../../src/plugins/csoundsoundcontroller/Csound-prefix/src/Csound/Android/CsoundAndroid/libs/arm64-v8a/libsndfile.so,../../src/plugins/csoundsoundcontroller/Csound-prefix/src/Csound/Android/pluginlibs/libfluidsynth/libs/arm64-v8a/libfluidOpcodes.so,../../src/plugins/csoundsoundcontroller/Csound-prefix/src/Csound/Android/CsoundAndroid/libs/arm64-v8a/libc++_shared.so
+    )
+else()
+    add_executable(minuet ${minuet_SRCS})
+endif()
 
 target_link_libraries(minuet
     Qt5::Core
@@ -52,11 +64,11 @@ target_link_libraries(minuet
     Minuet::Interfaces
 )
 
-IF(${CMAKE_SYSTEM_NAME} MATCHES "Android")
+if(ANDROID)
     target_link_libraries(minuet
         Minuet::CsoundSoundController
     )
-ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Android")
+endif()
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 target_link_libraries(minuet

@@ -117,17 +117,18 @@ QJsonArray ExerciseController::exercises() const
 
 bool ExerciseController::mergeJsonFiles(const QString directoryName, QJsonObject &targetObject, bool applyDefinitionsFlag, QString commonKey, QString mergeKey)
 {
-#if defined(Q_OS_ANDROID)
     QStringList jsonDirs;
-    jsonDirs += "/data/data/org.kde.minuet/qt-reserved-files/share/minuet/" + directoryName;
+#if defined(Q_OS_ANDROID)
+    jsonDirs << "assets:/data/" + directoryName;
 #elif defined(Q_OS_WIN)
-    QStringList jsonDirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, QStringLiteral("minuet/") + directoryName, QStandardPaths::LocateDirectory);
+    jsonDirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, QStringLiteral("minuet/") + directoryName, QStandardPaths::LocateDirectory);
 #else
-    QStringList jsonDirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, directoryName, QStandardPaths::LocateDirectory);
+    jsonDirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, directoryName, QStandardPaths::LocateDirectory);
 #endif
     foreach (const QString &jsonDirString, jsonDirs) {
         QDir jsonDir(jsonDirString);
         foreach (const QString &json, jsonDir.entryList(QDir::Files)) {
+            if (!json.endsWith(".json")) break;
             QFile jsonFile(jsonDir.absoluteFilePath(json));
             if (!jsonFile.open(QIODevice::ReadOnly)) {
 #if !defined(Q_OS_ANDROID)

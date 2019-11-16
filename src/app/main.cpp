@@ -30,8 +30,12 @@
 #endif
 
 #include <QIcon>
+#include <QFile>
 #include <QGuiApplication>
 #include <QCommandLineParser>
+#include <QDir>
+
+#include <QDebug>
 
 int main(int argc, char *argv[])
 {
@@ -68,6 +72,12 @@ int main(int argc, char *argv[])
     KAboutData::setApplicationData(aboutData);
 #endif
 
+#if defined(Q_OS_ANDROID)
+    if (!QFile("/data/data/org.kde.minuet/files/sf_GMbank.sf2").exists()) {
+      if(QFile("assets:/share/sf_GMbank.sf2").copy("/data/data/org.kde.minuet/files/sf_GMbank.sf2"))
+         qDebug() << "COPIED " << QFileInfo("/data/data/org.kde.minuet/files/sf_GMbank.sf2").size() << "b soundfound file to /data/data/org.kde.minuet/files/sf_GMbank.sf2";
+    }
+#endif
     Minuet::Core::initialize();
 
     return application.exec();
