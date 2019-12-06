@@ -77,7 +77,7 @@ void CsoundSoundController::openExerciseFile()
         while (!in.atEnd()) {
             lineData = in.readLine();
             lineData.replace("APPDIRPATH", QCoreApplication::applicationDirPath());
-            tempBeginLine = tempBeginLine + lineData + "\n";
+            tempBeginLine = tempBeginLine + lineData + '\n';
             if (lineData.contains("<CsScore>")) {
                 m_begLine.append(tempBeginLine);
                 break;
@@ -86,7 +86,7 @@ void CsoundSoundController::openExerciseFile()
 
         while (!in.atEnd()) {
             lineData = in.readLine();
-            tempEndLine += lineData + "\n";
+            tempEndLine += lineData + '\n';
         }
         m_endLine.append(tempEndLine);
     }

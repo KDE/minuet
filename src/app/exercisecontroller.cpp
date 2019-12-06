@@ -128,7 +128,7 @@ bool ExerciseController::mergeJsonFiles(const QString directoryName, QJsonObject
     foreach (const QString &jsonDirString, jsonDirs) {
         QDir jsonDir(jsonDirString);
         foreach (const QString &json, jsonDir.entryList(QDir::Files)) {
-            if (!json.endsWith(".json")) break;
+            if (!json.endsWith(QLatin1String(".json"))) break;
             QFile jsonFile(jsonDir.absoluteFilePath(json));
             if (!jsonFile.open(QIODevice::ReadOnly)) {
 #if !defined(Q_OS_ANDROID)

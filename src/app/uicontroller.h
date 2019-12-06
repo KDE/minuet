@@ -57,7 +57,7 @@ class UiController : public IUiController
     Q_OBJECT
 
 public:
-    UiController(QObject *parent = 0);
+    explicit UiController(QObject *parent = 0);
     ~UiController() override;
 
     bool initialize(Core *core);
