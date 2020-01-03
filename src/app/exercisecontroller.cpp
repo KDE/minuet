@@ -31,6 +31,7 @@
 #include <QDateTime>
 #include <QJsonDocument>
 #include <QStandardPaths>
+#include <QRandomGenerator>
 
 namespace Minuet
 {
@@ -73,14 +74,13 @@ void ExerciseController::randomlySelectExerciseOptions()
     while (!m_selectedExerciseOptions.isEmpty())
         m_selectedExerciseOptions.removeFirst();
 
-    qsrand(QDateTime::currentDateTimeUtc().toTime_t());
-
     int minNote = INT_MAX;
     int maxNote = INT_MIN;
+    auto *generator = QRandomGenerator::global();
     quint8 numberOfSelectedOptions = m_currentExercise[QStringLiteral("numberOfSelectedOptions")].toInt();
     for (quint8 i = 0; i < numberOfSelectedOptions; ++i) {
         QJsonArray exerciseOptions = QJsonObject::fromVariantMap(m_currentExercise)[QStringLiteral("options")].toArray();
-        quint8 chosenExerciseOption = qrand() % exerciseOptions.size();
+        quint8 chosenExerciseOption = generator->bounded(exerciseOptions.size());
 
         QString sequence = exerciseOptions[chosenExerciseOption].toObject()[QStringLiteral("sequence")].toString();
         foreach(const QString &additionalNote, sequence.split(' ')) {
@@ -93,7 +93,7 @@ void ExerciseController::randomlySelectExerciseOptions()
             quint8 exerciseMinRoot = exerciseRoots.first().toInt();
             quint8 exerciseMaxRoot = exerciseRoots.last().toInt();
             do
-                m_chosenRootNote = exerciseMinRoot + qrand() % (exerciseMaxRoot - exerciseMinRoot);
+                m_chosenRootNote = exerciseMinRoot + generator->bounded(exerciseMaxRoot - exerciseMinRoot);
             while (m_chosenRootNote + maxNote > 108 || m_chosenRootNote + minNote < 21);
         }
 
