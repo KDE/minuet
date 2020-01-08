@@ -61,8 +61,6 @@ int main(int argc, char *argv[])
     application.setWindowIcon(QIcon(QStringLiteral(":/minuet.png")));
 
     QCommandLineParser parser;
-    parser.addHelpOption();
-    parser.addVersionOption();
 #if !defined(Q_OS_ANDROID)
     aboutData.setupCommandLine(&parser);
 #endif
