@@ -34,13 +34,14 @@ FluidSynthSoundController::FluidSynthSoundController(QObject *parent)
     : Minuet::ISoundController(parent),
       m_audioDriver(0),
       m_sequencer(0),
-      m_song(0)
+      m_song(0),
+      m_unregisteringEvent(0)
 {
     m_tempo = 60;
 
     m_settings = new_fluid_settings();
-    fluid_settings_setstr(m_settings, "synth.reverb.active", "no");
-    fluid_settings_setstr(m_settings, "synth.chorus.active", "no");
+    fluid_settings_setint(m_settings, "synth.reverb.active", 0);
+    fluid_settings_setint(m_settings, "synth.chorus.active", 0);
 
     m_synth = new_fluid_synth(m_settings);
 
@@ -55,6 +56,9 @@ FluidSynthSoundController::FluidSynthSoundController(QObject *parent)
     if (fluid_res == FLUID_FAILED)
         qCritical() << "Error when loading soundfont!";
 
+    m_unregisteringEvent = new_fluid_event();
+    fluid_event_set_source(m_unregisteringEvent, -1);
+
     resetEngine();
 }
 
@@ -63,6 +67,7 @@ FluidSynthSoundController::~FluidSynthSoundController()
     deleteEngine();
     if (m_synth) delete_fluid_synth(m_synth);
     if (m_settings) delete_fluid_settings(m_settings);
+    if (m_unregisteringEvent) delete_fluid_event(m_unregisteringEvent);
 }
 
 void FluidSynthSoundController::setPitch(qint8 pitch)
@@ -240,7 +245,16 @@ void FluidSynthSoundController::resetEngine()
 
 void FluidSynthSoundController::deleteEngine()
 {
-    if (m_sequencer) delete_fluid_sequencer(m_sequencer);
+    if (m_sequencer) {
+#if FLUIDSYNTH_VERSION_MAJOR >= 2
+        // explicit client unregistering required
+        fluid_sequencer_unregister_client(m_sequencer, m_callbackSeqID);
+        fluid_event_set_dest(m_unregisteringEvent, m_synthSeqID);
+        fluid_event_unregistering(m_unregisteringEvent);
+        fluid_sequencer_send_now(m_sequencer, m_unregisteringEvent);
+#endif
+        delete_fluid_sequencer(m_sequencer);
+    }
     if (m_audioDriver) delete_fluid_audio_driver(m_audioDriver);
 }
 

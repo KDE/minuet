@@ -63,6 +63,7 @@ private:
     fluid_audio_driver_t *m_audioDriver;
     fluid_sequencer_t *m_sequencer;
     fluid_synth_t *m_synth;
+    fluid_event_t *m_unregisteringEvent;
 
     short m_synthSeqID;
     short m_callbackSeqID;
