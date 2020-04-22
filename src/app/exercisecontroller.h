@@ -42,15 +42,15 @@ public:
     virtual ~ExerciseController();
  
     bool initialize(Core *core);
-    virtual QString errorString() const;
+    virtual QString errorString() const override;
 
     Q_INVOKABLE unsigned int chosenRootNote();
 
     virtual QJsonArray exercises() const override;
 
 public Q_SLOTS:
-    virtual void randomlySelectExerciseOptions();
- 
+    virtual void randomlySelectExerciseOptions() override;
+
 private:
     bool mergeJsonFiles(const QString directoryName, QJsonObject &targetObject, bool applyDefinitionsFlag = false, QString commonKey = "", QString mergeKey = "");
     QJsonArray applyDefinitions(QJsonArray exercises, QJsonArray definitions, QJsonObject collectedProperties = QJsonObject());

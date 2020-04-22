@@ -61,7 +61,7 @@ public:
     ~UiController() override;
 
     bool initialize(Core *core);
-    virtual QString errorString() const;
+    virtual QString errorString() const override;
 
 private:
     QString m_errorString;
