@@ -79,7 +79,6 @@ target_link_libraries(minuet
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
-    install(TARGETS minuet ${INSTALL_TARGETS_DEFAULT_ARGS})
+    install(TARGETS minuet ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
     install(PROGRAMS org.kde.minuet.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
-    install(TARGETS minuet RUNTIME DESTINATION bin)
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
