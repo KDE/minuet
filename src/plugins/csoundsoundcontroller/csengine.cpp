@@ -39,8 +39,9 @@ void CsEngine::run()
     QFile file(m_fileName);
     file.open(QIODevice::ReadOnly);
     qDebug() << "Template: ";
-    while (!file.atEnd())
+    while (!file.atEnd()) {
       qDebug() << file.readLine();
+    }
     file.close();
     qWarning() << "Dir " << QDir::currentPath() << " contains sf_GMbank.sf2? " << QDir::current().entryList(QDir::Files).contains("sf_GMbank.sf2");
     qWarning() << "Dir " << QCoreApplication::applicationDirPath() << " contains libfluidOpcodes.so? " << QDir(QCoreApplication::applicationDirPath()).entryList(QDir::Files).contains("libfluidOpcodes.so");

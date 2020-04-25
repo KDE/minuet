@@ -62,12 +62,14 @@ void CsoundSoundController::openExerciseFile()
     qDebug() << "RESERVED: " << reserved << " Contents: " << reserved.entryList(QDir::AllEntries);
 
     QDirIterator it("/", QDirIterator::Subdirectories);
-    while (it.hasNext())
+    while (it.hasNext()) {
         qDebug() << "FILE: " << it.next();
+    }
     foreach (const QString &templateString, templateList) {
         QFile sfile(templateString);
-        if (!sfile.open(QIODevice::ReadOnly | QIODevice::Text))
+        if (!sfile.open(QIODevice::ReadOnly | QIODevice::Text)) {
             return;
+        }
 
         QTextStream in(&sfile);
         QString lineData;
@@ -103,7 +105,7 @@ void CsoundSoundController::appendEvent(QList<unsigned int> midiNotes, QList<flo
     QFile m_csdFileOpen(QStringLiteral("./template.csd"));
 
     qDebug() << "CREATING " << QDir::currentPath() + "/template.csd";
-    if(!m_csdFileOpen.isOpen()) {
+    if (!m_csdFileOpen.isOpen()) {
         m_csdFileOpen.open(QIODevice::ReadWrite | QIODevice::Text);
     }
     m_csdFileOpen.resize(0);
@@ -114,13 +116,13 @@ void CsoundSoundController::appendEvent(QList<unsigned int> midiNotes, QList<flo
         fifthParam = QStringLiteral("");
     }
 
-    for(int i=0; i<midiNotes.count(); i++) {
+    for (int i = 0; i < midiNotes.count(); i++) {
         QString initScore = QString("i 1 %1 %2 %3 %4\n").arg(QString::number(barStartInfo.at(i))).arg(QString::number(1)).arg(QString::number(midiNotes.at(i))).arg(fifthParam);
 //        content += initScore;
     }
 
     if (playMode != "rhythm") {
-        QString instrInit = "i 99 0 " + QString::number(barStartInfo.at(barStartInfo.count()-1)+1) + "\ne\n";//instrument will be active till the end of the notes +1 second
+        QString instrInit = "i 99 0 " + QString::number(barStartInfo.at(barStartInfo.count() -1) +1) + "\ne\n";//instrument will be active till the end of the notes +1 second
 //        content += instrInit;
     }
 
@@ -142,7 +144,7 @@ void CsoundSoundController::prepareFromExerciseOptions(QJsonArray selectedExerci
     QList<float> barStartInfo;
 
     if (m_playMode == "rhythm") {
-        for(int k = 0; k < 4; ++k) {
+        for (int k = 0; k < 4; ++k) {
             midiNotes.append(80);
             barStartInfo.append(barStart++);
         }
@@ -159,7 +161,7 @@ void CsoundSoundController::prepareFromExerciseOptions(QJsonArray selectedExerci
 
             unsigned int j = 1;
             foreach(const QString &additionalNote, sequence.split(' ')) {
-                midiNotes.append(chosenRootNote+additionalNote.toInt());
+                midiNotes.append(chosenRootNote + additionalNote.toInt());
                 barStartInfo.append((m_playMode == "scale") ? barStart+j:barStart);
                 ++j;
             }
