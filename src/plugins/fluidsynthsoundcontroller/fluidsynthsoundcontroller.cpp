@@ -69,8 +69,9 @@ FluidSynthSoundController::FluidSynthSoundController(QObject *parent)
 #endif
 
     int fluid_res = fluid_synth_sfload(m_synth, sf_path.toLatin1(), 1);
-    if (fluid_res == FLUID_FAILED)
+    if (fluid_res == FLUID_FAILED) {
         qCritical() << "Error when loading soundfont in:" << sf_path;
+    }
 
     m_unregisteringEvent = new_fluid_event();
     fluid_event_set_source(m_unregisteringEvent, -1);
@@ -81,9 +82,15 @@ FluidSynthSoundController::FluidSynthSoundController(QObject *parent)
 FluidSynthSoundController::~FluidSynthSoundController()
 {
     deleteEngine();
-    if (m_synth) delete_fluid_synth(m_synth);
-    if (m_settings) delete_fluid_settings(m_settings);
-    if (m_unregisteringEvent) delete_fluid_event(m_unregisteringEvent);
+    if (m_synth) {
+        delete_fluid_synth(m_synth);
+    }
+    if (m_settings) {
+        delete_fluid_settings(m_settings);
+    }
+    if (m_unregisteringEvent) {
+        delete_fluid_event(m_unregisteringEvent);
+    }
 }
 
 void FluidSynthSoundController::setPitch(qint8 pitch)
@@ -103,7 +110,7 @@ void FluidSynthSoundController::setVolume(quint8 volume)
     fluid_synth_cc(m_synth, 1, 7, m_volume * 127 / 200);
 }
 
-void FluidSynthSoundController::setTempo (quint8 tempo)
+void FluidSynthSoundController::setTempo(quint8 tempo)
 {
     m_tempo = tempo;
 }
@@ -113,18 +120,21 @@ void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedEx
     QList<fluid_event_t *> *song = new QList<fluid_event_t *>;
     m_song.reset(song);
 
-    if (m_playMode == "rhythm")
-        for (int i = 0; i < 4; ++i)
+    if (m_playMode == "rhythm") {
+        for (int i = 0; i < 4; ++i) {
             appendEvent(9, 80, 127, 1000*(60.0/m_tempo));
+        }
+    }
 
     for (int i = 0; i < selectedExerciseOptions.size(); ++i) {
         QString sequence = selectedExerciseOptions[i].toObject()[QStringLiteral("sequence")].toString();
 
         unsigned int chosenRootNote = selectedExerciseOptions[i].toObject()[QStringLiteral("rootNote")].toString().toInt();
         if (m_playMode != "rhythm") {
-            appendEvent(1, chosenRootNote, 127, 1000*(60.0/m_tempo));
-            foreach(const QString &additionalNote, sequence.split(' '))
-                appendEvent(1, chosenRootNote + additionalNote.toInt(), 127, ((m_playMode == "scale") ? 1000:4000)*(60.0/m_tempo));
+            appendEvent(1, chosenRootNote, 127, 1000*(60.0 / m_tempo));
+            foreach(const QString &additionalNote, sequence.split(' ')) {
+                appendEvent(1, chosenRootNote + additionalNote.toInt(), 127, ((m_playMode == "scale") ? 1000 : 4000) * (60.0 / m_tempo));
+            }
         }
         else {
             //appendEvent(9, 80, 127, 1000*(60.0/m_tempo));
@@ -134,7 +144,7 @@ void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedEx
                     dotted = 1.5;
                     additionalNote.chop(1);
                 }
-                unsigned int duration = dotted*1000*(60.0/m_tempo)*(4.0/additionalNote.toInt());
+                unsigned int duration = dotted * 1000 * (60.0 / m_tempo) * (4.0 / additionalNote.toInt());
                 appendEvent(9, 37, 127, duration);
             }
         }
@@ -155,8 +165,9 @@ void FluidSynthSoundController::prepareFromMidiFile(const QString &fileName)
 
 void FluidSynthSoundController::play()
 {
-    if (!m_song.data())
+    if (!m_song.data()) {
         return;
+    }
 
     if (m_state != PlayingState) {
         unsigned int now = fluid_sequencer_get_tick(m_sequencer);
@@ -168,7 +179,7 @@ void FluidSynthSoundController::play()
             fluid_event_set_dest(event, m_callbackSeqID);
             fluid_sequencer_send_at(m_sequencer, event, now, 1);
             now += (m_playMode == "rhythm") ? fluid_event_get_duration(event):
-                (m_playMode == "scale")  ? 1000*(60.0/m_tempo):0;
+                (m_playMode == "scale")  ? 1000 * (60.0 / m_tempo) : 0;
         }
         setState(PlayingState);
     }
@@ -214,12 +225,13 @@ void FluidSynthSoundController::sequencerCallback(unsigned int time, fluid_event
     int eventType = fluid_event_get_type(event);
     switch (eventType) {
         case FLUID_SEQ_NOTE: {
-            if (m_initialTime == 0)
+            if (m_initialTime == 0) {
                 m_initialTime = time;
-            double adjustedTime = (time - m_initialTime)/1000.0;
+            }
+            double adjustedTime = (time - m_initialTime) / 1000.0;
             int mins = adjustedTime / 60;
             int secs = ((int)adjustedTime) % 60;
-            int cnts = 100*(adjustedTime-qFloor(adjustedTime));
+            int cnts = 100 * (adjustedTime - qFloor(adjustedTime));
 
             static QChar fill('0');
             soundController->setPlaybackLabel(QStringLiteral("%1:%2.%3").arg(mins, 2, 10, fill).arg(secs, 2, 10, fill).arg(cnts, 2, 10, fill));
