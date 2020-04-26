@@ -62,6 +62,7 @@ target_link_libraries(minuet
     Qt5::QuickControls2
     Qt5::Svg
     Minuet::Interfaces
+    Minuet::Utils
 )
 
 if(ANDROID)
