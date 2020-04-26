@@ -7,6 +7,7 @@ add_library(minuetfluidsynthsoundcontroller MODULE ${fluidsynthsoundcontroller_P
 target_link_libraries(minuetfluidsynthsoundcontroller
     Qt5::Core
     Minuet::Interfaces
+    Minuet::Utils
     FluidSynth::FluidSynth
 )
 

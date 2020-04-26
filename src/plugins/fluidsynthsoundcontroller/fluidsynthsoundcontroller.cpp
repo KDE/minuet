@@ -28,6 +28,8 @@
 #include <QJsonObject>
 #include <QStandardPaths>
 
+#include <utils/xdgdatadirs.h>
+
 unsigned int FluidSynthSoundController::m_initialTime = 0;
 
 FluidSynthSoundController::FluidSynthSoundController(QObject *parent)
@@ -50,11 +52,24 @@ FluidSynthSoundController::FluidSynthSoundController(QObject *parent)
 #ifdef Q_OS_WIN
     const QString sf_path = QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("minuet/soundfonts/GeneralUser-v1.47.sf2"));
 #else
-    const QString sf_path = QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("soundfonts/GeneralUser-v1.47.sf2"));
+    QString sf_path = QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("soundfonts/GeneralUser-v1.47.sf2"));
+#ifdef Q_OS_MACOS
+    if (sf_path.isEmpty()) {
+        const QStringList xdgDataDirs = Utils::getXdgDataDirs();
+        for (const auto &dirPath : xdgDataDirs) {
+            const QFile testFile(QDir(dirPath).absoluteFilePath(QStringLiteral("minuet/soundfonts/GeneralUser-v1.47.sf2")));
+            if (testFile.exists()) {
+                sf_path = testFile.fileName();
+                break;
+            }
+        }
+    }
 #endif
+#endif
+
     int fluid_res = fluid_synth_sfload(m_synth, sf_path.toLatin1(), 1);
     if (fluid_res == FLUID_FAILED)
-        qCritical() << "Error when loading soundfont!";
+        qCritical() << "Error when loading soundfont in:" << sf_path;
 
     m_unregisteringEvent = new_fluid_event();
     fluid_event_set_source(m_unregisteringEvent, -1);
