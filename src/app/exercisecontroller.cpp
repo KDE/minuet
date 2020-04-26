@@ -33,6 +33,8 @@
 #include <QStandardPaths>
 #include <QRandomGenerator>
 
+#include <utils/xdgdatadirs.h>
+
 namespace Minuet
 {
     
@@ -124,6 +126,17 @@ bool ExerciseController::mergeJsonFiles(const QString directoryName, QJsonObject
     jsonDirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, QStringLiteral("minuet/") + directoryName, QStandardPaths::LocateDirectory);
 #else
     jsonDirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, directoryName, QStandardPaths::LocateDirectory);
+#ifdef Q_OS_MACOS
+    if (jsonDirs.isEmpty()) {
+        const QStringList xdgDataDirs = Utils::getXdgDataDirs();
+        for (const auto &dirPath : xdgDataDirs) {
+            const QDir testDir(QDir(dirPath).absoluteFilePath(QStringLiteral("minuet/") + directoryName));
+            if (testDir.exists()) {
+                jsonDirs << testDir.absolutePath();
+            }
+        }
+    }
+#endif
 #endif
     foreach (const QString &jsonDirString, jsonDirs) {
         QDir jsonDir(jsonDirString);
