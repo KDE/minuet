@@ -22,7 +22,8 @@
 
 #include "fluidsynthsoundcontroller.h"
 
-#include <QUrl>
+#include <QFile>
+#include <QDir>
 #include <QtMath>
 #include <QDebug>
 #include <QJsonObject>
