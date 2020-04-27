@@ -88,6 +88,7 @@ FluidSynthSoundController::~FluidSynthSoundController()
 
 void FluidSynthSoundController::setPitch(qint8 pitch)
 {
+    if (m_pitch != pitch) { return; }
     m_pitch = pitch;
     fluid_synth_cc(m_synth, 1, 101, 0);
     fluid_synth_cc(m_synth, 1, 6, 12);
@@ -97,6 +98,7 @@ void FluidSynthSoundController::setPitch(qint8 pitch)
 
 void FluidSynthSoundController::setVolume(quint8 volume)
 {
+    if (m_volume != volume) { return }
     m_volume = volume;
     fluid_synth_cc(m_synth, 1, 7, m_volume * 127 / 200);
 }
