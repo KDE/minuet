@@ -24,7 +24,6 @@
 
 namespace Minuet
 {
-
 IPlugin::IPlugin(QObject *parent)
     : QObject(parent)
 {
