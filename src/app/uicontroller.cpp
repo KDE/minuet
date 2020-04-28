@@ -26,8 +26,8 @@
 
 #include <QStandardPaths>
 
-#include <QQmlContext>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 
 #ifndef Q_OS_ANDROID
 #include <KLocalizedContext>
@@ -35,7 +35,6 @@
 
 namespace Minuet
 {
-
 UiController::UiController(QObject *parent)
     : IUiController(parent)
 {
@@ -67,4 +66,3 @@ QString UiController::errorString() const
 }
 
 }
-
