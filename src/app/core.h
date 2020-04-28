@@ -27,7 +27,6 @@
 
 namespace Minuet
 {
-
 class Core : public ICore
 {
     Q_OBJECT

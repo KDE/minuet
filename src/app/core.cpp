@@ -24,15 +24,14 @@
 
 #include <qqml.h>
 
-#include "uicontroller.h"
-#include "plugincontroller.h"
 #include "exercisecontroller.h"
+#include "plugincontroller.h"
+#include "uicontroller.h"
 
 #include <interfaces/isoundcontroller.h>
 
 namespace Minuet
 {
-
 Core::~Core()
 {
 }
@@ -80,8 +79,8 @@ void Core::setSoundController(ISoundController *soundController)
 }
 
 Core::Core(QObject *parent)
-    : ICore(parent),
-      m_soundController(0)
+    : ICore(parent)
+    , m_soundController(0)
 {
     m_pluginController = new PluginController(this);
     if (!((PluginController *)m_pluginController)->initialize(this)) {
@@ -103,4 +102,3 @@ Core::Core(QObject *parent)
 }
 
 }
-
