@@ -26,7 +26,6 @@
 
 namespace Minuet
 {
-
 IExerciseController::IExerciseController(QObject *parent)
     : QObject(parent)
 {
@@ -52,4 +51,3 @@ QJsonArray IExerciseController::selectedExerciseOptions() const
 }
 
 }
-

@@ -25,14 +25,13 @@
 
 #include <interfaces/minuetinterfacesexport.h>
 
-#include <QObject>
-#include <QJsonArray>
-#include <QVariantMap>
 #include <QDebug>
+#include <QJsonArray>
+#include <QObject>
+#include <QVariantMap>
 
 namespace Minuet
 {
-
 class MINUETINTERFACES_EXPORT IExerciseController : public QObject
 {
     Q_OBJECT
@@ -42,7 +41,7 @@ class MINUETINTERFACES_EXPORT IExerciseController : public QObject
 
 public:
     virtual ~IExerciseController() override;
-    
+
     virtual QString errorString() const = 0;
 
     virtual QJsonArray exercises() const = 0;
