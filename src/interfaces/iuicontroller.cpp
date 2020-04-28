@@ -24,7 +24,6 @@
 
 namespace Minuet
 {
-
 IUiController::IUiController(QObject *parent)
     : QObject(parent)
 {
@@ -35,4 +34,3 @@ IUiController::~IUiController()
 }
 
 }
-

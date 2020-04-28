@@ -29,14 +29,13 @@
 
 namespace Minuet
 {
-
 class MINUETINTERFACES_EXPORT IUiController : public QObject
 {
     Q_OBJECT
 
 public:
     virtual ~IUiController() override;
-    
+
     virtual QString errorString() const = 0;
 
 protected:
