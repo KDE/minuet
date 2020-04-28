@@ -39,15 +39,15 @@
 
 namespace Minuet
 {
-
 PluginController::PluginController(QObject *parent)
     : IPluginController(parent)
 {
 #if !defined(Q_OS_ANDROID)
     m_plugins = KPluginLoader::findPlugins(QStringLiteral("minuet"), [&](const KPluginMetaData &meta) {
         if (!meta.serviceTypes().contains(QStringLiteral("Minuet/Plugin"))) {
-            qWarning() << "Plugin" << meta.fileName() << "is installed into the minuet plugin directory, but does not have"
-                " \"Minuet/Plugin\" set as the service type. This plugin will not be loaded.";
+            qWarning() << "Plugin" << meta.fileName()
+                       << "is installed into the minuet plugin directory, but does not have"
+                          " \"Minuet/Plugin\" set as the service type. This plugin will not be loaded.";
             return false;
         }
         return true;
@@ -68,8 +68,7 @@ bool PluginController::initialize(Core *core)
     m_errorString.clear();
 #if !defined(Q_OS_ANDROID)
     ISoundController *soundController = 0;
-    foreach (const KPluginMetaData &pluginMetaData, m_plugins)
-    {
+    foreach (const KPluginMetaData &pluginMetaData, m_plugins) {
         if (m_loadedPlugins.value(pluginMetaData))
             continue;
 
@@ -88,11 +87,11 @@ bool PluginController::initialize(Core *core)
         return false;
     }
 #else
-        ISoundController *soundController = 0;
-        if (!core->soundController() && (soundController = new CsoundSoundController)) {
-            qInfo() << "Setting soundcontroller to" << soundController->metaObject()->className();
-            core->setSoundController(soundController);
-        }
+    ISoundController *soundController = 0;
+    if (!core->soundController() && (soundController = new CsoundSoundController)) {
+        qInfo() << "Setting soundcontroller to" << soundController->metaObject()->className();
+        core->setSoundController(soundController);
+    }
 #endif
     return true;
 }
@@ -103,4 +102,3 @@ QString PluginController::errorString() const
 }
 
 }
-

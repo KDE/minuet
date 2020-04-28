@@ -32,7 +32,6 @@
 
 namespace Minuet
 {
-
 class Core;
 class IPlugin;
 
@@ -43,7 +42,7 @@ class PluginController : public IPluginController
 public:
     explicit PluginController(QObject *parent = 0);
     ~PluginController() override;
-    
+
     bool initialize(Core *core);
     virtual QString errorString() const override;
 
