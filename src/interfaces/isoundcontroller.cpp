@@ -24,7 +24,6 @@
 
 namespace Minuet
 {
-
 ISoundController::ISoundController(QObject *parent)
     : IPlugin(parent)
 {
@@ -63,4 +62,3 @@ void ISoundController::setState(State state)
 }
 
 }
-

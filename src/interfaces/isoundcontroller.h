@@ -31,7 +31,6 @@
 
 namespace Minuet
 {
-
 class MINUETINTERFACES_EXPORT ISoundController : public IPlugin
 {
     Q_OBJECT
@@ -52,11 +51,7 @@ class MINUETINTERFACES_EXPORT ISoundController : public IPlugin
 public:
     virtual ~ISoundController() override;
 
-    enum State {
-        StoppedState = 0,
-        PlayingState,
-        PausedState
-    };
+    enum State { StoppedState = 0, PlayingState, PausedState };
     ISoundController::State state() const;
 
     QString playbackLabel() const;
