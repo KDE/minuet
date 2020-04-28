@@ -24,7 +24,6 @@
 
 namespace Minuet
 {
-
 ICore *ICore::m_self = 0;
 
 ICore::~ICore()
@@ -45,4 +44,3 @@ ICore::ICore(QObject *parent)
 }
 
 }
-
