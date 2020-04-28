@@ -26,21 +26,20 @@
 #include <KLocalizedString>
 #endif
 
-#include <QDir>
-#include <qqml.h>
 #include <QDateTime>
+#include <QDir>
 #include <QJsonDocument>
-#include <QStandardPaths>
 #include <QRandomGenerator>
+#include <QStandardPaths>
+#include <qqml.h>
 
 #include <utils/xdgdatadirs.h>
 
 namespace Minuet
 {
-    
-ExerciseController::ExerciseController(QObject *parent) :
-    IExerciseController(parent),
-    m_chosenRootNote(0)
+ExerciseController::ExerciseController(QObject *parent)
+    : IExerciseController(parent)
+    , m_chosenRootNote(0)
 {
     m_exercises["exercises"] = QJsonArray();
     m_definitions["definitions"] = QJsonArray();
@@ -58,10 +57,10 @@ bool ExerciseController::initialize(Core *core)
     bool definitionsMerge = mergeJsonFiles("definitions", m_definitions);
     bool exercisesMerge = mergeJsonFiles("exercises", m_exercises, true, "name", "children");
 
-//    QFile file("merged-exercises.json");
-//    file.open(QIODevice::WriteOnly);
-//    file.write(QJsonDocument(m_exercises).toJson());
-//    file.close();
+    //    QFile file("merged-exercises.json");
+    //    file.open(QIODevice::WriteOnly);
+    //    file.write(QJsonDocument(m_exercises).toJson());
+    //    file.close();
 
     return definitionsMerge & exercisesMerge;
 }
@@ -85,10 +84,12 @@ void ExerciseController::randomlySelectExerciseOptions()
         quint8 chosenExerciseOption = generator->bounded(exerciseOptions.size());
 
         QString sequence = exerciseOptions[chosenExerciseOption].toObject()[QStringLiteral("sequence")].toString();
-        foreach(const QString &additionalNote, sequence.split(' ')) {
+        foreach (const QString &additionalNote, sequence.split(' ')) {
             int note = additionalNote.toInt();
-            if (note > maxNote) maxNote = note;
-            if (note < minNote) minNote = note;
+            if (note > maxNote)
+                maxNote = note;
+            if (note < minNote)
+                minNote = note;
         }
         if (m_currentExercise["playMode"].toString() != "rhythm") {
             QStringList exerciseRoots = m_currentExercise["root"].toString().split('.');
@@ -141,7 +142,8 @@ bool ExerciseController::mergeJsonFiles(const QString directoryName, QJsonObject
     foreach (const QString &jsonDirString, jsonDirs) {
         QDir jsonDir(jsonDirString);
         foreach (const QString &json, jsonDir.entryList(QDir::Files)) {
-            if (!json.endsWith(QLatin1String(".json"))) break;
+            if (!json.endsWith(QLatin1String(".json")))
+                break;
             QFile jsonFile(jsonDir.absoluteFilePath(json));
             if (!jsonFile.open(QIODevice::ReadOnly)) {
 #if !defined(Q_OS_ANDROID)
@@ -158,17 +160,12 @@ bool ExerciseController::mergeJsonFiles(const QString directoryName, QJsonObject
                 m_errorString += QStringLiteral("Error when parsing JSON file '%1'. ").arg(jsonDir.absoluteFilePath(json));
                 jsonFile.close();
                 return false;
-            }
-            else {
+            } else {
                 QJsonObject jsonObject = jsonDocument.object();
                 if (applyDefinitionsFlag)
-                    jsonObject[directoryName] = applyDefinitions(jsonObject[directoryName].toArray(),
-                                                                 m_definitions[QStringLiteral("definitions")].toArray());
+                    jsonObject[directoryName] = applyDefinitions(jsonObject[directoryName].toArray(), m_definitions[QStringLiteral("definitions")].toArray());
 
-                targetObject[directoryName] = mergeJsonArrays(targetObject[directoryName].toArray(),
-                                                              jsonObject[directoryName].toArray(),
-                                                              commonKey,
-                                                              mergeKey);
+                targetObject[directoryName] = mergeJsonArrays(targetObject[directoryName].toArray(), jsonObject[directoryName].toArray(), commonKey, mergeKey);
             }
             jsonFile.close();
         }
@@ -190,21 +187,19 @@ QJsonArray ExerciseController::applyDefinitions(QJsonArray exercises, QJsonArray
             if (exerciseObjectKeys.contains(QStringLiteral("or-tags")) && exerciseObject[QStringLiteral("or-tags")].isArray())
                 filterDefinitions(filteredDefinitions, exerciseObject, "or-tags", OrFiltering);
             if (exerciseObjectKeys.contains(QStringLiteral("children"))) {
-                foreach(const QString &key, exerciseObjectKeys)
+                foreach (const QString &key, exerciseObjectKeys)
                     if (key != "name" && key != "children" && key != "and-tags" && key != "or-tags" && !key.startsWith('_')) {
                         collectedProperties.insert(key, exerciseObject[key]);
                         exerciseObject.remove(key);
                     }
-                exerciseObject[QStringLiteral("children")] = applyDefinitions(exerciseObject[QStringLiteral("children")].toArray(),
-                                                                              filteredDefinitions, collectedProperties);
-            }
-            else {
-                foreach(const QString &key, collectedProperties.keys())
+                exerciseObject[QStringLiteral("children")] = applyDefinitions(exerciseObject[QStringLiteral("children")].toArray(), filteredDefinitions, collectedProperties);
+            } else {
+                foreach (const QString &key, collectedProperties.keys())
                     if (!exerciseObject.contains(key))
                         exerciseObject.insert(key, collectedProperties[key]);
                 exerciseObject.insert("options", filteredDefinitions);
             }
-            exercises[i1-exercisesBegin] = exerciseObject;
+            exercises[i1 - exercisesBegin] = exerciseObject;
         }
     }
     return exercises;
@@ -215,7 +210,7 @@ void ExerciseController::filterDefinitions(QJsonArray &definitions, QJsonObject 
     QJsonArray filterTags = exerciseObject[filterTagsKey].toArray();
     exerciseObject.remove(filterTagsKey);
     for (QJsonArray::Iterator i2 = definitions.begin(); i2 < definitions.end(); ++i2) {
-        bool remove = (definitionFilteringMode == AndFiltering) ? false:true;
+        bool remove = (definitionFilteringMode == AndFiltering) ? false : true;
         QJsonArray::const_iterator filterTagsEnd = filterTags.constEnd();
         for (QJsonArray::ConstIterator i3 = filterTags.constBegin(); i3 < filterTagsEnd; ++i3) {
             QJsonArray tagArray = i2->toObject()["tags"].toArray();
@@ -235,7 +230,8 @@ void ExerciseController::filterDefinitions(QJsonArray &definitions, QJsonObject 
 
 QJsonArray ExerciseController::mergeJsonArrays(QJsonArray oldFile, QJsonArray newFile, QString commonKey, QString mergeKey)
 {
-    QJsonArray::const_iterator newFileEnd = newFile.constEnd();;
+    QJsonArray::const_iterator newFileEnd = newFile.constEnd();
+    ;
     for (QJsonArray::ConstIterator i1 = newFile.constBegin(); i1 < newFileEnd; ++i1) {
         if (i1->isObject()) {
             QJsonArray::ConstIterator i2;
@@ -243,17 +239,11 @@ QJsonArray ExerciseController::mergeJsonArrays(QJsonArray oldFile, QJsonArray ne
             for (i2 = oldFile.constBegin(); i2 < oldFileEnd; ++i2) {
                 QJsonObject newFileObject = i1->toObject();
                 QJsonObject oldFileObject = i2->toObject();
-                if (i2->isObject() &&
-                    i1->isObject() &&
-                    !commonKey.isEmpty() &&
-                    oldFileObject[commonKey] == newFileObject[commonKey]) {
-                        QJsonObject jsonObject = oldFile[i2-oldFile.constBegin()].toObject();
-                        jsonObject[mergeKey] = mergeJsonArrays(oldFileObject[mergeKey].toArray(),
-                                                            newFileObject[mergeKey].toArray(),
-                                                            commonKey,
-                                                            mergeKey);
-                        oldFile[i2-oldFile.constBegin()] = jsonObject;
-                        break;
+                if (i2->isObject() && i1->isObject() && !commonKey.isEmpty() && oldFileObject[commonKey] == newFileObject[commonKey]) {
+                    QJsonObject jsonObject = oldFile[i2 - oldFile.constBegin()].toObject();
+                    jsonObject[mergeKey] = mergeJsonArrays(oldFileObject[mergeKey].toArray(), newFileObject[mergeKey].toArray(), commonKey, mergeKey);
+                    oldFile[i2 - oldFile.constBegin()] = jsonObject;
+                    break;
                 }
             }
             if (i2 == oldFile.constEnd())

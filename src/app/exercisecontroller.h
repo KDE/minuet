@@ -25,22 +25,21 @@
 
 #include <interfaces/iexercisecontroller.h>
 
-#include <QStringList>
 #include <QJsonObject>
+#include <QStringList>
 
 namespace Minuet
 {
-
 class Core;
- 
+
 class ExerciseController : public IExerciseController
 {
     Q_OBJECT
 
 public:
-    explicit ExerciseController(QObject *parent= 0);
+    explicit ExerciseController(QObject *parent = 0);
     virtual ~ExerciseController();
- 
+
     bool initialize(Core *core);
     virtual QString errorString() const override;
 
@@ -54,10 +53,7 @@ public Q_SLOTS:
 private:
     bool mergeJsonFiles(const QString directoryName, QJsonObject &targetObject, bool applyDefinitionsFlag = false, QString commonKey = "", QString mergeKey = "");
     QJsonArray applyDefinitions(QJsonArray exercises, QJsonArray definitions, QJsonObject collectedProperties = QJsonObject());
-    enum DefinitionFilteringMode {
-        AndFiltering = 0,
-        OrFiltering
-    };
+    enum DefinitionFilteringMode { AndFiltering = 0, OrFiltering };
     void filterDefinitions(QJsonArray &definitions, QJsonObject &exerciseObject, const QString &filterTagsKey, DefinitionFilteringMode definitionFilteringMode);
     QJsonArray mergeJsonArrays(QJsonArray oldFile, QJsonArray newFile, QString commonKey = "", QString mergeKey = "");
 
