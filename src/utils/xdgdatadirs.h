@@ -3,8 +3,8 @@
 
 #include <QString>
 
-namespace Utils {
-
+namespace Utils
+{
 /**
  * @brief Get valid paths from XDG_DATA_DIRS environment variable
  * Qt does not check XDG_DATA_DIRS for MACOS but KDE prefix.sh script sets it.

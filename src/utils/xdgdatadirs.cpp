@@ -5,7 +5,8 @@
 
 using namespace Utils;
 
-QStringList Utils::getXdgDataDirs() {
+QStringList Utils::getXdgDataDirs()
+{
     const QString xdgDataDirsEnv = QFile::decodeName(qgetenv("XDG_DATA_DIRS"));
     if (xdgDataDirsEnv.isEmpty()) {
         return {};
