@@ -87,7 +87,13 @@ ApplicationWindow {
 
     Item {
         id: mainContainer
-        anchors { right: parent.right; top: parent.top; bottom: parent.bottom; left: (Qt.platform.os == "android") ? parent.left:drawer.right; margins: Screen.width >= 1024 ? 20:5 }
+        anchors {
+            top: parent.top
+            bottom: parent.bottom
+            right: parent.right
+            left: Qt.platform.os == "android" ?  parent.left : drawer.right;
+            margins: Screen.width >= 1024 ? 20 : 5
+        }
 
         Image {
             source: "qrc:/qml/images/minuet-background.png"
