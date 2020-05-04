@@ -16,8 +16,9 @@ Doxyfile
 Makefile
 avail
 random_seed
-/build*/
+build
 CMakeLists.txt.user*
 *.unc-backup*
 .vscode
 .cmake/
+.clang-format
