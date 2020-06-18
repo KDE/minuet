@@ -21,6 +21,7 @@
         "Description[sv]": "Insticksprogrammet tillhandahåller en implementering av ljudgränssnitt baserat på FluidSynth åt Minuet.",
         "Description[tr]": "Bu eklenti, ses denetçisinin FluidSynth temelli uygulaması ile birlikte Minuet sağlar.",
         "Description[uk]": "Цей додаток забезпечує роботу Minuet із реалізацією звукового контролера на основі FluidSynth.",
+        "Description[x-test]": "xxThis plugin provides Minuet with a FluidSynth-based implementation of sound controller.xx",
         "Description[zh_CN]": "本插件为 Minuet 提供基于 FluidSynth 实现的声音后端。",
         "Description[zh_TW]": "這個外掛程式提供 Minuet 一個基於 FluidSynth 實作的音訊控制器。",
         "Icon": "utilities-terminal",
@@ -46,6 +47,7 @@
         "Name[sv]": "FluidSynth-baserat ljudgränssnitt",
         "Name[tr]": "FluidSynth temelli Ses Denetçisi",
         "Name[uk]": "Звуковий контролер на основі FluidSynth",
+        "Name[x-test]": "xxFluidSynth-based Audio Controllerxx",
         "Name[zh_CN]": "基于 FluidSynth 的音频控制器",
         "Name[zh_TW]": "基於 FluidSynth 的音訊控制器",
         "ServiceTypes": [
