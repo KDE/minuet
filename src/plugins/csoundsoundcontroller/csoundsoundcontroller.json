@@ -22,6 +22,7 @@
         "Description[sv]": "Insticksprogrammet tillhandahåller en implementering av ljudgränssnitt baserat på CSound åt Minuet.",
         "Description[tr]": "Bu eklenti, ses denetçisinin CSound temelli uygulaması ile birlikte Minuet sağlar.",
         "Description[uk]": "Цей додаток забезпечує роботу Minuet із реалізацією звукового контролера на основі CSound.",
+        "Description[x-test]": "xxThis plugin provides Minuet with a CSound-based implementation of sound controller.xx",
         "Description[zh_CN]": "本插件为 Minuet 提供基于 FluidSynth 实现的声音后端。",
         "Description[zh_TW]": "這個外掛程式提供 Minuet 一個基於 CSound 實作的音訊控制器。",
         "Icon": "utilities-terminal",
@@ -48,6 +49,7 @@
         "Name[sv]": "CSound-baserat ljudgränssnitt",
         "Name[tr]": "CSound temelli Ses Denetçisi",
         "Name[uk]": "Звуковий контролер на основі CSound",
+        "Name[x-test]": "xxCSound-based Audio Controllerxx",
         "Name[zh_CN]": "基于 CSound 的音频控制器",
         "Name[zh_TW]": "基於 CSound 的音訊控制器",
         "ServiceTypes": [
