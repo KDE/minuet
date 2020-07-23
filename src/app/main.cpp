@@ -57,6 +57,7 @@ int main(int argc, char *argv[])
 
     QCommandLineParser parser;
 #if !defined(Q_OS_ANDROID)
+    KAboutData::setApplicationData(aboutData);
     aboutData.setupCommandLine(&parser);
 #else
     parser.addHelpOption();
@@ -65,7 +66,6 @@ int main(int argc, char *argv[])
     parser.process(application);
 #if !defined(Q_OS_ANDROID)
     aboutData.processCommandLine(&parser);
-    KAboutData::setApplicationData(aboutData);
 #endif
 
 #if defined(Q_OS_ANDROID)
