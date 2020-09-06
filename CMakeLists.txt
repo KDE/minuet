@@ -52,13 +52,14 @@ IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     find_package(FluidSynth 1.1.6 REQUIRED)
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 
-feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
-
 include_directories(${minuet_SOURCE_DIR}/src/ ${minuet_BINARY_DIR}/src/)
 
 add_subdirectory(src)
 add_subdirectory(data)
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     add_subdirectory(doc)
+    ki18n_install(po)
     install(FILES org.kde.minuet.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
+
+feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
