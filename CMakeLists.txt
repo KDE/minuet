@@ -18,7 +18,7 @@ set(ECM_MIN_VERSION "5.15.0")
 set(QT_MIN_VERSION "5.7.0")
 
 find_package(ECM ${ECM_MIN_VERSION} CONFIG REQUIRED)
-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${minuet_SOURCE_DIR}/cmake)
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH}  ${minuet_SOURCE_DIR}/cmake)
 
 include(GenerateExportHeader)
 include(ECMSetupVersion)
