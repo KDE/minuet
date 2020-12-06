@@ -42,7 +42,7 @@ bool Core::initialize()
         return true;
 
     qRegisterMetaType<Minuet::ISoundController::State>("State");
-    qmlRegisterInterface<Minuet::ISoundController>("ISoundController");
+    qmlRegisterInterface<Minuet::ISoundController>("ISoundController", 1);
     qmlRegisterUncreatableType<Minuet::ISoundController>("org.kde.minuet.isoundcontroller", 1, 0, "ISoundController", "ISoundController cannot be instantiated");
 
     m_self = new Core;

@@ -29,7 +29,7 @@ namespace Minuet
 IExerciseController::IExerciseController(QObject *parent)
     : QObject(parent)
 {
-    qmlRegisterInterface<IExerciseController>("IExerciseController");
+    qmlRegisterInterface<IExerciseController>("IExerciseController", 1);
 }
 
 IExerciseController::~IExerciseController()

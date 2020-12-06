@@ -13,7 +13,7 @@ QStringList Utils::getXdgDataDirs()
     }
 
     QStringList results;
-    const auto paths = xdgDataDirsEnv.splitRef(QLatin1Char(':'), QString::SkipEmptyParts);
+    const auto paths = xdgDataDirsEnv.splitRef(QLatin1Char(':'), Qt::SkipEmptyParts);
     // Normalize paths, skip relative paths
     for (const auto &path : paths) {
         if (!QDir::isAbsolutePath(path.toString()) || !QDir(path.toString()).exists()) {
