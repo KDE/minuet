@@ -32,7 +32,7 @@ class Core : public ICore
     Q_OBJECT
 
 public:
-    virtual ~Core() override;
+    virtual ~Core() override = default;
 
     static bool initialize();
 

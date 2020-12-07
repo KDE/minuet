@@ -39,15 +39,16 @@
 
 namespace Minuet
 {
-PluginController::PluginController(QObject *parent)
-    : IPluginController(parent)
+PluginController::PluginController(QObject *parent) : IPluginController(parent)
 {
 #if !defined(Q_OS_ANDROID)
-    m_plugins = KPluginLoader::findPlugins(QStringLiteral("minuet"), [&](const KPluginMetaData &meta) {
+    m_plugins = KPluginLoader::findPlugins(QStringLiteral("minuet"), [&](const KPluginMetaData
+                                                                             &meta) {
         if (!meta.serviceTypes().contains(QStringLiteral("Minuet/Plugin"))) {
-            qWarning() << "Plugin" << meta.fileName()
-                       << "is installed into the minuet plugin directory, but does not have"
-                          " \"Minuet/Plugin\" set as the service type. This plugin will not be loaded.";
+            qWarning()
+                << "Plugin" << meta.fileName()
+                << "is installed into the minuet plugin directory, but does not have"
+                   " \"Minuet/Plugin\" set as the service type. This plugin will not be loaded.";
             return false;
         }
         return true;
@@ -58,7 +59,8 @@ PluginController::PluginController(QObject *parent)
 PluginController::~PluginController()
 {
 #if !defined(Q_OS_ANDROID)
-    qDeleteAll(m_loadedPlugins.values().begin(), m_loadedPlugins.values().end());
+    const auto &loadedPlugins = m_loadedPlugins.values();
+    qDeleteAll(loadedPlugins.begin(), loadedPlugins.end());
     m_loadedPlugins.clear();
 #endif
 }
@@ -67,17 +69,20 @@ bool PluginController::initialize(Core *core)
 {
     m_errorString.clear();
 #if !defined(Q_OS_ANDROID)
-    ISoundController *soundController = 0;
+    ISoundController *soundController = nullptr;
     foreach (const KPluginMetaData &pluginMetaData, m_plugins) {
-        if (m_loadedPlugins.value(pluginMetaData))
+        if (m_loadedPlugins.value(pluginMetaData)) {
             continue;
+        }
 
         KPluginLoader loader(pluginMetaData.fileName());
         IPlugin *plugin = qobject_cast<IPlugin *>(loader.instance());
         if (plugin) {
             m_loadedPlugins.insert(pluginMetaData, plugin);
-            if (!core->soundController() && (soundController = qobject_cast<ISoundController *>(plugin))) {
-                qInfo() << "Setting soundcontroller to" << soundController->metaObject()->className();
+            if (!core->soundController()
+                && (soundController = qobject_cast<ISoundController *>(plugin))) {
+                qInfo() << "Setting soundcontroller to"
+                        << soundController->metaObject()->className();
                 core->setSoundController(soundController);
             }
         }

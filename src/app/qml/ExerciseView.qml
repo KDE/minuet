@@ -471,10 +471,10 @@ Item {
     }
     Connections {
         target: core.exerciseController
-        onSelectedExerciseOptionsChanged: pianoView.clearAllMarks()
+        function onSelectedExerciseOptionsChanged() { pianoView.clearAllMarks() }
     }
     Connections {
         target: core.exerciseController
-        onSelectedExerciseOptionsChanged: sheetMusicView.clearAllMarks()
+        function onSelectedExerciseOptionsChanged() { sheetMusicView.clearAllMarks() }
     }
 }

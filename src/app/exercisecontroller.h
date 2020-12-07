@@ -38,12 +38,12 @@ class ExerciseController : public IExerciseController
 
 public:
     explicit ExerciseController(QObject *parent = 0);
-    virtual ~ExerciseController();
+    virtual ~ExerciseController() = default;
 
     bool initialize(Core *core);
     virtual QString errorString() const override;
 
-    Q_INVOKABLE unsigned int chosenRootNote();
+    Q_INVOKABLE unsigned int chosenRootNote() const;
 
     virtual QJsonArray exercises() const override;
 
@@ -51,11 +51,17 @@ public Q_SLOTS:
     virtual void randomlySelectExerciseOptions() override;
 
 private:
-    bool mergeJsonFiles(const QString directoryName, QJsonObject &targetObject, bool applyDefinitionsFlag = false, QString commonKey = "", QString mergeKey = "");
-    QJsonArray applyDefinitions(QJsonArray exercises, QJsonArray definitions, QJsonObject collectedProperties = QJsonObject());
+    bool mergeJsonFiles(const QString directoryName, QJsonObject &targetObject,
+                        bool applyDefinitionsFlag = false, QString commonKey = nullptr,
+                        QString mergeKey = nullptr);
+    QJsonArray applyDefinitions(QJsonArray exercises, QJsonArray definitions,
+                                QJsonObject collectedProperties = QJsonObject());
     enum DefinitionFilteringMode { AndFiltering = 0, OrFiltering };
-    void filterDefinitions(QJsonArray &definitions, QJsonObject &exerciseObject, const QString &filterTagsKey, DefinitionFilteringMode definitionFilteringMode);
-    QJsonArray mergeJsonArrays(QJsonArray oldFile, QJsonArray newFile, QString commonKey = "", QString mergeKey = "");
+    static void filterDefinitions(QJsonArray &definitions, QJsonObject &exerciseObject,
+                                  const QString &filterTagsKey,
+                                  DefinitionFilteringMode definitionFilteringMode);
+    QJsonArray mergeJsonArrays(QJsonArray oldFile, QJsonArray newFile, QString commonKey = nullptr,
+                               QString mergeKey = nullptr);
 
     QJsonObject m_exercises;
     QJsonObject m_definitions;
@@ -65,4 +71,4 @@ private:
 
 }
 
-#endif // MINUET_EXERCISECONTROLLER_H
+#endif  // MINUET_EXERCISECONTROLLER_H

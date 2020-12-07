@@ -35,19 +35,12 @@
 
 namespace Minuet
 {
-UiController::UiController(QObject *parent)
-    : IUiController(parent)
-{
-}
-
-UiController::~UiController()
-{
-}
+UiController::UiController(QObject *parent) : IUiController(parent) {}
 
 bool UiController::initialize(Core *core)
 {
     m_errorString.clear();
-    QQmlApplicationEngine *engine = new QQmlApplicationEngine(this);
+    auto *engine = new QQmlApplicationEngine(this);
     QQmlContext *rootContext = engine->rootContext();
     rootContext->setContextProperty(QStringLiteral("core"), core);
 #ifndef Q_OS_ANDROID
@@ -55,7 +48,7 @@ bool UiController::initialize(Core *core)
 #else
     rootContext->setContextObject(new DummyAndroidLocalizer(engine));
 #endif
-    engine->load(QUrl("qrc:/Main.qml"));
+    engine->load(QUrl(QStringLiteral("qrc:/Main.qml")));
 
     return true;
 }

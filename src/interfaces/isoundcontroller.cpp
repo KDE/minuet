@@ -24,15 +24,10 @@
 
 namespace Minuet
 {
-ISoundController::ISoundController(QObject *parent)
-    : IPlugin(parent)
+ISoundController::ISoundController(QObject *parent) : IPlugin(parent)
 {
     setPlaybackLabel(QStringLiteral("00:00.00"));
     setState(StoppedState);
-}
-
-ISoundController::~ISoundController()
-{
 }
 
 ISoundController::State ISoundController::state() const

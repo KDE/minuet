@@ -40,7 +40,7 @@ public:
 public Q_SLOTS:
     virtual void setPitch(qint8 pitch);
     virtual void setVolume(quint8 volume);
-    virtual void setTempo (quint8 tempo);
+    virtual void setTempo(quint8 tempo);
 
     virtual void prepareFromExerciseOptions(QJsonArray selectedExerciseOptions) override;
     virtual void prepareFromMidiFile(const QString &fileName) override;
@@ -51,7 +51,7 @@ public Q_SLOTS:
     virtual void reset() override;
 
 private:
-    void appendEvent(QList<unsigned int> midiNotes,QList<float> barStartInfo, QString playMode);
+    void appendEvent(QList<unsigned int> midiNotes, QList<float> barStartInfo, QString playMode);
     void openExerciseFile();
     void openCsdFile();
 
@@ -60,7 +60,6 @@ private:
     QStringList m_begLine;
     QStringList m_endLine;
     QList<qint16> m_size;
-
 };
 
 #endif

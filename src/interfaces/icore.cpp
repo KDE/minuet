@@ -24,11 +24,11 @@
 
 namespace Minuet
 {
-ICore *ICore::m_self = 0;
+ICore *ICore::m_self = nullptr;
 
 ICore::~ICore()
 {
-    m_self = 0;
+    m_self = nullptr;
 }
 
 ICore *ICore::self()
@@ -36,10 +36,9 @@ ICore *ICore::self()
     return m_self;
 }
 
-ICore::ICore(QObject *parent)
-    : QObject(parent)
+ICore::ICore(QObject *parent) : QObject(parent)
 {
-    Q_ASSERT(m_self == 0);
+    Q_ASSERT(m_self == nullptr);
     m_self = this;
 }
 

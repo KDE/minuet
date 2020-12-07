@@ -24,15 +24,6 @@
 
 namespace Minuet
 {
-IPlugin::IPlugin(QObject *parent)
-    : QObject(parent)
-{
-}
-
-IPlugin::~IPlugin()
-{
-}
+IPlugin::IPlugin(QObject *parent) : QObject(parent) {}
 
 }
-
-//#include "moc_iplugin.cpp"

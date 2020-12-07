@@ -23,8 +23,8 @@
 #ifndef CSENGINE_H
 #define CSENGINE_H
 
-#include <QThread>
 #include <AndroidCsound.hpp>
+#include <QThread>
 
 class CsEngine : public QThread
 {
@@ -39,4 +39,4 @@ public:
     Q_INVOKABLE void stop();
 };
 
-#endif // CSENGINE_H
+#endif  // CSENGINE_H

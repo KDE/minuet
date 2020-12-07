@@ -32,18 +32,17 @@
 
 namespace Minuet
 {
-Core::~Core()
-{
-}
-
 bool Core::initialize()
 {
-    if (m_self)
+    if (m_self) {
         return true;
+    }
 
     qRegisterMetaType<Minuet::ISoundController::State>("State");
-    qmlRegisterInterface<Minuet::ISoundController>("ISoundController", 1);
-    qmlRegisterUncreatableType<Minuet::ISoundController>("org.kde.minuet.isoundcontroller", 1, 0, "ISoundController", "ISoundController cannot be instantiated");
+    qmlRegisterInterface<Minuet::ISoundController>("ISoundController");
+    qmlRegisterUncreatableType<Minuet::ISoundController>(
+        "org.kde.minuet.isoundcontroller", 1, 0, "ISoundController",
+        QStringLiteral("ISoundController cannot be instantiated"));
 
     m_self = new Core;
 
@@ -78,9 +77,7 @@ void Core::setSoundController(ISoundController *soundController)
     }
 }
 
-Core::Core(QObject *parent)
-    : ICore(parent)
-    , m_soundController(0)
+Core::Core(QObject *parent) : ICore(parent), m_soundController(nullptr)
 {
     m_pluginController = new PluginController(this);
     if (!((PluginController *)m_pluginController)->initialize(this)) {

@@ -24,13 +24,6 @@
 
 namespace Minuet
 {
-IPluginController::IPluginController(QObject *parent)
-    : QObject(parent)
-{
-}
-
-IPluginController::~IPluginController()
-{
-}
+IPluginController::IPluginController(QObject *parent) : QObject(parent) {}
 
 }

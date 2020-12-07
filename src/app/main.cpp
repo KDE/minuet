@@ -47,13 +47,19 @@ int main(int argc, char *argv[])
 
     KLocalizedString::setApplicationDomain("minuet");
 
-    KAboutData aboutData(QStringLiteral("minuet"), i18n("Minuet"), QStringLiteral(MINUET_VERSION_STRING), i18n("A KDE application for music education"), KAboutLicense::GPL, i18n("(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"));
-    aboutData.addAuthor("Sandro S. Andrade", i18n("Developer"), QStringLiteral("sandroandrade@kde.org"));
-    aboutData.addAuthor("Ayush Shah", i18n("Developer"), QStringLiteral("1595ayush@gmail.com"));
-    aboutData.addAuthor("Alessandro Longo", i18n("Minuet Icon Designer"), QStringLiteral("alessandro.longo@kdemail.net"));
+    KAboutData aboutData(QStringLiteral("minuet"), i18n("Minuet"),
+                         QStringLiteral(MINUET_VERSION_STRING),
+                         i18n("A KDE application for music education"), KAboutLicense::GPL,
+                         i18n("(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"));
+    aboutData.addAuthor(QStringLiteral("Sandro S. Andrade"), i18n("Developer"),
+                        QStringLiteral("sandroandrade@kde.org"));
+    aboutData.addAuthor(QStringLiteral("Ayush Shah"), i18n("Developer"),
+                        QStringLiteral("1595ayush@gmail.com"));
+    aboutData.addAuthor(QStringLiteral("Alessandro Longo"), i18n("Minuet Icon Designer"),
+                        QStringLiteral("alessandro.longo@kdemail.net"));
 #endif
 
-    application.setWindowIcon(QIcon(QStringLiteral(":/minuet.png")));
+    QGuiApplication::setWindowIcon(QIcon(QStringLiteral(":/minuet.png")));
 
     QCommandLineParser parser;
 #if !defined(Q_OS_ANDROID)
@@ -70,11 +76,14 @@ int main(int argc, char *argv[])
 
 #if defined(Q_OS_ANDROID)
     if (!QFile("/data/data/org.kde.minuet/files/sf_GMbank.sf2").exists()) {
-        if (QFile("assets:/share/sf_GMbank.sf2").copy("/data/data/org.kde.minuet/files/sf_GMbank.sf2"))
-            qDebug() << "COPIED " << QFileInfo("/data/data/org.kde.minuet/files/sf_GMbank.sf2").size() << "b soundfound file to /data/data/org.kde.minuet/files/sf_GMbank.sf2";
+        if (QFile("assets:/share/sf_GMbank.sf2")
+                .copy("/data/data/org.kde.minuet/files/sf_GMbank.sf2"))
+            qDebug() << "COPIED "
+                     << QFileInfo("/data/data/org.kde.minuet/files/sf_GMbank.sf2").size()
+                     << "b soundfound file to /data/data/org.kde.minuet/files/sf_GMbank.sf2";
     }
 #endif
     Minuet::Core::initialize();
 
-    return application.exec();
+    return QGuiApplication::exec();
 }

@@ -44,15 +44,15 @@ class MINUETINTERFACES_EXPORT ISoundController : public IPlugin
     Q_PROPERTY(quint8 tempo MEMBER m_tempo WRITE setTempo NOTIFY tempoChanged)
 
     // Read-only properties
-    Q_ENUMS(State)
     Q_PROPERTY(State state READ state NOTIFY stateChanged)
     Q_PROPERTY(QString playbackLabel READ playbackLabel NOTIFY playbackLabelChanged)
 
 public:
-    virtual ~ISoundController() override;
+    virtual ~ISoundController() override = default;
 
     enum State { StoppedState = 0, PlayingState, PausedState };
-    ISoundController::State state() const;
+    Q_ENUM(State)
+    Minuet::ISoundController::State state() const;
 
     QString playbackLabel() const;
 
@@ -74,7 +74,7 @@ Q_SIGNALS:
     void pitchChanged(qint8 newPitch);
     void volumeChanged(quint8 newVolume);
     void tempoChanged(quint8 newTempo);
-    void stateChanged(State newState);
+    void stateChanged(Minuet::ISoundController::State newState);
     void playbackLabelChanged(QString newPlaybackLabel);
 
 protected:

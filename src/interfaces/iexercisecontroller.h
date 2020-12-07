@@ -35,12 +35,14 @@ namespace Minuet
 class MINUETINTERFACES_EXPORT IExerciseController : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QJsonArray exercises READ exercises)
-    Q_PROPERTY(QVariantMap currentExercise MEMBER m_currentExercise WRITE setCurrentExercise NOTIFY currentExerciseChanged)
-    Q_PROPERTY(QJsonArray selectedExerciseOptions READ selectedExerciseOptions NOTIFY selectedExerciseOptionsChanged)
+    Q_PROPERTY(QJsonArray exercises READ exercises)  // clazy:exclude=qproperty-without-notify
+    Q_PROPERTY(QVariantMap currentExercise MEMBER m_currentExercise WRITE setCurrentExercise NOTIFY
+                   currentExerciseChanged)
+    Q_PROPERTY(QJsonArray selectedExerciseOptions READ selectedExerciseOptions NOTIFY
+                   selectedExerciseOptionsChanged)
 
 public:
-    virtual ~IExerciseController() override;
+    virtual ~IExerciseController() override = default;
 
     virtual QString errorString() const = 0;
 
