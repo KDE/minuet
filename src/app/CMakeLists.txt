@@ -37,7 +37,7 @@ IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     )
 
     ecm_add_app_icon(minuet_SRCS ICONS ${minuet_ICONS_PNG})
-    ecm_install_icons(ICONS ${minuet_ICONS_PNG} ${minuet_ICONS_SVG} DESTINATION ${ICON_INSTALL_DIR} THEME hicolor)
+    ecm_install_icons(ICONS ${minuet_ICONS_PNG} ${minuet_ICONS_SVG} DESTINATION ${KDE_INSTALL_ICONDIR} THEME hicolor)
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 
 if(ANDROID)
@@ -81,5 +81,5 @@ ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     install(TARGETS minuet ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
-    install(PROGRAMS org.kde.minuet.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+    install(PROGRAMS org.kde.minuet.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
