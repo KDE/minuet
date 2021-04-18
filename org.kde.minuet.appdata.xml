@@ -18,6 +18,7 @@
   <name xml:lang="gl">Minuet</name>
   <name xml:lang="id">Minuet</name>
   <name xml:lang="it">Minuet</name>
+  <name xml:lang="ko">Minuet</name>
   <name xml:lang="nl">Minuet</name>
   <name xml:lang="nn">Minuet</name>
   <name xml:lang="pl">Minuet</name>
@@ -47,6 +48,7 @@
   <summary xml:lang="gl">Software de ensino musical</summary>
   <summary xml:lang="id">Software Pendidikan Musik</summary>
   <summary xml:lang="it">Programma di educazione musicale</summary>
+  <summary xml:lang="ko">음악 교육 소프트웨어</summary>
   <summary xml:lang="nl">Software voor muziekonderwijs</summary>
   <summary xml:lang="nn">Pedagogisk musikkprogram</summary>
   <summary xml:lang="pl">Muzyczne oprogramowanie edukacyjne </summary>
@@ -76,6 +78,7 @@
     <p xml:lang="gl">Minuet é unha aplicación para ensino musical. Goza dunha serie de exercicios de adestramento con intervalos, acordes, escalas e máis.</p>
     <p xml:lang="id">Minuet adalah aplikasi untuk pendidikan musik. Ini fitur satu set latihan pelatihan telinga mengenai interval, akord, skala dan banyak lagi.</p>
     <p xml:lang="it">Minuet è un'applicazione per l'educazione musicale. Fornisce un insieme di esercizi per allenare l'orecchio relativi a intervalli, accordi, scale e altro.</p>
+    <p xml:lang="ko">Minuet는 음악 교육을 위한 소프트웨어입니다. 음정, 화음, 음계 등 여러 청각 연습을 제공합니다.</p>
     <p xml:lang="nl">Minuet is een toepassing voor muziekonderwijs. Het biedt een set mogelijkheden voor trainingsoefeningen voor het gehoor betreffende intervallen, akkoorden, toonladders en meer.</p>
     <p xml:lang="nn">Minuet er eit program for musikkopplæring, med funksjonar for lytteøvingar for intervall, akkordar og skalaar, med meir.</p>
     <p xml:lang="pl">Minuet jest aplikacją edukacyjną dla muzyków. Zapewnia zestaw ćwiczeń dla ucha, które dotyczą interwałów, akordów, skal i więcej.</p>
@@ -110,6 +113,7 @@
       <caption xml:lang="gl">Adestrando con Minuet</caption>
       <caption xml:lang="id">Berlatih dengan Minuet</caption>
       <caption xml:lang="it">Esercitazione con Minuet</caption>
+      <caption xml:lang="ko">Minuet로 연습하기</caption>
       <caption xml:lang="nl">Oefenen met Minuet</caption>
       <caption xml:lang="nn">Musikkopplæring med Minuet</caption>
       <caption xml:lang="pl">Ćwiczenia w Minuet</caption>
