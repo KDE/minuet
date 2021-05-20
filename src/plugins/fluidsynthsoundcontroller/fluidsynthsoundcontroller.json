@@ -55,9 +55,6 @@
         "Name[uk]": "Звуковий контролер на основі FluidSynth",
         "Name[x-test]": "xxFluidSynth-based Audio Controllerxx",
         "Name[zh_CN]": "基于 FluidSynth 的音频控制器",
-        "Name[zh_TW]": "基於 FluidSynth 的音訊控制器",
-        "ServiceTypes": [
-            "Minuet/Plugin"
-        ]
+        "Name[zh_TW]": "基於 FluidSynth 的音訊控制器"
     }
 }

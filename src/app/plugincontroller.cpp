@@ -42,17 +42,7 @@ namespace Minuet
 PluginController::PluginController(QObject *parent) : IPluginController(parent)
 {
 #if !defined(Q_OS_ANDROID)
-    m_plugins = KPluginLoader::findPlugins(QStringLiteral("minuet"), [&](const KPluginMetaData
-                                                                             &meta) {
-        if (!meta.serviceTypes().contains(QStringLiteral("Minuet/Plugin"))) {
-            qWarning()
-                << "Plugin" << meta.fileName()
-                << "is installed into the minuet plugin directory, but does not have"
-                   " \"Minuet/Plugin\" set as the service type. This plugin will not be loaded.";
-            return false;
-        }
-        return true;
-    });
+    m_plugins = KPluginLoader::findPlugins(QStringLiteral("minuet"));
 #endif
 }
 

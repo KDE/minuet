@@ -56,9 +56,6 @@
         "Name[uk]": "Звуковий контролер на основі CSound",
         "Name[x-test]": "xxCSound-based Audio Controllerxx",
         "Name[zh_CN]": "基于 CSound 的音频控制器",
-        "Name[zh_TW]": "基於 CSound 的音訊控制器",
-        "ServiceTypes": [
-            "Minuet/Plugin"
-        ]
+        "Name[zh_TW]": "基於 CSound 的音訊控制器"
     }
 }
