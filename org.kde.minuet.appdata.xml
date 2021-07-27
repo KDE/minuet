@@ -24,6 +24,7 @@
   <name xml:lang="pl">Minuet</name>
   <name xml:lang="pt">Minuet</name>
   <name xml:lang="pt-BR">Minuet</name>
+  <name xml:lang="ro">Minuet</name>
   <name xml:lang="ru">Minuet</name>
   <name xml:lang="sk">Minuet</name>
   <name xml:lang="sl">Minuet</name>
@@ -54,6 +55,7 @@
   <summary xml:lang="pl">Muzyczne oprogramowanie edukacyjne </summary>
   <summary xml:lang="pt">Aplicação de Educação Musical</summary>
   <summary xml:lang="pt-BR">Software para Ensino de Música</summary>
+  <summary xml:lang="ro">Program de educație muzicală</summary>
   <summary xml:lang="ru">Программа для обучения музыке</summary>
   <summary xml:lang="sk">Hudobný výukový softvér</summary>
   <summary xml:lang="sl">Program za glasbeno izobraževanje</summary>
@@ -119,6 +121,7 @@
       <caption xml:lang="pl">Ćwiczenia w Minuet</caption>
       <caption xml:lang="pt">A exercitar no Minuet</caption>
       <caption xml:lang="pt-BR">Treinando com o Minuet</caption>
+      <caption xml:lang="ro">Pregătire cu Minuet</caption>
       <caption xml:lang="ru">Тренировка в Minuet</caption>
       <caption xml:lang="sk">Tréning s Minuet</caption>
       <caption xml:lang="sl">Vadba z Minuet</caption>
