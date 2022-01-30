@@ -4,6 +4,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
   <name>Minuet</name>
+  <name xml:lang="ar">منويت</name>
   <name xml:lang="ca">Minuet</name>
   <name xml:lang="ca-valencia">Minuet</name>
   <name xml:lang="cs">Minuet</name>
@@ -35,6 +36,7 @@
   <name xml:lang="zh-CN">Minuet</name>
   <name xml:lang="zh-TW">Minuet</name>
   <summary>Music Education Software</summary>
+  <summary xml:lang="ar">برنامج تعلم موسيقى</summary>
   <summary xml:lang="ca">Programari d'educació musical</summary>
   <summary xml:lang="ca-valencia">Programari d'educació musical</summary>
   <summary xml:lang="cs">Hudební vzdělávací software</summary>
@@ -67,6 +69,7 @@
   <summary xml:lang="zh-TW">音樂教育軟體</summary>
   <description>
     <p>Minuet is an application for music education. It features a set of ear training exercises regarding intervals, chords, scales and more.</p>
+    <p xml:lang="ar">منويت هو تطبيق لتعليم الموسيقى. يتميز بمجموعة من تمارين تدريب الأذن فيما يتعلق بالفواصل الزمنية والأوتار والمقاييس والمزيد.</p>
     <p xml:lang="ca">El Minuet és una aplicació per a l'educació musical. Disposa d'un conjunt d'exercicis d'entrenament de l'oïda referits a intervals, acords, escales i altres.</p>
     <p xml:lang="ca-valencia">El Minuet és una aplicació per a l'educació musical. Disposa d'un conjunt d'exercicis d'entrenament de l'oïda referits a intervals, acords, escales i altres.</p>
     <p xml:lang="cs">Minuet je aplikace pro výuku hudby. Obsahuje sadu cvičení pro trénink ucha jako intervaly, akordy, stupnice a další.</p>
@@ -103,6 +106,7 @@
   <screenshots>
     <screenshot type="default">
       <caption>Training with Minuet</caption>
+      <caption xml:lang="ar">التدرب مع منويت</caption>
       <caption xml:lang="ca">Entrenant amb el Minuet</caption>
       <caption xml:lang="ca-valencia">Entrenant amb el Minuet</caption>
       <caption xml:lang="cs">Procvičování s Minuet</caption>
