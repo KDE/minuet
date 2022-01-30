@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Minuet
+Name[ar]=منويت
 Name[ca]=Minuet
 Name[ca@valencia]=Minuet
 Name[cs]=Minuet
@@ -34,6 +35,7 @@ Icon=minuet
 Type=Application
 X-DocPath=minuet/index.html
 GenericName=Music Education Software
+GenericName[ar]=برنامج تعلم موسيقى
 GenericName[ca]=Programari d'educació musical
 GenericName[ca@valencia]=Programari d'educació musical
 GenericName[cs]=Hudební vzdělávací software

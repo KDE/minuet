@@ -2,6 +2,7 @@
     "KPlugin": {
         "Category": "Sound Controllers",
         "Description": "This plugin provides Minuet with a FluidSynth-based implementation of sound controller.",
+        "Description[ar]": "يزود هذا البرنامج المساعد منويت بتطبيق FluidSynth القائم على وحدة التحكم في الصوت.",
         "Description[ca@valencia]": "Aquest connector proporciona el Minuet amb una implementació del dorsal de so basada en el FluidSynth.",
         "Description[ca]": "Aquest connector proporciona el Minuet amb una implementació del dorsal de so basada en el FluidSynth.",
         "Description[de]": "Mit diesem Modul verwendet Minuet eine auf FluidSynth basierende Audio-Steuerung.",
