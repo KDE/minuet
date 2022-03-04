@@ -19,6 +19,7 @@
         "Description[pl]": "Ta wtyczka dostarcza Minuetowi implementację sterownika dźwięku opartą na FluidSynth",
         "Description[pt]": "Este 'plugin' oferece ao Minuet uma infra-estrutura de som implementada com base no CSound.",
         "Description[pt_BR]": "Este plugin fornece ao Minuet um controlador de som implementado com base no CSound.",
+        "Description[ru]": "Этот модуль обеспечивает работу Minuet с реализацией звукового контроллера на основе CSound.",
         "Description[sk]": "Tento plugin poskytuje Minuet s implementáciou zvukového ovládača založeného na CSound.",
         "Description[sl]": "Ta vtičnik nudi Minuetu zvok prek krmilnika CSound.",
         "Description[sv]": "Insticksprogrammet tillhandahåller en implementering av ljudgränssnitt baserat på CSound åt Minuet.",
