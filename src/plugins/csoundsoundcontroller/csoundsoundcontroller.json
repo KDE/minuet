@@ -2,7 +2,7 @@
     "KPlugin": {
         "Category": "Sound Controllers",
         "Description": "This plugin provides Minuet with a CSound-based implementation of sound controller.",
-        "Description[ca@valencia]": "Aquest connector proporciona el Minuet amb una implementació del dorsal de so basada en el CSound.",
+        "Description[ca@valencia]": "Este connector proporciona el Minuet amb una implementació del dorsal de so basada en el CSound.",
         "Description[ca]": "Aquest connector proporciona el Minuet amb una implementació del dorsal de so basada en el CSound.",
         "Description[de]": "Mit diesem Modul verwendet Minuet eine auf CSound basierende Audio-Steuerung.",
         "Description[el]": "Αυτό το πρόσθετο παρέχει στο Μινουέτο μια εφαρμογή ελεγκτή ήχου με βάση το CSound.",
