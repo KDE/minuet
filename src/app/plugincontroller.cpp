@@ -32,7 +32,8 @@
 #include <interfaces/isoundcontroller.h>
 
 #if !defined(Q_OS_ANDROID)
-#include <KPluginLoader>
+#include <QPluginLoader>
+#include <KPluginMetaData>
 #endif
 
 #include <QDebug>
@@ -42,7 +43,7 @@ namespace Minuet
 PluginController::PluginController(QObject *parent) : IPluginController(parent)
 {
 #if !defined(Q_OS_ANDROID)
-    m_plugins = KPluginLoader::findPlugins(QStringLiteral("minuet"));
+    m_plugins = KPluginMetaData::findPlugins(QStringLiteral("minuet"));
 #endif
 }
 
@@ -65,7 +66,7 @@ bool PluginController::initialize(Core *core)
             continue;
         }
 
-        KPluginLoader loader(pluginMetaData.fileName());
+        QPluginLoader loader(pluginMetaData.fileName());
         IPlugin *plugin = qobject_cast<IPlugin *>(loader.instance());
         if (plugin) {
             m_loadedPlugins.insert(pluginMetaData, plugin);
