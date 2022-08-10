@@ -146,9 +146,9 @@
   </provides>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="0.4.0.22080" date="2022-08-18"/>
     <release version="0.4.0.22043" date="2022-07-07"/>
     <release version="0.4.0.22042" date="2022-06-09"/>
     <release version="0.4.0.22041" date="2022-05-12"/>
-    <release version="0.4.0.22040" date="2022-04-21"/>
   </releases>
 </component>
