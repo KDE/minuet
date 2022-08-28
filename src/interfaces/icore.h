@@ -23,16 +23,17 @@
 #ifndef MINUET_ICORE_H
 #define MINUET_ICORE_H
 
+#include "iexercisecontroller.h"
+#include "iplugincontroller.h"
+#include "isoundcontroller.h"
+#include "iuicontroller.h"
+
 #include <interfaces/minuetinterfacesexport.h>
 
 #include <QObject>
 
 namespace Minuet
 {
-class IPluginController;
-class ISoundController;
-class IExerciseController;
-class IUiController;
 
 class MINUETINTERFACES_EXPORT ICore : public QObject
 {

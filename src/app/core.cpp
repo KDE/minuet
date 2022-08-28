@@ -39,7 +39,11 @@ bool Core::initialize()
     }
 
     qRegisterMetaType<Minuet::ISoundController::State>("State");
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     qmlRegisterInterface<Minuet::ISoundController>("ISoundController");
+#else
+    qRegisterMetaType<Minuet::ISoundController>();
+#endif
     qmlRegisterUncreatableType<Minuet::ISoundController>(
         "org.kde.minuet.isoundcontroller", 1, 0, "ISoundController",
         QStringLiteral("ISoundController cannot be instantiated"));
