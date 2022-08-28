@@ -5,7 +5,7 @@ set(fluidsynthsoundcontroller_PLUGIN_SRCS
 add_library(minuetfluidsynthsoundcontroller MODULE ${fluidsynthsoundcontroller_PLUGIN_SRCS})
 
 target_link_libraries(minuetfluidsynthsoundcontroller
-    Qt5::Core
+    Qt::Core
     Minuet::Interfaces
     Minuet::Utils
     FluidSynth::FluidSynth

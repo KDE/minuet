@@ -29,7 +29,7 @@ add_library(minuetcsoundsoundcontroller ${csoundsoundcontroller_PLUGIN_SRCS})
 add_library(Minuet::CsoundSoundController ALIAS minuetcsoundsoundcontroller)
 
 target_link_libraries(minuetcsoundsoundcontroller
-    Qt5::Core
+    Qt::Core
     Minuet::Interfaces
     ${CSOUND_LIBS}
 )

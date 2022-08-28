@@ -15,8 +15,8 @@ set_target_properties(minuetinterfaces PROPERTIES VERSION 0.3.0)
 generate_export_header(minuetinterfaces EXPORT_FILE_NAME minuetinterfacesexport.h)
 
 target_link_libraries(minuetinterfaces
-    Qt5::Core
-    Qt5::Quick
+    Qt::Core
+    Qt::Quick
 )
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")

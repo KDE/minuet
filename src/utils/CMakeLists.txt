@@ -10,5 +10,5 @@ add_library(Minuet::Utils ALIAS minuetutils)
 
 target_link_libraries(minuetutils
     PRIVATE
-    Qt5::Core
+    Qt::Core
 )

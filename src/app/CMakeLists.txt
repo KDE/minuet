@@ -6,7 +6,7 @@ set(minuet_SRCS
     exercisecontroller.cpp
 )
 
-qt5_add_resources(minuet_SRCS qml.qrc)
+qt_add_resources(minuet_SRCS qml.qrc)
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     set(minuet_ICONS_PNG
@@ -55,12 +55,12 @@ else()
 endif()
 
 target_link_libraries(minuet
-    Qt5::Core
-    Qt5::Gui
-    Qt5::Qml
-    Qt5::Quick
-    Qt5::QuickControls2
-    Qt5::Svg
+    Qt::Core
+    Qt::Gui
+    Qt::Qml
+    Qt::Quick
+    Qt::QuickControls2
+    Qt::Svg
     Minuet::Interfaces
     Minuet::Utils
 )
