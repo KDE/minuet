@@ -1,0 +1,329 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Italian "INCLUDE">
+]>
+<book id="minuet" lang="&language;">
+
+<bookinfo>
+<title
+>Il manuale di &minuet;</title>
+
+<authorgroup>
+<author
+><personname
+> <firstname
+>Sandro</firstname
+> <othername
+>S.</othername
+> <surname
+>Andrade</surname
+> </personname
+> <email
+>&Sandro.Andrade.mail;</email
+> </author>
+<othercredit role="translator"
+><firstname
+>Vincenzo</firstname
+><surname
+>Reale</surname
+><affiliation
+><address
+><email
+>smart2128vr@gmail.com</email
+></address
+></affiliation
+><contrib
+>Traduzione del documento</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2016</year>
+<holder
+>&Sandro.Andrade;</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>19/10/2021</date>
+
+<releaseinfo
+>0.4 (KDE Gear 21.08)</releaseinfo>
+
+<abstract>
+<para
+>&minuet; è un'applicazione per l'educazione musicale. Fornisce un insieme di esercizi per allenare l'orecchio relativi a intervalli, accordi, scale e altro. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdeedu</keyword>
+<keyword
+>musica</keyword>
+<keyword
+>educazione</keyword>
+<keyword
+>intervalli</keyword>
+<keyword
+>accordi</keyword>
+<keyword
+>scale</keyword>
+<keyword
+>Minuet</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Introduzione</title>
+
+<para
+>Benvenuti in &minuet;: il programma di educazione musicale. &minuet; nasce con l'intento di supportare studenti e insegnanti in molti aspetti dell'educazione musicale, come l'allenamento dell'orecchio, lettura a prima vista, solfeggio, scale, ritmo, armonia e improvvisazione. &minuet; fa ampio uso delle capacità &MIDI; per fornire un insieme completo di funzionalità relative a volume, tempo e cambi di tonalità, che rendono &minuet; uno strumento prezioso sia per i principianti che per i musicisti esperti. </para>
+<para
+>&minuet; fornisce un insieme ampio di esercizi di allenamento dell'orecchio ed è possibile <link linkend="creating-exercises"
+>aggiungere in modo trasparente</link
+> nuovi esercizi per estendere le sue funzionalità e adattarlo a numerosi contesti di educazione musicale. </para>
+
+<screenshot>
+  <screeninfo
+>La finestra principale di &minuet;</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-screenshot.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>Esercizi sugli accordi di &minuet; per l'allenamento dell'orecchio</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+</chapter>
+
+<chapter id="using-minuet">
+<title
+>Utilizzare &minuet;</title>
+
+<para
+>Nelle due sezioni successive - <link linkend="starting-minuet"
+>Avviare &minuet;</link
+> e <link linkend="minuet-exercises"
+>Esercizi di &minuet;</link
+> - forniremo i passaggi necessari per il funzionamento di &minuet;. </para>
+
+<sect1 id="starting-minuet">
+<title
+>Avviare &minuet;</title>
+
+<para
+>È possibile avviare &minuet; dall'avviatore delle applicazioni. Aprire il menu globale facendo clic sull'icona dell'avviatore delle applicazioni sulla barra degli strumenti, in basso a sinistra dello schermo. Questo farà apparire un menu. Spostare il puntatore sul menu fino alla voce <menuchoice
+><guimenu
+>Applicazioni</guimenu
+><guisubmenu
+>Didattica</guisubmenu
+><guisubmenu
+>Varie</guisubmenu
+> <guimenuitem
+>&minuet; (Programma di educazione musicale)</guimenuitem
+></menuchoice
+> o con <keycombo action="simul"
+>&Alt;<keycap
+>F2</keycap
+></keycombo
+> e digitando <command
+>minuet</command
+> nel campo di digitazione. </para>
+</sect1>
+
+<sect1 id="minuet-exercises">
+<title
+>Esercizi e flusso di lavoro di &minuet;</title>
+
+<para
+>L'interfaccia utente di &minuet; prevede tre componenti principali: </para>
+
+<screenshot>
+  <screeninfo
+>La finestra principale di &minuet;</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-ui-components.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>Componenti dell'interfaccia utente di &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Menu di navigazione</guilabel
+></term>
+<listitem
+><para
+>Consente di navigare nelle categorie di esercizi di &minuet; e selezionare un esercizio specifico. Il menu di navigazione è creato dinamicamente sulla base dei file di specifica degli esercizi descritti in <link linkend="creating-exercises"
+>Creare esercizi</link
+>. Gli esercizi di &minuet; sono raggruppati in classi come intervalli, scale e accordi.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Vista Tastiera</guilabel
+></term>
+<listitem
+><para
+>Mostra gli eventi &MIDI; <parameter
+>note on</parameter
+> sequenziati da un file &MIDI; o dall'esecuzione di un esercizio.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Vista Esercizi</guilabel
+></term>
+<listitem
+><para
+>Presenta, per un dato esercizio, i pulsanti per controllare la presentazione dell'esercizio e un insieme delle possibili risposte dell'esercizio. L'esecuzione di un esercizio inizia facendo clic sul pulsante <guibutton
+>Avvia esercizio</guibutton
+>. Un intervallo/accordo/scala selezionata casualmente è riprodotta da &minuet; e lo studente deve scegliere tra una delle risposte mostrate nella griglia. &minuet; presenta sempre - come un piccolo cerchio bianco nella vista Tastiera - la prima nota dell'intervallo/scala selezionato o la nota radice dell'accordo selezionato. Passando con il puntatore su una possibile risposta, &minuet; evidenzia la rappresentazione visuale corrispondente nella vista Tastiera. Le note rimanenti della risposta mostrata sono presentate come piccoli cerchi il cui colore è lo stesso del pulsante della risposta sulla quale passa il puntatore. Lo studente può ascoltare nuovamente l'esercizio facendo clic sul pulsante <guibutton
+>Ascolta la domanda</guibutton
+>, fare clic sul pulsante della risposta scelta, o ottenere la risposta corretta facendo clic sul pulsante <guibutton
+>Rinuncia</guibutton
+>. Una nuova esecuzione dello stesso esercizio può essere iniziata facendo clic nuovamente sul pulsante <guibutton
+>Ferma esercizio</guibutton
+> e premendo nuovamente <guibutton
+>Nuova domanda</guibutton
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+</chapter>
+
+<chapter id="creating-exercises">
+<title
+>Creare nuovi esercizi di &minuet;</title>
+
+<para
+>Gli esercizi di &minuet; sono definiti in file delle specifiche degli esercizi, scritti in formato &JSON;: </para>
+<para>
+<programlisting
+>{
+  "exercises": [
+    {
+      "name": "Intervalli",
+      "root": "21..104",
+      "playMode": "scala",
+      "children": [
+        {
+          "name": "Intervalli melodici ascendenti",
+          "children": [
+            {
+              "name": "Seconde",
+              "options": [
+                {
+                  "name": "Seconda minore",
+                  "sequenceFromRoot": "1"
+                },
+                {
+                  "name": "Seconda maggiore",
+                  "sequenceFromRoot": "2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+</programlisting>
+</para>
+<para
+>I file di specifica degli esercizi di &minuet; contengono un oggetto &JSON; di primo livello che fornisce il vettore degli <parameter
+>esercizi</parameter
+>. Questo vettore definisce una struttura gerarchica di esercizi, raggruppati per categorie. Ogni categoria/esercizio ha un nome. Gli oggetti &JSON; delle categorie contengono una proprietà con nome <parameter
+>children</parameter
+>, che descrive le sottocategorie/esercizi contenuti in tale categoria. Gli oggetti &JSON; degli esercizi contengono una proprietà con nome <parameter
+> options</parameter
+>, che definisce le possibili risposte per un esercizio. In ogni esecuzione dell'esercizio, &minuet; seleziona in modo casuale una risposta tra le possibili e lo studente deve fare clic sul pulsante della risposta che corrisponde alla risposta selezionata. </para>
+<para
+>Ogni (sotto)categoria dovrebbe definire un parametro <parameter
+>root</parameter
+> per specificare l'intervallo dal quale sarà scelta casualmente la prima nota dell'intervallo/accordo/scala per tutti gli esercizi in questa categoria. Tale intervallo corrisponde ai numeri standard delle note &MIDI; e segue il formato <parameter
+>&lt;min-value&gt;..&lt;max-value&gt;</parameter
+>. L'esempio presentato sopra utilizza tutto l'intervallo della tastiera come possibili note radice (21..104). Il parametro <parameter
+>playMode</parameter
+> indica come dovrebbero essere riprodotte le risposte possibili: come una <parameter
+>scala</parameter
+> (una nota dopo l'altra) o come <parameter
+>accordo</parameter
+> (tutte le note suonano contemporaneamente). </para>
+<para
+>Ogni opzione dell'esercizio definisce un nome e la sequenza di note che dovrebbe essere riprodotta dalla nota radice selezionata casualmente in ogni esecuzione dell'esercizio. Tale sequenza di note è definita con distanze relative dalla nota radice, che descrive l'intervallo che ogni nota forma in congiunzione con la nota radice. Ad esempio, per una scala maggiore, la sequenza di note è <quote
+>2 4 5 7 9 11 12</quote
+>, che indica rispettivamente la struttura della scala maggiore <quote
+>intero intero metà intero intero intero metà</quote
+>. Il parametro <parameter
+>sequenceFromRoot</parameter
+> potrebbe contenere qualsiasi nota in durata. Inoltre, il nucleo di &minuet; assicura che siano selezionate casualmente solo le risposte in cui tutte le note si trovino nell'intervallo della tastiera. </para>
+<para
+>Per fornire un'infrastruttura migliore per organizzare un vasto insieme di file di specifica degli esercizi, il nucleo di &minuet; supporta l'utilizzo di numerosi file di specifica, che sono uniti automaticamente per comporre la gerarchia finale dell'esercizio presentata nel menu di navigazione. Gli esercizi sono uniti correttamente fintanto che file di specifica diversi utilizzano lo stesso nome di (sotto)categoria quando si definiscono gli esercizi. Per ora, &minuet; non fornisce una &GUI; per creare specifiche di esercizi, per cui è necessario creare manualmente i file &JSON;. I file di specifica degli esercizi di &minuet; possono essere installati a livello di sistema o localmente nella cartella <filename class="directory"
+>minuet/exercises/</filename
+> posizionata in <userinput
+><command
+>qtpaths</command
+> <option
+>--path GenericDataLocation</option
+></userinput
+> </para>
+
+</chapter>
+
+<chapter id="credits">
+
+<title
+>Riconoscimenti e licenza</title>
+
+<para
+>&minuet; </para>
+<para
+>Copyright del programma 2016 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
+
+<para
+>Copyright della documentazione &copy; 2016 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
+
+<para
+>Traduzione italiana: Vincenzo Reale <email
+>smart2128vr@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->

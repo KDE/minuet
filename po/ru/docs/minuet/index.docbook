@@ -1,0 +1,329 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Russian "INCLUDE">
+]>
+<book id="minuet" lang="&language;">
+
+<bookinfo>
+<title
+>Руководство пользователя &minuet;</title>
+
+<authorgroup>
+<author
+><personname
+> <firstname
+>Sandro</firstname
+> <othername
+>S.</othername
+> <surname
+>Andrade</surname
+> </personname
+> <email
+>&Sandro.Andrade.mail;</email
+> </author>
+<othercredit role="translator"
+><firstname
+>Мария</firstname
+><surname
+>Шикунова</surname
+><affiliation
+><address
+><email
+>translation-team@basealt.ru</email
+></address
+></affiliation
+><contrib
+>Перевод на русский язык</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2016</year>
+<holder
+>&Sandro.Andrade;</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>19 октября 2021 г.</date>
+
+<releaseinfo
+>0.4 (KDE Gear 21.08)</releaseinfo>
+
+<abstract>
+<para
+>&minuet; — это приложение для обучения музыке. Оно содержит набор упражнений для тренировки слуха в области интервалов, аккордов и гамм. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdeedu</keyword>
+<keyword
+>музыка</keyword>
+<keyword
+>образование</keyword>
+<keyword
+>интервалы</keyword>
+<keyword
+>аккорды</keyword>
+<keyword
+>лады</keyword>
+<keyword
+>Minuet</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Введение</title>
+
+<para
+>Добро пожаловать в &minuet;: программное обеспечение для обучения музыки. &minuet; поддерживает студентов и преподавателей во многих аспектах музыкального образования, таких как тренировка слуха, быстрое чтение нот, сольфеджио, гамма, ритм, гармония и импровизация. &minuet;  активно использует возможности &MIDI;, предоставляющие полный набор функций, касающихся изменения громкости, темпа и высоты тона, что делает &minuet; полезным инструментом как для начинающих, так и для опытных музыкантов. </para>
+<para
+>&minuet; содержит богатый набор упражнений для тренировки слуха; также возможно <link linkend="creating-exercises"
+>легко добавлять</link
+> новые упражнения, чтобы расширить функциональные возможности приложения и адаптировать его к некоторым аспектам музыкального образования. </para>
+
+<screenshot>
+  <screeninfo
+>Главное окно &minuet;</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-screenshot.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>Упражнения на слух &minuet;: аккорды</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+</chapter>
+
+<chapter id="using-minuet">
+<title
+>Использование &minuet;</title>
+
+<para
+>Следующие два раздела — <link linkend="starting-minuet"
+>Запуск &minuet;</link
+> и <link linkend="minuet-exercises"
+>Упражнения &minuet;</link
+> — позволят запустить и настроить работу &minuet;. </para>
+
+<sect1 id="starting-minuet">
+<title
+>Запуск &minuet;</title>
+
+<para
+>Запустить &minuet; возможно из панели запуска приложений. Откройте главное меню, нажав на значок запуска приложений на панели задач в нижнем левом углу экрана. Переместите указатель мыши на пункт меню <menuchoice
+><guimenu
+>Приложения</guimenu
+> <guisubmenu
+>Образование</guisubmenu
+> <guisubmenu
+>Разное</guisubmenu
+> <guimenuitem
+>&minuet; (Программное обеспечение музыкального образования)</guimenuitem
+></menuchoice
+> или с помощью клавиши <keycombo action="simul"
+>&Alt;<keycap
+>F2</keycap
+></keycombo
+> и в поле ввода введите <command
+>minuet</command
+>. </para>
+</sect1>
+
+<sect1 id="minuet-exercises">
+<title
+>Упражнения и рабочий процесс &minuet;</title>
+
+<para
+>Пользовательский интерфейс &minuet; состоит из трёх основных компонентов: </para>
+
+<screenshot>
+  <screeninfo
+>Главное окно &minuet;</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-ui-components.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>Компоненты интерфейса &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Меню навигации</guilabel
+></term>
+<listitem
+><para
+>Позволяет перемещаться по категориям упражнений &minuet; и выбирать определённое упражнение. Меню навигации создаётся динамически в зависимости от файлов спецификации упражнений, как описано в разделе <link linkend="creating-exercises"
+>Создание упражнений</link
+>. Упражнения &minuet; сгруппированы по классам, таким как интервалы, гаммы и аккорды.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Режим клавиатуры</guilabel
+></term>
+<listitem
+><para
+>Отображает &MIDI;-события <parameter
+>note on</parameter
+>, которые последовательно повторяются с помощью файла &MIDI; или выполнения упражнения.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Режим упражнений</guilabel
+></term>
+<listitem
+><para
+>Предлагает заданному упражнению кнопки для его управления и набор возможных ответов к нему. Упражнение запускается кнопкой <guibutton
+>Начать тест</guibutton
+>. &minuet; воспроизведёт случайный интервал, аккорд или ритм, а обучающийся должен выбрать соответствующий ответ из списка вариантов. &minuet; всегда отображает в виде маленького белого кружка на виртуальном пианино первую ноту выбранного интервала или аккорда. При наведении указателя мыши на вариант ответа &minuet; подсветит соответствующий вариант на виртуальной клавиатуре кружками такого же цвета, как и выбранный вариант ответа. Обучающийся может прослушать упражнение ещё раз, нажав кнопку <guibutton
+>Проиграть вопрос</guibutton
+>, либо узнать правильный ответ, нажав кнопку <guibutton
+>Сдаться</guibutton
+>. Чтобы запустить новый набор упражнений на ту же тематику, следует сначала нажать кнопку <guibutton
+>Закончить тест</guibutton
+>, а затем кнопку <guibutton
+>Новый вопрос</guibutton
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+</chapter>
+
+<chapter id="creating-exercises">
+<title
+>Создание новых упражнений &minuet;</title>
+
+<para
+>Упражнения &minuet; определены в файлах спецификации упражнений, написанных в формате &JSON;: </para>
+<para>
+<programlisting
+>{
+  "exercises": [
+    {
+      "name": "Intervals",
+      "root": "21..104",
+      "playMode": "scale",
+      "children": [
+        {
+          "name": "Ascending Melodic Intervals",
+          "children": [
+            {
+              "name": "Seconds",
+              "options": [
+                {
+                  "name": "Minor Second",
+                  "sequenceFromRoot": "1"
+                },
+                {
+                  "name": "Major Second",
+                  "sequenceFromRoot": "2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+</programlisting>
+</para>
+<para
+>Файлы спецификаций упражнений &minuet; содержат один &JSON;-объект верхнего уровня с массивом <parameter
+>exercises</parameter
+>. Такой массив определяет иерархическую структуру упражнений, сгруппированную по категориям. Каждой категории и упражнению присвоено имя. Категория объектов &JSON; содержит свойство <parameter
+>children</parameter
+>, которое описывает подкатегории и упражнения, связанные с такой категорией. Упражнения объектов &JSON; содержат свойство <parameter
+> options</parameter
+>, определяющее возможные ответы на эти упражнения. В каждом запущенном упражнении &minuet; случайным образом выбирает один ответ среди всех возможных, и ожидается, что обучающийся нажмёт кнопку, соответствующую этому ответу. </para>
+<para
+>Любая (под)категория может быть определена параметром <parameter
+>root</parameter
+>, указывающим диапазон, из которого будет случайным образом выбираться начальный интервал, аккорд или нота гаммы для всех упражнений этой категории. Такой диапазон соответствует стандартам номеров нот &MIDI; и имеет формат <parameter
+>&lt;min-value&gt;..&lt;max-value&gt;</parameter
+>. В приведённом выше примере в качестве возможных основных нот используется весь диапазон клавиш (21..104). Параметр <parameter
+>playMode</parameter
+> определяет, как должны воспроизводиться возможные ответы: как <parameter
+>scale</parameter
+> (одна нота за другой) или как <parameter
+>chord</parameter
+> (все ноты воспроизводятся одновременно). </para>
+<para
+>Параметр каждого упражнения определяет имя и последовательность нот, которые должны воспроизводиться, начиная с основной ноты, выбранной случайным образом в каждом цикле упражнений. Такая последовательность нот определена как относительное расстояние от основной ноты, описывающее интервал, который каждая нота образует в сочетании с основной нотой. Например, для мажорной гаммы последовательность нот составит <quote
+>2 4 5 7 9 11 12</quote
+>, что соответственно обозначает структуру <quote
+>целая целая половина целая целая целая половина</quote
+> мажорной гаммы. Параметр <parameter
+>sequenceFromRoot</parameter
+> может содержать ноты любой длины. Более того, структура &minuet; гарантирует, что случайным образом выбираются только те ответы, которые находятся в пределах диапазона клавиш. </para>
+<para
+>Чтобы обеспечить лучшую организацию большого набора файлов спецификаций упражнений, структура &minuet; поддерживает использование нескольких файлов спецификации, которые автоматически объединяются для составления окончательной иерархии упражнений, отображаемой в меню навигации. Упражнения корректно объединяются, если разные файлы спецификаций используют одно и то же имя (под) категории при определении упражнений. На данный момент &minuet; не предоставляет графический интерфейс для созданий спецификаций, поэтому пользователю придётся вручную создавать такие файлы &JSON;. Файлы спецификации упражнений &minuet; возможно установить системно или локально в папке <filename class="directory"
+>minuet/exercises/</filename
+>, расположенной в <userinput
+><command
+>qtpaths</command
+> <option
+>--paths GenericDataLocation</option
+></userinput
+>. </para>
+
+</chapter>
+
+<chapter id="credits">
+
+<title
+>Авторские права и лицензия</title>
+
+<para
+>&minuet; </para>
+<para
+>Авторские права на программу &copy; &Sandro.Andrade; &Sandro.Andrade.mail;, 2016 </para>
+
+<para
+>Авторские права на документацию &copy; &Sandro.Andrade; &Sandro.Andrade.mail;, 2016 </para>
+
+<para
+>Мария Шикунова<email
+>translation-team@basealt.ru</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->

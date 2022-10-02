@@ -1,0 +1,319 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY Sandro.Andrade '<personname
+><firstname
+>Sandro</firstname
+><surname
+>Andrade</surname
+></personname
+>'>
+  <!ENTITY Sandro.Andrade.mail '<email
+>sandroandrade@kde.org</email
+>'>
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % German "INCLUDE">
+]>
+<book id="minuet" lang="&language;">
+
+<bookinfo>
+<title
+>Das Handbuch zu &minuet;</title>
+
+<authorgroup>
+<author
+><personname
+> <firstname
+>Sandro</firstname
+> <othername
+>S.</othername
+> <surname
+>Andrade</surname
+> </personname
+> <email
+>&Sandro.Andrade.mail;</email
+> </author>
+<othercredit role="translator"
+><firstname
+>Burkhard</firstname
+><surname
+>Lück</surname
+><affiliation
+><address
+><email
+>lueck@hube-lueck.de</email
+></address
+></affiliation
+><contrib
+>Übersetzung</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2016</year>
+<holder
+>&Sandro.Andrade;</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2016-12-09</date>
+
+<releaseinfo
+>Anwendungen 16.12</releaseinfo>
+
+<abstract>
+<para
+>&minuet; ist ein Musik-Lernprogramm. Es bietet Hörübungen zu Intervallen, Akkorden, Tonleitern und mehr. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdeedu</keyword>
+<keyword
+>Musik</keyword>
+<keyword
+>Lernprogramme</keyword>
+<keyword
+>Intervalle</keyword>
+<keyword
+>Akkord</keyword>
+<keyword
+>Tonleitern</keyword>
+<keyword
+>Minuet</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Einführung</title>
+
+<para
+>Willkommen bei &minuet;, der &kde;-Lernsoftware für Musik. &minuet; unterstützt Schüler und Lehrer in vielen Bereichen der Musikpädagogik, wie z.B. bei der Gehörbildung, Vomblattspielen, Solfa, Tonleitern, Rhythmus, Harmonie und Improvisation. &minuet; nutzt die Fähigkeiten von &MIDI; und bietet einen vollständigen Satz an Funktionen für Lautstärke, Tempo und Änderungen der Tonhöhe. Das macht &minuet; zu einem wertvollen Hilfsmittel sowohl für Anfänger als aucherfahrene Musiker. </para>
+<para
+>&minuet; verfügt über ein reichhaltiges Angebot an Übungen zum Gehörtrainings. Neue Übungen können <link linkend="creating-exercises"
+>einfach hinzugefügt </link
+> werden, um seine Funktionalitäten erweitern und an verschiedene musikpädagogische Kontexte anzupassen. </para>
+<para>
+<mediaobject>
+<imageobject
+><imagedata format="PNG" fileref="minuet-screenshot.png"/></imageobject>
+<caption
+><para
+>&minuet;'s Akkord-Übungen  zum Gehörtraining</para
+></caption>
+</mediaobject>
+</para>
+</chapter>
+
+<chapter id="using-minuet">
+<title
+>&minuet; verwenden</title>
+
+<para
+>In den nächsten beiden Abschnitten <link linkend="starting-minuet"
+>&minuet; starten</link
+> und <link linkend="minuet-exercises"
+>&minuet;-Übungen</link
+> werden die notwendigen Schritte vorgestellt, um &minuet; zu starten und anzupassen. </para>
+
+<sect1 id="starting-minuet">
+<title
+>&minuet; starten</title>
+<para
+>Sie können &minuet; im Anwendungsmenü starten. Öffnen Sie das Menü durch Klicken auf das Startsymbol in der Symbolleiste unten links auf dem Bildschirm. Wählen Sie im Menü <menuchoice
+><guimenu
+>Anwendungen</guimenu
+><guisubmenu
+>Lernprogramme</guisubmenu
+><guisubmenu
+>Verschiedenes</guisubmenu
+> <guimenuitem
+>&minuet; (Musik-Lernsoftware)</guimenuitem
+></menuchoice
+> </para>
+</sect1>
+
+<sect1 id="minuet-exercises">
+<title
+>&minuet;-Übungen und Arbeitsabläufe</title>
+
+<para
+>Die Benutzeroberfläche von &minuet; besteht aus drei Hauptteilen: </para>
+<para>
+<mediaobject>
+<imageobject
+><imagedata format="PNG" fileref="minuet-ui-components.png"/></imageobject>
+<caption
+><para
+>&minuet;'s Benutzeroberfläche</para
+></caption>
+</mediaobject>
+</para>
+<variablelist>
+
+<varlistentry>
+<term
+><guimenuitem
+>Das Menü Navigation</guimenuitem
+></term>
+<listitem
+><para
+>Ermöglicht die Navigation in &minuet;'s Übungskategorien und die Auswahl einer bestimmten Übung. Das Navigationsmenü wird dynamisch auf Basis von Definitionsdateien erstellt wird. Dies wird im Kapitel <link linkend="creating-exercises"
+>Erstellen von Übungen </link
+> beschrieben. &minuet;'s Übungen sind nach Kategorien wie Intervallen, Tonleitern und Akkorden  gruppiert .</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Die Keyboardansicht</guimenuitem
+></term>
+<listitem
+><para
+>Zeigt &MIDI;-Ereignisse <parameter
+>Note ein</parameter
+> an, die durch eine &MIDI;-Dateien oder die Ausführung einer Übung generiert werden.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>Die Übungsansicht</guimenuitem
+></term>
+<listitem
+><para
+>In dieser Ansicht werden für die angegebene Übung Knöpfe für die Steuerung der Übungspräsentation und mögliche Antworten für die Übung. Um eine Übung zu starten, klicken Sie auf den Knopf <parameter
+>Neue Frage</parameter
+>. Dann wird ein zufällig ausgewähltes Intervall, Akkord oder Tonleiter durch &minuet; abgespielt, dann muss eine der angezeigten Antworten ausgewählt werden. &minuet; zeigt immer als weißer kleiner Kreis in der Keyboardansicht die erste Note des ausgewählte Intervalls oder der Tonleiter oder die Basisnote des ausgewählten Akkords an. Führen Sie den Mauszeiger über eine mögliche Antwort, wird die visuelle Repräsentation in der Keyboardansicht hervorgehoben. Die verbleibenden Noten der durch den Mauszeiger überfahrenen Antwort werden als kleine Kreise angezeigt, deren Farbe des überfahrenen Antwort entspricht. Die Töne der Übung werden durch Klicken auf <parameter
+>Frage abspielen</parameter
+> erneut abgespielt. Sie können auf den ausgewählten Antwortknopf klicken oder mit <parameter
+>Aufgeben</parameter
+> die richtige Antwort erfahren. Die gleiche Übung kann erneut mit <parameter
+>Neue Frage</parameter
+> gestartet werden.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+</chapter>
+
+<chapter id="creating-exercises">
+<title
+>Neue Übungen für &minuet; erstellen</title>
+
+<para
+>Übungen für &minuet; werden in speziellen Dateien im JSON-Format definiert. </para>
+<para>
+<programlisting
+>{
+  "exercises": [
+    {
+      "name": "Intervals",
+      "root": "21..104",
+      "playMode": "scale",
+      "children": [
+        {
+          "name": "Ascending Melodic Intervals",
+          "children": [
+            {
+              "name": "Seconds",
+              "options": [
+                {
+                  "name": "Minor Second",
+                  "sequenceFromRoot": "1"
+                },
+                {
+                  "name": "Major Second",
+                  "sequenceFromRoot": "2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+</programlisting>
+</para>
+<para
+>Die Definitionsdateien für &minuet;-Übungen enthalten ein JSON-Objekt mit dem Feld <parameter
+>exercises</parameter
+> auf der obersten Ebene. In diesem Feld ist eine hierarchische Struktur gruppiert nach Kategorien definiert. Jede Kategorie oder Übung hat einen Namen.  Die JSON-Objekte in der Kategorie eine Eigenschaft mit dem Namen  <parameter
+>children</parameter
+>, die Unterkategorien oder Übungen darin beschreibt.  JSON-Objekte für Übungen enthalten eine Eigenschaft mit dem Namen <parameter
+> options</parameter
+>, die mögliche Antworten für die Übung definiert. In jeder ausgeführten Übung wird zufällig eine Antwort aus den vorgegebenen Antworten ausgewählt. Es wird dann erwartet, dass der Knopf passend zur gewählten Antwort ausgewählt wird. </para>
+<para
+>Jede Kategorie oder Unterkategorie kann einen Parameter <parameter
+>root</parameter
+> definieren, um den Bereich anzugeben, aus dem zu Anfang die Noten zu Intervallen, Akkorden und Tonleitern für alle Übungen in dieser Kategorie ausgewählt werden. Dieser Bereich entspricht der Standard-Notennummerierung in &MIDI; und hat das Format <parameter
+>&lt;min-value&gt;..&lt;max-value&gt;</parameter
+>. Im oben genannten Beispiel wird der gesamte Keybordbereich von 21 bis 104 als mögliche Basisnoten verwendet. Mit dem Parameter <parameter
+>playMode</parameter
+> wird festgelegt, wie mögliche Antworten abgespielt werden sollen: als <parameter
+>scale</parameter
+> (eine Note nach der anderen) oder als <parameter
+>chord</parameter
+> (alle Noten gleichzeitig). </para>
+<para
+>Jede Option einer Übung definiert einen Namen und eine Folge von Noten, die von der ausgewählten Basisnote aus in jeder laufenden Übung gespielt werden sollte. Diese Folge von Noten ist als relative Distanz zur Basisnote definiert und beschreibt das Intervall zwischen der Note und der Basisnote. Bei einer Dur-Tonleiter besteht die Notenfolge aus "2 4 5 7 9 11 12". Das entspricht der Struktur der Dur-Tonleiter "Ganzton – Ganzton – Halbton – Ganzton – Ganzton – Ganzton – Halbton". Der Parameter <parameter
+>sequenceFromRoot</parameter
+> kann jede Notenlänge enthalten. Außerdem ist in &minuet; sichergestellt, dass nur Antworten mit Noten innerhalb des Keyboardbereichs zufällig ausgewählt werden. </para>
+<para
+>Für eine bessere Infrastruktur für die Organisation einer großen Anzahl von Übungen unterstützt &minuet;'s Kern die Verwendung mehrerer Definitionsdateien, die automatisch zusammengeführt werden, um die endgültige Übungshierarchie zu erstellen, die im Navigationsmenü angezeigt wird. Übungen werden korrekt zusammengeführt, solange verschiedene Definitionsdateien dieselbe Kategorie oder Unterkategorien verwenden. Zurzeit gibt es in &minuet;'s keine &GUI; für das Erstellen von Definitionsdateien für Übungen, so dass Sie diese manuell als JSON-Dateien anlegen müssen. Die Definitionsdateien für Übungen von &minuet; können systemweit oder lokal in <filename class="directory"
+>minuet/exercises/</filename
+> im Ordner <userinput
+><command
+>qtpaths</command
+> <option
+>--path GenericDataLocation</option
+></userinput
+>  installiert werden. </para>
+
+</chapter>
+
+<chapter id="credits">
+
+<title
+>Danksagungen und Lizenz</title>
+
+<para
+>&minuet; </para>
+<para
+>Programm Copyright 2016 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
+
+<para
+>Copyright für die Dokumentation &copy; 2016 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
+
+<para
+>Übersetzung Burkhard Lück<email
+>lueck@hube-lueck.de</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->

@@ -1,0 +1,309 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Dutch "INCLUDE">
+]>
+<book id="minuet" lang="&language;">
+
+<bookinfo>
+<title
+>Het handboek van &minuet;</title>
+
+<authorgroup>
+<author
+><personname
+> <firstname
+>Sandro</firstname
+> <othername
+>S.</othername
+> <surname
+>Andrade</surname
+> </personname
+> <email
+>&Sandro.Andrade.mail;</email
+> </author>
+&Freek.de.Kruijf; 
+</authorgroup>
+
+<copyright>
+<year
+>2016</year>
+<holder
+>&Sandro.Andrade;</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-10-19</date>
+
+<releaseinfo
+>0.4 (KDE Gear 21.08)</releaseinfo>
+
+<abstract>
+<para
+>&minuet; is een toepassing voor muziekonderwijs. Het biedt een set mogelijkheden voor trainingsoefeningen voor het gehoor betreffende intervallen, akkoorden en toonladders. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdeedu</keyword>
+<keyword
+>muziek</keyword>
+<keyword
+>onderwijs</keyword>
+<keyword
+>intervallen</keyword>
+<keyword
+>akkoorden</keyword>
+<keyword
+>toonladders</keyword>
+<keyword
+>Minuet</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Inleiding</title>
+
+<para
+>Welkom bij &minuet;: de software voor muziekonderwijs. &minuet; richt zich op ondersteuning van studenten en leraren in vele aspecten van muziekonderwijs, zoals training van het oor, lezen op eerste gezicht, solfa, toonladders, ritme, harmonie en improvisatie. &minuet; maakt intensief gebruik van de &MIDI; mogelijkheden om een volledige set van functies te leveren met betrekking tot wijzigingen in volume, tempo en hoogte, wat &minuet; maakt tot een waardevol hulpmiddel voor zowel beginnende en ervaren musici. </para>
+<para
+>&minuet; bezit een rijke set van trainingsoefeningen voor het oor en er kunnen nieuwe <link linkend="creating-exercises"
+> naadloos worden toegevoegd</link
+> om zijn functionaliteiten uit te breiden en aan te passen aan verschillende contexten in het muziekonderwijs. </para>
+
+<screenshot>
+  <screeninfo
+>Hoofdvenster van &minuet;</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-screenshot.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>Gehoortraining van akkoorden met &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+</chapter>
+
+<chapter id="using-minuet">
+<title
+>&minuet; gebruiken</title>
+
+<para
+>In de volgende twee secties - <link linkend="starting-minuet"
+>Beginnen met &minuet;</link
+> en <link linkend="minuet-exercises"
+>Oefeningen in &minuet;</link
+> - zullen we u de benodigde stappen leveren om &minuet; te laten werken. </para>
+
+<sect1 id="starting-minuet">
+<title
+>Beginnen met &minuet;</title>
+
+<para
+>U kunt &minuet; starten vanuit de toepassingenstarter. Open het globale menu door te klikken op het pictogram van de toepassingenstarter op de werkbalk links onderaan uw scherm. Dit toont een menu. Verplaats de cursor omhoog in het menu naar het menu-item <menuchoice
+><guimenu
+>Toepassingen</guimenu
+><guisubmenu
+>Onderwijs</guisubmenu
+><guisubmenu
+>Diversen</guisubmenu
+> <guimenuitem
+>&minuet; (Software voor muziekonderwijs)</guimenuitem
+></menuchoice
+> uit het globale menu of met <keycombo action="simul"
+>&Alt;<keycap
+>F2</keycap
+></keycombo
+> en voer <command
+>minuet</command
+> in het invoerveld. </para>
+</sect1>
+
+<sect1 id="minuet-exercises">
+<title
+>Oefeningen en werkwijze in &minuet;</title>
+
+<para
+>Het gebruikersinterface van &minuet; heeft drie hoofdcomponenten: </para>
+
+<screenshot>
+  <screeninfo
+>Hoofdvenster van &minuet;</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-ui-components.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>UI-componenten van &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Navigatie-menu</guilabel
+></term>
+<listitem
+><para
+>Biedt navigeren categorieën oefeningen in &minuet; en selectie van een specifieke oefening. Het menu Navigatie wordt dynamisch gemaakt gebaseerd op specificatiebestanden van oefeningen zoals beschreven in <link linkend="creating-exercises"
+>Aanmaken van oefeningen</link
+>. De oefeningen van &minuet; zijn gegroepeerd volgens klassen zoals intervallen, toonladders en akkoorden.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Beeld van het toetsenbord</guilabel
+></term>
+<listitem
+><para
+>Stuurt <parameter
+>note on</parameter
+> &MIDI; gebeurtenis uit veroorzaakt door een &MIDI; bestand of door het uitvoeren van een oefening.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Beeld van de oefeningen</guilabel
+></term>
+<listitem
+><para
+>Presenteert, voor een gegeven oefening, knoppen voor de besturing van de presentatie van een oefening en een set mogelijke antwoorden op een oefening. Een oefening uitvoeren begint met klikken op de knop <guibutton
+>Start vraag</guibutton
+>. Een willekeurig geselecteerd interval/akkoord/toonladder wordt door &minuet; afgespeeld en dan wordt de student geacht een antwoord uit de getoonden in het antwoordenrooster te kiezen. &minuet; presenteert altijd - als een kleine witte cirkel in de Toetsenbordweergave- de eerste noot van het geselecteerde interval/toonladder of de grondtoon van het geselecteerd akkoord. Door te zweven boven een mogelijk antwoord, accentueert &minuet; zijn overeenkomstige visuele representatie in de toetsenbordweergave. De overblijvende noten van het antwoord waarboven wordt gezweefd worden gepresenteerd als kleine cirkels waarvan de kleuren hetzelfde zijn van de antwoordknop waarboven wordt gezweefd. De student kan de oefening opnieuw horen door te klikken op de knop <guibutton
+>Vraag afspelen</guibutton
+>, klik op de gekozen antwoordknop of krijg het juiste antwoord door te klikken op de knop <guibutton
+>Opgeven</guibutton
+>. Een nieuwe uitvoering van dezelfde oefening kan gestart worden door opnieuw te klikken op de knop <guibutton
+>Nieuwe vraag</guibutton
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+</chapter>
+
+<chapter id="creating-exercises">
+<title
+>Nieuwe oefeningen voor &minuet; aanmaken</title>
+
+<para
+>Oefeningen voor &minuet; worden gedefinieerd in oefeningspecificatiebestanden, geschreven in het &JSON;-formaat: </para>
+<para>
+<programlisting
+>{
+  "exercises": [
+    {
+      "name": "Intervals",
+      "root": "21..104",
+      "playMode": "scale",
+      "children": [
+        {
+          "name": "Ascending Melodic Intervals",
+          "children": [
+            {
+              "name": "Seconds",
+              "options": [
+                {
+                  "name": "Minor Second",
+                  "sequenceFromRoot": "1"
+                },
+                {
+                  "name": "Major Second",
+                  "sequenceFromRoot": "2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+</programlisting>
+</para>
+<para
+>De oefeningspecificatiebestanden van &minuet; bevatten één &JSON; object op het hoogste niveau aangevend het array <parameter
+>oefeningen</parameter
+>. Zo'n array definieert een hiërarchische structuur met oefeningen, gegroepeerd op categorieën. Elke categorie/oefening heeft een naam. De categorie &JSON; objecten bevat een eigenschap genaamd <parameter
+>kinderen</parameter
+>, die de subcategorieën/oefeningen beschrijven behorende bij zo'n categorie. De &JSON; objecten oefening bevatten een eigenschap genaamd <parameter
+> opties</parameter
+>, die de mogelijke antwoorden voor zo'n oefening definieert. In elke uitvoering van een oefening selecteert &minuet; willekeurig één antwoord uit de mogelijke antwoorden en van de student wordt verwacht om op de knop van het overeenkomstig geselecteerde antwoord te klikken. </para>
+<para
+>Elke (sub)categorie kan een parameter <parameter
+>begin</parameter
+> definiëren om de reeks te specificeren vanwaar de initiële noot van het interval/het akkoord/de toonladder willekeurig zal worden gekozen voor alle oefeningen in deze categorie. Zulke reeksen corresponderen met de standaard nootnummers van &MIDI; en volgen het formaat <parameter
+>&lt;min-waarde&gt;..&lt;max-waarde&gt;</parameter
+>. Het bovenstaande voorbeeld presenteert gebruik van alle klavierreeksen als mogelijke beginnoten (21..104). De parameter <parameter
+>playMode</parameter
+> geeft aan hoe mogelijke antwoorden gespeeld zouden moeten worden: als een <parameter
+>toonladder</parameter
+> (één noot na de ander) of als een <parameter
+>akkoord</parameter
+> (alle noten klinken tegelijkertijd). </para>
+<para
+>Elke optie in een oefening definieert een naam en de volgorde van noten die gespeeld zouden moeten worden vanaf de beginnoot willekeurig geselecteerd in elke uitvoering van de oefening. Zo'n volgorde van noten is gedefinieerd als relatieve afstanden vanaf de beginnoot, met een beschrijving van het interval dat elke noot vormt in verband met de beginnoot. Voor een majeur toonladder is bijvoorbeeld de volgorde van noten <quote
+>2 4 5 7 9 11 12</quote
+>, die respectievelijk aangeeft de majeur toonladderstructuur <quote
+>heel heel half heel heel heel half</quote
+>. De parameter <parameter
+>sequenceFromRoot</parameter
+> kan elke lengte van noten bevatten. De kern van &minuet; verzekert dat alleen antwoorden waarvan alle noten liggen binnen de reeks van het klavier willekeurig worden geselecteerd. </para>
+<para
+>Om een betere infrastructuur voor het organiseren van een grote set specificatiebestanden van oefeningen te bieden, ondersteunt de kern van &minuet; het gebruik van verschillende specificatiebestanden, die automatisch samengevoegd worden om de uiteindelijke hiërarchie van oefeningen te presenteren in het Navigatiemenu. Oefeningen zijn juist samengevoegd zolang de verschillende specificatiebestanden dezelfde (sub)categorienaam gebruiken bij het definiëren van oefeningen. Voor nu biedt &minuet; geen &GUI; voor het maken van specificaties van oefeningen zodat u handmatig zulke &JSON;-bestanden moet maken. De specificatiebestanden van &minuet; kunnen systeembreed geïnstalleerd worden of lokaal in de map <filename
+>minuet/exercises/</filename
+> in <userinput
+><command
+>qtpaths</command
+> <option
+>--paths GenericDataLocation</option
+></userinput
+>. </para>
+
+</chapter>
+
+<chapter id="credits">
+
+<title
+>Dankbetuigingen en licentie</title>
+
+<para
+>&minuet; </para>
+<para
+>Programma copyright 2016 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
+
+<para
+>Documentatie copyright &copy; 2016 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
+
+&meld.fouten;&vertaling.freek; &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->
