@@ -729,7 +729,7 @@ msgstr "Dissenyador de la icona de Minuet"
 #: src/app/qml/ExerciseView.qml:71
 #, kde-format
 msgid "Click 'New Question' to start!"
-msgstr "Feu un clic a «Pregunta nova» per a començar."
+msgstr "Feu un clic en «Pregunta nova» per a començar."
 
 #: src/app/qml/ExerciseView.qml:100
 #, kde-format
@@ -790,7 +790,7 @@ msgstr "Inicia la prova"
 #: src/app/qml/ExerciseView.qml:253
 #, kde-format
 msgid "Click 'New Question' to start"
-msgstr "Feu un clic a «Pregunta nova» per a començar"
+msgstr "Feu un clic en «Pregunta nova» per a començar"
 
 #: src/app/qml/ExerciseView.qml:261
 #, kde-format
