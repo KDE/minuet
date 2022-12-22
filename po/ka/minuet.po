@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-08-29 00:42+0000\n"
-"PO-Revision-Date: 2022-12-20 11:44+0100\n"
+"PO-Revision-Date: 2022-12-21 09:07+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -51,7 +51,7 @@ msgstr "გაძლიერებული"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented Inverse"
-msgstr ""
+msgstr "გადიდება შემობრუნებით"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -316,7 +316,7 @@ msgstr "მაჟორული სეპტაკორდი(b9)"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major 7(b9) and Major maj7(9) Chords"
-msgstr ""
+msgstr "დიდი და პატარა ნონაკორდები"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -331,17 +331,17 @@ msgstr "მაჟორული კვარტაკორდი"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major maj7"
-msgstr ""
+msgstr "Maj7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major maj7(9)"
-msgstr ""
+msgstr "Major maj7(9)"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major maj7(b5)"
-msgstr ""
+msgstr "Maj7(b5)"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -356,7 +356,7 @@ msgstr "მაჟორული პენტატონიკა"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Scale and its Modes"
-msgstr ""
+msgstr "მაჟორული გამა და მისი ლადები"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -371,7 +371,7 @@ msgstr "დიდი სეპტიმა"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Seventh, Diminished Seventh, and Half Diminished Seventh Chords"
-msgstr ""
+msgstr "მცირე, შემცირებული და ნახევრადშემცირებული სეპტაკორდები"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -396,7 +396,7 @@ msgstr "დიდი ტერცდეციმა"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Man Gong"
-msgstr ""
+msgstr "მანგონი"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -416,12 +416,12 @@ msgstr "მინორული სეპტაკორდი"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor 7 and Dominant 7 Chords"
-msgstr ""
+msgstr "მინორული სეპტაკორდები და დომინანტსეპტაკორდი"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor 9"
-msgstr ""
+msgstr "M9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -441,12 +441,12 @@ msgstr "პატარა კვარტდეციმა"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor maj7"
-msgstr ""
+msgstr "M/maj7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor, Major, Diminished, and Augmented Chords"
-msgstr ""
+msgstr "მცირე, დიდი, შემცირებული და გადიდებული აკორდები"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
