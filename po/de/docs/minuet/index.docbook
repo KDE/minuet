@@ -1,125 +1,206 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY Sandro.Andrade '<personname
+><firstname
+>Sandro</firstname
+><surname
+>Andrade</surname
+></personname
+>'>
+  <!ENTITY Sandro.Andrade.mail '<email
+>sandroandrade@kde.org</email
+>'>
   <!ENTITY % addindex "IGNORE">
-  <!ENTITY % English "INCLUDE">
+  <!ENTITY % German "INCLUDE">
 ]>
 <book id="minuet" lang="&language;">
 
 <bookinfo>
-<title>The &minuet; Handbook</title>
+<title
+>Das Handbuch zu &minuet;</title>
 
 <authorgroup>
-<author>
-<personname>
-<firstname>Sandro</firstname>
-<othername>S.</othername>
-<surname>Andrade</surname>
-</personname>
-<email>&Sandro.Andrade.mail;</email>
-</author>
-<!-- TRANS:ROLES_OF_TRANSLATORS -->
+<author
+><personname
+> <firstname
+>Sandro</firstname
+> <othername
+>S.</othername
+> <surname
+>Andrade</surname
+> </personname
+> <email
+>&Sandro.Andrade.mail;</email
+> </author>
+<othercredit role="translator"
+><firstname
+>Burkhard</firstname
+><surname
+>Lück</surname
+><affiliation
+><address
+><email
+>lueck@hube-lueck.de</email
+></address
+></affiliation
+><contrib
+>Übersetzung</contrib
+></othercredit
+> 
 </authorgroup>
 
 <copyright>
-<year>2016</year>
-<holder>&Sandro.Andrade;</holder>
+<year
+>2016</year>
+<holder
+>&Sandro.Andrade;</holder>
 </copyright>
-<legalnotice>&FDLNotice;</legalnotice>
+<legalnotice
+>&FDLNotice;</legalnotice>
 
-<date>2021-10-19</date>
+<date
+>2016-12-09</date>
 
-<releaseinfo>0.4 (KDE Gear 21.08)</releaseinfo>
+<releaseinfo
+>Anwendungen 16.12</releaseinfo>
 
 <abstract>
-<para>
-&minuet; is an application for music education. It features a set of ear training exercises
-regarding intervals, chords, and scales.
-</para>
+<para
+>&minuet; ist ein Musik-Lernprogramm. Es bietet Hörübungen zu Intervallen, Akkorden, Tonleitern und mehr. </para>
 </abstract>
 
 <keywordset>
-<keyword>KDE</keyword>
-<keyword>kdeedu</keyword>
-<keyword>music</keyword>
-<keyword>education</keyword>
-<keyword>intervals</keyword>
-<keyword>chords</keyword>
-<keyword>scales</keyword>
-<keyword>Minuet</keyword>
+<keyword
+>KDE</keyword>
+<keyword
+>kdeedu</keyword>
+<keyword
+>Musik</keyword>
+<keyword
+>Lernprogramme</keyword>
+<keyword
+>Intervalle</keyword>
+<keyword
+>Akkord</keyword>
+<keyword
+>Tonleitern</keyword>
+<keyword
+>Minuet</keyword>
 </keywordset>
 
 </bookinfo>
 
 <chapter id="introduction">
-<title>Introduction</title>
+<title
+>Einführung</title>
 
+<para
+>Willkommen bei &minuet;, der &kde;-Lernsoftware für Musik. &minuet; unterstützt Schüler und Lehrer in vielen Bereichen der Musikpädagogik, wie z.B. bei der Gehörbildung, Vomblattspielen, Solfa, Tonleitern, Rhythmus, Harmonie und Improvisation. &minuet; nutzt die Fähigkeiten von &MIDI; und bietet einen vollständigen Satz an Funktionen für Lautstärke, Tempo und Änderungen der Tonhöhe. Das macht &minuet; zu einem wertvollen Hilfsmittel sowohl für Anfänger als aucherfahrene Musiker. </para>
+<para
+>&minuet; verfügt über ein reichhaltiges Angebot an Übungen zum Gehörtrainings. Neue Übungen können <link linkend="creating-exercises"
+>einfach hinzugefügt </link
+> werden, um seine Funktionalitäten erweitern und an verschiedene musikpädagogische Kontexte anzupassen. </para>
 <para>
-Welcome to &minuet;: the software for music education. &minuet; aims at supporting
-students and teachers in many aspects of music education, such as ear
-training, first-sight reading, solfa, scales, rhythm, harmony, and improvisation. &minuet;
-makes extensive use of &MIDI; capabilities to provide a full-fledged set of features
-regarding volume, tempo, and pitch changes, which makes &minuet; a valuable tool for both
-novice and experienced musicians.
+<mediaobject>
+<imageobject
+><imagedata format="PNG" fileref="minuet-screenshot.png"/></imageobject>
+<caption
+><para
+>&minuet;'s Akkord-Übungen  zum Gehörtraining</para
+></caption>
+</mediaobject>
 </para>
-<para>
-&minuet; features a rich set of ear training's exercises and new ones can be <link linkend="creating-exercises">
-seamlessly added</link> in order to extend its functionalities and adapt it to several
-music education contexts.
-</para>
-
-<screenshot>
-  <screeninfo>&minuet; main window</screeninfo>
-  <mediaobject>
-    <imageobject><imagedata fileref="minuet-screenshot.png" format="PNG" /></imageobject>
-    <textobject><phrase>&minuet;'s ear training chord exercises</phrase></textobject>
-  </mediaobject>
-</screenshot>
 </chapter>
 
 <chapter id="using-minuet">
-<title>Using &minuet;</title>
+<title
+>&minuet; verwenden</title>
 
-<para>
-In the next two sections - <link linkend="starting-minuet">Starting &minuet;</link> and <link linkend="minuet-exercises">&minuet; Exercises</link> - we will provide you the required steps to get &minuet; up and running.
-</para>
+<para
+>In den nächsten beiden Abschnitten <link linkend="starting-minuet"
+>&minuet; starten</link
+> und <link linkend="minuet-exercises"
+>&minuet;-Übungen</link
+> werden die notwendigen Schritte vorgestellt, um &minuet; zu starten und anzupassen. </para>
 
 <sect1 id="starting-minuet">
-<title>Starting &minuet;</title>
-
-<para>You can start &minuet; from the application launcher. Open the global menu by clicking on the application launcher icon on the system tray at the bottom left of your screen. This will raise a menu. Move your cursor up the menu to the <menuchoice><guimenu>Applications</guimenu> <guisubmenu>Education</guisubmenu> <guisubmenu>Miscellaneous</guisubmenu> <guimenuitem>&minuet; (Music Education Software)</guimenuitem></menuchoice> menu item from the global menu or with <keycombo action="simul">&Alt;<keycap>F2</keycap></keycombo> and entering <command>minuet</command> into the input field.
-</para>
+<title
+>&minuet; starten</title>
+<para
+>Sie können &minuet; im Anwendungsmenü starten. Öffnen Sie das Menü durch Klicken auf das Startsymbol in der Symbolleiste unten links auf dem Bildschirm. Wählen Sie im Menü <menuchoice
+><guimenu
+>Anwendungen</guimenu
+><guisubmenu
+>Lernprogramme</guisubmenu
+><guisubmenu
+>Verschiedenes</guisubmenu
+> <guimenuitem
+>&minuet; (Musik-Lernsoftware)</guimenuitem
+></menuchoice
+> </para>
 </sect1>
 
 <sect1 id="minuet-exercises">
-<title>&minuet; Exercises and Workflow</title>
+<title
+>&minuet;-Übungen und Arbeitsabläufe</title>
 
+<para
+>Die Benutzeroberfläche von &minuet; besteht aus drei Hauptteilen: </para>
 <para>
-&minuet;'s user interface entails three major components:
+<mediaobject>
+<imageobject
+><imagedata format="PNG" fileref="minuet-ui-components.png"/></imageobject>
+<caption
+><para
+>&minuet;'s Benutzeroberfläche</para
+></caption>
+</mediaobject>
 </para>
-
-<screenshot>
-  <screeninfo>&minuet; main window</screeninfo>
-  <mediaobject>
-    <imageobject><imagedata fileref="minuet-ui-components.png" format="PNG" /></imageobject>
-    <textobject><phrase>&minuet;'s UI components</phrase></textobject>
-  </mediaobject>
-</screenshot>
-
 <variablelist>
 
 <varlistentry>
-<term><guilabel>Navigation Menu</guilabel></term>
-<listitem><para>Allows for navigating in &minuet;'s exercise categories and selecting a particular exercise. The Navigation Menu is dynamically created based upon exercises specification files as described in <link linkend="creating-exercises">Creating Exercises</link>. &minuet;'s exercises are grouped according to classes such as intervals, scales, and chords.</para></listitem>
+<term
+><guimenuitem
+>Das Menü Navigation</guimenuitem
+></term>
+<listitem
+><para
+>Ermöglicht die Navigation in &minuet;'s Übungskategorien und die Auswahl einer bestimmten Übung. Das Navigationsmenü wird dynamisch auf Basis von Definitionsdateien erstellt wird. Dies wird im Kapitel <link linkend="creating-exercises"
+>Erstellen von Übungen </link
+> beschrieben. &minuet;'s Übungen sind nach Kategorien wie Intervallen, Tonleitern und Akkorden  gruppiert .</para
+></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>Keyboard View</guilabel></term>
-<listitem><para>Exhibits &MIDI; <parameter>note on</parameter> events being sequenced by a &MIDI; file or by an exercise execution.</para></listitem>
+<term
+><guimenuitem
+>Die Keyboardansicht</guimenuitem
+></term>
+<listitem
+><para
+>Zeigt &MIDI;-Ereignisse <parameter
+>Note ein</parameter
+> an, die durch eine &MIDI;-Dateien oder die Ausführung einer Übung generiert werden.</para
+></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>Exercise View</guilabel></term>
-<listitem><para>Presents, for a given exercise, buttons for controlling exercise presentation and a set of exercise's possible answers. An exercise run begins by clicking the <guibutton>Start Quest</guibutton> button. A randomly selected interval/chord/scale is played by &minuet; and then the student is expected to pick up an answer among the ones shown in the answer's grid. &minuet; always present - as a white small circle in Keyboard View - the first note of selected interval/scale or the root note of selected chord. By hovering a possible answer, &minuet; highlights its corresponding visual representation in Keyboard View. The remaining notes of the hovered answer are presented as small circles whose colors are the same of hovered answer's button. The student can hear the exercise again by clicking the <guibutton>Play Question</guibutton> button, click the chosen answer button, or get the right answer by clicking the <guibutton>Give Up</guibutton> button. A new run of the same exercise can be started by pressing <guibutton>Stop Quest</guibutton> button and pressing again the <guibutton>New Question</guibutton> button.</para></listitem>
+<term
+><guimenuitem
+>Die Übungsansicht</guimenuitem
+></term>
+<listitem
+><para
+>In dieser Ansicht werden für die angegebene Übung Knöpfe für die Steuerung der Übungspräsentation und mögliche Antworten für die Übung. Um eine Übung zu starten, klicken Sie auf den Knopf <parameter
+>Neue Frage</parameter
+>. Dann wird ein zufällig ausgewähltes Intervall, Akkord oder Tonleiter durch &minuet; abgespielt, dann muss eine der angezeigten Antworten ausgewählt werden. &minuet; zeigt immer als weißer kleiner Kreis in der Keyboardansicht die erste Note des ausgewählte Intervalls oder der Tonleiter oder die Basisnote des ausgewählten Akkords an. Führen Sie den Mauszeiger über eine mögliche Antwort, wird die visuelle Repräsentation in der Keyboardansicht hervorgehoben. Die verbleibenden Noten der durch den Mauszeiger überfahrenen Antwort werden als kleine Kreise angezeigt, deren Farbe des überfahrenen Antwort entspricht. Die Töne der Übung werden durch Klicken auf <parameter
+>Frage abspielen</parameter
+> erneut abgespielt. Sie können auf den ausgewählten Antwortknopf klicken oder mit <parameter
+>Aufgeben</parameter
+> die richtige Antwort erfahren. Die gleiche Übung kann erneut mit <parameter
+>Neue Frage</parameter
+> gestartet werden.</para
+></listitem>
 </varlistentry>
 
 </variablelist>
@@ -127,14 +208,14 @@ In the next two sections - <link linkend="starting-minuet">Starting &minuet;</li
 </chapter>
 
 <chapter id="creating-exercises">
-<title>Creating new &minuet;'s exercises</title>
+<title
+>Neue Übungen für &minuet; erstellen</title>
 
+<para
+>Übungen für &minuet; werden in speziellen Dateien im JSON-Format definiert. </para>
 <para>
-&minuet;'s exercises are defined in exercise specification files, written in &JSON; format:
-</para>
-<para>
-<programlisting>
-{
+<programlisting
+>{
   "exercises": [
     {
       "name": "Intervals",
@@ -165,62 +246,61 @@ In the next two sections - <link linkend="starting-minuet">Starting &minuet;</li
 }
 </programlisting>
 </para>
-<para>
-&minuet;'s exercise specification files contain one top-level &JSON; object featuring the <parameter>exercises</parameter>
-array. Such an array defines a hierarchical structure of exercises, grouped by categories. Every category/exercise has a
-name. Category &JSON; objects contain a property named <parameter>children</parameter>, which describes the
-subcategories/exercises entailed by such a category. Exercise &JSON; objects contain a property named <parameter>
-options</parameter>, which defines the possible answers for such an exercise. In each exercise run, &minuet; randomly
-selects one answer among the possible ones and the student is expected to click the answer's button which corresponds to the
-selected answer.
-</para>
-<para>
-Any (sub)category may define a <parameter>root</parameter> parameter to specify the range from which the initial interval/chord/scale's
-note will be randomly chosen for all exercises in this category. Such range corresponds to standards &MIDI; note numbers and follows
-the format <parameter>&lt;min-value&gt;..&lt;max-value&gt;</parameter>. The example presented above uses all keyboard range as possible
-root notes (21..104). The <parameter>playMode</parameter> parameter indicates
-how possible answers should be played: as a <parameter>scale</parameter> (one note after the other) or as a <parameter>chord</parameter> (all
-notes ringing out simultaneously).
-</para>
-<para>
-Each exercise's option defines a name and the sequence of notes which should be played from the root note randomly selected in
-each exercise run. Such sequence of notes is defined as relative distances from the root note, describing the interval
-each note forms in conjunction with the root note. For example, for a major scale, the sequence of notes is <quote>2 4 5 7 9 11 12</quote>,
-which respectively denotes the <quote>whole whole half whole whole whole half</quote> major scale structure. The <parameter>sequenceFromRoot</parameter> parameter may contain any notes in length. Also, &minuet;'s core ensures that only answers
-whose all notes lies within keyboard range are randomly selected.
-</para>
-<para>
-To provide a better infrastructure for organizing a large set of exercise specification files, &minuet;'s core supports the use
-of several specification files, which are automatically merged to compose the final exercise hierarchy presented in the
-Navigation Menu. Exercises are correctly merged as long as different specification files use the same (sub)category name
-when defining exercises. For now, &minuet;'s provides no &GUI; for creating exercise specifications so that you must manually create such &JSON; files. &minuet;'s exercise specification files may be installed system-wide or locally in the <filename class="directory">minuet/exercises/</filename>
-folder located in <userinput><command>qtpaths</command> <option>--paths GenericDataLocation</option></userinput>
-</para>
+<para
+>Die Definitionsdateien für &minuet;-Übungen enthalten ein JSON-Objekt mit dem Feld <parameter
+>exercises</parameter
+> auf der obersten Ebene. In diesem Feld ist eine hierarchische Struktur gruppiert nach Kategorien definiert. Jede Kategorie oder Übung hat einen Namen.  Die JSON-Objekte in der Kategorie eine Eigenschaft mit dem Namen  <parameter
+>children</parameter
+>, die Unterkategorien oder Übungen darin beschreibt.  JSON-Objekte für Übungen enthalten eine Eigenschaft mit dem Namen <parameter
+> options</parameter
+>, die mögliche Antworten für die Übung definiert. In jeder ausgeführten Übung wird zufällig eine Antwort aus den vorgegebenen Antworten ausgewählt. Es wird dann erwartet, dass der Knopf passend zur gewählten Antwort ausgewählt wird. </para>
+<para
+>Jede Kategorie oder Unterkategorie kann einen Parameter <parameter
+>root</parameter
+> definieren, um den Bereich anzugeben, aus dem zu Anfang die Noten zu Intervallen, Akkorden und Tonleitern für alle Übungen in dieser Kategorie ausgewählt werden. Dieser Bereich entspricht der Standard-Notennummerierung in &MIDI; und hat das Format <parameter
+>&lt;min-value&gt;..&lt;max-value&gt;</parameter
+>. Im oben genannten Beispiel wird der gesamte Keybordbereich von 21 bis 104 als mögliche Basisnoten verwendet. Mit dem Parameter <parameter
+>playMode</parameter
+> wird festgelegt, wie mögliche Antworten abgespielt werden sollen: als <parameter
+>scale</parameter
+> (eine Note nach der anderen) oder als <parameter
+>chord</parameter
+> (alle Noten gleichzeitig). </para>
+<para
+>Jede Option einer Übung definiert einen Namen und eine Folge von Noten, die von der ausgewählten Basisnote aus in jeder laufenden Übung gespielt werden sollte. Diese Folge von Noten ist als relative Distanz zur Basisnote definiert und beschreibt das Intervall zwischen der Note und der Basisnote. Bei einer Dur-Tonleiter besteht die Notenfolge aus "2 4 5 7 9 11 12". Das entspricht der Struktur der Dur-Tonleiter "Ganzton – Ganzton – Halbton – Ganzton – Ganzton – Ganzton – Halbton". Der Parameter <parameter
+>sequenceFromRoot</parameter
+> kann jede Notenlänge enthalten. Außerdem ist in &minuet; sichergestellt, dass nur Antworten mit Noten innerhalb des Keyboardbereichs zufällig ausgewählt werden. </para>
+<para
+>Für eine bessere Infrastruktur für die Organisation einer großen Anzahl von Übungen unterstützt &minuet;'s Kern die Verwendung mehrerer Definitionsdateien, die automatisch zusammengeführt werden, um die endgültige Übungshierarchie zu erstellen, die im Navigationsmenü angezeigt wird. Übungen werden korrekt zusammengeführt, solange verschiedene Definitionsdateien dieselbe Kategorie oder Unterkategorien verwenden. Zurzeit gibt es in &minuet;'s keine &GUI; für das Erstellen von Definitionsdateien für Übungen, so dass Sie diese manuell als JSON-Dateien anlegen müssen. Die Definitionsdateien für Übungen von &minuet; können systemweit oder lokal in <filename class="directory"
+>minuet/exercises/</filename
+> im Ordner <userinput
+><command
+>qtpaths</command
+> <option
+>--path GenericDataLocation</option
+></userinput
+>  installiert werden. </para>
 
 </chapter>
 
 <chapter id="credits">
 
-<title>Credits and License</title>
+<title
+>Danksagungen und Lizenz</title>
 
-<para>
-&minuet;
-</para>
-<para>
-Program copyright 2016 &Sandro.Andrade; &Sandro.Andrade.mail;
-</para>
+<para
+>&minuet; </para>
+<para
+>Programm Copyright 2016 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
 
-<para>
-Documentation Copyright &copy; 2016 &Sandro.Andrade; &Sandro.Andrade.mail;
-</para>
+<para
+>Copyright für die Dokumentation &copy; 2016 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
 
-<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
-
-&underFDL;               <!-- FDL: do not remove -->
-
-&underGPL;        	 <!-- GPL License -->
-
-</chapter>
+<para
+>Übersetzung Burkhard Lück<email
+>lueck@hube-lueck.de</email
+></para
+> &underFDL; &underGPL; </chapter>
 
 &documentation.index;
 </book>
