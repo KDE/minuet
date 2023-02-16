@@ -73,9 +73,9 @@ endif()
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 target_link_libraries(minuet
-    KF5::CoreAddons
-    KF5::I18n
-    KF5::Crash
+    KF${KF_MAJOR_VERSION}::CoreAddons
+    KF${KF_MAJOR_VERSION}::I18n
+    KF${KF_MAJOR_VERSION}::Crash
 )
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 

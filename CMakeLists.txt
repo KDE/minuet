@@ -32,7 +32,13 @@ include(FeatureSummary)
 ecm_setup_version(${MINUET_VERSION} VARIABLE_PREFIX MINUET
     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/src/app/minuet_version.h"
 )
-
+if (QT_MAJOR_VERSION STREQUAL "6")
+    set(QT_REQUIRED_VERSION "6.4.0")
+    set(KF_MIN_VERSION "5.240.0")
+    set(KF_MAJOR_VERSION "6")
+else()
+    set(KF_MAJOR_VERSION "5")
+endif()
 find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Core
     Gui
@@ -43,7 +49,7 @@ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
 )
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
-    find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+    find_package(KF${KF_MAJOR_VERSION} ${KF5_MIN_VERSION} REQUIRED COMPONENTS
         CoreAddons
         I18n
         Crash
@@ -59,7 +65,7 @@ add_subdirectory(data)
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     add_subdirectory(doc)
     ki18n_install(po)
-    if (KF5DocTools_FOUND)
+    if (KF${KF_MAJOR_VERSION}DocTools_FOUND)
         kdoctools_install(po)
     endif()
     install(FILES org.kde.minuet.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
