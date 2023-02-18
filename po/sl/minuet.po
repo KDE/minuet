@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-17 00:54+0000\n"
+"POT-Creation-Date: 2023-02-18 00:54+0000\n"
 "PO-Revision-Date: 2022-08-07 14:45+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -29,6 +29,671 @@ msgstr "Matjaž Jeran"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "matjaz.jeran@amis.net"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Aeolian"
+msgstr "Eolska"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Altered Chords"
+msgstr "Alterirani akordi"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Ascending Melodic Intervals"
+msgstr "Naraščajoči melodični intervali"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Augmented"
+msgstr "Zvečani"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Augmented Inverse"
+msgstr "Zvečani obrnjeni"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Bebop Dominant"
+msgstr "Dominanta Bebopa"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Bebop Dorian"
+msgstr "Bebop dorska lestvica"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Bebop Locrian"
+msgstr "Bebop lokrijska lestvica"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Bebop Major"
+msgstr "Bebop v durova lestvica"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Bebop Minor"
+msgstr "Bebop v molova lestvica"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Bebop Scales"
+msgstr "Bebop lestvice"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Chords"
+msgstr "Akordi"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Chords with 7 in their name"
+msgstr "Akordi s 7 (septimo) v imenu"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Chords with 9 in their name"
+msgstr "Akordi z 9 (nono) v imenu"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Descending Melodic Intervals"
+msgstr "Padajoči melodični intervali"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Diminished"
+msgstr "Zmanjšani"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Diminished and Augmented Chords"
+msgstr "Zmanjšani in zvečani akordi"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Diminished H-W"
+msgstr "Zmanjšana lestvica polton, cel ton"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Diminished Seventh"
+msgstr "Zmanjšana septima"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Diminished W-H"
+msgstr "Zmanjšana lestvica cel ton, polton"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Dominant 7"
+msgstr "Dominantna 7 (septima)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Dorian"
+msgstr "Dorska lestvica"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Dorian b5"
+msgstr "Dorska lestvica z znižano kvinto"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Easy"
+msgstr "Lahko"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "eighth-dot-sixteenth"
+msgstr "osminka s piko - šestnajstinka"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "eighth-eighth"
+msgstr "osminka-osminka"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "eighth-sixteenth-sixteenth"
+msgstr "osminka-šestnajstinka-šestnajstinka"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Fourths and Fifths"
+msgstr "Kvarte in kvinte"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Fourths, Fifths, and Octave"
+msgstr "Kvarte, kvinte in oktave"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Half Diminished Seventh"
+msgstr "Zmanjšan 7 z malo 7"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Harmonic Intervals"
+msgstr "Harmonični intervali"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Harmonic Major"
+msgstr "Harmonični dur"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Harmonic Major Scale and its Modes"
+msgstr "Harmonični dur in njegovi modusi"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Harmonic Minor"
+msgstr "Harmonični mol"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Harmonic Minor Scale and its Modes"
+msgstr "Harmonične molovske lestvice in načini"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Hear the chord and then choose an answer from options below"
+msgstr "Poslušajte akord in izberite odgovor iz nabora spodaj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Hear the interval and then choose an answer from options below"
+msgstr "Poslušajte interval in izberite odgovor iz nabora spodaj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Hear the rhythm and then choose an answer from options below"
+msgstr "Poslušajte ritem in izberite odgovor iz nabora spodaj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Hear the scale and then choose an answer from options below"
+msgstr "Poslušajte lestvico in izberite odgovor iz nabora spodaj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Intervals"
+msgstr "Intervali"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Ionian"
+msgstr "Jonska"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Ionian Augmented"
+msgstr "Jonska zvišana"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Locrian"
+msgstr "Lokrijska"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Locrian #6"
+msgstr "Lokrijska z zvišano seksto"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Locrian bb7"
+msgstr "Lokrijska z zmanjšano septimo"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Lots of Chords"
+msgstr "Veliko akordov"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Lydian"
+msgstr "Lidijska"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Lydian #2"
+msgstr "Lidijska z zvišano sekundo"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Lydian #2 #5"
+msgstr "Lidijska z zvišano sekundo in kvinto"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Lydian b3"
+msgstr "Lidijska z znižano terco"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major"
+msgstr "Durov"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 7"
+msgstr "Durov 7 (septakord)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 7(#5)"
+msgstr "Durov 7 + #5 (zvišana kvinta)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 7(#5/b9)"
+msgstr "Durov 7 + #5 + b9"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 7(#9)"
+msgstr "Durov 7 + #9"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 7(b5)"
+msgstr "Durov 7(b5)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 7(b9)"
+msgstr "Durov 7(b9)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 7(b9) and Major maj7(9) Chords"
+msgstr "Durov 7(b9) in durov maj7(9) akord"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 9"
+msgstr "Durova 9 (nona)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Fourteenth"
+msgstr "Durova 14"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major maj7"
+msgstr "Durov maj7"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major maj7(9)"
+msgstr "Durov maj7(9)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major maj7(b5)"
+msgstr "Durov maj7(b5)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Ninth"
+msgstr "Velika nona"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Pentatonic"
+msgstr "Durova pentatonika"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Scale and its Modes"
+msgstr "Durove lestvice in načini"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Second"
+msgstr "Velika sekunda"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Seventh"
+msgstr "Velika septima"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Seventh, Diminished Seventh, and Half Diminished Seventh Chords"
+msgstr "Akordi Durov 7 + Zm7 in Zm7 z m7"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Sixth"
+msgstr "Velika seksta"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Tenth"
+msgstr "Velika decima"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Third"
+msgstr "Velika terca"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Thirteenth"
+msgstr "Durova 13"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Man Gong"
+msgstr "Man gong"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Medium"
+msgstr "Srednja"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor"
+msgstr "Mol"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor 7"
+msgstr "Mala 7"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor 7 and Dominant 7 Chords"
+msgstr "Molovi n dominantni septakordi"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor 9"
+msgstr "Molov 9"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor 9 and Major 9 Chords"
+msgstr "Akordi z malo in veliko 9 (nono)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor and Major Chords"
+msgstr "Durovi in molovi akordi"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Fourteenth"
+msgstr "Molova 14"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor maj7"
+msgstr "Molov maj7"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor, Major, Diminished, and Augmented Chords"
+msgstr "Molovi, durovi, zmanjšani in zvečani akordi"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Ninth"
+msgstr "Mala nona"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Pentatonic"
+msgstr "Molova pentatonika"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Second"
+msgstr "Mala sekunda"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Seventh"
+msgstr "Mala septima"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Sixth"
+msgstr "Mala seksta"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Tenth"
+msgstr "Mala decima"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Third"
+msgstr "Mala terca"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Thirteenth"
+msgstr "Mala 13"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Mixolydian"
+msgstr "Miksolidijska"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Mixolydian b9"
+msgstr "Miksolidijska b9"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Ninths"
+msgstr "None"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Octave + Tritone"
+msgstr "Oktava in tritonus"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Pentatonic Major Scale and its Modes"
+msgstr "Durova pentatonika in njeni modusi"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Perfect Double Octave"
+msgstr "Čista dvojna oktava"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Perfect Eleventh"
+msgstr "Čista 11 (undecima)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Perfect Fifth"
+msgstr "Čista kvinta"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Perfect Fourth"
+msgstr "Čista kvarta"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Perfect Octave"
+msgstr "Čista oktava"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Perfect Twelfth"
+msgstr "Čista duodecima"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Phrygian"
+msgstr "Frigijska"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Phrygian b4"
+msgstr "Frigijska b4"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Phrygian Dominant"
+msgstr "Frigijska dominantna"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "quarter"
+msgstr "četrtinka"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Rhythm"
+msgstr "Ritem"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Ritusen"
+msgstr "Ritusen lestvica"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Romanian"
+msgstr "Romunska lestvica"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Root Position"
+msgstr "Osnovni ton"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Scales"
+msgstr "Lestvice"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Seconds"
+msgstr "Sekunde"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Seconds and Thirds"
+msgstr "Sekunde in terce"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Second to 15th"
+msgstr "Sekunda do 15 (dvojne oktave)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Second to Octave"
+msgstr "Sekunde do oktave"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Second to Tenth"
+msgstr "Sekunda do 10 (decime)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Sevenths"
+msgstr "Septime"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Sevenths and Ninths"
+msgstr "Septime in none"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "sixteenth-eighth-dot"
+msgstr "šestnajstinka - osminka s piko"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "sixteenth-eighth-sixteenth"
+msgstr "šestnajstinka - osminka - šestnajstinka"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "sixteenth-sixteenth-eighth"
+msgstr "šestnajstinka - šestnajstinka - osminka"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "sixteenth-sixteenth-sixteenth-sixteenth"
+msgstr "šestnajstinka-šestnajstinka-šestnajstinka-šestnajstinka"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Sixths"
+msgstr "Sekste"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Sixths and Sevenths"
+msgstr "Sekste in septime"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Suspended Pentatonic"
+msgstr "Viseča pentatonična"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Symmetric Scales"
+msgstr "Simetrična lestvica"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Tenths"
+msgstr "Decime"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Thirds"
+msgstr "Terce"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Tritone"
+msgstr "Tritonus"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Tritone and Sevenths"
+msgstr "Tritonus in septime"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Ultralocrian"
+msgstr "Ultra lokrijski"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Whole Tone"
+msgstr "Celi toni"
 
 #: src/app/exercisecontroller.cpp:163
 #, kde-format
@@ -151,536 +816,3 @@ msgstr "O programu"
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave"
 msgstr "Oktava"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Aeolian"
-#~ msgstr "Eolska"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Altered Chords"
-#~ msgstr "Alterirani akordi"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Ascending Melodic Intervals"
-#~ msgstr "Naraščajoči melodični intervali"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Augmented"
-#~ msgstr "Zvečani"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Augmented Inverse"
-#~ msgstr "Zvečani obrnjeni"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Bebop Dominant"
-#~ msgstr "Dominanta Bebopa"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Bebop Dorian"
-#~ msgstr "Bebop dorska lestvica"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Bebop Locrian"
-#~ msgstr "Bebop lokrijska lestvica"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Bebop Major"
-#~ msgstr "Bebop v durova lestvica"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Bebop Minor"
-#~ msgstr "Bebop v molova lestvica"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Bebop Scales"
-#~ msgstr "Bebop lestvice"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Chords"
-#~ msgstr "Akordi"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Chords with 7 in their name"
-#~ msgstr "Akordi s 7 (septimo) v imenu"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Chords with 9 in their name"
-#~ msgstr "Akordi z 9 (nono) v imenu"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Descending Melodic Intervals"
-#~ msgstr "Padajoči melodični intervali"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Diminished"
-#~ msgstr "Zmanjšani"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Diminished and Augmented Chords"
-#~ msgstr "Zmanjšani in zvečani akordi"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Diminished H-W"
-#~ msgstr "Zmanjšana lestvica polton, cel ton"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Diminished Seventh"
-#~ msgstr "Zmanjšana septima"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Diminished W-H"
-#~ msgstr "Zmanjšana lestvica cel ton, polton"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Dominant 7"
-#~ msgstr "Dominantna 7 (septima)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Dorian"
-#~ msgstr "Dorska lestvica"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Dorian b5"
-#~ msgstr "Dorska lestvica z znižano kvinto"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Easy"
-#~ msgstr "Lahko"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "eighth-dot-sixteenth"
-#~ msgstr "osminka s piko - šestnajstinka"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "eighth-eighth"
-#~ msgstr "osminka-osminka"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "eighth-sixteenth-sixteenth"
-#~ msgstr "osminka-šestnajstinka-šestnajstinka"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Fourths and Fifths"
-#~ msgstr "Kvarte in kvinte"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Fourths, Fifths, and Octave"
-#~ msgstr "Kvarte, kvinte in oktave"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Half Diminished Seventh"
-#~ msgstr "Zmanjšan 7 z malo 7"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Harmonic Intervals"
-#~ msgstr "Harmonični intervali"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Harmonic Major"
-#~ msgstr "Harmonični dur"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Harmonic Major Scale and its Modes"
-#~ msgstr "Harmonični dur in njegovi modusi"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Harmonic Minor"
-#~ msgstr "Harmonični mol"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Harmonic Minor Scale and its Modes"
-#~ msgstr "Harmonične molovske lestvice in načini"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Hear the chord and then choose an answer from options below"
-#~ msgstr "Poslušajte akord in izberite odgovor iz nabora spodaj"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Hear the interval and then choose an answer from options below"
-#~ msgstr "Poslušajte interval in izberite odgovor iz nabora spodaj"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Hear the rhythm and then choose an answer from options below"
-#~ msgstr "Poslušajte ritem in izberite odgovor iz nabora spodaj"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Hear the scale and then choose an answer from options below"
-#~ msgstr "Poslušajte lestvico in izberite odgovor iz nabora spodaj"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Intervals"
-#~ msgstr "Intervali"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Ionian"
-#~ msgstr "Jonska"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Ionian Augmented"
-#~ msgstr "Jonska zvišana"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Locrian"
-#~ msgstr "Lokrijska"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Locrian #6"
-#~ msgstr "Lokrijska z zvišano seksto"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Locrian bb7"
-#~ msgstr "Lokrijska z zmanjšano septimo"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Lots of Chords"
-#~ msgstr "Veliko akordov"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Lydian"
-#~ msgstr "Lidijska"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Lydian #2"
-#~ msgstr "Lidijska z zvišano sekundo"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Lydian #2 #5"
-#~ msgstr "Lidijska z zvišano sekundo in kvinto"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Lydian b3"
-#~ msgstr "Lidijska z znižano terco"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major"
-#~ msgstr "Durov"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 7"
-#~ msgstr "Durov 7 (septakord)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 7(#5)"
-#~ msgstr "Durov 7 + #5 (zvišana kvinta)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 7(#5/b9)"
-#~ msgstr "Durov 7 + #5 + b9"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 7(#9)"
-#~ msgstr "Durov 7 + #9"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 7(b5)"
-#~ msgstr "Durov 7(b5)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 7(b9)"
-#~ msgstr "Durov 7(b9)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 7(b9) and Major maj7(9) Chords"
-#~ msgstr "Durov 7(b9) in durov maj7(9) akord"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 9"
-#~ msgstr "Durova 9 (nona)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major Fourteenth"
-#~ msgstr "Durova 14"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major maj7"
-#~ msgstr "Durov maj7"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major maj7(9)"
-#~ msgstr "Durov maj7(9)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major maj7(b5)"
-#~ msgstr "Durov maj7(b5)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major Ninth"
-#~ msgstr "Velika nona"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major Pentatonic"
-#~ msgstr "Durova pentatonika"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major Scale and its Modes"
-#~ msgstr "Durove lestvice in načini"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major Second"
-#~ msgstr "Velika sekunda"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major Seventh"
-#~ msgstr "Velika septima"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid ""
-#~ "Major Seventh, Diminished Seventh, and Half Diminished Seventh Chords"
-#~ msgstr "Akordi Durov 7 + Zm7 in Zm7 z m7"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major Sixth"
-#~ msgstr "Velika seksta"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major Tenth"
-#~ msgstr "Velika decima"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major Third"
-#~ msgstr "Velika terca"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major Thirteenth"
-#~ msgstr "Durova 13"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Man Gong"
-#~ msgstr "Man gong"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Medium"
-#~ msgstr "Srednja"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor"
-#~ msgstr "Mol"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor 7"
-#~ msgstr "Mala 7"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor 7 and Dominant 7 Chords"
-#~ msgstr "Molovi n dominantni septakordi"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor 9"
-#~ msgstr "Molov 9"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor 9 and Major 9 Chords"
-#~ msgstr "Akordi z malo in veliko 9 (nono)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor and Major Chords"
-#~ msgstr "Durovi in molovi akordi"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor Fourteenth"
-#~ msgstr "Molova 14"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor maj7"
-#~ msgstr "Molov maj7"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor, Major, Diminished, and Augmented Chords"
-#~ msgstr "Molovi, durovi, zmanjšani in zvečani akordi"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor Ninth"
-#~ msgstr "Mala nona"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor Pentatonic"
-#~ msgstr "Molova pentatonika"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor Second"
-#~ msgstr "Mala sekunda"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor Seventh"
-#~ msgstr "Mala septima"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor Sixth"
-#~ msgstr "Mala seksta"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor Tenth"
-#~ msgstr "Mala decima"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor Third"
-#~ msgstr "Mala terca"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor Thirteenth"
-#~ msgstr "Mala 13"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Mixolydian"
-#~ msgstr "Miksolidijska"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Mixolydian b9"
-#~ msgstr "Miksolidijska b9"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Ninths"
-#~ msgstr "None"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Octave + Tritone"
-#~ msgstr "Oktava in tritonus"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Pentatonic Major Scale and its Modes"
-#~ msgstr "Durova pentatonika in njeni modusi"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Perfect Double Octave"
-#~ msgstr "Čista dvojna oktava"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Perfect Eleventh"
-#~ msgstr "Čista 11 (undecima)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Perfect Fifth"
-#~ msgstr "Čista kvinta"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Perfect Fourth"
-#~ msgstr "Čista kvarta"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Perfect Octave"
-#~ msgstr "Čista oktava"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Perfect Twelfth"
-#~ msgstr "Čista duodecima"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Phrygian"
-#~ msgstr "Frigijska"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Phrygian b4"
-#~ msgstr "Frigijska b4"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Phrygian Dominant"
-#~ msgstr "Frigijska dominantna"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "quarter"
-#~ msgstr "četrtinka"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Rhythm"
-#~ msgstr "Ritem"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Ritusen"
-#~ msgstr "Ritusen lestvica"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Romanian"
-#~ msgstr "Romunska lestvica"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Root Position"
-#~ msgstr "Osnovni ton"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Scales"
-#~ msgstr "Lestvice"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Seconds"
-#~ msgstr "Sekunde"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Seconds and Thirds"
-#~ msgstr "Sekunde in terce"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Second to 15th"
-#~ msgstr "Sekunda do 15 (dvojne oktave)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Second to Octave"
-#~ msgstr "Sekunde do oktave"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Second to Tenth"
-#~ msgstr "Sekunda do 10 (decime)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Sevenths"
-#~ msgstr "Septime"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Sevenths and Ninths"
-#~ msgstr "Septime in none"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "sixteenth-eighth-dot"
-#~ msgstr "šestnajstinka - osminka s piko"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "sixteenth-eighth-sixteenth"
-#~ msgstr "šestnajstinka - osminka - šestnajstinka"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "sixteenth-sixteenth-eighth"
-#~ msgstr "šestnajstinka - šestnajstinka - osminka"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "sixteenth-sixteenth-sixteenth-sixteenth"
-#~ msgstr "šestnajstinka-šestnajstinka-šestnajstinka-šestnajstinka"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Sixths"
-#~ msgstr "Sekste"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Sixths and Sevenths"
-#~ msgstr "Sekste in septime"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Suspended Pentatonic"
-#~ msgstr "Viseča pentatonična"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Symmetric Scales"
-#~ msgstr "Simetrična lestvica"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Tenths"
-#~ msgstr "Decime"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Thirds"
-#~ msgstr "Terce"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Tritone"
-#~ msgstr "Tritonus"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Tritone and Sevenths"
-#~ msgstr "Tritonus in septime"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Ultralocrian"
-#~ msgstr "Ultra lokrijski"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Whole Tone"
-#~ msgstr "Celi toni"

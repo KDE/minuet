@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-17 00:54+0000\n"
+"POT-Creation-Date: 2023-02-18 00:54+0000\n"
 "PO-Revision-Date: 2019-02-15 09:30-0200\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -30,6 +30,672 @@ msgstr "André Marcelo Alvarenga, Camila de  Azevedo Moura"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "alvarenga@kde.org, camila.moura@kde.org"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Aeolian"
+msgstr "Eólio"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Altered Chords"
+msgstr "Acordes alterados"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Ascending Melodic Intervals"
+msgstr "Intervalos melódicos ascendentes"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Augmented"
+msgstr "Aumentado"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Augmented Inverse"
+msgstr "Inverso aumentado"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Bebop Dominant"
+msgstr "Bebop dominante"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Bebop Dorian"
+msgstr "Bebop dórico"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Bebop Locrian"
+msgstr "Bebop lócrio"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Bebop Major"
+msgstr "Bebop maior"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Bebop Minor"
+msgstr "Bebop menor"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Bebop Scales"
+msgstr "Escalas Bebop"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Chords"
+msgstr "Acordes"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Chords with 7 in their name"
+msgstr "Acordes com 7 no seu nome"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Chords with 9 in their name"
+msgstr "Acordes com 9 no seu nome"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Descending Melodic Intervals"
+msgstr "Intervalos melódicos descendentes"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Diminished"
+msgstr "Diminuto"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Diminished and Augmented Chords"
+msgstr "Acordes diminuto e aumentado"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Diminished H-W"
+msgstr "H-W diminuto"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Diminished Seventh"
+msgstr "W-H diminuto "
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Diminished W-H"
+msgstr "W-H diminuto"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Dominant 7"
+msgstr "Dominante com 7ª"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Dorian"
+msgstr "Dórico"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Dorian b5"
+msgstr "B5 dórico"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Easy"
+msgstr "Fácil"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "eighth-dot-sixteenth"
+msgstr "colcheia-ponto-semicolcheia"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "eighth-eighth"
+msgstr "colcheia-colcheia"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "eighth-sixteenth-sixteenth"
+msgstr "colcheia-semicolcheia-semicolcheia"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Fourths and Fifths"
+msgstr "Quartas e quintas"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Fourths, Fifths, and Octave"
+msgstr "Quartas, quintas e oitava"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Half Diminished Seventh"
+msgstr "Semi-diminuto com sétima"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Harmonic Intervals"
+msgstr "Intervalos harmônicos"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Harmonic Major"
+msgstr "Harmônico maior"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Harmonic Major Scale and its Modes"
+msgstr "Escala harmônica maior e seus modos"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Harmonic Minor"
+msgstr "Harmônico menor"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Harmonic Minor Scale and its Modes"
+msgstr "Escala harmônica menor e seus modos"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Hear the chord and then choose an answer from options below"
+msgstr "Ouça o acorde e escolha uma resposta das opções abaixo"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Hear the interval and then choose an answer from options below"
+msgstr "Ouça o intervalo e escolha uma resposta das opções abaixo"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Hear the rhythm and then choose an answer from options below"
+msgstr "Ouça o ritmo e escolha uma resposta das opções abaixo"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Hear the scale and then choose an answer from options below"
+msgstr "Ouça a escala e escolha uma resposta das opções abaixo"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Intervals"
+msgstr "Intervalos"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Ionian"
+msgstr "Jônico"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Ionian Augmented"
+msgstr "Jônico aumentado"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Locrian"
+msgstr "Lócrio"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Locrian #6"
+msgstr "Lócrio #6"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Locrian bb7"
+msgstr "Lócrio bb7"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Lots of Chords"
+msgstr "Vários Acordes"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Lydian"
+msgstr "Lídio"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Lydian #2"
+msgstr "Lídio #2"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Lydian #2 #5"
+msgstr "Lídio #2 #5"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Lydian b3"
+msgstr "Lídio b3"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major"
+msgstr "Maior"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 7"
+msgstr "Maior com 7ª"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 7(#5)"
+msgstr "Maior com 7(#5)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 7(#5/b9)"
+msgstr "Maior com 7(#5/b9)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 7(#9)"
+msgstr "Maior com 7(#9)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 7(b5)"
+msgstr "Maior com 7(b5)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 7(b9)"
+msgstr "Maior com 7(b9)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 7(b9) and Major maj7(9) Chords"
+msgstr "Acordes maior com 7(b9) e maior com maj7(9)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 9"
+msgstr "Maior com 9ª"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Fourteenth"
+msgstr "Décima quarta maior"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major maj7"
+msgstr "Maior com maj7"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major maj7(9)"
+msgstr "Maior com maj7(9)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major maj7(b5)"
+msgstr "Maior com maj7(b5)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Ninth"
+msgstr "Nona maior"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Pentatonic"
+msgstr "Maior pentatônica"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Scale and its Modes"
+msgstr "Escala maior e seus modos"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Second"
+msgstr "Segunda maior"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Seventh"
+msgstr "Maior com sétima"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Seventh, Diminished Seventh, and Half Diminished Seventh Chords"
+msgstr ""
+"Acordes maior com sétima, diminuto com sétima e semi-diminuto com sétima"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Sixth"
+msgstr "Sexta maior"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Tenth"
+msgstr "Décima maior"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Third"
+msgstr "Terça maior"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Thirteenth"
+msgstr "Décima terceira maior"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Man Gong"
+msgstr "Man Gong"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Medium"
+msgstr "Médio"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor"
+msgstr "Menor"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor 7"
+msgstr "Menor com 7ª"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor 7 and Dominant 7 Chords"
+msgstr "Acordes menor com 7ª e dominante com 7ª"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor 9"
+msgstr "Menor com 9ª"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor 9 and Major 9 Chords"
+msgstr "Acordes menor com 9ª e maior com 9ª"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor and Major Chords"
+msgstr "Acordes menor e maior"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Fourteenth"
+msgstr "Décima quarta menor"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor maj7"
+msgstr "Menor com maj7"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor, Major, Diminished, and Augmented Chords"
+msgstr "Acordes menores, maiores, diminutos e aumentados"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Ninth"
+msgstr "Nona menor"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Pentatonic"
+msgstr "Menor pentatônica"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Second"
+msgstr "Segunda menor"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Seventh"
+msgstr "Sétima menor"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Sixth"
+msgstr "Sexta menor"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Tenth"
+msgstr "Décima menor"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Third"
+msgstr "Terça menor"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Thirteenth"
+msgstr "Décima terceira menor"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Mixolydian"
+msgstr "Mixolídio"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Mixolydian b9"
+msgstr "Mixolídio b9"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Ninths"
+msgstr "Nonas"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Octave + Tritone"
+msgstr "Oitava + trítono"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Pentatonic Major Scale and its Modes"
+msgstr "Escala pentatônica maior e seus modos"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Perfect Double Octave"
+msgstr "Dupla oitava perfeita"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Perfect Eleventh"
+msgstr "Décima primeira perfeita"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Perfect Fifth"
+msgstr "Quinta perfeita"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Perfect Fourth"
+msgstr "Quarta perfeita"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Perfect Octave"
+msgstr "Oitava perfeita"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Perfect Twelfth"
+msgstr "Décima segunda perfeita"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Phrygian"
+msgstr "Frígio"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Phrygian b4"
+msgstr "Frígio b4"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Phrygian Dominant"
+msgstr "Frígio dominante"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "quarter"
+msgstr "semínima"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Rhythm"
+msgstr "Ritmo"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Ritusen"
+msgstr "Ritus"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Romanian"
+msgstr "Romanian"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Root Position"
+msgstr "Posição fundamental"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Scales"
+msgstr "Escalas"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Seconds"
+msgstr "Segundas"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Seconds and Thirds"
+msgstr "Segundas e terças"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Second to 15th"
+msgstr "Segunda a 15ª"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Second to Octave"
+msgstr "Segunda a oitava"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Second to Tenth"
+msgstr "Segunda a décima"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Sevenths"
+msgstr "Sétimas"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Sevenths and Ninths"
+msgstr "Sétimas e nonas"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "sixteenth-eighth-dot"
+msgstr "semicolcheia-colcheia-ponto"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "sixteenth-eighth-sixteenth"
+msgstr "semicolcheia-colcheia-semicolcheia"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "sixteenth-sixteenth-eighth"
+msgstr "semicolcheia-semicolcheia-colcheia"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "sixteenth-sixteenth-sixteenth-sixteenth"
+msgstr "semicolcheia-semicolcheia-semicolcheia-semicolcheia"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Sixths"
+msgstr "Sextas"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Sixths and Sevenths"
+msgstr "Sextas e sétimas"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Suspended Pentatonic"
+msgstr "Pentatônica suspensa"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Symmetric Scales"
+msgstr "Escalas simétricas"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Tenths"
+msgstr "Décimas"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Thirds"
+msgstr "Terças"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Tritone"
+msgstr "Trítono"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Tritone and Sevenths"
+msgstr "Trítono e sétimas"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Ultralocrian"
+msgstr "Ultra lócrio"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Whole Tone"
+msgstr "Tom inteiro"
 
 #: src/app/exercisecontroller.cpp:163
 #, kde-format
@@ -152,540 +818,6 @@ msgstr "Sobre"
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave"
 msgstr "Oitava"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Aeolian"
-#~ msgstr "Eólio"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Altered Chords"
-#~ msgstr "Acordes alterados"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Ascending Melodic Intervals"
-#~ msgstr "Intervalos melódicos ascendentes"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Augmented"
-#~ msgstr "Aumentado"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Augmented Inverse"
-#~ msgstr "Inverso aumentado"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Bebop Dominant"
-#~ msgstr "Bebop dominante"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Bebop Dorian"
-#~ msgstr "Bebop dórico"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Bebop Locrian"
-#~ msgstr "Bebop lócrio"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Bebop Major"
-#~ msgstr "Bebop maior"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Bebop Minor"
-#~ msgstr "Bebop menor"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Bebop Scales"
-#~ msgstr "Escalas Bebop"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Chords"
-#~ msgstr "Acordes"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Chords with 7 in their name"
-#~ msgstr "Acordes com 7 no seu nome"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Chords with 9 in their name"
-#~ msgstr "Acordes com 9 no seu nome"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Descending Melodic Intervals"
-#~ msgstr "Intervalos melódicos descendentes"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Diminished"
-#~ msgstr "Diminuto"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Diminished and Augmented Chords"
-#~ msgstr "Acordes diminuto e aumentado"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Diminished H-W"
-#~ msgstr "H-W diminuto"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Diminished Seventh"
-#~ msgstr "W-H diminuto "
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Diminished W-H"
-#~ msgstr "W-H diminuto"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Dominant 7"
-#~ msgstr "Dominante com 7ª"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Dorian"
-#~ msgstr "Dórico"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Dorian b5"
-#~ msgstr "B5 dórico"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Easy"
-#~ msgstr "Fácil"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "eighth-dot-sixteenth"
-#~ msgstr "colcheia-ponto-semicolcheia"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "eighth-eighth"
-#~ msgstr "colcheia-colcheia"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "eighth-sixteenth-sixteenth"
-#~ msgstr "colcheia-semicolcheia-semicolcheia"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Fourths and Fifths"
-#~ msgstr "Quartas e quintas"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Fourths, Fifths, and Octave"
-#~ msgstr "Quartas, quintas e oitava"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Half Diminished Seventh"
-#~ msgstr "Semi-diminuto com sétima"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Harmonic Intervals"
-#~ msgstr "Intervalos harmônicos"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Harmonic Major"
-#~ msgstr "Harmônico maior"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Harmonic Major Scale and its Modes"
-#~ msgstr "Escala harmônica maior e seus modos"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Harmonic Minor"
-#~ msgstr "Harmônico menor"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Harmonic Minor Scale and its Modes"
-#~ msgstr "Escala harmônica menor e seus modos"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Hear the chord and then choose an answer from options below"
-#~ msgstr "Ouça o acorde e escolha uma resposta das opções abaixo"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Hear the interval and then choose an answer from options below"
-#~ msgstr "Ouça o intervalo e escolha uma resposta das opções abaixo"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Hear the rhythm and then choose an answer from options below"
-#~ msgstr "Ouça o ritmo e escolha uma resposta das opções abaixo"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Hear the scale and then choose an answer from options below"
-#~ msgstr "Ouça a escala e escolha uma resposta das opções abaixo"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Intervals"
-#~ msgstr "Intervalos"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Ionian"
-#~ msgstr "Jônico"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Ionian Augmented"
-#~ msgstr "Jônico aumentado"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Locrian"
-#~ msgstr "Lócrio"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Locrian #6"
-#~ msgstr "Lócrio #6"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Locrian bb7"
-#~ msgstr "Lócrio bb7"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Lots of Chords"
-#~ msgstr "Vários Acordes"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Lydian"
-#~ msgstr "Lídio"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Lydian #2"
-#~ msgstr "Lídio #2"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Lydian #2 #5"
-#~ msgstr "Lídio #2 #5"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Lydian b3"
-#~ msgstr "Lídio b3"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major"
-#~ msgstr "Maior"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 7"
-#~ msgstr "Maior com 7ª"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 7(#5)"
-#~ msgstr "Maior com 7(#5)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 7(#5/b9)"
-#~ msgstr "Maior com 7(#5/b9)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 7(#9)"
-#~ msgstr "Maior com 7(#9)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 7(b5)"
-#~ msgstr "Maior com 7(b5)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 7(b9)"
-#~ msgstr "Maior com 7(b9)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 7(b9) and Major maj7(9) Chords"
-#~ msgstr "Acordes maior com 7(b9) e maior com maj7(9)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 9"
-#~ msgstr "Maior com 9ª"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major Fourteenth"
-#~ msgstr "Décima quarta maior"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major maj7"
-#~ msgstr "Maior com maj7"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major maj7(9)"
-#~ msgstr "Maior com maj7(9)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major maj7(b5)"
-#~ msgstr "Maior com maj7(b5)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major Ninth"
-#~ msgstr "Nona maior"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major Pentatonic"
-#~ msgstr "Maior pentatônica"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major Scale and its Modes"
-#~ msgstr "Escala maior e seus modos"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major Second"
-#~ msgstr "Segunda maior"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major Seventh"
-#~ msgstr "Maior com sétima"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid ""
-#~ "Major Seventh, Diminished Seventh, and Half Diminished Seventh Chords"
-#~ msgstr ""
-#~ "Acordes maior com sétima, diminuto com sétima e semi-diminuto com sétima"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major Sixth"
-#~ msgstr "Sexta maior"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major Tenth"
-#~ msgstr "Décima maior"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major Third"
-#~ msgstr "Terça maior"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major Thirteenth"
-#~ msgstr "Décima terceira maior"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Man Gong"
-#~ msgstr "Man Gong"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Medium"
-#~ msgstr "Médio"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor"
-#~ msgstr "Menor"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor 7"
-#~ msgstr "Menor com 7ª"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor 7 and Dominant 7 Chords"
-#~ msgstr "Acordes menor com 7ª e dominante com 7ª"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor 9"
-#~ msgstr "Menor com 9ª"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor 9 and Major 9 Chords"
-#~ msgstr "Acordes menor com 9ª e maior com 9ª"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor and Major Chords"
-#~ msgstr "Acordes menor e maior"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor Fourteenth"
-#~ msgstr "Décima quarta menor"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor maj7"
-#~ msgstr "Menor com maj7"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor, Major, Diminished, and Augmented Chords"
-#~ msgstr "Acordes menores, maiores, diminutos e aumentados"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor Ninth"
-#~ msgstr "Nona menor"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor Pentatonic"
-#~ msgstr "Menor pentatônica"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor Second"
-#~ msgstr "Segunda menor"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor Seventh"
-#~ msgstr "Sétima menor"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor Sixth"
-#~ msgstr "Sexta menor"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor Tenth"
-#~ msgstr "Décima menor"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor Third"
-#~ msgstr "Terça menor"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor Thirteenth"
-#~ msgstr "Décima terceira menor"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Mixolydian"
-#~ msgstr "Mixolídio"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Mixolydian b9"
-#~ msgstr "Mixolídio b9"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Ninths"
-#~ msgstr "Nonas"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Octave + Tritone"
-#~ msgstr "Oitava + trítono"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Pentatonic Major Scale and its Modes"
-#~ msgstr "Escala pentatônica maior e seus modos"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Perfect Double Octave"
-#~ msgstr "Dupla oitava perfeita"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Perfect Eleventh"
-#~ msgstr "Décima primeira perfeita"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Perfect Fifth"
-#~ msgstr "Quinta perfeita"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Perfect Fourth"
-#~ msgstr "Quarta perfeita"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Perfect Octave"
-#~ msgstr "Oitava perfeita"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Perfect Twelfth"
-#~ msgstr "Décima segunda perfeita"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Phrygian"
-#~ msgstr "Frígio"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Phrygian b4"
-#~ msgstr "Frígio b4"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Phrygian Dominant"
-#~ msgstr "Frígio dominante"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "quarter"
-#~ msgstr "semínima"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Rhythm"
-#~ msgstr "Ritmo"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Ritusen"
-#~ msgstr "Ritus"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Romanian"
-#~ msgstr "Romanian"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Root Position"
-#~ msgstr "Posição fundamental"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Scales"
-#~ msgstr "Escalas"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Seconds"
-#~ msgstr "Segundas"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Seconds and Thirds"
-#~ msgstr "Segundas e terças"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Second to 15th"
-#~ msgstr "Segunda a 15ª"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Second to Octave"
-#~ msgstr "Segunda a oitava"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Second to Tenth"
-#~ msgstr "Segunda a décima"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Sevenths"
-#~ msgstr "Sétimas"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Sevenths and Ninths"
-#~ msgstr "Sétimas e nonas"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "sixteenth-eighth-dot"
-#~ msgstr "semicolcheia-colcheia-ponto"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "sixteenth-eighth-sixteenth"
-#~ msgstr "semicolcheia-colcheia-semicolcheia"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "sixteenth-sixteenth-eighth"
-#~ msgstr "semicolcheia-semicolcheia-colcheia"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "sixteenth-sixteenth-sixteenth-sixteenth"
-#~ msgstr "semicolcheia-semicolcheia-semicolcheia-semicolcheia"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Sixths"
-#~ msgstr "Sextas"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Sixths and Sevenths"
-#~ msgstr "Sextas e sétimas"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Suspended Pentatonic"
-#~ msgstr "Pentatônica suspensa"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Symmetric Scales"
-#~ msgstr "Escalas simétricas"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Tenths"
-#~ msgstr "Décimas"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Thirds"
-#~ msgstr "Terças"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Tritone"
-#~ msgstr "Trítono"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Tritone and Sevenths"
-#~ msgstr "Trítono e sétimas"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Ultralocrian"
-#~ msgstr "Ultra lócrio"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Whole Tone"
-#~ msgstr "Tom inteiro"
 
 #~ msgid "Sandro S. Andrade"
 #~ msgstr "Sandro S. Andrade"
