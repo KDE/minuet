@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-18 00:54+0000\n"
 "PO-Revision-Date: 2021-08-19 16:56+0200\n"
-"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
+"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -146,7 +146,7 @@ msgstr ""
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Easy"
-msgstr ""
+msgstr "Jednoduchá"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -533,12 +533,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Perfect Fourth"
 msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Octave"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Perfect Octave"
-msgstr "Octave"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -568,7 +566,7 @@ msgstr ""
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Rhythm"
-msgstr ""
+msgstr "Rytmus"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -693,7 +691,7 @@ msgstr ""
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Whole Tone"
-msgstr ""
+msgstr "Celý tón"
 
 #: src/app/exercisecontroller.cpp:163
 #, kde-format
