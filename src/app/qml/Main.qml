@@ -209,5 +209,10 @@ ApplicationWindow {
         value: (minuetMenu.currentExercise != undefined) ? minuetMenu.currentExercise["playMode"]:""
     }
     
+    Shortcut {
+        sequence: StandardKey.Quit
+        onActivated: Qt.quit()
+    }
+    
     Component.onCompleted: if (Qt.platform.os == "android") header = androidToolBar.createObject(applicationWindow)
 }
