@@ -29,7 +29,8 @@ import QtQuick.Controls.Material 2.0
 ApplicationWindow {
     id: applicationWindow
     visible: true
-    width: Screen.desktopAvailableWidth; height: Screen.desktopAvailableHeight
+    width: Screen.width; height: Screen.height
+    visibility: Window.Maximized
 
     property string titleText: "Minuet"
 
