@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-18 00:54+0000\n"
+"POT-Creation-Date: 2023-05-04 00:43+0000\n"
 "PO-Revision-Date: 2022-01-29 21:18+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -804,7 +804,7 @@ msgstr ""
 msgid "Backspace"
 msgstr "Backspace"
 
-#: src/app/qml/Main.qml:79
+#: src/app/qml/Main.qml:80
 #, kde-format
 msgid "About"
 msgstr "عن"
