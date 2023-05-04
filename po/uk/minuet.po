@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-18 00:54+0000\n"
+"POT-Creation-Date: 2023-05-04 02:54+0000\n"
 "PO-Revision-Date: 2018-12-30 08:47+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -810,7 +810,7 @@ msgstr "Ваші відповіді"
 msgid "Backspace"
 msgstr "Забій"
 
-#: src/app/qml/Main.qml:79
+#: src/app/qml/Main.qml:80
 #, kde-format
 msgid "About"
 msgstr "Про програму"

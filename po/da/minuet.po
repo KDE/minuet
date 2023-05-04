@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-18 00:54+0000\n"
+"POT-Creation-Date: 2023-05-04 02:54+0000\n"
 "PO-Revision-Date: 2017-03-04 14:53+0100\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -870,7 +870,7 @@ msgstr "Dine svar"
 msgid "Backspace"
 msgstr "backspace"
 
-#: src/app/qml/Main.qml:79
+#: src/app/qml/Main.qml:80
 #, kde-format
 msgid "About"
 msgstr ""
