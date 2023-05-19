@@ -39,11 +39,11 @@ class MINUETINTERFACES_EXPORT ICore : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(IPluginController *pluginController READ pluginController CONSTANT);
+    Q_PROPERTY(IPluginController *pluginController READ pluginController CONSTANT)
     Q_PROPERTY(
-        ISoundController *soundController READ soundController NOTIFY soundControllerChanged);
-    Q_PROPERTY(IExerciseController *exerciseController READ exerciseController CONSTANT);
-    Q_PROPERTY(IUiController *uiController READ uiController CONSTANT);
+        ISoundController *soundController READ soundController NOTIFY soundControllerChanged)
+    Q_PROPERTY(IExerciseController *exerciseController READ exerciseController CONSTANT)
+    Q_PROPERTY(IUiController *uiController READ uiController CONSTANT)
 
 public:
     virtual ~ICore() override;
