@@ -44,7 +44,7 @@ public:
     void setSoundController(ISoundController *soundController);
 
 private:
-    explicit Core(QObject *parent = 0);
+    explicit Core(QObject *parent = nullptr);
 
     IPluginController *m_pluginController;
     ISoundController *m_soundController;

@@ -78,7 +78,7 @@ Q_SIGNALS:
     void playbackLabelChanged(QString newPlaybackLabel);
 
 protected:
-    explicit ISoundController(QObject *parent = 0);
+    explicit ISoundController(QObject *parent = nullptr);
 
     void setPlaybackLabel(const QString &playbackLabel);
     void setState(State state);

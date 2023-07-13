@@ -37,7 +37,7 @@ class ExerciseController : public IExerciseController
     Q_OBJECT
 
 public:
-    explicit ExerciseController(QObject *parent = 0);
+    explicit ExerciseController(QObject *parent = nullptr);
     virtual ~ExerciseController() = default;
 
     bool initialize(Core *core);

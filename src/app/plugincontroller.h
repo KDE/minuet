@@ -40,7 +40,7 @@ class PluginController : public IPluginController
     Q_OBJECT
 
 public:
-    explicit PluginController(QObject *parent = 0);
+    explicit PluginController(QObject *parent = nullptr);
     ~PluginController() override;
 
     bool initialize(Core *core);

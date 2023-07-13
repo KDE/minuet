@@ -58,7 +58,7 @@ Q_SIGNALS:
     void selectedExerciseOptionsChanged(QJsonArray newSelectedExerciseOptions);
 
 protected:
-    explicit IExerciseController(QObject *parent = 0);
+    explicit IExerciseController(QObject *parent = nullptr);
 
     QVariantMap m_currentExercise;
     QJsonArray m_selectedExerciseOptions;

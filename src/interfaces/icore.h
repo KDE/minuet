@@ -59,7 +59,7 @@ Q_SIGNALS:
     void soundControllerChanged(Minuet::ISoundController *newSoundController);
 
 protected:
-    explicit ICore(QObject *parent = 0);
+    explicit ICore(QObject *parent = nullptr);
     static ICore *m_self;
 };
 

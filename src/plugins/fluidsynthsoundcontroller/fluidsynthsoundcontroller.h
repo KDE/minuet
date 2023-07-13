@@ -36,7 +36,7 @@ class FluidSynthSoundController : public Minuet::ISoundController
     Q_INTERFACES(Minuet::ISoundController)
 
 public:
-    explicit FluidSynthSoundController(QObject *parent = 0);
+    explicit FluidSynthSoundController(QObject *parent = nullptr);
     virtual ~FluidSynthSoundController() override;
 
 public Q_SLOTS:

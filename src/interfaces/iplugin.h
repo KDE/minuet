@@ -37,7 +37,7 @@ public:
     virtual ~IPlugin() override = default;
 
 protected:
-    explicit IPlugin(QObject *parent = 0);
+    explicit IPlugin(QObject *parent = nullptr);
 };
 
 }

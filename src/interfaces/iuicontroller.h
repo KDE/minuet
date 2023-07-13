@@ -39,7 +39,7 @@ public:
     virtual QString errorString() const = 0;
 
 protected:
-    explicit IUiController(QObject *parent = 0);
+    explicit IUiController(QObject *parent = nullptr);
 };
 
 }
