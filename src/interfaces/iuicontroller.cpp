@@ -27,3 +27,5 @@ namespace Minuet
 IUiController::IUiController(QObject *parent) : QObject(parent) {}
 
 }
+
+#include "moc_iuicontroller.cpp"

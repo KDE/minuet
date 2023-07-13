@@ -27,3 +27,5 @@ namespace Minuet
 IPluginController::IPluginController(QObject *parent) : QObject(parent) {}
 
 }
+
+#include "moc_iplugincontroller.cpp"

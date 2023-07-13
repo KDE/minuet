@@ -50,3 +50,5 @@ QJsonArray IExerciseController::selectedExerciseOptions() const
 }
 
 }
+
+#include "moc_iexercisecontroller.cpp"

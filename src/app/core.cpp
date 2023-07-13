@@ -103,3 +103,5 @@ Core::Core(QObject *parent) : ICore(parent), m_soundController(nullptr)
 }
 
 }
+
+#include "moc_core.cpp"

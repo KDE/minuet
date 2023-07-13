@@ -293,3 +293,5 @@ QJsonArray ExerciseController::mergeJsonArrays(QJsonArray oldFile, QJsonArray ne
 }
 
 }
+
+#include "moc_exercisecontroller.cpp"

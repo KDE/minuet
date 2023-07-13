@@ -43,3 +43,5 @@ ICore::ICore(QObject *parent) : QObject(parent)
 }
 
 }
+
+#include "moc_icore.cpp"

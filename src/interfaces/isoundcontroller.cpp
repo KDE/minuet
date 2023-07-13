@@ -57,3 +57,5 @@ void ISoundController::setState(State state)
 }
 
 }
+
+#include "moc_isoundcontroller.cpp"

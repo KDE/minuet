@@ -67,3 +67,5 @@ void CsEngine::stop()
 {
     //    cs.Stop();
 }
+
+#include "moc_csengine.cpp"

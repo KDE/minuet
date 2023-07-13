@@ -98,3 +98,5 @@ QString PluginController::errorString() const
 }
 
 }
+
+#include "moc_plugincontroller.cpp"

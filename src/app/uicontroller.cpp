@@ -59,3 +59,5 @@ QString UiController::errorString() const
 }
 
 }
+
+#include "moc_uicontroller.cpp"
