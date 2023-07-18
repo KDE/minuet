@@ -12,6 +12,7 @@
   <name xml:lang="de">Minuet</name>
   <name xml:lang="el">Μινουέτο</name>
   <name xml:lang="en-GB">Minuet</name>
+  <name xml:lang="eo">Minuet</name>
   <name xml:lang="es">Minuet</name>
   <name xml:lang="et">Minuet</name>
   <name xml:lang="fi">Minuet</name>
@@ -45,6 +46,7 @@
   <summary xml:lang="de">Musik-Lernprogramm</summary>
   <summary xml:lang="el">Λογισμικό Μουσικής Εκπαίδευσης</summary>
   <summary xml:lang="en-GB">Music Education Software</summary>
+  <summary xml:lang="eo">Muzikeduka Programaro</summary>
   <summary xml:lang="es">Software de aprendizaje musical</summary>
   <summary xml:lang="et">Muusika õpitarkvara</summary>
   <summary xml:lang="fi">Musiikinopetusohjelma</summary>
@@ -79,6 +81,7 @@
     <p xml:lang="de">Minuet ist ein Musik-Lernprogramm. Es bietet Hörübungen zu Intervallen, Akkorden, Tonleitern und mehr.</p>
     <p xml:lang="el">Το Μινουέτο είναι μια εφαρμογή μουσικής εκπαίδευσης. Περιέχει ένα σύνολο ασκήσεων κατάρτισης αυτιού με διαστήματα, συγχορδίες, κλίμακες και άλλα.</p>
     <p xml:lang="en-GB">Minuet is an application for music education. It features a set of ear training exercises regarding intervals, chords, scales and more.</p>
+    <p xml:lang="eo">Minuet estas aplikaĵo por muzika edukado. Ĝi prezentas aron de oreltrejnaj ekzercoj pri intervaloj, akordoj, skaloj kaj pli.</p>
     <p xml:lang="es">Minuet es una aplicación para el aprendizaje musical. Contiene un conjunto de ejercicios de entrenamiento auditivo que contemplan el uso de intervalos, acordes y escalas, entre otras cosas.</p>
     <p xml:lang="et">Minuet on muusikaõpetuseks mõeldud rakendus. See pakub valikut kuulamisharjutusi intervallide, akordide, heliredeli ja muu sellise kohta.</p>
     <p xml:lang="fi">Minuet on ohjelma musiikinopetukseen. Siinä on muun muassa intervallien, sointujen ja asteikkojen tunnistusharjoituksia musiikkikorvan kehitykseen.</p>
@@ -117,6 +120,7 @@
       <caption xml:lang="de">Übungen mit Minuet</caption>
       <caption xml:lang="el">Εξάσκηση με το Μινουέτο</caption>
       <caption xml:lang="en-GB">Training with Minuet</caption>
+      <caption xml:lang="eo">Trejnado per Minuet</caption>
       <caption xml:lang="es">Entrenamiento con Minuet</caption>
       <caption xml:lang="et">Harjutamine Minuetiga</caption>
       <caption xml:lang="fi">Harjoittelu Minuetin Avulla</caption>
