@@ -707,7 +707,7 @@ msgstr "Ton enteiro"
 #: src/app/exercisecontroller.cpp:163
 #, kde-format
 msgid "Could not open JSON file \"%1\"."
-msgstr "Non se puido abrir o ficheiro JSON «%1»."
+msgstr "Non foi posíbel abrir o ficheiro JSON «%1»."
 
 #: src/app/main.cpp:52
 #, kde-format
