@@ -1,0 +1,816 @@
+# translation of minuet.pot to esperanto
+# Copyright (C) 2018 Free Software Foundation, Inc.
+# This file is distributed under the same license as the minuet package.
+# Oliver Kellogg <okellogg@users.sourceforge.net, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: minuet\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2023-05-04 00:43+0000\n"
+"PO-Revision-Date: 2023-10-02 23:08+0100\n"
+"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
+"Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
+"Language: eo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: translate-po (https://github.com/zcribe/translate-po)\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Oliver Kellogg"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "okellogg@users.sourceforge.net"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Aeolian"
+msgstr "Eolio"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Altered Chords"
+msgstr "Ŝanĝitaj Akordoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Ascending Melodic Intervals"
+msgstr "Ascendantaj Melodiaj Intervaloj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Augmented"
+msgstr "Pliigita"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Augmented Inverse"
+msgstr "Pliigita Inversa"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Bebop Dominant"
+msgstr "Bebop Dominanto"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Bebop Dorian"
+msgstr "Bebop Dorian"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Bebop Locrian"
+msgstr "Bebop Locrian"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Bebop Major"
+msgstr "Bebop Major"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Bebop Minor"
+msgstr "Bebop Minor"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Bebop Scales"
+msgstr "Bebop Gamoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Chords"
+msgstr "Akordoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Chords with 7 in their name"
+msgstr "Akordoj kun 7 en sia nomo"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Chords with 9 in their name"
+msgstr "Akordoj kun 9 en sia nomo"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Descending Melodic Intervals"
+msgstr "Malsupraj Melodiaj Intervaloj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Diminished"
+msgstr "Malgrandigita"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Diminished and Augmented Chords"
+msgstr "Malgrandigitaj kaj Pliigitaj Akordoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Diminished H-W"
+msgstr "Malpliigita H-W"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Diminished Seventh"
+msgstr "Malpliigita Sepa"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Diminished W-H"
+msgstr "Malpliigita W-H"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Dominant 7"
+msgstr "Reganta 7"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Dorian"
+msgstr "Doriano"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Dorian b5"
+msgstr "Dorian b5"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Easy"
+msgstr "Facila"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "eighth-dot-sixteenth"
+msgstr "oka-punkto-deksesa"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "eighth-eighth"
+msgstr "oka-oka"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "eighth-sixteenth-sixteenth"
+msgstr "oka-deksesa-deksesa"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Fourths and Fifths"
+msgstr "Kvartoj kaj Kvintoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Fourths, Fifths, and Octave"
+msgstr "Kvartoj, Kvintoj kaj Oktavo"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Half Diminished Seventh"
+msgstr "Duone Malgrandigita Septo"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Harmonic Intervals"
+msgstr "Harmoniaj Intervaloj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Harmonic Major"
+msgstr "Harmonia Maĵoro"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Harmonic Major Scale and its Modes"
+msgstr "Harmonia Maĵora Gamo kaj ĝiaj Reĝimoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Harmonic Minor"
+msgstr "Harmonia Minoro"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Harmonic Minor Scale and its Modes"
+msgstr "Harmonia Minora Gamo kaj ĝiaj Reĝimoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Hear the chord and then choose an answer from options below"
+msgstr "Aŭskultu la akordon kaj poste elektu respondon el la subaj elektoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Hear the interval and then choose an answer from options below"
+msgstr "Aŭskultu la intervalon kaj poste elektu respondon el la subaj elektoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Hear the rhythm and then choose an answer from options below"
+msgstr "Aŭskultu la ritmon kaj poste elektu respondon el la subaj elektoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Hear the scale and then choose an answer from options below"
+msgstr "Aŭskultu la gamon kaj poste elektu respondon el la subaj elektoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Intervals"
+msgstr "Intervaloj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Ionian"
+msgstr "Ionia"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Ionian Augmented"
+msgstr "Ionia Pliigita"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Locrian"
+msgstr "Lokria"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Locrian #6"
+msgstr "Lokria numero 6"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Locrian bb7"
+msgstr "Lokria bb7"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Lots of Chords"
+msgstr "Multaj Akordoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Lydian"
+msgstr "Lydian"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Lydian #2"
+msgstr "Lidio numero 2"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Lydian #2 #5"
+msgstr "Lidio #2 #5"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Lydian b3"
+msgstr "Lidia b3"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major"
+msgstr "Maĵora"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 7"
+msgstr "Maĵora 7"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 7(#5)"
+msgstr "Maĵora 7 (numero 5)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 7(#5/b9)"
+msgstr "Maĵora 7 (numero 5/b9)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 7(#9)"
+msgstr "Maĵora 7 (numero 9)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 7(b5)"
+msgstr "Maĵora 7 (b5)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 7(b9)"
+msgstr "Maĵora 7 (b9)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 7(b9) and Major maj7(9) Chords"
+msgstr "Maĵora 7(b9) kaj Major maj7(9) Akordoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major 9"
+msgstr "Maĵora 9"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Fourteenth"
+msgstr "Maĵora Dekkvara"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major maj7"
+msgstr "Maĵora maj7"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major maj7(9)"
+msgstr "Maĵora Maj7 (9)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major maj7(b5)"
+msgstr "Maĵora maj7 (b5)"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Ninth"
+msgstr "Maĵora Naŭta"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Pentatonic"
+msgstr "Maĵora Kvintona"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Scale and its Modes"
+msgstr "Maĵora Gamo kaj ĝiaj Reĝimoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Second"
+msgstr "Major Second"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Seventh"
+msgstr "Major Seventh"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Seventh, Diminished Seventh, and Half Diminished Seventh Chords"
+msgstr "Major Seventh, Diminished Seventh, kaj Half Diminished Seventh Chords"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Sixth"
+msgstr "Majoro Sesa"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Tenth"
+msgstr "Major Deka"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Third"
+msgstr "Major Tria"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Major Thirteenth"
+msgstr "Major Dektria"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Man Gong"
+msgstr "Man Gong"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Medium"
+msgstr "Meza"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor"
+msgstr "Malgranda"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor 7"
+msgstr "Malgranda 7"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor 7 and Dominant 7 Chords"
+msgstr "Minora 7 kaj Dominaj 7 Akordoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor 9"
+msgstr "Malgranda 9"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor 9 and Major 9 Chords"
+msgstr "Minora 9 kaj Majoro 9 Akordoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor and Major Chords"
+msgstr "Negravaj kaj Majoraj Akordoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Fourteenth"
+msgstr "Minora Dekkvara"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor maj7"
+msgstr "Minora maj7"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor, Major, Diminished, and Augmented Chords"
+msgstr "Minor, Major, Diminued, and Augmented Chords"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Ninth"
+msgstr "Minora Naŭa"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Pentatonic"
+msgstr "Malgranda Pentatona"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Second"
+msgstr "Minora Dua"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Seventh"
+msgstr "Minora Sepa"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Sixth"
+msgstr "Minora Sesa"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Tenth"
+msgstr "Minora Deka"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Third"
+msgstr "Minora Triono"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Minor Thirteenth"
+msgstr "Minora Dektria"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Mixolydian"
+msgstr "Mixolidian"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Mixolydian b9"
+msgstr "Mixolidian b9"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Ninths"
+msgstr "Naŭaj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Octave + Tritone"
+msgstr "Oktavo + Tritono"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Pentatonic Major Scale and its Modes"
+msgstr "Kvintona Maĵora Gamo kaj ĝiaj Reĝimoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Perfect Double Octave"
+msgstr "Perfekta Duobla Oktavo"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Perfect Eleventh"
+msgstr "Perfekta Dekunuto"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Perfect Fifth"
+msgstr "Perfekta Kvinto"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Perfect Fourth"
+msgstr "Perfekta Kvarto"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Perfect Octave"
+msgstr "Perfekta Oktavo"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Perfect Twelfth"
+msgstr "Perfekta Dekduto"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Phrygian"
+msgstr "frigio"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Phrygian b4"
+msgstr "frigia b4"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Phrygian Dominant"
+msgstr "Frigia Dominanto"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "quarter"
+msgstr "kvarono"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Rhythm"
+msgstr "Ritmo"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Ritusen"
+msgstr "Ritusen"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Romanian"
+msgstr "Rumana"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Root Position"
+msgstr "Radika Pozicio"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Scales"
+msgstr "Gamoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Seconds"
+msgstr "Dutoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Seconds and Thirds"
+msgstr "Dutoj kaj Tritoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Second to 15th"
+msgstr "Duto ĝis 15-a"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Second to Octave"
+msgstr "Duto ĝis Oktavo"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Second to Tenth"
+msgstr "Duto ĝis Dekto"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Sevenths"
+msgstr "Septoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Sevenths and Ninths"
+msgstr "Septoj kaj Naŭtoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "sixteenth-eighth-dot"
+msgstr "deksesa-oka punkto"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "sixteenth-eighth-sixteenth"
+msgstr "deksesa-oka-deksesa"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "sixteenth-sixteenth-eighth"
+msgstr "deksesa-deksesa-oka"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "sixteenth-sixteenth-sixteenth-sixteenth"
+msgstr "sixteenth-sixteenth-sixteenth-sixteenth"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Sixths"
+msgstr "Sestoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Sixths and Sevenths"
+msgstr "Sestoj kaj Septoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Suspended Pentatonic"
+msgstr "Nuligita Pentatonika"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Symmetric Scales"
+msgstr "Simetriaj Gamoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Tenths"
+msgstr "Dektoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Thirds"
+msgstr "Tritoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Tritone"
+msgstr "Tritono"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Tritone and Sevenths"
+msgstr "Tritono kaj Septoj"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Ultralocrian"
+msgstr "Ultralokrian"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Whole Tone"
+msgstr "Tuta Tono"
+
+#: src/app/exercisecontroller.cpp:163
+#, kde-format
+msgid "Could not open JSON file \"%1\"."
+msgstr "Ne eblis malfermi JSON-dosieron \"%1\"."
+
+#: src/app/main.cpp:52
+#, kde-format
+msgid "Minuet"
+msgstr "Menueto"
+
+#: src/app/main.cpp:54
+#, kde-format
+msgid "A KDE application for music education"
+msgstr "KDE-apliko por muzikedukado"
+
+#: src/app/main.cpp:55
+#, kde-format
+msgid "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
+msgstr "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
+
+#: src/app/main.cpp:56 src/app/main.cpp:58
+#, kde-format
+msgid "Developer"
+msgstr "Ellaboranto"
+
+#: src/app/main.cpp:60
+#, kde-format
+msgid "Minuet Icon Designer"
+msgstr "Minuet Piktograma Projektisto"
+
+#: src/app/qml/ExerciseView.qml:71
+#, kde-format
+msgid "Click 'New Question' to start!"
+msgstr "Alklaku 'Nova Demando' por komenci!"
+
+#: src/app/qml/ExerciseView.qml:100
+#, kde-format
+msgid "Here is the answer"
+msgstr "Jen la respondo"
+
+#: src/app/qml/ExerciseView.qml:100
+#, kde-format
+msgid "Congratulations, you answered correctly!"
+msgstr "Gratulon, vi ĝuste respondis!"
+
+#: src/app/qml/ExerciseView.qml:100
+#, kde-format
+msgid "Oops, not this time! Try again!"
+msgstr "Ho, ĉi-foje ne! Provu denove!"
+
+#: src/app/qml/ExerciseView.qml:102
+#, kde-format
+msgid "You answered correctly %1%"
+msgstr "Vi ĝuste respondis %1%"
+
+#: src/app/qml/ExerciseView.qml:152
+#, kde-format
+msgid "Question %1 out of %2"
+msgstr "Demando %1 el %2"
+
+#: src/app/qml/ExerciseView.qml:183
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "userMessage"
+msgstr "uzantMesaĝo"
+
+#: src/app/qml/ExerciseView.qml:201
+#, kde-format
+msgid "New Question"
+msgstr "Nova Demando"
+
+#: src/app/qml/ExerciseView.qml:201
+#, kde-format
+msgid "Play Question"
+msgstr "Ludi Demandon"
+
+#: src/app/qml/ExerciseView.qml:215
+#, kde-format
+msgid "Give Up"
+msgstr "Rezigni"
+
+#: src/app/qml/ExerciseView.qml:240
+#, kde-format
+msgid "Stop Test"
+msgstr "Ĉesi Teston"
+
+#: src/app/qml/ExerciseView.qml:240
+#, kde-format
+msgid "Start Test"
+msgstr "Komenci Teston"
+
+#: src/app/qml/ExerciseView.qml:253
+#, kde-format
+msgid "Click 'New Question' to start"
+msgstr "Alklaku 'Nova Demando' por komenci"
+
+#: src/app/qml/ExerciseView.qml:261
+#, kde-format
+msgid "Available Answers"
+msgstr "Disponeblaj Respondoj"
+
+#: src/app/qml/ExerciseView.qml:381
+#, kde-format
+msgid "Your Answer(s)"
+msgstr "Via(j) Respondo(j)"
+
+#: src/app/qml/ExerciseView.qml:405
+#, kde-format
+msgid "Backspace"
+msgstr "Backspace"
+
+#: src/app/qml/Main.qml:80
+#, kde-format
+msgid "About"
+msgstr "Pri"
+
+#: src/app/qml/PianoView/PianoView.qml:103
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Octave"
+msgstr "Oktavo"
