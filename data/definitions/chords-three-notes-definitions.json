@@ -1,0 +1,59 @@
+{
+  "definitions": [
+    {
+      "tags": ["chord", "root-position", "minor", "triad"],
+      "name": "Minor",
+      "sequence": "3 7"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "triad"],
+      "name": "Major",
+      "sequence": "4 7"
+    },
+    {
+      "tags": ["chord", "root-position", "diminished", "triad"],
+      "name": "Diminished",
+      "sequence": "3 6"
+    },
+    {
+      "tags": ["chord", "root-position", "augmented", "triad"],
+      "name": "Augmented",
+      "sequence": "4 8"
+    },
+    {
+      "tags": ["chord", "root-position", "sus", "4", "three-note"],
+      "name": "Sus4",
+      "sequence": "5 7"
+    },
+    {
+      "tags": ["chord", "root-position", "sus", "2", "three-note"],
+      "name": "Sus2",
+      "sequence": "2 7"
+    },
+    {
+      "tags": ["chord", "first-inversion", "minor", "triad"],
+      "name": "Minor - first inversion",
+      "sequence": "4 9"
+    },
+    {
+      "tags": ["chord", "first-inversion", "major", "triad"],
+      "name": "Major - first inversion",
+      "sequence": "3 8"
+    },
+    {
+      "tags": ["chord", "first-inversion", "diminished", "triad"],
+      "name": "Diminished - first inversion",
+      "sequence": "6 9"
+    },
+    {
+      "tags": ["chord", "second-inversion", "minor", "triad"],
+      "name": "Minor - second inversion",
+      "sequence": "5 8"
+    },
+    {
+      "tags": ["chord", "second-inversion", "major", "triad"],
+      "name": "Major - second inversion",
+      "sequence": "5 9"
+    }
+  ]
+}

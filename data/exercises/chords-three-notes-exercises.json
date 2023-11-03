@@ -1,0 +1,59 @@
+{
+  "exercises": [
+    {
+      "name": "Chords",
+      "root": "41..67",
+      "playMode": "chord",
+      "userMessage": "Hear the chord and then choose an answer from options below",
+      "numberOfSelectedOptions": 1,
+      "_icon": "minuet-chords.svg",
+      "children": [
+        {
+          "name": "Chords with three notes",
+          "and-tags": ["chord"],
+          "children": [
+            {
+              "name": "Minor and major chords",
+              "and-tags": ["triad", "root-position"],
+              "or-tags": ["minor", "major"]
+            },
+            {
+              "name": "Diminished and Augmented Chords",
+              "and-tags": ["triad", "root-position"],
+              "or-tags": ["diminished", "augmented"]
+            },
+            {
+              "name": "Triads",
+              "and-tags": ["triad", "root-position"]
+            },
+            {
+              "name": "Major - inversions",
+              "and-tags": ["triad", "major"]
+            },
+            {
+              "name": "Minor - inversions",
+              "and-tags": ["triad", "minor"]
+            },
+            {
+              "name": "Diminished - inversions",
+              "and-tags": ["triad", "diminished"]
+            },
+            {
+              "name": "Triads - inversions",
+              "and-tags": ["triad"]
+            },
+            {
+              "name": "Suspended chords",
+              "and-tags": ["sus", "root-position", "three-note"]
+            },
+            {
+              "name": "All three note chords",
+              "and-tags": ["root-position"],
+              "or-tags": ["triad", "three-note"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

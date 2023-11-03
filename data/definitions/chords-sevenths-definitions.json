@@ -1,0 +1,99 @@
+{
+  "definitions": [
+    {
+      "tags": ["chord", "root-position", "minor", "7-", "seventh", "basic"],
+      "name": "Minor seventh",
+      "sequence": "3 7 10"
+    },
+    {
+      "tags": ["chord", "root-position", "dominant", "7-", "seventh", "basic"],
+      "name": "Dominant seventh",
+      "sequence": "4 7 10"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "7+", "seventh", "basic"],
+      "name": "Major seventh",
+      "sequence": "4 7 11"
+    },
+    {
+      "tags": ["chord", "first-inversion", "minor", "7-", "seventh", "basic"],
+      "name": "Minor seventh - first inversion",
+      "sequence": "4 7 9"
+    },
+    {
+      "tags": ["chord", "first-inversion", "dominant", "7-", "seventh", "basic"],
+      "name": "Dominant seventh - first inversion",
+      "sequence": "3 6 8"
+    },
+    {
+      "tags": ["chord", "first-inversion", "major", "7+", "seventh", "basic"],
+      "name": "Major seventh - first inversion",
+      "sequence": "3 7 8"
+    },
+    {
+      "tags": ["chord", "second-inversion", "minor", "7-", "seventh", "basic"],
+      "name": "Minor seventh - second inversion",
+      "sequence": "3 5 8"
+    },
+    {
+      "tags": ["chord", "second-inversion", "dominant", "7-", "seventh", "basic"],
+      "name": "Dominant seventh - second inversion",
+      "sequence": "3 5 9"
+    },
+    {
+      "tags": ["chord", "second-inversion", "major", "7+", "seventh", "basic"],
+      "name": "Major seventh - second inversion",
+      "sequence": "4 5 9"
+    },
+    {
+      "tags": ["chord", "third-inversion", "minor", "7-", "seventh", "basic"],
+      "name": "Minor seventh - third inversion",
+      "sequence": "2 5 9"
+    },
+    {
+      "tags": ["chord", "third-inversion", "dominant", "7-", "seventh", "basic"],
+      "name": "Dominant seventh - third inversion",
+      "sequence": "2 6 9"
+    },
+    {
+      "tags": ["chord", "third-inversion", "major", "7+", "seventh", "basic"],
+      "name": "Major seventh - third inversion",
+      "sequence": "1 5 8"
+    },
+    {
+      "tags": ["chord", "root-position", "diminished", "5-", "7--", "seventh"],
+      "name": "Diminished seventh",
+      "sequence": "3 6 9"
+    },
+    {
+      "tags": ["chord", "root-position", "diminished", "5-", "7-", "seventh"],
+      "name": "Half Diminished seventh",
+      "sequence": "3 6 10"
+    },
+    {
+      "tags": ["chord", "root-position", "minor", "7+", "seventh"],
+      "name": "Minor major seventh",
+      "sequence": "3 7 11"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "5-", "7+", "seventh"],
+      "name": "Major seventh flat five",
+      "sequence": "4 6 11"
+    },
+    {
+      "tags": ["chord", "root-position", "dominant", "5-", "7-", "seventh"],
+      "name": "Dominant seventh flat five",
+      "sequence": "4 6 10"
+    },
+    {
+      "tags": ["chord", "root-position", "augmented", "5+", "7-", "seventh"],
+      "name": "Augmented seventh",
+      "sequence": "4 8 10"
+    },
+    {
+      "tags": ["chord", "root-position", "diminished", "5-", "7+", "seventh"],
+      "name": "Diminished major seventh",
+      "sequence": "3 6 11"
+    }
+  ]
+}

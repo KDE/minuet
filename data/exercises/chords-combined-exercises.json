@@ -1,0 +1,56 @@
+{
+  "exercises": [
+    {
+      "name": "Chords",
+      "root": "41..67",
+      "playMode": "chord",
+      "userMessage": "Hear the chord and then choose an answer from options below",
+      "numberOfSelectedOptions": 1,
+      "_icon": "minuet-chords.svg",
+      "children": [
+        {
+          "name": "Combined",
+          "and-tags": ["chord"],
+          "children": [
+            {
+              "name": "Major chords",
+              "and-tags": ["root-position", "major"]
+            },
+            {
+              "name": "Minor chords",
+              "and-tags": ["root-position", "minor"]
+            },
+            {
+              "name": "Diminished chords",
+              "and-tags": ["root-position", "diminished"]
+            },
+            {
+              "name": "Augmented chords",
+              "and-tags": ["root-position", "augmented"]
+            },
+            {
+              "name": "Suspended chords",
+              "and-tags": ["sus", "root-position"]
+            },
+            {
+              "name": "Chords with a minor seven",
+              "and-tags": ["root-position", "7-"]
+            },
+            {
+              "name": "Chords with a major seven",
+              "and-tags": ["root-position", "7+"]
+            },
+            {
+              "name": "Chords with inversions",
+              "or-tags": ["triad", "basic"]
+            },
+            {
+              "name": "Lots of Chords",
+              "and-tags": ["root-position"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

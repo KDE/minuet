@@ -1,0 +1,57 @@
+{
+  "exercises": [
+    {
+      "name": "Chords",
+      "root": "41..67",
+      "playMode": "chord",
+      "userMessage": "Hear the chord and then choose an answer from options below",
+      "numberOfSelectedOptions": 1,
+      "_icon": "minuet-chords.svg",
+      "children": [
+        {
+          "name": "Seventh chords",
+          "and-tags": ["chord", "seventh"],
+          "children": [
+            {
+              "name": "Basic seventh chords",
+              "and-tags": ["basic", "root-position"]
+            },
+            {
+              "name": "Dominant seventh - inversions",
+              "and-tags": ["basic", "dominant"]
+            },
+            {
+              "name": "Major seventh - inversions",
+              "and-tags": ["basic", "major"]
+            },
+            {
+              "name": "Minor seventh - inversions",
+              "and-tags": ["basic", "minor"]
+            },
+            {
+              "name": "Inversions of basic seventh chords",
+              "and-tags": ["basic"]
+            },
+            {
+              "name": "Seventh chords with an altered five",
+              "and-tags": ["root-position"],
+              "or-tags": ["5-", "5+"]
+            },
+            {
+              "name": "Seventh chords with a minor seven",
+              "and-tags": ["7-", "root-position"]
+            },
+            {
+              "name": "Seventh chords with a major seven",
+              "and-tags": ["7+", "root-position"]
+            },
+            {
+              "name": "All seventh chords",
+              "and-tags": ["root-position"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

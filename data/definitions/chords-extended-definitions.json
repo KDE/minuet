@@ -1,0 +1,54 @@
+{
+  "definitions": [
+    {
+      "tags": ["chord", "root-position", "minor", "7-", "9", "ninth", "extended"],
+      "name": "Minor ninth",
+      "sequence": "3 7 10 14"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "7-", "9", "ninth", "extended"],
+      "name": "Dominant ninth",
+      "sequence": "4 7 10 14"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "7-", "9+", "ninth", "extended"],
+      "name": "Dominant 7#9",
+      "sequence": "4 7 10 15"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "7+", "9", "ninth", "extended"],
+      "name": "Major ninth",
+      "sequence": "4 7 11 14"
+    },
+    {
+      "tags": ["chord", "root-position", "7-", "9", "ninth", "sus", "extended"],
+      "name": "Jazz sus chord",
+      "sequence": "5 7 10 14"
+    },
+    {
+      "tags": ["chord", "root-position", "minor", "7-", "9", "11", "eleventh", "extended"],
+      "name": "Minor eleventh",
+      "sequence": "3 7 10 14 17"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "7-", "9", "11", "eleventh", "extended"],
+      "name": "Dominant eleventh",
+      "sequence": "4 7 10 14 17"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "7+", "9", "11", "eleventh", "extended"],
+      "name": "Major eleventh",
+      "sequence": "4 7 11 14 17"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "7+", "9", "11+", "eleventh", "extended"],
+      "name": "Major sharp eleventh",
+      "sequence": "4 7 11 14 18"
+    },
+    {
+      "tags": ["chord", "root-position", "major", "7-", "9", "11+", "eleventh", "extended"],
+      "name": "Dominant sharp eleventh",
+      "sequence": "4 7 10 14 18"
+    }
+  ]
+}

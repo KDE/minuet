@@ -1,0 +1,45 @@
+{
+  "exercises": [
+    {
+      "name": "Chords",
+      "root": "41..67",
+      "playMode": "chord",
+      "userMessage": "Hear the chord and then choose an answer from options below",
+      "numberOfSelectedOptions": 1,
+      "_icon": "minuet-chords.svg",
+      "children": [
+        {
+          "name": "Extended chords",
+          "and-tags": ["chord", "root-position"],
+          "children": [
+            {
+              "name": "Basic ninth chords",
+              "and-tags": ["ninth", "9"],
+              "or-tags": ["minor", "major"]
+            },
+            {
+              "name": "All ninth chords",
+              "and-tags": ["ninth"]
+            },
+            {
+              "name": "Basic eleventh chords",
+              "and-tags": ["eleventh", "11"]
+            },
+            {
+              "name": "Sharp eleventh chords",
+              "and-tags": ["eleventh", "11+"]
+            },
+            {
+              "name": "All eleventh chords",
+              "and-tags": ["eleventh"]
+            },
+            {
+              "name": "All extended chords",
+              "and-tags": ["extended"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

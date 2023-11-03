@@ -2,7 +2,10 @@ set(minuet_EXERCISES
     intervals-ascending-melodic-exercises.json
     intervals-descending-melodic-exercises.json
     intervals-harmonic-exercises.json
-    chords-root-position-exercises.json
+    chords-three-notes-exercises.json
+    chords-sevenths-exercises.json
+    chords-extended-exercises.json
+    chords-combined-exercises.json
     scales-major-and-its-modes-exercises.json
     scales-harmonic-minor-and-its-modes-exercises.json
     scales-harmonic-major-and-its-modes-exercises.json
