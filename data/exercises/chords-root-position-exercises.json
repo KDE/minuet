@@ -13,14 +13,9 @@
           "and-tags": ["chord", "root-position"],
           "children": [
             {
-              "name": "Minor and Major Chords",
+              "name": "Minor and major chords",
               "and-tags": ["triad"],
               "or-tags": ["minor", "major"]
-            },
-            {
-              "name": "Minor 7 and Dominant 7 Chords",
-              "and-tags": ["7"],
-              "or-tags": ["minor", "dominant"]
             },
             {
               "name": "Diminished and Augmented Chords",
@@ -28,35 +23,70 @@
               "or-tags": ["diminished", "augmented"]
             },
             {
-              "name": "Minor 9 and Major 9 Chords",
-              "and-tags": ["9"],
+              "name": "Triads",
+              "and-tags": ["triad"]
+            },
+            {
+              "name": "Suspended chords",
+              "and-tags": ["sus"]
+            },
+            {
+              "name": "All three note chords",
+              "or-tags": ["triad", "three-note"]
+            },
+            {
+              "name": "Basic seventh chords",
+              "and-tags": ["seventh", "basic"]
+            },
+            {
+              "name": "Seventh chords with an altered five",
+              "and-tags": ["seventh"],
+              "or-tags": ["5-", "5+"]
+            },
+            {
+              "name": "Seventh chords with a minor seven",
+              "and-tags": ["seventh", "7-"]
+            },
+            {
+              "name": "Seventh chords with a major seven",
+              "and-tags": ["seventh", "7+"]
+            },
+            {
+              "name": "All seventh chords",
+              "and-tags": ["seventh"]
+            },
+            {
+              "name": "Basic ninth chords",
+              "and-tags": ["ninth", "9"],
               "or-tags": ["minor", "major"]
             },
             {
-              "name": "Major 7(b9) and Major maj7(9) Chords",
-              "and-tags": ["7", "9"],
-              "or-tags": ["major"]
+              "name": "All ninth chords",
+              "and-tags": ["ninth"]
             },
             {
-              "name": "Major Seventh, Diminished Seventh, and Half Diminished Seventh Chords",
-              "and-tags": ["7"],
-              "or-tags": ["major", "diminished"]
+              "name": "Basic eleventh chords",
+              "and-tags": ["eleventh", "11"]
             },
             {
-              "name": "Chords with 9 in their name",
-              "or-tags": ["9"]
+              "name": "Sharp eleventh chords",
+              "and-tags": ["eleventh", "11+"]
             },
             {
-              "name": "Altered Chords",
-              "and-tags": ["altered"]
+              "name": "All eleventh chords",
+              "and-tags": ["eleventh"]
             },
             {
-              "name": "Chords with 7 in their name",
-              "and-tags": ["7"]
+              "name": "Chords with a minor seven",
+              "and-tags": ["7-"]
             },
             {
-              "name": "Minor, Major, Diminished, and Augmented Chords",
-              "or-tags": ["minor", "major", "diminished", "augmented"]
+              "name": "Chords with a major seven",
+              "and-tags": ["7+"]
+            },
+            {
+              "name": "All extended chords",
+              "and-tags": ["extended"]
             },
             {
               "name": "Lots of Chords"
