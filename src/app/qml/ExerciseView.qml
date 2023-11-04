@@ -65,7 +65,7 @@ Item {
             if (currentExerciseOptions != undefined) {
                 var length = currentExerciseOptions.length
                 for (var i = 0; i < length; ++i)
-                    answerOption.createObject(answerGrid, {"model": currentExerciseOptions[i], "index": i, "color": internal.colors[i%24]})
+                    answerOption.createObject(answerGrid, {"model": currentExerciseOptions[i], "index": i, "color": internal.colors[i%internal.colors.length]})
             }
             sheetMusicView.spaced = (currentExercise["playMode"] == "chord") ? false:true
             messageText.text = i18n("Click 'New Question' to start!")
@@ -274,7 +274,7 @@ Item {
                     anchors.centerIn: parent
                     spacing: 10
 
-                    columns: Math.max(1, parent.width / (((currentExercise != undefined && currentExercise["playMode"] != "rhythm") ? 120:119) + spacing))
+                    columns: Math.max(1, parent.width / (120+ spacing))
 
                     Component {
                         id: answerOption
@@ -286,8 +286,8 @@ Item {
                             property int index
                             property int position
 
-                            width: (currentExercise != undefined && currentExercise["playMode"] != "rhythm") ? 120:119
-                            height: (currentExercise != undefined && currentExercise["playMode"] != "rhythm") ? 40:59
+                            width: 120
+                            height: 60
 
                             Text {
                                 id: option
@@ -329,7 +329,7 @@ Item {
                                             var array = [core.exerciseController.chosenRootNote()]
                                             model.sequence.split(' ').forEach(function(note) {
                                                 array.push(core.exerciseController.chosenRootNote() + parseInt(note))
-                                                pianoView.noteMark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0, internal.colors[answerRectangle.index])
+                                                pianoView.noteMark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0, internal.colors[answerRectangle.index%internal.colors.length])
                                             })
                                             sheetMusicView.model = array
                                         }
@@ -349,7 +349,7 @@ Item {
                                     }
                                 }
                                 onExited: {
-                                    answerRectangle.color = internal.colors[answerRectangle.index]
+                                    answerRectangle.color = internal.colors[answerRectangle.index%internal.colors.length]
                                     if (currentExercise["playMode"] != "rhythm") {
                                         if (parent.parent == answerGrid) {
                                             if (!animation.running)
