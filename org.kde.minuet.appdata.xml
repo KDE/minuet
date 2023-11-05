@@ -35,7 +35,6 @@
   <name xml:lang="sv">Minuet</name>
   <name xml:lang="tr">Minuet</name>
   <name xml:lang="uk">Minuet</name>
-  <name xml:lang="x-test">xxMinuetxx</name>
   <name xml:lang="zh-CN">Minuet</name>
   <name xml:lang="zh-TW">Minuet</name>
   <summary>Music Education Software</summary>
@@ -70,7 +69,6 @@
   <summary xml:lang="sv">Programvara för musikutbildning</summary>
   <summary xml:lang="tr">Müzik Eğitim Yazılımı</summary>
   <summary xml:lang="uk">Програмне забезпечення для навчання музики</summary>
-  <summary xml:lang="x-test">xxMusic Education Softwarexx</summary>
   <summary xml:lang="zh-CN">音乐教育软件</summary>
   <summary xml:lang="zh-TW">音樂教育軟體</summary>
   <description>
@@ -105,7 +103,6 @@
     <p xml:lang="sv">Minuet är ett program för musikutbildning. Det innehåller ett antal gehörsövningar avseende tonhöjd, ackord, skalor med mera.</p>
     <p xml:lang="tr">Minuet, müzik eğtimi için bir uygulamadır. Aralıklar, akorlar, ölçekler ve daha fazlasıyla ilgili bir dizi kulak eğitimi alıştırması içerir.</p>
     <p xml:lang="uk">Minuet — програма для навчання музиці. У ній передбачено набір вправ для розвитку слуху, зокрема вивчення інтервалів, акордів, гами тощо.</p>
-    <p xml:lang="x-test">xxMinuet is an application for music education. It features a set of ear training exercises regarding intervals, chords, scales and more.xx</p>
     <p xml:lang="zh-CN">Minuet 是款音乐教育应用，具有一系列有关音程、和弦、音阶等的视听练耳测试。</p>
     <p xml:lang="zh-TW">Minuet 是一款音樂教育用的應用程式。裡面有一些關於音程、和弦、音階等的聽力訓練課程。</p>
   </description>
@@ -146,7 +143,6 @@
       <caption xml:lang="sv">Övning med Minuet</caption>
       <caption xml:lang="tr">Minuet ile Alıştırmalar</caption>
       <caption xml:lang="uk">Вправляння у Minuet</caption>
-      <caption xml:lang="x-test">xxTraining with Minuetxx</caption>
       <caption xml:lang="zh-CN">使用 Minuet 训练</caption>
       <caption xml:lang="zh-TW">使用 Minuet 訓練</caption>
       <image>https://cdn.kde.org/screenshots/minuet/minuet.png</image>
