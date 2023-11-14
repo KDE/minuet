@@ -99,7 +99,7 @@ Item {
         }
         messageText.text = (internal.giveUp) ? i18n("Here is the answer") : (internal.answersAreRight) ? i18n("Congratulations, you answered correctly!"):i18n("Oops, not this time! Try again!")
         if (internal.currentExercise == internal.maximumExercises) {
-            messageText.text = i18n("You answered correctly %1%", internal.correctAnswers * 100 / internal.maximumExercises)
+            messageText.text = i18n("You answered correctly %1%", internal.correctAnswers * 100 / internal.maximumExercises / currentExercise.numberOfSelectedOptions)
             resetTest()
         }
 
