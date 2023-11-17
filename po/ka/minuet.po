@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-15 00:39+0000\n"
-"PO-Revision-Date: 2022-12-21 09:07+0100\n"
+"PO-Revision-Date: 2023-11-16 05:35+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -33,40 +33,30 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Aeolian"
 msgstr "ეოლიური"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Altered Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All eleventh chords"
-msgstr "ალტერირებული აკორდი"
+msgstr "ყველა მეთერთმეტე აკორდი"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Altered Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All extended chords"
-msgstr "ალტერირებული აკორდი"
+msgstr "ყველა გაფართოებული აკორდი"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Altered Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All ninth chords"
-msgstr "ალტერირებული აკორდი"
+msgstr "ყველა მეცრხრე აკორდი"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Altered Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All seventh chords"
-msgstr "ალტერირებული აკორდი"
+msgstr "ყველა მეშვიდე აკორდი"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Altered Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All three note chords"
-msgstr "ალტერირებული აკორდი"
+msgstr "ყველა აკორდი სამი ნოტით"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -78,24 +68,20 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented"
 msgstr "გაძლიერებული"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Augmented Inverse"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented chords"
-msgstr "გადიდება შემობრუნებით"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented Inverse"
 msgstr "გადიდება შემობრუნებით"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Augmented Inverse"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented seventh"
-msgstr "გადიდება შემობრუნებით"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -147,38 +133,30 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Chords"
 msgstr "აკორდი"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Chords with 7 in their name"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Chords with a major seven"
-msgstr "აკორდები შვიდიანით მათ სახელში"
+msgstr "აკორდები მაჟორული სეპტეტით"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Chords with 7 in their name"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Chords with a minor seven"
-msgstr "აკორდები შვიდიანით მათ სახელში"
+msgstr "აკორდები მინორული სეპტეტით"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Chords with 7 in their name"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Chords with inversions"
-msgstr "აკორდები შვიდიანით მათ სახელში"
+msgstr "კაკორდები შვიდიანით მათ სახელში"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Chords with 7 in their name"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Chords with three notes"
-msgstr "აკორდები შვიდიანით მათ სახელში"
+msgstr "აკორდები სამი ნოტით"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Combined"
-msgstr ""
+msgstr "კომბინირებული"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -195,42 +173,32 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished and Augmented Chords"
 msgstr "გადიდებული და შემცირებული აკორდები"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Diminished"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished chords"
-msgstr "შემცირებული"
+msgstr "შემცირებული აკორდები"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Diminished Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished - first inversion"
-msgstr "შემცირებული მეშვიდე"
+msgstr "შემცირებული - პირველი ინვერსია"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished H-W"
 msgstr "შემცირებული ნახევარტონი-ტონი"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Diminished Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished - inversions"
-msgstr "შემცირებული მეშვიდე"
+msgstr "შემცირებული - ინვერსიები"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Diminished Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished major seventh"
-msgstr "შემცირებული მეშვიდე"
+msgstr "შემცირებული დიდი მეშვიდე"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Diminished Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished seventh"
 msgstr "შემცირებული მეშვიდე"
@@ -240,33 +208,25 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished W-H"
 msgstr "შემცირებული ტონი-ნახევარტონი"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Dominant 7"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant 7#9"
-msgstr "დომინანტსეპტაკორდი"
+msgstr "დომინანტი 7#9"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Dominant 7"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant eleventh"
-msgstr "დომინანტსეპტაკორდი"
+msgstr "დომინანტი მეთერთმეტე"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Dominant 7"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant ninth"
-msgstr "დომინანტსეპტაკორდი"
+msgstr "დომინანტი მეცხრე"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Dominant 7"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh"
-msgstr "დომინანტსეპტაკორდი"
+msgstr "დომინანტი მეშვიდე"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -293,12 +253,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh - third inversion"
 msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Diminished Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant sharp eleventh"
-msgstr "შემცირებული მეშვიდე"
+msgstr "შემცირებული მკვეთრი მეშვიდე"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -330,12 +288,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "eighth-sixteenth-sixteenth"
 msgstr "მერვე-მეთექვსმეტე-მეთექვსმეტე"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Altered Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Extended chords"
-msgstr "ალტერირებული აკორდი"
+msgstr "გაფართოებული აკორდები"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -347,9 +303,7 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Fourths, Fifths, and Octave"
 msgstr "კვარტები, კვინტები და ოქტავა"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Half Diminished Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Half Diminished seventh"
 msgstr "ნახევრად შემცირებული მეშვიდე"
@@ -469,19 +423,15 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Major"
 msgstr "მაჟორი"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Third"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major chords"
-msgstr "დიდი ტერცია"
+msgstr "მაჟორული აკორდები"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major eleventh"
-msgstr "დიდი სეპტიმა"
+msgstr "დიდი უნდეციმა"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -493,16 +443,12 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Major Fourteenth"
 msgstr "მაჟორული კვარტაკორდი"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Second"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major - inversions"
-msgstr "დიდი სეკუნდა"
+msgstr "დიდი - ინვერსიები"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Ninth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major ninth"
 msgstr "დიდი ნონა"
@@ -527,16 +473,12 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Major Second"
 msgstr "დიდი სეკუნდა"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Second"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major - second inversion"
-msgstr "დიდი სეკუნდა"
+msgstr "დიდი - მეორე ინვერსია"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh"
 msgstr "დიდი სეპტიმა"
@@ -551,19 +493,15 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh - first inversion"
 msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh flat five"
-msgstr "დიდი სეპტიმა"
+msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh - inversions"
-msgstr "დიდი სეპტიმა"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -575,12 +513,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh - third inversion"
 msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major sharp eleventh"
-msgstr "დიდი სეპტიმა"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -617,26 +553,20 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Minor"
 msgstr "მინორი"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor and Major Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor and major chords"
 msgstr "მინორული და მაჟორული აკორდები"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Third"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor chords"
-msgstr "პატარა ტერცია"
+msgstr "პატარა აკორდები"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor eleventh"
-msgstr "პატარა სეპტიმა"
+msgstr "პატარა მეთერთმეტე"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -648,23 +578,17 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Minor Fourteenth"
 msgstr "პატარა კვარტდეციმა"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Second"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor - inversions"
-msgstr "პატარა სეკუნდა"
+msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor major seventh"
-msgstr "პატარა სეპტიმა"
+msgstr "პატარა დიდი სეპტიმა"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Ninth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor ninth"
 msgstr "პატარა ნონა"
@@ -684,16 +608,12 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Minor Second"
 msgstr "პატარა სეკუნდა"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Second"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor - second inversion"
-msgstr "პატარა სეკუნდა"
+msgstr "პატარა - მეორე ინვერსია"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh"
 msgstr "პატარა სეპტიმა"
@@ -708,12 +628,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh - first inversion"
 msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh - inversions"
-msgstr "პატარა სეპტიმა"
+msgstr "პატარა სეპტიმა - ინვერსიები"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -865,12 +783,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Second to Tenth"
 msgstr "სეკუნდიდან დეციმამდე"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Sevenths"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Seventh chords"
-msgstr "სეპტიმები"
+msgstr "სეპტაკორდები"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -942,12 +858,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Sus4"
 msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Suspended Pentatonic"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Suspended chords"
-msgstr "Sus-პენტატონიკა"
+msgstr "Sus-აკორდები"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
