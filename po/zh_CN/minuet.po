@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-15 00:39+0000\n"
-"PO-Revision-Date: 2023-10-21 13:54\n"
+"PO-Revision-Date: 2023-11-19 03:41\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -32,40 +32,30 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Aeolian"
 msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Altered Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All eleventh chords"
-msgstr "变和弦"
+msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Altered Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All extended chords"
-msgstr "变和弦"
+msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Altered Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All ninth chords"
-msgstr "变和弦"
+msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Altered Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All seventh chords"
-msgstr "变和弦"
+msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Altered Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All three note chords"
-msgstr "变和弦"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -77,12 +67,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented"
 msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Altered Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented chords"
-msgstr "变和弦"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -144,33 +132,25 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Chords"
 msgstr "和弦"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Chords with 7 in their name"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Chords with a major seven"
-msgstr "七和弦"
+msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Chords with 7 in their name"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Chords with a minor seven"
-msgstr "七和弦"
+msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Chords with 7 in their name"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Chords with inversions"
-msgstr "七和弦"
+msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Chords with 7 in their name"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Chords with three notes"
-msgstr "七和弦"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -192,12 +172,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished and Augmented Chords"
 msgstr "减音程和增音程"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Diminished and Augmented Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished chords"
-msgstr "减音程和增音程"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -214,19 +192,15 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished - inversions"
 msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Diminished and Augmented Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished major seventh"
-msgstr "减音程和增音程"
+msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Diminished and Augmented Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished seventh"
-msgstr "减音程和增音程"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -248,12 +222,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant ninth"
 msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Tritone and Sevenths"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh"
-msgstr "三全音和七度"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -315,12 +287,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "eighth-sixteenth-sixteenth"
 msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Altered Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Extended chords"
-msgstr "变和弦"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -452,12 +422,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Major"
 msgstr "主"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor and Major Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major chords"
-msgstr "小和弦和大和弦"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -479,12 +447,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Major - inversions"
 msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major ninth"
-msgstr "主"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -586,19 +552,15 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Minor"
 msgstr "次"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor and Major Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor and major chords"
-msgstr "小和弦和大和弦"
+msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor and Major Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor chords"
-msgstr "小和弦和大和弦"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -625,12 +587,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Minor major seventh"
 msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor ninth"
-msgstr "次"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -822,12 +782,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Second to Tenth"
 msgstr "二度到十度"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Sevenths"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Seventh chords"
-msgstr "七度"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -899,12 +857,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Sus4"
 msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Altered Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Suspended chords"
-msgstr "变和弦"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1077,32 +1033,3 @@ msgstr "关于"
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave"
 msgstr "Octave"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Chords with 9 in their name"
-#~ msgstr "九和弦"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 7(b9) and Major maj7(9) Chords"
-#~ msgstr "大七和弦和 maj7 和弦"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid ""
-#~ "Major Seventh, Diminished Seventh, and Half Diminished Seventh Chords"
-#~ msgstr "小七和弦，减七和弦和半减七和弦"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor 7 and Dominant 7 Chords"
-#~ msgstr "小七和弦和属七和弦"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor 9 and Major 9 Chords"
-#~ msgstr "小九和弦和大九和弦"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor, Major, Diminished, and Augmented Chords"
-#~ msgstr "小和弦，大和弦，减和弦和增和弦"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Root Position"
-#~ msgstr "根音"
