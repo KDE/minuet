@@ -110,7 +110,7 @@
     <p xml:lang="zh-TW">Minuet 是一款音樂教育用的應用程式。裡面有一些關於音程、和弦、音階等的聽力訓練課程。</p>
   </description>
   <url type="homepage">https://minuet.kde.org</url>
-  <url type="bugtracker">https://phabricator.kde.org/project/board/73/</url>
+  <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?product=minuet</url>
   <url type="help">https://docs.kde.org/?application=minuet</url>
   <url type="donation">https://www.kde.org/community/donations/?app=minuet&amp;source=appdata</url>
   <screenshots>
