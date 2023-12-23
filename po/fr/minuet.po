@@ -3,7 +3,7 @@
 # Maxime Corteel <mcorteel@gmail.com>, 2016.
 # Vincent Pinon <vpinon@kde.org>, 2016.
 # Simon Depiets <sdepiets@gmail.com>, 2019.
-# SPDX-FileCopyrightText: 2020, 2023 Xavier Besnard <xavier.besnard@neuf.fr>
+# SPDX-FileCopyrightText: 2020, 2023 Xavier Besnard <xavier.besnard@kde.org>
 #
 msgid ""
 msgstr ""
@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-04 00:43+0000\n"
 "PO-Revision-Date: 2023-11-20 10:25+0100\n"
-"Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
+"Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,7 @@ msgstr "Maxime Corteel, Vincent Pinon, Xavier Besnard"
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "mcorteel@gmail.com, vpinon@kde.org, xavier.besnard@neuf.fr"
+msgstr "mcorteel@gmail.com, vpinon@kde.org, xavier.besnard@kde.org"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
