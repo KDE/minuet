@@ -68,7 +68,7 @@ IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     if (KF${KF_MAJOR_VERSION}DocTools_FOUND)
         kdoctools_install(po)
     endif()
-    install(FILES org.kde.minuet.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
+    install(FILES org.kde.minuet.metainfo.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
