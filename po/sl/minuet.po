@@ -2,7 +2,7 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2019, 2022, 2023 Matjaž Jeran <matjaz.jeran@amis.net>
+# SPDX-FileCopyrightText: 2019, 2022, 2023, 2024 Matjaž Jeran <matjaz.jeran@amis.net>
 # With special thanks to maestro Tomaž Kmetič
 # With special thanks to Višnja Kajgana
 msgid ""
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-15 00:39+0000\n"
-"PO-Revision-Date: 2023-11-28 00:10+0100\n"
+"PO-Revision-Date: 2024-02-06 12:41+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -201,12 +201,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished major seventh"
 msgstr "Zmanjšani durov septakord"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Diminished Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished seventh"
-msgstr "Zmanjšana septima"
+msgstr "Zmanjšani septakord"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -228,12 +226,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant ninth"
 msgstr "Dominantna 9 (nona)"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Dominant 7"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh"
-msgstr "Dominantna 7 (septima)"
+msgstr "Dominantni septakord"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -453,7 +449,7 @@ msgstr "Durova 14"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major - inversions"
-msgstr "Durovi - inverzije"
+msgstr "Dur - obrati"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -483,14 +479,12 @@ msgstr "Velika sekunda"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major - second inversion"
-msgstr "Durova - druga inverzija"
+msgstr "Durova - drugi obrat"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh"
-msgstr "Velika septima"
+msgstr "Zvečani septakord"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -500,7 +494,7 @@ msgstr "Velika septima"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh - first inversion"
-msgstr "Velika septima - prva inverzija"
+msgstr "Velika septima - prvi obrat"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -510,17 +504,17 @@ msgstr "Velika septima znižana kvinta"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh - inversions"
-msgstr "Velika septima - inverzije"
+msgstr "Velika septima - obrati"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh - second inversion"
-msgstr "Velika septima - druga inverzija"
+msgstr "Velika septima - drugi obrat"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh - third inversion"
-msgstr "Velika septima - tretja inverzija"
+msgstr "Velika septakord - tretji obrat"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -580,7 +574,7 @@ msgstr "Zmanjšana undecima"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor - first inversion"
-msgstr "Molova - prva inverzija"
+msgstr "Molova - prvi obrat"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -590,7 +584,7 @@ msgstr "Molova 14"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor - inversions"
-msgstr "Molove - inverzije"
+msgstr "Mol - obrati"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -620,7 +614,7 @@ msgstr "Mala sekunda"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor - second inversion"
-msgstr "Molova - druga inverzija"
+msgstr "Mol - drugi obrat"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -635,22 +629,22 @@ msgstr "Mala septima"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh - first inversion"
-msgstr "Mala septima - prva inverzija"
+msgstr "Mali septakord - prvi obrat"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh - inversions"
-msgstr "Mala septima - inverzije"
+msgstr "Mali septakord - obrati"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh - second inversion"
-msgstr "Mala septima - druga inverzija"
+msgstr "Mali septakord- druga obrat"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh - third inversion"
-msgstr "Mala septima - tretja inverzija"
+msgstr "Mala septakord - tretji obrat"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -822,10 +816,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Sevenths and Ninths"
 msgstr "Septime in none"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Sharp eleventh chords"
-msgstr "Zvišani septakordi"
+msgstr "Zvečani akordi z undecimo"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -900,7 +894,7 @@ msgstr "Kvintakordi"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Triads - inversions"
-msgstr "Kvintakordi - inverzije"
+msgstr "Kvintakordi - obrati"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
