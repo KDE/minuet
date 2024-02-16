@@ -1,16 +1,16 @@
 # Transalation for minuet.po to Euskara/Basque (eu).
-# Copyright (C) 2023 This file is copyright:
+# Copyright (C) 2023-2024 This file is copyright:
 # This file is distributed under the same license as the minuet package.
-# KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
+# SPDX-FileCopyrightText: 2024 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
 #
 # Translators:
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2023.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-15 00:39+0000\n"
-"PO-Revision-Date: 2023-08-25 22:52+0200\n"
+"PO-Revision-Date: 2024-02-07 22:49+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.04.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -35,40 +35,30 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Aeolian"
 msgstr "Eoliarra"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Altered Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All eleventh chords"
-msgstr "Akorde alteratuak"
+msgstr "Hamaikadun akorde guztiak"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Altered Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All extended chords"
-msgstr "Akorde alteratuak"
+msgstr "Akorde hedatu guztiak"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Altered Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All ninth chords"
-msgstr "Akorde alteratuak"
+msgstr "Bederatzidun akorde guztiak"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Altered Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All seventh chords"
-msgstr "Akorde alteratuak"
+msgstr "Zazpidun akorde guztiak"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Altered Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All three note chords"
-msgstr "Akorde alteratuak"
+msgstr "Hiru notako akorde guztiak"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -78,31 +68,27 @@ msgstr "Goranzko bitarte melodikoak"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented"
-msgstr "Gehitua"
+msgstr "Gehitu"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Augmented Inverse"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented chords"
-msgstr "Alderantzizko gehitua"
+msgstr "Akorde gehitu"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented Inverse"
 msgstr "Alderantzizko gehitua"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Augmented Inverse"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented seventh"
-msgstr "Alderantzizko gehitua"
+msgstr "Seidun gehitu"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Basic eleventh chords"
-msgstr ""
+msgstr "Oinarrizko hamaikadun akordeak"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -177,10 +163,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Chords with three notes"
 msgstr "Izenean 7 duten akordeak"
 
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Combined"
-msgstr ""
+msgstr "Konbinatua"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -242,43 +228,35 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished W-H"
 msgstr "W-H gutxitua"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Dominant 7"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant 7#9"
-msgstr "Zazpigarrena dominantea"
+msgstr "Dominantea 7#9"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Dominant 7"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant eleventh"
-msgstr "Zazpigarrena dominantea"
+msgstr "Dominante hamaikadun"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Dominant 7"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant ninth"
-msgstr "Zazpigarrena dominantea"
+msgstr "Dominante bederatzidun"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Dominant 7"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh"
-msgstr "Zazpigarrena dominantea"
+msgstr "Dominante zazpidun"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh - first inversion"
-msgstr ""
+msgstr "Dominante zazpidun - lehen inbertsioa"
 
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh flat five"
-msgstr ""
+msgstr "Dominante zazpidun "
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -320,17 +298,17 @@ msgstr "Erraza"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "eighth-dot-sixteenth"
-msgstr ""
+msgstr "kortxea-puntu-kortxeaerdi"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "eighth-eighth"
-msgstr ""
+msgstr "kortxea-kortxea"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "eighth-sixteenth-sixteenth"
-msgstr ""
+msgstr "kortxea-kortxeaerdi-kortxeaerdi"
 
 #, fuzzy, kde-format
 #| msgctxt "technical term, do you have a musician friend?"
@@ -431,12 +409,12 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Locrian"
 msgstr "Lokriarra"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Locrian #6"
 msgstr "Lokriarra #6"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Locrian bb7"
 msgstr "Lokriarra bb7"
@@ -451,17 +429,17 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Lydian"
 msgstr "Lidiarra"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Lydian #2"
 msgstr "Lidiarra #2"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Lydian #2 #5"
 msgstr "Lidiarra #2 #5"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Lydian b3"
 msgstr "Lidiarra b3"
@@ -752,10 +730,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Mixolydian"
 msgstr "Mixolidiarra"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Mixolydian b9"
-msgstr "Mixolidiarra b9"
+msgstr "Mixolidiar b9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -807,10 +785,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Phrygian"
 msgstr "Frigiarra"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Phrygian b4"
-msgstr "Frigiarra b4"
+msgstr "Frigiar b4"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -907,22 +885,22 @@ msgstr ""
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "sixteenth-eighth-dot"
-msgstr ""
+msgstr "kortxeaerdi-kortxea-puntu"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "sixteenth-eighth-sixteenth"
-msgstr ""
+msgstr "kortxeaerdi-kortxea-kortxeaerdi"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "sixteenth-sixteenth-eighth"
-msgstr ""
+msgstr "kortxeaerdi-kortxeaerdi-kortxea"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "sixteenth-sixteenth-sixteenth-sixteenth"
-msgstr ""
+msgstr "kortxeaerdi-kortxeaerdi-kortxeaerdi-kortxeaerdi"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"

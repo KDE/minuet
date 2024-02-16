@@ -1,20 +1,21 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the minuet package.
 # Bryan Choi <jaeho.bryan@gmail.com>, 2021.
+# SPDX-FileCopyrightText: 2024 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-15 00:39+0000\n"
-"PO-Revision-Date: 2021-04-18 00:56+0200\n"
+"PO-Revision-Date: 2024-02-11 00:05+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 20.08.2\n"
+"X-Generator: Lokalize 23.08.1\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #, kde-format
@@ -177,7 +178,7 @@ msgstr "이름에 7이 들어 있는 화음"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Combined"
-msgstr ""
+msgstr "대분수"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -346,9 +347,7 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Fourths, Fifths, and Octave"
 msgstr "4화음, 5화음, 그리고 옥타브"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Half Diminished Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Half Diminished seventh"
 msgstr "반감7화음"
@@ -468,19 +467,15 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Major"
 msgstr "장조"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Third"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major chords"
-msgstr "장3화음"
+msgstr "장조화음"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major eleventh"
-msgstr "장7화음"
+msgstr "장11화음"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -499,9 +494,7 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Major - inversions"
 msgstr "장2화음"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Ninth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major ninth"
 msgstr "장9화음"
@@ -533,9 +526,7 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Major - second inversion"
 msgstr "장2화음"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh"
 msgstr "장7화음"
@@ -616,26 +607,20 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Minor"
 msgstr "단조"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor and Major Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor and major chords"
 msgstr "단조화음과 장조화음"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Third"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor chords"
-msgstr "단3화음"
+msgstr "단조화음"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor eleventh"
-msgstr "단7화음"
+msgstr "단11화음"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -661,9 +646,7 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Minor major seventh"
 msgstr "단7화음"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Ninth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor ninth"
 msgstr "단9화음"
@@ -690,9 +673,7 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Minor - second inversion"
 msgstr "단2화음"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh"
 msgstr "단7화음"
