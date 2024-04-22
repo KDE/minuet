@@ -17,3 +17,6 @@ Dependencies:
     'frameworks/ki18n': '@stable'
     'frameworks/kcrash': '@stable'
     'frameworks/kdoctools': '@stable'
+
+Options:
+  require-passing-tests-on: ['Linux', 'FreeBSD', 'Windows']
