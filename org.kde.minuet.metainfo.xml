@@ -73,6 +73,10 @@
   <summary xml:lang="x-test">xxMusic Education Softwarexx</summary>
   <summary xml:lang="zh-CN">音乐教育软件</summary>
   <summary xml:lang="zh-TW">音樂教育軟體</summary>
+  <developer id="org.kde">
+    <name>KDE</name>
+    <url>https://kde.org</url>
+  </developer>
   <description>
     <p>Minuet is an application for music education. It features a set of ear training exercises regarding intervals, chords, scales and more.</p>
     <p xml:lang="ar">منويت هو تطبيق لتعليم الموسيقى. يتميز بمجموعة من تمارين تدريب الأذن فيما يتعلق بالفواصل الزمنية والأوتار والمقاييس والمزيد.</p>
@@ -113,6 +117,7 @@
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?product=minuet</url>
   <url type="help">https://docs.kde.org/?application=minuet</url>
   <url type="donation">https://www.kde.org/community/donations/?app=minuet&amp;source=appdata</url>
+  <url type="vcs-browser">https://invent.kde.org/education/minuet</url>
   <screenshots>
     <screenshot type="default">
       <caption>Training with Minuet</caption>
@@ -152,6 +157,12 @@
       <image>https://cdn.kde.org/screenshots/minuet/minuet.png</image>
     </screenshot>
   </screenshots>
+    <categories>
+    <category>Qt</category>
+    <category>KDE</category>
+    <category>Education</category>
+    <category>Music</category>
+  </categories>
   <project_group>KDE</project_group>
   <provides>
     <binary>minuet</binary>
