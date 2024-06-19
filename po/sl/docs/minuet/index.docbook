@@ -1,0 +1,301 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Slovenian "INCLUDE">
+]>
+<book id="minuet" lang="&language;">
+
+<bookinfo>
+<title
+>&minuet; Priročnik</title>
+
+<authorgroup>
+<author
+><personname
+> <firstname
+>Sandro</firstname
+> <othername
+>S.</othername
+> <surname
+>Andrade</surname
+> </personname
+> <email
+>&Sandro.Andrade.mail;</email
+> </author>
+<othercredit role="translator"
+><firstname
+>Matjaž</firstname
+><surname
+>Jeran</surname
+><affiliation
+><address
+><email
+>matjaz.jeran@amis.net</email
+></address
+></affiliation
+><contrib
+>Prevod</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2016</year>
+<holder
+>&Sandro.Andrade;</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>19.10.2021</date>
+
+<releaseinfo
+>0,4 (KDE Gear 21.08)</releaseinfo>
+
+<abstract>
+<para
+>&minuet; je aplikacija za glasbeno izobraževanje. Vsebuje niz vaj za urjenje sluha glede intervalov, akordov in lestvic. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdeedu</keyword>
+<keyword
+>glasba</keyword>
+<keyword
+>izobraževanje</keyword>
+<keyword
+>intervali</keyword>
+<keyword
+>akordi</keyword>
+<keyword
+>lestvice</keyword>
+<keyword
+>Minuet</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Uvod</title>
+
+<para
+>Dobrodošli v &minuet;: programska oprema za glasbeno izobraževanje. &minuet; je namenjen podpori učencem in učiteljem pri številnih vidikih glasbenega izobraževanja, kot so urjenje sluha, branje na prvi pogled, solfeggio, lestvice, ritem, harmonija in improvizacija. &minuet; obsežno uporablja &MIDI; zmožnosti zagotavljanja popolnega nabora funkcij glede glasnosti, tempa in sprememb višine, zaradi česar je &minuet; dragoceno orodje tako za začetnike kot za izkušene glasbenike. </para>
+<para
+>&minuet; vsebuje bogat nabor vaj za vadbo sluha in nove je mogoče <link linkend="creating-exercises"
+>neopazno dodajati</link
+>, da razširite njegove funkcionalnosti in ga prilagodite številnim kontekstom glasbenega izobraževanja. </para>
+
+<screenshot>
+  <screeninfo
+>&minuet; glavno okno</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-screenshot.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>&minuet; vaje za treniranje akordov</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+</chapter>
+
+<chapter id="using-minuet">
+<title
+>Uporaba &minuet;</title>
+
+<para
+>V naslednjih dveh razdelkih - <link linkend="starting-minuet"
+>Začetek &minuet;</link
+> in <link linkend="minuet-exercises"
+>&minuet; Vaje</link
+> - zagotovili vam bomo potrebne korake, da dobite &minuet; v teku. </para>
+
+<sect1 id="starting-minuet">
+<title
+>Zagon &minuet;</title>
+
+<para
+>&minuet; lahko zaženete iz zaganjalnika aplikacij. Odprite globalni meni s klikom na ikono zaganjalnika aplikacij v sistemski vrstici v spodnjem levem kotu zaslona. To bo dvignilo meni. Premaknite kazalec navzgor po meniju na <menuchoice
+><guimenu
+>Aplikacije</guimenu
+> <guisubmenu
+>Izobraževanje</guisubmenu
+> <guisubmenu
+>Razno</guisubmenu
+> <guimenuitem
+>&minuet; (Programska oprema za glasbeno izobraževanje)</guimenuitem
+></menuchoice
+> menijski element iz globalnega menija ali s <keycombo action="simul"
+>&Alt;<keycap
+>F2</keycap
+></keycombo
+> in vnosom <command
+>minuet</command
+> v vnosno polje. </para>
+</sect1>
+
+<sect1 id="minuet-exercises">
+<title
+>&minuet; Vaje in potek dela</title>
+
+<para
+>Uporabniški vmesnik &minuet; vključuje tri glavne komponente: </para>
+
+<screenshot>
+  <screeninfo
+>&minuet; glavno okno</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-ui-components.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>Komponente uporabniškega vmesnika &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Navigacijski meni</guilabel
+></term>
+<listitem
+><para
+>Omogoča krmarjenje po kategorijah vaj &minuet; in izbiro določene vaje. Navigacijski meni je dinamično ustvarjen na podlagi datotek s specifikacijami vaj, kot je opisano v <link linkend="creating-exercises"
+>Ustvarjanje vaj</link
+>. Minuetove vaje so razvrščene glede na razrede, kot so intervali, lestvice in akordi.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Pogled tipkovnice</guilabel
+></term>
+<listitem
+><para
+>Razstave &MIDI; <parameter
+>opomba o</parameter
+> dogodkih, ki jih niza &MIDI; datoteke ali z izvedbo vaje.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Pogled vadbe</guilabel
+></term>
+<listitem
+><para
+>Predstavlja za dano vajo gumbe za nadzor predstavitve vaje in nabor možnih odgovorov vaje. Vadba se začne s klikom na gumb <guibutton
+>Začni nalogo</guibutton
+>. Naključno izbrani interval/akord/lestvica igra &minuet; nato pa se pričakuje, da bo učenec izbral odgovor med tistimi, prikazanimi v mreži odgovorov. &minuet; vedno prisoten - kot bel majhen krog v pogledu tipkovnice - prva nota izbranega intervala/lestvice ali osnovna nota izbranega akorda. Če lebdite na možen odgovor, &minuet; poudari svojo ustrezno vizualno predstavitev v pogledu tipkovnice. Preostale opombe lebdečega odgovora so predstavljene kot majhni krogci, katerih barve so enake barvam gumba za lebdeč odgovor. Učenec lahko znova posluša vajo, tako da klikne gumb <guibutton
+>Predvajaj vprašanje</guibutton
+>, klikne gumb izbranega odgovora ali dobi pravi odgovor s klikom na gumb <guibutton
+>Odnehaj</guibutton
+>. Nov zagon iste vaje lahko začnete tako, da pritisnete gumb <guibutton
+>Ustavi nalogo</guibutton
+> in znova pritisnete gumb <guibutton
+>Novo vprašanje</guibutton
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+</chapter>
+
+<chapter id="creating-exercises">
+<title
+>Ustvarjanje novih &minuet; vaj</title>
+
+<para
+>Vaje &minuet; so definirane v datotekah s specifikacijami vaj, napisanih v &JSON; format: </para>
+<para>
+<programlisting
+>{ "vaje": [ { "name": "Intervali", "root": "21..104", "playMode": "lestvica", "otroci": [ { "name": "Naraščajoči melodični intervali", "children": [ { "name": "Seconds", "options": [ { "name": "Minor Second", "sequenceFromRoot": "1" }, { "name": "Major Second", "sequenceFromRoot ": "2" } ] } ] } ] } ] }
+</programlisting>
+</para>
+<para
+>Datoteke s specifikacijami vaj &minuet; vsebujejo en najvišji nivo &JSON; objekt, ki vsebuje matriko <parameter
+>vaje</parameter
+>. Takšen niz določa hierarhično strukturo vaj, razvrščenih po kategorijah. Vsaka kategorija/vaja ima ime. Kategorija &JSON; objekti vsebujejo lastnost z imenom <parameter
+>children</parameter
+>, ki opisuje podkategorije/vaje, ki jih vključuje taka kategorija. Vaja &JSON; objekti vsebujejo lastnost z imenom <parameter
+> options</parameter
+>, ki definira možne odgovore za takšno vajo. V vsaki izvedbi vaje &minuet; naključno izbere en odgovor med možnimi in od učenca se pričakuje, da klikne gumb za odgovor, ki ustreza izbranemu odgovoru. </para>
+<para
+>Katera koli (pod)kategorija lahko definira <parameter
+>root</parameter
+> parameter za določitev obsega, iz katerega bo naključno izbran začetni interval/akord/lestvica za vse vaje v tej kategoriji. Tak obseg ustreza standardom &MIDI; številke opombe in sledi formatu <parameter
+>&lt;min-vrednost&gt;..&lt;max-value&gt;</parameter
+>. Zgoraj predstavljeni primer uporablja ves obseg tipkovnice kot možne korenske note (21..104). Parameter <parameter
+>playMode</parameter
+> nakazuje, kako naj se predvajajo možni odgovori: kot <parameter
+>lestvica</parameter
+> (ena nota za drugo) ali kot <parameter
+>akord</parameter
+> (vse note zvonijo hkrati). </para>
+<para
+>Možnosti vsake vaje določajo ime in zaporedje not, ki jih je treba predvajati od korenske note, naključno izbrane v vsaki izvedbi vaje. Takšno zaporedje not je opredeljeno kot relativna razdalja od osnovne note, ki opisuje interval, ki ga vsaka nota tvori v povezavi z osnovno noto. Na primer, za durovo lestvico je zaporedje not <quote
+>2 4 5 7 9 11 12</quote
+>, kar označuje strukturo <quote
+>cel cel pol celo cel pol</quote
+> durovske lestvice. Parameter <parameter
+>sequenceFromRoot</parameter
+> lahko vsebuje poljubne opombe glede dolžine. Poleg tega jedro &minuet;a zagotavlja, da so naključno izbrani samo odgovori, katerih vse note so znotraj obsega tipkovnice. </para>
+<para
+>Da bi zagotovili boljšo infrastrukturo za organiziranje velikega nabora datotek s specifikacijami vadbe, jedro &minuet; podpira uporabo več datotek s specifikacijami, ki se samodejno združijo, da sestavijo končno hierarhijo vadbe, predstavljeno v navigacijskem meniju. Vaje so pravilno združene, dokler različne datoteke s specifikacijami pri definiranju vaj uporabljajo isto ime (pod)kategorije. Za zdaj &minuet;'s ne nudi &GUI; za ustvarjanje specifikacij vadbe, tako da morate ročno ustvariti take &JSON; datoteke. Datoteke s specifikacijo vaj &minuet; se lahko namestijo v sistemu ali lokalno v mapi <filename class="directory"
+>minuet/exercises/</filename
+>, ki se nahaja v <userinput
+><command
+>qtpaths</command
+> <option
+> --paths GenericDataLocation</option
+></userinput
+> </para>
+
+</chapter>
+
+<chapter id="credits">
+
+<title
+>Zasluge in licenca</title>
+
+<para
+>&minuet; </para>
+<para
+>Avtorske pravice za program 2016 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
+
+<para
+>Dokumentacija Copyright &copy; 2016 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
+
+<para
+>Prevod: Matjaž Jeran <email
+>matjaz.jeran@amis.net</email
+> S prijazno pomočjo Višnje Kajgana in Tomaža Kmetiča</para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->
