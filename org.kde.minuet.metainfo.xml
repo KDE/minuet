@@ -3,6 +3,7 @@
   <id>org.kde.minuet.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
+  <launchable type="desktop-id">org.kde.minuet.desktop</launchable>
   <name>Minuet</name>
   <name xml:lang="ar">منويت</name>
   <name xml:lang="ca">Minuet</name>
