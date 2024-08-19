@@ -34,7 +34,7 @@ class MINUETINTERFACES_EXPORT IPlugin : public QObject
     Q_OBJECT
 
 public:
-    virtual ~IPlugin() override = default;
+    ~IPlugin() override = default;
 
 protected:
     explicit IPlugin(QObject *parent = nullptr);

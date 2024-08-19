@@ -34,7 +34,7 @@ class MINUETINTERFACES_EXPORT IUiController : public QObject
     Q_OBJECT
 
 public:
-    virtual ~IUiController() override = default;
+    ~IUiController() override = default;
 
     virtual QString errorString() const = 0;
 

@@ -42,7 +42,7 @@ class MINUETINTERFACES_EXPORT IExerciseController : public QObject
                    selectedExerciseOptionsChanged)
 
 public:
-    virtual ~IExerciseController() override = default;
+    ~IExerciseController() override = default;
 
     virtual QString errorString() const = 0;
 

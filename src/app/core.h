@@ -32,14 +32,14 @@ class Core : public ICore
     Q_OBJECT
 
 public:
-    virtual ~Core() override = default;
+    ~Core() override = default;
 
     static bool initialize();
 
-    virtual IPluginController *pluginController() override;
-    virtual ISoundController *soundController() override;
-    virtual IExerciseController *exerciseController() override;
-    virtual IUiController *uiController() override;
+    IPluginController *pluginController() override;
+    ISoundController *soundController() override;
+    IExerciseController *exerciseController() override;
+    IUiController *uiController() override;
 
     void setSoundController(ISoundController *soundController);
 

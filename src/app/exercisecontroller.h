@@ -41,14 +41,14 @@ public:
     virtual ~ExerciseController() = default;
 
     bool initialize(Core *core);
-    virtual QString errorString() const override;
+    QString errorString() const override;
 
     Q_INVOKABLE unsigned int chosenRootNote() const;
 
-    virtual QJsonArray exercises() const override;
+    QJsonArray exercises() const override;
 
 public Q_SLOTS:
-    virtual void randomlySelectExerciseOptions() override;
+    void randomlySelectExerciseOptions() override;
 
 private:
     bool mergeJsonFiles(const QString directoryName, QJsonObject &targetObject,

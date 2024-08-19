@@ -35,20 +35,20 @@ class CsoundSoundController : public Minuet::ISoundController
 
 public:
     explicit CsoundSoundController(QObject *parent = 0);
-    virtual ~CsoundSoundController() override;
+    ~CsoundSoundController() override;
 
 public Q_SLOTS:
     virtual void setPitch(qint8 pitch);
     virtual void setVolume(quint8 volume);
     virtual void setTempo(quint8 tempo);
 
-    virtual void prepareFromExerciseOptions(QJsonArray selectedExerciseOptions) override;
-    virtual void prepareFromMidiFile(const QString &fileName) override;
+    void prepareFromExerciseOptions(QJsonArray selectedExerciseOptions) override;
+    void prepareFromMidiFile(const QString &fileName) override;
 
-    virtual void play() override;
-    virtual void pause() override;
-    virtual void stop() override;
-    virtual void reset() override;
+    void play() override;
+    void pause() override;
+    void stop() override;
+    void reset() override;
 
 private:
     void appendEvent(QList<unsigned int> midiNotes, QList<float> barStartInfo, QString playMode);

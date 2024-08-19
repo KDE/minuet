@@ -48,7 +48,7 @@ class MINUETINTERFACES_EXPORT ISoundController : public IPlugin
     Q_PROPERTY(QString playbackLabel READ playbackLabel NOTIFY playbackLabelChanged)
 
 public:
-    virtual ~ISoundController() override = default;
+    ~ISoundController() override = default;
 
     enum State { StoppedState = 0, PlayingState, PausedState };
     Q_ENUM(State)

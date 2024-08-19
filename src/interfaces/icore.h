@@ -46,7 +46,7 @@ class MINUETINTERFACES_EXPORT ICore : public QObject
     Q_PROPERTY(IUiController *uiController READ uiController CONSTANT)
 
 public:
-    virtual ~ICore() override;
+    ~ICore() override;
 
     static ICore *self();
 

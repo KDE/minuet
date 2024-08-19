@@ -37,20 +37,20 @@ class FluidSynthSoundController : public Minuet::ISoundController
 
 public:
     explicit FluidSynthSoundController(QObject *parent = nullptr);
-    virtual ~FluidSynthSoundController() override;
+    ~FluidSynthSoundController() override;
 
 public Q_SLOTS:
-    virtual void setPitch(qint8 pitch) override;
-    virtual void setVolume(quint8 volume) override;
-    virtual void setTempo(quint8 tempo) override;
+    void setPitch(qint8 pitch) override;
+    void setVolume(quint8 volume) override;
+    void setTempo(quint8 tempo) override;
 
-    virtual void prepareFromExerciseOptions(QJsonArray selectedExerciseOptions) override;
-    virtual void prepareFromMidiFile(const QString &fileName) override;
+    void prepareFromExerciseOptions(QJsonArray selectedExerciseOptions) override;
+    void prepareFromMidiFile(const QString &fileName) override;
 
-    virtual void play() override;
-    virtual void pause() override;
-    virtual void stop() override;
-    virtual void reset() override;
+    void play() override;
+    void pause() override;
+    void stop() override;
+    void reset() override;
 
 private:
     void appendEvent(int channel, short key, short velocity, unsigned int duration);

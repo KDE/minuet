@@ -71,7 +71,7 @@ public:
     ~UiController() override = default;
 
     bool initialize(Core *core);
-    virtual QString errorString() const override;
+    QString errorString() const override;
 
 private:
     QString m_errorString;

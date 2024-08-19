@@ -44,7 +44,7 @@ public:
     ~PluginController() override;
 
     bool initialize(Core *core);
-    virtual QString errorString() const override;
+    QString errorString() const override;
 
 private:
 #ifndef Q_OS_ANDROID
