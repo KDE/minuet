@@ -170,6 +170,7 @@
   </provides>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="0.4.0.24082" date="2024-10-10"/>
     <release version="0.4.0.24081" date="2024-09-12"/>
     <release version="0.4.0.24080" date="2024-08-22"/>
     <release version="0.4.0.24052" date="2024-07-04"/>
