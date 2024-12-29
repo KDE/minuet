@@ -314,7 +314,7 @@ Item {
                                 anchors.fill: parent
                                 onClicked: {
                                     if (exerciseView.state == "waitingForAnswer" && !animation.running) {
-                                        onExited()
+                                        exited()
                                         internal.userAnswers.push({"name": option.originalText, "model": answerRectangle.model, "index": answerRectangle.index, "color": answerRectangle.color})
                                         internal.currentAnswer++
                                         if (internal.currentAnswer == currentExercise.numberOfSelectedOptions)
