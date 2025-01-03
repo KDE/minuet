@@ -39,7 +39,7 @@ package-repositories:
 parts:
   minuet:
     parse-info:
-      - usr/share/metainfo/org.kde.minuet.appdata.xml
+      - usr/share/metainfo/org.kde.minuet.metainfo.xml
     plugin: cmake
     source: .
     source-type: local
