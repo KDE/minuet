@@ -51,7 +51,7 @@ T.ItemDelegate {
 
             text: control.text
             font: control.font
-            color: control.enabled ? "#26282a" : "#bdbebf"
+            color: control.enabled ? palette.text : "#bdbebf"
             width: parent.width
             wrapMode: Text.WordWrap
             anchors.verticalCenter: parent.verticalCenter
