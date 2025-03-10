@@ -1,20 +1,22 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the minuet package.
 # nemo <ceo-of-antifa@protonmail.com>, 2020.
+# SPDX-FileCopyrightText: 2025 Tommi Nieminen <translator@legisign.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-15 00:39+0000\n"
-"PO-Revision-Date: 2020-09-17 17:10+0200\n"
-"Last-Translator: nemo <ceo-of-antifa@protonmail.com>\n"
-"Language-Team: fi\n"
+"PO-Revision-Date: 2025-03-04 08:06+0200\n"
+"Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
+"Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -210,7 +212,7 @@ msgstr "Vähennetty Septimi"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished H-W"
-msgstr "Dominanttidimiasteikko(puolisävelaskeella alkava)"
+msgstr "Dominanttidimiasteikko (puolisävelaskeella alkava)"
 
 #, fuzzy, kde-format
 #| msgctxt "technical term, do you have a musician friend?"
@@ -811,7 +813,7 @@ msgstr "Fryyginen b4"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Phrygian Dominant"
-msgstr "Fryyginen Dominantti"
+msgstr "Fryyginen dominantti"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
