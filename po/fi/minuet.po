@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-15 00:39+0000\n"
+"POT-Creation-Date: 2025-03-11 00:38+0000\n"
 "PO-Revision-Date: 2025-03-04 08:06+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -1009,27 +1009,27 @@ msgstr "JSON-tiedoston \"%1\" avaaminen epäonnistui."
 # pmap: =/elat=Minuetista/
 # pmap: =/adess=Minuetilla/
 # pmap: =/illat=Minuetiin/
-#: src/app/main.cpp:52
+#: src/app/main.cpp:49
 #, kde-format
 msgid "Minuet"
 msgstr "Minuet"
 
-#: src/app/main.cpp:54
+#: src/app/main.cpp:51
 #, kde-format
 msgid "A KDE application for music education"
 msgstr "KDE-sovellus musiikinopetukseen"
 
-#: src/app/main.cpp:55
+#: src/app/main.cpp:52
 #, kde-format
 msgid "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 msgstr "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 
-#: src/app/main.cpp:56 src/app/main.cpp:58
+#: src/app/main.cpp:53 src/app/main.cpp:55
 #, kde-format
 msgid "Developer"
 msgstr "Kehittäjä"
 
-#: src/app/main.cpp:60
+#: src/app/main.cpp:57
 #, kde-format
 msgid "Minuet Icon Designer"
 msgstr "Minuet-kuvakkeen Tekijä"

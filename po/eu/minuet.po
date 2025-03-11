@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-15 00:39+0000\n"
+"POT-Creation-Date: 2025-03-11 00:38+0000\n"
 "PO-Revision-Date: 2024-09-28 14:49+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -920,27 +920,27 @@ msgstr "Tonu osoa"
 msgid "Could not open JSON file \"%1\"."
 msgstr "Ezin izan du \"%1\" JSON fitxategia ireki."
 
-#: src/app/main.cpp:52
+#: src/app/main.cpp:49
 #, kde-format
 msgid "Minuet"
 msgstr "Minuet"
 
-#: src/app/main.cpp:54
+#: src/app/main.cpp:51
 #, kde-format
 msgid "A KDE application for music education"
 msgstr "Musika heziketarako KDEren aplikazio bat"
 
-#: src/app/main.cpp:55
+#: src/app/main.cpp:52
 #, kde-format
 msgid "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 msgstr "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 
-#: src/app/main.cpp:56 src/app/main.cpp:58
+#: src/app/main.cpp:53 src/app/main.cpp:55
 #, kde-format
 msgid "Developer"
 msgstr "Garatzailea"
 
-#: src/app/main.cpp:60
+#: src/app/main.cpp:57
 #, kde-format
 msgid "Minuet Icon Designer"
 msgstr "«Minuet»en ikonoaren diseinatzailea"
