@@ -20,6 +20,7 @@
   <name xml:lang="fi">Minuet</name>
   <name xml:lang="fr">Minuet</name>
   <name xml:lang="gl">Minuet</name>
+  <name xml:lang="he">מינואט</name>
   <name xml:lang="id">Minuet</name>
   <name xml:lang="it">Minuet</name>
   <name xml:lang="ka">Minuet</name>
@@ -55,6 +56,7 @@
   <summary xml:lang="fi">Musiikinopetusohjelma</summary>
   <summary xml:lang="fr">Logiciel d'apprentissage de la musique</summary>
   <summary xml:lang="gl">Programa de ensino musical</summary>
+  <summary xml:lang="he">תוכנה לחינוך מוזיקלי</summary>
   <summary xml:lang="id">Software Pendidikan Musik</summary>
   <summary xml:lang="it">Programma di educazione musicale</summary>
   <summary xml:lang="ka">მუსიკის სწავლის პროგრამა</summary>
@@ -95,6 +97,7 @@
     <p xml:lang="fi">Minuet on ohjelma musiikinopetukseen. Siinä on muun muassa intervallien, sointujen ja asteikkojen tunnistusharjoituksia musiikkikorvan kehitykseen.</p>
     <p xml:lang="fr">Minuet est une application d'apprentissage de la musique. Elle comporte un ensemble d'exercices d'entraînement de l'oreille, permettant d'apprendre à reconnaître les intervalles, les accords, les gammes et bien plus encore.</p>
     <p xml:lang="gl">Minuet é unha aplicación para ensino musical. Goza dunha serie de exercicios de adestramento con intervalos, acordes, escalas e máis.</p>
+    <p xml:lang="he">מינואט הוא יישום לחינוך מוזיקלי. הוא מציג סדרה של תרגילי אימון לאוזניים בנושאי הפרשים, אקורדים, סולמות ועוד.</p>
     <p xml:lang="id">Minuet adalah aplikasi untuk pendidikan musik. Ini fitur satu set latihan pelatihan telinga mengenai interval, akord, skala dan banyak lagi.</p>
     <p xml:lang="it">Minuet è un'applicazione per l'educazione musicale. Fornisce un insieme di esercizi per allenare l'orecchio relativi a intervalli, accordi, scale e altro.</p>
     <p xml:lang="ka">Minuet მუსიკის შესასწავლი აპლიკაციაა. მის ფუნქციებში შედის ყურის ვარჯიშის ნაკრები ინტერვალების, აკორდებისა და ა.შ. შესახებ.</p>
@@ -136,6 +139,7 @@
       <caption xml:lang="fi">Harjoittelu Minuetin Avulla</caption>
       <caption xml:lang="fr">Entraînement sur Menuet</caption>
       <caption xml:lang="gl">Adestrando con Minuet.</caption>
+      <caption xml:lang="he">תרגול עם מינואט</caption>
       <caption xml:lang="id">Berlatih dengan Minuet</caption>
       <caption xml:lang="it">Esercitazione con Minuet</caption>
       <caption xml:lang="ka">ვარჯიში Minuet-თან ერთად</caption>
