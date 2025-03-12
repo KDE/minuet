@@ -259,11 +259,7 @@
 >chord</parameter
 > (-acord- totes les notes sonant simultàniament). </para>
 <para
->Cada opció de l'exercici defineix un nom i la seqüència de notes que s'han de reproduir a partir de la nota base seleccionada aleatòriament en cada exercici executat. Aquesta seqüència de notes es defineix com a distàncies relatives a partir de la nota base, descrivint l'interval que cada nota forma en conjunció amb la nota base. Per exemple, per a una escala major, la seqüència de notes és <quote
->2 4 5 7 9 11 12</quote
->, el qual denota respectivament un estructura de l'escala major <quote
->completa completa mitja completa completa completa mitja</quote
->. El paràmetre <parameter
+>Cada opció de l'exercici defineix un nom i la seqüència de notes que s'han de reproduir a partir de la nota base seleccionada aleatòriament en cada exercici executat. Aquesta seqüència de notes es defineix com a distàncies relatives a partir de la nota base, descrivint l'interval que cada nota forma en conjunció amb la nota base. Per exemple, per a una escala major, la seqüència de notes és «2 4 5 7 9 11 12», la qual denota respectivament una estructura de l'escala major «completa completa mitja completa completa completa mitja». El paràmetre <parameter
 >sequenceFromRoot</parameter
 > pot contenir qualsevol nombre de notes en longitud. També, el nucli del &minuet; garanteix que només les respostes en què totes les notes es troben dins de l'interval del teclat són seleccionades aleatòriament. </para>
 <para
