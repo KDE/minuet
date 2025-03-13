@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-11 00:38+0000\n"
-"PO-Revision-Date: 2024-09-23 15:28+0300\n"
+"PO-Revision-Date: 2025-03-12 13:03+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.11.70\n"
+"X-Generator: Lokalize 25.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -180,17 +180,17 @@ msgstr "Azaltılmış akorlar"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished - first inversion"
-msgstr "Azaltılmış - ilk tersine çevirme"
+msgstr "Azaltılmış — ilk tersine çevirme"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished H-W"
-msgstr "Azaltılmış Y-T"
+msgstr "Azaltılmış Y–T"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished - inversions"
-msgstr "Azaltılmış - ters çevirmeler"
+msgstr "Azaltılmış — ters çevirmeler"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -205,7 +205,7 @@ msgstr "Azaltılmış yedilik"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished W-H"
-msgstr "Azaltılmış T-Y"
+msgstr "Azaltılmış T–Y"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -230,7 +230,7 @@ msgstr "Baskın yedilik"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh - first inversion"
-msgstr "Baskın yedilik - ilk ters çevirme"
+msgstr "Baskın yedilik — ilk ters çevirme"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -240,17 +240,17 @@ msgstr "Baskın yedilik düz beş"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh - inversions"
-msgstr "Baskın yedilik - ters çevirmeler"
+msgstr "Baskın yedilik — ters çevirmeler"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh - second inversion"
-msgstr "Baskın yedilik - ikinci ters çevirme"
+msgstr "Baskın yedilik — ikinci ters çevirme"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh - third inversion"
-msgstr "Baskın yedilik - üçüncü ters çevirme"
+msgstr "Baskın yedilik — üçüncü ters çevirme"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -275,17 +275,17 @@ msgstr "Kolay"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "eighth-dot-sixteenth"
-msgstr "sekiz-nokta-onaltılık"
+msgstr "sekiz–nokta–onaltılık"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "eighth-eighth"
-msgstr "sekiz-sekizlik"
+msgstr "sekiz–sekizlik"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "eighth-sixteenth-sixteenth"
-msgstr "sekiz-onaltılık-onaltılık"
+msgstr "sekiz–onaltılık–onaltılık"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -435,7 +435,7 @@ msgstr "Majör on birlik"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major - first inversion"
-msgstr "Majör - ilk ters çevirme"
+msgstr "Majör — ilk ters çevirme"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -445,7 +445,7 @@ msgstr "Majör On dörtlük"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major - inversions"
-msgstr "Majör - ters çevirmeler"
+msgstr "Majör — ters çevirmeler"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -475,7 +475,7 @@ msgstr "Majör İkilik"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major - second inversion"
-msgstr "Majör - ikinci ters çevirme"
+msgstr "Majör — ikinci ters çevirme"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -490,7 +490,7 @@ msgstr "Majör Yedilik"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh - first inversion"
-msgstr "Majör yedilik - ilk ters çevirme"
+msgstr "Majör yedilik — ilk ters çevirme"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -500,17 +500,17 @@ msgstr "Majör yedilik düz beş"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh - inversions"
-msgstr "Majör yedilik - ters çevirmeler"
+msgstr "Majör yedilik — ters çevirmeler"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh - second inversion"
-msgstr "Majör yedilik - ikinci ters çevirme"
+msgstr "Majör yedilik — ikinci ters çevirme"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh - third inversion"
-msgstr "Majör yedilik - üçüncü ters çevirme"
+msgstr "Majör yedilik — üçüncü ters çevirme"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -570,7 +570,7 @@ msgstr "Minör on birlik"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor - first inversion"
-msgstr "Minör - ilk ters çevirme"
+msgstr "Minör — ilk ters çevirme"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -580,7 +580,7 @@ msgstr "Minör Ondörtlük"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor - inversions"
-msgstr "Minör - ters çevirmeler"
+msgstr "Minör — ters çevirmeler"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -610,7 +610,7 @@ msgstr "Minör İkilik"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor - second inversion"
-msgstr "Minör - ikinci ters çevirme"
+msgstr "Minör — ikinci ters çevirme"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -625,22 +625,22 @@ msgstr "Minör Yedilik"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh - first inversion"
-msgstr "Minör yedilik - ilk ters çevirme"
+msgstr "Minör yedilik — ilk ters çevirme"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh - inversions"
-msgstr "Minör yedilik - ters çevirmeler"
+msgstr "Minör yedilik — ters çevirmeler"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh - second inversion"
-msgstr "Minör yedilik - ikinci ters çevirme"
+msgstr "Minör yedilik — ikinci ters çevirme"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh - third inversion"
-msgstr "Minör yedilik - üçüncü ters çevirme"
+msgstr "Minör yedilik — üçüncü ters çevirme"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -820,22 +820,22 @@ msgstr "On birlik diyez akorlar"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "sixteenth-eighth-dot"
-msgstr "onaltılık-sekizlik-nokta"
+msgstr "onaltılık–sekizlik–nokta"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "sixteenth-eighth-sixteenth"
-msgstr "onaltılık-sekizlik-onaltılık"
+msgstr "onaltılık–sekizlik–onaltılık"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "sixteenth-sixteenth-eighth"
-msgstr "onaltılık-onaltılık-sekizlik"
+msgstr "onaltılık–onaltılık–sekizlik"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "sixteenth-sixteenth-sixteenth-sixteenth"
-msgstr "onaltılık-onaltılık-onaltılık-onaltılık"
+msgstr "onaltılık–onaltılık–onaltılık–onaltılık"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -890,7 +890,7 @@ msgstr "Üç Notalı Akorlar"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Triads - inversions"
-msgstr "Üç notalı akorlar - ters çevirmeler"
+msgstr "Üç notalı akorlar — ters çevirmeler"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -915,7 +915,7 @@ msgstr "Tam Ton"
 #: src/app/exercisecontroller.cpp:163
 #, kde-format
 msgid "Could not open JSON file \"%1\"."
-msgstr "\"%1\" JSON dosyası açılamadı."
+msgstr "“%1” JSON dosyası açılamadı."
 
 #: src/app/main.cpp:49
 #, kde-format
@@ -945,7 +945,7 @@ msgstr "Minuet Simge Tasarımcısı"
 #: src/app/qml/ExerciseView.qml:71
 #, kde-format
 msgid "Click 'New Question' to start!"
-msgstr "Başlamak için \"Yeni Soru\"ya tıklayın!"
+msgstr "Başlamak için “Yeni Soru”ya tıklayın!"
 
 #: src/app/qml/ExerciseView.qml:100
 #, kde-format
@@ -1006,7 +1006,7 @@ msgstr "Sınamayı Başlat"
 #: src/app/qml/ExerciseView.qml:253
 #, kde-format
 msgid "Click 'New Question' to start"
-msgstr "Başlamak için 'Yeni Soru'ya tıklayın"
+msgstr "Başlamak için “Yeni Soru”ya tıklayın"
 
 #: src/app/qml/ExerciseView.qml:261
 #, kde-format
