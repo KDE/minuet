@@ -20,8 +20,9 @@ Minuet features a rich set of ear training's exercises and new ones can be  seam
 where $KDEDIRS points to your KDE installation prefix.
 
 Note: you can use another build path. Then cd in your build dir and:
-export KDE_SRC=path_to_your_src
-cmake $KDE_SRC -DCMAKE_INSTALL_PREFIX=$KDEDIRS -DCMAKE_BUILD_TYPE=Debug
+
+    $ export KDE_SRC=path_to_your_src
+    $ cmake $KDE_SRC -DCMAKE_INSTALL_PREFIX=$KDEDIRS -DCMAKE_BUILD_TYPE=Debug
 
 # How to Create Minuet Screencasts
 
