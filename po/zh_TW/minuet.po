@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-11 00:38+0000\n"
-"PO-Revision-Date: 2025-04-19 23:41+0900\n"
+"PO-Revision-Date: 2025-05-19 21:20+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.07.70\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #, kde-format
@@ -66,7 +66,7 @@ msgstr "上行旋律音程"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented"
-msgstr "增和弦"
+msgstr "增音階"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -76,7 +76,7 @@ msgstr "增和弦"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented Inverse"
-msgstr "增和弦轉位"
+msgstr "增音階轉位"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -186,7 +186,7 @@ msgstr "減和弦 - 第一轉位"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished H-W"
-msgstr "減和弦 H-W"
+msgstr "減音階（半全）"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -206,7 +206,7 @@ msgstr "減七和弦"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished W-H"
-msgstr "減和弦 W-H"
+msgstr "減音階（全半）"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -276,17 +276,17 @@ msgstr "容易"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "eighth-dot-sixteenth"
-msgstr ""
+msgstr "eighth-dot-sixteenth"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "eighth-eighth"
-msgstr ""
+msgstr "eighth-eighth"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "eighth-sixteenth-sixteenth"
-msgstr ""
+msgstr "eighth-sixteenth-sixteenth"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -546,7 +546,7 @@ msgstr "Man Gong"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Medium"
-msgstr "中"
+msgstr "中等"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -821,22 +821,22 @@ msgstr "升十一的和弦"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "sixteenth-eighth-dot"
-msgstr ""
+msgstr "sixteenth-eighth-dot"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "sixteenth-eighth-sixteenth"
-msgstr ""
+msgstr "sixteenth-eighth-sixteenth"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "sixteenth-sixteenth-eighth"
-msgstr ""
+msgstr "sixteenth-sixteenth-eighth"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "sixteenth-sixteenth-sixteenth-sixteenth"
-msgstr ""
+msgstr "sixteenth-sixteenth-sixteenth-sixteenth"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -911,7 +911,7 @@ msgstr "Ultralocrian"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Whole Tone"
-msgstr "全音"
+msgstr "全音音階"
 
 #: src/app/exercisecontroller.cpp:163
 #, kde-format
@@ -1022,7 +1022,7 @@ msgstr "你的答案"
 #: src/app/qml/ExerciseView.qml:405
 #, kde-format
 msgid "Backspace"
-msgstr "Backspace"
+msgstr "刪除"
 
 #: src/app/qml/Main.qml:80
 #, kde-format
