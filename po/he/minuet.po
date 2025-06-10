@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-11 00:38+0000\n"
-"PO-Revision-Date: 2025-03-11 08:39+0200\n"
+"PO-Revision-Date: 2025-06-09 14:33+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 24.12.2\n"
+"X-Generator: Lokalize 25.04.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -666,7 +666,7 @@ msgstr ""
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Mixolydian"
-msgstr ""
+msgstr "מיקסולידי"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -721,7 +721,7 @@ msgstr ""
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Phrygian"
-msgstr ""
+msgstr "פריגיש"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -731,7 +731,7 @@ msgstr ""
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Phrygian Dominant"
-msgstr ""
+msgstr "דומיננט פריגי"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -886,12 +886,12 @@ msgstr ""
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Triads"
-msgstr ""
+msgstr "משולשים"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Triads - inversions"
-msgstr ""
+msgstr "משולשים - היפוכים"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -901,7 +901,7 @@ msgstr "טריטון"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Tritone and Sevenths"
-msgstr ""
+msgstr "טריטון ושביעיות"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
