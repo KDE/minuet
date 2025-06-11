@@ -1,5 +1,15 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY Sandro.Andrade '<personname
+><firstname
+>Sandro</firstname
+><surname
+>Andrade</surname
+></personname
+>'>
+  <!ENTITY Sandro.Andrade.mail '<email
+>sandroandrade@kde.org</email
+>'>
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % Spanish "INCLUDE">
 ]>
@@ -49,10 +59,10 @@
 >&FDLNotice;</legalnotice>
 
 <date
->2021-10-19</date>
+>2016-12-09</date>
 
 <releaseinfo
->0.4 (KDE Gear 21.08)</releaseinfo>
+>Applications 16.12</releaseinfo>
 
 <abstract>
 <para
@@ -75,7 +85,7 @@
 <keyword
 >escalas</keyword>
 <keyword
->Minuet</keyword>
+>minuet</keyword>
 </keywordset>
 
 </bookinfo>
@@ -85,24 +95,21 @@
 >Introducción</title>
 
 <para
->Bienvenido a &minuet;: el software musical educativo. &minuet; está pensado para ayudar a estudiantes y profesores en diversos aspectos de la educación musical, como el entrenamiento auditivo, la lectura a primera vista, el solfeo, las escalas, el ritmo, la armonía y la improvisación. &minuet; hace un amplio uso de las funcionalidades &MIDI; para proporcionar un completo conjunto de funciones sobre cambios de volumen, tempo y modulación, lo que hace de &minuet; una valiosa herramienta tanto para el principiante como para el músico experimentado. </para>
+>Welcome to &minuet;: the &kde; software for music education. &minuet; aims at supporting students and teachers in many aspects of music education, such as ear training, first-sight reading, solfa, scales, rhythm, harmony, and improvisation. &minuet; makes extensive use of &MIDI; capabilities to provide a full-fledged set of features regarding volume, tempo, and pitch changes, which makes &minuet; a valuable tool for both novice and experienced musicians. </para>
 <para
 >&minuet; incluye un extenso conjunto de ejercicios para entrenamiento del oído y permite <link linkend="creating-exercises"
 >añadir fácilmente</link
 > otros nuevos para poder extender sus funciones y adaptarlo a diversos contextos de educación musical. </para>
-
-<screenshot>
-  <screeninfo
->Ventana principal de &minuet;</screeninfo>
-  <mediaobject>
-    <imageobject
-><imagedata fileref="minuet-screenshot.png" format="PNG"/></imageobject>
-    <textobject
-><phrase
->Ejercicios de acordes de &minuet; para entrenamiento auditivo</phrase
-></textobject>
-  </mediaobject>
-</screenshot>
+<para>
+<mediaobject>
+<imageobject
+><imagedata format="PNG" fileref="minuet-screenshot.png"/></imageobject>
+<caption
+><para
+>Ejercicios de acordes de &minuet; para entrenamiento auditivo</para
+></caption>
+</mediaobject>
+</para>
 </chapter>
 
 <chapter id="using-minuet">
@@ -119,25 +126,18 @@
 <sect1 id="starting-minuet">
 <title
 >Inicio de &minuet;</title>
-
 <para
->Puede iniciar &minuet; desde el lanzador de aplicaciones. Abra el menú global haciendo clic en el icono del lanzador de aplicaciones que hay en la barra de la parte inferior de su pantalla. Esto mostrará un menú. Mueva el cursor hasta la opción del menú global <menuchoice
+>You can start &minuet; from the application launcher. Open the &kde; program menu by clicking on the application launcher icon on the toolbar at the bottom left of your screen. This will raise a menu. Move your cursor up the menu to the <menuchoice
 ><guimenu
->Aplicaciones</guimenu
+>Applications</guimenu
 ><guisubmenu
->Educación</guisubmenu
+>Education</guisubmenu
 ><guisubmenu
->Varios</guisubmenu
+>Miscellaneous</guisubmenu
 > <guimenuitem
->&minuet; (Software educativo musical)</guimenuitem
+>&minuet; (Music Education Software)</guimenuitem
 ></menuchoice
-> o con <keycombo action="simul"
->&Alt;<keycap
->F2</keycap
-></keycombo
-> e introduciendo <command
->minuet</command
-> en el campo de entrada. </para>
+> menu item. </para>
 </sect1>
 
 <sect1 id="minuet-exercises">
@@ -146,26 +146,22 @@
 
 <para
 >La interfaz de usuario de &minuet; contiene tres componentes principales: </para>
-
-<screenshot>
-  <screeninfo
->Ventana principal de &minuet;</screeninfo>
-  <mediaobject>
-    <imageobject
-><imagedata fileref="minuet-ui-components.png" format="PNG"/></imageobject>
-    <textobject
-><phrase
->Componentes de la interfaz de usuario de &minuet;</phrase
-></textobject>
-  </mediaobject>
-</screenshot>
-
+<para>
+<mediaobject>
+<imageobject
+><imagedata format="PNG" fileref="minuet-ui-components.png"/></imageobject>
+<caption
+><para
+>Componentes de la interfaz de usuario de &minuet;</para
+></caption>
+</mediaobject>
+</para>
 <variablelist>
 
 <varlistentry>
 <term
-><guilabel
->Menú de navegación</guilabel
+><guimenuitem
+>Menú de navegación</guimenuitem
 ></term>
 <listitem
 ><para
@@ -177,8 +173,8 @@
 
 <varlistentry>
 <term
-><guilabel
->Vista del teclado</guilabel
+><guimenuitem
+>Vista del teclado</guimenuitem
 ></term>
 <listitem
 ><para
@@ -190,22 +186,20 @@
 
 <varlistentry>
 <term
-><guilabel
->Vista de ejercicios</guilabel
+><guimenuitem
+>Vista de ejercicios</guimenuitem
 ></term>
 <listitem
 ><para
->Muestra, para un determinado ejercicio, botones para controlar la presentación del ejercicio y un conjunto de posibles respuestas para el ejercicio. La ejecución de un ejercicio comienza al pulsar el botón <guibutton
->Iniciar la prueba</guibutton
->. &minuet; reproduce un intervalo, un acorde o una escala al azar y el estudiante debe seleccionar una respuesta de entre las posibles que se muestran. &minuet; siempre presenta (como un pequeño círculo blanco en la vista del teclado) la primera nota del intervalo o escala seleccionado, o la nota raíz del acorde seleccionado. Al situar el cursor sobre una posible respuesta, &minuet; resalta su correspondiente representación visual en el visor del teclado. Las notas restantes de la respuesta se muestran como pequeños círculos cuyo color es idéntico al del botón de la respuesta sobre el que se ha situado el cursor. El estudiante puede escuchar el ejercicio de nuevo pulsando el botón <guibutton
->Reproducir la pregunta</guibutton
->, pulsar el botón de la respuesta escogida u obtener la respuesta correcta pulsando el botón <guibutton
->Me rindo</guibutton
->. Se puede volver a ejecutar el mismo ejercicio pulsando el botón <guibutton
->Detener la prueba</guibutton
-> y volviendo a pulsar el botón <guibutton
->Nueva pregunta</guibutton
->.</para
+>Presents, for a given exercise, buttons for controlling exercise presentation and a set of exercise's possible answers. An exercise run begins by clicking the <parameter
+>new question</parameter
+> button. A randomly selected interval/chord/scale is played by &minuet; and then the student is expected to pick up an answer among the ones shown in the answer's grid. &minuet; always present - as a white small circle in Keyboard View - the first note of selected interval/scale or the root note of selected chord. By hovering a possible answer, &minuet; highlights its corresponding visual representation in Keyboard View. The remaining notes of the hovered answer are presented as small circles whose colors are the same of hovered answer's button. The student can hear the exercise again by clicking the <parameter
+>play question</parameter
+> button, click the chosen answer button, or get the right answer by clicking the <parameter
+>give up</parameter
+> button. A new run of the same exercise can be started by clicking again the <parameter
+>new question</parameter
+> button.</para
 ></listitem>
 </varlistentry>
 
@@ -218,7 +212,7 @@
 >Creación de nuevos ejercicios de &minuet;</title>
 
 <para
->Los ejercicios de &minuet; se definen en archivos de especificación de ejercicios, escritos en formato &JSON;: </para>
+>&minuet;'s exercises are defined in exercise specification files, written in JSON format: </para>
 <para>
 <programlisting
 >{
@@ -253,13 +247,13 @@
 </programlisting>
 </para>
 <para
->Los archivos de especificación de ejercicios de &minuet; contienen un objeto &JSON; de nivel superior que incluye la tabla de <parameter
->ejercicios</parameter
->. Esta tabla define una estructura jerárquica de ejercicios, agrupados por categorías. Cada categoría o ejercicio posee un nombre. Los objetos &JSON; de categorías contienen una propiedad llamada <parameter
+>&minuet;'s exercise specification files contain one top-level JSON object featuring the <parameter
+>exercises</parameter
+> array. Such an array defines a hierarchical structure of exercises, grouped by categories. Every category/exercise has a name. Category JSON objects contain a property named <parameter
 >children</parameter
-> que describe las subcategorías o ejercicios que contiene dicha categoría. Los objetos &JSON; de ejercicios contienen una propiedad llamada <parameter
->options</parameter
-> que define las posibles respuestas para dicho ejercicio. Cada vez que se ejecuta un ejercicio, &minuet; selecciona al azar una respuesta entre las posibles y se espera que el estudiante pulse el botón de la respuesta que se corresponda con la respuesta seleccionada. </para>
+>, which describes the subcategories/exercises entailed by such a category. Exercise JSON objects contain a property named <parameter
+> options</parameter
+>, which defines the possible answers for such an exercise. In each exercise run, &minuet; randomly selects one answer among the possible ones and the student is expected to click the answer's button which corresponds to the selected answer. </para>
 <para
 >Cualquier (sub)categoría puede definir un parámetro <parameter
 >root</parameter
@@ -273,17 +267,17 @@
 >acorde</parameter
 > (todas las notas sonando simultáneamente). </para>
 <para
->Cada opción del ejercicio define un nombre y una secuencia de notas que se deben reproducir desde la nota raíz seleccionada al azar cada vez que se ejecuta el ejercicio. Dicha secuencia de notas se define como distancias relativas desde la nota raíz, describiendo el intervalo que forma cada nota en conjunción con la nota raíz. Por ejemplo, para una escala mayor, la secuencia de notas es «2 4 5 7 9 11 12», que representa respectivamente la estructura de la escala mayor «entera entera media entera entera entera media». El parámetro <parameter
+>Each exercise's option defines a name and the sequence of notes which should be played from the root note randomly selected in each exercise run. Such sequence of notes is defined as relative distances from the root note, describing the interval each note forms in conjunction with the root note. For example, for a major scale, the sequence of notes is "2 4 5 7 9 11 12", which respectively denotes the "whole whole half whole whole whole half" major scale structure. The <parameter
 >sequenceFromRoot</parameter
-> puede contener notas de cualquier longitud. Además, el núcleo de &minuet; se asegura de que solo se seleccionen al azar las respuestas cuyas notas caigan dentro del intervalo del teclado. </para>
+> parameter may contain any notes in length. Also, &minuet;'s core ensures that only answers whose all notes lies within keyboard range are randomly selected. </para>
 <para
->Para proporcionar una mejor infraestructura para organizar un gran conjunto de archivos de especificación de ejercicios, el núcleo de &minuet; permite el uso de varios archivos de especificación, que se fusionan automáticamente para componer la jerarquía de ejercicios final que se muestra en el menú de navegación. Los ejercicios se fusionan correctamente siempre y cuando los distintos archivos de especificación usen el mismo nombre de (sub)categoría para definir los ejercicios. Hasta ahora, &minuet; no proporciona ninguna &GUI; para crear especificaciones de ejercicios, por lo que usted deberá crear manualmente estos archivos &JSON;. Los archivos de especificación de ejercicios de &minuet; se pueden instalar para todo el sistema o de forma local en la carpeta <filename class="directory"
+>To provide a better infrastructure for organizing a large set of exercise specification files, &minuet;'s core supports the use of several specification files, which are automatically merged to compose the final exercise hierarchy presented in the Navigation Menu. Exercises are correctly merged as long as different specification files use the same (sub)category name when defining exercises. For now, &minuet;'s provides no &GUI; for creating exercise specifications so that you must manually create such JSON files. &minuet;'s exercise specification files may be installed system-wide or locally in the <filename class="directory"
 >minuet/exercises/</filename
-> situada en <userinput
+> directory located in <userinput
 ><command
 >qtpaths</command
 > <option
->--paths GenericDataLocation</option
+>--path GenericDataLocation</option
 ></userinput
 > </para>
 
