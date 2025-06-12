@@ -18,7 +18,7 @@ apps:
       - audio-playback
       - home
 environment:
-  ALSA_CONFIG_PATH: "$SNAP/kf6etc/asound.conf"
+  ALSA_CONFIG_PATH: "$SNAP/kf6/etc/asound.conf"
 layout:
   /usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/alsa-lib:
     bind: $SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/alsa-lib
