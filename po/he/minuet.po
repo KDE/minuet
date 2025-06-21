@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-11 00:38+0000\n"
-"PO-Revision-Date: 2025-06-09 14:33+0300\n"
+"PO-Revision-Date: 2025-06-20 22:31+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -681,7 +681,7 @@ msgstr ""
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave + Tritone"
-msgstr ""
+msgstr "אוקטבה + טריטון"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
