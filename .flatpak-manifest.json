@@ -2,13 +2,25 @@
     "id": "org.kde.minuet",
     "branch": "master",
     "runtime": "org.kde.Platform",
-    "runtime-version": "6.8",
+    "runtime-version": "6.9",
     "sdk": "org.kde.Sdk",
     "command": "minuet",
     "tags": ["nightly"],
     "desktop-file-name-suffix": " (Nightly)",
-    "finish-args": ["--socket=pulseaudio", "--share=ipc", "--socket=x11", "--socket=wayland" ],
-
+    "finish-args": ["--socket=pulseaudio", "--share=ipc", "--socket=fallback-x11", "--socket=wayland" ],
+    "cleanup": [
+        "*.a",
+        "*.la",
+        "/include",
+        "/lib/cmake",
+        "/lib/pkgconfig",
+        "/lib/*/cmake",
+        "/lib/*/pkgconfig",
+        "/man",
+        "/share/cmake",
+        "/share/man",
+        "/share/pkgconfig"
+    ],
     "modules": [
         {
             "name": "fluidsynth",
