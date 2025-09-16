@@ -968,7 +968,7 @@ msgstr "¡Vaya! Esta vez no. Vuelva a probar."
 #: src/app/qml/ExerciseView.qml:102
 #, kde-format
 msgid "You answered correctly %1%"
-msgstr "Ha respondido correctamente el %1%"
+msgstr "Ha respondido correctamente el %1 %"
 
 #: src/app/qml/ExerciseView.qml:152
 #, kde-format
