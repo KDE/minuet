@@ -5,9 +5,16 @@
     "runtime-version": "6.9",
     "sdk": "org.kde.Sdk",
     "command": "minuet",
-    "tags": ["nightly"],
+    "tags": [
+        "nightly"
+    ],
     "desktop-file-name-suffix": " (Nightly)",
-    "finish-args": ["--socket=pulseaudio", "--share=ipc", "--socket=fallback-x11", "--socket=wayland" ],
+    "finish-args": [
+        "--socket=pulseaudio",
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--socket=wayland"
+    ],
     "cleanup": [
         "*.a",
         "*.la",
@@ -28,8 +35,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/FluidSynth/fluidsynth/archive/refs/tags/v2.3.2.tar.gz",
-                    "sha256": "cd610810f30566e28fb98c36501f00446a06fa6bae3dc562c8cd3868fe1c0fc7",
+                    "url": "https://github.com/FluidSynth/fluidsynth/archive/refs/tags/v2.5.1.tar.gz",
+                    "sha256": "10b2e32ba78c72ac1384965c66df06443a4bd0ab968dcafaf8fa17086001bf03",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 10437,
@@ -42,7 +49,12 @@
         {
             "name": "minuet",
             "buildsystem": "cmake-ninja",
-            "sources": [ { "type": "dir", "path": "." } ]
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": "."
+                }
+            ]
         }
     ]
 }
