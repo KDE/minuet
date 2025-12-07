@@ -44,6 +44,22 @@
                         "url-template": "https://github.com/FluidSynth/fluidsynth/archive/refs/tags/v$version.tar.gz"
                     }
                 }
+            ],
+            "modules": [
+                {
+                    "name": "gcem",
+                    "buildsystem": "cmake-ninja",
+                    "config-opts": [
+                        "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/kthohr/gcem/archive/refs/tags/v1.18.0.tar.gz",
+                            "sha256": "8e71a9f5b62956da6c409dda44b483f98c4a98ae72184f3aa4659ae5b3462e61"
+                        }
+                    ]
+                }
             ]
         },
         {
