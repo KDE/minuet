@@ -10,6 +10,7 @@ Dependencies:
     'frameworks/kcrash': '@latest-kf6'
     'frameworks/kdoctools': '@latest-kf6'
     'frameworks/kirigami': '@latest-kf6'
+    'frameworks/qqc2-desktop-style': '@latest-kf6'
 
 Options:
  require-passing-tests-on: ['Linux', 'FreeBSD', 'Windows']
