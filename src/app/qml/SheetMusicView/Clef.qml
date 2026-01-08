@@ -20,7 +20,7 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.7
+import QtQuick
 
 BravuraText {
     property int type: 0 // [0 treble, 1 bass]

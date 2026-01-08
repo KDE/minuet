@@ -20,18 +20,23 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.7
+import QtQuick
 
 Item {
+    implicitWidth: row.width
+
+    property int pointSize
     property int spacing
     property Clef clef
 
     objectName: "score"
 
     Row {
+        id: row
+
         spacing: 0
         Repeater {
-            model: 20
+            model: 15
             BravuraText { text: "\ue014" }
         }
     }

@@ -35,7 +35,7 @@ namespace Minuet
 class MINUETINTERFACES_EXPORT IExerciseController : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QJsonArray exercises READ exercises)  // clazy:exclude=qproperty-without-notify
+    Q_PROPERTY(QJsonArray exercises READ exercises NOTIFY exercisesChanged)  // clazy:exclude=qproperty-without-notify
     Q_PROPERTY(QVariantMap currentExercise MEMBER m_currentExercise WRITE setCurrentExercise NOTIFY
                    currentExerciseChanged)
     Q_PROPERTY(QJsonArray selectedExerciseOptions READ selectedExerciseOptions NOTIFY
@@ -54,6 +54,7 @@ public Q_SLOTS:
     virtual void randomlySelectExerciseOptions() = 0;
 
 Q_SIGNALS:
+    void exercisesChanged(QJsonArray exercises);
     void currentExerciseChanged(QVariantMap newCurrentExercise);
     void selectedExerciseOptionsChanged(QJsonArray newSelectedExerciseOptions);
 

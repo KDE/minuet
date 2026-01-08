@@ -20,14 +20,13 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.7
-import QtQuick.Controls 2.0
+import QtQuick
+import QtQuick.Controls
 
 Flickable {
     id: flickable
 
-    width: Math.min(parent.width, piano.width)
-    height: keyHeight + 30
+    implicitHeight: keyHeight + 30
     contentWidth: piano.width
     boundsBehavior: Flickable.OvershootBounds
     clip: true

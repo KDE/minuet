@@ -18,9 +18,10 @@ set(QT_MIN_VERSION "6.6.2")
 set(KF_MIN_VERSION "6.7.0")
 
 find_package(ECM ${KF_MIN_VERSION} CONFIG REQUIRED)
-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH}  ${minuet_SOURCE_DIR}/cmake)
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 include(GenerateExportHeader)
+include(ECMFindQmlModule)
 include(ECMSetupVersion)
 include(ECMInstallIcons)
 include(ECMAddAppIcon)
@@ -43,12 +44,15 @@ find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
+        Kirigami
         CoreAddons
         I18n
         Crash
         DocTools
     )
-    find_package(FluidSynth 1.1.6 REQUIRED)
+    find_package(PkgConfig REQUIRED)
+    pkg_check_modules(FLUIDSYNTH REQUIRED IMPORTED_TARGET "fluidsynth>=2.5.1")
+    ecm_find_qmlmodule(org.kde.kirigami REQUIRED)
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 
 include_directories(${minuet_SOURCE_DIR}/src/ ${minuet_BINARY_DIR}/src/)

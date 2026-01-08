@@ -20,17 +20,17 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.7
-import QtQuick.Controls 2.0
+import QtQuick
+import QtQuick.Controls
 
 Popup {
     id: aboutDialog
 
     modal: true
     focus: true
-    x: (applicationWindow.width - width) / 2
-    y: applicationWindow.height / 6
-    width: Math.min(applicationWindow.width, applicationWindow.height) * 0.9
+    x: (window.width - width) / 2
+    y: window.height / 6
+    width: Math.min(window.width, window.height) * 0.9
     contentHeight: aboutColumn.height
 
     Column {

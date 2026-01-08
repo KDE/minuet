@@ -20,6 +20,12 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.7
+import QtQuick
+import org.kde.kirigami as Kirigami
 
-Text { font.pixelSize: 40; font.family: bravura.name }
+Kirigami.Heading {
+    font {
+        family: bravura.name
+        pixelSize: 40
+    }
+}

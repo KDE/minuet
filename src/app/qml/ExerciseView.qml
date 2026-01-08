@@ -20,10 +20,11 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.7
-import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.3
-import QtQuick.Window 2.0
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import QtQuick.Window
+import org.kde.kirigami as Kirigami
 
 Item {
     id: exerciseView
@@ -31,7 +32,9 @@ Item {
     visible: currentExercise != undefined
 
     property var currentExercise
-    
+
+    FontLoader { id: bravura; source: "Bravura.otf" }
+
     QtObject {
         id: internal
 
@@ -51,7 +54,7 @@ Item {
                 yourAnswersParent.children[i].destroy()
             yourAnswersParent.children = ""
             for (var i = 0; i < currentAnswer; ++i)
-                answerOption.createObject(yourAnswersParent, {"model": userAnswers[i].model, "index": userAnswers[i].index, "position": i, "color": userAnswers[i].color, "border.width": 2})
+                answerOption.createObject(yourAnswersParent, { "model": userAnswers[i].model, "index": userAnswers[i].index, "position": i, "color": userAnswers[i].color  })
         }
     }
 
@@ -65,7 +68,7 @@ Item {
             if (currentExerciseOptions != undefined) {
                 var length = currentExerciseOptions.length
                 for (var i = 0; i < length; ++i)
-                    answerOption.createObject(answerGrid, {"model": currentExerciseOptions[i], "index": i, "color": internal.colors[i%internal.colors.length]})
+                    answerOption.createObject(answerGrid, {"model": currentExerciseOptions[i], "index": i, "color": internal.colors[i%internal.colors.length], "showClickFeedback": true})
             }
             sheetMusicView.spaced = (currentExercise["playMode"] == "chord") ? false:true
             messageText.text = i18n("Click 'New Question' to start!")
@@ -88,11 +91,13 @@ Item {
         internal.answersAreRight = true
         for (var i = 0; i < currentExercise.numberOfSelectedOptions; ++i) {
             if (internal.userAnswers[i].name != rightAnswers[i].name) {
-                yourAnswersParent.children[i].border.color = "red"
+                yourAnswersParent.children[i].background.border.color = "red"
+                yourAnswersParent.children[i].background.border.width = 3
                 internal.answersAreRight = false
             }
             else {
-                yourAnswersParent.children[i].border.color = "green"
+                yourAnswersParent.children[i].background.border.color = "green"
+                yourAnswersParent.children[i].background.border.width = 3
                 if (internal.isTest)
                     internal.correctAnswers++
             }
@@ -171,35 +176,33 @@ Item {
         anchors.fill: parent
         spacing: Screen.width >= 1024 ? 20:10
 
-        Text {
+        Kirigami.Heading {
             id: userMessage
 
+            level: 1
             Layout.preferredWidth: parent.width
-            Layout.alignment: Qt.AlignHCenter
-
             horizontalAlignment: Text.AlignHCenter
-            font.pointSize: Screen.width >= 1024 ? 18:14
             wrapMode: Text.WordWrap
             text: (currentExercise != undefined) ? i18nc("technical term, do you have a musician friend?", currentExercise["userMessage"]):""
         }
-        Text {
+        Kirigami.Heading {
             id: messageText
 
-            font.pointSize: Screen.width >= 1024 ? 18:14
+            level: 2
             Layout.preferredWidth: parent.width
-            Layout.alignment: Qt.AlignHCenter
             horizontalAlignment: Text.AlignHCenter
+            wrapMode: Text.WordWrap
         }
-        Row {
+        RowLayout {
             Layout.alignment: Qt.AlignHCenter
-            spacing: 10
+            spacing: Kirigami.Units.smallSpacing
 
             Button {
                 id: newPlayQuestionButton
 
-                width: 120; height: 40
-                text: (exerciseView.state == "waitingForNewQuestion") ? i18n("New Question"):i18n("Play Question")
+                text: (exerciseView.state == "waitingForNewQuestion") ? i18n("New Question") : i18n("Play Question")
                 enabled: !animation.running
+                Layout.preferredWidth: Math.max(newPlayQuestionButton.implicitWidth, giveUpButton.implicitWidth, testButton.implicitWidth)
 
                 onClicked: {
                     if (exerciseView.state == "waitingForNewQuestion") {
@@ -211,14 +214,14 @@ Item {
             Button {
                 id: giveUpButton
 
-                width: 120; height: 40
                 text: i18n("Give Up")
                 enabled: exerciseView.state == "waitingForAnswer" && !animation.running
+                Layout.preferredWidth: Math.max(newPlayQuestionButton.implicitWidth, giveUpButton.implicitWidth, testButton.implicitWidth)
 
                 onClicked: {
                     if (internal.isTest)
                         internal.correctAnswers--
-                	internal.giveUp = true
+                    internal.giveUp = true
                     var rightAnswers = core.exerciseController.selectedExerciseOptions
                     internal.userAnswers = []
                     for (var i = 0; i < currentExercise.numberOfSelectedOptions; ++i) {
@@ -236,9 +239,9 @@ Item {
             Button {
                 id: testButton
 
-                width: 120; height: 40
                 text: internal.isTest ? i18n("Stop Test") : i18n("Start Test")
                 enabled: true
+                Layout.preferredWidth: Math.max(newPlayQuestionButton.implicitWidth, giveUpButton.implicitWidth, testButton.implicitWidth)
 
                 onClicked: {
                     if (!internal.isTest) {
@@ -255,150 +258,152 @@ Item {
                 }
             }
         }
-        GroupBox {
-            id: availableAnswers
 
-            title: i18n("Available Answers")
+        Kirigami.Heading {
+            text: i18n("Available Answers")
+        }
+
+        Flickable {
             Layout.preferredWidth: parent.width
             Layout.alignment: Qt.AlignHCenter
             Layout.fillHeight: true
+            boundsBehavior: Flickable.StopAtBounds
+            contentWidth: width
+            contentHeight: answerGrid.height
+            clip: true
 
-            Flickable {
-                anchors.fill: parent
-                contentHeight: answerGrid.height
-                clip: true
+            Kirigami.CardsLayout {
+                id: answerGrid
 
-                Grid {
-                    id: answerGrid
+                width: parent.width
+                rowSpacing: Kirigami.Units.largeSpacing
+                columnSpacing: Kirigami.Units.largeSpacing
 
-                    anchors.centerIn: parent
-                    spacing: 10
+                maximumColumns: Math.max(1, Screen.width / (minimumColumnWidth + columnSpacing))
+                minimumColumnWidth: 120
 
-                    columns: Math.max(1, parent.width / (120+ spacing))
+                Component {
+                    id: answerOption
 
-                    Component {
-                        id: answerOption
+                    Kirigami.AbstractCard {
+                        id: answerRectangle
 
-                        Rectangle {
-                            id: answerRectangle
+                        property var model
+                        property int index
+                        property int position
+                        property color color
 
-                            property var model
-                            property int index
-                            property int position
+                        Kirigami.Theme.backgroundColor: color
 
-                            width: 120
-                            height: 60
+                        Layout.minimumWidth: answerGrid.minimumColumnWidth
+                        Layout.minimumHeight: answerGrid.minimumColumnWidth / 2
+                        Layout.maximumHeight: answerGrid.minimumColumnWidth / 2
 
-                            Text {
-                                id: option
+                        Kirigami.Heading {
+                            id: bravuraText
 
-                                property string originalText: model.name
-
-                                visible: currentExercise != undefined && currentExercise["playMode"] != "rhythm"
-                                text: i18nc("technical term, do you have a musician friend?", model.name)
-                                width: parent.width - 4
-                                anchors.centerIn: parent
-                                horizontalAlignment: Qt.AlignHCenter
-                                color: "black"
-                                wrapMode: Text.Wrap
+                            font {
+                                family: currentExercise["playMode"] != "rhythm" ? Kirigami.Theme.defaultFont.family : bravura.name
+                                pointSize: Kirigami.Theme.defaultFont.pointSize * (currentExercise["playMode"] != "rhythm" ? 1.15 : 2.3)
                             }
-                            Image {
-                                id: rhythmImage
-
-                                anchors.centerIn: parent
-                                visible: currentExercise != undefined && currentExercise["playMode"] == "rhythm"
-                                source: (currentExercise != undefined && currentExercise["playMode"] == "rhythm") ? "exercise-images/" + model.name + ".png":""
-                                fillMode: Image.Pad
+                            anchors {
+                                centerIn: parent
+                                verticalCenterOffset: currentExercise["playMode"] === "rhythm" ? font.pointSize * 0.35 : 0
                             }
-                            MouseArea {
-                                anchors.fill: parent
-                                onClicked: {
-                                    if (exerciseView.state == "waitingForAnswer" && !animation.running) {
-                                        exited()
-                                        internal.userAnswers.push({"name": option.originalText, "model": answerRectangle.model, "index": answerRectangle.index, "color": answerRectangle.color})
-                                        internal.currentAnswer++
-                                        if (internal.currentAnswer == currentExercise.numberOfSelectedOptions)
-                                            checkAnswers()
+                            width: parent.width
+                            height: parent.height
+                            padding: Kirigami.Units.smallSpacing
+                            horizontalAlignment: Qt.AlignHCenter
+                            verticalAlignment: Qt.AlignVCenter
+                            wrapMode: Text.Wrap
+                            text: model.name
+
+                            Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
+                            Kirigami.Theme.inherit: false
+                            color: Kirigami.Theme.backgroundColor
+                        }
+
+                        onClicked: {
+                            if (exerciseView.state == "waitingForAnswer" && !animation.running) {
+                                internal.userAnswers.push({"name": bravuraText.text, "model": answerRectangle.model, "index": answerRectangle.index, "color": answerRectangle.color})
+                                internal.currentAnswer++
+                                if (internal.currentAnswer == currentExercise.numberOfSelectedOptions)
+                                    checkAnswers()
+                            }
+                        }
+                        hoverEnabled: Qt.platform.os != "android" && !animation.running
+                        onHoveredChanged: {
+                            if (hovered) {
+                                if (currentExercise["playMode"] !== "rhythm" && exerciseView.state === "waitingForAnswer") {
+                                    if (parent === answerGrid) {
+                                        var array = [core.exerciseController.chosenRootNote()]
+                                        model.sequence.split(' ').forEach(function(note) {
+                                            array.push(core.exerciseController.chosenRootNote() + parseInt(note))
+                                            pianoView.noteMark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0, internal.colors[answerRectangle.index%internal.colors.length])
+                                        })
+                                        sheetMusicView.model = array
                                     }
                                 }
-                                hoverEnabled: Qt.platform.os != "android" && !animation.running
-                                onEntered: {
-                                    answerRectangle.color = Qt.darker(answerRectangle.color, 1.1)
-                                    if (currentExercise["playMode"] != "rhythm" && exerciseView.state == "waitingForAnswer") {
-                                        if (parent.parent == answerGrid) {
-                                            var array = [core.exerciseController.chosenRootNote()]
-                                            model.sequence.split(' ').forEach(function(note) {
-                                                array.push(core.exerciseController.chosenRootNote() + parseInt(note))
-                                                pianoView.noteMark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0, internal.colors[answerRectangle.index%internal.colors.length])
-                                            })
-                                            sheetMusicView.model = array
-                                        }
-                                    }
-                                    else {
-                                        var rightAnswers = core.exerciseController.selectedExerciseOptions
-                                        if (parent.parent == yourAnswersParent && internal.userAnswers[position].name != rightAnswers[position].name) {
-                                            parent.border.color = "green"
-                                            for (var i = 0; i < answerGrid.children.length; ++i) {
-                                                if (answerGrid.children[i].model.name == rightAnswers[position].name) {
-                                                    parent.color = answerGrid.children[i].color
-                                                    break
-                                                }
+                                else {
+                                    var rightAnswers = core.exerciseController.selectedExerciseOptions
+                                    if (parent === yourAnswersParent && internal.userAnswers[position].name !== rightAnswers[position].name) {
+                                        background.border.color = "green"
+                                        for (var i = 0; i < answerGrid.children.length; ++i) {
+                                            if (answerGrid.children[i].model.name == rightAnswers[position].name) {
+                                                background.color = answerGrid.children[i].color
+                                                break
                                             }
-                                            rhythmImage.source = "exercise-images/" + rightAnswers[position].name + ".png"
                                         }
+                                        bravuraText.text = rightAnswers[position].name
                                     }
                                 }
-                                onExited: {
-                                    answerRectangle.color = internal.colors[answerRectangle.index%internal.colors.length]
-                                    if (currentExercise["playMode"] != "rhythm") {
-                                        if (parent.parent == answerGrid) {
-                                            if (!animation.running)
-                                                model.sequence.split(' ').forEach(function(note) {
-                                                    pianoView.noteUnmark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0)
-                                                })
-                                            sheetMusicView.model = [core.exerciseController.chosenRootNote()]
-                                        }
+                            }
+                            else {
+                                if (currentExercise["playMode"] !== "rhythm") {
+                                    if (parent === answerGrid) {
+                                        if (!animation.running)
+                                            model.sequence.split(' ').forEach(function(note) {
+                                                pianoView.noteUnmark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0)
+                                            })
+                                        sheetMusicView.model = [core.exerciseController.chosenRootNote()]
                                     }
-                                    else {
-                                        var rightAnswers = core.exerciseController.selectedExerciseOptions
-                                        if (parent.parent == yourAnswersParent && internal.userAnswers[position].name != rightAnswers[position].name) {
-                                            parent.border.color = "red"
-                                            parent.color = internal.userAnswers[position].color
-                                            rhythmImage.source = "exercise-images/" + internal.userAnswers[position].name + ".png"
-                                        }
-                                    }
+                                }
+                                var rightAnswers = core.exerciseController.selectedExerciseOptions
+                                if (parent === yourAnswersParent && internal.userAnswers[position].name !== rightAnswers[position].name) {
+                                    background.border.color = "red"
+                                    background.color = internal.userAnswers[position].color
+                                    bravuraText.text = internal.userAnswers[position].name
                                 }
                             }
                         }
                     }
                 }
-                ScrollIndicator.vertical: ScrollIndicator { active: true }
             }
+            ScrollIndicator.vertical: ScrollIndicator { active: true }
         }
-        GroupBox {
-            id: yourAnswers
 
-            title: i18n("Your Answer(s)")
-            Layout.preferredWidth: parent.width
+        Kirigami.Heading {
+            text: i18n("Your Answer(s)")
+        }
+
+        Flickable {
+            Layout.preferredWidth: (currentExercise != undefined) ? Math.min(parent.width, internal.currentAnswer*130):0; height: parent.height
+            Layout.preferredHeight: answerGrid.minimumColumnWidth / 2
             Layout.alignment: Qt.AlignHCenter
-            contentHeight: ((currentExercise != undefined && currentExercise["playMode"] != "rhythm") ? 40:59)
+            contentWidth: (currentExercise != undefined) ? internal.currentAnswer*130:0
+            boundsBehavior: Flickable.StopAtBounds
+            clip: true
 
-            Flickable {
-                width: (currentExercise != undefined) ? Math.min(parent.width, internal.currentAnswer*130):0; height: parent.height
-                anchors.horizontalCenter: parent.horizontalCenter
-                contentWidth: (currentExercise != undefined) ? internal.currentAnswer*130:0
-                boundsBehavior: Flickable.StopAtBounds
-                clip: true
+            RowLayout {
+                id: yourAnswersParent
 
-                Row {
-                    id: yourAnswersParent
-                    anchors.centerIn: parent
-                    spacing: Screen.width >= 1024 ? 10:5
-                }
-
-                ScrollIndicator.horizontal: ScrollIndicator { active: true }
+                anchors.centerIn: parent
+                spacing: Kirigami.Units.largeSpacing
             }
+
+            ScrollIndicator.horizontal: ScrollIndicator { active: true }
         }
+
         Button {
             id: backspaceButton
 
@@ -411,22 +416,24 @@ Item {
                 internal.currentAnswer--
             }
         }
-        Row {
-            Layout.preferredWidth: parent.width
-            Layout.alignment: Qt.AlignHCenter
-            spacing: (parent.width/2 - sheetMusicView.width)/2
+        GridLayout {
+            Layout.fillWidth: true
+            columns: window.wideScreen ? 2 : 1
+            rowSpacing: Kirigami.Units.largeSpacing
+            columnSpacing: Kirigami.Units.largeSpacing * 2
+            visible: currentExercise != undefined && currentExercise["playMode"] != "rhythm"
+
             PianoView {
                 id: pianoView
-                width: parent.width/2 - 10
-                visible: currentExercise != undefined && currentExercise["playMode"] != "rhythm"
+
+                Layout.fillWidth: true
+                Layout.minimumHeight: implicitHeight
                 ScrollIndicator.horizontal: ScrollIndicator { active: true }
             }
             SheetMusicView {
                 id: sheetMusicView
 
-                height: pianoView.height
-                anchors { bottom: parent.bottom; bottomMargin: 15 }
-                visible: currentExercise != undefined && currentExercise["playMode"] != "rhythm"
+                Layout.preferredHeight: pianoView.height
             }
         }
     }
@@ -447,17 +454,16 @@ Item {
     ]
     ParallelAnimation {
         id: animation
-        
-        loops: 2
+        loops: 3
 
         SequentialAnimation {
-            PropertyAnimation { target: internal.rightAnswerRectangle; property: "rotation"; to: -45; duration: 200 }
-            PropertyAnimation { target: internal.rightAnswerRectangle; property: "rotation"; to:  45; duration: 200 }
-            PropertyAnimation { target: internal.rightAnswerRectangle; property: "rotation"; to:   0; duration: 200 }
-        }
-        SequentialAnimation {
-            PropertyAnimation { target: internal.rightAnswerRectangle; property: "scale"; to: 1.2; duration: 300 }
-            PropertyAnimation { target: internal.rightAnswerRectangle; property: "scale"; to: 1.0; duration: 300 }
+            SequentialAnimation {
+                loops: 3
+
+                PropertyAnimation { target: internal.rightAnswerRectangle; property: "scale"; to: 1.1; duration: 150 }
+                PropertyAnimation { target: internal.rightAnswerRectangle; property: "scale"; to: 1.0; duration: 150 }
+            }
+            PauseAnimation { duration: 500 }
         }
 
         onStopped: {
@@ -465,7 +471,7 @@ Item {
             if (internal.isTest) {
                 nextTestExercise()
                 if (internal.currentExercise == internal.maximumExercises+1)
-                   internal.isTest = false
+                    internal.isTest = false
             }
         }
     }

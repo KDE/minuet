@@ -20,14 +20,16 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.7
-import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.3
-import QtQuick.Window 2.0
-import QtQuick.Controls.Material 2.0
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import QtQuick.Window
+import QtQuick.Controls.Material
+import org.kde.kirigami as Kirigami
 
-ApplicationWindow {
-    id: applicationWindow
+Kirigami.ApplicationWindow {
+    id: window
+
     visible: true
     width: Screen.width; height: Screen.height
     visibility: Window.Maximized
@@ -36,6 +38,7 @@ ApplicationWindow {
 
     Component {
         id: androidToolBar
+
         ToolBar {
             Material.primary: "#181818"
             Material.foreground: "white"
@@ -86,26 +89,16 @@ ApplicationWindow {
         }
     }
 
-    Item {
+    pageStack.initialPage: Kirigami.Page {
         id: mainContainer
-        anchors {
-            top: parent.top
-            bottom: parent.bottom
-            right: parent.right
-            left: Qt.platform.os == "android" ?  parent.left : drawer.right;
-            margins: Screen.width >= 1024 ? 20 : 5
-        }
 
-        Image {
-            source: "qrc:/qml/images/minuet-background.png"
-            anchors.fill: parent
-            fillMode: Image.Tile
-        }
+        globalToolBarStyle: window.wideScreen ? Kirigami.ApplicationHeaderStyle.None : Kirigami.ApplicationHeaderStyle.ToolBar
+
         ExerciseView {
             id: exerciseView
-            anchors.fill: parent
 
-            currentExercise: minuetMenu.currentExercise
+            anchors.fill: parent
+            currentExercise: drawer.currentExercise
         }
 /*      THIS IS THE DASHBOARD
         Frame {
@@ -181,16 +174,14 @@ ApplicationWindow {
 */
     }
 
-    MinuetMenuContainer {
+    globalDrawer: MinuetGlobalDrawer {
         id: drawer
 
-        MinuetMenu {
-            id: minuetMenu
-            onBackPressed: {
-                exerciseView.resetTest()
-                core.soundController.reset()
-            }
-            onCurrentExerciseChanged: if (Qt.platform.os == "android" && currentExercise != undefined) drawer.close()
+        wideScreen: window.wideScreen
+
+        header: Image {
+            source: "qrc:/qml/images/minuet-drawer.png"
+            fillMode: Image.PreserveAspectFit
         }
     }
 
@@ -201,13 +192,13 @@ ApplicationWindow {
     Binding {
         target: core.exerciseController
         property: "currentExercise"
-        value: minuetMenu.currentExercise
+        value: drawer.currentExercise
     }
     
     Binding {
         target: core.soundController
         property: "playMode"
-        value: (minuetMenu.currentExercise != undefined) ? minuetMenu.currentExercise["playMode"]:""
+        value: (drawer.currentExercise != undefined) ? drawer.currentExercise["playMode"] : ""
     }
     
     Shortcut {
@@ -215,5 +206,5 @@ ApplicationWindow {
         onActivated: Qt.quit()
     }
     
-    Component.onCompleted: if (Qt.platform.os == "android") header = androidToolBar.createObject(applicationWindow)
+//    Component.onCompleted: if (Qt.platform.os == "android") header = androidToolBar.createObject(window)
 }

@@ -1,5 +1,5 @@
 if(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
-    if(FluidSynth_FOUND)
+    if(FLUIDSYNTH_FOUND)
         add_subdirectory(fluidsynthsoundcontroller)
     endif()
 else()

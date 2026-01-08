@@ -8,7 +8,7 @@ target_link_libraries(minuetfluidsynthsoundcontroller
     Qt::Core
     Minuet::Interfaces
     Minuet::Utils
-    FluidSynth::FluidSynth
+    PkgConfig::FLUIDSYNTH
 )
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")

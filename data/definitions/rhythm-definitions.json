@@ -2,42 +2,42 @@
   "definitions": [
     {
       "tags": ["rhythm", "easy", "medium"],
-      "name": "quarter",
+      "name": "\uE1F0",
       "sequence": "4"
     },
     {
       "tags": ["rhythm", "easy", "medium"],
-      "name": "eighth-eighth",
+      "name": "\uE1F0\uE1F7\uE1F2",
       "sequence": "8 8"
     },
     {
       "tags": ["rhythm", "easy", "medium"],
-      "name": "eighth-dot-sixteenth",
+      "name": "\uE1F0\uE1F7\uE1FC\uE1F7\uE1F4",
       "sequence": "8. 16"
     },
     {
       "tags": ["rhythm", "easy", "medium"],
-      "name": "sixteenth-eighth-dot",
+      "name": "\uE1F0\uE1F9\uE1F2\uE1FC",
       "sequence": "16 8."
     },
     {
       "tags": ["rhythm", "medium"],
-      "name": "sixteenth-sixteenth-sixteenth-sixteenth",
+      "name": "\uE1F0\uE1F9\uE1F4\uE1F9\uE1F4\uE1F9\uE1F4",
       "sequence": "16 16 16 16"
     },
     {
       "tags": ["rhythm", "medium"],
-      "name": "eighth-sixteenth-sixteenth",
+      "name": "\uE1F0\uE1F7\uE1F2\uE1F9\uE1F4",
       "sequence": "8 16 16"
     },
     {
       "tags": ["rhythm", "medium"],
-      "name": "sixteenth-eighth-sixteenth",
+      "name": "\uE1F0\uE1F9\uE1F2\uE1F7\uE1F4",
       "sequence": "16 8 16"
     },
     {
       "tags": ["rhythm", "medium"],
-      "name": "sixteenth-sixteenth-eighth",
+      "name": "\uE1F0\uE1F9\uE1F4\uE1F7\uE1F2",
       "sequence": "16 16 8"
     }
   ]

@@ -34,6 +34,7 @@
 #include <QFile>
 #include <QGuiApplication>
 #include <QIcon>
+#include <QQuickStyle>
 
 #include <QDebug>
 
@@ -57,6 +58,10 @@ int main(int argc, char *argv[])
     aboutData.addAuthor(QStringLiteral("Alessandro Longo"), i18n("Minuet Icon Designer"),
                         QStringLiteral("alessandro.longo@kdemail.net"));
 #endif
+
+    if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
+        QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
+    }
 
     QGuiApplication::setWindowIcon(QIcon(QStringLiteral(":/minuet.png")));
 

@@ -20,11 +20,10 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.7
-import QtQuick.Controls 2.0
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Window
 
-Frame {
-    width: 280; height: parent.height
-    padding: 0
-    anchors { left: parent.left; top: parent.top }
+Drawer {
+    width: Math.min(Screen.width, Screen.height) * 0.75; height: window.height
 }
