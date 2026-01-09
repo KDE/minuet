@@ -55,6 +55,10 @@ IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     ecm_find_qmlmodule(org.kde.kirigami REQUIRED)
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 
+IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    ecm_find_qmlmodule(org.kde.breeze REQUIRED)
+ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+
 include_directories(${minuet_SOURCE_DIR}/src/ ${minuet_BINARY_DIR}/src/)
 
 add_subdirectory(src)

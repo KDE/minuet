@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 #endif
 
     if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
-        QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
+        QQuickStyle::setStyle(QStringLiteral("org.kde.breeze"));
     }
 
     QGuiApplication::setWindowIcon(QIcon(QStringLiteral(":/minuet.png")));
