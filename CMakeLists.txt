@@ -56,8 +56,10 @@ IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-    find_package(QQC2BreezeStyle REQUIRED)
-    ecm_find_qmlmodule(org.kde.breeze REQUIRED)
+    find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
+        QQC2DesktopStyle
+    )
+    ecm_find_qmlmodule(org.kde.desktop REQUIRED)
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 include_directories(${minuet_SOURCE_DIR}/src/ ${minuet_BINARY_DIR}/src/)
