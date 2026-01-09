@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:48+0000\n"
+"POT-Creation-Date: 2026-01-09 00:39+0000\n"
 "PO-Revision-Date: 2025-05-19 21:20+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -272,21 +272,6 @@ msgstr "Dorian b5"
 msgctxt "technical term, do you have a musician friend?"
 msgid "Easy"
 msgstr "容易"
-
-#, kde-format
-msgctxt "technical term, do you have a musician friend?"
-msgid "eighth-dot-sixteenth"
-msgstr "eighth-dot-sixteenth"
-
-#, kde-format
-msgctxt "technical term, do you have a musician friend?"
-msgid "eighth-eighth"
-msgstr "eighth-eighth"
-
-#, kde-format
-msgctxt "technical term, do you have a musician friend?"
-msgid "eighth-sixteenth-sixteenth"
-msgstr "eighth-sixteenth-sixteenth"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -735,11 +720,6 @@ msgstr "Phrygian Dominant"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
-msgid "quarter"
-msgstr "四分音符"
-
-#, kde-format
-msgctxt "technical term, do you have a musician friend?"
 msgid "Rhythm"
 msgstr "節奏"
 
@@ -820,26 +800,6 @@ msgstr "升十一的和弦"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
-msgid "sixteenth-eighth-dot"
-msgstr "sixteenth-eighth-dot"
-
-#, kde-format
-msgctxt "technical term, do you have a musician friend?"
-msgid "sixteenth-eighth-sixteenth"
-msgstr "sixteenth-eighth-sixteenth"
-
-#, kde-format
-msgctxt "technical term, do you have a musician friend?"
-msgid "sixteenth-sixteenth-eighth"
-msgstr "sixteenth-sixteenth-eighth"
-
-#, kde-format
-msgctxt "technical term, do you have a musician friend?"
-msgid "sixteenth-sixteenth-sixteenth-sixteenth"
-msgstr "sixteenth-sixteenth-sixteenth-sixteenth"
-
-#, kde-format
-msgctxt "technical term, do you have a musician friend?"
 msgid "Sixths"
 msgstr "六度"
 
@@ -905,6 +865,46 @@ msgstr "三全音與七度"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0uE1F7uE1F2"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0uE1F7uE1FCuE1F7uE1F4"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0uE1F9uE1F2uE1F7uE1F4"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0uE1F9uE1F2uE1FC"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0uE1F9uE1F4uE1F7uE1F2"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
 msgid "Ultralocrian"
 msgstr "Ultralocrian"
 
@@ -918,122 +918,154 @@ msgstr "全音音階"
 msgid "Could not open JSON file \"%1\"."
 msgstr "無法開啟 JSON 檔「%1」。"
 
-#: src/app/main.cpp:49
+#: src/app/main.cpp:50
 #, kde-format
 msgid "Minuet"
 msgstr "Minuet"
 
-#: src/app/main.cpp:51
+#: src/app/main.cpp:52
 #, kde-format
 msgid "A KDE application for music education"
 msgstr "KDE 的音樂教育應用程式"
 
-#: src/app/main.cpp:52
+#: src/app/main.cpp:53
 #, kde-format
 msgid "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 msgstr "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 
-#: src/app/main.cpp:53 src/app/main.cpp:55
+#: src/app/main.cpp:54 src/app/main.cpp:56
 #, kde-format
 msgid "Developer"
 msgstr "開發者"
 
-#: src/app/main.cpp:57
+#: src/app/main.cpp:58
 #, kde-format
 msgid "Minuet Icon Designer"
 msgstr "Minuet 圖示設計師"
 
-#: src/app/qml/ExerciseView.qml:71
+#: src/app/qml/ExerciseView.qml:74
 #, kde-format
 msgid "Click 'New Question' to start!"
 msgstr "點選「新問題」開始！"
 
-#: src/app/qml/ExerciseView.qml:100
+#: src/app/qml/ExerciseView.qml:105
 #, kde-format
 msgid "Here is the answer"
 msgstr "這是答案"
 
-#: src/app/qml/ExerciseView.qml:100
+#: src/app/qml/ExerciseView.qml:105
 #, kde-format
 msgid "Congratulations, you answered correctly!"
 msgstr "恭喜，您回答得很正確！"
 
-#: src/app/qml/ExerciseView.qml:100
+#: src/app/qml/ExerciseView.qml:105
 #, kde-format
 msgid "Oops, not this time! Try again!"
 msgstr "哎呀，這次沒成功！再試一次吧！"
 
-#: src/app/qml/ExerciseView.qml:102
+#: src/app/qml/ExerciseView.qml:107
 #, kde-format
 msgid "You answered correctly %1%"
 msgstr "您正確回答 %1%"
 
-#: src/app/qml/ExerciseView.qml:152
+#: src/app/qml/ExerciseView.qml:157
 #, kde-format
 msgid "Question %1 out of %2"
 msgstr "第 %1/%2 個問題"
 
-#: src/app/qml/ExerciseView.qml:183
+#: src/app/qml/ExerciseView.qml:186
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "userMessage"
 msgstr "使用者訊息"
 
-#: src/app/qml/ExerciseView.qml:201
+#: src/app/qml/ExerciseView.qml:203
 #, kde-format
 msgid "New Question"
 msgstr "新問題"
 
-#: src/app/qml/ExerciseView.qml:201
+#: src/app/qml/ExerciseView.qml:203
 #, kde-format
 msgid "Play Question"
 msgstr "播放問題"
 
-#: src/app/qml/ExerciseView.qml:215
+#: src/app/qml/ExerciseView.qml:217
 #, kde-format
 msgid "Give Up"
 msgstr "放棄"
 
-#: src/app/qml/ExerciseView.qml:240
+#: src/app/qml/ExerciseView.qml:242
 #, kde-format
 msgid "Stop Test"
 msgstr "停止測驗"
 
-#: src/app/qml/ExerciseView.qml:240
+#: src/app/qml/ExerciseView.qml:242
 #, kde-format
 msgid "Start Test"
 msgstr "開始測驗"
 
-#: src/app/qml/ExerciseView.qml:253
+#: src/app/qml/ExerciseView.qml:256
 #, kde-format
 msgid "Click 'New Question' to start"
 msgstr "點選「新問題」開始"
 
-#: src/app/qml/ExerciseView.qml:261
+#: src/app/qml/ExerciseView.qml:263
 #, kde-format
 msgid "Available Answers"
 msgstr "可用答案"
 
-#: src/app/qml/ExerciseView.qml:381
+#: src/app/qml/ExerciseView.qml:386
 #, kde-format
 msgid "Your Answer(s)"
 msgstr "你的答案"
 
-#: src/app/qml/ExerciseView.qml:405
+#: src/app/qml/ExerciseView.qml:410
 #, kde-format
 msgid "Backspace"
 msgstr "刪除"
 
-#: src/app/qml/Main.qml:80
+#: src/app/qml/Main.qml:83
 #, kde-format
 msgid "About"
 msgstr "關於"
 
-#: src/app/qml/PianoView/PianoView.qml:103
+#: src/app/qml/PianoView/PianoView.qml:102
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave"
 msgstr "八度"
+
+#~ msgctxt "technical term, do you have a musician friend?"
+#~ msgid "eighth-dot-sixteenth"
+#~ msgstr "eighth-dot-sixteenth"
+
+#~ msgctxt "technical term, do you have a musician friend?"
+#~ msgid "eighth-eighth"
+#~ msgstr "eighth-eighth"
+
+#~ msgctxt "technical term, do you have a musician friend?"
+#~ msgid "eighth-sixteenth-sixteenth"
+#~ msgstr "eighth-sixteenth-sixteenth"
+
+#~ msgctxt "technical term, do you have a musician friend?"
+#~ msgid "quarter"
+#~ msgstr "四分音符"
+
+#~ msgctxt "technical term, do you have a musician friend?"
+#~ msgid "sixteenth-eighth-dot"
+#~ msgstr "sixteenth-eighth-dot"
+
+#~ msgctxt "technical term, do you have a musician friend?"
+#~ msgid "sixteenth-eighth-sixteenth"
+#~ msgstr "sixteenth-eighth-sixteenth"
+
+#~ msgctxt "technical term, do you have a musician friend?"
+#~ msgid "sixteenth-sixteenth-eighth"
+#~ msgstr "sixteenth-sixteenth-eighth"
+
+#~ msgctxt "technical term, do you have a musician friend?"
+#~ msgid "sixteenth-sixteenth-sixteenth-sixteenth"
+#~ msgstr "sixteenth-sixteenth-sixteenth-sixteenth"
 
 #~ msgctxt "technical term, do you have a musician friend?"
 #~ msgid "Chords with 9 in their name"

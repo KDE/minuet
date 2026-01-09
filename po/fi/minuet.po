@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:48+0000\n"
+"POT-Creation-Date: 2026-01-09 00:39+0000\n"
 "PO-Revision-Date: 2025-03-04 08:06+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -314,21 +314,6 @@ msgstr "Doorinen b5"
 msgctxt "technical term, do you have a musician friend?"
 msgid "Easy"
 msgstr "Helppo"
-
-#, kde-format
-msgctxt "technical term, do you have a musician friend?"
-msgid "eighth-dot-sixteenth"
-msgstr "kahdeksasosa-piste-kuudestoistaosa"
-
-#, kde-format
-msgctxt "technical term, do you have a musician friend?"
-msgid "eighth-eighth"
-msgstr "kahdeksasosa-kahdeksasosa"
-
-#, kde-format
-msgctxt "technical term, do you have a musician friend?"
-msgid "eighth-sixteenth-sixteenth"
-msgstr "kahdeksasosa-kuudestoistaosa-kuudestoistaosa"
 
 #, fuzzy, kde-format
 #| msgctxt "technical term, do you have a musician friend?"
@@ -817,11 +802,6 @@ msgstr "Fryyginen dominantti"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
-msgid "quarter"
-msgstr "neljäsosa"
-
-#, kde-format
-msgctxt "technical term, do you have a musician friend?"
 msgid "Rhythm"
 msgstr "Rytmi"
 
@@ -904,26 +884,6 @@ msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
-msgid "sixteenth-eighth-dot"
-msgstr "kuudestoistaosa-kahdeksasosa-piste"
-
-#, kde-format
-msgctxt "technical term, do you have a musician friend?"
-msgid "sixteenth-eighth-sixteenth"
-msgstr "kuudestoistaosa-kahdeksasosa-kuudestoistaose"
-
-#, kde-format
-msgctxt "technical term, do you have a musician friend?"
-msgid "sixteenth-sixteenth-eighth"
-msgstr "kuudestoistaosa-kuudestoistaosa-kahdeksasosa"
-
-#, kde-format
-msgctxt "technical term, do you have a musician friend?"
-msgid "sixteenth-sixteenth-sixteenth-sixteenth"
-msgstr "kuudestoistaosa-kuudestoistaosa-kuudestoistaosa-kuudestoistaosa"
-
-#, kde-format
-msgctxt "technical term, do you have a musician friend?"
 msgid "Sixths"
 msgstr "Sekstit"
 
@@ -991,6 +951,46 @@ msgstr "Tritonus ja Septimit"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0uE1F7uE1F2"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0uE1F7uE1FCuE1F7uE1F4"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0uE1F9uE1F2uE1F7uE1F4"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0uE1F9uE1F2uE1FC"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0uE1F9uE1F4uE1F7uE1F2"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
 msgid "Ultralocrian"
 msgstr "Ultralokrinen"
 
@@ -1009,122 +1009,154 @@ msgstr "JSON-tiedoston \"%1\" avaaminen epäonnistui."
 # pmap: =/elat=Minuetista/
 # pmap: =/adess=Minuetilla/
 # pmap: =/illat=Minuetiin/
-#: src/app/main.cpp:49
+#: src/app/main.cpp:50
 #, kde-format
 msgid "Minuet"
 msgstr "Minuet"
 
-#: src/app/main.cpp:51
+#: src/app/main.cpp:52
 #, kde-format
 msgid "A KDE application for music education"
 msgstr "KDE-sovellus musiikinopetukseen"
 
-#: src/app/main.cpp:52
+#: src/app/main.cpp:53
 #, kde-format
 msgid "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 msgstr "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 
-#: src/app/main.cpp:53 src/app/main.cpp:55
+#: src/app/main.cpp:54 src/app/main.cpp:56
 #, kde-format
 msgid "Developer"
 msgstr "Kehittäjä"
 
-#: src/app/main.cpp:57
+#: src/app/main.cpp:58
 #, kde-format
 msgid "Minuet Icon Designer"
 msgstr "Minuet-kuvakkeen Tekijä"
 
-#: src/app/qml/ExerciseView.qml:71
+#: src/app/qml/ExerciseView.qml:74
 #, kde-format
 msgid "Click 'New Question' to start!"
 msgstr "Paina ”Uusi Kysymys”-painiketta aloittaaksesi!"
 
-#: src/app/qml/ExerciseView.qml:100
+#: src/app/qml/ExerciseView.qml:105
 #, kde-format
 msgid "Here is the answer"
 msgstr "Tässä on vastaus"
 
-#: src/app/qml/ExerciseView.qml:100
+#: src/app/qml/ExerciseView.qml:105
 #, kde-format
 msgid "Congratulations, you answered correctly!"
 msgstr "Hyvä, vastasit oikein!"
 
-#: src/app/qml/ExerciseView.qml:100
+#: src/app/qml/ExerciseView.qml:105
 #, kde-format
 msgid "Oops, not this time! Try again!"
 msgstr "Hups, ei aivan! Kokeile uudestaan!"
 
-#: src/app/qml/ExerciseView.qml:102
+#: src/app/qml/ExerciseView.qml:107
 #, kde-format
 msgid "You answered correctly %1%"
 msgstr "Vastasit oikein %1%:n kysymyksistä"
 
-#: src/app/qml/ExerciseView.qml:152
+#: src/app/qml/ExerciseView.qml:157
 #, kde-format
 msgid "Question %1 out of %2"
 msgstr "Kysymys %1 %2:sta"
 
-#: src/app/qml/ExerciseView.qml:183
+#: src/app/qml/ExerciseView.qml:186
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "userMessage"
 msgstr "userMessage"
 
-#: src/app/qml/ExerciseView.qml:201
+#: src/app/qml/ExerciseView.qml:203
 #, kde-format
 msgid "New Question"
 msgstr "Uusi Kysymys"
 
-#: src/app/qml/ExerciseView.qml:201
+#: src/app/qml/ExerciseView.qml:203
 #, kde-format
 msgid "Play Question"
 msgstr "Toista Kysymys"
 
-#: src/app/qml/ExerciseView.qml:215
+#: src/app/qml/ExerciseView.qml:217
 #, kde-format
 msgid "Give Up"
 msgstr "Luovuta"
 
-#: src/app/qml/ExerciseView.qml:240
+#: src/app/qml/ExerciseView.qml:242
 #, kde-format
 msgid "Stop Test"
 msgstr "Lopeta Koe"
 
-#: src/app/qml/ExerciseView.qml:240
+#: src/app/qml/ExerciseView.qml:242
 #, kde-format
 msgid "Start Test"
 msgstr "Aloita Koe"
 
-#: src/app/qml/ExerciseView.qml:253
+#: src/app/qml/ExerciseView.qml:256
 #, kde-format
 msgid "Click 'New Question' to start"
 msgstr "Paina  ”Uusi Kysymys”-painiketta aloittaaksesi"
 
-#: src/app/qml/ExerciseView.qml:261
+#: src/app/qml/ExerciseView.qml:263
 #, kde-format
 msgid "Available Answers"
 msgstr "Mahdolliset vastaukset"
 
-#: src/app/qml/ExerciseView.qml:381
+#: src/app/qml/ExerciseView.qml:386
 #, kde-format
 msgid "Your Answer(s)"
 msgstr "Vastauksesi"
 
-#: src/app/qml/ExerciseView.qml:405
+#: src/app/qml/ExerciseView.qml:410
 #, kde-format
 msgid "Backspace"
 msgstr "Peruutusnäppäin"
 
-#: src/app/qml/Main.qml:80
+#: src/app/qml/Main.qml:83
 #, kde-format
 msgid "About"
 msgstr "Tietoa"
 
-#: src/app/qml/PianoView/PianoView.qml:103
+#: src/app/qml/PianoView/PianoView.qml:102
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave"
 msgstr "Oktaavi"
+
+#~ msgctxt "technical term, do you have a musician friend?"
+#~ msgid "eighth-dot-sixteenth"
+#~ msgstr "kahdeksasosa-piste-kuudestoistaosa"
+
+#~ msgctxt "technical term, do you have a musician friend?"
+#~ msgid "eighth-eighth"
+#~ msgstr "kahdeksasosa-kahdeksasosa"
+
+#~ msgctxt "technical term, do you have a musician friend?"
+#~ msgid "eighth-sixteenth-sixteenth"
+#~ msgstr "kahdeksasosa-kuudestoistaosa-kuudestoistaosa"
+
+#~ msgctxt "technical term, do you have a musician friend?"
+#~ msgid "quarter"
+#~ msgstr "neljäsosa"
+
+#~ msgctxt "technical term, do you have a musician friend?"
+#~ msgid "sixteenth-eighth-dot"
+#~ msgstr "kuudestoistaosa-kahdeksasosa-piste"
+
+#~ msgctxt "technical term, do you have a musician friend?"
+#~ msgid "sixteenth-eighth-sixteenth"
+#~ msgstr "kuudestoistaosa-kahdeksasosa-kuudestoistaose"
+
+#~ msgctxt "technical term, do you have a musician friend?"
+#~ msgid "sixteenth-sixteenth-eighth"
+#~ msgstr "kuudestoistaosa-kuudestoistaosa-kahdeksasosa"
+
+#~ msgctxt "technical term, do you have a musician friend?"
+#~ msgid "sixteenth-sixteenth-sixteenth-sixteenth"
+#~ msgstr "kuudestoistaosa-kuudestoistaosa-kuudestoistaosa-kuudestoistaosa"
 
 #~ msgctxt "technical term, do you have a musician friend?"
 #~ msgid "Chords with 9 in their name"
