@@ -56,6 +56,7 @@ IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    find_package(QQC2BreezeStyle REQUIRED)
     ecm_find_qmlmodule(org.kde.breeze REQUIRED)
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
