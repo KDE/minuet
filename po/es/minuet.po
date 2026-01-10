@@ -1,15 +1,15 @@
 # Spanish translations for minuet.po package.
-# Copyright (C) 2016-2025 This file is copyright:
+# Copyright (C) 2016-2026 This file is copyright:
 # This file is distributed under the same license as the minuet package.
 # Automatically generated, 2016.
 #
-# SPDX-FileCopyrightText: 2016, 2017, 2019, 2023, 2025 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2016, 2017, 2019, 2023, 2025, 2026 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-09 00:39+0000\n"
-"PO-Revision-Date: 2025-05-20 02:13+0100\n"
+"PO-Revision-Date: 2026-01-09 16:39+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 25.12.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -868,42 +868,42 @@ msgstr "Tritono y séptimas"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0"
-msgstr ""
+msgstr "uE1F0"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F7uE1F2"
-msgstr ""
+msgstr "uE1F0uE1F7uE1F2"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
-msgstr ""
+msgstr "uE1F0uE1F7uE1F2uE1F9uE1F4"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F7uE1FCuE1F7uE1F4"
-msgstr ""
+msgstr "uE1F0uE1F7uE1FCuE1F7uE1F4"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F2uE1F7uE1F4"
-msgstr ""
+msgstr "uE1F0uE1F9uE1F2uE1F7uE1F4"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F2uE1FC"
-msgstr ""
+msgstr "uE1F0uE1F9uE1F2uE1FC"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F4uE1F7uE1F2"
-msgstr ""
+msgstr "uE1F0uE1F9uE1F4uE1F7uE1F2"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
-msgstr ""
+msgstr "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1036,35 +1036,3 @@ msgstr "Acerca de"
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave"
 msgstr "Octava"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "eighth-dot-sixteenth"
-#~ msgstr "octava-punto-decimosexta"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "eighth-eighth"
-#~ msgstr "octava-octava"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "eighth-sixteenth-sixteenth"
-#~ msgstr "octava-decimosexta-decimosexta"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "quarter"
-#~ msgstr "negra"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "sixteenth-eighth-dot"
-#~ msgstr "decimosexta-octava-punto"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "sixteenth-eighth-sixteenth"
-#~ msgstr "decimosexta-octava-decimosexta"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "sixteenth-sixteenth-eighth"
-#~ msgstr "decimosexta-decimosexta-octava"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "sixteenth-sixteenth-sixteenth-sixteenth"
-#~ msgstr "decimosexta-decimosexta-decimosexta-decimosexta"
