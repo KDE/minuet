@@ -3,20 +3,21 @@
 # SPDX-FileCopyrightText: 2016 Frederik Schwarzer <schwarzer@kde.org>
 # SPDX-FileCopyrightText: 2016, 2017, 2018, 2019 Burkhard Lück <lueck@hube-lueck.de>
 # SPDX-FileCopyrightText: 2024 Robert von Könemann <lordtaifleh+kde@gmail.com>
+# SPDX-FileCopyrightText: 2026 Philipp Kiemle <l10n.daphipz@fastmail.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 14:38+0000\n"
-"PO-Revision-Date: 2024-07-10 18:07+0200\n"
-"Last-Translator: Robert von Könemann <lordtaifleh+kde@gmail.com>\n"
+"PO-Revision-Date: 2026-02-05 16:12+0100\n"
+"Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.1\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -181,7 +182,7 @@ msgstr "Verminderte Akkorde"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished - first inversion"
-msgstr "Vermindert - Erste Umkehrung"
+msgstr "Vermindert – Erste Umkehrung"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -191,7 +192,7 @@ msgstr "Verminderte Halbton-Ganzton-Leiter"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished - inversions"
-msgstr "Vermindert - Umkehrungen"
+msgstr "Vermindert – Umkehrungen"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -231,7 +232,7 @@ msgstr "Dominantseptakkord"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh - first inversion"
-msgstr "Dominantseptakkord - Erste Umkehrung"
+msgstr "Dominantseptakkord – Erste Umkehrung"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -241,17 +242,17 @@ msgstr "Dominantseptakkord mit verminderter Quinte"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh - inversions"
-msgstr "Dominantseptakkord - Umkehrungen"
+msgstr "Dominantseptakkord – Umkehrungen"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh - second inversion"
-msgstr "Dominantseptakkord - Zweite Umkehrung"
+msgstr "Dominantseptakkord – Zweite Umkehrung"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh - third inversion"
-msgstr "Dominantseptakkord - Dritte Umkehrung"
+msgstr "Dominantseptakkord – Dritte Umkehrung"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -337,28 +338,29 @@ msgstr "Harmonische Moll-Tonleiter und ihre Modi"
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the chord and then choose an answer from options below"
 msgstr ""
-"Lauschen Sie dem Akkord und wählen Sie eine der untenstehenden Antworten aus"
+"Hören Sie sich den Akkord an und wählen Sie eine der unten stehenden "
+"Antworten aus"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the interval and then choose an answer from options below"
 msgstr ""
-"Lauschen Sie dem Interval und wählen Sie eine der untenstehenden Antworten "
-"aus"
+"Hören Sie sich das Intervall an und wählen Sie eine der unten stehenden "
+"Antworten aus"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the rhythm and then choose an answer from options below"
 msgstr ""
-"Lauschen Sie dem Rhythmus und wählen Sie eine der untenstehenden Antworten "
-"aus"
+"Hören Sie sich den Rhythmus an und wählen Sie eine der unten stehenden "
+"Antworten aus"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the scale and then choose an answer from options below"
 msgstr ""
-"Lauschen Sie der Tonleiter und wählen Sie eine der untenstehenden Antworten "
-"aus"
+"Hören Sie sich die Tonleiter an und wählen Sie eine der unten stehenden "
+"Antworten aus"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -368,7 +370,7 @@ msgstr "Intervalle"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Inversions of basic seventh chords"
-msgstr "Septakkorde - Umkehrungen"
+msgstr "Septakkorde – Umkehrungen"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -443,17 +445,17 @@ msgstr "Dur-Nonakkord"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major - first inversion"
-msgstr "Dur - Erste Umkehrung"
+msgstr "Dur – Erste Umkehrung"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Fourteenth"
-msgstr "Große  Oktavsepte"
+msgstr "Große Oktavsepte"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major - inversions"
-msgstr "Dur - Umkehrungen"
+msgstr "Dur – Umkehrungen"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -468,7 +470,7 @@ msgstr "Große None"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Pentatonic"
-msgstr "Dur - Pentatonisch"
+msgstr "Dur – Pentatonisch"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -483,22 +485,22 @@ msgstr "Große Sekunde"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major - second inversion"
-msgstr "Dur - Zweite Umkehrung"
+msgstr "Dur – Zweite Umkehrung"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh"
-msgstr "Große Septe "
+msgstr "Große Septe"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Seventh"
-msgstr "Große Septe "
+msgstr "Große Septe"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh - first inversion"
-msgstr "Große Septe - Erste Umkehrung"
+msgstr "Große Septe – Erste Umkehrung"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -508,17 +510,17 @@ msgstr "Halbverminderter Septakkord"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh - inversions"
-msgstr "Septakkorde - Umkehrungen"
+msgstr "Septakkorde – Umkehrungen"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh - second inversion"
-msgstr "Große Septe - Zweite Umkehrung"
+msgstr "Große Septe – Zweite Umkehrung"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh - third inversion"
-msgstr "Große Septe - Dritte Umkehrung"
+msgstr "Große Septe – Dritte Umkehrung"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -579,7 +581,7 @@ msgstr "Kleine Undezime"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor - first inversion"
-msgstr "Moll - Erste Umkehrung"
+msgstr "Moll – Erste Umkehrung"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -589,7 +591,7 @@ msgstr "Große Oktavsepte"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor - inversions"
-msgstr "Moll - Umkehrungen"
+msgstr "Moll – Umkehrungen"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -619,7 +621,7 @@ msgstr "Kleine Sekunde"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor - second inversion"
-msgstr "Moll - Zweite Umkehrung"
+msgstr "Moll – Zweite Umkehrung"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -634,22 +636,22 @@ msgstr "Große Septe"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh - first inversion"
-msgstr "Kleine Septe - Erste Umkehrung"
+msgstr "Kleine Septe – Erste Umkehrung"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh - inversions"
-msgstr "Kleine Septe - Umkehrungen"
+msgstr "Kleine Septe – Umkehrungen"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh - second inversion"
-msgstr "Kleine Septe - Zweite Umkehrung"
+msgstr "Kleine Septe – Zweite Umkehrung"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh - third inversion"
-msgstr "Kleine Septe - Dritte Umkehrung"
+msgstr "Kleine Septe – Dritte Umkehrung"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -900,7 +902,7 @@ msgstr "Dreiklänge"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Triads - inversions"
-msgstr "Dreiklänge - Umkehrungen"
+msgstr "Dreiklänge – Umkehrungen"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -940,7 +942,7 @@ msgstr "Eine KDE-Anwendung zum Musiklernen"
 #: src/app/main.cpp:52
 #, kde-format
 msgid "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
-msgstr "Copyright © 2016, Sandro S. Andrade (sandroandrade@kde.org)"
+msgstr "© 2016 Sandro S. Andrade (sandroandrade@kde.org)"
 
 #: src/app/main.cpp:53 src/app/main.cpp:55
 #, kde-format
@@ -955,7 +957,7 @@ msgstr "Design des Symbols für Minuet"
 #: src/app/qml/ExerciseView.qml:71
 #, kde-format
 msgid "Click 'New Question' to start!"
-msgstr "Klicken Sie auf „Neue Frage“ zum Starten!"
+msgstr "Klicken Sie auf „Neue Frage“ , um zu beginnen!"
 
 #: src/app/qml/ExerciseView.qml:100
 #, kde-format
@@ -965,12 +967,12 @@ msgstr "Hier ist die Antwort"
 #: src/app/qml/ExerciseView.qml:100
 #, kde-format
 msgid "Congratulations, you answered correctly!"
-msgstr "Glückwunsch!, Ihre Antwort ist richtig."
+msgstr "Glückwunsch, Ihre Antwort ist richtig!"
 
 #: src/app/qml/ExerciseView.qml:100
 #, kde-format
 msgid "Oops, not this time! Try again!"
-msgstr "Hoppla, diesmal nicht. Versuchen Sie es erneut."
+msgstr "Hoppla, diesmal nicht. Versuchen Sie es erneut!"
 
 #: src/app/qml/ExerciseView.qml:102
 #, kde-format
@@ -996,7 +998,7 @@ msgstr "Neue Frage"
 #: src/app/qml/ExerciseView.qml:201
 #, kde-format
 msgid "Play Question"
-msgstr "Frage abspielen"
+msgstr "Frage wiedergeben"
 
 #: src/app/qml/ExerciseView.qml:215
 #, kde-format
@@ -1016,7 +1018,7 @@ msgstr "Test starten"
 #: src/app/qml/ExerciseView.qml:253
 #, kde-format
 msgid "Click 'New Question' to start"
-msgstr "Klicken Sie auf „Neue Frage“ zum Starten"
+msgstr "Klicken Sie auf „Neue Frage“ , um zu beginnen"
 
 #: src/app/qml/ExerciseView.qml:261
 #, kde-format
