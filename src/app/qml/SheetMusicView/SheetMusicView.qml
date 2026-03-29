@@ -35,7 +35,7 @@ Score {
 
     antialiasing: true
     spacing: Kirigami.Units.largeSpacing
-    clip: true
+    clip: false
 
     Clef { id: clef; type: 1 }
 
