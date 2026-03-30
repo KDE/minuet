@@ -17,12 +17,12 @@
     },
     {
       "tags": ["scale", "ascending", "simmetric"],
-      "name": "Augmented",
+      "name": "Augmented Scale",
       "sequence": "3 4 7 8 11 12"
     },
     {
       "tags": ["scale", "ascending", "simmetric"],
-      "name": "Augmented Inverse",
+      "name": "Augmented Scale Inverse",
       "sequence": "1 4 5 8 9 12"
     }
   ]
