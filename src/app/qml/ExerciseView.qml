@@ -316,7 +316,7 @@ Item {
                             horizontalAlignment: Qt.AlignHCenter
                             verticalAlignment: Qt.AlignVCenter
                             wrapMode: Text.Wrap
-                            text: model.name
+                            text: i18nc("technical term, do you have a musician friend?", model.name)
 
                             Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
                             Kirigami.Theme.inherit: false
