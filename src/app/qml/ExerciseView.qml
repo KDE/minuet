@@ -325,7 +325,7 @@ Item {
 
                         onClicked: {
                             if (exerciseView.state == "waitingForAnswer" && !animation.running) {
-                                internal.userAnswers.push({"name": bravuraText.text, "model": answerRectangle.model, "index": answerRectangle.index, "color": answerRectangle.color})
+                                internal.userAnswers.push({"name": model.name, "model": answerRectangle.model, "index": answerRectangle.index, "color": answerRectangle.color})
                                 internal.currentAnswer++
                                 if (internal.currentAnswer == currentExercise.numberOfSelectedOptions)
                                     checkAnswers()
