@@ -63,7 +63,11 @@ Kirigami.GlobalDrawer {
     function createActions(actionSet, icon) {
         const ret = []
         for (const action of actionSet) {
-            const actionObject = actionComponent.createObject(drawer, { modelData: action, text: action.name, iconName: action._icon ?? icon })
+            const actionObject = actionComponent.createObject(drawer, {
+                modelData: action,
+                text: i18nc("technical term, do you have a musician friend?", action.name),
+                iconName: action._icon ?? icon,
+            })
             if (action.children !== undefined) {
                 actionObject.children = createActions(action.children, action._icon ?? icon)
             } else {
