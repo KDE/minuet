@@ -454,16 +454,16 @@ Item {
     ]
     ParallelAnimation {
         id: animation
-        loops: 3
+        loops: 2
 
         SequentialAnimation {
             SequentialAnimation {
-                loops: 3
+                loops: 2
 
                 PropertyAnimation { target: internal.rightAnswerRectangle; property: "scale"; to: 1.1; duration: 150 }
                 PropertyAnimation { target: internal.rightAnswerRectangle; property: "scale"; to: 1.0; duration: 150 }
             }
-            PauseAnimation { duration: 500 }
+            PauseAnimation { duration: 200 }
         }
 
         onStopped: {
