@@ -31,6 +31,7 @@
 #include <QJsonDocument>
 #include <QRandomGenerator>
 #include <QStandardPaths>
+#include <QSet>
 #include <qqml.h>
 
 #include <utils/xdgdatadirs.h>
@@ -150,12 +151,24 @@ bool ExerciseController::mergeJsonFiles(const QString directoryName, QJsonObject
     }
 #endif
 #endif
+
+    // When running development version of Minuet, the program will attempt to
+    // read JSON files from both system wide directories and CMake install prefix.
+    // So if you have a system installation at the same time, duplicated JSON files will
+    // be read and cause weird bugs, so store file names that is already read to avoid this.
+    QSet<QString> readJsons;
     foreach (const QString &jsonDirString, jsonDirs) {
         QDir jsonDir(jsonDirString);
         foreach (const QString &json, jsonDir.entryList(QDir::Files)) {
             if (!json.endsWith(QLatin1String(".json"))) {
                 break;
             }
+            if (readJsons.contains(json)) {
+                qWarning() << "Ignoring duplicated file:" << jsonDir.absoluteFilePath(json);
+                continue;
+            }
+            readJsons << json;
+
             QFile jsonFile(jsonDir.absoluteFilePath(json));
             if (!jsonFile.open(QIODevice::ReadOnly)) {
 #if !defined(Q_OS_ANDROID)
