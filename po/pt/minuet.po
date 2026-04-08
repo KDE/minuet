@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-09 00:39+0000\n"
+"POT-Creation-Date: 2026-04-08 00:41+0000\n"
 "PO-Revision-Date: 2019-11-15 11:05+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -88,10 +88,19 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented chords"
 msgstr "Aumentados Inversos"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Augmented Inverse"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Augmented Inverse"
+msgid "Augmented Inverse Scale"
 msgstr "Aumentados Inversos"
+
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Augmented"
+msgctxt "technical term, do you have a musician friend?"
+msgid "Augmented Scale"
+msgstr "Aumentados"
 
 #, fuzzy, kde-format
 #| msgctxt "technical term, do you have a musician friend?"
@@ -1002,7 +1011,7 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Whole Tone"
 msgstr "Tom Inteiro"
 
-#: src/app/exercisecontroller.cpp:163
+#: src/app/exercisecontroller.cpp:176
 #, kde-format
 msgid "Could not open JSON file \"%1\"."
 msgstr "Não foi possível aceder ao ficheiro JSON \"%1\"."
@@ -1119,9 +1128,11 @@ msgid "About"
 msgstr "Acerca"
 
 #: src/app/qml/PianoView/PianoView.qml:102
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Octave"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Octave"
+msgid "Octave %1"
 msgstr "Oitava"
 
 #~ msgctxt "technical term, do you have a musician friend?"

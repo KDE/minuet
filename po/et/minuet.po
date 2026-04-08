@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-09 00:39+0000\n"
+"POT-Creation-Date: 2026-04-08 00:41+0000\n"
 "PO-Revision-Date: 2020-04-01 13:05+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -88,7 +88,14 @@ msgstr "Suurendatud"
 #| msgctxt "technical term, do you have a musician friend?"
 #| msgid "Augmented"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Augmented Inverse"
+msgid "Augmented Inverse Scale"
+msgstr "Suurendatud"
+
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Augmented"
+msgctxt "technical term, do you have a musician friend?"
+msgid "Augmented Scale"
 msgstr "Suurendatud"
 
 #, fuzzy, kde-format
@@ -1050,7 +1057,7 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Whole Tone"
 msgstr ""
 
-#: src/app/exercisecontroller.cpp:163
+#: src/app/exercisecontroller.cpp:176
 #, kde-format
 msgid "Could not open JSON file \"%1\"."
 msgstr "JSON-faili \"%1\" avamine nurjus."
@@ -1167,9 +1174,11 @@ msgid "About"
 msgstr "Teave"
 
 #: src/app/qml/PianoView/PianoView.qml:102
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Octave"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Octave"
+msgid "Octave %1"
 msgstr "Oktav"
 
 #~ msgctxt "technical term, do you have a musician friend?"
