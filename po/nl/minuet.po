@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-08 00:41+0000\n"
-"PO-Revision-Date: 2026-01-09 11:24+0100\n"
+"PO-Revision-Date: 2026-04-09 14:54+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.12.0\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -72,19 +72,15 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented chords"
 msgstr "Overmatige akkoorden"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Augmented Inverse"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented Inverse Scale"
-msgstr "Overmatige inversie"
+msgstr "Overmatige inversieschaal"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Augmented"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented Scale"
-msgstr "Overmatig"
+msgstr "Overmatige schaal"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1041,12 +1037,10 @@ msgid "About"
 msgstr "Info over"
 
 #: src/app/qml/PianoView/PianoView.qml:102
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Octave"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave %1"
-msgstr "Octave"
+msgstr "Octaaf %1"
 
 #~ msgctxt "technical term, do you have a musician friend?"
 #~ msgid "eighth-dot-sixteenth"
