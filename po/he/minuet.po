@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-08 00:41+0000\n"
-"PO-Revision-Date: 2026-01-10 13:26+0200\n"
+"PO-Revision-Date: 2026-04-09 08:43+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 25.12.1\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -73,19 +73,15 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented chords"
 msgstr "אקורדים מוגדלים"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Augmented Inverse"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented Inverse Scale"
-msgstr "מוגדלים הפוכים"
+msgstr "סולם מוגדל הפוך"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Augmented"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented Scale"
-msgstr "מוגדלים"
+msgstr "סולם מוגדל"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1039,12 +1035,10 @@ msgid "About"
 msgstr "על אודות"
 
 #: src/app/qml/PianoView/PianoView.qml:102
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Octave"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave %1"
-msgstr "אוקטבה"
+msgstr "אוקטבה %1"
 
 #~ msgctxt "technical term, do you have a musician friend?"
 #~ msgid "eighth-dot-sixteenth"
