@@ -1,6 +1,7 @@
 set(minuet_EXERCISES
     intervals-ascending-melodic-exercises.json
     intervals-descending-melodic-exercises.json
+    intervals-melodic-exercises.json
     intervals-harmonic-exercises.json
     chords-three-notes-exercises.json
     chords-sevenths-exercises.json

@@ -1,0 +1,246 @@
+{
+  "definitions": [
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "2", "minor"],
+      "name": "Ascending Minor Second",
+      "sequence": "1"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "2", "major"],
+      "name": "Ascending Major Second",
+      "sequence": "2"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "3", "minor"],
+      "name": "Ascending Minor Third",
+      "sequence": "3"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "3", "major"],
+      "name": "Ascending Major Third",
+      "sequence": "4"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "4"],
+      "name": "Ascending Perfect Fourth",
+      "sequence": "5"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "tritone"],
+      "name": "Ascending Tritone",
+      "sequence": "6"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "5"],
+      "name": "Ascending Perfect Fifth",
+      "sequence": "7"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "6", "minor"],
+      "name": "Ascending Minor Sixth",
+      "sequence": "8"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "6", "major"],
+      "name": "Ascending Major Sixth",
+      "sequence": "9"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "7", "minor"],
+      "name": "Ascending Minor Seventh",
+      "sequence": "10"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "7", "major"],
+      "name": "Ascending Major Seventh",
+      "sequence": "11"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "8"],
+      "name": "Ascending Perfect Octave",
+      "sequence": "12"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "9", "minor"],
+      "name": "Ascending Minor Ninth",
+      "sequence": "13"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "9", "major"],
+      "name": "Ascending Major Ninth",
+      "sequence": "14"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "10", "minor"],
+      "name": "Ascending Minor Tenth",
+      "sequence": "15"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "10", "major"],
+      "name": "Ascending Major Tenth",
+      "sequence": "16"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "11"],
+        "name": "Ascending Perfect Eleventh",
+        "sequence": "17"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "8+tritone"],
+      "name": "Ascending Octave + Tritone",
+      "sequence": "18"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "12"],
+      "name": "Ascending Perfect Twelfth",
+      "sequence": "19"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "13", "minor"],
+      "name": "Ascending Minor Thirteenth",
+      "sequence": "20"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "13", "major"],
+      "name": "Ascending Major Thirteenth",
+      "sequence": "21"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "14", "minor"],
+      "name": "Ascending Minor Fourteenth",
+      "sequence": "22"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "14", "major"],
+      "name": "Ascending Major Fourteenth",
+      "sequence": "23"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_ascending", "double8"],
+      "name": "Ascending Perfect Double Octave",
+      "sequence": "24"
+    },
+
+
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "2", "minor"],
+      "name": "Descending Minor Second",
+      "sequence": "-1"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "2", "major"],
+      "name": "Descending Major Second",
+      "sequence": "-2"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "3", "minor"],
+      "name": "Descending Minor Third",
+      "sequence": "-3"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "3", "major"],
+      "name": "Descending Major Third",
+      "sequence": "-4"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "4"],
+      "name": "Descending Perfect Fourth",
+      "sequence": "-5"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "tritone"],
+      "name": "Descending Tritone",
+      "sequence": "-6"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "5"],
+      "name": "Descending Perfect Fifth",
+      "sequence": "-7"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "6", "minor"],
+      "name": "Descending Minor Sixth",
+      "sequence": "-8"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "6", "major"],
+      "name": "Descending Major Sixth",
+      "sequence": "-9"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "7", "minor"],
+      "name": "Descending Minor Seventh",
+      "sequence": "-10"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "7", "major"],
+      "name": "Descending Major Seventh",
+      "sequence": "-11"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "8"],
+      "name": "Descending Perfect Octave",
+      "sequence": "-12"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "9", "minor"],
+      "name": "Descending Minor Ninth",
+      "sequence": "-13"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "9", "major"],
+      "name": "Descending Major Ninth",
+      "sequence": "-14"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "10", "minor"],
+      "name": "Descending Minor Tenth",
+      "sequence": "-15"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "10", "major"],
+      "name": "Descending Major Tenth",
+      "sequence": "-16"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "11"],
+      "name": "Descending Perfect Eleventh",
+      "sequence": "-17"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "8+tritone"],
+      "name": "Descending Octave + Tritone",
+      "sequence": "-18"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "12"],
+      "name": "Descending Perfect Twelfth",
+      "sequence": "-19"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "13", "minor"],
+      "name": "Descending Minor Thirteenth",
+      "sequence": "-20"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "13", "major"],
+      "name": "Descending Major Thirteenth",
+      "sequence": "-21"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "14", "minor"],
+      "name": "Descending Minor Fourteenth",
+      "sequence": "-22"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "14", "major"],
+      "name": "Descending Major Fourteenth",
+      "sequence": "-23"
+    },
+    {
+      "tags": ["interval", "melodic", "melodic_descending", "double8"],
+      "name": "Descending Perfect Double Octave",
+      "sequence": "-24"
+    }
+  ]
+}

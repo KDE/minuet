@@ -1,6 +1,7 @@
 set(minuet_DEFINITIONS
     intervals-ascending-melodic-harmonic-definitions.json
     intervals-descending-melodic-definitions.json
+    intervals-melodic-definitions.json
     chords-three-notes-definitions.json
     chords-sevenths-definitions.json
     chords-extended-definitions.json
