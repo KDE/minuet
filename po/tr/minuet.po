@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-09 00:39+0000\n"
-"PO-Revision-Date: 2026-01-09 17:11+0300\n"
-"Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
+"PO-Revision-Date: 2026-04-14 14:12+0300\n"
+"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.0\n"
+"X-Generator: Lokalize 25.12.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -415,7 +415,7 @@ msgstr "Majör akorlar"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major eleventh"
-msgstr "Majör on birlik"
+msgstr "Majör On Birlik"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -425,7 +425,7 @@ msgstr "Majör — ilk ters çevirme"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Fourteenth"
-msgstr "Majör On dörtlük"
+msgstr "Majör On Dörtlük"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -500,7 +500,7 @@ msgstr "Majör yedilik — üçüncü ters çevirme"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major sharp eleventh"
-msgstr "Majör on birlik diyez"
+msgstr "Majör On Birlik Diyez"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -520,7 +520,7 @@ msgstr "Majör Üçlük"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Thirteenth"
-msgstr "Majör Onüçlük"
+msgstr "Majör On Üçlük"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -550,7 +550,7 @@ msgstr "Minör akorlar"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor eleventh"
-msgstr "Minör on birlik"
+msgstr "Minör On Birlik"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -560,7 +560,7 @@ msgstr "Minör — ilk ters çevirme"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor Fourteenth"
-msgstr "Minör Ondörtlük"
+msgstr "Minör On Dörtlük"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -665,7 +665,7 @@ msgstr "Dokuzluklar"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave + Tritone"
-msgstr "Oktav + Üçtonlu"
+msgstr "Oktav + Üç Tonlu"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -680,7 +680,7 @@ msgstr "Mükemmel Çifte Oktav"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Perfect Eleventh"
-msgstr "Mükemmel on birlik"
+msgstr "Mükemmel On Birlik"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -855,12 +855,12 @@ msgstr "Üç notalı akorlar — ters çevirmeler"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Tritone"
-msgstr "Üçtonlu"
+msgstr "Üç Tonlu"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Tritone and Sevenths"
-msgstr "Üçtonlu ve Yedilikler"
+msgstr "Üç Tonlu ve Yedilikler"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
