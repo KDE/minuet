@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-14 00:39+0000\n"
-"PO-Revision-Date: 2021-06-10 13:38+0200\n"
-"Last-Translator: Jose Riha <jose1711@gmail.com>\n"
+"PO-Revision-Date: 2026-04-14 17:15+0200\n"
+"Last-Translator: Roman Paholík <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
@@ -57,178 +57,130 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "All three note chords"
 msgstr "Alterované akordy"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Fourteenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Fourteenth"
-msgstr "Veľká kvartdecima"
+msgstr "Vzostupná veľká kvartdecima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Ninth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Ninth"
-msgstr "Veľká nóna"
+msgstr "Vzostupná veľká nóna"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Second"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Second"
-msgstr "Veľká sekunda"
+msgstr "Vzostupná veľká sekunda"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Seventh"
-msgstr "Veľká septima"
+msgstr "Vzostupná veľká septima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Sixth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Sixth"
-msgstr "Veľká sexta"
+msgstr "Vzostupná veľká sexta"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Tenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Tenth"
-msgstr "Veľká decima"
+msgstr "Vzostupná veľká decima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Third"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Third"
-msgstr "Veľká tercia"
+msgstr "Vzostupná veľká tercia"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Thirteenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Thirteenth"
-msgstr "Veľká tercdecima"
+msgstr "Vzostupná veľká tercdecima"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Melodic Intervals"
 msgstr "Vzostupné melodické intervaly"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Fourteenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Fourteenth"
-msgstr "Malá kvartdecima"
+msgstr "Vzostupná malá kvartdecima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Ninth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Ninth"
-msgstr "Malá nóna"
+msgstr "Vzostupná malá nóna"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Second"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Second"
-msgstr "Malá sekunda"
+msgstr "Vzostupná malá sekunda"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Seventh"
-msgstr "Malá septima"
+msgstr "Vzostupná malá septima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Sixth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Sixth"
-msgstr "Malá sexta"
+msgstr "Vzostupná malá sexta"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Tenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Tenth"
-msgstr "Malá decima"
+msgstr "Vzostupná malá decima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Third"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Third"
-msgstr "Malá tercia"
+msgstr "Vzostupná malá tercia"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Thirteenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Thirteenth"
-msgstr "Malá tercdecima"
+msgstr "Vzostupná malá tercdecima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Octave + Tritone"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Octave + Tritone"
-msgstr "Oktáva + tritón"
+msgstr "Vzostupná oktáva + tritón"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Double Octave"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Double Octave"
-msgstr "Čistá dvojitá oktáva"
+msgstr "Vzostupná čistá dvojitá oktáva"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Eleventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Eleventh"
-msgstr "Čistá undecima"
+msgstr "Vzostupná čistá undecima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Fifth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Fifth"
-msgstr "Čistá kvinta"
+msgstr "Vzostupná čistá kvinta"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Fourth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Fourth"
-msgstr "Čistá kvarta"
+msgstr "Vzostupná čistá kvarta"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Octave"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Octave"
-msgstr "Čistá oktáva"
+msgstr "Vzostupná čistá oktáva"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Twelfth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Twelfth"
-msgstr "Čistá duodecima"
+msgstr "Vzostupná čistá duodecima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Octave + Tritone"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Tritone"
-msgstr "Oktáva + tritón"
+msgstr "Vzostupný tritón"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -330,178 +282,130 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Combined"
 msgstr "Kombinované"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Fourteenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Fourteenth"
-msgstr "Veľká kvartdecima"
+msgstr "Zostupná veľká kvartdecima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Ninth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Ninth"
-msgstr "Veľká nóna"
+msgstr "Zostupná veľká nóna"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Second"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Second"
-msgstr "Veľká sekunda"
+msgstr "Zostupná veľká sekunda"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Seventh"
-msgstr "Veľká septima"
+msgstr "Zostupná veľká septima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Sixth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Sixth"
-msgstr "Veľká sexta"
+msgstr "Zostupná veľká sexta"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Tenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Tenth"
-msgstr "Veľká decima"
+msgstr "Zostupná veľká decima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Third"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Third"
-msgstr "Veľká tercia"
+msgstr "Zostupná veľká tercia"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Thirteenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Thirteenth"
-msgstr "Veľká tercdecima"
+msgstr "Zostupná veľká tercdecima"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Melodic Intervals"
 msgstr "Zostupné melodické intervaly"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Fourteenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Fourteenth"
-msgstr "Malá kvartdecima"
+msgstr "Zostupná malá kvartdecima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Ninth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Ninth"
-msgstr "Malá nóna"
+msgstr "Zostupná malá nóna"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Second"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Second"
-msgstr "Malá sekunda"
+msgstr "Zostupná malá sekunda"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Seventh"
-msgstr "Malá septima"
+msgstr "Zostupná malá septima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Sixth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Sixth"
-msgstr "Malá sexta"
+msgstr "Zostupná malá sexta"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Tenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Tenth"
-msgstr "Malá decima"
+msgstr "Zostupná malá decima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Third"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Third"
-msgstr "Malá tercia"
+msgstr "Zostupná malá tercia"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Thirteenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Thirteenth"
-msgstr "Malá tercdecima"
+msgstr "Zostupná malá tercdecima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Octave + Tritone"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Octave + Tritone"
-msgstr "Oktáva + tritón"
+msgstr "Zostupná oktáva + tritón"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Double Octave"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Double Octave"
-msgstr "Čistá dvojitá oktáva"
+msgstr "Zostupná čistá dvojitá oktáva"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Eleventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Eleventh"
-msgstr "Čistá undecima"
+msgstr "Zostupná čistá undecima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Fifth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Fifth"
-msgstr "Čistá kvinta"
+msgstr "Zostupná čistá kvinta"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Fourth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Fourth"
-msgstr "Čistá kvarta"
+msgstr "Zostupná čistá kvarta"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Octave"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Octave"
-msgstr "Čistá oktáva"
+msgstr "Zostupná čistá oktáva"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Twelfth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Twelfth"
-msgstr "Čistá duodecima"
+msgstr "Zostupná čistá duodecima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Descending Melodic Intervals"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Tritone"
-msgstr "Zostupné melodické intervaly"
+msgstr "Zostupný tritón"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -873,12 +777,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Medium"
 msgstr "Stredne ťažké"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Ascending Melodic Intervals"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Melodic Intervals"
-msgstr "Vzostupné melodické intervaly"
+msgstr "Melodické intervaly"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1397,166 +1299,3 @@ msgstr "Oktáva %1"
 #~ msgctxt "technical term, do you have a musician friend?"
 #~ msgid "quarter"
 #~ msgstr "štvrťová"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "sixteenth-eighth-dot"
-#~ msgstr "šestnástinová-osminová-bodka"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "sixteenth-eighth-sixteenth"
-#~ msgstr "šestnástinová-osminová-šestnástinová"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "sixteenth-sixteenth-eighth"
-#~ msgstr "šestnástinová-šestnástinová-osminová"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "sixteenth-sixteenth-sixteenth-sixteenth"
-#~ msgstr "šestnástinová-šestnástinová-šestnástinová-šestnástinová"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Chords with 9 in their name"
-#~ msgstr "Akordy s 9 v názve"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 7"
-#~ msgstr "Durový septakord"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 7(#5)"
-#~ msgstr "Dur septakord (#5)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 7(#5/b9)"
-#~ msgstr "Dur septakord (#5/b9)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 7(#9)"
-#~ msgstr "Durový septakord (#9)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 7(b5)"
-#~ msgstr "Durový septakord (b5)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 7(b9)"
-#~ msgstr "Durový septakord (b9)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 7(b9) and Major maj7(9) Chords"
-#~ msgstr "Akordy 7 (b9) dur a maj7(9) dur"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major 9"
-#~ msgstr "Durový nónakord"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major maj7"
-#~ msgstr "Durový maj7"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major maj7(9)"
-#~ msgstr "Durový maj7(9)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Major maj7(b5)"
-#~ msgstr "Durový maj7(b5)"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid ""
-#~ "Major Seventh, Diminished Seventh, and Half Diminished Seventh Chords"
-#~ msgstr "Durový, zmenšený a malý zmenšený septakord"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor 7"
-#~ msgstr "Molový 7"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor 7 and Dominant 7 Chords"
-#~ msgstr "Molové a dominantné septakordy"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor 9"
-#~ msgstr "Molový nónakord"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor 9 and Major 9 Chords"
-#~ msgstr "Nónakordy"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor maj7"
-#~ msgstr "Molový maj7"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Minor, Major, Diminished, and Augmented Chords"
-#~ msgstr "Molové, durové, zmenšené a zväčšené akordy"
-
-#~ msgctxt "technical term, do you have a musician friend?"
-#~ msgid "Root Position"
-#~ msgstr "Základná pozícia"
-
-#~ msgid "Sandro S. Andrade"
-#~ msgstr "Sandro S. Andrade"
-
-#~ msgid "Alessandro Longo"
-#~ msgstr "Alessandro Longo"
-
-#~ msgid "MIDI"
-#~ msgstr "MIDI"
-
-#~ msgid "TiMidity++ sequencer location"
-#~ msgstr "Umiestnenie sekvencéra TiMidity++"
-
-#~ msgid "TiMidity++ sequencer parameters"
-#~ msgstr "Parametre sekvencéra TiMidity++"
-
-#~ msgid "MIDI output port"
-#~ msgstr "Port MIDI výstupu"
-
-#~ msgid "Click 'play question' if you want to hear again!"
-#~ msgstr "Kliknite 'prehrať otázku', ak ju chcete počuť znova!"
-
-#~ msgid "Tempo: %1 bpm"
-#~ msgstr "Tempo: %1 bpm"
-
-#~ msgid "Volume: %1%"
-#~ msgstr "Hlasitosť: %1%"
-
-#~ msgid "Pitch: %1"
-#~ msgstr "Výška: %1"
-
-#~ msgid "Play"
-#~ msgstr "Prehrať"
-
-#~ msgid "Pause"
-#~ msgstr "Pozastaviť"
-
-#~ msgid "TiMidity++ location:"
-#~ msgstr "Umiestnenie TiMidity++:"
-
-#~ msgid "TiMidity++ parameters:"
-#~ msgstr "Parametre TiMidity++:"
-
-#~ msgid "MIDI output port:"
-#~ msgstr "Port MIDI výstupu:"
-
-#~ msgid "Welcome"
-#~ msgstr "Vitajte"
-
-#~ msgid "Checking system"
-#~ msgstr "Kontroluje sa systém"
-
-#~ msgid "Tempo:"
-#~ msgstr "Tempo:"
-
-#~ msgid "Volume: 100%"
-#~ msgstr "Hlasitosť: 100%"
-
-#~ msgid "Pitch: 0"
-#~ msgstr "Výška: 0"
-
-#~ msgid "Open File"
-#~ msgstr "Otvoriť súbor"
-
-#~ msgid "Author"
-#~ msgstr "Autor"

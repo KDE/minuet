@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-14 00:39+0000\n"
-"PO-Revision-Date: 2026-04-08 12:31+0300\n"
+"PO-Revision-Date: 2026-04-14 14:13+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -57,178 +57,130 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "All three note chords"
 msgstr "Tüm üç notalık akorlar"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Fourteenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Fourteenth"
-msgstr "Majör On dörtlük"
+msgstr "Yükselen Majör On Dörtlük"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Ninth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Ninth"
-msgstr "Majör Dokuzluk"
+msgstr "Yükselen Majör Dokuzluk"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Second"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Second"
-msgstr "Majör İkilik"
+msgstr "Yükselen Majör İkilik"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Seventh"
-msgstr "Majör Yedilik"
+msgstr "Yükselen Majör Yedilik"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Sixth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Sixth"
-msgstr "Majör Altılık"
+msgstr "Yükselen Majör Altılık"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Tenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Tenth"
-msgstr "Majör Onluk"
+msgstr "Yükselen Majör Onluk"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Third"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Third"
-msgstr "Majör Üçlük"
+msgstr "Yükselen Majör Üçlük"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Thirteenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Thirteenth"
-msgstr "Majör Onüçlük"
+msgstr "Yükselen  Majör On Üçlük"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Melodic Intervals"
 msgstr "Artan Ezgisel Aralıklar"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Fourteenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Fourteenth"
-msgstr "Minör Ondörtlük"
+msgstr "Yükselen Minör On Dörtlük"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Ninth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Ninth"
-msgstr "Minör Dokuzluk"
+msgstr "Yükselen Minör Dokuzluk"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Second"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Second"
-msgstr "Minör İkilik"
+msgstr "Yükselen Minör İkilik"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Seventh"
-msgstr "Minör Yedilik"
+msgstr "Yükselen Minör Yedilik"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Sixth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Sixth"
-msgstr "Minör Altılık"
+msgstr "Yükselen Minör Altılık"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Tenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Tenth"
-msgstr "Minör Onluk"
+msgstr "Yükselen Minör Onluk"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Third"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Third"
-msgstr "Minör Üçlük"
+msgstr "Yükselen Minör Üçlük"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Thirteenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Thirteenth"
-msgstr "Minör On Üçlük"
+msgstr "Yükselen Minör On Üçlük"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Octave + Tritone"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Octave + Tritone"
-msgstr "Oktav + Üçtonlu"
+msgstr "Yükselen Oktav + Üç Tonlu"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Double Octave"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Double Octave"
-msgstr "Mükemmel Çifte Oktav"
+msgstr "Yükselen Mükemmel Çifte Oktav"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Eleventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Eleventh"
-msgstr "Mükemmel on birlik"
+msgstr "Yükselen Mükemmel On Birlik"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Fifth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Fifth"
-msgstr "Mükemmel Beşlik"
+msgstr "Yükselen Mükemmel Beşlik"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Fourth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Fourth"
-msgstr "Mükemmel Dörtlük"
+msgstr "Yükselen Mükemmel Dörtlük"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Octave"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Octave"
-msgstr "Mükemmel Oktav"
+msgstr "Yükselen Mükemmel Oktav"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Twelfth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Twelfth"
-msgstr "Mükemmel On İkilik"
+msgstr "Yükselen Mükemmel On İkilik"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Octave + Tritone"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Tritone"
-msgstr "Oktav + Üçtonlu"
+msgstr "Yükselen Üç Tonlu"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -330,178 +282,130 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Combined"
 msgstr "Birleştirilmiş"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Fourteenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Fourteenth"
-msgstr "Majör On dörtlük"
+msgstr "Azalan Majör On Dörtlük"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Ninth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Ninth"
-msgstr "Majör Dokuzluk"
+msgstr "Azalan Majör Dokuzluk"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Second"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Second"
-msgstr "Majör İkilik"
+msgstr "Azalan Majör İkilik"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Seventh"
-msgstr "Majör Yedilik"
+msgstr "Azalan Majör Yedilik"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Sixth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Sixth"
-msgstr "Majör Altılık"
+msgstr "Azalan Majör Altılık"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Tenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Tenth"
-msgstr "Majör Onluk"
+msgstr "Azalan Majör Onluk"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Third"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Third"
-msgstr "Majör Üçlük"
+msgstr "Azalan Majör Üçlük"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major Thirteenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Thirteenth"
-msgstr "Majör Onüçlük"
+msgstr "Azalan Majör On Üçlük"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Melodic Intervals"
 msgstr "Azalan Ezgisel Aralıklar"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Fourteenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Fourteenth"
-msgstr "Minör Ondörtlük"
+msgstr "Azalan Minör On Dörtlük"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Ninth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Ninth"
-msgstr "Minör Dokuzluk"
+msgstr "Azalan Minör Dokuzluk"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Second"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Second"
-msgstr "Minör İkilik"
+msgstr "Azalan Minör İkilik"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Seventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Seventh"
-msgstr "Minör Yedilik"
+msgstr "Azalan Minör Yedilik"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Sixth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Sixth"
-msgstr "Minör Altılık"
+msgstr "Azalan Minör Altılık"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Tenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Tenth"
-msgstr "Minör Onluk"
+msgstr "Azalan Minör Onluk"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Third"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Third"
-msgstr "Minör Üçlük"
+msgstr "Azalan Minör Üçlük"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor Thirteenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Thirteenth"
-msgstr "Minör On Üçlük"
+msgstr "Azalan Minör On Üçlük"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Octave + Tritone"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Octave + Tritone"
-msgstr "Oktav + Üçtonlu"
+msgstr "Azalan Oktav + Üç Tonlu"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Double Octave"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Double Octave"
-msgstr "Mükemmel Çifte Oktav"
+msgstr "Azalan Mükemmel Çifte Oktav"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Eleventh"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Eleventh"
-msgstr "Mükemmel on birlik"
+msgstr "Azalan Mükemmel On Birlik"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Fifth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Fifth"
-msgstr "Mükemmel Beşlik"
+msgstr "Azalan Mükemmel Beşlik"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Fourth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Fourth"
-msgstr "Mükemmel Dörtlük"
+msgstr "Azalan Mükemmel Dörtlük"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Octave"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Octave"
-msgstr "Mükemmel Oktav"
+msgstr "Azalan Mükemmel Oktav"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Perfect Twelfth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Twelfth"
-msgstr "Mükemmel On İkilik"
+msgstr "Azalan Mükemmel On İkilik"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Descending Melodic Intervals"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Tritone"
-msgstr "Azalan Ezgisel Aralıklar"
+msgstr "Azalan Üç Tonlu"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -756,7 +660,7 @@ msgstr "Majör akorlar"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major eleventh"
-msgstr "Majör on birlik"
+msgstr "Majör On Birlik"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -766,7 +670,7 @@ msgstr "Majör — ilk ters çevirme"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Fourteenth"
-msgstr "Majör On dörtlük"
+msgstr "Majör On Dörtlük"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -841,7 +745,7 @@ msgstr "Majör yedilik — üçüncü ters çevirme"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major sharp eleventh"
-msgstr "Majör on birlik diyez"
+msgstr "Majör On Birlik Diyez"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -861,7 +765,7 @@ msgstr "Majör Üçlük"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Thirteenth"
-msgstr "Majör Onüçlük"
+msgstr "Majör On Üçlük"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -873,12 +777,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Medium"
 msgstr "Orta"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Ascending Melodic Intervals"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Melodic Intervals"
-msgstr "Artan Ezgisel Aralıklar"
+msgstr "Ezgisel Aralıklar"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -898,7 +800,7 @@ msgstr "Minör akorlar"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor eleventh"
-msgstr "Minör on birlik"
+msgstr "Minör On Birlik"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -908,7 +810,7 @@ msgstr "Minör — ilk ters çevirme"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor Fourteenth"
-msgstr "Minör Ondörtlük"
+msgstr "Minör On Dörtlük"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1013,7 +915,7 @@ msgstr "Dokuzluklar"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave + Tritone"
-msgstr "Oktav + Üçtonlu"
+msgstr "Oktav + Üç Tonlu"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1028,7 +930,7 @@ msgstr "Mükemmel Çifte Oktav"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Perfect Eleventh"
-msgstr "Mükemmel on birlik"
+msgstr "Mükemmel On Birlik"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1203,12 +1105,12 @@ msgstr "Üç notalı akorlar — ters çevirmeler"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Tritone"
-msgstr "Üçtonlu"
+msgstr "Üç Tonlu"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Tritone and Sevenths"
-msgstr "Üçtonlu ve Yedilikler"
+msgstr "Üç Tonlu ve Yedilikler"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
