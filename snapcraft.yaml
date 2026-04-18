@@ -35,6 +35,10 @@ parts:
     build-snaps:
       - kde-qt6-core24-sdk/latest/stable
       - kf6-core24-sdk/latest/stable
+    build-packages:
+      - libglib2.0-dev
+    stage-packages:
+      - libglib2.0-0t64
     cmake-parameters:
       - -DCMAKE_INSTALL_PREFIX=/usr
       - -DCMAKE_BUILD_TYPE=Release
