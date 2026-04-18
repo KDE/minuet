@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-14 00:39+0000\n"
-"PO-Revision-Date: 2026-04-14 10:49+0200\n"
+"PO-Revision-Date: 2026-04-17 21:24+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -61,130 +61,130 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "All three note chords"
 msgstr "Vsi akordi s tremi notami"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Fourteenth"
-msgstr "Povišana velika 14"
+msgstr "Zvečana velika 14"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Ninth"
-msgstr "Povišana velika nona"
+msgstr "Zvečana velika nona"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Second"
-msgstr "Povišana velika sekunda"
+msgstr "Zvečana velika sekunda"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Seventh"
-msgstr "Povišana velika septima"
+msgstr "Zvečana velika septima"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Sixth"
-msgstr "Povišana velika seksta"
+msgstr "Zvečana velika seksta"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Tenth"
-msgstr "Povišana velika decima"
+msgstr "Zvečana velika decima"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Third"
-msgstr "Povišana velika terca"
+msgstr "Zvečana velika terca"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Thirteenth"
-msgstr "Povišana velika 13"
+msgstr "Zvečana velika 13"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Melodic Intervals"
 msgstr "Naraščajoči melodični intervali"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Fourteenth"
-msgstr "Povišana molova 14"
+msgstr "Zvečana molova 14"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Ninth"
-msgstr "Povišana mala nona"
+msgstr "Zvečana mala nona"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Second"
-msgstr "Povišana mala sekunda"
+msgstr "Zvečana mala sekunda"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Seventh"
-msgstr "Povišana mala septima"
+msgstr "Zvečana mala septima"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Sixth"
-msgstr "Povišana mala seksta"
+msgstr "Zvečana mala seksta"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Tenth"
-msgstr "Povišana mala decima"
+msgstr "Zvečana mala decima"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Third"
-msgstr "Povišana mala terca"
+msgstr "Zvečana mala terca"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Thirteenth"
-msgstr "Povišana mala 13"
+msgstr "Zvečana mala 13"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Octave + Tritone"
-msgstr "Povišana oktava in tritonus"
+msgstr "Zvečana oktava in tritonus"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Double Octave"
-msgstr "Povišana čista dvojna oktava"
+msgstr "Zvečana čista dvojna oktava"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Eleventh"
-msgstr "Povišana čista 11 (undecima)"
+msgstr "Zvečana čista 11 (undecima)"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Fifth"
-msgstr "Povišana čista kvinta"
+msgstr "Zvečana čista kvinta"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Fourth"
-msgstr "Povišana čista kvarta"
+msgstr "Zvečana čista kvarta"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Octave"
-msgstr "Povišana čista oktava"
+msgstr "Zvečana čista oktava"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Twelfth"
-msgstr "Povišana čista duodecima"
+msgstr "Zvečana čista duodecima"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Tritone"
-msgstr "Povišan tritonus"
+msgstr "Zvečan tritonus"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -286,42 +286,42 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Combined"
 msgstr "Kombinirani"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Fourteenth"
 msgstr "Zmanjšana durova 14"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Ninth"
 msgstr "Zmanjšana velika nona"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Second"
 msgstr "Zmanjšana velika sekunda"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Seventh"
 msgstr "Zmanjšana velika septima"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Sixth"
 msgstr "Zmanjšana velika seksta"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Tenth"
 msgstr "Zmanjšana velika decima"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Third"
 msgstr "Zmanjšana velika terca"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Thirteenth"
 msgstr "Zmanjšana durova 13"
@@ -331,82 +331,82 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Melodic Intervals"
 msgstr "Padajoči melodični intervali"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Fourteenth"
 msgstr "Zmanjšana molova 14"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Ninth"
 msgstr "Zmanjšana mala nona"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Second"
 msgstr "Zmanjšana mala sekunda"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Seventh"
 msgstr "Zmanjšana mala septima"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Sixth"
 msgstr "Zmanjšana mala seksta"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Tenth"
 msgstr "Zmanjšana mala decima"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Third"
 msgstr "Zmanjšana mala terca"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Thirteenth"
 msgstr "Zmanjšana mala 13"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Octave + Tritone"
 msgstr "Zmanjšana oktava in tritonus"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Double Octave"
 msgstr "Zmanjšana čista dvojna oktava"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Eleventh"
 msgstr "Zmanjšana čista 11 (undecima)"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Fifth"
 msgstr "Zmanjšana čista kvinta"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Fourth"
 msgstr "Zmanjšana čista kvarta"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Octave"
 msgstr "Zmanjšana čista oktava"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Twelfth"
 msgstr "Zmanjšana čista duodecima"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Tritone"
 msgstr "Zmanjšan tritonus"
