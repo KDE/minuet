@@ -37,6 +37,12 @@ parts:
       - kf6-core24-sdk/latest/stable
     build-packages:
       - libglib2.0-dev
+      - libinstpatch-dev
+      - libsystemd-dev
+      - libsndfile1-dev
+      - libdbus-1-dev
+      - libjack-dev
+      - libreadline-dev
     stage-packages:
       - libglib2.0-0t64
     cmake-parameters:
