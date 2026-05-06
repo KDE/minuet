@@ -61,12 +61,15 @@ target_link_libraries(minuet
     Qt::Quick
     Qt::QuickControls2
     Qt::Svg
+    KF6::I18n
+    KF6::Kirigami
     Minuet::Interfaces
     Minuet::Utils
 )
 
 if(ANDROID)
     target_link_libraries(minuet
+        KF6::ColorScheme
         Minuet::CsoundSoundController
     )
 endif()
@@ -74,7 +77,6 @@ endif()
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 target_link_libraries(minuet
     KF6::CoreAddons
-    KF6::I18n
     KF6::Crash
 )
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")

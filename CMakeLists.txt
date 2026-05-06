@@ -42,25 +42,28 @@ find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Svg
 )
 
+find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
+    Kirigami
+    I18n
+)
+ecm_find_qmlmodule(org.kde.kirigami REQUIRED)
+
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
-        Kirigami
         CoreAddons
-        I18n
         Crash
         DocTools
+        QQC2DesktopStyle
     )
     find_package(PkgConfig REQUIRED)
     pkg_check_modules(FLUIDSYNTH REQUIRED IMPORTED_TARGET "fluidsynth>=2.5.1")
-    ecm_find_qmlmodule(org.kde.kirigami REQUIRED)
-ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
-
-IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-    find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
-        QQC2DesktopStyle
-    )
     ecm_find_qmlmodule(org.kde.desktop REQUIRED)
-ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+ELSE()
+    find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
+        ColorScheme
+    )
+    ecm_find_qmlmodule(org.kde.breeze REQUIRED)
+ENDIF()
 
 include_directories(${minuet_SOURCE_DIR}/src/ ${minuet_BINARY_DIR}/src/)
 

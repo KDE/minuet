@@ -26,8 +26,10 @@
 #if !defined(Q_OS_ANDROID)
 #include <KAboutData>
 #include <KCrash>
-#include <KLocalizedString>
+#else
+#include <KColorSchemeManager>
 #endif
+#include <KLocalizedString>
 
 #include <QCommandLineParser>
 #include <QDir>
@@ -44,9 +46,11 @@ int main(int argc, char *argv[])
 
 #if !defined(Q_OS_ANDROID)
     KCrash::initialize();
+#endif
 
     KLocalizedString::setApplicationDomain("minuet");
 
+#if !defined(Q_OS_ANDROID)
     KAboutData aboutData(QStringLiteral("minuet"), i18n("Minuet"),
                          QStringLiteral(MINUET_VERSION_STRING),
                          i18n("A KDE application for music education"), KAboutLicense::GPL,
@@ -59,9 +63,14 @@ int main(int argc, char *argv[])
                         QStringLiteral("alessandro.longo@kdemail.net"));
 #endif
 
+#if defined(Q_OS_ANDROID)
+    QQuickStyle::setStyle(QStringLiteral("org.kde.breeze"));
+    KColorSchemeManager::instance();
+#else
     if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
         QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
     }
+#endif
 
     QGuiApplication::setWindowIcon(QIcon(QStringLiteral(":/minuet.png")));
 
