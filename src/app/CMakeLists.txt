@@ -125,12 +125,29 @@ target_link_libraries(minuet PRIVATE
 )
 
 if(ANDROID)
+    set(_minuet_android_abi "${CMAKE_ANDROID_ARCH_ABI}")
+    if(NOT _minuet_android_abi)
+        set(_minuet_android_abi "${ANDROID_ABI}")
+    endif()
+
+    find_library(MINUET_OBOE_LIBRARY
+        NAMES "oboe_${_minuet_android_abi}"
+        PATHS
+            "${CMAKE_INSTALL_PREFIX}/lib/${_minuet_android_abi}"
+            "${CMAKE_INSTALL_PREFIX}/lib"
+        NO_DEFAULT_PATH
+    )
+    if(NOT MINUET_OBOE_LIBRARY)
+        message(FATAL_ERROR "Could not find liboboe_${_minuet_android_abi}.so, required by FluidSynth on Android")
+    endif()
+
     set_target_properties(minuet PROPERTIES
         QT_ANDROID_PACKAGE_NAME org.kde.minuet
         QT_ANDROID_MIN_SDK_VERSION 28
         QT_ANDROID_TARGET_SDK_VERSION 35
         QT_ANDROID_VERSION_CODE ${RELEASE_SERVICE_COMPACT_VERSION}
         QT_ANDROID_VERSION_NAME ${PROJECT_VERSION}
+        QT_ANDROID_EXTRA_LIBS ${MINUET_OBOE_LIBRARY}
     )
 
     target_link_libraries(minuet PRIVATE
