@@ -7,12 +7,20 @@ set(minuetinterfaces_LIB_SRCS
     iexercisecontroller.cpp
 )
 
-add_library(minuetinterfaces ${minuetinterfaces_LIB_SRCS})
+if(ANDROID)
+    add_library(minuetinterfaces STATIC ${minuetinterfaces_LIB_SRCS})
+else()
+    add_library(minuetinterfaces ${minuetinterfaces_LIB_SRCS})
+endif()
 add_library(Minuet::Interfaces ALIAS minuetinterfaces)
 
 set_target_properties(minuetinterfaces PROPERTIES VERSION 0.3.0)
 
 generate_export_header(minuetinterfaces EXPORT_FILE_NAME minuetinterfacesexport.h)
+
+if(ANDROID)
+    target_compile_definitions(minuetinterfaces PUBLIC MINUETINTERFACES_STATIC_DEFINE)
+endif()
 
 target_link_libraries(minuetinterfaces
     Qt::Core
