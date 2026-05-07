@@ -68,6 +68,8 @@ int main(int argc, char *argv[])
 
 #if defined(Q_OS_ANDROID)
     QQuickStyle::setStyle(QStringLiteral("org.kde.breeze"));
+    QIcon::setThemeName(QStringLiteral("breeze"));
+    QIcon::setFallbackThemeName(QStringLiteral("breeze"));
     KColorSchemeManager::instance();
 #else
     if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
@@ -75,7 +77,7 @@ int main(int argc, char *argv[])
     }
 #endif
 
-    QGuiApplication::setWindowIcon(QIcon(QStringLiteral(":/minuet.png")));
+    QGuiApplication::setWindowIcon(QIcon(QStringLiteral(":/icons/64-apps-minuet.png")));
 
     QCommandLineParser parser;
 #if !defined(Q_OS_ANDROID)

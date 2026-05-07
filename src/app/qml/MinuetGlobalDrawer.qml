@@ -51,7 +51,8 @@ Kirigami.GlobalDrawer {
             required property string iconName
 
             text: "Sync"
-            icon.name: iconName
+            icon.name: iconName.startsWith("qrc:/") ? "" : iconName
+            icon.source: iconName.startsWith("qrc:/") ? iconName : ""
             onTriggered: {
                 if (modelData.children === undefined) {
                     drawer.currentExercise = modelData
@@ -63,13 +64,14 @@ Kirigami.GlobalDrawer {
     function createActions(actionSet, icon) {
         const ret = []
         for (const action of actionSet) {
+            const resolvedIconName = action._icon ? "qrc:/icons/22-actions-" + action._icon : icon
             const actionObject = actionComponent.createObject(drawer, {
                 modelData: action,
                 text: i18nc("technical term, do you have a musician friend?", action.name),
-                iconName: action._icon ?? icon,
+                iconName: resolvedIconName,
             })
             if (action.children !== undefined) {
-                actionObject.children = createActions(action.children, action._icon ?? icon)
+                actionObject.children = createActions(action.children, resolvedIconName)
             } else {
 
             }

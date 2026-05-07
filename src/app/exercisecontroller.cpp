@@ -130,7 +130,8 @@ bool ExerciseController::mergeJsonFiles(const QString directoryName, QJsonObject
 {
     QStringList jsonDirs;
 #if defined(Q_OS_ANDROID)
-    jsonDirs << "assets:/data/" + directoryName;
+    jsonDirs << QStringLiteral("assets:/share/minuet/") + directoryName;
+    jsonDirs << QStringLiteral("assets:/data/") + directoryName;
 #elif defined(Q_OS_WIN)
     jsonDirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation,
                                          QStringLiteral("minuet/") + directoryName,
