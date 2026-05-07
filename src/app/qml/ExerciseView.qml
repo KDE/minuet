@@ -25,6 +25,8 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Window
 import org.kde.kirigami as Kirigami
+import "PianoView"
+import "SheetMusicView"
 
 Item {
     id: exerciseView
@@ -33,7 +35,7 @@ Item {
 
     property var currentExercise
 
-    FontLoader { id: bravura; source: "Bravura.otf" }
+    FontLoader { id: bravura; source: "SheetMusicView/Bravura.otf" }
 
     QtObject {
         id: internal

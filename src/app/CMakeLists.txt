@@ -6,35 +6,6 @@ set(minuet_SRCS
     exercisecontroller.cpp
 )
 
-function(minuet_set_resource_alias file alias)
-    set_source_files_properties(${file} PROPERTIES QT_RESOURCE_ALIAS ${alias})
-endfunction()
-
-minuet_set_resource_alias(qml/Main.qml Main.qml)
-minuet_set_resource_alias(qml/AboutDialog.qml AboutDialog.qml)
-minuet_set_resource_alias(qml/MinuetGlobalDrawer.qml MinuetGlobalDrawer.qml)
-minuet_set_resource_alias(+android/qml/MinuetGlobalDrawer.qml +android/MinuetGlobalDrawer.qml)
-minuet_set_resource_alias(qml/ExerciseView.qml ExerciseView.qml)
-minuet_set_resource_alias(qml/PianoView/BlackKey.qml BlackKey.qml)
-minuet_set_resource_alias(qml/PianoView/Octave.qml Octave.qml)
-minuet_set_resource_alias(qml/PianoView/PianoView.qml PianoView.qml)
-minuet_set_resource_alias(qml/PianoView/WhiteKey.qml WhiteKey.qml)
-minuet_set_resource_alias(qml/SheetMusicView/Bravura.otf Bravura.otf)
-minuet_set_resource_alias(qml/SheetMusicView/BravuraText.qml BravuraText.qml)
-minuet_set_resource_alias(qml/SheetMusicView/Clef.qml Clef.qml)
-minuet_set_resource_alias(qml/SheetMusicView/Note.qml Note.qml)
-minuet_set_resource_alias(qml/SheetMusicView/Score.qml Score.qml)
-minuet_set_resource_alias(qml/SheetMusicView/Sequence.qml Sequence.qml)
-minuet_set_resource_alias(qml/SheetMusicView/SheetMusicView.qml SheetMusicView.qml)
-minuet_set_resource_alias(qml/images/menu.png menu.png)
-minuet_set_resource_alias(qml/images/keyboard_arrow_left.png keyboard_arrow_left.png)
-minuet_set_resource_alias(qml/images/more_vert.png more_vert.png)
-minuet_set_resource_alias(icons/64-apps-minuet.png minuet.png)
-minuet_set_resource_alias(icons/22-actions-minuet-chords.svg minuet-chords.svg)
-minuet_set_resource_alias(icons/22-actions-minuet-intervals.svg minuet-intervals.svg)
-minuet_set_resource_alias(icons/22-actions-minuet-rhythms.svg minuet-rhythms.svg)
-minuet_set_resource_alias(icons/22-actions-minuet-scales.svg minuet-scales.svg)
-
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     set(minuet_ICONS_PNG
         ${CMAKE_CURRENT_SOURCE_DIR}/icons/16-apps-minuet.png
@@ -90,7 +61,6 @@ qt_add_qml_module(minuet
         qml/SheetMusicView/Sequence.qml
         qml/SheetMusicView/SheetMusicView.qml
     RESOURCES
-        +android/qml/MinuetGlobalDrawer.qml
         qml/SheetMusicView/Bravura.otf
 )
 

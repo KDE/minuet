@@ -41,7 +41,7 @@ Popup {
         Image {
             id: icon
 
-            source: "qrc:/minuet.png"
+            source: "qrc:/icons/64-apps-minuet.png"
             fillMode: Image.PreserveAspectFit
             anchors.horizontalCenter: parent.horizontalCenter
             sourceSize { width: 60; height: 60 }

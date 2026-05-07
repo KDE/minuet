@@ -52,7 +52,7 @@ Kirigami.ApplicationWindow {
                         fillMode: Image.Pad
                         horizontalAlignment: Image.AlignHCenter
                         verticalAlignment: Image.AlignVCenter
-                        source: "qrc:/menu.png"
+                        source: "qrc:/qml/images/menu.png"
                     }
                     onClicked: drawer.open()
                 }
@@ -71,7 +71,7 @@ Kirigami.ApplicationWindow {
                         fillMode: Image.Pad
                         horizontalAlignment: Image.AlignHCenter
                         verticalAlignment: Image.AlignVCenter
-                        source: "qrc:/more_vert.png"
+                        source: "qrc:/qml/images/more_vert.png"
                     }
                     onClicked: optionsMenu.open()
 
@@ -119,10 +119,10 @@ Kirigami.ApplicationWindow {
                 spacing: 40
                 Repeater {
                     model: [
-                        { icon: "qrc:/minuet-chords.svg", title: "Chords" },
-                        { icon: "qrc:/minuet-intervals.svg", title: "Intervals" },
-                        { icon: "qrc:/minuet-rhythms.svg", title: "Rhythms" },
-                        { icon: "qrc:/minuet-scales.svg", title: "Scales" }
+                        { icon: "qrc:/icons/22-actions-minuet-chords.svg", title: "Chords" },
+                        { icon: "qrc:/icons/22-actions-minuet-intervals.svg", title: "Intervals" },
+                        { icon: "qrc:/icons/22-actions-minuet-rhythms.svg", title: "Rhythms" },
+                        { icon: "qrc:/icons/22-actions-minuet-scales.svg", title: "Scales" }
                     ]
                     Column {
                         Image {
