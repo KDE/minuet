@@ -125,6 +125,14 @@ target_link_libraries(minuet PRIVATE
 )
 
 if(ANDROID)
+    set_target_properties(minuet PROPERTIES
+        QT_ANDROID_PACKAGE_NAME org.kde.minuet
+        QT_ANDROID_MIN_SDK_VERSION 28
+        QT_ANDROID_TARGET_SDK_VERSION 35
+        QT_ANDROID_VERSION_CODE ${RELEASE_SERVICE_COMPACT_VERSION}
+        QT_ANDROID_VERSION_NAME ${PROJECT_VERSION}
+    )
+
     target_link_libraries(minuet PRIVATE
         KF6::ColorScheme
         Minuet::FluidSynthSoundController
