@@ -265,18 +265,30 @@ void FluidSynthSoundController::resetEngine()
 {
     deleteEngine();
 #if defined(Q_OS_ANDROID)
-    fluid_settings_setstr(m_settings, "audio.driver", "opensles");
+    for (const char *driver : {"oboe", "opensles"}) {
+        if (fluid_settings_setstr(m_settings, "audio.driver", driver) != FLUID_OK) {
+            qWarning() << "FluidSynth audio driver is not available:" << driver;
+            continue;
+        }
+
+        m_audioDriver = new_fluid_audio_driver(m_settings, m_synth);
+        if (m_audioDriver) {
+            qInfo() << "Using FluidSynth audio driver:" << driver;
+            break;
+        }
+
+        qWarning() << "Could not start FluidSynth audio driver:" << driver;
+    }
 #elif defined(Q_OS_LINUX)
     fluid_settings_setstr(m_settings, "audio.driver", "pulseaudio");
-#elif defined(Q_OS_WIN)
-    fluid_settings_setstr(m_settings, "audio.driver", "dsound");
-#endif
     m_audioDriver = new_fluid_audio_driver(m_settings, m_synth);
-#if !defined(Q_OS_ANDROID)
     if (!m_audioDriver) {
         fluid_settings_setstr(m_settings, "audio.driver", "alsa");
         m_audioDriver = new_fluid_audio_driver(m_settings, m_synth);
     }
+#elif defined(Q_OS_WIN)
+    fluid_settings_setstr(m_settings, "audio.driver", "dsound");
+    m_audioDriver = new_fluid_audio_driver(m_settings, m_synth);
 #endif
     if (!m_audioDriver) {
         qCritical() << "Couldn't start audio driver!";
@@ -304,9 +316,11 @@ void FluidSynthSoundController::deleteEngine()
         fluid_sequencer_send_now(m_sequencer, m_unregisteringEvent);
 #endif
         delete_fluid_sequencer(m_sequencer);
+        m_sequencer = nullptr;
     }
     if (m_audioDriver) {
         delete_fluid_audio_driver(m_audioDriver);
+        m_audioDriver = nullptr;
     }
 }
 
