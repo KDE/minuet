@@ -47,7 +47,10 @@ FluidSynthSoundController::FluidSynthSoundController(QObject *parent)
 
     fluid_synth_cc(m_synth, 1, 100, 0);
 
-#ifdef Q_OS_WIN
+#ifdef Q_OS_ANDROID
+    const QString sf_path = QStandardPaths::locate(
+        QStandardPaths::AppDataLocation, QStringLiteral("soundfonts/GeneralUser-v1.47.sf2"));
+#elif defined(Q_OS_WIN)
     const QString sf_path = QStandardPaths::locate(
         QStandardPaths::AppDataLocation, QStringLiteral("minuet/soundfonts/GeneralUser-v1.47.sf2"));
 #else
@@ -261,17 +264,20 @@ void FluidSynthSoundController::sequencerCallback(unsigned int time, fluid_event
 void FluidSynthSoundController::resetEngine()
 {
     deleteEngine();
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_ANDROID)
+    fluid_settings_setstr(m_settings, "audio.driver", "opensles");
+#elif defined(Q_OS_LINUX)
     fluid_settings_setstr(m_settings, "audio.driver", "pulseaudio");
-#endif
-#ifdef Q_OS_WIN
+#elif defined(Q_OS_WIN)
     fluid_settings_setstr(m_settings, "audio.driver", "dsound");
 #endif
     m_audioDriver = new_fluid_audio_driver(m_settings, m_synth);
+#if !defined(Q_OS_ANDROID)
     if (!m_audioDriver) {
         fluid_settings_setstr(m_settings, "audio.driver", "alsa");
         m_audioDriver = new_fluid_audio_driver(m_settings, m_synth);
     }
+#endif
     if (!m_audioDriver) {
         qCritical() << "Couldn't start audio driver!";
     }

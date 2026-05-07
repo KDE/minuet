@@ -41,6 +41,19 @@ find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     QuickControls2
     Svg
 )
+include(ECMAddAndroidApk)
+
+find_package(FluidSynth 2.5.4 CONFIG QUIET)
+if(TARGET FluidSynth::libfluidsynth)
+    set(MINUET_FLUIDSYNTH_TARGET FluidSynth::libfluidsynth)
+else()
+    if(ANDROID)
+        message(FATAL_ERROR "Android builds require FluidSynthConfig.cmake and FluidSynth::libfluidsynth")
+    endif()
+    find_package(PkgConfig REQUIRED)
+    pkg_check_modules(FLUIDSYNTH REQUIRED IMPORTED_TARGET "fluidsynth>=2.5.4")
+    set(MINUET_FLUIDSYNTH_TARGET PkgConfig::FLUIDSYNTH)
+endif()
 
 find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     Kirigami
@@ -55,8 +68,6 @@ IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
         DocTools
         QQC2DesktopStyle
     )
-    find_package(PkgConfig REQUIRED)
-    pkg_check_modules(FLUIDSYNTH REQUIRED IMPORTED_TARGET "fluidsynth>=2.5.1")
     ecm_find_qmlmodule(org.kde.desktop REQUIRED)
 ELSE()
     find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS

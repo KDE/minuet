@@ -6,7 +6,34 @@ set(minuet_SRCS
     exercisecontroller.cpp
 )
 
-qt_add_resources(minuet_SRCS qml.qrc)
+function(minuet_set_resource_alias file alias)
+    set_source_files_properties(${file} PROPERTIES QT_RESOURCE_ALIAS ${alias})
+endfunction()
+
+minuet_set_resource_alias(qml/Main.qml Main.qml)
+minuet_set_resource_alias(qml/AboutDialog.qml AboutDialog.qml)
+minuet_set_resource_alias(qml/MinuetGlobalDrawer.qml MinuetGlobalDrawer.qml)
+minuet_set_resource_alias(+android/qml/MinuetGlobalDrawer.qml +android/MinuetGlobalDrawer.qml)
+minuet_set_resource_alias(qml/ExerciseView.qml ExerciseView.qml)
+minuet_set_resource_alias(qml/PianoView/BlackKey.qml BlackKey.qml)
+minuet_set_resource_alias(qml/PianoView/Octave.qml Octave.qml)
+minuet_set_resource_alias(qml/PianoView/PianoView.qml PianoView.qml)
+minuet_set_resource_alias(qml/PianoView/WhiteKey.qml WhiteKey.qml)
+minuet_set_resource_alias(qml/SheetMusicView/Bravura.otf Bravura.otf)
+minuet_set_resource_alias(qml/SheetMusicView/BravuraText.qml BravuraText.qml)
+minuet_set_resource_alias(qml/SheetMusicView/Clef.qml Clef.qml)
+minuet_set_resource_alias(qml/SheetMusicView/Note.qml Note.qml)
+minuet_set_resource_alias(qml/SheetMusicView/Score.qml Score.qml)
+minuet_set_resource_alias(qml/SheetMusicView/Sequence.qml Sequence.qml)
+minuet_set_resource_alias(qml/SheetMusicView/SheetMusicView.qml SheetMusicView.qml)
+minuet_set_resource_alias(qml/images/menu.png menu.png)
+minuet_set_resource_alias(qml/images/keyboard_arrow_left.png keyboard_arrow_left.png)
+minuet_set_resource_alias(qml/images/more_vert.png more_vert.png)
+minuet_set_resource_alias(icons/64-apps-minuet.png minuet.png)
+minuet_set_resource_alias(icons/22-actions-minuet-chords.svg minuet-chords.svg)
+minuet_set_resource_alias(icons/22-actions-minuet-intervals.svg minuet-intervals.svg)
+minuet_set_resource_alias(icons/22-actions-minuet-rhythms.svg minuet-rhythms.svg)
+minuet_set_resource_alias(icons/22-actions-minuet-scales.svg minuet-scales.svg)
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     set(minuet_ICONS_PNG
@@ -40,21 +67,51 @@ IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     ecm_install_icons(ICONS ${minuet_ICONS_PNG} ${minuet_ICONS_SVG} DESTINATION ${KDE_INSTALL_ICONDIR} THEME hicolor)
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 
-if(ANDROID)
-    include(../../cmake/qt-android-mk-apk.cmake)
-    add_library(minuet SHARED ${minuet_SRCS})
-    qt_android_build_apk(
-        TARGET ${PROJECT_NAME}
-        PACKAGE_NAME org.kde.minuet
-        QML_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR}
-        ANDROID_EXTRA_FILES ${CMAKE_CURRENT_SOURCE_DIR}/../../android
-        EXTRA_LIBS ../plugins/csoundsoundcontroller/libminuetcsoundsoundcontroller.so,../interfaces/libminuetinterfaces.so,../../src/plugins/csoundsoundcontroller/Csound-prefix/src/Csound/Android/CsoundAndroid/libs/arm64-v8a/libcsoundandroid.so,../../src/plugins/csoundsoundcontroller/Csound-prefix/src/Csound/Android/CsoundAndroid/libs/arm64-v8a/libsndfile.so,../../src/plugins/csoundsoundcontroller/Csound-prefix/src/Csound/Android/pluginlibs/libfluidsynth/libs/arm64-v8a/libfluidOpcodes.so,../../src/plugins/csoundsoundcontroller/Csound-prefix/src/Csound/Android/CsoundAndroid/libs/arm64-v8a/libc++_shared.so
-    )
-else()
-    add_executable(minuet ${minuet_SRCS})
-endif()
+add_executable(minuet ${minuet_SRCS})
 
-target_link_libraries(minuet
+qt_add_qml_module(minuet
+    URI org.kde.minuet
+    VERSION 1.0
+    RESOURCE_PREFIX /qt/qml
+    NO_GENERATE_EXTRA_QMLDIRS
+    QML_FILES
+        qml/Main.qml
+        qml/AboutDialog.qml
+        qml/MinuetGlobalDrawer.qml
+        qml/ExerciseView.qml
+        qml/PianoView/BlackKey.qml
+        qml/PianoView/Octave.qml
+        qml/PianoView/PianoView.qml
+        qml/PianoView/WhiteKey.qml
+        qml/SheetMusicView/BravuraText.qml
+        qml/SheetMusicView/Clef.qml
+        qml/SheetMusicView/Note.qml
+        qml/SheetMusicView/Score.qml
+        qml/SheetMusicView/Sequence.qml
+        qml/SheetMusicView/SheetMusicView.qml
+    RESOURCES
+        +android/qml/MinuetGlobalDrawer.qml
+        qml/SheetMusicView/Bravura.otf
+)
+
+qt_add_resources(minuet minuet_assets
+    PREFIX /
+    FILES
+        qml/images/minuet-drawer.png
+        qml/images/menu.png
+        qml/images/keyboard_arrow_left.png
+        qml/images/more_vert.png
+        icons/64-apps-minuet.png
+        icons/22-actions-minuet-chords.svg
+        icons/22-actions-minuet-intervals.svg
+        icons/22-actions-minuet-rhythms.svg
+        icons/22-actions-minuet-scales.svg
+        qtquickcontrols2.conf
+        +android/qtquickcontrols2.conf
+        +windows/qtquickcontrols2.conf
+)
+
+target_link_libraries(minuet PRIVATE
     Qt::Core
     Qt::Gui
     Qt::Qml
@@ -68,14 +125,15 @@ target_link_libraries(minuet
 )
 
 if(ANDROID)
-    target_link_libraries(minuet
+    target_link_libraries(minuet PRIVATE
         KF6::ColorScheme
-        Minuet::CsoundSoundController
+        Minuet::FluidSynthSoundController
     )
+    ecm_add_android_apk(minuet ANDROID_DIR ${CMAKE_SOURCE_DIR}/android)
 endif()
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
-target_link_libraries(minuet
+target_link_libraries(minuet PRIVATE
     KF6::CoreAddons
     KF6::Crash
 )

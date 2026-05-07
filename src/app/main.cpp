@@ -34,9 +34,12 @@
 #include <QCommandLineParser>
 #include <QDir>
 #include <QFile>
+#include <QFileInfo>
 #include <QGuiApplication>
 #include <QIcon>
 #include <QQuickStyle>
+#include <QStandardPaths>
+#include <QStringList>
 
 #include <QDebug>
 
@@ -88,12 +91,24 @@ int main(int argc, char *argv[])
 #endif
 
 #if defined(Q_OS_ANDROID)
-    if (!QFile("/data/data/org.kde.minuet/files/sf_GMbank.sf2").exists()) {
-        if (QFile("assets:/share/sf_GMbank.sf2")
-                .copy("/data/data/org.kde.minuet/files/sf_GMbank.sf2"))
-            qDebug() << "COPIED "
-                     << QFileInfo("/data/data/org.kde.minuet/files/sf_GMbank.sf2").size()
-                     << "b soundfound file to /data/data/org.kde.minuet/files/sf_GMbank.sf2";
+    const QDir writableDataDir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
+    const QString soundfontDirPath = writableDataDir.absoluteFilePath(QStringLiteral("soundfonts"));
+    const QString soundfontPath = QDir(soundfontDirPath).absoluteFilePath(QStringLiteral("GeneralUser-v1.47.sf2"));
+    if (!QFile::exists(soundfontPath)) {
+        QDir().mkpath(soundfontDirPath);
+        const QStringList assetPaths = {
+            QStringLiteral("assets:/share/minuet/soundfonts/GeneralUser-v1.47.sf2"),
+            QStringLiteral("assets:/data/soundfonts/GeneralUser-v1.47.sf2"),
+            QStringLiteral("assets:/share/GeneralUser-v1.47.sf2"),
+        };
+        for (const QString &assetPath : assetPaths) {
+            QFile assetFile(assetPath);
+            if (assetFile.exists() && assetFile.copy(soundfontPath)) {
+                qDebug() << "Copied" << QFileInfo(soundfontPath).size()
+                         << "b soundfont file to" << soundfontPath;
+                break;
+            }
+        }
     }
 #endif
     Minuet::Core::initialize();

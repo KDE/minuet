@@ -25,7 +25,7 @@
 #include "core.h"
 
 #if defined(Q_OS_ANDROID)
-#include "../plugins/csoundsoundcontroller/csoundsoundcontroller.h"
+#include "../plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.h"
 #endif
 
 #include <interfaces/iplugin.h>
@@ -84,7 +84,7 @@ bool PluginController::initialize(Core *core)
     }
 #else
     ISoundController *soundController = 0;
-    if (!core->soundController() && (soundController = new CsoundSoundController)) {
+    if (!core->soundController() && (soundController = new FluidSynthSoundController)) {
         qInfo() << "Setting soundcontroller to" << soundController->metaObject()->className();
         core->setSoundController(soundController);
     }

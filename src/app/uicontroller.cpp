@@ -24,12 +24,11 @@
 
 #include "core.h"
 
-#include <QStandardPaths>
-
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
 #include <KLocalizedContext>
+#include <KLocalizedString>
 
 namespace Minuet
 {
@@ -42,7 +41,12 @@ bool UiController::initialize(Core *core)
     QQmlContext *rootContext = engine->rootContext();
     rootContext->setContextProperty(QStringLiteral("core"), core);
     rootContext->setContextObject(new KLocalizedContext(engine));
-    engine->load(QUrl(QStringLiteral("qrc:/Main.qml")));
+    engine->loadFromModule(QStringLiteral("org.kde.minuet"), QStringLiteral("Main"));
+
+    if (engine->rootObjects().isEmpty()) {
+        m_errorString = i18n("Could not load the main user interface.");
+        return false;
+    }
 
     return true;
 }
