@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-14 00:39+0000\n"
+"POT-Creation-Date: 2026-05-07 00:40+0000\n"
 "PO-Revision-Date: 2026-04-14 21:38+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -1168,27 +1168,27 @@ msgstr "טונים שלמים"
 msgid "Could not open JSON file \"%1\"."
 msgstr "לא ניתן לפתוח את הקובץ ה־JSON ‏„%1”."
 
-#: src/app/main.cpp:50
+#: src/app/main.cpp:54
 #, kde-format
 msgid "Minuet"
 msgstr "מינואט"
 
-#: src/app/main.cpp:52
+#: src/app/main.cpp:56
 #, kde-format
 msgid "A KDE application for music education"
 msgstr "יישום KDE לחינוך מוזיקלי"
 
-#: src/app/main.cpp:53
+#: src/app/main.cpp:57
 #, kde-format
 msgid "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 msgstr "‏(c) 2016, סנדרו ס. אנדרייד (sandroandrade@kde.org)"
 
-#: src/app/main.cpp:54 src/app/main.cpp:56
+#: src/app/main.cpp:58 src/app/main.cpp:60
 #, kde-format
 msgid "Developer"
 msgstr "מפתח"
 
-#: src/app/main.cpp:58
+#: src/app/main.cpp:62
 #, kde-format
 msgid "Minuet Icon Designer"
 msgstr "מעצב הסמל של מינואט"

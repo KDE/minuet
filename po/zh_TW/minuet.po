@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-14 00:39+0000\n"
+"POT-Creation-Date: 2026-05-07 00:40+0000\n"
 "PO-Revision-Date: 2025-05-19 21:20+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -1270,27 +1270,27 @@ msgstr "全音音階"
 msgid "Could not open JSON file \"%1\"."
 msgstr "無法開啟 JSON 檔「%1」。"
 
-#: src/app/main.cpp:50
+#: src/app/main.cpp:54
 #, kde-format
 msgid "Minuet"
 msgstr "Minuet"
 
-#: src/app/main.cpp:52
+#: src/app/main.cpp:56
 #, kde-format
 msgid "A KDE application for music education"
 msgstr "KDE 的音樂教育應用程式"
 
-#: src/app/main.cpp:53
+#: src/app/main.cpp:57
 #, kde-format
 msgid "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 msgstr "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 
-#: src/app/main.cpp:54 src/app/main.cpp:56
+#: src/app/main.cpp:58 src/app/main.cpp:60
 #, kde-format
 msgid "Developer"
 msgstr "開發者"
 
-#: src/app/main.cpp:58
+#: src/app/main.cpp:62
 #, kde-format
 msgid "Minuet Icon Designer"
 msgstr "Minuet 圖示設計師"
