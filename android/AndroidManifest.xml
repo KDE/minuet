@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest package="org.kde.minuet"
+          xmlns:android="http://schemas.android.com/apk/res/android"
           android:installLocation="auto">
 
     <!-- The following comment will be replaced upon deployment with default permissions based on the dependencies of the application.

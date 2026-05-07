@@ -44,7 +44,7 @@ find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
 include(ECMAddAndroidApk)
 
 if(ANDROID)
-    find_package(FluidSynth 2.5.4 CONFIG REQUIRED)
+    find_package(FluidSynth 2.5.3 CONFIG REQUIRED)
     if(TARGET FluidSynth::libfluidsynth)
         set(MINUET_FLUIDSYNTH_TARGET FluidSynth::libfluidsynth)
     else()
@@ -52,7 +52,7 @@ if(ANDROID)
     endif()
 else()
     find_package(PkgConfig REQUIRED)
-    pkg_check_modules(FLUIDSYNTH REQUIRED IMPORTED_TARGET "fluidsynth>=2.5.4")
+    pkg_check_modules(FLUIDSYNTH REQUIRED IMPORTED_TARGET "fluidsynth>=2.5.3")
     set(MINUET_FLUIDSYNTH_TARGET PkgConfig::FLUIDSYNTH)
 endif()
 
