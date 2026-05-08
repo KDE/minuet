@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-07 00:40+0000\n"
+"POT-Creation-Date: 2026-05-08 00:40+0000\n"
 "PO-Revision-Date: 2024-01-02 20:10+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -1264,113 +1264,113 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Whole Tone"
 msgstr "Helton"
 
-#: src/app/exercisecontroller.cpp:176
+#: src/app/exercisecontroller.cpp:177
 #, kde-format
 msgid "Could not open JSON file \"%1\"."
 msgstr "Kunde inte öppna JSON-filen \"%1\"."
 
-#: src/app/main.cpp:54
+#: src/app/main.cpp:57
 #, kde-format
 msgid "Minuet"
 msgstr "Minuet"
 
-#: src/app/main.cpp:56
+#: src/app/main.cpp:59
 #, kde-format
 msgid "A KDE application for music education"
 msgstr "Ett KDE-program för musikutbildning"
 
-#: src/app/main.cpp:57
+#: src/app/main.cpp:60
 #, kde-format
 msgid "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 msgstr "© 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 
-#: src/app/main.cpp:58 src/app/main.cpp:60
+#: src/app/main.cpp:61 src/app/main.cpp:63
 #, kde-format
 msgid "Developer"
 msgstr "Utvecklare"
 
-#: src/app/main.cpp:62
+#: src/app/main.cpp:65
 #, kde-format
 msgid "Minuet Icon Designer"
 msgstr "Minuet ikondesign"
 
-#: src/app/qml/ExerciseView.qml:74
+#: src/app/qml/ExerciseView.qml:76
 #, kde-format
 msgid "Click 'New Question' to start!"
 msgstr "Klicka på 'Ny fråga' för att börja."
 
-#: src/app/qml/ExerciseView.qml:105
+#: src/app/qml/ExerciseView.qml:107
 #, kde-format
 msgid "Here is the answer"
 msgstr "Här är svaret"
 
-#: src/app/qml/ExerciseView.qml:105
+#: src/app/qml/ExerciseView.qml:107
 #, kde-format
 msgid "Congratulations, you answered correctly!"
 msgstr "Gratulerar, du svarade rätt!"
 
-#: src/app/qml/ExerciseView.qml:105
+#: src/app/qml/ExerciseView.qml:107
 #, kde-format
 msgid "Oops, not this time! Try again!"
 msgstr "Hoppsan, inte denna gången. Försök igen!"
 
-#: src/app/qml/ExerciseView.qml:107
+#: src/app/qml/ExerciseView.qml:109
 #, kde-format
 msgid "You answered correctly %1%"
 msgstr "Du svarade %1 % rätt"
 
-#: src/app/qml/ExerciseView.qml:157
+#: src/app/qml/ExerciseView.qml:159
 #, kde-format
 msgid "Question %1 out of %2"
 msgstr "Fråga %1 av %2"
 
-#: src/app/qml/ExerciseView.qml:186
+#: src/app/qml/ExerciseView.qml:188
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "userMessage"
 msgstr "Användarmeddelande"
 
-#: src/app/qml/ExerciseView.qml:203
+#: src/app/qml/ExerciseView.qml:205
 #, kde-format
 msgid "New Question"
 msgstr "Ny fråga"
 
-#: src/app/qml/ExerciseView.qml:203
+#: src/app/qml/ExerciseView.qml:205
 #, kde-format
 msgid "Play Question"
 msgstr "Spela upp fråga"
 
-#: src/app/qml/ExerciseView.qml:217
+#: src/app/qml/ExerciseView.qml:219
 #, kde-format
 msgid "Give Up"
 msgstr "Ge upp"
 
-#: src/app/qml/ExerciseView.qml:242
+#: src/app/qml/ExerciseView.qml:244
 #, kde-format
 msgid "Stop Test"
 msgstr "Stoppa prov"
 
-#: src/app/qml/ExerciseView.qml:242
+#: src/app/qml/ExerciseView.qml:244
 #, kde-format
 msgid "Start Test"
 msgstr "Starta prov"
 
-#: src/app/qml/ExerciseView.qml:256
+#: src/app/qml/ExerciseView.qml:258
 #, kde-format
 msgid "Click 'New Question' to start"
 msgstr "Klicka på 'Ny fråga' för att börja"
 
-#: src/app/qml/ExerciseView.qml:263
+#: src/app/qml/ExerciseView.qml:265
 #, kde-format
 msgid "Available Answers"
 msgstr "Tillgängliga svar"
 
-#: src/app/qml/ExerciseView.qml:386
+#: src/app/qml/ExerciseView.qml:388
 #, kde-format
 msgid "Your Answer(s)"
 msgstr "Dina svar"
 
-#: src/app/qml/ExerciseView.qml:410
+#: src/app/qml/ExerciseView.qml:412
 #, kde-format
 msgid "Backspace"
 msgstr "Baksteg"
@@ -1387,6 +1387,11 @@ msgstr "Om"
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave %1"
 msgstr "Oktav"
+
+#: src/app/uicontroller.cpp:47
+#, kde-format
+msgid "Could not load the main user interface."
+msgstr ""
 
 #~ msgctxt "technical term, do you have a musician friend?"
 #~ msgid "eighth-dot-sixteenth"

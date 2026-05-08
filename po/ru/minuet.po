@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-07 00:40+0000\n"
+"POT-Creation-Date: 2026-05-08 00:40+0000\n"
 "PO-Revision-Date: 2026-02-13 21:36+0200\n"
 "Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -1271,114 +1271,114 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Whole Tone"
 msgstr "Целотонная"
 
-#: src/app/exercisecontroller.cpp:176
+#: src/app/exercisecontroller.cpp:177
 #, kde-format
 msgid "Could not open JSON file \"%1\"."
 msgstr "Не удалось открыть файл JSON «%1»."
 
-#: src/app/main.cpp:54
+#: src/app/main.cpp:57
 #, kde-format
 msgid "Minuet"
 msgstr "Minuet"
 
-#: src/app/main.cpp:56
+#: src/app/main.cpp:59
 #, kde-format
 msgid "A KDE application for music education"
 msgstr "Приложение от KDE для обучения музыке"
 
-#: src/app/main.cpp:57
+#: src/app/main.cpp:60
 #, kde-format
 msgid "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 msgstr "© Sandro S. Andrade (sandroandrade@kde.org), 2016"
 
-#: src/app/main.cpp:58 src/app/main.cpp:60
+#: src/app/main.cpp:61 src/app/main.cpp:63
 #, kde-format
 msgid "Developer"
 msgstr "Разработчик"
 
-#: src/app/main.cpp:62
+#: src/app/main.cpp:65
 #, kde-format
 msgid "Minuet Icon Designer"
 msgstr "Автор значка Minuet"
 
-#: src/app/qml/ExerciseView.qml:74
+#: src/app/qml/ExerciseView.qml:76
 #, kde-format
 msgid "Click 'New Question' to start!"
 msgstr "Для старта нажмите «Новый вопрос»!"
 
-#: src/app/qml/ExerciseView.qml:105
+#: src/app/qml/ExerciseView.qml:107
 #, kde-format
 msgid "Here is the answer"
 msgstr "Правильный ответ"
 
-#: src/app/qml/ExerciseView.qml:105
+#: src/app/qml/ExerciseView.qml:107
 #, kde-format
 msgid "Congratulations, you answered correctly!"
 msgstr "Поздравляем! Вы ответили верно!"
 
-#: src/app/qml/ExerciseView.qml:105
+#: src/app/qml/ExerciseView.qml:107
 #, kde-format
 msgid "Oops, not this time! Try again!"
 msgstr "Ой, не получилось! Попробуйте ещё раз!"
 
-#: src/app/qml/ExerciseView.qml:107
+#: src/app/qml/ExerciseView.qml:109
 #, kde-format
 msgid "You answered correctly %1%"
 msgstr "Вы дали %1% правильных ответов"
 
-#: src/app/qml/ExerciseView.qml:157
+#: src/app/qml/ExerciseView.qml:159
 #, kde-format
 msgid "Question %1 out of %2"
 msgstr "Вопрос %1 из %2"
 
 # BUGME: should this really be translatable? --aspotashev
-#: src/app/qml/ExerciseView.qml:186
+#: src/app/qml/ExerciseView.qml:188
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "userMessage"
 msgstr "userMessage"
 
-#: src/app/qml/ExerciseView.qml:203
+#: src/app/qml/ExerciseView.qml:205
 #, kde-format
 msgid "New Question"
 msgstr "Новый вопрос"
 
-#: src/app/qml/ExerciseView.qml:203
+#: src/app/qml/ExerciseView.qml:205
 #, kde-format
 msgid "Play Question"
 msgstr "Проиграть вопрос"
 
-#: src/app/qml/ExerciseView.qml:217
+#: src/app/qml/ExerciseView.qml:219
 #, kde-format
 msgid "Give Up"
 msgstr "Сдаться"
 
-#: src/app/qml/ExerciseView.qml:242
+#: src/app/qml/ExerciseView.qml:244
 #, kde-format
 msgid "Stop Test"
 msgstr "Закончить тест"
 
-#: src/app/qml/ExerciseView.qml:242
+#: src/app/qml/ExerciseView.qml:244
 #, kde-format
 msgid "Start Test"
 msgstr "Начать тест"
 
-#: src/app/qml/ExerciseView.qml:256
+#: src/app/qml/ExerciseView.qml:258
 #, kde-format
 msgid "Click 'New Question' to start"
 msgstr "Для старта нажмите «Новый вопрос»"
 
-#: src/app/qml/ExerciseView.qml:263
+#: src/app/qml/ExerciseView.qml:265
 #, kde-format
 msgid "Available Answers"
 msgstr "Варианты ответов"
 
-#: src/app/qml/ExerciseView.qml:386
+#: src/app/qml/ExerciseView.qml:388
 #, kde-format
 msgid "Your Answer(s)"
 msgstr "Ваш ответ"
 
-#: src/app/qml/ExerciseView.qml:410
+#: src/app/qml/ExerciseView.qml:412
 #, kde-format
 msgid "Backspace"
 msgstr "Стереть блок"
@@ -1395,6 +1395,11 @@ msgstr "О программе"
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave %1"
 msgstr "Октава"
+
+#: src/app/uicontroller.cpp:47
+#, kde-format
+msgid "Could not load the main user interface."
+msgstr ""
 
 #~ msgctxt "technical term, do you have a musician friend?"
 #~ msgid "eighth-dot-sixteenth"

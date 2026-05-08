@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-07 00:40+0000\n"
+"POT-Creation-Date: 2026-05-08 00:40+0000\n"
 "PO-Revision-Date: 2024-04-03 11:40+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: \n"
@@ -1164,113 +1164,113 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Whole Tone"
 msgstr "Celý tón"
 
-#: src/app/exercisecontroller.cpp:176
+#: src/app/exercisecontroller.cpp:177
 #, kde-format
 msgid "Could not open JSON file \"%1\"."
 msgstr "Nelze otevřít soubor JSON \"%1\"."
 
-#: src/app/main.cpp:54
+#: src/app/main.cpp:57
 #, kde-format
 msgid "Minuet"
 msgstr "Minuet"
 
-#: src/app/main.cpp:56
+#: src/app/main.cpp:59
 #, kde-format
 msgid "A KDE application for music education"
 msgstr ""
 
-#: src/app/main.cpp:57
+#: src/app/main.cpp:60
 #, kde-format
 msgid "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 msgstr "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 
-#: src/app/main.cpp:58 src/app/main.cpp:60
+#: src/app/main.cpp:61 src/app/main.cpp:63
 #, kde-format
 msgid "Developer"
 msgstr "Vývojář"
 
-#: src/app/main.cpp:62
+#: src/app/main.cpp:65
 #, kde-format
 msgid "Minuet Icon Designer"
 msgstr "Návrhář ikon Minuet"
 
-#: src/app/qml/ExerciseView.qml:74
+#: src/app/qml/ExerciseView.qml:76
 #, kde-format
 msgid "Click 'New Question' to start!"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:105
+#: src/app/qml/ExerciseView.qml:107
 #, kde-format
 msgid "Here is the answer"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:105
+#: src/app/qml/ExerciseView.qml:107
 #, kde-format
 msgid "Congratulations, you answered correctly!"
 msgstr "Gratulujeme, odpověděli jste správně."
 
-#: src/app/qml/ExerciseView.qml:105
+#: src/app/qml/ExerciseView.qml:107
 #, kde-format
 msgid "Oops, not this time! Try again!"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:107
+#: src/app/qml/ExerciseView.qml:109
 #, kde-format
 msgid "You answered correctly %1%"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:157
+#: src/app/qml/ExerciseView.qml:159
 #, kde-format
 msgid "Question %1 out of %2"
 msgstr "Otázka %1 ze %2"
 
-#: src/app/qml/ExerciseView.qml:186
+#: src/app/qml/ExerciseView.qml:188
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "userMessage"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:203
+#: src/app/qml/ExerciseView.qml:205
 #, kde-format
 msgid "New Question"
 msgstr "Nová otázka"
 
-#: src/app/qml/ExerciseView.qml:203
+#: src/app/qml/ExerciseView.qml:205
 #, kde-format
 msgid "Play Question"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:217
+#: src/app/qml/ExerciseView.qml:219
 #, kde-format
 msgid "Give Up"
 msgstr "Vzdát se"
 
-#: src/app/qml/ExerciseView.qml:242
+#: src/app/qml/ExerciseView.qml:244
 #, kde-format
 msgid "Stop Test"
 msgstr "Zastavit test"
 
-#: src/app/qml/ExerciseView.qml:242
+#: src/app/qml/ExerciseView.qml:244
 #, kde-format
 msgid "Start Test"
 msgstr "Spustit test"
 
-#: src/app/qml/ExerciseView.qml:256
+#: src/app/qml/ExerciseView.qml:258
 #, kde-format
 msgid "Click 'New Question' to start"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:263
+#: src/app/qml/ExerciseView.qml:265
 #, kde-format
 msgid "Available Answers"
 msgstr "Dostupné odpovědi"
 
-#: src/app/qml/ExerciseView.qml:386
+#: src/app/qml/ExerciseView.qml:388
 #, kde-format
 msgid "Your Answer(s)"
 msgstr "Vaše odpověď(i)"
 
-#: src/app/qml/ExerciseView.qml:410
+#: src/app/qml/ExerciseView.qml:412
 #, kde-format
 msgid "Backspace"
 msgstr "Backspace"
@@ -1287,3 +1287,8 @@ msgstr "O aplikaci"
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave %1"
 msgstr "Octave"
+
+#: src/app/uicontroller.cpp:47
+#, kde-format
+msgid "Could not load the main user interface."
+msgstr ""
