@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-08 00:40+0000\n"
-"PO-Revision-Date: 2026-04-17 21:24+0200\n"
+"PO-Revision-Date: 2026-05-08 06:28+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -664,7 +664,7 @@ msgstr "Durovi akordi"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major eleventh"
-msgstr "septima"
+msgstr "Durova undecima"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"

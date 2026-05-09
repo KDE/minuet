@@ -1287,7 +1287,7 @@ msgstr "Oktáva %1"
 #: src/app/uicontroller.cpp:47
 #, kde-format
 msgid "Could not load the main user interface."
-msgstr ""
+msgstr "Nepodarilo sa načítať hlavné používateľské rozhranie."
 
 #~ msgctxt "technical term, do you have a musician friend?"
 #~ msgid "eighth-dot-sixteenth"

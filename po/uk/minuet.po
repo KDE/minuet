@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-08 00:40+0000\n"
-"PO-Revision-Date: 2026-04-14 08:35+0300\n"
+"PO-Revision-Date: 2026-05-08 07:54+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -1294,7 +1294,7 @@ msgstr "Октава %1"
 #: src/app/uicontroller.cpp:47
 #, kde-format
 msgid "Could not load the main user interface."
-msgstr ""
+msgstr "Не вдалося завантажити основний інтерфейс користувача."
 
 #~ msgctxt "technical term, do you have a musician friend?"
 #~ msgid "eighth-dot-sixteenth"

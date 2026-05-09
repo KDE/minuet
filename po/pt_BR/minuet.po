@@ -6,14 +6,14 @@
 # KDE Development User <sandroandrade@kde.org>, 2016.
 # Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2016, 2019, 2023.
 # Camila Moura <camila.moura@kde.org>, 2017.
-# SPDX-FileCopyrightText: 2025, 2026 Marcus Gama <marcus.gama@gmail.com>
+# SPDX-FileCopyrightText: 2025-2026 Marcus Gama <marcus.gama@gmail.com>
 # SPDX-FileCopyrightText: 2026 Guilherme Marçal Silva <guimarcalsilva@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-08 00:40+0000\n"
-"PO-Revision-Date: 2026-04-14 08:21-0300\n"
+"PO-Revision-Date: 2026-05-08 05:53-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 26.04.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1293,7 +1293,7 @@ msgstr "%1 Oitava"
 #: src/app/uicontroller.cpp:47
 #, kde-format
 msgid "Could not load the main user interface."
-msgstr ""
+msgstr "Não foi possível carregar a interface principal do usuário."
 
 #~ msgctxt "technical term, do you have a musician friend?"
 #~ msgid "eighth-dot-sixteenth"
