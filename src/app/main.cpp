@@ -68,8 +68,6 @@ int main(int argc, char *argv[])
 
 #if defined(Q_OS_ANDROID)
     QQuickStyle::setStyle(QStringLiteral("org.kde.breeze"));
-    QIcon::setThemeName(QStringLiteral("breeze"));
-    QIcon::setFallbackThemeName(QStringLiteral("breeze"));
     KColorSchemeManager::instance();
 #else
     if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {

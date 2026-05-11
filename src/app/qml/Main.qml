@@ -21,10 +21,7 @@
 ****************************************************************************/
 
 import QtQuick
-import QtQuick.Controls
-import QtQuick.Layouts
 import QtQuick.Window
-import QtQuick.Controls.Material
 import org.kde.kirigami as Kirigami
 
 Kirigami.ApplicationWindow {
@@ -36,63 +33,14 @@ Kirigami.ApplicationWindow {
 
     property string titleText: "Minuet"
 
-    Component {
-        id: androidToolBar
-
-        ToolBar {
-            Material.primary: "#181818"
-            Material.foreground: "white"
-            RowLayout {
-                spacing: 20
-                anchors.fill: parent
-                height: parent.height / 5
-
-                ToolButton {
-                    contentItem: Image {
-                        fillMode: Image.Pad
-                        horizontalAlignment: Image.AlignHCenter
-                        verticalAlignment: Image.AlignVCenter
-                        source: "qrc:/qml/images/menu.png"
-                    }
-                    onClicked: drawer.open()
-                }
-
-                Label {
-                    text: titleText
-                    elide: Label.ElideRight
-                    font { weight: Font.Bold; pixelSize: 16 }
-                    horizontalAlignment: Qt.AlignHCenter
-                    verticalAlignment: Qt.AlignVCenter
-                    Layout.fillWidth: true
-                }
-
-                ToolButton {
-                    contentItem: Image {
-                        fillMode: Image.Pad
-                        horizontalAlignment: Image.AlignHCenter
-                        verticalAlignment: Image.AlignVCenter
-                        source: "qrc:/qml/images/more_vert.png"
-                    }
-                    onClicked: optionsMenu.open()
-
-                    Menu {
-                        id: optionsMenu
-                        x: parent.width - width
-                        transformOrigin: Menu.TopRight
-                        MenuItem {
-                            text: i18n("About")
-                            onTriggered: aboutDialog.open()
-                        }
-                    }
-                }
-            }
+    pageStack {
+        globalToolBar {
+            style: window.wideScreen ? Kirigami.ApplicationHeaderStyle.None : Kirigami.ApplicationHeaderStyle.ToolBar
         }
     }
 
     pageStack.initialPage: Kirigami.Page {
         id: mainContainer
-
-        globalToolBarStyle: window.wideScreen ? Kirigami.ApplicationHeaderStyle.None : Kirigami.ApplicationHeaderStyle.ToolBar
 
         ExerciseView {
             id: exerciseView
@@ -205,6 +153,4 @@ Kirigami.ApplicationWindow {
         sequence: StandardKey.Quit
         onActivated: Qt.quit()
     }
-    
-//    Component.onCompleted: if (Qt.platform.os == "android") header = androidToolBar.createObject(window)
 }
