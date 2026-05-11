@@ -107,6 +107,9 @@ if(ANDROID)
         KF6::ColorScheme
         Minuet::FluidSynthSoundController
     )
+    kirigami_package_breeze_icons(ICONS
+        dialog-close
+    )
     ecm_add_android_apk(minuet ANDROID_DIR ${CMAKE_SOURCE_DIR}/android)
 endif()
 
