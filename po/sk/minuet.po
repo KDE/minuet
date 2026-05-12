@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-08 00:40+0000\n"
+"POT-Creation-Date: 2026-05-12 00:40+0000\n"
 "PO-Revision-Date: 2026-04-14 17:15+0200\n"
 "Last-Translator: Roman Paholík <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -1273,11 +1273,6 @@ msgstr "Vaše odpovede"
 msgid "Backspace"
 msgstr "Backspace"
 
-#: src/app/qml/Main.qml:83
-#, kde-format
-msgid "About"
-msgstr "O programe"
-
 #: src/app/qml/PianoView/PianoView.qml:102
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1288,6 +1283,9 @@ msgstr "Oktáva %1"
 #, kde-format
 msgid "Could not load the main user interface."
 msgstr "Nepodarilo sa načítať hlavné používateľské rozhranie."
+
+#~ msgid "About"
+#~ msgstr "O programe"
 
 #~ msgctxt "technical term, do you have a musician friend?"
 #~ msgid "eighth-dot-sixteenth"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-08 00:40+0000\n"
+"POT-Creation-Date: 2026-05-12 00:40+0000\n"
 "PO-Revision-Date: 2026-01-18 15:45+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
@@ -1376,11 +1376,6 @@ msgstr "Twoja odpowiedź"
 msgid "Backspace"
 msgstr "Backspace"
 
-#: src/app/qml/Main.qml:83
-#, kde-format
-msgid "About"
-msgstr "O programie"
-
 #: src/app/qml/PianoView/PianoView.qml:102
 #, fuzzy, kde-format
 #| msgctxt "technical term, do you have a musician friend?"
@@ -1393,6 +1388,9 @@ msgstr "Octave"
 #, kde-format
 msgid "Could not load the main user interface."
 msgstr ""
+
+#~ msgid "About"
+#~ msgstr "O programie"
 
 #~ msgctxt "technical term, do you have a musician friend?"
 #~ msgid "eighth-dot-sixteenth"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-08 00:40+0000\n"
+"POT-Creation-Date: 2026-05-12 00:40+0000\n"
 "PO-Revision-Date: 2024-02-11 00:05+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1442,11 +1442,6 @@ msgstr "내 응답"
 msgid "Backspace"
 msgstr "이전(백스페이스)"
 
-#: src/app/qml/Main.qml:83
-#, kde-format
-msgid "About"
-msgstr "정보"
-
 #: src/app/qml/PianoView/PianoView.qml:102
 #, fuzzy, kde-format
 #| msgctxt "technical term, do you have a musician friend?"
@@ -1459,6 +1454,9 @@ msgstr "옥타브"
 #, kde-format
 msgid "Could not load the main user interface."
 msgstr ""
+
+#~ msgid "About"
+#~ msgstr "정보"
 
 #~ msgctxt "technical term, do you have a musician friend?"
 #~ msgid "eighth-dot-sixteenth"

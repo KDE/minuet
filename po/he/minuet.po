@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-08 00:40+0000\n"
+"POT-Creation-Date: 2026-05-12 00:40+0000\n"
 "PO-Revision-Date: 2026-05-09 07:16+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -1274,11 +1274,6 @@ msgstr "התשובות שלך"
 msgid "Backspace"
 msgstr "Backspace"
 
-#: src/app/qml/Main.qml:83
-#, kde-format
-msgid "About"
-msgstr "על אודות"
-
 #: src/app/qml/PianoView/PianoView.qml:102
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1289,6 +1284,9 @@ msgstr "אוקטבה %1"
 #, kde-format
 msgid "Could not load the main user interface."
 msgstr "לא ניתן לטעון את ממשק המשתמש הראשי."
+
+#~ msgid "About"
+#~ msgstr "על אודות"
 
 #~ msgctxt "technical term, do you have a musician friend?"
 #~ msgid "eighth-dot-sixteenth"

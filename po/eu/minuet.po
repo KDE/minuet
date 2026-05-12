@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-08 00:40+0000\n"
+"POT-Creation-Date: 2026-05-12 00:40+0000\n"
 "PO-Revision-Date: 2026-03-20 13:05+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -1378,11 +1378,6 @@ msgstr "Zure erantzuna(k)"
 msgid "Backspace"
 msgstr "Atzera-tekla"
 
-#: src/app/qml/Main.qml:83
-#, kde-format
-msgid "About"
-msgstr "Honi buruz"
-
 #: src/app/qml/PianoView/PianoView.qml:102
 #, fuzzy, kde-format
 #| msgctxt "technical term, do you have a musician friend?"
@@ -1395,6 +1390,9 @@ msgstr "Zortziduna"
 #, kde-format
 msgid "Could not load the main user interface."
 msgstr ""
+
+#~ msgid "About"
+#~ msgstr "Honi buruz"
 
 #~ msgctxt "technical term, do you have a musician friend?"
 #~ msgid "eighth-dot-sixteenth"

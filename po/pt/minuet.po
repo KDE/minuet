@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-08 00:40+0000\n"
+"POT-Creation-Date: 2026-05-12 00:40+0000\n"
 "PO-Revision-Date: 2019-11-15 11:05+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -1465,11 +1465,6 @@ msgstr "As Suas Respostas"
 msgid "Backspace"
 msgstr "Backspace"
 
-#: src/app/qml/Main.qml:83
-#, kde-format
-msgid "About"
-msgstr "Acerca"
-
 #: src/app/qml/PianoView/PianoView.qml:102
 #, fuzzy, kde-format
 #| msgctxt "technical term, do you have a musician friend?"
@@ -1482,6 +1477,9 @@ msgstr "Oitava"
 #, kde-format
 msgid "Could not load the main user interface."
 msgstr ""
+
+#~ msgid "About"
+#~ msgstr "Acerca"
 
 #~ msgctxt "technical term, do you have a musician friend?"
 #~ msgid "eighth-dot-sixteenth"

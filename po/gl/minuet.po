@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-08 00:40+0000\n"
+"POT-Creation-Date: 2026-05-12 00:40+0000\n"
 "PO-Revision-Date: 2023-11-15 19:08+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -1387,11 +1387,6 @@ msgstr "As súas respostas"
 msgid "Backspace"
 msgstr "Retroceso"
 
-#: src/app/qml/Main.qml:83
-#, kde-format
-msgid "About"
-msgstr "Sobre"
-
 #: src/app/qml/PianoView/PianoView.qml:102
 #, fuzzy, kde-format
 #| msgctxt "technical term, do you have a musician friend?"
@@ -1404,6 +1399,9 @@ msgstr "Oitava"
 #, kde-format
 msgid "Could not load the main user interface."
 msgstr ""
+
+#~ msgid "About"
+#~ msgstr "Sobre"
 
 #~ msgctxt "technical term, do you have a musician friend?"
 #~ msgid "eighth-dot-sixteenth"
