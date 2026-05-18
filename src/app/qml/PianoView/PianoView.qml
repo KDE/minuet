@@ -28,10 +28,10 @@ Flickable {
 
     implicitHeight: keyHeight + 30
     contentWidth: piano.width
-    boundsBehavior: Flickable.OvershootBounds
+    boundsBehavior: Flickable.StopAtBounds
     clip: true
 
-    property int keyWidth: Math.max(16, (parent.width - 80) / 52)
+    property int keyWidth: Math.max(16, (width - 80) / 52)
     property int keyHeight: 3.4 * keyWidth
 
     function noteOn(chan, pitch, vel) {
@@ -62,7 +62,8 @@ Flickable {
         }
     }
     function scrollToNote(pitch) {
-        flickable.contentX = flickable.contentWidth/88*(pitch-21) - flickable.width/2
+        const targetX = flickable.contentWidth / 88 * (pitch - 21) - flickable.width / 2
+        flickable.contentX = Math.max(0, Math.min(targetX, Math.max(0, flickable.contentWidth - flickable.width)))
     }
     function highlightKey(pitch, color) {
         itemForPitch(pitch).color = color
@@ -85,7 +86,7 @@ Flickable {
         id: piano
 
         width: 3 * keyWidth + 7 * (7 * keyWidth); height: parent.height
-        anchors.horizontalCenter: parent.horizontalCenter
+        x: 0
         radius: 5
         color: "#141414"
 

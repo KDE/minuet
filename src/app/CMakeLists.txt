@@ -48,7 +48,7 @@ qt_add_qml_module(minuet
     QML_FILES
         qml/Main.qml
         qml/AboutDialog.qml
-        qml/MinuetGlobalDrawer.qml
+        qml/ExerciseMenuPage.qml
         qml/ExerciseView.qml
         qml/PianoView/BlackKey.qml
         qml/PianoView/Octave.qml

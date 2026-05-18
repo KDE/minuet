@@ -23,7 +23,9 @@
 import QtQuick
 
 Item {
-    implicitWidth: row.width
+    id: score
+
+    implicitWidth: row.implicitWidth
 
     property int pointSize
     property int spacing
@@ -34,9 +36,20 @@ Item {
     Row {
         id: row
 
+        width: score.width
+        anchors.verticalCenter: score.verticalCenter
+        clip: true
         spacing: 0
+
+        BravuraText {
+            id: staffSegmentMetrics
+
+            visible: false
+            text: "\ue014"
+        }
+
         Repeater {
-            model: 15
+            model: staffSegmentMetrics.implicitWidth > 0 ? Math.max(15, Math.ceil(score.width / staffSegmentMetrics.implicitWidth) + 1) : 15
             BravuraText { text: "\ue014" }
         }
     }
