@@ -419,22 +419,31 @@ Item {
             }
         }
         GridLayout {
+            id: musicViewsLayout
+
+            readonly property bool stacked: width < Kirigami.Units.gridUnit * 45
+            readonly property real musicViewWidth: stacked ? width : (width - columnSpacing) / 2
+
             Layout.fillWidth: true
-            columns: window.wideScreen ? 2 : 1
-            rowSpacing: Kirigami.Units.largeSpacing
+            columns: stacked ? 1 : 2
             columnSpacing: Kirigami.Units.largeSpacing * 2
+            rowSpacing: stacked ? columnSpacing * 2 : columnSpacing
+            uniformCellWidths: true
             visible: currentExercise != undefined && currentExercise["playMode"] != "rhythm"
 
             PianoView {
                 id: pianoView
 
                 Layout.fillWidth: true
+                Layout.preferredWidth: musicViewsLayout.musicViewWidth
                 Layout.minimumHeight: implicitHeight
                 ScrollIndicator.horizontal: ScrollIndicator { active: true }
             }
             SheetMusicView {
                 id: sheetMusicView
 
+                Layout.fillWidth: true
+                Layout.preferredWidth: musicViewsLayout.musicViewWidth
                 Layout.preferredHeight: pianoView.height
             }
         }

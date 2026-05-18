@@ -32,6 +32,7 @@ Kirigami.ApplicationWindow {
     visibility: Window.Maximized
 
     property string titleText: "Minuet"
+    property var currentExercise
 
     pageStack {
         globalToolBar {
@@ -39,98 +40,9 @@ Kirigami.ApplicationWindow {
         }
     }
 
-    pageStack.initialPage: Kirigami.Page {
-        id: mainContainer
-
-        ExerciseView {
-            id: exerciseView
-
-            anchors.fill: parent
-            currentExercise: drawer.currentExercise
-        }
-/*      THIS IS THE DASHBOARD
-        Frame {
-            id: frame
-            anchors { fill: parent; margins: 15 }
-            Label {
-                id: greetings
-                width: parent.width
-                wrapMode: Text.WordWrap
-                horizontalAlignment: Text.AlignHCenter
-                text: "Hi, what kind of ear training exercise do you want to practice today?"
-                font { family: "Roboto" }
-            }
-            Grid {
-                rows: 2
-                columns: 2
-                anchors.centerIn: parent
-                spacing: 40
-                Repeater {
-                    model: [
-                        { icon: "qrc:/icons/22-actions-minuet-chords.svg", title: "Chords" },
-                        { icon: "qrc:/icons/22-actions-minuet-intervals.svg", title: "Intervals" },
-                        { icon: "qrc:/icons/22-actions-minuet-rhythms.svg", title: "Rhythms" },
-                        { icon: "qrc:/icons/22-actions-minuet-scales.svg", title: "Scales" }
-                    ]
-                    Column {
-                        Image {
-                            source: modelData.icon
-                            fillMode: Image.PreserveAspectFit
-                            sourceSize.width: frame.width/4;
-                            width: frame.width/4; height: width
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            MouseArea {
-                                anchors.fill: parent
-                                onClicked: {
-                                    frame.visible = true
-                                    stackView.currentExerciseMenuItem = null
-                                    exerciseController.currentExercise ={}
-                                    titleText = "Minuet"
-                                    
-                                    while (stackView.depth > 1) {
-                                        stackView.pop()
-                                        minuetMenu.exerciseArray.pop()
-                                        currentExerciseParent.text = minuetMenu.exerciseArray.toString()
-                                        minuetMenu.backPressed()
-                                    }
-                                    
-                                    for (var i = 0; i < exerciseController.exercises.length; ++i) {
-                                        if (exerciseController.exercises[i].name == modelData.title) {
-                                            frame.visible = true
-                                            stackView.push(categoryMenu.createObject(stackView, {model: exerciseController.exercises[i].children}))
-                                            currentExerciseParent.text = exerciseController.exercises[i].name
-                                            minuetMenu.exerciseArray.push(exerciseController.exercises[i].name)
-                                            break
-                                        }
-                                    }
-                                    drawer.open()
-                                }
-                            }
-                        }
-                        Label {
-                            width: frame.width/4
-                            wrapMode: Text.WordWrap
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            horizontalAlignment: Text.AlignHCenter
-                            text: modelData.title
-                            font { family: "Roboto" }
-                        }
-                    }
-                }
-            }
-        }
-*/
-    }
-
-    globalDrawer: MinuetGlobalDrawer {
-        id: drawer
-
-        wideScreen: window.wideScreen
-
-        header: Image {
-            source: "qrc:/qml/images/minuet-drawer.png"
-            fillMode: Image.PreserveAspectFit
-        }
+    pageStack.initialPage: ExerciseMenuPage {
+        title: window.titleText
+        exerciseModel: core.exerciseController.exercises
     }
 
     AboutDialog {
@@ -140,13 +52,13 @@ Kirigami.ApplicationWindow {
     Binding {
         target: core.exerciseController
         property: "currentExercise"
-        value: drawer.currentExercise
+        value: window.currentExercise
     }
     
     Binding {
         target: core.soundController
         property: "playMode"
-        value: (drawer.currentExercise != undefined) ? drawer.currentExercise["playMode"] : ""
+        value: (window.currentExercise != undefined) ? window.currentExercise["playMode"] : ""
     }
     
     Shortcut {
