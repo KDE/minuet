@@ -33,9 +33,9 @@ FormCard.FormCardPage {
 
     title: i18n("Settings")
 
-    property int selectedGroup: -1
+    property int selectedMelodicGroup: -1
 
-    function groupForInstrument(instrument) {
+    function melodicGroupForInstrument(instrument) {
         for (let i = 0; i < instrumentsModel.count; ++i) {
             const entry = instrumentsModel.get(i)
             if (entry.program === instrument) {
@@ -45,7 +45,7 @@ FormCard.FormCardPage {
         return groupsModel.count > 0 ? groupsModel.get(0).id : -1
     }
 
-    function groupIndex(group) {
+    function melodicGroupIndex(group) {
         for (let i = 0; i < groupsModel.count; ++i) {
             if (groupsModel.get(i).id === group) {
                 return i
@@ -54,9 +54,18 @@ FormCard.FormCardPage {
         return -1
     }
 
-    function instrumentIndex(instrument) {
+    function melodicInstrumentIndex(instrument) {
         for (let i = 0; i < instrumentsForGroupModel.count; ++i) {
             if (instrumentsForGroupModel.get(i).program === instrument) {
+                return i
+            }
+        }
+        return -1
+    }
+
+    function rhythmInstrumentIndex(instrument) {
+        for (let i = 0; i < rhythmInstrumentsModel.count; ++i) {
+            if (rhythmInstrumentsModel.get(i).key === instrument) {
                 return i
             }
         }
@@ -66,15 +75,17 @@ FormCard.FormCardPage {
     function rebuildModels() {
         groupsModel.clear()
         instrumentsModel.clear()
+        rhythmInstrumentsModel.clear()
 
         if (!core.soundController) {
-            root.selectedGroup = -1
+            root.selectedMelodicGroup = -1
             instrumentsForGroupModel.clear()
             return
         }
 
         const instrumentGroups = JSON.parse(core.soundController.instrumentGroupsJson || "[]")
         const instruments = JSON.parse(core.soundController.instrumentsJson || "[]")
+        const rhythmInstruments = JSON.parse(core.soundController.rhythmInstrumentsJson || "[]")
 
         for (const group of instrumentGroups) {
             groupsModel.append({
@@ -94,6 +105,15 @@ FormCard.FormCardPage {
             })
         }
 
+        for (const instrument of rhythmInstruments) {
+            rhythmInstrumentsModel.append({
+                key: instrument.key,
+                number: instrument.number,
+                name: instrument.name,
+                displayName: instrument.displayName,
+            })
+        }
+
         syncSelectionFromController()
     }
 
@@ -101,7 +121,7 @@ FormCard.FormCardPage {
         instrumentsForGroupModel.clear()
         for (let i = 0; i < instrumentsModel.count; ++i) {
             const instrument = instrumentsModel.get(i)
-            if (instrument.group === root.selectedGroup) {
+            if (instrument.group === root.selectedMelodicGroup) {
                 instrumentsForGroupModel.append(instrument)
             }
         }
@@ -112,10 +132,11 @@ FormCard.FormCardPage {
             return
         }
 
-        root.selectedGroup = groupForInstrument(core.soundController.instrument)
-        groupSelector.currentIndex = groupIndex(root.selectedGroup)
+        root.selectedMelodicGroup = melodicGroupForInstrument(core.soundController.instrument)
+        groupSelector.currentIndex = melodicGroupIndex(root.selectedMelodicGroup)
         rebuildInstrumentsForGroup()
-        instrumentSelector.currentIndex = instrumentIndex(core.soundController.instrument)
+        melodicInstrumentSelector.currentIndex = melodicInstrumentIndex(core.soundController.instrument)
+        rhythmInstrumentSelector.currentIndex = rhythmInstrumentIndex(core.soundController.rhythmInstrument)
     }
 
     function selectFirstInstrumentInCurrentGroup() {
@@ -136,6 +157,10 @@ FormCard.FormCardPage {
         id: instrumentsForGroupModel
     }
 
+    ListModel {
+        id: rhythmInstrumentsModel
+    }
+
     Connections {
         target: core.soundController
 
@@ -147,7 +172,15 @@ FormCard.FormCardPage {
             root.rebuildModels()
         }
 
+        function onRhythmInstrumentsChanged() {
+            root.rebuildModels()
+        }
+
         function onInstrumentChanged() {
+            root.syncSelectionFromController()
+        }
+
+        function onRhythmInstrumentChanged() {
             root.syncSelectionFromController()
         }
     }
@@ -205,10 +238,16 @@ FormCard.FormCardPage {
 
     FormCard.FormCard {
         FormCard.FormTextDelegate {
-            text: i18n("No SoundFont instruments available")
+            text: i18n("No melodic instruments available")
             description: i18n("The active sound controller did not report any General MIDI bank 0 instruments.")
             icon.name: "dialog-warning-symbolic"
             visible: groupsModel.count === 0
+        }
+
+        FormCard.FormTextDelegate {
+            text: i18n("Melodic Exercises")
+            description: i18n("Used for scales, intervals, and chords.")
+            visible: groupsModel.count > 0
         }
 
         FormCard.FormComboBoxDelegate {
@@ -220,18 +259,14 @@ FormCard.FormCardPage {
             model: groupsModel
             visible: groupsModel.count > 0
             onActivated: {
-                root.selectedGroup = currentValue
+                root.selectedMelodicGroup = currentValue
                 root.rebuildInstrumentsForGroup()
                 root.selectFirstInstrumentInCurrentGroup()
             }
         }
 
-        FormCard.FormDelegateSeparator {
-            visible: groupSelector.visible
-        }
-
         FormCard.FormComboBoxDelegate {
-            id: instrumentSelector
+            id: melodicInstrumentSelector
 
             text: i18n("Instrument:")
             textRole: "displayName"
@@ -241,6 +276,31 @@ FormCard.FormCardPage {
             onActivated: {
                 if (core.soundController) {
                     core.soundController.instrument = currentValue
+                }
+            }
+        }
+
+        FormCard.FormDelegateSeparator {
+            visible: groupsModel.count > 0 && rhythmInstrumentsModel.count > 0
+        }
+
+        FormCard.FormTextDelegate {
+            text: i18n("Rhythm Exercises")
+            description: i18n("Used for rhythm figures. The count-in keeps its own sound.")
+            visible: rhythmInstrumentsModel.count > 0
+        }
+
+        FormCard.FormComboBoxDelegate {
+            id: rhythmInstrumentSelector
+
+            text: i18n("Percussion sound:")
+            textRole: "displayName"
+            valueRole: "key"
+            model: rhythmInstrumentsModel
+            visible: rhythmInstrumentsModel.count > 0
+            onActivated: {
+                if (core.soundController) {
+                    core.soundController.rhythmInstrument = currentValue
                 }
             }
         }

@@ -40,10 +40,15 @@
 #include <utility>
 
 unsigned int FluidSynthSoundController::m_initialTime = 0;
+static constexpr short RhythmCountInKey = 76; // High Wood Block
+static constexpr short DefaultRhythmInstrumentKey = 37; // Side Stick
+static constexpr short FirstRhythmInstrumentKey = 35;
+static constexpr short LastRhythmInstrumentKey = 81;
 
 FluidSynthSoundController::FluidSynthSoundController(QObject *parent)
-    : Minuet::ISoundController(parent), m_audioDriver(nullptr), m_sequencer(nullptr),
-      m_song(nullptr), m_unregisteringEvent(nullptr)
+    : Minuet::ISoundController(parent), m_settings(nullptr), m_audioDriver(nullptr),
+      m_sequencer(nullptr), m_synth(nullptr), m_unregisteringEvent(nullptr), m_synthSeqID(0),
+      m_callbackSeqID(0), m_countInNextValue(0), m_countInVisible(false), m_song(nullptr)
 {
     m_tempo = 60;
 
@@ -84,6 +89,7 @@ FluidSynthSoundController::FluidSynthSoundController(QObject *parent)
         qCritical() << "Error when loading soundfont in:" << sf_path;
     }
     populateInstruments();
+    populateRhythmInstruments();
     applyInstrument();
 
     m_unregisteringEvent = new_fluid_event();
@@ -143,14 +149,25 @@ void FluidSynthSoundController::setInstrument(int instrument)
     applyInstrument();
 }
 
+void FluidSynthSoundController::setRhythmInstrument(int rhythmInstrument)
+{
+    if (rhythmInstrument < FirstRhythmInstrumentKey || rhythmInstrument > LastRhythmInstrumentKey) {
+        return;
+    }
+
+    setRhythmInstrumentValue(rhythmInstrument);
+}
+
 void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedExerciseOptions)
 {
+    hideCountIn();
+
     auto *song = new QList<fluid_event_t *>;
     m_song.reset(song);
 
     if (m_playMode == QLatin1String("rhythm")) {
         for (int i = 0; i < 4; ++i) {
-            appendEvent(9, 80, 127, 1000 * (60.0 / m_tempo));
+            appendEvent(9, RhythmCountInKey, 127, 1000 * (60.0 / m_tempo));
         }
     }
 
@@ -176,7 +193,7 @@ void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedEx
                 }
                 unsigned int duration
                     = dotted * 1000 * (60.0 / m_tempo) * (4.0 / additionalNote.toInt());
-                appendEvent(9, 37, 127, duration);
+                appendEvent(9, m_rhythmInstrument, 127, duration);
             }
         }
     }
@@ -201,6 +218,8 @@ void FluidSynthSoundController::play()
     }
 
     if (m_state != PlayingState) {
+        m_countInNextValue = m_playMode == QLatin1String("rhythm") ? 4 : 0;
+        m_countInVisible = false;
         unsigned int now = fluid_sequencer_get_tick(m_sequencer);
         foreach (fluid_event_t *event, *m_song.data()) {
             if (fluid_event_get_type(event) != FLUID_SEQ_ALLNOTESOFF
@@ -222,6 +241,7 @@ void FluidSynthSoundController::pause() {}
 
 void FluidSynthSoundController::stop()
 {
+    hideCountIn();
     if (m_state != StoppedState) {
         fluid_event_t *event = new_fluid_event();
         fluid_event_set_source(event, -1);
@@ -234,6 +254,7 @@ void FluidSynthSoundController::stop()
 
 void FluidSynthSoundController::reset()
 {
+    hideCountIn();
     stop();
     m_song.reset(nullptr);
 }
@@ -245,6 +266,15 @@ void FluidSynthSoundController::appendEvent(int channel, short key, short veloci
     fluid_event_set_source(event, -1);
     fluid_event_note(event, channel, key, velocity, duration);
     m_song->append(event);
+}
+
+void FluidSynthSoundController::hideCountIn()
+{
+    m_countInNextValue = 0;
+    if (m_countInVisible) {
+        m_countInVisible = false;
+        emit countInChanged(0);
+    }
 }
 
 void FluidSynthSoundController::populateInstruments()
@@ -319,6 +349,24 @@ void FluidSynthSoundController::populateInstruments()
     setInstruments(instruments);
 }
 
+void FluidSynthSoundController::populateRhythmInstruments()
+{
+    QVariantList rhythmInstruments;
+    for (int key = FirstRhythmInstrumentKey; key <= LastRhythmInstrumentKey; ++key) {
+        QVariantMap instrument;
+        instrument.insert(QStringLiteral("key"), key);
+        instrument.insert(QStringLiteral("number"), key);
+        instrument.insert(QStringLiteral("name"), rhythmInstrumentName(key));
+        instrument.insert(QStringLiteral("displayName"),
+                          QStringLiteral("%1 %2").arg(key, 3, 10, QLatin1Char('0')).arg(rhythmInstrumentName(key)));
+        rhythmInstruments.push_back(instrument);
+    }
+    setRhythmInstruments(rhythmInstruments);
+    if (m_rhythmInstrument < FirstRhythmInstrumentKey || m_rhythmInstrument > LastRhythmInstrumentKey) {
+        setRhythmInstrumentValue(DefaultRhythmInstrumentKey);
+    }
+}
+
 void FluidSynthSoundController::applyInstrument()
 {
     if (!m_synth) {
@@ -330,6 +378,108 @@ void FluidSynthSoundController::applyInstrument()
         fluid_synth_program_select(m_synth, 1, soundFontId, 0, m_instrument);
     } else {
         fluid_synth_program_change(m_synth, 1, m_instrument);
+    }
+}
+
+QString FluidSynthSoundController::rhythmInstrumentName(int key)
+{
+    switch (key) {
+    case 35:
+        return i18nc("General MIDI percussion instrument", "Acoustic Bass Drum");
+    case 36:
+        return i18nc("General MIDI percussion instrument", "Bass Drum 1");
+    case 37:
+        return i18nc("General MIDI percussion instrument", "Side Stick");
+    case 38:
+        return i18nc("General MIDI percussion instrument", "Acoustic Snare");
+    case 39:
+        return i18nc("General MIDI percussion instrument", "Hand Clap");
+    case 40:
+        return i18nc("General MIDI percussion instrument", "Electric Snare");
+    case 41:
+        return i18nc("General MIDI percussion instrument", "Low Floor Tom");
+    case 42:
+        return i18nc("General MIDI percussion instrument", "Closed Hi-hat");
+    case 43:
+        return i18nc("General MIDI percussion instrument", "High Floor Tom");
+    case 44:
+        return i18nc("General MIDI percussion instrument", "Pedal Hi-hat");
+    case 45:
+        return i18nc("General MIDI percussion instrument", "Low Tom");
+    case 46:
+        return i18nc("General MIDI percussion instrument", "Open Hi-hat");
+    case 47:
+        return i18nc("General MIDI percussion instrument", "Low-Mid Tom");
+    case 48:
+        return i18nc("General MIDI percussion instrument", "Hi-Mid Tom");
+    case 49:
+        return i18nc("General MIDI percussion instrument", "Crash Cymbal 1");
+    case 50:
+        return i18nc("General MIDI percussion instrument", "High Tom");
+    case 51:
+        return i18nc("General MIDI percussion instrument", "Ride Cymbal 1");
+    case 52:
+        return i18nc("General MIDI percussion instrument", "Chinese Cymbal");
+    case 53:
+        return i18nc("General MIDI percussion instrument", "Ride Bell");
+    case 54:
+        return i18nc("General MIDI percussion instrument", "Tambourine");
+    case 55:
+        return i18nc("General MIDI percussion instrument", "Splash Cymbal");
+    case 56:
+        return i18nc("General MIDI percussion instrument", "Cowbell");
+    case 57:
+        return i18nc("General MIDI percussion instrument", "Crash Cymbal 2");
+    case 58:
+        return i18nc("General MIDI percussion instrument", "Vibraslap");
+    case 59:
+        return i18nc("General MIDI percussion instrument", "Ride Cymbal 2");
+    case 60:
+        return i18nc("General MIDI percussion instrument", "Hi Bongo");
+    case 61:
+        return i18nc("General MIDI percussion instrument", "Low Bongo");
+    case 62:
+        return i18nc("General MIDI percussion instrument", "Mute Hi Conga");
+    case 63:
+        return i18nc("General MIDI percussion instrument", "Open Hi Conga");
+    case 64:
+        return i18nc("General MIDI percussion instrument", "Low Conga");
+    case 65:
+        return i18nc("General MIDI percussion instrument", "High Timbale");
+    case 66:
+        return i18nc("General MIDI percussion instrument", "Low Timbale");
+    case 67:
+        return i18nc("General MIDI percussion instrument", "High Agogo");
+    case 68:
+        return i18nc("General MIDI percussion instrument", "Low Agogo");
+    case 69:
+        return i18nc("General MIDI percussion instrument", "Cabasa");
+    case 70:
+        return i18nc("General MIDI percussion instrument", "Maracas");
+    case 71:
+        return i18nc("General MIDI percussion instrument", "Short Whistle");
+    case 72:
+        return i18nc("General MIDI percussion instrument", "Long Whistle");
+    case 73:
+        return i18nc("General MIDI percussion instrument", "Short Guiro");
+    case 74:
+        return i18nc("General MIDI percussion instrument", "Long Guiro");
+    case 75:
+        return i18nc("General MIDI percussion instrument", "Claves");
+    case 76:
+        return i18nc("General MIDI percussion instrument", "Hi Wood Block");
+    case 77:
+        return i18nc("General MIDI percussion instrument", "Low Wood Block");
+    case 78:
+        return i18nc("General MIDI percussion instrument", "Mute Cuica");
+    case 79:
+        return i18nc("General MIDI percussion instrument", "Open Cuica");
+    case 80:
+        return i18nc("General MIDI percussion instrument", "Mute Triangle");
+    case 81:
+        return i18nc("General MIDI percussion instrument", "Open Triangle");
+    default:
+        return i18nc("General MIDI percussion instrument", "Percussion");
     }
 }
 
@@ -384,6 +534,18 @@ void FluidSynthSoundController::sequencerCallback(unsigned int time, fluid_event
     int eventType = fluid_event_get_type(event);
     switch (eventType) {
     case FLUID_SEQ_NOTE: {
+        const int channel = fluid_event_get_channel(event);
+        const short key = fluid_event_get_key(event);
+        if (soundController->m_playMode == QLatin1String("rhythm") && channel == 9) {
+            if (key == RhythmCountInKey && soundController->m_countInNextValue > 0) {
+                soundController->m_countInVisible = true;
+                emit soundController->countInChanged(soundController->m_countInNextValue);
+                --soundController->m_countInNextValue;
+            } else if (key == soundController->m_rhythmInstrument) {
+                soundController->hideCountIn();
+            }
+        }
+
         if (m_initialTime == 0) {
             m_initialTime = time;
         }
@@ -400,6 +562,7 @@ void FluidSynthSoundController::sequencerCallback(unsigned int time, fluid_event
         break;
     }
     case FLUID_SEQ_ALLNOTESOFF: {
+        soundController->hideCountIn();
         m_initialTime = 0;
         soundController->setPlaybackLabel(QStringLiteral("00:00.00"));
         soundController->setState(StoppedState);

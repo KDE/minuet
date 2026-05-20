@@ -33,6 +33,7 @@ ISoundController::ISoundController(QObject *parent) : IPlugin(parent)
     m_volume = 100;
     m_tempo = 60;
     m_instrument = 0;
+    m_rhythmInstrument = 37;
     setPlaybackLabel(QStringLiteral("00:00.00"));
     setState(StoppedState);
 }
@@ -52,6 +53,11 @@ int ISoundController::instrument() const
     return m_instrument;
 }
 
+int ISoundController::rhythmInstrument() const
+{
+    return m_rhythmInstrument;
+}
+
 QVariantList ISoundController::instrumentGroups() const
 {
     return m_instrumentGroups;
@@ -62,6 +68,11 @@ QVariantList ISoundController::instruments() const
     return m_instruments;
 }
 
+QVariantList ISoundController::rhythmInstruments() const
+{
+    return m_rhythmInstruments;
+}
+
 QString ISoundController::instrumentGroupsJson() const
 {
     return m_instrumentGroupsJson;
@@ -70,6 +81,11 @@ QString ISoundController::instrumentGroupsJson() const
 QString ISoundController::instrumentsJson() const
 {
     return m_instrumentsJson;
+}
+
+QString ISoundController::rhythmInstrumentsJson() const
+{
+    return m_rhythmInstrumentsJson;
 }
 
 void ISoundController::setPlaybackLabel(const QString &playbackLabel)
@@ -99,6 +115,17 @@ bool ISoundController::setInstrumentValue(int instrument)
     return true;
 }
 
+bool ISoundController::setRhythmInstrumentValue(int rhythmInstrument)
+{
+    if (m_rhythmInstrument == rhythmInstrument) {
+        return false;
+    }
+
+    m_rhythmInstrument = rhythmInstrument;
+    emit rhythmInstrumentChanged(m_rhythmInstrument);
+    return true;
+}
+
 void ISoundController::setInstrumentGroups(const QVariantList &instrumentGroups)
 {
     if (m_instrumentGroups != instrumentGroups) {
@@ -116,6 +143,16 @@ void ISoundController::setInstruments(const QVariantList &instruments)
         m_instrumentsJson = QString::fromUtf8(
             QJsonDocument(QJsonArray::fromVariantList(m_instruments)).toJson(QJsonDocument::Compact));
         emit instrumentsChanged();
+    }
+}
+
+void ISoundController::setRhythmInstruments(const QVariantList &rhythmInstruments)
+{
+    if (m_rhythmInstruments != rhythmInstruments) {
+        m_rhythmInstruments = rhythmInstruments;
+        m_rhythmInstrumentsJson = QString::fromUtf8(
+            QJsonDocument(QJsonArray::fromVariantList(m_rhythmInstruments)).toJson(QJsonDocument::Compact));
+        emit rhythmInstrumentsChanged();
     }
 }
 

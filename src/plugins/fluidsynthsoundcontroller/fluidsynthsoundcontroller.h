@@ -46,6 +46,7 @@ public Q_SLOTS:
     void setVolume(quint8 volume) override;
     void setTempo(quint8 tempo) override;
     void setInstrument(int instrument) override;
+    void setRhythmInstrument(int rhythmInstrument) override;
 
     void prepareFromExerciseOptions(QJsonArray selectedExerciseOptions) override;
     void prepareFromMidiFile(const QString &fileName) override;
@@ -60,8 +61,11 @@ private:
     static void sequencerCallback(unsigned int time, fluid_event_t *event, fluid_sequencer_t *seq,
                                   void *data);
     void populateInstruments();
+    void populateRhythmInstruments();
     void applyInstrument();
     static QString instrumentGroupName(int group);
+    static QString rhythmInstrumentName(int key);
+    void hideCountIn();
     void resetEngine();
     void deleteEngine();
 
@@ -76,6 +80,8 @@ private:
     short m_callbackSeqID;
     static unsigned int m_initialTime;
     QHash<int, int> m_instrumentSoundFontIds;
+    int m_countInNextValue;
+    bool m_countInVisible;
 
     QScopedPointer<QList<fluid_event_t *>> m_song;
 };

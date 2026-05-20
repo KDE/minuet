@@ -34,6 +34,7 @@ Item {
     visible: currentExercise != undefined
 
     property var currentExercise
+    property alias countIn: internal.countIn
 
     FontLoader { id: bravura; source: "SheetMusicView/Bravura.otf" }
 
@@ -50,6 +51,7 @@ Item {
         property int correctAnswers: 0
         property int currentExercise: 0
         property int maximumExercises: 10
+        property int countIn: 0
 
         onCurrentAnswerChanged: {
             for (var i = 0; i < yourAnswersParent.children.length; ++i)
@@ -61,6 +63,7 @@ Item {
     }
 
     onCurrentExerciseChanged: {
+        internal.countIn = 0
         clearUserAnswers()
         for (var i = 0; i < answerGrid.children.length; ++i)
             answerGrid.children[i].destroy()
@@ -448,6 +451,7 @@ Item {
             }
         }
     }
+
     states: [
         State {
             name: "waitingForNewQuestion"
@@ -493,5 +497,11 @@ Item {
     Connections {
         target: core.exerciseController
         function onSelectedExerciseOptionsChanged() { sheetMusicView.clearAllMarks() }
+    }
+    Connections {
+        target: core.soundController
+        function onCountInChanged(count) {
+            internal.countIn = count
+        }
     }
 }
