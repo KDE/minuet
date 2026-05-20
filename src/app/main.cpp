@@ -23,8 +23,9 @@
 #include "core.h"
 #include <app/minuet_version.h>
 
-#if !defined(Q_OS_ANDROID)
 #include <KAboutData>
+
+#if !defined(Q_OS_ANDROID)
 #include <KCrash>
 #else
 #include <KColorSchemeManager>
@@ -53,18 +54,20 @@ int main(int argc, char *argv[])
 
     KLocalizedString::setApplicationDomain("minuet");
 
-#if !defined(Q_OS_ANDROID)
     KAboutData aboutData(QStringLiteral("minuet"), i18n("Minuet"),
                          QStringLiteral(MINUET_VERSION_STRING),
                          i18n("A KDE application for music education"), KAboutLicense::GPL,
                          i18n("(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"));
+    aboutData.setHomepage(QStringLiteral("https://minuet.kde.org"));
+    aboutData.setBugAddress("submit@bugs.kde.org");
+    aboutData.setProductName("minuet");
+    aboutData.setDesktopFileName(QStringLiteral("org.kde.minuet"));
     aboutData.addAuthor(QStringLiteral("Sandro S. Andrade"), i18n("Developer"),
                         QStringLiteral("sandroandrade@kde.org"));
     aboutData.addAuthor(QStringLiteral("Ayush Shah"), i18n("Developer"),
                         QStringLiteral("1595ayush@gmail.com"));
     aboutData.addAuthor(QStringLiteral("Alessandro Longo"), i18n("Minuet Icon Designer"),
                         QStringLiteral("alessandro.longo@kdemail.net"));
-#endif
 
 #if defined(Q_OS_ANDROID)
     QQuickStyle::setStyle(QStringLiteral("org.kde.breeze"));
@@ -78,8 +81,8 @@ int main(int argc, char *argv[])
     QGuiApplication::setWindowIcon(QIcon(QStringLiteral(":/icons/64-apps-minuet.png")));
 
     QCommandLineParser parser;
-#if !defined(Q_OS_ANDROID)
     KAboutData::setApplicationData(aboutData);
+#if !defined(Q_OS_ANDROID)
     aboutData.setupCommandLine(&parser);
 #else
     parser.addHelpOption();

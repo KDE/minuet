@@ -47,7 +47,7 @@ qt_add_qml_module(minuet
     NO_GENERATE_EXTRA_QMLDIRS
     QML_FILES
         qml/Main.qml
-        qml/AboutDialog.qml
+        qml/AboutPage.qml
         qml/ActionListItem.qml
         qml/ExerciseMenuPage.qml
         qml/ExercisePage.qml
@@ -92,6 +92,7 @@ target_link_libraries(minuet PRIVATE
     Qt::Quick
     Qt::QuickControls2
     Qt::Svg
+    KF6::CoreAddons
     KF6::I18n
     KF6::Kirigami
     Minuet::Interfaces
@@ -119,7 +120,6 @@ endif()
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 target_link_libraries(minuet PRIVATE
-    KF6::CoreAddons
     KF6::Crash
 )
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")

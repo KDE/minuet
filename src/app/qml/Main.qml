@@ -65,6 +65,13 @@ Kirigami.ApplicationWindow {
         })
     }
 
+    function openAbout() {
+        currentExercise = undefined
+        currentExerciseSelection = { kind: "about" }
+        pageStack.clear()
+        pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+    }
+
     pageStack {
         columnView.columnResizeMode: Kirigami.ColumnView.SingleColumn
         globalToolBar {
@@ -79,7 +86,7 @@ Kirigami.ApplicationWindow {
         wideScreen: window.wideScreen
         onExerciseFilterSelected: (exerciseModel, title, inheritedIconName, selectionKind) => window.openExerciseFilter(exerciseModel, title, inheritedIconName, selectionKind)
         onHomeRequested: window.openHome()
-        onAboutRequested: aboutDialog.open()
+        onAboutRequested: window.openAbout()
     }
 
     pageStack.initialPage: homePageComponent
@@ -100,10 +107,6 @@ Kirigami.ApplicationWindow {
         }
     }
 
-    AboutDialog {
-        id: aboutDialog
-    }
-    
     Binding {
         target: core.exerciseController
         property: "currentExercise"

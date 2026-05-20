@@ -9,10 +9,10 @@ endif()
 set (RELEASE_SERVICE_VERSION_MAJOR "26")
 set (RELEASE_SERVICE_VERSION_MINOR "07")
 set (RELEASE_SERVICE_VERSION_MICRO "70")
+set (RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_VERSION_MINOR}.${RELEASE_SERVICE_VERSION_MICRO}")
 set (RELEASE_SERVICE_COMPACT_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}${RELEASE_SERVICE_VERSION_MINOR}${RELEASE_SERVICE_VERSION_MICRO}")
-set (MINUET_VERSION "0.4.0.${RELEASE_SERVICE_COMPACT_VERSION}")
 
-project(minuet VERSION ${MINUET_VERSION})
+project(minuet VERSION ${RELEASE_SERVICE_VERSION})
 
 set(QT_MIN_VERSION "6.6.2")
 set(KF_MIN_VERSION "6.7.0")
@@ -30,7 +30,7 @@ include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(FeatureSummary)
 
-ecm_setup_version(${MINUET_VERSION} VARIABLE_PREFIX MINUET
+ecm_setup_version(${PROJECT_VERSION} VARIABLE_PREFIX MINUET
     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/src/app/minuet_version.h"
 )
 find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
@@ -57,14 +57,17 @@ else()
 endif()
 
 find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
+    CoreAddons
     Kirigami
     I18n
 )
+find_package(KF6KirigamiAddons REQUIRED)
 ecm_find_qmlmodule(org.kde.kirigami REQUIRED)
+ecm_find_qmlmodule(org.kde.coreaddons REQUIRED)
+ecm_find_qmlmodule(org.kde.kirigamiaddons.formcard REQUIRED)
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
-        CoreAddons
         Crash
         DocTools
         QQC2DesktopStyle
