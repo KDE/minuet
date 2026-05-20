@@ -26,7 +26,6 @@ import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
-import org.kde.kirigami.layouts as KirigamiLayouts
 
 Kirigami.Page {
     id: page
@@ -36,12 +35,11 @@ Kirigami.Page {
     property var exerciseModel: []
     property string inheritedIconName: ""
     property string pathText: title
-    readonly property bool isRootMenuPage: pathText === title
-    readonly property bool isLeftPanelPage: KirigamiLayouts.ColumnView.view !== null
-        && applicationWindow().pageStack.columnView.columnResizeMode !== KirigamiLayouts.ColumnView.SingleColumn
-        && KirigamiLayouts.ColumnView.index < applicationWindow().pageStack.currentIndex
+    readonly property var exerciseList: collectExercises(exerciseModel, inheritedIconName)
 
-    function resolvedIconName(exercise) {
+    title: exerciseList.length > 0 ? i18np("%2 - %1 item", "%2 - %1 items", exerciseList.length, pathText) : pathText
+
+    function iconNameForExercise(exercise, inheritedIconName) {
         const iconName = exercise._icon ? exercise._icon : inheritedIconName
         if (iconName === "") {
             return ""
@@ -49,20 +47,52 @@ Kirigami.Page {
         return iconName.startsWith("qrc:/") ? iconName : "qrc:/icons/22-actions-" + iconName
     }
 
-    function openExercise(exercise, iconName) {
-        const exerciseTitle = i18nc("technical term, do you have a musician friend?", exercise.name)
+    function collectExercises(exercises, inheritedIconName) {
+        const collectedExercises = []
+        for (const exercise of exercises) {
+            collectExercise(exercise, inheritedIconName, collectedExercises)
+        }
+        return collectedExercises
+    }
+
+    function collectExercise(exercise, inheritedIconName, collectedExercises) {
+        const iconName = iconNameForExercise(exercise, inheritedIconName)
         if (exercise.children !== undefined) {
-            applicationWindow().pageStack.push(Qt.resolvedUrl("ExerciseMenuPage.qml"), {
-                title: exerciseTitle,
-                exerciseModel: exercise.children,
-                inheritedIconName: iconName,
-                pathText: page.pathText + " / " + exerciseTitle,
-            })
+            for (const childExercise of exercise.children) {
+                collectExercise(childExercise, iconName, collectedExercises)
+            }
             return
         }
+        collectedExercises.push({
+            exercise: exercise,
+            iconName: iconName,
+        })
+    }
 
+    function exerciseDescription(exercise) {
+        if (exercise.userMessage !== undefined && exercise.userMessage !== "") {
+            return exercise.userMessage
+        }
+
+        let description = i18n("Practice identifying this exercise by ear.")
+        if (exercise.playMode === "rhythm") {
+            description = i18n("Practice rhythm recognition.")
+        } else if (exercise.playMode === "scale") {
+            description = i18n("Identify the scale by ear.")
+        } else if (exercise.playMode === "chord") {
+            description = i18n("Identify the chord or interval by ear.")
+        }
+
+        if (exercise.options !== undefined && exercise.options.length > 0) {
+            return i18n("%1 Includes %2 possible answers.", description, exercise.options.length)
+        }
+        return description
+    }
+
+    function openExercise(exercise, iconName) {
+        const exerciseTitle = i18nc("technical term, do you have a musician friend?", exercise.name)
         applicationWindow().currentExercise = exercise
-        applicationWindow().pageStack.push(exercisePageComponent, {
+        applicationWindow().pageStack.push(Qt.resolvedUrl("ExercisePage.qml"), {
             title: exerciseTitle,
             currentExercise: exercise,
             pathText: page.pathText + " / " + exerciseTitle,
@@ -73,152 +103,74 @@ Kirigami.Page {
         id: pageContent
 
         anchors.fill: parent
-        anchors.margins: page.isLeftPanelPage ? 0 : Kirigami.Units.largeSpacing
+        anchors.margins: Kirigami.Units.largeSpacing
         spacing: Kirigami.Units.largeSpacing
-
-        Image {
-            id: drawerImage
-
-            readonly property real targetWidth: page.isLeftPanelPage ? pageContent.width : Math.min(pageContent.width, Kirigami.Units.gridUnit * 16)
-            readonly property real aspectRatio: implicitWidth > 0 ? implicitHeight / implicitWidth : 0.35
-
-            source: "qrc:/qml/images/minuet-drawer.png"
-            fillMode: Image.PreserveAspectFit
-            visible: page.isLeftPanelPage || page.isRootMenuPage
-            sourceSize.width: targetWidth
-            Layout.alignment: Qt.AlignHCenter
-            Layout.fillWidth: page.isLeftPanelPage
-            Layout.preferredWidth: targetWidth
-            Layout.preferredHeight: visible ? targetWidth * aspectRatio : 0
-        }
-
-        RowLayout {
-            Layout.fillWidth: true
-            spacing: Kirigami.Units.smallSpacing
-
-            QQC2.ToolButton {
-                text: i18n("Back")
-                icon.name: "go-previous"
-                display: QQC2.AbstractButton.IconOnly
-                visible: applicationWindow().pageStack.depth > 1
-                enabled: visible
-                onClicked: applicationWindow().pageStack.pop()
-                QQC2.ToolTip.text: text
-                QQC2.ToolTip.visible: hovered
-            }
-
-            Kirigami.Heading {
-                text: page.pathText
-                level: 2
-                elide: Text.ElideLeft
-                maximumLineCount: 1
-                Layout.fillWidth: true
-            }
-        }
 
         Flickable {
             Layout.fillWidth: true
             Layout.fillHeight: true
             boundsBehavior: Flickable.StopAtBounds
             contentWidth: width
-            contentHeight: cardsLayout.height
+            contentHeight: exerciseListLayout.height
             clip: true
 
-            Kirigami.CardsLayout {
-                id: cardsLayout
+            ColumnLayout {
+                id: exerciseListLayout
 
                 width: parent.width
-                rowSpacing: Kirigami.Units.largeSpacing
-                columnSpacing: Kirigami.Units.largeSpacing
-                minimumColumnWidth: Kirigami.Units.gridUnit * 11
-                maximumColumns: Math.max(1, Math.floor(width / (minimumColumnWidth + columnSpacing)))
+                spacing: Kirigami.Units.smallSpacing
 
                 Repeater {
-                    model: page.exerciseModel
+                    model: page.exerciseList
 
                     Kirigami.AbstractCard {
                         id: exerciseCard
 
                         required property var modelData
 
-                        readonly property string iconName: page.resolvedIconName(modelData)
-
                         Layout.fillWidth: true
-                        Layout.minimumWidth: cardsLayout.minimumColumnWidth
-                        Layout.minimumHeight: Kirigami.Units.gridUnit * 7
+                        Layout.minimumHeight: Kirigami.Units.gridUnit * 5
 
-                        contentItem: ColumnLayout {
-                            spacing: Kirigami.Units.smallSpacing
+                        contentItem: RowLayout {
+                            spacing: Kirigami.Units.largeSpacing
 
                             Kirigami.Icon {
-                                source: exerciseCard.iconName
-                                visible: exerciseCard.iconName !== ""
-                                Layout.alignment: Qt.AlignHCenter
-                                Layout.preferredWidth: Kirigami.Units.iconSizes.huge
-                                Layout.preferredHeight: Kirigami.Units.iconSizes.huge
+                                source: exerciseCard.modelData.iconName
+                                visible: exerciseCard.modelData.iconName !== ""
+                                Layout.alignment: Qt.AlignVCenter
+                                Layout.preferredWidth: Kirigami.Units.iconSizes.medium
+                                Layout.preferredHeight: Kirigami.Units.iconSizes.medium
                             }
 
-                            Kirigami.Heading {
-                                text: i18nc("technical term, do you have a musician friend?", exerciseCard.modelData.name)
-                                level: 3
-                                wrapMode: Text.WordWrap
-                                horizontalAlignment: Text.AlignHCenter
+                            ColumnLayout {
                                 Layout.fillWidth: true
+                                spacing: Kirigami.Units.smallSpacing
+
+                                Kirigami.Heading {
+                                    text: i18nc("technical term, do you have a musician friend?", exerciseCard.modelData.exercise.name)
+                                    level: 3
+                                    elide: Text.ElideRight
+                                    maximumLineCount: 1
+                                    Layout.fillWidth: true
+                                }
+
+                                QQC2.Label {
+                                    text: page.exerciseDescription(exerciseCard.modelData.exercise)
+                                    wrapMode: Text.WordWrap
+                                    maximumLineCount: 2
+                                    elide: Text.ElideRight
+                                    color: Kirigami.Theme.disabledTextColor
+                                    Layout.fillWidth: true
+                                }
                             }
                         }
 
-                        onClicked: page.openExercise(modelData, iconName)
+                        onClicked: page.openExercise(modelData.exercise, modelData.iconName)
                     }
                 }
             }
 
             QQC2.ScrollIndicator.vertical: QQC2.ScrollIndicator { active: true }
-        }
-    }
-
-    Component {
-        id: exercisePageComponent
-
-        Kirigami.Page {
-            id: exercisePage
-
-            property var currentExercise
-            property string pathText: title
-
-            ColumnLayout {
-                anchors.fill: parent
-                anchors.margins: Kirigami.Units.largeSpacing
-                spacing: Kirigami.Units.largeSpacing
-
-                RowLayout {
-                    Layout.fillWidth: true
-                    spacing: Kirigami.Units.smallSpacing
-
-                    QQC2.ToolButton {
-                        text: i18n("Back")
-                        icon.name: "go-previous"
-                        display: QQC2.AbstractButton.IconOnly
-                        enabled: applicationWindow().pageStack.depth > 1
-                        onClicked: applicationWindow().pageStack.pop()
-                        QQC2.ToolTip.text: text
-                        QQC2.ToolTip.visible: hovered
-                    }
-
-                    Kirigami.Heading {
-                        text: exercisePage.pathText
-                        level: 2
-                        elide: Text.ElideLeft
-                        maximumLineCount: 1
-                        Layout.fillWidth: true
-                    }
-                }
-
-                ExerciseView {
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
-                    currentExercise: exercisePage.currentExercise
-                }
-            }
         }
     }
 }

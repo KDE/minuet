@@ -48,8 +48,11 @@ qt_add_qml_module(minuet
     QML_FILES
         qml/Main.qml
         qml/AboutDialog.qml
+        qml/ActionListItem.qml
         qml/ExerciseMenuPage.qml
+        qml/ExercisePage.qml
         qml/ExerciseView.qml
+        qml/MinuetDrawer.qml
         qml/PianoView/BlackKey.qml
         qml/PianoView/Octave.qml
         qml/PianoView/PianoView.qml
@@ -67,7 +70,8 @@ qt_add_qml_module(minuet
 qt_add_resources(minuet minuet_assets
     PREFIX /
     FILES
-        qml/images/minuet-drawer.png
+        qml/images/minuet-icon.svg
+        qml/images/minuet-icon.png
         qml/images/menu.png
         qml/images/keyboard_arrow_left.png
         qml/images/more_vert.png

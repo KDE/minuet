@@ -33,16 +33,58 @@ Kirigami.ApplicationWindow {
 
     property string titleText: "Minuet"
     property var currentExercise
+    readonly property Item currentPage: pageStack.depth > 0 ? pageStack.get(pageStack.currentIndex) : null
+
+    title: currentPage?.title ?? titleText
+
+    function openHome() {
+        currentExercise = undefined
+        pageStack.clear()
+        pageStack.push(homePageComponent)
+    }
+
+    function openExerciseFilter(exerciseModel, title, inheritedIconName) {
+        currentExercise = undefined
+        pageStack.clear()
+        pageStack.push(Qt.resolvedUrl("ExerciseMenuPage.qml"), {
+            exerciseModel: exerciseModel,
+            inheritedIconName: inheritedIconName,
+            pathText: title,
+        })
+    }
 
     pageStack {
+        columnView.columnResizeMode: Kirigami.ColumnView.SingleColumn
         globalToolBar {
-            style: window.wideScreen ? Kirigami.ApplicationHeaderStyle.None : Kirigami.ApplicationHeaderStyle.ToolBar
+            style: Kirigami.ApplicationHeaderStyle.ToolBar
+            showNavigationButtons: pageStack.currentIndex > 0 ? Kirigami.ApplicationHeaderStyle.ShowBackButton : Kirigami.ApplicationHeaderStyle.None
         }
     }
 
-    pageStack.initialPage: ExerciseMenuPage {
-        title: window.titleText
+    globalDrawer: MinuetDrawer {
         exerciseModel: core.exerciseController.exercises
+        wideScreen: window.wideScreen
+        onExerciseFilterSelected: (exerciseModel, title, inheritedIconName) => window.openExerciseFilter(exerciseModel, title, inheritedIconName)
+        onHomeRequested: window.openHome()
+        onAboutRequested: aboutDialog.open()
+    }
+
+    pageStack.initialPage: homePageComponent
+
+    Component {
+        id: homePageComponent
+
+        Kirigami.Page {
+            title: window.titleText
+
+            Kirigami.PlaceholderMessage {
+                anchors.centerIn: parent
+                width: Math.min(parent.width - Kirigami.Units.gridUnit * 2, Kirigami.Units.gridUnit * 28)
+                icon.name: "qrc:/icons/64-apps-minuet.png"
+                text: i18n("Choose an exercise")
+                explanation: i18n("Start with a topic, then pick the specific training level.")
+            }
+        }
     }
 
     AboutDialog {
