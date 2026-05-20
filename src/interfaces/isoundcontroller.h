@@ -28,6 +28,7 @@
 #include <interfaces/minuetinterfacesexport.h>
 
 #include <QJsonArray>
+#include <QVariantList>
 
 namespace Minuet
 {
@@ -42,10 +43,13 @@ class MINUETINTERFACES_EXPORT ISoundController : public IPlugin
     Q_PROPERTY(qint8 pitch MEMBER m_pitch WRITE setPitch NOTIFY pitchChanged)
     Q_PROPERTY(quint8 volume MEMBER m_volume WRITE setVolume NOTIFY volumeChanged)
     Q_PROPERTY(quint8 tempo MEMBER m_tempo WRITE setTempo NOTIFY tempoChanged)
+    Q_PROPERTY(int instrument READ instrument WRITE setInstrument NOTIFY instrumentChanged)
 
     // Read-only properties
     Q_PROPERTY(State state READ state NOTIFY stateChanged)
     Q_PROPERTY(QString playbackLabel READ playbackLabel NOTIFY playbackLabelChanged)
+    Q_PROPERTY(QString instrumentGroupsJson READ instrumentGroupsJson NOTIFY instrumentGroupsChanged)
+    Q_PROPERTY(QString instrumentsJson READ instrumentsJson NOTIFY instrumentsChanged)
 
 public:
     ~ISoundController() override = default;
@@ -55,11 +59,17 @@ public:
     Minuet::ISoundController::State state() const;
 
     QString playbackLabel() const;
+    int instrument() const;
+    QVariantList instrumentGroups() const;
+    QVariantList instruments() const;
+    QString instrumentGroupsJson() const;
+    QString instrumentsJson() const;
 
 public Q_SLOTS:
     virtual void setPitch(qint8 pitch) = 0;
     virtual void setVolume(quint8 volume) = 0;
     virtual void setTempo(quint8 tempo) = 0;
+    virtual void setInstrument(int instrument) = 0;
 
     virtual void prepareFromExerciseOptions(QJsonArray selectedExerciseOptions) = 0;
     virtual void prepareFromMidiFile(const QString &fileName) = 0;
@@ -74,21 +84,32 @@ Q_SIGNALS:
     void pitchChanged(qint8 newPitch);
     void volumeChanged(quint8 newVolume);
     void tempoChanged(quint8 newTempo);
+    void instrumentChanged(int newInstrument);
     void stateChanged(Minuet::ISoundController::State newState);
     void playbackLabelChanged(QString newPlaybackLabel);
+    void instrumentGroupsChanged();
+    void instrumentsChanged();
 
 protected:
     explicit ISoundController(QObject *parent = nullptr);
 
     void setPlaybackLabel(const QString &playbackLabel);
     void setState(State state);
+    bool setInstrumentValue(int instrument);
+    void setInstrumentGroups(const QVariantList &instrumentGroups);
+    void setInstruments(const QVariantList &instruments);
 
     qint8 m_pitch;
     quint8 m_volume;
     quint8 m_tempo;
+    int m_instrument;
     QString m_playbackLabel;
     State m_state;
     QString m_playMode;
+    QVariantList m_instrumentGroups;
+    QVariantList m_instruments;
+    QString m_instrumentGroupsJson;
+    QString m_instrumentsJson;
 };
 
 }

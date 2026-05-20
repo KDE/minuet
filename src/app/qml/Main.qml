@@ -72,6 +72,13 @@ Kirigami.ApplicationWindow {
         pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
     }
 
+    function openSettings() {
+        currentExercise = undefined
+        currentExerciseSelection = { kind: "settings" }
+        pageStack.clear()
+        pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
+    }
+
     pageStack {
         columnView.columnResizeMode: Kirigami.ColumnView.SingleColumn
         globalToolBar {
@@ -87,6 +94,7 @@ Kirigami.ApplicationWindow {
         onExerciseFilterSelected: (exerciseModel, title, inheritedIconName, selectionKind) => window.openExerciseFilter(exerciseModel, title, inheritedIconName, selectionKind)
         onHomeRequested: window.openHome()
         onAboutRequested: window.openAbout()
+        onSettingsRequested: window.openSettings()
     }
 
     pageStack.initialPage: homePageComponent

@@ -22,10 +22,17 @@
 
 #include "isoundcontroller.h"
 
+#include <QJsonArray>
+#include <QJsonDocument>
+
 namespace Minuet
 {
 ISoundController::ISoundController(QObject *parent) : IPlugin(parent)
 {
+    m_pitch = 0;
+    m_volume = 100;
+    m_tempo = 60;
+    m_instrument = 0;
     setPlaybackLabel(QStringLiteral("00:00.00"));
     setState(StoppedState);
 }
@@ -38,6 +45,31 @@ ISoundController::State ISoundController::state() const
 QString ISoundController::playbackLabel() const
 {
     return m_playbackLabel;
+}
+
+int ISoundController::instrument() const
+{
+    return m_instrument;
+}
+
+QVariantList ISoundController::instrumentGroups() const
+{
+    return m_instrumentGroups;
+}
+
+QVariantList ISoundController::instruments() const
+{
+    return m_instruments;
+}
+
+QString ISoundController::instrumentGroupsJson() const
+{
+    return m_instrumentGroupsJson;
+}
+
+QString ISoundController::instrumentsJson() const
+{
+    return m_instrumentsJson;
 }
 
 void ISoundController::setPlaybackLabel(const QString &playbackLabel)
@@ -53,6 +85,37 @@ void ISoundController::setState(State state)
     if (m_state != state) {
         m_state = state;
         emit stateChanged(m_state);
+    }
+}
+
+bool ISoundController::setInstrumentValue(int instrument)
+{
+    if (m_instrument == instrument) {
+        return false;
+    }
+
+    m_instrument = instrument;
+    emit instrumentChanged(m_instrument);
+    return true;
+}
+
+void ISoundController::setInstrumentGroups(const QVariantList &instrumentGroups)
+{
+    if (m_instrumentGroups != instrumentGroups) {
+        m_instrumentGroups = instrumentGroups;
+        m_instrumentGroupsJson = QString::fromUtf8(
+            QJsonDocument(QJsonArray::fromVariantList(m_instrumentGroups)).toJson(QJsonDocument::Compact));
+        emit instrumentGroupsChanged();
+    }
+}
+
+void ISoundController::setInstruments(const QVariantList &instruments)
+{
+    if (m_instruments != instruments) {
+        m_instruments = instruments;
+        m_instrumentsJson = QString::fromUtf8(
+            QJsonDocument(QJsonArray::fromVariantList(m_instruments)).toJson(QJsonDocument::Compact));
+        emit instrumentsChanged();
     }
 }
 

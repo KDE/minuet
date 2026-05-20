@@ -38,6 +38,7 @@ Kirigami.GlobalDrawer {
 
     signal exerciseFilterSelected(var exerciseModel, string title, string inheritedIconName, string selectionKind)
     signal homeRequested()
+    signal settingsRequested()
     signal aboutRequested()
 
     interactiveResizeEnabled: true
@@ -196,7 +197,13 @@ Kirigami.GlobalDrawer {
             action: Kirigami.Action {
                 text: i18n("Settings")
                 icon.name: "settings-configure"
-                enabled: false
+                checked: drawer.currentExerciseSelection?.kind === "settings"
+                onTriggered: {
+                    drawer.settingsRequested()
+                    if (drawer.modal) {
+                        drawer.close()
+                    }
+                }
             }
         },
 

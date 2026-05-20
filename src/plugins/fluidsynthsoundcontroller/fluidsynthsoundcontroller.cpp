@@ -22,14 +22,22 @@
 
 #include "fluidsynthsoundcontroller.h"
 
+#include <KLocalizedString>
+
+#include <QHash>
 #include <QDebug>
 #include <QDir>
 #include <QFile>
 #include <QJsonObject>
+#include <QSet>
 #include <QStandardPaths>
+#include <QVariantMap>
 #include <QtMath>
 
 #include <utils/xdgdatadirs.h>
+
+#include <algorithm>
+#include <utility>
 
 unsigned int FluidSynthSoundController::m_initialTime = 0;
 
@@ -75,6 +83,8 @@ FluidSynthSoundController::FluidSynthSoundController(QObject *parent)
     if (fluid_res == FLUID_FAILED) {
         qCritical() << "Error when loading soundfont in:" << sf_path;
     }
+    populateInstruments();
+    applyInstrument();
 
     m_unregisteringEvent = new_fluid_event();
     fluid_event_set_source(m_unregisteringEvent, -1);
@@ -115,11 +125,22 @@ void FluidSynthSoundController::setVolume(quint8 volume)
     }
     m_volume = volume;
     fluid_synth_cc(m_synth, 1, 7, m_volume * 127 / 200);
+    emit volumeChanged(m_volume);
 }
 
 void FluidSynthSoundController::setTempo(quint8 tempo)
 {
     m_tempo = tempo;
+}
+
+void FluidSynthSoundController::setInstrument(int instrument)
+{
+    if (instrument < 0 || instrument > 127) {
+        return;
+    }
+
+    setInstrumentValue(instrument);
+    applyInstrument();
 }
 
 void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedExerciseOptions)
@@ -224,6 +245,132 @@ void FluidSynthSoundController::appendEvent(int channel, short key, short veloci
     fluid_event_set_source(event, -1);
     fluid_event_note(event, channel, key, velocity, duration);
     m_song->append(event);
+}
+
+void FluidSynthSoundController::populateInstruments()
+{
+    QList<QVariantMap> instrumentMaps;
+    QSet<int> seenPrograms;
+    m_instrumentSoundFontIds.clear();
+
+    const int soundFontCount = fluid_synth_sfcount(m_synth);
+    for (int soundFontIndex = 0; soundFontIndex < soundFontCount; ++soundFontIndex) {
+        fluid_sfont_t *soundFont = fluid_synth_get_sfont(m_synth, soundFontIndex);
+        if (!soundFont) {
+            continue;
+        }
+
+        fluid_sfont_iteration_start(soundFont);
+        fluid_preset_t *preset = nullptr;
+        while ((preset = fluid_sfont_iteration_next(soundFont)) != nullptr) {
+            const int bank = fluid_preset_get_banknum(preset);
+            const int program = fluid_preset_get_num(preset);
+            if (bank != 0 || program < 0 || program > 127 || seenPrograms.contains(program)) {
+                continue;
+            }
+
+            seenPrograms.insert(program);
+            m_instrumentSoundFontIds.insert(program, fluid_sfont_get_id(soundFont));
+
+            const QString name = QString::fromUtf8(fluid_preset_get_name(preset));
+            const int group = program / 8;
+            QVariantMap instrument;
+            instrument.insert(QStringLiteral("group"), group);
+            instrument.insert(QStringLiteral("bank"), bank);
+            instrument.insert(QStringLiteral("program"), program);
+            instrument.insert(QStringLiteral("number"), program + 1);
+            instrument.insert(QStringLiteral("name"), name);
+            instrument.insert(QStringLiteral("displayName"),
+                              QStringLiteral("%1 %2").arg(program + 1, 3, 10, QLatin1Char('0')).arg(name));
+            instrumentMaps.push_back(instrument);
+        }
+    }
+
+    std::sort(instrumentMaps.begin(), instrumentMaps.end(), [](const QVariantMap &lhs, const QVariantMap &rhs) {
+        return lhs.value(QStringLiteral("program")).toInt() < rhs.value(QStringLiteral("program")).toInt();
+    });
+
+    QVariantList instruments;
+    QSet<int> availableGroups;
+    for (const QVariantMap &instrument : std::as_const(instrumentMaps)) {
+        instruments.push_back(instrument);
+        availableGroups.insert(instrument.value(QStringLiteral("group")).toInt());
+    }
+
+    QVariantList groups;
+    for (int group = 0; group < 16; ++group) {
+        if (!availableGroups.contains(group)) {
+            continue;
+        }
+
+        QVariantMap groupData;
+        groupData.insert(QStringLiteral("id"), group);
+        groupData.insert(QStringLiteral("name"), instrumentGroupName(group));
+        groups.push_back(groupData);
+    }
+
+    if (instruments.isEmpty()) {
+        qWarning() << "No General MIDI bank 0 instruments found in loaded SoundFonts.";
+    } else if (instruments.size() < 128) {
+        qWarning() << "Only" << instruments.size() << "General MIDI bank 0 instruments found in loaded SoundFonts.";
+    }
+
+    setInstrumentGroups(groups);
+    setInstruments(instruments);
+}
+
+void FluidSynthSoundController::applyInstrument()
+{
+    if (!m_synth) {
+        return;
+    }
+
+    const int soundFontId = m_instrumentSoundFontIds.value(m_instrument, -1);
+    if (soundFontId >= 0) {
+        fluid_synth_program_select(m_synth, 1, soundFontId, 0, m_instrument);
+    } else {
+        fluid_synth_program_change(m_synth, 1, m_instrument);
+    }
+}
+
+QString FluidSynthSoundController::instrumentGroupName(int group)
+{
+    switch (group) {
+    case 0:
+        return i18nc("General MIDI instrument group", "Piano");
+    case 1:
+        return i18nc("General MIDI instrument group", "Chromatic Percussion");
+    case 2:
+        return i18nc("General MIDI instrument group", "Organ");
+    case 3:
+        return i18nc("General MIDI instrument group", "Guitar");
+    case 4:
+        return i18nc("General MIDI instrument group", "Bass");
+    case 5:
+        return i18nc("General MIDI instrument group", "Strings");
+    case 6:
+        return i18nc("General MIDI instrument group", "Ensemble");
+    case 7:
+        return i18nc("General MIDI instrument group", "Brass");
+    case 8:
+        return i18nc("General MIDI instrument group", "Reed");
+    case 9:
+        return i18nc("General MIDI instrument group", "Pipe");
+    case 10:
+        return i18nc("General MIDI instrument group", "Synth Lead");
+    case 11:
+        return i18nc("General MIDI instrument group", "Synth Pad");
+    case 12:
+        return i18nc("General MIDI instrument group", "Synth Effects");
+    case 13:
+        return i18nc("General MIDI instrument group", "Ethnic");
+    case 14:
+        return i18nc("General MIDI instrument group", "Percussive");
+    case 15:
+        return i18nc("General MIDI instrument group", "Sound Effects");
+    default:
+        return i18nc("General MIDI instrument group", "Other");
+    }
 }
 
 void FluidSynthSoundController::sequencerCallback(unsigned int time, fluid_event_t *event,

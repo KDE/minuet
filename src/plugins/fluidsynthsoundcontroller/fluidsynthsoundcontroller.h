@@ -27,6 +27,8 @@
 
 #include <fluidsynth.h>
 
+#include <QHash>
+
 class FluidSynthSoundController : public Minuet::ISoundController
 {
     Q_OBJECT
@@ -43,6 +45,7 @@ public Q_SLOTS:
     void setPitch(qint8 pitch) override;
     void setVolume(quint8 volume) override;
     void setTempo(quint8 tempo) override;
+    void setInstrument(int instrument) override;
 
     void prepareFromExerciseOptions(QJsonArray selectedExerciseOptions) override;
     void prepareFromMidiFile(const QString &fileName) override;
@@ -56,6 +59,9 @@ private:
     void appendEvent(int channel, short key, short velocity, unsigned int duration);
     static void sequencerCallback(unsigned int time, fluid_event_t *event, fluid_sequencer_t *seq,
                                   void *data);
+    void populateInstruments();
+    void applyInstrument();
+    static QString instrumentGroupName(int group);
     void resetEngine();
     void deleteEngine();
 
@@ -69,6 +75,7 @@ private:
     short m_synthSeqID;
     short m_callbackSeqID;
     static unsigned int m_initialTime;
+    QHash<int, int> m_instrumentSoundFontIds;
 
     QScopedPointer<QList<fluid_event_t *>> m_song;
 };

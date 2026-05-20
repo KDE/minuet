@@ -53,6 +53,7 @@ qt_add_qml_module(minuet
         qml/ExercisePage.qml
         qml/ExerciseView.qml
         qml/MinuetDrawer.qml
+        qml/SettingsPage.qml
         qml/PianoView/BlackKey.qml
         qml/PianoView/Octave.qml
         qml/PianoView/PianoView.qml
