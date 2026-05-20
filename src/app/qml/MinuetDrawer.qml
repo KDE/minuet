@@ -32,6 +32,7 @@ Kirigami.GlobalDrawer {
 
     property var exerciseModel: []
     property bool wideScreen: false
+    property string currentSearchText: ""
     readonly property int defaultPreferredSize: Kirigami.Units.gridUnit * 24
 
     signal exerciseFilterSelected(var exerciseModel, string title, string inheritedIconName)
@@ -42,29 +43,50 @@ Kirigami.GlobalDrawer {
     modal: !wideScreen
     drawerOpen: wideScreen
     resetMenuOnTriggered: false
-    actions: createDrawerActions()
+    actions: createDrawerActions(currentSearchText)
     preferredSize: defaultPreferredSize
 
-    function createDrawerActions() {
-        return [
-            allExercisesActionComponent.createObject(drawer),
-        ].concat(createExerciseActions(exerciseModel))
+    onCurrentSearchTextChanged: resetMenu()
+
+    function createDrawerActions(searchText) {
+        const normalizedSearchText = normalizedText(searchText)
+        const exerciseActions = createExerciseActions(exerciseModel, normalizedSearchText)
+        if (normalizedSearchText === "" || actionMatches(i18n("All exercises"), normalizedSearchText)) {
+            return [
+                allExercisesActionComponent.createObject(drawer),
+            ].concat(exerciseActions)
+        }
+        return exerciseActions
     }
 
-    function createExerciseActions(exercises) {
+    function createExerciseActions(exercises, searchText) {
         const exerciseActions = []
         for (const exercise of exercises) {
+            const exerciseTitle = i18nc("technical term, do you have a musician friend?", exercise.name)
+            const exerciseChildren = exercise.children !== undefined ? createExerciseActions(exercise.children, searchText) : []
+            if (searchText !== "" && !actionMatches(exerciseTitle, searchText) && exerciseChildren.length === 0) {
+                continue
+            }
+
             const actionIconName = resolvedIconName(exercise)
             const exerciseAction = exerciseActionComponent.createObject(drawer, {
                 exercise: exercise,
                 actionIconName: actionIconName,
             })
-            if (exercise.children !== undefined) {
-                exerciseAction.children = createExerciseActions(exercise.children)
+            if (exerciseChildren.length > 0) {
+                exerciseAction.children = exerciseChildren
             }
             exerciseActions.push(exerciseAction)
         }
         return exerciseActions
+    }
+
+    function normalizedText(text) {
+        return text.trim().toLocaleLowerCase()
+    }
+
+    function actionMatches(actionText, searchText) {
+        return normalizedText(actionText).includes(searchText)
     }
 
     function resolvedIconName(exercise) {
@@ -73,6 +95,22 @@ Kirigami.GlobalDrawer {
             return ""
         }
         return iconName.startsWith("qrc:/") ? iconName : "qrc:/icons/22-actions-" + iconName
+    }
+
+    header: Kirigami.AbstractApplicationHeader {
+        contentItem: Kirigami.SearchField {
+            id: searchField
+
+            anchors {
+                left: parent.left
+                right: parent.right
+            }
+
+            objectName: "searchField"
+            focus: drawer.wideScreen && !Kirigami.InputMethod.willShowOnActive
+            placeholderText: i18n("Search…")
+            onTextChanged: drawer.currentSearchText = text
+        }
     }
 
     topContent: [

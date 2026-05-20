@@ -31,7 +31,7 @@ Kirigami.ApplicationWindow {
     width: Screen.width; height: Screen.height
     visibility: Window.Maximized
 
-    property string titleText: "Minuet"
+    property string titleText: "Home"
     property var currentExercise
     readonly property Item currentPage: pageStack.depth > 0 ? pageStack.get(pageStack.currentIndex) : null
 
