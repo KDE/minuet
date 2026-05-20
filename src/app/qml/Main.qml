@@ -33,18 +33,30 @@ Kirigami.ApplicationWindow {
 
     property string titleText: "Home"
     property var currentExercise
+    property var currentExerciseSelection
     readonly property Item currentPage: pageStack.depth > 0 ? pageStack.get(pageStack.currentIndex) : null
 
     title: currentPage?.title ?? titleText
 
     function openHome() {
         currentExercise = undefined
+        currentExerciseSelection = null
         pageStack.clear()
         pageStack.push(homePageComponent)
     }
 
-    function openExerciseFilter(exerciseModel, title, inheritedIconName) {
+    function openExerciseFilter(exerciseModel, title, inheritedIconName, selectionKind) {
         currentExercise = undefined
+        if (selectionKind === "all") {
+            currentExerciseSelection = { kind: "all" }
+        } else if (selectionKind === "category" && Array.isArray(exerciseModel) && exerciseModel.length === 1) {
+            currentExerciseSelection = {
+                kind: "category",
+                exercise: exerciseModel[0],
+            }
+        } else {
+            currentExerciseSelection = null
+        }
         pageStack.clear()
         pageStack.push(Qt.resolvedUrl("ExerciseMenuPage.qml"), {
             exerciseModel: exerciseModel,
@@ -63,8 +75,9 @@ Kirigami.ApplicationWindow {
 
     globalDrawer: MinuetDrawer {
         exerciseModel: core.exerciseController.exercises
+        currentExerciseSelection: window.currentExerciseSelection
         wideScreen: window.wideScreen
-        onExerciseFilterSelected: (exerciseModel, title, inheritedIconName) => window.openExerciseFilter(exerciseModel, title, inheritedIconName)
+        onExerciseFilterSelected: (exerciseModel, title, inheritedIconName, selectionKind) => window.openExerciseFilter(exerciseModel, title, inheritedIconName, selectionKind)
         onHomeRequested: window.openHome()
         onAboutRequested: aboutDialog.open()
     }

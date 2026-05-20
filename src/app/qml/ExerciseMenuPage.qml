@@ -42,7 +42,7 @@ Kirigami.Page {
     function iconNameForExercise(exercise, inheritedIconName) {
         const iconName = exercise._icon ? exercise._icon : inheritedIconName
         if (iconName === "") {
-            return ""
+            return "view-list-details"
         }
         return iconName.startsWith("qrc:/") ? iconName : "qrc:/icons/22-actions-" + iconName
     }

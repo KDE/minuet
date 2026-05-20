@@ -31,11 +31,12 @@ Kirigami.GlobalDrawer {
     id: drawer
 
     property var exerciseModel: []
+    property var currentExerciseSelection: null
     property bool wideScreen: false
     property string currentSearchText: ""
     readonly property int defaultPreferredSize: Kirigami.Units.gridUnit * 24
 
-    signal exerciseFilterSelected(var exerciseModel, string title, string inheritedIconName)
+    signal exerciseFilterSelected(var exerciseModel, string title, string inheritedIconName, string selectionKind)
     signal homeRequested()
     signal aboutRequested()
 
@@ -50,7 +51,7 @@ Kirigami.GlobalDrawer {
 
     function createDrawerActions(searchText) {
         const normalizedSearchText = normalizedText(searchText)
-        const exerciseActions = createExerciseActions(exerciseModel, normalizedSearchText)
+        const exerciseActions = createExerciseActions(exerciseModel, normalizedSearchText, "")
         if (normalizedSearchText === "" || actionMatches(i18n("All exercises"), normalizedSearchText)) {
             return [
                 allExercisesActionComponent.createObject(drawer),
@@ -59,16 +60,20 @@ Kirigami.GlobalDrawer {
         return exerciseActions
     }
 
-    function createExerciseActions(exercises, searchText) {
+    function createExerciseActions(exercises, searchText, inheritedIconName) {
         const exerciseActions = []
         for (const exercise of exercises) {
             const exerciseTitle = i18nc("technical term, do you have a musician friend?", exercise.name)
-            const exerciseChildren = exercise.children !== undefined ? createExerciseActions(exercise.children, searchText) : []
-            if (searchText !== "" && !actionMatches(exerciseTitle, searchText) && exerciseChildren.length === 0) {
+            const actionIconName = resolvedIconName(exercise, inheritedIconName)
+            const hasChildren = exercise.children !== undefined && exercise.children.length > 0
+            const exerciseChildren = hasChildren ? createExerciseActions(exercise.children, searchText, actionIconName) : []
+            if (!hasChildren) {
+                continue
+            }
+            if (searchText !== "" && !exerciseMatchesSearch(exercise, searchText, inheritedIconName)) {
                 continue
             }
 
-            const actionIconName = resolvedIconName(exercise)
             const exerciseAction = exerciseActionComponent.createObject(drawer, {
                 exercise: exercise,
                 actionIconName: actionIconName,
@@ -81,6 +86,25 @@ Kirigami.GlobalDrawer {
         return exerciseActions
     }
 
+    function exerciseMatchesSearch(exercise, searchText, inheritedIconName) {
+        const exerciseTitle = i18nc("technical term, do you have a musician friend?", exercise.name)
+        if (actionMatches(exerciseTitle, searchText)) {
+            return true
+        }
+
+        if (exercise.children === undefined || exercise.children.length === 0) {
+            return false
+        }
+
+        const childIconName = resolvedIconName(exercise, inheritedIconName)
+        for (const childExercise of exercise.children) {
+            if (exerciseMatchesSearch(childExercise, searchText, childIconName)) {
+                return true
+            }
+        }
+        return false
+    }
+
     function normalizedText(text) {
         return text.trim().toLocaleLowerCase()
     }
@@ -89,8 +113,8 @@ Kirigami.GlobalDrawer {
         return normalizedText(actionText).includes(searchText)
     }
 
-    function resolvedIconName(exercise) {
-        const iconName = exercise._icon ? exercise._icon : ""
+    function resolvedIconName(exercise, inheritedIconName) {
+        const iconName = exercise._icon ? exercise._icon : inheritedIconName
         if (iconName === "") {
             return ""
         }
@@ -202,10 +226,11 @@ Kirigami.GlobalDrawer {
         id: allExercisesActionComponent
 
         Kirigami.Action {
+            checked: drawer.currentExerciseSelection?.kind === "all"
             text: i18n("All exercises")
             icon.name: "view-list-details"
             onTriggered: {
-                drawer.exerciseFilterSelected(drawer.exerciseModel, text, "")
+                drawer.exerciseFilterSelected(drawer.exerciseModel, text, "", "all")
                 if (drawer.modal) {
                     drawer.close()
                 }
@@ -220,11 +245,13 @@ Kirigami.GlobalDrawer {
             property var exercise
             property string actionIconName: ""
 
+            checked: drawer.currentExerciseSelection?.kind === "category"
+                && drawer.currentExerciseSelection.exercise === exercise
             text: exercise ? i18nc("technical term, do you have a musician friend?", exercise.name) : ""
             icon.name: actionIconName
             onTriggered: {
-                drawer.exerciseFilterSelected([exercise], text, actionIconName)
-                if (drawer.modal && exercise.children === undefined) {
+                drawer.exerciseFilterSelected([exercise], text, actionIconName, "category")
+                if (drawer.modal) {
                     drawer.close()
                 }
             }
