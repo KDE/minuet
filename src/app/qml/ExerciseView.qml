@@ -155,6 +155,12 @@ Item {
             && internal.userAnswers[position].name !== rightAnswer.name
     }
 
+    function canShowSubmittedAnswerCorrection(position) {
+        return currentExercise !== undefined
+            && internal.currentAnswer >= currentExercise.numberOfSelectedOptions
+            && isWrongSubmittedAnswer(position)
+    }
+
     function showQuestionRootOnPiano() {
         showAnswers([])
     }
@@ -177,7 +183,7 @@ Item {
     }
 
     function showSubmittedAnswerCorrection(answerRectangle) {
-        if (!isWrongSubmittedAnswer(answerRectangle.position)) {
+        if (!canShowSubmittedAnswerCorrection(answerRectangle.position)) {
             return
         }
 
@@ -186,7 +192,7 @@ Item {
     }
 
     function restoreSubmittedAnswerCorrection(answerRectangle) {
-        if (!isWrongSubmittedAnswer(answerRectangle.position)) {
+        if (!canShowSubmittedAnswerCorrection(answerRectangle.position)) {
             return
         }
 
@@ -399,7 +405,7 @@ Item {
                         property color color
                         property bool submittedAnswer: parent === yourAnswersParent
                         property bool wrongSubmittedAnswer: submittedAnswer && isWrongSubmittedAnswer(position)
-                        property bool showCorrectAnswer: wrongSubmittedAnswer && hoverArea.containsMouse
+                        property bool showCorrectAnswer: submittedAnswer && hoverArea.containsMouse && canShowSubmittedAnswerCorrection(position)
                         property string answerText: {
                             if (showCorrectAnswer) {
                                 return i18nc("technical term, do you have a musician friend?", correctAnswerAt(position).name)

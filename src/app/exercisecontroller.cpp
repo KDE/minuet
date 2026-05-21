@@ -79,6 +79,7 @@ void ExerciseController::randomlySelectExerciseOptions()
     }
 
     auto failSelection = [this](const QString &errorString) {
+        m_selectedExerciseOptions = QJsonArray();
         m_errorString = errorString;
         qWarning() << m_errorString;
         emit selectedExerciseOptionsChanged(m_selectedExerciseOptions);
@@ -106,14 +107,16 @@ void ExerciseController::randomlySelectExerciseOptions()
     }
 
     const QString playMode = currentExerciseObject[u"playMode"_s].toString();
+    QJsonArray remainingExerciseOptions = exerciseOptions;
     for (int i = 0; i < numberOfSelectedOptions; ++i) {
-        const int chosenExerciseOption = generator->bounded(exerciseOptions.size());
-        if (!exerciseOptions[chosenExerciseOption].isObject()) {
+        const int chosenExerciseOption = generator->bounded(remainingExerciseOptions.size());
+        if (!remainingExerciseOptions[chosenExerciseOption].isObject()) {
             failSelection(u"Current exercise option is not an object."_s);
             return;
         }
 
-        const QJsonObject optionObject = exerciseOptions[chosenExerciseOption].toObject();
+        const QJsonObject optionObject = remainingExerciseOptions[chosenExerciseOption].toObject();
+        remainingExerciseOptions.removeAt(chosenExerciseOption);
         const QString sequence = optionObject[u"sequence"_s].toString();
         const QStringList additionalNotes = sequence.split(QLatin1Char(' '), Qt::SkipEmptyParts);
         if (additionalNotes.isEmpty()) {
@@ -122,8 +125,13 @@ void ExerciseController::randomlySelectExerciseOptions()
         }
 
         for (const QString &additionalNote : additionalNotes) {
+            QString noteText = additionalNote;
+            if (playMode == u"rhythm"_s && noteText.endsWith(QLatin1Char('.'))) {
+                noteText.chop(1);
+            }
+
             bool ok = false;
-            const int note = additionalNote.toInt(&ok);
+            const int note = noteText.toInt(&ok);
             if (!ok || (playMode == u"rhythm"_s && note <= 0)) {
                 failSelection(u"Current exercise option has an invalid sequence."_s);
                 return;
