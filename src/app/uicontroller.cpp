@@ -38,10 +38,11 @@ UiController::UiController(QObject *parent) : IUiController(parent) {}
 
 bool UiController::initialize(Core *core)
 {
+    Q_UNUSED(core)
+
     m_errorString.clear();
     auto *engine = new QQmlApplicationEngine(this);
     QQmlContext *rootContext = engine->rootContext();
-    rootContext->setContextProperty(u"core"_s, core);
     rootContext->setContextObject(new KLocalizedContext(engine));
     engine->loadFromModule(u"org.kde.minuet"_s, u"Main"_s);
 

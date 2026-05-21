@@ -88,7 +88,7 @@ Kirigami.ApplicationWindow {
     }
 
     globalDrawer: MinuetDrawer {
-        exerciseModel: core.exerciseController.exercises
+        exerciseModel: Core.exerciseController.exercises
         currentExerciseSelection: window.currentExerciseSelection
         wideScreen: window.wideScreen
         onExerciseFilterSelected: (exerciseModel, title, inheritedIconName, selectionKind) => window.openExerciseFilter(exerciseModel, title, inheritedIconName, selectionKind)
@@ -116,13 +116,13 @@ Kirigami.ApplicationWindow {
     }
 
     Binding {
-        target: core.exerciseController
+        target: Core.exerciseController
         property: "currentExercise"
         value: window.currentExercise
     }
     
     Binding {
-        target: core.soundController
+        target: Core.soundController
         property: "playMode"
         value: (window.currentExercise != undefined) ? window.currentExercise["playMode"] : ""
     }

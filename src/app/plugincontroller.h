@@ -40,13 +40,16 @@ class PluginController : public IPluginController
     Q_OBJECT
 
 public:
-    explicit PluginController(QObject *parent = nullptr);
     ~PluginController() override;
 
     bool initialize(Core *core);
     QString errorString() const override;
 
 private:
+    friend class Core;
+
+    explicit PluginController(QObject *parent = nullptr);
+
 #ifndef Q_OS_ANDROID
     QVector<KPluginMetaData> m_plugins;
 

@@ -25,8 +25,6 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Window
 import org.kde.kirigami as Kirigami
-import "PianoView"
-import "SheetMusicView"
 
 Item {
     id: exerciseView
@@ -35,6 +33,8 @@ Item {
 
     property var currentExercise
     property alias countIn: internal.countIn
+    readonly property bool exercisePlaying: Core.soundController !== null
+        && Core.soundController.state === ISoundController.PlayingState
 
     FontLoader { id: bravura; source: "SheetMusicView/Bravura.otf" }
 
@@ -92,7 +92,7 @@ Item {
     }
 
     function checkAnswers() {
-        var rightAnswers = core.exerciseController.selectedExerciseOptions
+        var rightAnswers = Core.exerciseController.selectedExerciseOptions
         internal.answersAreRight = true
         for (var i = 0; i < currentExercise.numberOfSelectedOptions; ++i) {
             if (internal.userAnswers[i].name != rightAnswers[i].name) {
@@ -121,7 +121,7 @@ Item {
     }
     
     function highlightRightAnswer() {
-        var chosenExercises = core.exerciseController.selectedExerciseOptions
+        var chosenExercises = Core.exerciseController.selectedExerciseOptions
         for (var i = 0; i < answerGrid.children.length; ++i) {
             if (answerGrid.children[i].model.name != chosenExercises[0].name) {
                 answerGrid.children[i].opacity = 0.25
@@ -131,10 +131,10 @@ Item {
                 answerGrid.children[i].opacity = 1
             }
         }
-        var array = [core.exerciseController.chosenRootNote()]
+        var array = [Core.exerciseController.chosenRootNote()]
         internal.rightAnswerRectangle.model.sequence.split(' ').forEach(function(note) {
-            pianoView.noteMark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0, internal.rightAnswerRectangle.color)
-            array.push(core.exerciseController.chosenRootNote() + parseInt(note))
+            pianoView.noteMark(0, Core.exerciseController.chosenRootNote() + parseInt(note), 0, internal.rightAnswerRectangle.color)
+            array.push(Core.exerciseController.chosenRootNote() + parseInt(note))
         })
         sheetMusicView.model = array
         animation.start()
@@ -153,7 +153,7 @@ Item {
         sheetMusicView.clearAllMarks()
         clearUserAnswers()
         generateNewQuestion(true)
-        core.soundController.play()
+        Core.soundController.play()
     }
 
     function generateNewQuestion () {
@@ -162,14 +162,14 @@ Item {
             messageText.text = i18n("Question %1 out of %2", internal.currentExercise + 1, internal.maximumExercises)
         else
             messageText.text = ""
-        core.exerciseController.randomlySelectExerciseOptions()
-        var chosenExercises = core.exerciseController.selectedExerciseOptions
-        core.soundController.prepareFromExerciseOptions(chosenExercises)
+        Core.exerciseController.randomlySelectExerciseOptions()
+        var chosenExercises = Core.exerciseController.selectedExerciseOptions
+        Core.soundController.prepareFromExerciseOptions(chosenExercises)
         if (currentExercise["playMode"] != "rhythm") {
-            pianoView.noteMark(0, core.exerciseController.chosenRootNote(), 0, "white")
-            pianoView.scrollToNote(core.exerciseController.chosenRootNote())
-            sheetMusicView.model = [core.exerciseController.chosenRootNote()]
-            sheetMusicView.clef.type = (core.exerciseController.chosenRootNote() >= 60) ? 0:1
+            pianoView.noteMark(0, Core.exerciseController.chosenRootNote(), 0, "white")
+            pianoView.scrollToNote(Core.exerciseController.chosenRootNote())
+            sheetMusicView.model = [Core.exerciseController.chosenRootNote()]
+            sheetMusicView.clef.type = (Core.exerciseController.chosenRootNote() >= 60) ? 0:1
         }
         exerciseView.state = "waitingForAnswer"
         if (internal.isTest)
@@ -200,6 +200,7 @@ Item {
         }
         RowLayout {
             Layout.alignment: Qt.AlignHCenter
+            enabled: !exerciseView.exercisePlaying
             spacing: Kirigami.Units.smallSpacing
 
             Button {
@@ -213,7 +214,7 @@ Item {
                     if (exerciseView.state == "waitingForNewQuestion") {
                         generateNewQuestion()
                     }
-                    core.soundController.play()
+                    Core.soundController.play()
                 }
             }
             Button {
@@ -227,7 +228,7 @@ Item {
                     if (internal.isTest)
                         internal.correctAnswers--
                     internal.giveUp = true
-                    var rightAnswers = core.exerciseController.selectedExerciseOptions
+                    var rightAnswers = Core.exerciseController.selectedExerciseOptions
                     internal.userAnswers = []
                     for (var i = 0; i < currentExercise.numberOfSelectedOptions; ++i) {
                         for (var j = 0; j < answerGrid.children.length; ++j) {
@@ -254,7 +255,7 @@ Item {
                         internal.isTest = true
                         generateNewQuestion()
                         if (internal.isTest)
-                            core.soundController.play()
+                            Core.soundController.play()
                     } else {
                         resetTest()
                         exerciseView.state = "waitingForNewQuestion"
@@ -341,16 +342,16 @@ Item {
                             if (hovered) {
                                 if (currentExercise["playMode"] !== "rhythm" && exerciseView.state === "waitingForAnswer") {
                                     if (parent === answerGrid) {
-                                        var array = [core.exerciseController.chosenRootNote()]
+                                        var array = [Core.exerciseController.chosenRootNote()]
                                         model.sequence.split(' ').forEach(function(note) {
-                                            array.push(core.exerciseController.chosenRootNote() + parseInt(note))
-                                            pianoView.noteMark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0, internal.colors[answerRectangle.index%internal.colors.length])
+                                            array.push(Core.exerciseController.chosenRootNote() + parseInt(note))
+                                            pianoView.noteMark(0, Core.exerciseController.chosenRootNote() + parseInt(note), 0, internal.colors[answerRectangle.index%internal.colors.length])
                                         })
                                         sheetMusicView.model = array
                                     }
                                 }
                                 else {
-                                    var rightAnswers = core.exerciseController.selectedExerciseOptions
+                                    var rightAnswers = Core.exerciseController.selectedExerciseOptions
                                     if (parent === yourAnswersParent && internal.userAnswers[position].name !== rightAnswers[position].name) {
                                         background.border.color = "green"
                                         for (var i = 0; i < answerGrid.children.length; ++i) {
@@ -368,12 +369,12 @@ Item {
                                     if (parent === answerGrid) {
                                         if (!animation.running)
                                             model.sequence.split(' ').forEach(function(note) {
-                                                pianoView.noteUnmark(0, core.exerciseController.chosenRootNote() + parseInt(note), 0)
+                                                pianoView.noteUnmark(0, Core.exerciseController.chosenRootNote() + parseInt(note), 0)
                                             })
-                                        sheetMusicView.model = [core.exerciseController.chosenRootNote()]
+                                        sheetMusicView.model = [Core.exerciseController.chosenRootNote()]
                                     }
                                 }
-                                var rightAnswers = core.exerciseController.selectedExerciseOptions
+                                var rightAnswers = Core.exerciseController.selectedExerciseOptions
                                 if (parent === yourAnswersParent && internal.userAnswers[position].name !== rightAnswers[position].name) {
                                     background.border.color = "red"
                                     background.color = internal.userAnswers[position].color
@@ -491,15 +492,15 @@ Item {
         }
     }
     Connections {
-        target: core.exerciseController
+        target: Core.exerciseController
         function onSelectedExerciseOptionsChanged() { pianoView.clearAllMarks() }
     }
     Connections {
-        target: core.exerciseController
+        target: Core.exerciseController
         function onSelectedExerciseOptionsChanged() { sheetMusicView.clearAllMarks() }
     }
     Connections {
-        target: core.soundController
+        target: Core.soundController
         function onCountInChanged(count) {
             internal.countIn = count
         }

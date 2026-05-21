@@ -22,15 +22,13 @@
 
 #include "core.h"
 
-#include <qqml.h>
+#include <QQmlEngine>
 
 #include "exercisecontroller.h"
 #include "plugincontroller.h"
 #include "uicontroller.h"
 
 #include <interfaces/isoundcontroller.h>
-
-using namespace Qt::StringLiterals;
 
 namespace Minuet
 {
@@ -40,15 +38,20 @@ bool Core::initialize()
         return true;
     }
 
-    qRegisterMetaType<Minuet::ISoundController::State>("State");
-    qRegisterMetaType<Minuet::ISoundController>();
-    qmlRegisterUncreatableType<Minuet::ISoundController>(
-        "org.kde.minuet.isoundcontroller", 1, 0, "ISoundController",
-        u"ISoundController cannot be instantiated"_s);
-
     m_self = new Core;
 
     return true;
+}
+
+Core *Core::create(QQmlEngine *qmlEngine, QJSEngine *jsEngine)
+{
+    Q_UNUSED(qmlEngine)
+    Q_UNUSED(jsEngine)
+
+    initialize();
+    auto *core = static_cast<Core *>(m_self);
+    QQmlEngine::setObjectOwnership(core, QQmlEngine::CppOwnership);
+    return core;
 }
 
 IPluginController *Core::pluginController()

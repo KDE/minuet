@@ -28,7 +28,6 @@ namespace Minuet
 {
 IExerciseController::IExerciseController(QObject *parent) : QObject(parent)
 {
-    qRegisterMetaType<IExerciseController>();
 }
 
 void IExerciseController::setCurrentExercise(QVariantMap currentExercise)

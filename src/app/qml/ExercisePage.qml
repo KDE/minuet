@@ -102,7 +102,7 @@ Kirigami.Page {
     }
 
     Connections {
-        target: core.soundController
+        target: Core.soundController
         function onCountInChanged(count) {
             if (count > 0) {
                 countInPulse.restart()

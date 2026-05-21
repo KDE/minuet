@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2016 by Sandro S. Andrade <sandroandrade@kde.org>
+** Copyright (C) 2026 by Sandro S. Andrade <sandroandrade@kde.org>
 **
 ** This program is free software; you can redistribute it and/or
 ** modify it under the terms of the GNU General Public License as
@@ -20,33 +20,46 @@
 **
 ****************************************************************************/
 
-#ifndef MINUET_UICONTROLLER_H
-#define MINUET_UICONTROLLER_H
+#ifndef MINUET_QMLTYPES_H
+#define MINUET_QMLTYPES_H
 
+#include <interfaces/iexercisecontroller.h>
+#include <interfaces/iplugincontroller.h>
+#include <interfaces/isoundcontroller.h>
 #include <interfaces/iuicontroller.h>
 
-namespace Minuet
+#include <qqmlregistration.h>
+
+struct IExerciseControllerForeign
 {
-class Core;
-
-class UiController : public IUiController
-{
-    Q_OBJECT
-
-public:
-    ~UiController() override = default;
-
-    bool initialize(Core *core);
-    QString errorString() const override;
-
-private:
-    friend class Core;
-
-    explicit UiController(QObject *parent = nullptr);
-
-    QString m_errorString;
+    Q_GADGET
+    QML_FOREIGN(Minuet::IExerciseController)
+    QML_NAMED_ELEMENT(IExerciseController)
+    QML_UNCREATABLE("IExerciseController is provided by Core")
 };
 
-}
+struct IPluginControllerForeign
+{
+    Q_GADGET
+    QML_FOREIGN(Minuet::IPluginController)
+    QML_NAMED_ELEMENT(IPluginController)
+    QML_UNCREATABLE("IPluginController is provided by Core")
+};
+
+struct ISoundControllerForeign
+{
+    Q_GADGET
+    QML_FOREIGN(Minuet::ISoundController)
+    QML_NAMED_ELEMENT(ISoundController)
+    QML_UNCREATABLE("ISoundController is provided by Core")
+};
+
+struct IUiControllerForeign
+{
+    Q_GADGET
+    QML_FOREIGN(Minuet::IUiController)
+    QML_NAMED_ELEMENT(IUiController)
+    QML_UNCREATABLE("IUiController is provided by Core")
+};
 
 #endif

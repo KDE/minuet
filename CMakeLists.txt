@@ -41,6 +41,9 @@ find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     QuickControls2
     Svg
 )
+if(COMMAND qt_policy AND QT_KNOWN_POLICY_QTP0004)
+    qt_policy(SET QTP0004 NEW)
+endif()
 include(ECMAddAndroidApk)
 
 if(ANDROID)

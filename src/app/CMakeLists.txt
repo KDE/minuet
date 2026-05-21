@@ -38,13 +38,16 @@ IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     ecm_install_icons(ICONS ${minuet_ICONS_PNG} ${minuet_ICONS_SVG} DESTINATION ${KDE_INSTALL_ICONDIR} THEME hicolor)
 ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
 
-add_executable(minuet ${minuet_SRCS})
+add_executable(minuet)
 
 qt_add_qml_module(minuet
     URI org.kde.minuet
     VERSION 1.0
     RESOURCE_PREFIX /qt/qml
-    NO_GENERATE_EXTRA_QMLDIRS
+    SOURCES
+        ${minuet_SRCS}
+        core.h
+        qmltypes.h
     QML_FILES
         qml/Main.qml
         qml/AboutPage.qml

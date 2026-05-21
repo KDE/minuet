@@ -37,7 +37,6 @@ class ExerciseController : public IExerciseController
     Q_OBJECT
 
 public:
-    explicit ExerciseController(QObject *parent = nullptr);
     virtual ~ExerciseController() = default;
 
     bool initialize(Core *core);
@@ -51,6 +50,10 @@ public Q_SLOTS:
     void randomlySelectExerciseOptions() override;
 
 private:
+    friend class Core;
+
+    explicit ExerciseController(QObject *parent = nullptr);
+
     bool mergeJsonFiles(const QString directoryName, QJsonObject &targetObject,
                         bool applyDefinitionsFlag = false, QString commonKey = nullptr,
                         QString mergeKey = nullptr);

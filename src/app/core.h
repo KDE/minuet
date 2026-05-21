@@ -25,16 +25,24 @@
 
 #include <interfaces/icore.h>
 
+#include <qqmlregistration.h>
+
+class QJSEngine;
+class QQmlEngine;
+
 namespace Minuet
 {
 class Core : public ICore
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
 
 public:
     ~Core() override = default;
 
     static bool initialize();
+    static Core *create(QQmlEngine *qmlEngine, QJSEngine *jsEngine);
 
     IPluginController *pluginController() override;
     ISoundController *soundController() override;

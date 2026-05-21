@@ -77,15 +77,15 @@ FormCard.FormCardPage {
         instrumentsModel.clear()
         rhythmInstrumentsModel.clear()
 
-        if (!core.soundController) {
+        if (!Core.soundController) {
             root.selectedMelodicGroup = -1
             instrumentsForGroupModel.clear()
             return
         }
 
-        const instrumentGroups = JSON.parse(core.soundController.instrumentGroupsJson || "[]")
-        const instruments = JSON.parse(core.soundController.instrumentsJson || "[]")
-        const rhythmInstruments = JSON.parse(core.soundController.rhythmInstrumentsJson || "[]")
+        const instrumentGroups = JSON.parse(Core.soundController.instrumentGroupsJson || "[]")
+        const instruments = JSON.parse(Core.soundController.instrumentsJson || "[]")
+        const rhythmInstruments = JSON.parse(Core.soundController.rhythmInstrumentsJson || "[]")
 
         for (const group of instrumentGroups) {
             groupsModel.append({
@@ -128,20 +128,20 @@ FormCard.FormCardPage {
     }
 
     function syncSelectionFromController() {
-        if (!core.soundController) {
+        if (!Core.soundController) {
             return
         }
 
-        root.selectedMelodicGroup = melodicGroupForInstrument(core.soundController.instrument)
+        root.selectedMelodicGroup = melodicGroupForInstrument(Core.soundController.instrument)
         groupSelector.currentIndex = melodicGroupIndex(root.selectedMelodicGroup)
         rebuildInstrumentsForGroup()
-        melodicInstrumentSelector.currentIndex = melodicInstrumentIndex(core.soundController.instrument)
-        rhythmInstrumentSelector.currentIndex = rhythmInstrumentIndex(core.soundController.rhythmInstrument)
+        melodicInstrumentSelector.currentIndex = melodicInstrumentIndex(Core.soundController.instrument)
+        rhythmInstrumentSelector.currentIndex = rhythmInstrumentIndex(Core.soundController.rhythmInstrument)
     }
 
     function selectFirstInstrumentInCurrentGroup() {
-        if (instrumentsForGroupModel.count > 0 && core.soundController) {
-            core.soundController.instrument = instrumentsForGroupModel.get(0).program
+        if (instrumentsForGroupModel.count > 0 && Core.soundController) {
+            Core.soundController.instrument = instrumentsForGroupModel.get(0).program
         }
     }
 
@@ -162,7 +162,7 @@ FormCard.FormCardPage {
     }
 
     Connections {
-        target: core.soundController
+        target: Core.soundController
 
         function onInstrumentGroupsChanged() {
             root.rebuildModels()
@@ -191,7 +191,7 @@ FormCard.FormCardPage {
 
     FormCard.FormCard {
         FormCard.AbstractFormDelegate {
-            enabled: core.soundController !== null
+            enabled: Core.soundController !== null
             background: null
 
             contentItem: ColumnLayout {
@@ -221,10 +221,10 @@ FormCard.FormCardPage {
                     to: 200
                     stepSize: 1
                     snapMode: QQC2.Slider.SnapAlways
-                    value: core.soundController ? core.soundController.volume : 0
+                    value: Core.soundController ? Core.soundController.volume : 0
                     onMoved: {
-                        if (core.soundController) {
-                            core.soundController.volume = Math.round(value)
+                        if (Core.soundController) {
+                            Core.soundController.volume = Math.round(value)
                         }
                     }
                 }
@@ -274,8 +274,8 @@ FormCard.FormCardPage {
             model: instrumentsForGroupModel
             visible: groupsModel.count > 0
             onActivated: {
-                if (core.soundController) {
-                    core.soundController.instrument = currentValue
+                if (Core.soundController) {
+                    Core.soundController.instrument = currentValue
                 }
             }
         }
@@ -299,8 +299,8 @@ FormCard.FormCardPage {
             model: rhythmInstrumentsModel
             visible: rhythmInstrumentsModel.count > 0
             onActivated: {
-                if (core.soundController) {
-                    core.soundController.rhythmInstrument = currentValue
+                if (Core.soundController) {
+                    Core.soundController.rhythmInstrument = currentValue
                 }
             }
         }
