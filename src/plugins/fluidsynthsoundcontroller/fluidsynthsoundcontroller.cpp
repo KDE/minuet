@@ -101,6 +101,7 @@ FluidSynthSoundController::FluidSynthSoundController(QObject *parent)
 FluidSynthSoundController::~FluidSynthSoundController()
 {
     deleteEngine();
+    clearSong();
     if (m_synth) {
         delete_fluid_synth(m_synth);
     }
@@ -166,6 +167,7 @@ void FluidSynthSoundController::setRhythmInstrument(int rhythmInstrument)
 void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedExerciseOptions)
 {
     hideCountIn();
+    clearSong();
 
     auto *song = new QList<fluid_event_t *>;
     m_song.reset(song);
@@ -255,6 +257,7 @@ void FluidSynthSoundController::stop()
         fluid_event_all_notes_off(event, 1);
         fluid_event_set_dest(event, m_synthSeqID);
         fluid_sequencer_send_now(m_sequencer, event);
+        delete_fluid_event(event);
         resetEngine();
     }
 }
@@ -263,7 +266,7 @@ void FluidSynthSoundController::reset()
 {
     hideCountIn();
     stop();
-    m_song.reset(nullptr);
+    clearSong();
 }
 
 void FluidSynthSoundController::appendEvent(int channel, short key, short velocity,
@@ -282,6 +285,18 @@ void FluidSynthSoundController::hideCountIn()
         m_countInVisible = false;
         emit countInChanged(0);
     }
+}
+
+void FluidSynthSoundController::clearSong()
+{
+    if (!m_song.data()) {
+        return;
+    }
+
+    for (fluid_event_t *event : std::as_const(*m_song.data())) {
+        delete_fluid_event(event);
+    }
+    m_song.reset(nullptr);
 }
 
 void FluidSynthSoundController::populateInstruments()

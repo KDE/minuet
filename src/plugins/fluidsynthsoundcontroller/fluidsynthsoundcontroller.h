@@ -66,6 +66,7 @@ private:
     static QString instrumentGroupName(int group);
     static QString rhythmInstrumentName(int key);
     void hideCountIn();
+    void clearSong();
     void resetEngine();
     void deleteEngine();
 
