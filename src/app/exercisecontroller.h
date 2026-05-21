@@ -47,7 +47,7 @@ public:
     QJsonArray exercises() const override;
 
 public Q_SLOTS:
-    void randomlySelectExerciseOptions() override;
+    void randomlySelectExerciseOptions(int selectedOptionCount = -1) override;
 
 private:
     friend class Core;

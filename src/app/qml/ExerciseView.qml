@@ -50,7 +50,6 @@ Item {
         property bool isTest: false
         property int correctAnswers: 0
         property int currentExercise: 0
-        property int maximumExercises: 10
         property int countIn: 0
         property bool showingCorrectAnswers: false
         property Item hoveredAvailableAnswer
@@ -157,8 +156,22 @@ Item {
 
     function canShowSubmittedAnswerCorrection(position) {
         return currentExercise !== undefined
-            && internal.currentAnswer >= currentExercise.numberOfSelectedOptions
+            && internal.currentAnswer >= selectedOptionCount()
             && isWrongSubmittedAnswer(position)
+    }
+
+    function selectedOptionCount() {
+        if (currentExercise === undefined) {
+            return 0
+        }
+        if (currentExercise["playMode"] === "rhythm") {
+            return Core.settingsController.rhythmPatternCount
+        }
+        return currentExercise.numberOfSelectedOptions
+    }
+
+    function maximumExercises() {
+        return Core.settingsController.testExerciseCount
     }
 
     function showQuestionRootOnPiano() {
@@ -204,7 +217,8 @@ Item {
         var rightAnswers = Core.exerciseController.selectedExerciseOptions
         internal.hoveredAvailableAnswer = null
         internal.answersAreRight = true
-        for (var i = 0; i < currentExercise.numberOfSelectedOptions; ++i) {
+        var expectedAnswers = selectedOptionCount()
+        for (var i = 0; i < expectedAnswers; ++i) {
             if (internal.userAnswers[i].name != rightAnswers[i].name) {
                 yourAnswersParent.children[i].background.border.color = "red"
                 yourAnswersParent.children[i].background.border.width = 3
@@ -218,13 +232,13 @@ Item {
             }
         }
         messageText.text = (internal.giveUp) ? i18n("Here is the answer") : (internal.answersAreRight) ? i18n("Congratulations, you answered correctly!"):i18n("Oops, not this time! Try again!")
-        if (internal.currentExercise == internal.maximumExercises) {
-            messageText.text = i18n("You answered correctly %1%", internal.correctAnswers * 100 / internal.maximumExercises / currentExercise.numberOfSelectedOptions)
+        if (internal.currentExercise == maximumExercises()) {
+            messageText.text = i18n("You answered correctly %1%", internal.correctAnswers * 100 / maximumExercises() / expectedAnswers)
             resetTest()
         }
 
         showUserAnswers()
-        if (currentExercise.numberOfSelectedOptions == 1)
+        if (selectedOptionCount() == 1)
             highlightRightAnswer()
         else
             exerciseView.state = "waitingForNewQuestion"
@@ -264,10 +278,10 @@ Item {
     function generateNewQuestion () {
         clearUserAnswers()
         if (internal.isTest)
-            messageText.text = i18n("Question %1 out of %2", internal.currentExercise + 1, internal.maximumExercises)
+            messageText.text = i18n("Question %1 out of %2", internal.currentExercise + 1, maximumExercises())
         else
             messageText.text = ""
-        Core.exerciseController.randomlySelectExerciseOptions()
+        Core.exerciseController.randomlySelectExerciseOptions(selectedOptionCount())
         var chosenExercises = Core.exerciseController.selectedExerciseOptions
         Core.soundController.prepareFromExerciseOptions(chosenExercises)
         if (currentExercise["playMode"] != "rhythm") {
@@ -335,7 +349,7 @@ Item {
                     internal.giveUp = true
                     var rightAnswers = Core.exerciseController.selectedExerciseOptions
                     internal.userAnswers = []
-                    for (var i = 0; i < currentExercise.numberOfSelectedOptions; ++i) {
+                    for (var i = 0; i < selectedOptionCount(); ++i) {
                         for (var j = 0; j < answerGrid.children.length; ++j) {
                             if (answerGrid.children[j].model.name == rightAnswers[i].name) {
                                 internal.userAnswers.push({"name": rightAnswers[i].name, "model": answerGrid.children[j].model, "index": j, "color": internal.colors[j]})
@@ -343,7 +357,7 @@ Item {
                             }
                         }
                     }
-                    internal.currentAnswer = currentExercise.numberOfSelectedOptions
+                    internal.currentAnswer = selectedOptionCount()
                     checkAnswers()
                 }
             }
@@ -445,7 +459,7 @@ Item {
                             if (parent === answerGrid && exerciseView.state == "waitingForAnswer" && !animation.running) {
                                 internal.userAnswers.push({"name": model.name, "model": answerRectangle.model, "index": answerRectangle.index, "color": answerRectangle.color})
                                 internal.currentAnswer++
-                                if (internal.currentAnswer == currentExercise.numberOfSelectedOptions) {
+                                if (internal.currentAnswer == selectedOptionCount()) {
                                     checkAnswers()
                                 }
                             }
@@ -542,7 +556,7 @@ Item {
             text: i18n("Backspace")
             Layout.alignment: Qt.AlignHCenter
             visible: currentExercise != undefined && currentExercise["playMode"] == "rhythm"
-            enabled: internal.currentAnswer > 0 && internal.currentAnswer < currentExercise.numberOfSelectedOptions
+            enabled: internal.currentAnswer > 0 && internal.currentAnswer < selectedOptionCount()
             onClicked: {
                 internal.userAnswers.pop()
                 internal.currentAnswer--
@@ -612,7 +626,7 @@ Item {
             exerciseView.state = internal.isTest ? "waitingForAnswer" : "waitingForNewQuestion"
             if (internal.isTest) {
                 nextTestExercise()
-                if (internal.currentExercise == internal.maximumExercises+1)
+                if (internal.currentExercise == maximumExercises()+1)
                     internal.isTest = false
             }
         }

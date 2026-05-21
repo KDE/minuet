@@ -4,6 +4,7 @@ set(minuet_SRCS
     uicontroller.cpp
     plugincontroller.cpp
     exercisecontroller.cpp
+    settingscontroller.cpp
 )
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
@@ -47,6 +48,7 @@ qt_add_qml_module(minuet
     SOURCES
         ${minuet_SRCS}
         core.h
+        settingscontroller.h
         qmltypes.h
     QML_FILES
         qml/Main.qml

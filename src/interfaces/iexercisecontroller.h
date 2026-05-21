@@ -51,7 +51,7 @@ public:
     QJsonArray selectedExerciseOptions() const;
 
 public Q_SLOTS:
-    virtual void randomlySelectExerciseOptions() = 0;
+    virtual void randomlySelectExerciseOptions(int selectedOptionCount = -1) = 0;
 
 Q_SIGNALS:
     void exercisesChanged(QJsonArray exercises);

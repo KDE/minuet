@@ -72,7 +72,7 @@ QString ExerciseController::errorString() const
     return m_errorString;
 }
 
-void ExerciseController::randomlySelectExerciseOptions()
+void ExerciseController::randomlySelectExerciseOptions(int selectedOptionCount)
 {
     while (!m_selectedExerciseOptions.isEmpty()) {
         m_selectedExerciseOptions.removeFirst();
@@ -89,8 +89,10 @@ void ExerciseController::randomlySelectExerciseOptions()
     int maxNote = INT_MIN;
     auto *generator = QRandomGenerator::global();
     const QJsonObject currentExerciseObject = QJsonObject::fromVariantMap(m_currentExercise);
-    const int numberOfSelectedOptions
-        = currentExerciseObject[u"numberOfSelectedOptions"_s].toInt();
+    const QString playMode = currentExerciseObject[u"playMode"_s].toString();
+    const int numberOfSelectedOptions = selectedOptionCount > 0
+        ? selectedOptionCount
+        : currentExerciseObject[u"numberOfSelectedOptions"_s].toInt();
     if (numberOfSelectedOptions <= 0) {
         failSelection(u"Current exercise has no selected options count."_s);
         return;
@@ -101,22 +103,24 @@ void ExerciseController::randomlySelectExerciseOptions()
         failSelection(u"Current exercise has no options."_s);
         return;
     }
-    if (numberOfSelectedOptions > exerciseOptions.size()) {
+    if (playMode != u"rhythm"_s && numberOfSelectedOptions > exerciseOptions.size()) {
         failSelection(u"Current exercise selects more options than it provides."_s);
         return;
     }
 
-    const QString playMode = currentExerciseObject[u"playMode"_s].toString();
     QJsonArray remainingExerciseOptions = exerciseOptions;
     for (int i = 0; i < numberOfSelectedOptions; ++i) {
-        const int chosenExerciseOption = generator->bounded(remainingExerciseOptions.size());
-        if (!remainingExerciseOptions[chosenExerciseOption].isObject()) {
+        const QJsonArray &selectableExerciseOptions = playMode == u"rhythm"_s ? exerciseOptions : remainingExerciseOptions;
+        const int chosenExerciseOption = generator->bounded(selectableExerciseOptions.size());
+        if (!selectableExerciseOptions[chosenExerciseOption].isObject()) {
             failSelection(u"Current exercise option is not an object."_s);
             return;
         }
 
-        const QJsonObject optionObject = remainingExerciseOptions[chosenExerciseOption].toObject();
-        remainingExerciseOptions.removeAt(chosenExerciseOption);
+        const QJsonObject optionObject = selectableExerciseOptions[chosenExerciseOption].toObject();
+        if (playMode != u"rhythm"_s) {
+            remainingExerciseOptions.removeAt(chosenExerciseOption);
+        }
         const QString sequence = optionObject[u"sequence"_s].toString();
         const QStringList additionalNotes = sequence.split(QLatin1Char(' '), Qt::SkipEmptyParts);
         if (additionalNotes.isEmpty()) {

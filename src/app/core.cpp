@@ -26,6 +26,7 @@
 
 #include "exercisecontroller.h"
 #include "plugincontroller.h"
+#include "settingscontroller.h"
 #include "uicontroller.h"
 
 #include <interfaces/isoundcontroller.h>
@@ -69,6 +70,11 @@ IExerciseController *Core::exerciseController()
     return m_exerciseController;
 }
 
+ISettingsController *Core::settingsController()
+{
+    return m_settingsController;
+}
+
 IUiController *Core::uiController()
 {
     return m_uiController;
@@ -79,11 +85,45 @@ void Core::setSoundController(ISoundController *soundController)
     if (m_soundController != soundController) {
         m_soundController = soundController;
         emit soundControllerChanged(m_soundController);
+        if (m_soundController) {
+            m_soundController->setVolume(m_settingsController->volume());
+            m_soundController->setPitch(m_settingsController->pitch());
+            m_soundController->setTempo(m_settingsController->tempo());
+            m_soundController->setInstrument(m_settingsController->instrument());
+            m_soundController->setRhythmInstrument(m_settingsController->rhythmInstrument());
+        }
     }
 }
 
 Core::Core(QObject *parent) : ICore(parent), m_soundController(nullptr)
 {
+    m_settingsController = new SettingsController(this);
+    connect(m_settingsController, &ISettingsController::volumeChanged, this, [this](int volume) {
+        if (m_soundController) {
+            m_soundController->setVolume(volume);
+        }
+    });
+    connect(m_settingsController, &ISettingsController::pitchChanged, this, [this](int pitch) {
+        if (m_soundController) {
+            m_soundController->setPitch(pitch);
+        }
+    });
+    connect(m_settingsController, &ISettingsController::tempoChanged, this, [this](int tempo) {
+        if (m_soundController) {
+            m_soundController->setTempo(tempo);
+        }
+    });
+    connect(m_settingsController, &ISettingsController::instrumentChanged, this, [this](int instrument) {
+        if (m_soundController) {
+            m_soundController->setInstrument(instrument);
+        }
+    });
+    connect(m_settingsController, &ISettingsController::rhythmInstrumentChanged, this, [this](int rhythmInstrument) {
+        if (m_soundController) {
+            m_soundController->setRhythmInstrument(rhythmInstrument);
+        }
+    });
+
     m_pluginController = new PluginController(this);
     if (!((PluginController *)m_pluginController)->initialize(this)) {
         qCritical() << m_pluginController->errorString();

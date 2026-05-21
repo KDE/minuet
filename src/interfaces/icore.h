@@ -24,6 +24,7 @@
 #define MINUET_ICORE_H
 
 #include "iexercisecontroller.h"
+#include "isettingscontroller.h"
 #include "iplugincontroller.h"
 #include "isoundcontroller.h"
 #include "iuicontroller.h"
@@ -43,6 +44,7 @@ class MINUETINTERFACES_EXPORT ICore : public QObject
     Q_PROPERTY(
         ISoundController *soundController READ soundController NOTIFY soundControllerChanged)
     Q_PROPERTY(IExerciseController *exerciseController READ exerciseController CONSTANT)
+    Q_PROPERTY(ISettingsController *settingsController READ settingsController CONSTANT)
     Q_PROPERTY(IUiController *uiController READ uiController CONSTANT)
 
 public:
@@ -53,6 +55,7 @@ public:
     virtual Minuet::IPluginController *pluginController() = 0;
     virtual Minuet::ISoundController *soundController() = 0;
     virtual Minuet::IExerciseController *exerciseController() = 0;
+    virtual Minuet::ISettingsController *settingsController() = 0;
     virtual Minuet::IUiController *uiController() = 0;
 
 Q_SIGNALS:

@@ -132,17 +132,16 @@ FormCard.FormCardPage {
             return
         }
 
-        root.selectedMelodicGroup = melodicGroupForInstrument(Core.soundController.instrument)
+        root.selectedMelodicGroup = melodicGroupIndex(Core.settingsController.instrumentGroup) >= 0
+            ? Core.settingsController.instrumentGroup
+            : melodicGroupForInstrument(Core.settingsController.instrument)
+        if (root.selectedMelodicGroup !== Core.settingsController.instrumentGroup) {
+            Core.settingsController.instrumentGroup = root.selectedMelodicGroup
+        }
         groupSelector.currentIndex = melodicGroupIndex(root.selectedMelodicGroup)
         rebuildInstrumentsForGroup()
-        melodicInstrumentSelector.currentIndex = melodicInstrumentIndex(Core.soundController.instrument)
-        rhythmInstrumentSelector.currentIndex = rhythmInstrumentIndex(Core.soundController.rhythmInstrument)
-    }
-
-    function selectFirstInstrumentInCurrentGroup() {
-        if (instrumentsForGroupModel.count > 0 && Core.soundController) {
-            Core.soundController.instrument = instrumentsForGroupModel.get(0).program
-        }
+        melodicInstrumentSelector.currentIndex = melodicInstrumentIndex(Core.settingsController.instrument)
+        rhythmInstrumentSelector.currentIndex = rhythmInstrumentIndex(Core.settingsController.rhythmInstrument)
     }
 
     ListModel {
@@ -174,6 +173,22 @@ FormCard.FormCardPage {
 
         function onRhythmInstrumentsChanged() {
             root.rebuildModels()
+        }
+
+        function onInstrumentChanged() {
+            root.syncSelectionFromController()
+        }
+
+        function onRhythmInstrumentChanged() {
+            root.syncSelectionFromController()
+        }
+    }
+
+    Connections {
+        target: Core.settingsController
+
+        function onInstrumentGroupChanged() {
+            root.syncSelectionFromController()
         }
 
         function onInstrumentChanged() {
@@ -221,11 +236,9 @@ FormCard.FormCardPage {
                     to: 200
                     stepSize: 1
                     snapMode: QQC2.Slider.SnapAlways
-                    value: Core.soundController ? Core.soundController.volume : 0
+                    value: Core.settingsController.volume
                     onMoved: {
-                        if (Core.soundController) {
-                            Core.soundController.volume = Math.round(value)
-                        }
+                        Core.settingsController.volume = Math.round(value)
                     }
                 }
             }
@@ -260,8 +273,9 @@ FormCard.FormCardPage {
             visible: groupsModel.count > 0
             onActivated: {
                 root.selectedMelodicGroup = currentValue
+                Core.settingsController.instrumentGroup = currentValue
                 root.rebuildInstrumentsForGroup()
-                root.selectFirstInstrumentInCurrentGroup()
+                melodicInstrumentSelector.currentIndex = root.melodicInstrumentIndex(Core.settingsController.instrument)
             }
         }
 
@@ -274,9 +288,8 @@ FormCard.FormCardPage {
             model: instrumentsForGroupModel
             visible: groupsModel.count > 0
             onActivated: {
-                if (Core.soundController) {
-                    Core.soundController.instrument = currentValue
-                }
+                Core.settingsController.instrumentGroup = root.selectedMelodicGroup
+                Core.settingsController.instrument = currentValue
             }
         }
 
@@ -285,7 +298,7 @@ FormCard.FormCardPage {
         }
 
         FormCard.FormTextDelegate {
-            text: i18n("Rhythm Exercises")
+            text: i18n("Rhythmic Exercises")
             description: i18n("Used for rhythm figures. The count-in keeps its own sound.")
             visible: rhythmInstrumentsModel.count > 0
         }
@@ -299,8 +312,60 @@ FormCard.FormCardPage {
             model: rhythmInstrumentsModel
             visible: rhythmInstrumentsModel.count > 0
             onActivated: {
-                if (Core.soundController) {
-                    Core.soundController.rhythmInstrument = currentValue
+                Core.settingsController.rhythmInstrument = currentValue
+            }
+        }
+    }
+
+    FormCard.FormHeader {
+        title: i18n("Rhythm Exercises")
+    }
+
+    FormCard.FormCard {
+        FormCard.AbstractFormDelegate {
+            background: null
+
+            contentItem: RowLayout {
+                Layout.fillWidth: true
+
+                QQC2.Label {
+                    Layout.fillWidth: true
+                    text: i18n("Number of rhythm patterns")
+                    elide: Text.ElideRight
+                }
+
+                QQC2.SpinBox {
+                    from: 4
+                    to: 16
+                    value: Core.settingsController.rhythmPatternCount
+                    onValueModified: Core.settingsController.rhythmPatternCount = value
+                }
+            }
+        }
+    }
+
+    FormCard.FormHeader {
+        title: i18n("Tests")
+    }
+
+    FormCard.FormCard {
+        FormCard.AbstractFormDelegate {
+            background: null
+
+            contentItem: RowLayout {
+                Layout.fillWidth: true
+
+                QQC2.Label {
+                    Layout.fillWidth: true
+                    text: i18n("Number of exercises")
+                    elide: Text.ElideRight
+                }
+
+                QQC2.SpinBox {
+                    from: 5
+                    to: 20
+                    value: Core.settingsController.testExerciseCount
+                    onValueModified: Core.settingsController.testExerciseCount = value
                 }
             }
         }

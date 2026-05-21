@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2016 by Sandro S. Andrade <sandroandrade@kde.org>
+** Copyright (C) 2026 by Sandro S. Andrade <sandroandrade@kde.org>
 **
 ** This program is free software; you can redistribute it and/or
 ** modify it under the terms of the GNU General Public License as
@@ -20,48 +20,13 @@
 **
 ****************************************************************************/
 
-#ifndef MINUET_CORE_H
-#define MINUET_CORE_H
-
-#include <interfaces/icore.h>
-
-#include <qqmlregistration.h>
-
-class QJSEngine;
-class QQmlEngine;
+#include "isettingscontroller.h"
 
 namespace Minuet
 {
-class Core : public ICore
+ISettingsController::ISettingsController(QObject *parent) : QObject(parent)
 {
-    Q_OBJECT
-    QML_ELEMENT
-    QML_SINGLETON
-
-public:
-    ~Core() override = default;
-
-    static bool initialize();
-    static Core *create(QQmlEngine *qmlEngine, QJSEngine *jsEngine);
-
-    IPluginController *pluginController() override;
-    ISoundController *soundController() override;
-    IExerciseController *exerciseController() override;
-    ISettingsController *settingsController() override;
-    IUiController *uiController() override;
-
-    void setSoundController(ISoundController *soundController);
-
-private:
-    explicit Core(QObject *parent = nullptr);
-
-    IPluginController *m_pluginController;
-    ISoundController *m_soundController;
-    IExerciseController *m_exerciseController;
-    ISettingsController *m_settingsController;
-    IUiController *m_uiController;
-};
-
+}
 }
 
-#endif
+#include "moc_isettingscontroller.cpp"

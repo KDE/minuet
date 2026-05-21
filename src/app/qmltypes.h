@@ -25,6 +25,7 @@
 
 #include <interfaces/iexercisecontroller.h>
 #include <interfaces/iplugincontroller.h>
+#include <interfaces/isettingscontroller.h>
 #include <interfaces/isoundcontroller.h>
 #include <interfaces/iuicontroller.h>
 
@@ -52,6 +53,14 @@ struct ISoundControllerForeign
     QML_FOREIGN(Minuet::ISoundController)
     QML_NAMED_ELEMENT(ISoundController)
     QML_UNCREATABLE("ISoundController is provided by Core")
+};
+
+struct ISettingsControllerForeign
+{
+    Q_GADGET
+    QML_FOREIGN(Minuet::ISettingsController)
+    QML_NAMED_ELEMENT(ISettingsController)
+    QML_UNCREATABLE("ISettingsController is provided by Core")
 };
 
 struct IUiControllerForeign
