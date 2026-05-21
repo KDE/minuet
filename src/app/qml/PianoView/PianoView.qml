@@ -44,21 +44,29 @@ Flickable {
         highlightKey(pitch, ([1,3,6,8,10].indexOf(pitch % 12) > -1) ? "black":"white")
     }
     function noteMark(chan, pitch, vel, color) {
-        noteMarkComponent.createObject(itemForPitch(pitch), { color: color })
+        const noteItem = itemForPitch(pitch)
+        clearMarksFromKey(noteItem)
+        noteMarkComponent.createObject(noteItem, { color: color })
     }
     function noteUnmark(chan, pitch, vel, color) {
-        if(itemForPitch(pitch)!= undefined){
-            var item = itemForPitch(pitch).children[0]
-            if (item != undefined)
-                item.destroy()
-        }
+        clearMarksFromKey(itemForPitch(pitch))
     }
     function clearAllMarks() {
         for (var index = 21; index <= 108; ++index) {
             noteOff(0, index, 0)
-            var markItem = itemForPitch(index).children[0]
-            if (markItem != undefined)
+            clearMarksFromKey(itemForPitch(index))
+        }
+    }
+    function clearMarksFromKey(noteItem) {
+        if (noteItem == undefined) {
+            return
+        }
+
+        for (var index = noteItem.children.length - 1; index >= 0; --index) {
+            var markItem = noteItem.children[index]
+            if (markItem.pianoViewMark) {
                 markItem.destroy()
+            }
         }
     }
     function scrollToNote(pitch) {
@@ -136,6 +144,8 @@ Flickable {
             id: noteMarkComponent
 
             Rectangle {
+                property bool pianoViewMark: true
+
                 width: keyWidth - 4; height: keyWidth - 4
                 radius: (keyWidth - 4) / 2
                 border.color: "black"

@@ -52,6 +52,8 @@ Item {
         property int currentExercise: 0
         property int maximumExercises: 10
         property int countIn: 0
+        property bool showingCorrectAnswers: false
+        property Item hoveredAvailableAnswer
 
         onCurrentAnswerChanged: {
             for (var i = 0; i < yourAnswersParent.children.length; ++i)
@@ -84,6 +86,8 @@ Item {
     function clearUserAnswers() {
         pianoView.clearAllMarks()
         sheetMusicView.clearAllMarks()
+        internal.showingCorrectAnswers = false
+        internal.hoveredAvailableAnswer = null
         for (var i = 0; i < yourAnswersParent.children.length; ++i)
             yourAnswersParent.children[i].destroy()
         yourAnswersParent.children = ""
@@ -91,8 +95,108 @@ Item {
         internal.userAnswers = []
     }
 
+    function answerModel(answer) {
+        return answer.model !== undefined ? answer.model : answer
+    }
+
+    function colorForAnswer(answer) {
+        if (answer.color !== undefined) {
+            return answer.color
+        }
+
+        var model = answerModel(answer)
+        for (var i = 0; i < answerGrid.children.length; ++i) {
+            if (answerGrid.children[i].model.name === model.name) {
+                return answerGrid.children[i].color
+            }
+        }
+        return "white"
+    }
+
+    function showAnswers(answers) {
+        if (currentExercise["playMode"] === "rhythm") {
+            return
+        }
+
+        var rootNote = Core.exerciseController.chosenRootNote()
+        var sheetMusicModel = [rootNote]
+        pianoView.clearAllMarks()
+        pianoView.noteMark(0, rootNote, 0, "white")
+        pianoView.scrollToNote(rootNote)
+
+        for (var i = 0; i < answers.length; ++i) {
+            var model = answerModel(answers[i])
+            var color = colorForAnswer(answers[i])
+            model.sequence.split(' ').forEach(function(note) {
+                var pitch = rootNote + parseInt(note)
+                pianoView.noteMark(0, pitch, 0, color)
+                sheetMusicModel.push(pitch)
+            })
+        }
+        sheetMusicView.model = sheetMusicModel
+    }
+
+    function showUserAnswers() {
+        showAnswers(internal.userAnswers)
+    }
+
+    function showCorrectAnswers() {
+        showAnswers(Core.exerciseController.selectedExerciseOptions)
+    }
+
+    function correctAnswerAt(position) {
+        return Core.exerciseController.selectedExerciseOptions[position]
+    }
+
+    function isWrongSubmittedAnswer(position) {
+        var rightAnswer = correctAnswerAt(position)
+        return rightAnswer !== undefined
+            && internal.userAnswers[position] !== undefined
+            && internal.userAnswers[position].name !== rightAnswer.name
+    }
+
+    function showQuestionRootOnPiano() {
+        showAnswers([])
+    }
+
+    function showAvailableAnswerPreview(answerRectangle) {
+        internal.hoveredAvailableAnswer = answerRectangle
+        showAnswers([{
+            "model": answerRectangle.model,
+            "color": internal.colors[answerRectangle.index % internal.colors.length]
+        }])
+    }
+
+    function restoreAvailableAnswerPreview(answerRectangle) {
+        if (internal.hoveredAvailableAnswer !== answerRectangle) {
+            return
+        }
+
+        internal.hoveredAvailableAnswer = null
+        showQuestionRootOnPiano()
+    }
+
+    function showSubmittedAnswerCorrection(answerRectangle) {
+        if (!isWrongSubmittedAnswer(answerRectangle.position)) {
+            return
+        }
+
+        internal.showingCorrectAnswers = true
+        showCorrectAnswers()
+    }
+
+    function restoreSubmittedAnswerCorrection(answerRectangle) {
+        if (!isWrongSubmittedAnswer(answerRectangle.position)) {
+            return
+        }
+
+        internal.showingCorrectAnswers = false
+        showUserAnswers()
+    }
+
     function checkAnswers() {
         var rightAnswers = Core.exerciseController.selectedExerciseOptions
+        internal.hoveredAvailableAnswer = null
         internal.answersAreRight = true
         for (var i = 0; i < currentExercise.numberOfSelectedOptions; ++i) {
             if (internal.userAnswers[i].name != rightAnswers[i].name) {
@@ -113,6 +217,7 @@ Item {
             resetTest()
         }
 
+        showUserAnswers()
         if (currentExercise.numberOfSelectedOptions == 1)
             highlightRightAnswer()
         else
@@ -131,12 +236,6 @@ Item {
                 answerGrid.children[i].opacity = 1
             }
         }
-        var array = [Core.exerciseController.chosenRootNote()]
-        internal.rightAnswerRectangle.model.sequence.split(' ').forEach(function(note) {
-            pianoView.noteMark(0, Core.exerciseController.chosenRootNote() + parseInt(note), 0, internal.rightAnswerRectangle.color)
-            array.push(Core.exerciseController.chosenRootNote() + parseInt(note))
-        })
-        sheetMusicView.model = array
         animation.start()
     }
 
@@ -298,12 +397,53 @@ Item {
                         property int index
                         property int position
                         property color color
+                        property bool submittedAnswer: parent === yourAnswersParent
+                        property bool wrongSubmittedAnswer: submittedAnswer && isWrongSubmittedAnswer(position)
+                        property bool showCorrectAnswer: wrongSubmittedAnswer && hoverArea.containsMouse
+                        property string answerText: {
+                            if (showCorrectAnswer) {
+                                return i18nc("technical term, do you have a musician friend?", correctAnswerAt(position).name)
+                            }
+                            return i18nc("technical term, do you have a musician friend?", model.name)
+                        }
+                        property color displayColor: {
+                            if (showCorrectAnswer) {
+                                return colorForAnswer(correctAnswerAt(position))
+                            }
+                            return color
+                        }
 
-                        Kirigami.Theme.backgroundColor: color
+                        Kirigami.Theme.backgroundColor: displayColor
 
                         Layout.minimumWidth: answerGrid.minimumColumnWidth
                         Layout.minimumHeight: answerGrid.minimumColumnWidth / 2
                         Layout.maximumHeight: answerGrid.minimumColumnWidth / 2
+
+                        onShowCorrectAnswerChanged: {
+                            if (showCorrectAnswer) {
+                                background.border.color = "green"
+                                showSubmittedAnswerCorrection(answerRectangle)
+                            } else if (wrongSubmittedAnswer) {
+                                background.border.color = "red"
+                                restoreSubmittedAnswerCorrection(answerRectangle)
+                            }
+                        }
+
+                        Binding {
+                            target: answerRectangle.background
+                            property: "color"
+                            value: answerRectangle.displayColor
+                        }
+
+                        function chooseAnswer() {
+                            if (parent === answerGrid && exerciseView.state == "waitingForAnswer" && !animation.running) {
+                                internal.userAnswers.push({"name": model.name, "model": answerRectangle.model, "index": answerRectangle.index, "color": answerRectangle.color})
+                                internal.currentAnswer++
+                                if (internal.currentAnswer == currentExercise.numberOfSelectedOptions) {
+                                    checkAnswers()
+                                }
+                            }
+                        }
 
                         Kirigami.Heading {
                             id: bravuraText
@@ -322,65 +462,43 @@ Item {
                             horizontalAlignment: Qt.AlignHCenter
                             verticalAlignment: Qt.AlignVCenter
                             wrapMode: Text.Wrap
-                            text: i18nc("technical term, do you have a musician friend?", model.name)
+                            text: answerRectangle.answerText
 
                             Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
                             Kirigami.Theme.inherit: false
                             color: Kirigami.Theme.backgroundColor
                         }
 
-                        onClicked: {
-                            if (exerciseView.state == "waitingForAnswer" && !animation.running) {
-                                internal.userAnswers.push({"name": model.name, "model": answerRectangle.model, "index": answerRectangle.index, "color": answerRectangle.color})
-                                internal.currentAnswer++
-                                if (internal.currentAnswer == currentExercise.numberOfSelectedOptions)
-                                    checkAnswers()
-                            }
-                        }
-                        hoverEnabled: Qt.platform.os != "android" && !animation.running
-                        onHoveredChanged: {
-                            if (hovered) {
+                        function handleHover(isHovered) {
+                            if (isHovered) {
+                                if (currentExercise["playMode"] !== "rhythm" && exerciseView.state === "waitingForAnswer") {
+                                    if (parent === answerGrid && !animation.running) {
+                                        showAvailableAnswerPreview(answerRectangle)
+                                    }
+                                } else if (parent === yourAnswersParent) {
+                                    showSubmittedAnswerCorrection(answerRectangle)
+                                }
+                            } else {
                                 if (currentExercise["playMode"] !== "rhythm" && exerciseView.state === "waitingForAnswer") {
                                     if (parent === answerGrid) {
-                                        var array = [Core.exerciseController.chosenRootNote()]
-                                        model.sequence.split(' ').forEach(function(note) {
-                                            array.push(Core.exerciseController.chosenRootNote() + parseInt(note))
-                                            pianoView.noteMark(0, Core.exerciseController.chosenRootNote() + parseInt(note), 0, internal.colors[answerRectangle.index%internal.colors.length])
-                                        })
-                                        sheetMusicView.model = array
+                                        restoreAvailableAnswerPreview(answerRectangle)
                                     }
                                 }
-                                else {
-                                    var rightAnswers = Core.exerciseController.selectedExerciseOptions
-                                    if (parent === yourAnswersParent && internal.userAnswers[position].name !== rightAnswers[position].name) {
-                                        background.border.color = "green"
-                                        for (var i = 0; i < answerGrid.children.length; ++i) {
-                                            if (answerGrid.children[i].model.name == rightAnswers[position].name) {
-                                                background.color = answerGrid.children[i].color
-                                                break
-                                            }
-                                        }
-                                        bravuraText.text = rightAnswers[position].name
-                                    }
+                                if (parent === yourAnswersParent) {
+                                    restoreSubmittedAnswerCorrection(answerRectangle)
                                 }
                             }
-                            else {
-                                if (currentExercise["playMode"] !== "rhythm") {
-                                    if (parent === answerGrid) {
-                                        if (!animation.running)
-                                            model.sequence.split(' ').forEach(function(note) {
-                                                pianoView.noteUnmark(0, Core.exerciseController.chosenRootNote() + parseInt(note), 0)
-                                            })
-                                        sheetMusicView.model = [Core.exerciseController.chosenRootNote()]
-                                    }
-                                }
-                                var rightAnswers = Core.exerciseController.selectedExerciseOptions
-                                if (parent === yourAnswersParent && internal.userAnswers[position].name !== rightAnswers[position].name) {
-                                    background.border.color = "red"
-                                    background.color = internal.userAnswers[position].color
-                                    bravuraText.text = internal.userAnswers[position].name
-                                }
-                            }
+                        }
+
+                        MouseArea {
+                            id: hoverArea
+
+                            anchors.fill: parent
+                            z: 1
+                            acceptedButtons: Qt.LeftButton
+                            hoverEnabled: Qt.platform.os != "android"
+                            onClicked: answerRectangle.chooseAnswer()
+                            onContainsMouseChanged: answerRectangle.handleHover(containsMouse)
                         }
                     }
                 }
@@ -389,11 +507,13 @@ Item {
         }
 
         Kirigami.Heading {
-            text: i18n("Your Answer(s)")
+            id: yourAnswersHeading
+
+            text: internal.showingCorrectAnswers ? i18n("Correct Answer(s)") : i18n("Your Answer(s)")
         }
 
         Flickable {
-            Layout.preferredWidth: (currentExercise != undefined) ? Math.min(parent.width, internal.currentAnswer*130):0; height: parent.height
+            Layout.preferredWidth: (currentExercise != undefined) ? Math.min(parent.width, internal.currentAnswer*130):0
             Layout.preferredHeight: answerGrid.minimumColumnWidth / 2
             Layout.alignment: Qt.AlignHCenter
             contentWidth: (currentExercise != undefined) ? internal.currentAnswer*130:0

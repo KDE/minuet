@@ -118,6 +118,6 @@ BravuraText {
         left: spaced ? internal.previousItem(note).right:internal.previousItem(note).left;
         leftMargin: spaced ? parent.spacing:0
     }
-    text: ((accident == -1) ? "\ue260":(accident == 1) ? "\ue262":(accident == -2) ? "\ue264":(accident == 2) ? "\ue263":" ") + internal.rhythmTable[rhythm]
+    text: ((accident == -1) ? "\ue260 ":(accident == 1) ? "\ue262 ":(accident == -2) ? "\ue264 ":(accident == 2) ? "\ue263 ":"") + internal.rhythmTable[rhythm]
     font.pixelSize: 35
 }
