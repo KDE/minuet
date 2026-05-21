@@ -36,30 +36,30 @@ Flickable {
     property int keyWidth: Math.max(16, (width - 80) / 52)
     property int keyHeight: 3.4 * keyWidth
 
-    function noteOn(chan, pitch, vel) {
+    function noteOn(chan: int, pitch: int, vel: int): void {
         if (vel > 0)
             highlightKey(pitch, "#778692")
         else
             noteOff(chan, pitch, vel)
     }
-    function noteOff(chan, pitch, vel) {
+    function noteOff(chan: int, pitch: int, vel: int): void {
         highlightKey(pitch, ([1,3,6,8,10].indexOf(pitch % 12) > -1) ? "black":"white")
     }
-    function noteMark(chan, pitch, vel, color) {
+    function noteMark(chan: int, pitch: int, vel: int, color: color): void {
         const noteItem = itemForPitch(pitch)
         clearMarksFromKey(noteItem)
         noteMarkComponent.createObject(noteItem, { color: color })
     }
-    function noteUnmark(chan, pitch, vel, color) {
+    function noteUnmark(chan: int, pitch: int, vel: int, color: color): void {
         clearMarksFromKey(itemForPitch(pitch))
     }
-    function clearAllMarks() {
+    function clearAllMarks(): void {
         for (var index = 21; index <= 108; ++index) {
             noteOff(0, index, 0)
             clearMarksFromKey(itemForPitch(index))
         }
     }
-    function clearMarksFromKey(noteItem) {
+    function clearMarksFromKey(noteItem: Item): void {
         if (noteItem === undefined) {
             return
         }
@@ -71,14 +71,14 @@ Flickable {
             }
         }
     }
-    function scrollToNote(pitch) {
+    function scrollToNote(pitch: int): void {
         const targetX = flickable.contentWidth / 88 * (pitch - 21) - flickable.width / 2
         flickable.contentX = Math.max(0, Math.min(targetX, Math.max(0, flickable.contentWidth - flickable.width)))
     }
-    function highlightKey(pitch, color) {
+    function highlightKey(pitch: int, color: color): void {
         itemForPitch(pitch).color = color
     }
-    function itemForPitch(pitch) {
+    function itemForPitch(pitch: int): Item {
         var noteItem
         if (pitch < 24) {
             noteItem = keyboard.children[pitch-21]
@@ -110,6 +110,8 @@ Flickable {
                 model: 7
 
                 Label {
+                    required property int modelData
+
                     text: i18nc("technical term, do you have a musician friend?", "Octave %1", 1 + modelData)
                     width: 7 * flickable.keyWidth
                     color: "white"

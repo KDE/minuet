@@ -39,14 +39,14 @@ Kirigami.ApplicationWindow {
 
     title: currentPage?.title ?? titleText
 
-    function openHome() {
+    function openHome(): void {
         currentExercise = undefined
         currentExerciseSelection = null
         pageStack.clear()
         pageStack.push(homePageComponent)
     }
 
-    function openExerciseFilter(exerciseModel, title, inheritedIconName, selectionKind) {
+    function openExerciseFilter(exerciseModel: var, title: string, inheritedIconName: string, selectionKind: string): void {
         currentExercise = undefined
         if (selectionKind === "all") {
             currentExerciseSelection = { kind: "all" }
@@ -66,14 +66,14 @@ Kirigami.ApplicationWindow {
         })
     }
 
-    function openAbout() {
+    function openAbout(): void {
         currentExercise = undefined
         currentExerciseSelection = { kind: "about" }
         pageStack.clear()
         pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
     }
 
-    function openSettings() {
+    function openSettings(): void {
         currentExercise = undefined
         currentExerciseSelection = { kind: "settings" }
         pageStack.clear()
@@ -92,7 +92,9 @@ Kirigami.ApplicationWindow {
         exerciseModel: Core.exerciseController.exercises
         currentExerciseSelection: window.currentExerciseSelection
         wideScreen: window.wideScreen
-        onExerciseFilterSelected: (exerciseModel, title, inheritedIconName, selectionKind) => window.openExerciseFilter(exerciseModel, title, inheritedIconName, selectionKind)
+        onExerciseFilterSelected: function(exerciseModel: var, title: string, inheritedIconName: string, selectionKind: string): void {
+            window.openExerciseFilter(exerciseModel, title, inheritedIconName, selectionKind)
+        }
         onHomeRequested: window.openHome()
         onAboutRequested: window.openAbout()
         onSettingsRequested: window.openSettings()

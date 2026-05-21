@@ -30,7 +30,7 @@ Score {
     property alias activeClef: clef
     property alias spaced: sequence.spaced
 
-    function clearAllMarks() {
+    function clearAllMarks(): void {
         clef.clefType = 0
         sequence.model = []
     }

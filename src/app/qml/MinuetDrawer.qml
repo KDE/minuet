@@ -50,7 +50,7 @@ Kirigami.GlobalDrawer {
 
     onCurrentSearchTextChanged: resetMenu()
 
-    function createDrawerActions(searchText) {
+    function createDrawerActions(searchText: string): var {
         const normalizedSearchText = normalizedText(searchText)
         const exerciseActions = createExerciseActions(exerciseModel, normalizedSearchText, "")
         if (normalizedSearchText === "" || actionMatches(i18n("All exercises"), normalizedSearchText)) {
@@ -61,7 +61,7 @@ Kirigami.GlobalDrawer {
         return exerciseActions
     }
 
-    function createExerciseActions(exercises, searchText, inheritedIconName) {
+    function createExerciseActions(exercises: var, searchText: string, inheritedIconName: string): var {
         const exerciseActions = []
         for (const exercise of exercises) {
             const exerciseTitle = i18nc("technical term, do you have a musician friend?", exercise.name)
@@ -87,7 +87,7 @@ Kirigami.GlobalDrawer {
         return exerciseActions
     }
 
-    function exerciseMatchesSearch(exercise, searchText, inheritedIconName) {
+    function exerciseMatchesSearch(exercise: var, searchText: string, inheritedIconName: string): bool {
         const exerciseTitle = i18nc("technical term, do you have a musician friend?", exercise.name)
         if (actionMatches(exerciseTitle, searchText)) {
             return true
@@ -106,15 +106,15 @@ Kirigami.GlobalDrawer {
         return false
     }
 
-    function normalizedText(text) {
+    function normalizedText(text: string): string {
         return text.trim().toLocaleLowerCase()
     }
 
-    function actionMatches(actionText, searchText) {
+    function actionMatches(actionText: string, searchText: string): bool {
         return normalizedText(actionText).includes(searchText)
     }
 
-    function resolvedIconName(exercise, inheritedIconName) {
+    function resolvedIconName(exercise: var, inheritedIconName: string): string {
         const iconName = exercise._icon ? exercise._icon : inheritedIconName
         if (iconName === "") {
             return ""

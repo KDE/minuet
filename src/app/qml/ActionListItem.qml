@@ -20,7 +20,7 @@ QQC2.ItemDelegate {
     Keys.onReturnPressed: trigger()
     Accessible.onPressAction: trigger()
 
-    function trigger() {
+    function trigger(): void {
         if (enabled && action) {
             action.trigger()
         }

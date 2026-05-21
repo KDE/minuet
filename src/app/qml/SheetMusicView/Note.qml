@@ -87,7 +87,7 @@ BravuraText {
             [6, 0],
         ]
 
-        function itemIndex(item) {
+        function itemIndex(item: Item): int {
             if (item.parent === null)
                 return -1
             var siblings = item.parent.children
@@ -96,7 +96,7 @@ BravuraText {
                     return i
             return -1 // will never happen
         }
-        function previousItem(item) {
+        function previousItem(item: Item): Item {
             if (item.parent === null)
                 return null
             var siblings = item.parent.children

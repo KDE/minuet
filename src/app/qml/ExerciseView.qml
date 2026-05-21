@@ -83,7 +83,7 @@ Item {
         }
     }
 
-    function clearUserAnswers() {
+    function clearUserAnswers(): void {
         pianoView.clearAllMarks()
         sheetMusicView.clearAllMarks()
         internal.showingCorrectAnswers = false
@@ -95,11 +95,11 @@ Item {
         internal.userAnswers = []
     }
 
-    function answerModel(answer) {
+    function answerModel(answer: var): var {
         return answer.model !== undefined ? answer.model : answer
     }
 
-    function colorForAnswer(answer) {
+    function colorForAnswer(answer: var): color {
         if (answer.color !== undefined) {
             return answer.color
         }
@@ -113,7 +113,7 @@ Item {
         return "white"
     }
 
-    function showAnswers(answers) {
+    function showAnswers(answers: var): void {
         if (exerciseView.currentExercise["playMode"] === "rhythm") {
             return
         }
@@ -127,7 +127,7 @@ Item {
         for (var i = 0; i < answers.length; ++i) {
             var model = answerModel(answers[i])
             var color = colorForAnswer(answers[i])
-            model.sequence.split(' ').forEach(function(note) {
+            model.sequence.split(' ').forEach(function(note: string): void {
                 var pitch = rootNote + parseInt(note)
                 pianoView.noteMark(0, pitch, 0, color)
                 sheetMusicModel.push(pitch)
@@ -136,32 +136,32 @@ Item {
         sheetMusicView.model = sheetMusicModel
     }
 
-    function showUserAnswers() {
+    function showUserAnswers(): void {
         showAnswers(internal.userAnswers)
     }
 
-    function showCorrectAnswers() {
+    function showCorrectAnswers(): void {
         showAnswers(Core.exerciseController.selectedExerciseOptions)
     }
 
-    function correctAnswerAt(position) {
+    function correctAnswerAt(position: int): var {
         return Core.exerciseController.selectedExerciseOptions[position]
     }
 
-    function isWrongSubmittedAnswer(position) {
+    function isWrongSubmittedAnswer(position: int): bool {
         var rightAnswer = correctAnswerAt(position)
         return rightAnswer !== undefined
             && internal.userAnswers[position] !== undefined
             && internal.userAnswers[position].name !== rightAnswer.name
     }
 
-    function canShowSubmittedAnswerCorrection(position) {
+    function canShowSubmittedAnswerCorrection(position: int): bool {
         return exerciseView.currentExercise !== undefined
             && internal.currentAnswer >= selectedOptionCount()
             && isWrongSubmittedAnswer(position)
     }
 
-    function selectedOptionCount() {
+    function selectedOptionCount(): int {
         if (exerciseView.currentExercise === undefined) {
             return 0
         }
@@ -171,15 +171,15 @@ Item {
         return exerciseView.currentExercise.numberOfSelectedOptions
     }
 
-    function maximumExercises() {
+    function maximumExercises(): int {
         return Core.settingsController.testExerciseCount
     }
 
-    function showQuestionRootOnPiano() {
+    function showQuestionRootOnPiano(): void {
         showAnswers([])
     }
 
-    function showAvailableAnswerPreview(answerRectangle) {
+    function showAvailableAnswerPreview(answerRectangle: Item): void {
         internal.hoveredAvailableAnswer = answerRectangle
         showAnswers([{
             "model": answerRectangle.model,
@@ -187,7 +187,7 @@ Item {
         }])
     }
 
-    function restoreAvailableAnswerPreview(answerRectangle) {
+    function restoreAvailableAnswerPreview(answerRectangle: Item): void {
         if (internal.hoveredAvailableAnswer !== answerRectangle) {
             return
         }
@@ -196,7 +196,7 @@ Item {
         showQuestionRootOnPiano()
     }
 
-    function showSubmittedAnswerCorrection(answerRectangle) {
+    function showSubmittedAnswerCorrection(answerRectangle: Item): void {
         if (!canShowSubmittedAnswerCorrection(answerRectangle.position)) {
             return
         }
@@ -205,7 +205,7 @@ Item {
         showCorrectAnswers()
     }
 
-    function restoreSubmittedAnswerCorrection(answerRectangle) {
+    function restoreSubmittedAnswerCorrection(answerRectangle: Item): void {
         if (!canShowSubmittedAnswerCorrection(answerRectangle.position)) {
             return
         }
@@ -214,7 +214,7 @@ Item {
         showUserAnswers()
     }
 
-    function checkAnswers() {
+    function checkAnswers(): void {
         var rightAnswers = Core.exerciseController.selectedExerciseOptions
         internal.hoveredAvailableAnswer = null
         internal.answersAreRight = true
@@ -246,7 +246,7 @@ Item {
         internal.giveUp = false
     }
     
-    function highlightRightAnswer() {
+    function highlightRightAnswer(): void {
         var chosenExercises = Core.exerciseController.selectedExerciseOptions
         for (var i = 0; i < answerGrid.children.length; ++i) {
             if (answerGrid.children[i].model.name !== chosenExercises[0].name) {
@@ -260,13 +260,13 @@ Item {
         animation.start()
     }
 
-    function resetTest() {
+    function resetTest(): void {
         internal.isTest = false
         internal.correctAnswers = 0
         internal.currentExercise = 0
     }
 
-    function nextTestExercise() {
+    function nextTestExercise(): void {
         for (var i = 0; i < answerGrid.children.length; ++i)
             answerGrid.children[i].opacity = 1
         pianoView.clearAllMarks()
@@ -276,7 +276,7 @@ Item {
         Core.soundController.play()
     }
 
-    function generateNewQuestion () {
+    function generateNewQuestion(): void {
         clearUserAnswers()
         if (internal.isTest)
             messageText.text = i18n("Question %1 out of %2", internal.currentExercise + 1, maximumExercises())
@@ -458,7 +458,7 @@ Item {
                             }
                         }
 
-                        function chooseAnswer() {
+                        function chooseAnswer(): void {
                             if (parent === answerGrid && exerciseView.state === "waitingForAnswer" && !animation.running) {
                                 internal.userAnswers.push({"name": model.name, "model": answerRectangle.model, "index": answerRectangle.index, "color": answerRectangle.color})
                                 internal.currentAnswer++
@@ -492,7 +492,7 @@ Item {
                             color: Kirigami.Theme.backgroundColor
                         }
 
-                        function handleHover(isHovered) {
+                        function handleHover(isHovered: bool): void {
                             if (isHovered) {
                                 if (exerciseView.currentExercise["playMode"] !== "rhythm" && exerciseView.state === "waitingForAnswer") {
                                     if (parent === answerGrid && !animation.running) {
@@ -636,15 +636,15 @@ Item {
     }
     Connections {
         target: Core.exerciseController
-        function onSelectedExerciseOptionsChanged() { pianoView.clearAllMarks() }
+        function onSelectedExerciseOptionsChanged(): void { pianoView.clearAllMarks() }
     }
     Connections {
         target: Core.exerciseController
-        function onSelectedExerciseOptionsChanged() { sheetMusicView.clearAllMarks() }
+        function onSelectedExerciseOptionsChanged(): void { sheetMusicView.clearAllMarks() }
     }
     Connections {
         target: Core.soundController
-        function onCountInChanged(count) {
+        function onCountInChanged(count: int): void {
             internal.countIn = count
         }
     }

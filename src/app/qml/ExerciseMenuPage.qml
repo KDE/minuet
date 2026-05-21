@@ -39,7 +39,7 @@ Kirigami.Page {
 
     title: exerciseList.length > 0 ? i18np("%2 - %1 item", "%2 - %1 items", exerciseList.length, pathText) : pathText
 
-    function iconNameForExercise(exercise, inheritedIconName) {
+    function iconNameForExercise(exercise: var, inheritedIconName: string): string {
         const iconName = exercise._icon ? exercise._icon : inheritedIconName
         if (iconName === "") {
             return "view-list-details"
@@ -47,7 +47,7 @@ Kirigami.Page {
         return iconName.startsWith("qrc:/") ? iconName : "qrc:/icons/22-actions-" + iconName
     }
 
-    function collectExercises(exercises, inheritedIconName) {
+    function collectExercises(exercises: var, inheritedIconName: string): var {
         const collectedExercises = []
         for (const exercise of exercises) {
             collectExercise(exercise, inheritedIconName, collectedExercises)
@@ -55,7 +55,7 @@ Kirigami.Page {
         return collectedExercises
     }
 
-    function collectExercise(exercise, inheritedIconName, collectedExercises) {
+    function collectExercise(exercise: var, inheritedIconName: string, collectedExercises: var): void {
         const iconName = iconNameForExercise(exercise, inheritedIconName)
         if (exercise.children !== undefined) {
             for (const childExercise of exercise.children) {
@@ -69,7 +69,7 @@ Kirigami.Page {
         })
     }
 
-    function exerciseDescription(exercise) {
+    function exerciseDescription(exercise: var): string {
         if (exercise.userMessage !== undefined && exercise.userMessage !== "") {
             return exercise.userMessage
         }
@@ -89,7 +89,7 @@ Kirigami.Page {
         return description
     }
 
-    function openExercise(exercise, iconName) {
+    function openExercise(exercise: var, iconName: string): void {
         const exerciseTitle = i18nc("technical term, do you have a musician friend?", exercise.name)
         applicationWindow().currentExercise = exercise
         applicationWindow().pageStack.push(Qt.resolvedUrl("ExercisePage.qml"), {

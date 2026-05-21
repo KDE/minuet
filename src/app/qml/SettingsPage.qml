@@ -35,7 +35,7 @@ FormCard.FormCardPage {
 
     property int selectedMelodicGroup: -1
 
-    function melodicGroupForInstrument(instrument) {
+    function melodicGroupForInstrument(instrument: int): int {
         for (let i = 0; i < instrumentsModel.count; ++i) {
             const entry = instrumentsModel.get(i)
             if (entry.program === instrument) {
@@ -45,7 +45,7 @@ FormCard.FormCardPage {
         return groupsModel.count > 0 ? groupsModel.get(0).id : -1
     }
 
-    function melodicGroupIndex(group) {
+    function melodicGroupIndex(group: int): int {
         for (let i = 0; i < groupsModel.count; ++i) {
             if (groupsModel.get(i).id === group) {
                 return i
@@ -54,7 +54,7 @@ FormCard.FormCardPage {
         return -1
     }
 
-    function melodicInstrumentIndex(instrument) {
+    function melodicInstrumentIndex(instrument: int): int {
         for (let i = 0; i < instrumentsForGroupModel.count; ++i) {
             if (instrumentsForGroupModel.get(i).program === instrument) {
                 return i
@@ -63,7 +63,7 @@ FormCard.FormCardPage {
         return -1
     }
 
-    function rhythmInstrumentIndex(instrument) {
+    function rhythmInstrumentIndex(instrument: int): int {
         for (let i = 0; i < rhythmInstrumentsModel.count; ++i) {
             if (rhythmInstrumentsModel.get(i).key === instrument) {
                 return i
@@ -72,7 +72,7 @@ FormCard.FormCardPage {
         return -1
     }
 
-    function rebuildModels() {
+    function rebuildModels(): void {
         groupsModel.clear()
         instrumentsModel.clear()
         rhythmInstrumentsModel.clear()
@@ -117,7 +117,7 @@ FormCard.FormCardPage {
         syncSelectionFromController()
     }
 
-    function rebuildInstrumentsForGroup() {
+    function rebuildInstrumentsForGroup(): void {
         instrumentsForGroupModel.clear()
         for (let i = 0; i < instrumentsModel.count; ++i) {
             const instrument = instrumentsModel.get(i)
@@ -127,7 +127,7 @@ FormCard.FormCardPage {
         }
     }
 
-    function syncSelectionFromController() {
+    function syncSelectionFromController(): void {
         if (!Core.soundController) {
             return
         }
@@ -163,23 +163,23 @@ FormCard.FormCardPage {
     Connections {
         target: Core.soundController
 
-        function onInstrumentGroupsChanged() {
+        function onInstrumentGroupsChanged(): void {
             root.rebuildModels()
         }
 
-        function onInstrumentsChanged() {
+        function onInstrumentsChanged(): void {
             root.rebuildModels()
         }
 
-        function onRhythmInstrumentsChanged() {
+        function onRhythmInstrumentsChanged(): void {
             root.rebuildModels()
         }
 
-        function onInstrumentChanged() {
+        function onInstrumentChanged(): void {
             root.syncSelectionFromController()
         }
 
-        function onRhythmInstrumentChanged() {
+        function onRhythmInstrumentChanged(): void {
             root.syncSelectionFromController()
         }
     }
@@ -187,15 +187,15 @@ FormCard.FormCardPage {
     Connections {
         target: Core.settingsController
 
-        function onInstrumentGroupChanged() {
+        function onInstrumentGroupChanged(): void {
             root.syncSelectionFromController()
         }
 
-        function onInstrumentChanged() {
+        function onInstrumentChanged(): void {
             root.syncSelectionFromController()
         }
 
-        function onRhythmInstrumentChanged() {
+        function onRhythmInstrumentChanged(): void {
             root.syncSelectionFromController()
         }
     }
