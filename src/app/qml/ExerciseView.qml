@@ -20,16 +20,17 @@
 **
 ****************************************************************************/
 
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import QtQuick.Window
 import org.kde.kirigami as Kirigami
 
 Item {
     id: exerciseView
 
-    visible: currentExercise != undefined
+    visible: exerciseView.currentExercise !== undefined
 
     property var currentExercise
     property alias countIn: internal.countIn
@@ -44,7 +45,7 @@ Item {
         property int currentAnswer
         property var colors: ["#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9", "#bc80bd", "#ccebc5", "#ffed6f", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"]
         property Item rightAnswerRectangle
-        property variant userAnswers: []
+        property var userAnswers: []
         property bool answersAreRight
         property bool giveUp
         property bool isTest: false
@@ -69,14 +70,14 @@ Item {
         for (var i = 0; i < answerGrid.children.length; ++i)
             answerGrid.children[i].destroy()
         answerGrid.children = ""
-        if (currentExercise != undefined) {
-            var currentExerciseOptions = currentExercise["options"];
-            if (currentExerciseOptions != undefined) {
+        if (exerciseView.currentExercise !== undefined) {
+            var currentExerciseOptions = exerciseView.currentExercise["options"];
+            if (currentExerciseOptions !== undefined) {
                 var length = currentExerciseOptions.length
                 for (var i = 0; i < length; ++i)
                     answerOption.createObject(answerGrid, {"model": currentExerciseOptions[i], "index": i, "color": internal.colors[i%internal.colors.length], "showClickFeedback": true})
             }
-            sheetMusicView.spaced = (currentExercise["playMode"] == "chord") ? false:true
+            sheetMusicView.spaced = (exerciseView.currentExercise["playMode"] === "chord") ? false:true
             messageText.text = i18n("Click 'New Question' to start!")
             exerciseView.state = "waitingForNewQuestion"
         }
@@ -113,7 +114,7 @@ Item {
     }
 
     function showAnswers(answers) {
-        if (currentExercise["playMode"] === "rhythm") {
+        if (exerciseView.currentExercise["playMode"] === "rhythm") {
             return
         }
 
@@ -155,19 +156,19 @@ Item {
     }
 
     function canShowSubmittedAnswerCorrection(position) {
-        return currentExercise !== undefined
+        return exerciseView.currentExercise !== undefined
             && internal.currentAnswer >= selectedOptionCount()
             && isWrongSubmittedAnswer(position)
     }
 
     function selectedOptionCount() {
-        if (currentExercise === undefined) {
+        if (exerciseView.currentExercise === undefined) {
             return 0
         }
-        if (currentExercise["playMode"] === "rhythm") {
+        if (exerciseView.currentExercise["playMode"] === "rhythm") {
             return Core.settingsController.rhythmPatternCount
         }
-        return currentExercise.numberOfSelectedOptions
+        return exerciseView.currentExercise.numberOfSelectedOptions
     }
 
     function maximumExercises() {
@@ -219,26 +220,26 @@ Item {
         internal.answersAreRight = true
         var expectedAnswers = selectedOptionCount()
         for (var i = 0; i < expectedAnswers; ++i) {
-            if (internal.userAnswers[i].name != rightAnswers[i].name) {
-                yourAnswersParent.children[i].background.border.color = "red"
-                yourAnswersParent.children[i].background.border.width = 3
+            if (internal.userAnswers[i].name !== rightAnswers[i].name) {
+                yourAnswersParent.children[i].borderColor = "red"
+                yourAnswersParent.children[i].borderWidth = 3
                 internal.answersAreRight = false
             }
             else {
-                yourAnswersParent.children[i].background.border.color = "green"
-                yourAnswersParent.children[i].background.border.width = 3
+                yourAnswersParent.children[i].borderColor = "green"
+                yourAnswersParent.children[i].borderWidth = 3
                 if (internal.isTest)
                     internal.correctAnswers++
             }
         }
         messageText.text = (internal.giveUp) ? i18n("Here is the answer") : (internal.answersAreRight) ? i18n("Congratulations, you answered correctly!"):i18n("Oops, not this time! Try again!")
-        if (internal.currentExercise == maximumExercises()) {
+        if (internal.currentExercise === maximumExercises()) {
             messageText.text = i18n("You answered correctly %1%", internal.correctAnswers * 100 / maximumExercises() / expectedAnswers)
             resetTest()
         }
 
         showUserAnswers()
-        if (selectedOptionCount() == 1)
+        if (selectedOptionCount() === 1)
             highlightRightAnswer()
         else
             exerciseView.state = "waitingForNewQuestion"
@@ -248,7 +249,7 @@ Item {
     function highlightRightAnswer() {
         var chosenExercises = Core.exerciseController.selectedExerciseOptions
         for (var i = 0; i < answerGrid.children.length; ++i) {
-            if (answerGrid.children[i].model.name != chosenExercises[0].name) {
+            if (answerGrid.children[i].model.name !== chosenExercises[0].name) {
                 answerGrid.children[i].opacity = 0.25
             }
             else {
@@ -284,11 +285,11 @@ Item {
         Core.exerciseController.randomlySelectExerciseOptions(selectedOptionCount())
         var chosenExercises = Core.exerciseController.selectedExerciseOptions
         Core.soundController.prepareFromExerciseOptions(chosenExercises)
-        if (currentExercise["playMode"] != "rhythm") {
+        if (exerciseView.currentExercise["playMode"] !== "rhythm") {
             pianoView.noteMark(0, Core.exerciseController.chosenRootNote(), 0, "white")
             pianoView.scrollToNote(Core.exerciseController.chosenRootNote())
             sheetMusicView.model = [Core.exerciseController.chosenRootNote()]
-            sheetMusicView.clef.type = (Core.exerciseController.chosenRootNote() >= 60) ? 0:1
+            sheetMusicView.activeClef.clefType = Core.exerciseController.chosenRootNote() >= 60 ? 0 : 1
         }
         exerciseView.state = "waitingForAnswer"
         if (internal.isTest)
@@ -307,7 +308,7 @@ Item {
             Layout.preferredWidth: parent.width
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.WordWrap
-            text: (currentExercise != undefined) ? i18nc("technical term, do you have a musician friend?", currentExercise["userMessage"]):""
+            text: (exerciseView.currentExercise !== undefined) ? i18nc("technical term, do you have a musician friend?", exerciseView.currentExercise["userMessage"]):""
         }
         Kirigami.Heading {
             id: messageText
@@ -325,12 +326,12 @@ Item {
             Button {
                 id: newPlayQuestionButton
 
-                text: (exerciseView.state == "waitingForNewQuestion") ? i18n("New Question") : i18n("Play Question")
+                text: (exerciseView.state === "waitingForNewQuestion") ? i18n("New Question") : i18n("Play Question")
                 enabled: !animation.running
                 Layout.preferredWidth: Math.max(newPlayQuestionButton.implicitWidth, giveUpButton.implicitWidth, testButton.implicitWidth)
 
                 onClicked: {
-                    if (exerciseView.state == "waitingForNewQuestion") {
+                    if (exerciseView.state === "waitingForNewQuestion") {
                         generateNewQuestion()
                     }
                     Core.soundController.play()
@@ -340,7 +341,7 @@ Item {
                 id: giveUpButton
 
                 text: i18n("Give Up")
-                enabled: exerciseView.state == "waitingForAnswer" && !animation.running
+                enabled: exerciseView.state === "waitingForAnswer" && !animation.running
                 Layout.preferredWidth: Math.max(newPlayQuestionButton.implicitWidth, giveUpButton.implicitWidth, testButton.implicitWidth)
 
                 onClicked: {
@@ -351,7 +352,7 @@ Item {
                     internal.userAnswers = []
                     for (var i = 0; i < selectedOptionCount(); ++i) {
                         for (var j = 0; j < answerGrid.children.length; ++j) {
-                            if (answerGrid.children[j].model.name == rightAnswers[i].name) {
+                            if (answerGrid.children[j].model.name === rightAnswers[i].name) {
                                 internal.userAnswers.push({"name": rightAnswers[i].name, "model": answerGrid.children[j].model, "index": j, "color": internal.colors[j]})
                                 break
                             }
@@ -417,6 +418,8 @@ Item {
                         property int index
                         property int position
                         property color color
+                        property color borderColor: "transparent"
+                        property int borderWidth: 0
                         property bool submittedAnswer: parent === yourAnswersParent
                         property bool wrongSubmittedAnswer: submittedAnswer && isWrongSubmittedAnswer(position)
                         property bool showCorrectAnswer: submittedAnswer && hoverArea.containsMouse && canShowSubmittedAnswerCorrection(position)
@@ -433,7 +436,13 @@ Item {
                             return color
                         }
 
-                        Kirigami.Theme.backgroundColor: displayColor
+	                        Kirigami.Theme.backgroundColor: displayColor
+                        background: Rectangle {
+                            color: answerRectangle.displayColor
+                            border.color: answerRectangle.borderColor
+                            border.width: answerRectangle.borderWidth
+                            radius: Kirigami.Units.cornerRadius
+                        }
 
                         Layout.minimumWidth: answerGrid.minimumColumnWidth
                         Layout.minimumHeight: answerGrid.minimumColumnWidth / 2
@@ -441,25 +450,19 @@ Item {
 
                         onShowCorrectAnswerChanged: {
                             if (showCorrectAnswer) {
-                                background.border.color = "green"
+                                borderColor = "green"
                                 showSubmittedAnswerCorrection(answerRectangle)
                             } else if (wrongSubmittedAnswer) {
-                                background.border.color = "red"
+                                borderColor = "red"
                                 restoreSubmittedAnswerCorrection(answerRectangle)
                             }
                         }
 
-                        Binding {
-                            target: answerRectangle.background
-                            property: "color"
-                            value: answerRectangle.displayColor
-                        }
-
                         function chooseAnswer() {
-                            if (parent === answerGrid && exerciseView.state == "waitingForAnswer" && !animation.running) {
+                            if (parent === answerGrid && exerciseView.state === "waitingForAnswer" && !animation.running) {
                                 internal.userAnswers.push({"name": model.name, "model": answerRectangle.model, "index": answerRectangle.index, "color": answerRectangle.color})
                                 internal.currentAnswer++
-                                if (internal.currentAnswer == selectedOptionCount()) {
+                                if (internal.currentAnswer === selectedOptionCount()) {
                                     checkAnswers()
                                 }
                             }
@@ -469,12 +472,12 @@ Item {
                             id: bravuraText
 
                             font {
-                                family: currentExercise["playMode"] != "rhythm" ? Kirigami.Theme.defaultFont.family : bravura.name
-                                pointSize: Kirigami.Theme.defaultFont.pointSize * (currentExercise["playMode"] != "rhythm" ? 1.15 : 2.3)
+                                family: exerciseView.currentExercise["playMode"] !== "rhythm" ? Kirigami.Theme.defaultFont.family : bravura.name
+                                pointSize: Kirigami.Theme.defaultFont.pointSize * (exerciseView.currentExercise["playMode"] !== "rhythm" ? 1.15 : 2.3)
                             }
                             anchors {
                                 centerIn: parent
-                                verticalCenterOffset: currentExercise["playMode"] === "rhythm" ? font.pointSize * 0.35 : 0
+                                verticalCenterOffset: exerciseView.currentExercise["playMode"] === "rhythm" ? font.pointSize * 0.35 : 0
                             }
                             width: parent.width
                             height: parent.height
@@ -491,7 +494,7 @@ Item {
 
                         function handleHover(isHovered) {
                             if (isHovered) {
-                                if (currentExercise["playMode"] !== "rhythm" && exerciseView.state === "waitingForAnswer") {
+                                if (exerciseView.currentExercise["playMode"] !== "rhythm" && exerciseView.state === "waitingForAnswer") {
                                     if (parent === answerGrid && !animation.running) {
                                         showAvailableAnswerPreview(answerRectangle)
                                     }
@@ -499,7 +502,7 @@ Item {
                                     showSubmittedAnswerCorrection(answerRectangle)
                                 }
                             } else {
-                                if (currentExercise["playMode"] !== "rhythm" && exerciseView.state === "waitingForAnswer") {
+                                if (exerciseView.currentExercise["playMode"] !== "rhythm" && exerciseView.state === "waitingForAnswer") {
                                     if (parent === answerGrid) {
                                         restoreAvailableAnswerPreview(answerRectangle)
                                     }
@@ -533,10 +536,10 @@ Item {
         }
 
         Flickable {
-            Layout.preferredWidth: (currentExercise != undefined) ? Math.min(parent.width, internal.currentAnswer*130):0
+            Layout.preferredWidth: (exerciseView.currentExercise !== undefined) ? Math.min(parent.width, internal.currentAnswer*130):0
             Layout.preferredHeight: answerGrid.minimumColumnWidth / 2
             Layout.alignment: Qt.AlignHCenter
-            contentWidth: (currentExercise != undefined) ? internal.currentAnswer*130:0
+            contentWidth: (exerciseView.currentExercise !== undefined) ? internal.currentAnswer*130:0
             boundsBehavior: Flickable.StopAtBounds
             clip: true
 
@@ -555,7 +558,7 @@ Item {
 
             text: i18n("Backspace")
             Layout.alignment: Qt.AlignHCenter
-            visible: currentExercise != undefined && currentExercise["playMode"] == "rhythm"
+            visible: exerciseView.currentExercise !== undefined && exerciseView.currentExercise["playMode"] === "rhythm"
             enabled: internal.currentAnswer > 0 && internal.currentAnswer < selectedOptionCount()
             onClicked: {
                 internal.userAnswers.pop()
@@ -573,7 +576,7 @@ Item {
             columnSpacing: Kirigami.Units.largeSpacing * 2
             rowSpacing: stacked ? columnSpacing * 2 : columnSpacing
             uniformCellWidths: true
-            visible: currentExercise != undefined && currentExercise["playMode"] != "rhythm"
+            visible: exerciseView.currentExercise !== undefined && exerciseView.currentExercise["playMode"] !== "rhythm"
 
             PianoView {
                 id: pianoView
@@ -626,7 +629,7 @@ Item {
             exerciseView.state = internal.isTest ? "waitingForAnswer" : "waitingForNewQuestion"
             if (internal.isTest) {
                 nextTestExercise()
-                if (internal.currentExercise == maximumExercises()+1)
+                if (internal.currentExercise === maximumExercises()+1)
                     internal.isTest = false
             }
         }

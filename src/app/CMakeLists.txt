@@ -47,9 +47,15 @@ qt_add_qml_module(minuet
     RESOURCE_PREFIX /qt/qml
     SOURCES
         ${minuet_SRCS}
+        ../interfaces/icore.h
+        ../interfaces/iexercisecontroller.h
+        ../interfaces/iplugin.h
+        ../interfaces/iplugincontroller.h
+        ../interfaces/isettingscontroller.h
+        ../interfaces/isoundcontroller.h
+        ../interfaces/iuicontroller.h
         core.h
         settingscontroller.h
-        qmltypes.h
     QML_FILES
         qml/Main.qml
         qml/AboutPage.qml

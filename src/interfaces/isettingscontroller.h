@@ -26,12 +26,16 @@
 #include <interfaces/minuetinterfacesexport.h>
 
 #include <QObject>
+#include <qqmlregistration.h>
 
 namespace Minuet
 {
 class MINUETINTERFACES_EXPORT ISettingsController : public QObject
 {
     Q_OBJECT
+    QML_NAMED_ELEMENT(ISettingsController)
+    QML_UNCREATABLE("ISettingsController is provided by Core")
+
     Q_PROPERTY(int rhythmPatternCount READ rhythmPatternCount WRITE setRhythmPatternCount NOTIFY rhythmPatternCountChanged)
     Q_PROPERTY(int testExerciseCount READ testExerciseCount WRITE setTestExerciseCount NOTIFY testExerciseCountChanged)
     Q_PROPERTY(int volume READ volume WRITE setVolume NOTIFY volumeChanged)

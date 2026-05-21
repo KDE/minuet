@@ -23,14 +23,16 @@
 import QtQuick
 
 BravuraText {
-    property int type: 0 // [0 treble, 1 bass]
+    id: root
+
+    property int clefType: 0 // [0 treble, 1 bass]
     
     objectName: "symbol"
 
     anchors {
         left: parent.children[0].left;
         bottom: parent.children[0].bottom;
-        bottomMargin: (type == 0) ? 10:30
+        bottomMargin: root.clefType === 0 ? 10 : 30
     }
-    text: (type == 0) ? "\ue050":"\ue062"
+    text: root.clefType === 0 ? "\ue050" : "\ue062"
 }

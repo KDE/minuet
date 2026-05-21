@@ -20,8 +20,9 @@
 **
 ****************************************************************************/
 
+pragma ComponentBehavior: Bound
+
 import QtQuick
-import QtQuick.Window
 import org.kde.kirigami as Kirigami
 
 Kirigami.ApplicationWindow {
@@ -34,7 +35,7 @@ Kirigami.ApplicationWindow {
     property string titleText: "Home"
     property var currentExercise
     property var currentExerciseSelection
-    readonly property Item currentPage: pageStack.depth > 0 ? pageStack.get(pageStack.currentIndex) : null
+    readonly property var currentPage: pageStack.depth > 0 ? pageStack.get(pageStack.currentIndex) : null
 
     title: currentPage?.title ?? titleText
 
@@ -124,7 +125,7 @@ Kirigami.ApplicationWindow {
     Binding {
         target: Core.soundController
         property: "playMode"
-        value: (window.currentExercise != undefined) ? window.currentExercise["playMode"] : ""
+        value: (window.currentExercise !== undefined) ? window.currentExercise["playMode"] : ""
     }
     
     Shortcut {

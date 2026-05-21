@@ -24,6 +24,14 @@ import QtQuick
 import org.kde.kirigami as Kirigami
 
 Kirigami.Heading {
+    id: root
+
+    FontLoader {
+        id: bravura
+
+        source: "Bravura.otf"
+    }
+
     font {
         family: bravura.name
         pixelSize: 40

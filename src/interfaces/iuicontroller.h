@@ -26,12 +26,15 @@
 #include <interfaces/minuetinterfacesexport.h>
 
 #include <QObject>
+#include <qqmlregistration.h>
 
 namespace Minuet
 {
 class MINUETINTERFACES_EXPORT IUiController : public QObject
 {
     Q_OBJECT
+    QML_NAMED_ELEMENT(IUiController)
+    QML_UNCREATABLE("IUiController is provided by Core")
 
 public:
     ~IUiController() override = default;

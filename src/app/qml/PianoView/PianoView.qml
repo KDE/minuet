@@ -20,6 +20,8 @@
 **
 ****************************************************************************/
 
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Controls
 
@@ -58,7 +60,7 @@ Flickable {
         }
     }
     function clearMarksFromKey(noteItem) {
-        if (noteItem == undefined) {
+        if (noteItem === undefined) {
             return
         }
 
@@ -80,7 +82,7 @@ Flickable {
         var noteItem
         if (pitch < 24) {
             noteItem = keyboard.children[pitch-21]
-        } else if (pitch == 108) {
+        } else if (pitch === 108) {
             noteItem = whiteKeyC
         } else {
             var note = (pitch - 24) % 12
@@ -93,7 +95,7 @@ Flickable {
     Rectangle {
         id: piano
 
-        width: 3 * keyWidth + 7 * (7 * keyWidth); height: parent.height
+        width: 3 * flickable.keyWidth + 7 * (7 * flickable.keyWidth); height: parent.height
         x: 0
         radius: 5
         color: "#141414"
@@ -102,14 +104,14 @@ Flickable {
             id: octaveNumber
             width: parent.width; height: 18
             anchors.left: parent.left
-            anchors.leftMargin: 2 * keyWidth
+            anchors.leftMargin: 2 * flickable.keyWidth
 
             Repeater {
                 model: 7
 
                 Label {
                     text: i18nc("technical term, do you have a musician friend?", "Octave %1", 1 + modelData)
-                    width: 7 * keyWidth
+                    width: 7 * flickable.keyWidth
                     color: "white"
                     height: parent.height
                 }
@@ -120,21 +122,21 @@ Flickable {
             id: keyboard
 
             anchors { top: octaveNumber.bottom; horizontalCenter: parent.horizontalCenter; bottom: parent.bottom; bottomMargin: 5 }
-            width: 3 * keyWidth + 7 * (7 * keyWidth); height: keyHeight - octaveNumber.height
+            width: 3 * flickable.keyWidth + 7 * (7 * flickable.keyWidth); height: flickable.keyHeight - octaveNumber.height
 
-            WhiteKey { id: whiteKeyA }
-            BlackKey { anchor: whiteKeyA }
-            WhiteKey { id: whiteKeyB; anchor: whiteKeyA }
-            Octave { id: octave1; initialAnchor: whiteKeyB }
-            Octave { id: octave2; initialAnchor: octave1 }
-            Octave { id: octave3; initialAnchor: octave2 }
-            Octave { id: octave4; initialAnchor: octave3 }
-            Octave { id: octave5; initialAnchor: octave4 }
-            Octave { id: octave6; initialAnchor: octave5 }
-            Octave { id: octave7; initialAnchor: octave6 }
-            WhiteKey { id: whiteKeyC; anchor: octave7 }
+            WhiteKey { id: whiteKeyA; keyWidth: flickable.keyWidth; keyHeight: flickable.keyHeight }
+            BlackKey { anchor: whiteKeyA; keyWidth: flickable.keyWidth; keyHeight: flickable.keyHeight }
+            WhiteKey { id: whiteKeyB; anchor: whiteKeyA; keyWidth: flickable.keyWidth; keyHeight: flickable.keyHeight }
+            Octave { id: octave1; initialAnchor: whiteKeyB; keyWidth: flickable.keyWidth; keyHeight: flickable.keyHeight }
+            Octave { id: octave2; initialAnchor: octave1; keyWidth: flickable.keyWidth; keyHeight: flickable.keyHeight }
+            Octave { id: octave3; initialAnchor: octave2; keyWidth: flickable.keyWidth; keyHeight: flickable.keyHeight }
+            Octave { id: octave4; initialAnchor: octave3; keyWidth: flickable.keyWidth; keyHeight: flickable.keyHeight }
+            Octave { id: octave5; initialAnchor: octave4; keyWidth: flickable.keyWidth; keyHeight: flickable.keyHeight }
+            Octave { id: octave6; initialAnchor: octave5; keyWidth: flickable.keyWidth; keyHeight: flickable.keyHeight }
+            Octave { id: octave7; initialAnchor: octave6; keyWidth: flickable.keyWidth; keyHeight: flickable.keyHeight }
+            WhiteKey { id: whiteKeyC; anchor: octave7; keyWidth: flickable.keyWidth; keyHeight: flickable.keyHeight }
             Rectangle {
-                width: 3 * keyWidth + 7 * (7 * keyWidth); height: 2
+                width: 3 * flickable.keyWidth + 7 * (7 * flickable.keyWidth); height: 2
                 anchors { left: whiteKeyA.left; bottom: whiteKeyA.top }
                 color: "#A40E09"
             }
@@ -146,8 +148,8 @@ Flickable {
             Rectangle {
                 property bool pianoViewMark: true
 
-                width: keyWidth - 4; height: keyWidth - 4
-                radius: (keyWidth - 4) / 2
+                width: flickable.keyWidth - 4; height: flickable.keyWidth - 4
+                radius: (flickable.keyWidth - 4) / 2
                 border.color: "black"
                 anchors { horizontalCenter: parent.horizontalCenter; bottom: parent.bottom; bottomMargin: 2 }
             }

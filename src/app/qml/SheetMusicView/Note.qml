@@ -31,6 +31,8 @@ BravuraText {
     property int rhythm: 4;
     property int accident: 0 // [-2 double flat, -1 flat, 1 sharp, 2 double sharp]
     property bool spaced: true
+    property int clefType: 0
+    property int scoreSpacing: 0
     
     objectName: "symbol"
 
@@ -86,20 +88,20 @@ BravuraText {
         ]
 
         function itemIndex(item) {
-            if (item.parent == null)
+            if (item.parent === null)
                 return -1
             var siblings = item.parent.children
             for (var i = siblings.length - 1; i >=0 ; i--)
-                if (siblings[i] == item)
+                if (siblings[i] === item)
                     return i
             return -1 // will never happen
         }
         function previousItem(item) {
-            if (item.parent == null)
+            if (item.parent === null)
                 return null
             var siblings = item.parent.children
             for (var i = itemIndex(item) - 1; i >=0 ; i--)
-                if (siblings[i].objectName == "symbol")
+                if (siblings[i].objectName === "symbol")
                     return item.parent.children[i]
             return null
         }
@@ -110,14 +112,14 @@ BravuraText {
     anchors {
         bottom: parent.children[0].bottom;
         bottomMargin: {
-            (parent.clef.type == 0) ?
+            (note.clefType === 0) ?
                 ((internal.accidentMap[number][0])*5)+(octave-4)*35
                 :
                 -10+((internal.accidentMap[number][0])*5)+(octave-2)*35;
         }
         left: spaced ? internal.previousItem(note).right:internal.previousItem(note).left;
-        leftMargin: spaced ? parent.spacing:0
+        leftMargin: spaced ? note.scoreSpacing : 0
     }
-    text: ((accident == -1) ? "\ue260 ":(accident == 1) ? "\ue262 ":(accident == -2) ? "\ue264 ":(accident == 2) ? "\ue263 ":"") + internal.rhythmTable[rhythm]
+    text: ((accident === -1) ? "\ue260 ":(accident === 1) ? "\ue262 ":(accident === -2) ? "\ue264 ":(accident === 2) ? "\ue263 ":"") + internal.rhythmTable[rhythm]
     font.pixelSize: 35
 }

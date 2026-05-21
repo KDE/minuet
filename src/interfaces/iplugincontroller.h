@@ -26,12 +26,15 @@
 #include <interfaces/minuetinterfacesexport.h>
 
 #include <QObject>
+#include <qqmlregistration.h>
 
 namespace Minuet
 {
 class MINUETINTERFACES_EXPORT IPluginController : public QObject
 {
     Q_OBJECT
+    QML_NAMED_ELEMENT(IPluginController)
+    QML_UNCREATABLE("IPluginController is provided by Core")
 
 public:
     ~IPluginController() override = default;

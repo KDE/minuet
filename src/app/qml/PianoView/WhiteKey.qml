@@ -23,11 +23,15 @@
 import QtQuick
 
 Rectangle {
-    property Item anchor
+    id: root
 
-    width: keyWidth; height: keyHeight
+    property Item anchor
+    property int keyWidth
+    property int keyHeight
+
+    width: root.keyWidth; height: root.keyHeight
     border { width: 1; color: "black" }
     color: "white"
 
-    Component.onCompleted: if (anchor != null) anchors.left = anchor.right
+    Component.onCompleted: if (root.anchor !== null) anchors.left = root.anchor.right
 }

@@ -32,6 +32,7 @@
 #include <interfaces/minuetinterfacesexport.h>
 
 #include <QObject>
+#include <qqmlregistration.h>
 
 namespace Minuet
 {
@@ -39,13 +40,15 @@ namespace Minuet
 class MINUETINTERFACES_EXPORT ICore : public QObject
 {
     Q_OBJECT
+    QML_NAMED_ELEMENT(ICore)
+    QML_UNCREATABLE("ICore is provided by Core")
 
-    Q_PROPERTY(IPluginController *pluginController READ pluginController CONSTANT)
+    Q_PROPERTY(Minuet::IPluginController *pluginController READ pluginController CONSTANT)
     Q_PROPERTY(
-        ISoundController *soundController READ soundController NOTIFY soundControllerChanged)
-    Q_PROPERTY(IExerciseController *exerciseController READ exerciseController CONSTANT)
-    Q_PROPERTY(ISettingsController *settingsController READ settingsController CONSTANT)
-    Q_PROPERTY(IUiController *uiController READ uiController CONSTANT)
+        Minuet::ISoundController *soundController READ soundController NOTIFY soundControllerChanged)
+    Q_PROPERTY(Minuet::IExerciseController *exerciseController READ exerciseController CONSTANT)
+    Q_PROPERTY(Minuet::ISettingsController *settingsController READ settingsController CONSTANT)
+    Q_PROPERTY(Minuet::IUiController *uiController READ uiController CONSTANT)
 
 public:
     ~ICore() override;

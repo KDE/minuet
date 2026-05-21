@@ -23,10 +23,14 @@
 import QtQuick
 
 Rectangle {
-    property Item anchor
+    id: root
 
-    width: 0.6 * keyWidth; height: 0.6 * keyHeight
-    anchors { left: anchor.right; leftMargin: -(0.6 * keyWidth) / 2; top: anchor.top }
+    property Item anchor
+    property int keyWidth
+    property int keyHeight
+
+    width: 0.6 * root.keyWidth; height: 0.6 * root.keyHeight
+    anchors { left: root.anchor.right; leftMargin: -(0.6 * root.keyWidth) / 2; top: root.anchor.top }
     border { width: 1; color: "black" }
     color: "black"
     z: 1

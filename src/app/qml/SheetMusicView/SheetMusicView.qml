@@ -24,12 +24,14 @@ import QtQuick
 import org.kde.kirigami as Kirigami
 
 Score {
+    id: root
+
     property alias model: sequence.model
-    property alias clef: clef
+    property alias activeClef: clef
     property alias spaced: sequence.spaced
 
     function clearAllMarks() {
-        clef.type = 0
+        clef.clefType = 0
         sequence.model = []
     }
 
@@ -37,7 +39,11 @@ Score {
     spacing: Kirigami.Units.largeSpacing
     clip: false
 
-    Clef { id: clef; type: 1 }
+    Clef { id: clef; clefType: 1 }
 
-    Sequence { id: sequence }
+    Sequence {
+        id: sequence
+        clefType: clef.clefType
+        scoreSpacing: root.spacing
+    }
 }

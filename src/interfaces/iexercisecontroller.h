@@ -29,12 +29,16 @@
 #include <QJsonArray>
 #include <QObject>
 #include <QVariantMap>
+#include <qqmlregistration.h>
 
 namespace Minuet
 {
 class MINUETINTERFACES_EXPORT IExerciseController : public QObject
 {
     Q_OBJECT
+    QML_NAMED_ELEMENT(IExerciseController)
+    QML_UNCREATABLE("IExerciseController is provided by Core")
+
     Q_PROPERTY(QJsonArray exercises READ exercises NOTIFY exercisesChanged)  // clazy:exclude=qproperty-without-notify
     Q_PROPERTY(QVariantMap currentExercise MEMBER m_currentExercise WRITE setCurrentExercise NOTIFY
                    currentExerciseChanged)
