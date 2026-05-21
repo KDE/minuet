@@ -71,7 +71,7 @@ FluidSynthSoundController::FluidSynthSoundController(QObject *parent)
                                              QStringLiteral("soundfonts/GeneralUser-v1.47.sf2"));
 #ifdef Q_OS_MACOS
     if (sf_path.isEmpty()) {
-        const QStringList xdgDataDirs = Utils::getXdgDataDirs();
+        const QStringList xdgDataDirs = Utils::xdgDataDirs();
         for (const auto &dirPath : xdgDataDirs) {
             const QFile testFile(QDir(dirPath).absoluteFilePath(
                 QStringLiteral("minuet/soundfonts/GeneralUser-v1.47.sf2")));
@@ -121,7 +121,8 @@ void FluidSynthSoundController::setPitch(qint8 pitch)
     fluid_synth_cc(m_synth, 1, 101, 0);
     fluid_synth_cc(m_synth, 1, 6, 12);
     float accurate_pitch = (m_pitch + 12) * (2.0 / 3) * 1024;
-    fluid_synth_pitch_bend(m_synth, 1, qMin(qRound(accurate_pitch), 16 * 1024 - 1));
+    fluid_synth_pitch_bend(m_synth, 1, std::min(qRound(accurate_pitch), 16 * 1024 - 1));
+    emit pitchChanged(m_pitch);
 }
 
 void FluidSynthSoundController::setVolume(quint8 volume)
@@ -136,7 +137,11 @@ void FluidSynthSoundController::setVolume(quint8 volume)
 
 void FluidSynthSoundController::setTempo(quint8 tempo)
 {
+    if (m_tempo == tempo) {
+        return;
+    }
     m_tempo = tempo;
+    emit tempoChanged(m_tempo);
 }
 
 void FluidSynthSoundController::setInstrument(int instrument)
@@ -178,14 +183,16 @@ void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedEx
             = selectedExerciseOption.toObject()[QStringLiteral("rootNote")].toString().toInt();
         if (m_playMode != QLatin1String("rhythm")) {
             appendEvent(1, chosenRootNote, 127, 1000 * (60.0 / m_tempo));
-            foreach (const QString &additionalNote, sequence.split(' ')) {
+            const QStringList additionalNotes = sequence.split(' ');
+            for (const QString &additionalNote : additionalNotes) {
                 appendEvent(1, chosenRootNote + additionalNote.toInt(), 127,
                             ((m_playMode == QLatin1String("scale")) ? 1000 : 4000)
                                 * (60.0 / m_tempo));
             }
         } else {
             // appendEvent(9, 80, 127, 1000*(60.0/m_tempo));
-            foreach (QString additionalNote, sequence.split(' ')) {  // krazy:exclude=foreach
+            const QStringList additionalNotes = sequence.split(' ');
+            for (QString additionalNote : additionalNotes) {
                 float dotted = 1;
                 if (additionalNote.endsWith('.')) {
                     dotted = 1.5;
@@ -217,11 +224,11 @@ void FluidSynthSoundController::play()
         return;
     }
 
-    if (m_state != PlayingState) {
+    if (m_state != State::PlayingState) {
         m_countInNextValue = m_playMode == QLatin1String("rhythm") ? 4 : 0;
         m_countInVisible = false;
         unsigned int now = fluid_sequencer_get_tick(m_sequencer);
-        foreach (fluid_event_t *event, *m_song.data()) {
+        for (fluid_event_t *event : std::as_const(*m_song.data())) {
             if (fluid_event_get_type(event) != FLUID_SEQ_ALLNOTESOFF
                 || m_playMode != QLatin1String("chord")) {
                 fluid_event_set_dest(event, m_synthSeqID);
@@ -233,7 +240,7 @@ void FluidSynthSoundController::play()
                    : (m_playMode == QLatin1String("scale")) ? 1000 * (60.0 / m_tempo)
                                                             : 0;
         }
-        setState(PlayingState);
+        setState(State::PlayingState);
     }
 }
 
@@ -242,7 +249,7 @@ void FluidSynthSoundController::pause() {}
 void FluidSynthSoundController::stop()
 {
     hideCountIn();
-    if (m_state != StoppedState) {
+    if (m_state != State::StoppedState) {
         fluid_event_t *event = new_fluid_event();
         fluid_event_set_source(event, -1);
         fluid_event_all_notes_off(event, 1);
@@ -565,7 +572,7 @@ void FluidSynthSoundController::sequencerCallback(unsigned int time, fluid_event
         soundController->hideCountIn();
         m_initialTime = 0;
         soundController->setPlaybackLabel(QStringLiteral("00:00.00"));
-        soundController->setState(StoppedState);
+        soundController->setState(State::StoppedState);
         break;
     }
     }
@@ -612,7 +619,7 @@ void FluidSynthSoundController::resetEngine()
 
     m_initialTime = 0;
     setPlaybackLabel(QStringLiteral("00:00.00"));
-    setState(StoppedState);
+    setState(State::StoppedState);
 }
 
 void FluidSynthSoundController::deleteEngine()

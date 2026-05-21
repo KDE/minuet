@@ -56,7 +56,7 @@ class MINUETINTERFACES_EXPORT ISoundController : public IPlugin
 public:
     ~ISoundController() override = default;
 
-    enum State { StoppedState = 0, PlayingState, PausedState };
+    enum class State { StoppedState, PlayingState, PausedState };
     Q_ENUM(State)
     Minuet::ISoundController::State state() const;
 

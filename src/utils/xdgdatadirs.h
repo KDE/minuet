@@ -12,7 +12,7 @@ namespace Utils
  *
  * @return QStringList
  */
-QStringList getXdgDataDirs();
+QStringList xdgDataDirs();
 
 }
 

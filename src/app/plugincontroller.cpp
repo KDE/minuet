@@ -38,6 +38,8 @@
 
 #include <QDebug>
 
+#include <utility>
+
 namespace Minuet
 {
 PluginController::PluginController(QObject *parent) : IPluginController(parent)
@@ -61,7 +63,7 @@ bool PluginController::initialize(Core *core)
     m_errorString.clear();
 #if !defined(Q_OS_ANDROID)
     ISoundController *soundController = nullptr;
-    foreach (const KPluginMetaData &pluginMetaData, m_plugins) {
+    for (const KPluginMetaData &pluginMetaData : std::as_const(m_plugins)) {
         if (m_loadedPlugins.value(pluginMetaData)) {
             continue;
         }

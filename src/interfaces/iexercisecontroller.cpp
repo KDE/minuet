@@ -37,6 +37,7 @@ void IExerciseController::setCurrentExercise(QVariantMap currentExercise)
         m_currentExercise = currentExercise;
         m_selectedExerciseOptions = QJsonArray();
         emit currentExerciseChanged(m_currentExercise);
+        emit selectedExerciseOptionsChanged(m_selectedExerciseOptions);
     }
 }
 

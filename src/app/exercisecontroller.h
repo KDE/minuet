@@ -56,7 +56,7 @@ private:
                         QString mergeKey = nullptr);
     QJsonArray applyDefinitions(QJsonArray exercises, QJsonArray definitions,
                                 QJsonObject collectedProperties = QJsonObject());
-    enum DefinitionFilteringMode { AndFiltering = 0, OrFiltering };
+    enum class DefinitionFilteringMode { AndFiltering, OrFiltering };
     static void filterDefinitions(QJsonArray &definitions, QJsonObject &exerciseObject,
                                   const QString &filterTagsKey,
                                   DefinitionFilteringMode definitionFilteringMode);

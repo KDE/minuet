@@ -35,7 +35,7 @@ ISoundController::ISoundController(QObject *parent) : IPlugin(parent)
     m_instrument = 0;
     m_rhythmInstrument = 37;
     setPlaybackLabel(QStringLiteral("00:00.00"));
-    setState(StoppedState);
+    setState(State::StoppedState);
 }
 
 ISoundController::State ISoundController::state() const
