@@ -30,6 +30,8 @@
 
 #include <interfaces/isoundcontroller.h>
 
+using namespace Qt::StringLiterals;
+
 namespace Minuet
 {
 bool Core::initialize()
@@ -42,7 +44,7 @@ bool Core::initialize()
     qRegisterMetaType<Minuet::ISoundController>();
     qmlRegisterUncreatableType<Minuet::ISoundController>(
         "org.kde.minuet.isoundcontroller", 1, 0, "ISoundController",
-        QStringLiteral("ISoundController cannot be instantiated"));
+        u"ISoundController cannot be instantiated"_s);
 
     m_self = new Core;
 

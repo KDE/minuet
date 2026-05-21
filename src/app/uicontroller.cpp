@@ -30,6 +30,8 @@
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
+using namespace Qt::StringLiterals;
+
 namespace Minuet
 {
 UiController::UiController(QObject *parent) : IUiController(parent) {}
@@ -39,9 +41,9 @@ bool UiController::initialize(Core *core)
     m_errorString.clear();
     auto *engine = new QQmlApplicationEngine(this);
     QQmlContext *rootContext = engine->rootContext();
-    rootContext->setContextProperty(QStringLiteral("core"), core);
+    rootContext->setContextProperty(u"core"_s, core);
     rootContext->setContextObject(new KLocalizedContext(engine));
-    engine->loadFromModule(QStringLiteral("org.kde.minuet"), QStringLiteral("Main"));
+    engine->loadFromModule(u"org.kde.minuet"_s, u"Main"_s);
 
     if (engine->rootObjects().isEmpty()) {
         m_errorString = i18n("Could not load the main user interface.");

@@ -40,12 +40,14 @@
 
 #include <utility>
 
+using namespace Qt::StringLiterals;
+
 namespace Minuet
 {
 PluginController::PluginController(QObject *parent) : IPluginController(parent)
 {
 #if !defined(Q_OS_ANDROID)
-    m_plugins = KPluginMetaData::findPlugins(QStringLiteral("minuet"));
+    m_plugins = KPluginMetaData::findPlugins(u"minuet"_s);
 #endif
 }
 
@@ -81,12 +83,12 @@ bool PluginController::initialize(Core *core)
         }
     }
     if (!soundController) {
-        m_errorString = QStringLiteral("Could not find a suitable SoundController plugin!");
+        m_errorString = u"Could not find a suitable SoundController plugin!"_s;
         return false;
     }
 #else
     ISoundController *soundController = 0;
-    if (!core->soundController() && (soundController = new FluidSynthSoundController)) {
+    if (!core->soundController() && (soundController = new FluidSynthSoundController(core))) {
         qInfo() << "Setting soundcontroller to" << soundController->metaObject()->className();
         core->setSoundController(soundController);
     }

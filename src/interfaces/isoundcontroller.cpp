@@ -25,6 +25,8 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 
+using namespace Qt::StringLiterals;
+
 namespace Minuet
 {
 ISoundController::ISoundController(QObject *parent) : IPlugin(parent)
@@ -34,7 +36,7 @@ ISoundController::ISoundController(QObject *parent) : IPlugin(parent)
     m_tempo = 60;
     m_instrument = 0;
     m_rhythmInstrument = 37;
-    setPlaybackLabel(QStringLiteral("00:00.00"));
+    setPlaybackLabel(u"00:00.00"_s);
     setState(State::StoppedState);
 }
 

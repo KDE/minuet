@@ -44,6 +44,8 @@
 
 #include <QDebug>
 
+using namespace Qt::StringLiterals;
+
 int main(int argc, char *argv[])
 {
     QGuiApplication application(argc, argv);
@@ -54,31 +56,31 @@ int main(int argc, char *argv[])
 
     KLocalizedString::setApplicationDomain("minuet");
 
-    KAboutData aboutData(QStringLiteral("minuet"), i18n("Minuet"),
-                         QStringLiteral(MINUET_VERSION_STRING),
+    KAboutData aboutData(u"minuet"_s, i18n("Minuet"),
+                         QString::fromUtf8(MINUET_VERSION_STRING),
                          i18n("A KDE application for music education"), KAboutLicense::GPL,
                          i18n("(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"));
-    aboutData.setHomepage(QStringLiteral("https://minuet.kde.org"));
+    aboutData.setHomepage(u"https://minuet.kde.org"_s);
     aboutData.setBugAddress("submit@bugs.kde.org");
     aboutData.setProductName("minuet");
-    aboutData.setDesktopFileName(QStringLiteral("org.kde.minuet"));
-    aboutData.addAuthor(QStringLiteral("Sandro S. Andrade"), i18n("Developer"),
-                        QStringLiteral("sandroandrade@kde.org"));
-    aboutData.addAuthor(QStringLiteral("Ayush Shah"), i18n("Developer"),
-                        QStringLiteral("1595ayush@gmail.com"));
-    aboutData.addAuthor(QStringLiteral("Alessandro Longo"), i18n("Minuet Icon Designer"),
-                        QStringLiteral("alessandro.longo@kdemail.net"));
+    aboutData.setDesktopFileName(u"org.kde.minuet"_s);
+    aboutData.addAuthor(u"Sandro S. Andrade"_s, i18n("Developer"),
+                        u"sandroandrade@kde.org"_s);
+    aboutData.addAuthor(u"Ayush Shah"_s, i18n("Developer"),
+                        u"1595ayush@gmail.com"_s);
+    aboutData.addAuthor(u"Alessandro Longo"_s, i18n("Minuet Icon Designer"),
+                        u"alessandro.longo@kdemail.net"_s);
 
 #if defined(Q_OS_ANDROID)
-    QQuickStyle::setStyle(QStringLiteral("org.kde.breeze"));
+    QQuickStyle::setStyle(u"org.kde.breeze"_s);
     KColorSchemeManager::instance();
 #else
     if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
-        QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
+        QQuickStyle::setStyle(u"org.kde.desktop"_s);
     }
 #endif
 
-    QGuiApplication::setWindowIcon(QIcon(QStringLiteral(":/icons/64-apps-minuet.png")));
+    QGuiApplication::setWindowIcon(QIcon(u":/icons/64-apps-minuet.png"_s));
 
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
@@ -95,14 +97,14 @@ int main(int argc, char *argv[])
 
 #if defined(Q_OS_ANDROID)
     const QDir writableDataDir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
-    const QString soundfontDirPath = writableDataDir.absoluteFilePath(QStringLiteral("soundfonts"));
-    const QString soundfontPath = QDir(soundfontDirPath).absoluteFilePath(QStringLiteral("GeneralUser-v1.47.sf2"));
+    const QString soundfontDirPath = writableDataDir.absoluteFilePath(u"soundfonts"_s);
+    const QString soundfontPath = QDir(soundfontDirPath).absoluteFilePath(u"GeneralUser-v1.47.sf2"_s);
     if (!QFile::exists(soundfontPath)) {
         QDir().mkpath(soundfontDirPath);
         const QStringList assetPaths = {
-            QStringLiteral("assets:/share/minuet/soundfonts/GeneralUser-v1.47.sf2"),
-            QStringLiteral("assets:/data/soundfonts/GeneralUser-v1.47.sf2"),
-            QStringLiteral("assets:/share/GeneralUser-v1.47.sf2"),
+            u"assets:/share/minuet/soundfonts/GeneralUser-v1.47.sf2"_s,
+            u"assets:/data/soundfonts/GeneralUser-v1.47.sf2"_s,
+            u"assets:/share/GeneralUser-v1.47.sf2"_s,
         };
         for (const QString &assetPath : assetPaths) {
             QFile assetFile(assetPath);

@@ -39,6 +39,8 @@
 #include <algorithm>
 #include <utility>
 
+using namespace Qt::StringLiterals;
+
 unsigned int FluidSynthSoundController::m_initialTime = 0;
 static constexpr short RhythmCountInKey = 76; // High Wood Block
 static constexpr short DefaultRhythmInstrumentKey = 37; // Side Stick
@@ -62,19 +64,19 @@ FluidSynthSoundController::FluidSynthSoundController(QObject *parent)
 
 #ifdef Q_OS_ANDROID
     const QString sf_path = QStandardPaths::locate(
-        QStandardPaths::AppDataLocation, QStringLiteral("soundfonts/GeneralUser-v1.47.sf2"));
+        QStandardPaths::AppDataLocation, u"soundfonts/GeneralUser-v1.47.sf2"_s);
 #elif defined(Q_OS_WIN)
     const QString sf_path = QStandardPaths::locate(
-        QStandardPaths::AppDataLocation, QStringLiteral("minuet/soundfonts/GeneralUser-v1.47.sf2"));
+        QStandardPaths::AppDataLocation, u"minuet/soundfonts/GeneralUser-v1.47.sf2"_s);
 #else
     QString sf_path = QStandardPaths::locate(QStandardPaths::AppDataLocation,
-                                             QStringLiteral("soundfonts/GeneralUser-v1.47.sf2"));
+                                             u"soundfonts/GeneralUser-v1.47.sf2"_s);
 #ifdef Q_OS_MACOS
     if (sf_path.isEmpty()) {
         const QStringList xdgDataDirs = Utils::xdgDataDirs();
         for (const auto &dirPath : xdgDataDirs) {
             const QFile testFile(QDir(dirPath).absoluteFilePath(
-                QStringLiteral("minuet/soundfonts/GeneralUser-v1.47.sf2")));
+                u"minuet/soundfonts/GeneralUser-v1.47.sf2"_s));
             if (testFile.exists()) {
                 sf_path = testFile.fileName();
                 break;
@@ -138,6 +140,10 @@ void FluidSynthSoundController::setVolume(quint8 volume)
 
 void FluidSynthSoundController::setTempo(quint8 tempo)
 {
+    if (tempo == 0) {
+        qWarning() << "Ignoring invalid zero tempo.";
+        return;
+    }
     if (m_tempo == tempo) {
         return;
     }
@@ -168,40 +174,51 @@ void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedEx
 {
     hideCountIn();
     clearSong();
+    if (m_tempo == 0) {
+        qWarning() << "Cannot prepare exercise options with zero tempo.";
+        return;
+    }
 
     auto *song = new QList<fluid_event_t *>;
     m_song.reset(song);
 
-    if (m_playMode == QLatin1String("rhythm")) {
+    if (m_playMode == u"rhythm"_s) {
         for (int i = 0; i < 4; ++i) {
             appendEvent(9, RhythmCountInKey, 127, 1000 * (60.0 / m_tempo));
         }
     }
 
     for (auto &&selectedExerciseOption : selectedExerciseOptions) {
-        QString sequence = selectedExerciseOption.toObject()[QStringLiteral("sequence")].toString();
+        QString sequence = selectedExerciseOption.toObject()[u"sequence"_s].toString();
 
         unsigned int chosenRootNote
-            = selectedExerciseOption.toObject()[QStringLiteral("rootNote")].toString().toInt();
-        if (m_playMode != QLatin1String("rhythm")) {
+            = selectedExerciseOption.toObject()[u"rootNote"_s].toString().toInt();
+        if (m_playMode != u"rhythm"_s) {
             appendEvent(1, chosenRootNote, 127, 1000 * (60.0 / m_tempo));
             const QStringList additionalNotes = sequence.split(' ');
             for (const QString &additionalNote : additionalNotes) {
                 appendEvent(1, chosenRootNote + additionalNote.toInt(), 127,
-                            ((m_playMode == QLatin1String("scale")) ? 1000 : 4000)
+                            ((m_playMode == u"scale"_s) ? 1000 : 4000)
                                 * (60.0 / m_tempo));
             }
         } else {
             // appendEvent(9, 80, 127, 1000*(60.0/m_tempo));
-            const QStringList additionalNotes = sequence.split(' ');
+            const QStringList additionalNotes = sequence.split(QLatin1Char(' '), Qt::SkipEmptyParts);
             for (QString additionalNote : additionalNotes) {
                 float dotted = 1;
                 if (additionalNote.endsWith('.')) {
                     dotted = 1.5;
                     additionalNote.chop(1);
                 }
+                bool ok = false;
+                const int denominator = additionalNote.toInt(&ok);
+                if (!ok || denominator <= 0) {
+                    qWarning() << "Ignoring exercise option with invalid rhythm value:" << additionalNote;
+                    clearSong();
+                    return;
+                }
                 unsigned int duration
-                    = dotted * 1000 * (60.0 / m_tempo) * (4.0 / additionalNote.toInt());
+                    = dotted * 1000 * (60.0 / m_tempo) * (4.0 / denominator);
                 appendEvent(9, m_rhythmInstrument, 127, duration);
             }
         }
@@ -227,19 +244,19 @@ void FluidSynthSoundController::play()
     }
 
     if (m_state != State::PlayingState) {
-        m_countInNextValue = m_playMode == QLatin1String("rhythm") ? 4 : 0;
+        m_countInNextValue = m_playMode == u"rhythm"_s ? 4 : 0;
         m_countInVisible = false;
         unsigned int now = fluid_sequencer_get_tick(m_sequencer);
         for (fluid_event_t *event : std::as_const(*m_song.data())) {
             if (fluid_event_get_type(event) != FLUID_SEQ_ALLNOTESOFF
-                || m_playMode != QLatin1String("chord")) {
+                || m_playMode != u"chord"_s) {
                 fluid_event_set_dest(event, m_synthSeqID);
                 fluid_sequencer_send_at(m_sequencer, event, now, 1);
             }
             fluid_event_set_dest(event, m_callbackSeqID);
             fluid_sequencer_send_at(m_sequencer, event, now, 1);
-            now += (m_playMode == QLatin1String("rhythm"))  ? fluid_event_get_duration(event)
-                   : (m_playMode == QLatin1String("scale")) ? 1000 * (60.0 / m_tempo)
+            now += (m_playMode == u"rhythm"_s)  ? fluid_event_get_duration(event)
+                   : (m_playMode == u"scale"_s) ? 1000 * (60.0 / m_tempo)
                                                             : 0;
         }
         setState(State::PlayingState);
@@ -327,26 +344,26 @@ void FluidSynthSoundController::populateInstruments()
             const QString name = QString::fromUtf8(fluid_preset_get_name(preset));
             const int group = program / 8;
             QVariantMap instrument;
-            instrument.insert(QStringLiteral("group"), group);
-            instrument.insert(QStringLiteral("bank"), bank);
-            instrument.insert(QStringLiteral("program"), program);
-            instrument.insert(QStringLiteral("number"), program + 1);
-            instrument.insert(QStringLiteral("name"), name);
-            instrument.insert(QStringLiteral("displayName"),
-                              QStringLiteral("%1 %2").arg(program + 1, 3, 10, QLatin1Char('0')).arg(name));
+            instrument.insert(u"group"_s, group);
+            instrument.insert(u"bank"_s, bank);
+            instrument.insert(u"program"_s, program);
+            instrument.insert(u"number"_s, program + 1);
+            instrument.insert(u"name"_s, name);
+            instrument.insert(u"displayName"_s,
+                              u"%1 %2"_s.arg(program + 1, 3, 10, QLatin1Char('0')).arg(name));
             instrumentMaps.push_back(instrument);
         }
     }
 
     std::sort(instrumentMaps.begin(), instrumentMaps.end(), [](const QVariantMap &lhs, const QVariantMap &rhs) {
-        return lhs.value(QStringLiteral("program")).toInt() < rhs.value(QStringLiteral("program")).toInt();
+        return lhs.value(u"program"_s).toInt() < rhs.value(u"program"_s).toInt();
     });
 
     QVariantList instruments;
     QSet<int> availableGroups;
     for (const QVariantMap &instrument : std::as_const(instrumentMaps)) {
         instruments.push_back(instrument);
-        availableGroups.insert(instrument.value(QStringLiteral("group")).toInt());
+        availableGroups.insert(instrument.value(u"group"_s).toInt());
     }
 
     QVariantList groups;
@@ -356,8 +373,8 @@ void FluidSynthSoundController::populateInstruments()
         }
 
         QVariantMap groupData;
-        groupData.insert(QStringLiteral("id"), group);
-        groupData.insert(QStringLiteral("name"), instrumentGroupName(group));
+        groupData.insert(u"id"_s, group);
+        groupData.insert(u"name"_s, instrumentGroupName(group));
         groups.push_back(groupData);
     }
 
@@ -376,11 +393,11 @@ void FluidSynthSoundController::populateRhythmInstruments()
     QVariantList rhythmInstruments;
     for (int key = FirstRhythmInstrumentKey; key <= LastRhythmInstrumentKey; ++key) {
         QVariantMap instrument;
-        instrument.insert(QStringLiteral("key"), key);
-        instrument.insert(QStringLiteral("number"), key);
-        instrument.insert(QStringLiteral("name"), rhythmInstrumentName(key));
-        instrument.insert(QStringLiteral("displayName"),
-                          QStringLiteral("%1 %2").arg(key, 3, 10, QLatin1Char('0')).arg(rhythmInstrumentName(key)));
+        instrument.insert(u"key"_s, key);
+        instrument.insert(u"number"_s, key);
+        instrument.insert(u"name"_s, rhythmInstrumentName(key));
+        instrument.insert(u"displayName"_s,
+                          u"%1 %2"_s.arg(key, 3, 10, QLatin1Char('0')).arg(rhythmInstrumentName(key)));
         rhythmInstruments.push_back(instrument);
     }
     setRhythmInstruments(rhythmInstruments);
@@ -558,7 +575,7 @@ void FluidSynthSoundController::sequencerCallback(unsigned int time, fluid_event
     case FLUID_SEQ_NOTE: {
         const int channel = fluid_event_get_channel(event);
         const short key = fluid_event_get_key(event);
-        if (soundController->m_playMode == QLatin1String("rhythm") && channel == 9) {
+        if (soundController->m_playMode == u"rhythm"_s && channel == 9) {
             if (key == RhythmCountInKey && soundController->m_countInNextValue > 0) {
                 soundController->m_countInVisible = true;
                 emit soundController->countInChanged(soundController->m_countInNextValue);
@@ -577,7 +594,7 @@ void FluidSynthSoundController::sequencerCallback(unsigned int time, fluid_event
         int cnts = 100 * (adjustedTime - qFloor(adjustedTime));
 
         static QChar fill('0');
-        soundController->setPlaybackLabel(QStringLiteral("%1:%2.%3")
+        soundController->setPlaybackLabel(u"%1:%2.%3"_s
                                               .arg(mins, 2, 10, fill)
                                               .arg(secs, 2, 10, fill)
                                               .arg(cnts, 2, 10, fill));
@@ -586,7 +603,7 @@ void FluidSynthSoundController::sequencerCallback(unsigned int time, fluid_event
     case FLUID_SEQ_ALLNOTESOFF: {
         soundController->hideCountIn();
         m_initialTime = 0;
-        soundController->setPlaybackLabel(QStringLiteral("00:00.00"));
+        soundController->setPlaybackLabel(u"00:00.00"_s);
         soundController->setState(State::StoppedState);
         break;
     }
@@ -633,7 +650,7 @@ void FluidSynthSoundController::resetEngine()
                                           &FluidSynthSoundController::sequencerCallback, this);
 
     m_initialTime = 0;
-    setPlaybackLabel(QStringLiteral("00:00.00"));
+    setPlaybackLabel(u"00:00.00"_s);
     setState(State::StoppedState);
 }
 
