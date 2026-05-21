@@ -54,29 +54,12 @@ Item {
         property int countIn: 0
         property bool showingCorrectAnswers: false
         property Item hoveredAvailableAnswer
-
-        onCurrentAnswerChanged: {
-            for (var i = 0; i < yourAnswersParent.children.length; ++i)
-                yourAnswersParent.children[i].destroy()
-            yourAnswersParent.children = ""
-            for (var i = 0; i < currentAnswer; ++i)
-                answerOption.createObject(yourAnswersParent, { "model": userAnswers[i].model, "index": userAnswers[i].index, "position": i, "color": userAnswers[i].color  })
-        }
     }
 
     onCurrentExerciseChanged: {
         internal.countIn = 0
         clearUserAnswers()
-        for (var i = 0; i < answerGrid.children.length; ++i)
-            answerGrid.children[i].destroy()
-        answerGrid.children = ""
         if (exerciseView.currentExercise !== undefined) {
-            var currentExerciseOptions = exerciseView.currentExercise["options"];
-            if (currentExerciseOptions !== undefined) {
-                var length = currentExerciseOptions.length
-                for (var i = 0; i < length; ++i)
-                    answerOption.createObject(answerGrid, {"model": currentExerciseOptions[i], "index": i, "color": internal.colors[i%internal.colors.length], "showClickFeedback": true})
-            }
             sheetMusicView.spaced = (exerciseView.currentExercise["playMode"] === "chord") ? false:true
             messageText.text = i18n("Click 'New Question' to start!")
             exerciseView.state = "waitingForNewQuestion"
@@ -88,11 +71,15 @@ Item {
         sheetMusicView.clearAllMarks()
         internal.showingCorrectAnswers = false
         internal.hoveredAvailableAnswer = null
-        for (var i = 0; i < yourAnswersParent.children.length; ++i)
-            yourAnswersParent.children[i].destroy()
-        yourAnswersParent.children = ""
         internal.currentAnswer = 0
         internal.userAnswers = []
+    }
+
+    function availableAnswersModel(): var {
+        if (exerciseView.currentExercise === undefined || exerciseView.currentExercise.options === undefined) {
+            return []
+        }
+        return exerciseView.currentExercise.options
     }
 
     function answerModel(answer: var): var {
@@ -105,9 +92,10 @@ Item {
         }
 
         var model = answerModel(answer)
-        for (var i = 0; i < answerGrid.children.length; ++i) {
-            if (answerGrid.children[i].model.name === model.name) {
-                return answerGrid.children[i].color
+        for (var i = 0; i < availableAnswersRepeater.count; ++i) {
+            const answerItem = availableAnswersRepeater.itemAt(i)
+            if (answerItem !== null && answerItem.model.name === model.name) {
+                return answerItem.color
             }
         }
         return "white"
@@ -220,14 +208,18 @@ Item {
         internal.answersAreRight = true
         var expectedAnswers = selectedOptionCount()
         for (var i = 0; i < expectedAnswers; ++i) {
+            const answerItem = userAnswersRepeater.itemAt(i)
+            if (answerItem === null) {
+                continue
+            }
             if (internal.userAnswers[i].name !== rightAnswers[i].name) {
-                yourAnswersParent.children[i].borderColor = "red"
-                yourAnswersParent.children[i].borderWidth = 3
+                answerItem.borderColor = "red"
+                answerItem.borderWidth = 3
                 internal.answersAreRight = false
             }
             else {
-                yourAnswersParent.children[i].borderColor = "green"
-                yourAnswersParent.children[i].borderWidth = 3
+                answerItem.borderColor = "green"
+                answerItem.borderWidth = 3
                 if (internal.isTest)
                     internal.correctAnswers++
             }
@@ -248,13 +240,17 @@ Item {
     
     function highlightRightAnswer(): void {
         var chosenExercises = Core.exerciseController.selectedExerciseOptions
-        for (var i = 0; i < answerGrid.children.length; ++i) {
-            if (answerGrid.children[i].model.name !== chosenExercises[0].name) {
-                answerGrid.children[i].opacity = 0.25
+        for (var i = 0; i < availableAnswersRepeater.count; ++i) {
+            const answerItem = availableAnswersRepeater.itemAt(i)
+            if (answerItem === null) {
+                continue
+            }
+            if (answerItem.model.name !== chosenExercises[0].name) {
+                answerItem.opacity = 0.25
             }
             else {
-                internal.rightAnswerRectangle = answerGrid.children[i]
-                answerGrid.children[i].opacity = 1
+                internal.rightAnswerRectangle = answerItem
+                answerItem.opacity = 1
             }
         }
         animation.start()
@@ -267,8 +263,12 @@ Item {
     }
 
     function nextTestExercise(): void {
-        for (var i = 0; i < answerGrid.children.length; ++i)
-            answerGrid.children[i].opacity = 1
+        for (var i = 0; i < availableAnswersRepeater.count; ++i) {
+            const answerItem = availableAnswersRepeater.itemAt(i)
+            if (answerItem !== null) {
+                answerItem.opacity = 1
+            }
+        }
         pianoView.clearAllMarks()
         sheetMusicView.clearAllMarks()
         clearUserAnswers()
@@ -349,15 +349,17 @@ Item {
                         internal.correctAnswers--
                     internal.giveUp = true
                     var rightAnswers = Core.exerciseController.selectedExerciseOptions
-                    internal.userAnswers = []
+                    var userAnswers = []
                     for (var i = 0; i < selectedOptionCount(); ++i) {
-                        for (var j = 0; j < answerGrid.children.length; ++j) {
-                            if (answerGrid.children[j].model.name === rightAnswers[i].name) {
-                                internal.userAnswers.push({"name": rightAnswers[i].name, "model": answerGrid.children[j].model, "index": j, "color": internal.colors[j]})
+                        for (var j = 0; j < availableAnswersRepeater.count; ++j) {
+                            const answerItem = availableAnswersRepeater.itemAt(j)
+                            if (answerItem !== null && answerItem.model.name === rightAnswers[i].name) {
+                                userAnswers.push({"name": rightAnswers[i].name, "model": answerItem.model, "index": j, "color": answerItem.color})
                                 break
                             }
                         }
                     }
+                    internal.userAnswers = userAnswers
                     internal.currentAnswer = selectedOptionCount()
                     checkAnswers()
                 }
@@ -408,16 +410,26 @@ Item {
                 maximumColumns: Math.max(1, Screen.width / (minimumColumnWidth + columnSpacing))
                 minimumColumnWidth: 120
 
+                Repeater {
+                    id: availableAnswersRepeater
+
+                    model: exerciseView.availableAnswersModel()
+                    delegate: answerOption
+                }
+
                 Component {
                     id: answerOption
 
                     Kirigami.AbstractCard {
                         id: answerRectangle
 
-                        property var model
-                        property int index
-                        property int position
-                        property color color
+                        required property int index
+                        required property var modelData
+
+                        property var model: submittedAnswer ? modelData.model : modelData
+                        property int answerIndex: submittedAnswer ? modelData.index : index
+                        property int position: submittedAnswer ? index : -1
+                        property color color: submittedAnswer ? modelData.color : internal.colors[index % internal.colors.length]
                         property color borderColor: "transparent"
                         property int borderWidth: 0
                         property bool submittedAnswer: parent === yourAnswersParent
@@ -459,8 +471,8 @@ Item {
                         }
 
                         function chooseAnswer(): void {
-                            if (parent === answerGrid && exerciseView.state === "waitingForAnswer" && !animation.running) {
-                                internal.userAnswers.push({"name": model.name, "model": answerRectangle.model, "index": answerRectangle.index, "color": answerRectangle.color})
+                            if (!submittedAnswer && exerciseView.state === "waitingForAnswer" && !animation.running) {
+                                internal.userAnswers = internal.userAnswers.concat([{"name": model.name, "model": answerRectangle.model, "index": answerRectangle.index, "color": answerRectangle.color}])
                                 internal.currentAnswer++
                                 if (internal.currentAnswer === selectedOptionCount()) {
                                     checkAnswers()
@@ -548,6 +560,13 @@ Item {
 
                 anchors.centerIn: parent
                 spacing: Kirigami.Units.largeSpacing
+
+                Repeater {
+                    id: userAnswersRepeater
+
+                    model: internal.userAnswers
+                    delegate: answerOption
+                }
             }
 
             ScrollIndicator.horizontal: ScrollIndicator { active: true }
@@ -561,7 +580,7 @@ Item {
             visible: exerciseView.currentExercise !== undefined && exerciseView.currentExercise["playMode"] === "rhythm"
             enabled: internal.currentAnswer > 0 && internal.currentAnswer < selectedOptionCount()
             onClicked: {
-                internal.userAnswers.pop()
+                internal.userAnswers = internal.userAnswers.slice(0, -1)
                 internal.currentAnswer--
             }
         }
@@ -604,8 +623,11 @@ Item {
             name: "waitingForAnswer"
             StateChangeScript {
                 script: {
-                    for (var i = 0; i < answerGrid.children.length; ++i) {
-                        answerGrid.children[i].opacity = 1
+                    for (var i = 0; i < availableAnswersRepeater.count; ++i) {
+                        const answerItem = availableAnswersRepeater.itemAt(i)
+                        if (answerItem !== null) {
+                            answerItem.opacity = 1
+                        }
                     }
                 }
             }

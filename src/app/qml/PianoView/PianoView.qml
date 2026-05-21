@@ -48,7 +48,8 @@ Flickable {
     function noteMark(chan: int, pitch: int, vel: int, color: color): void {
         const noteItem = itemForPitch(pitch)
         clearMarksFromKey(noteItem)
-        noteMarkComponent.createObject(noteItem, { color: color })
+        noteItem.markColor = color
+        noteItem.marked = true
     }
     function noteUnmark(chan: int, pitch: int, vel: int, color: color): void {
         clearMarksFromKey(itemForPitch(pitch))
@@ -64,12 +65,7 @@ Flickable {
             return
         }
 
-        for (var index = noteItem.children.length - 1; index >= 0; --index) {
-            var markItem = noteItem.children[index]
-            if (markItem.pianoViewMark) {
-                markItem.destroy()
-            }
-        }
+        noteItem.marked = false
     }
     function scrollToNote(pitch: int): void {
         const targetX = flickable.contentWidth / 88 * (pitch - 21) - flickable.width / 2
@@ -141,19 +137,6 @@ Flickable {
                 width: 3 * flickable.keyWidth + 7 * (7 * flickable.keyWidth); height: 2
                 anchors { left: whiteKeyA.left; bottom: whiteKeyA.top }
                 color: "#A40E09"
-            }
-        }
-
-        Component {
-            id: noteMarkComponent
-
-            Rectangle {
-                property bool pianoViewMark: true
-
-                width: flickable.keyWidth - 4; height: flickable.keyWidth - 4
-                radius: (flickable.keyWidth - 4) / 2
-                border.color: "black"
-                anchors { horizontalCenter: parent.horizontalCenter; bottom: parent.bottom; bottomMargin: 2 }
             }
         }
     }
