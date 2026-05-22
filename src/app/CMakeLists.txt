@@ -101,6 +101,7 @@ target_link_libraries(minuet PRIVATE
     KF6::CoreAddons
     KF6::I18n
     KF6::Kirigami
+    KirigamiAddonsComponents
     Minuet::Interfaces
     Minuet::Utils
 )
