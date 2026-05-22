@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-12 00:40+0000\n"
-"PO-Revision-Date: 2026-04-16 13:30+0400\n"
+"PO-Revision-Date: 2026-05-21 11:09+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -1283,7 +1283,7 @@ msgstr "أوكتاف %1"
 #: src/app/uicontroller.cpp:47
 #, kde-format
 msgid "Could not load the main user interface."
-msgstr ""
+msgstr "تعذر تحديث واجهة المستخدم الرئيسة"
 
 #~ msgid "About"
 #~ msgstr "عن"
