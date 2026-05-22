@@ -25,9 +25,8 @@
 #include "core.h"
 
 #include <QQmlApplicationEngine>
-#include <QQmlContext>
 
-#include <KLocalizedContext>
+#include <KLocalizedQmlContext>
 #include <KLocalizedString>
 
 using namespace Qt::StringLiterals;
@@ -42,8 +41,7 @@ bool UiController::initialize(Core *core)
 
     m_errorString.clear();
     auto *engine = new QQmlApplicationEngine(this);
-    QQmlContext *rootContext = engine->rootContext();
-    rootContext->setContextObject(new KLocalizedContext(engine));
+    KLocalization::setupLocalizedContext(engine);
     engine->loadFromModule(u"org.kde.minuet"_s, u"Main"_s);
 
     if (engine->rootObjects().isEmpty()) {

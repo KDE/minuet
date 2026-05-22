@@ -99,16 +99,13 @@ target_link_libraries(minuet PRIVATE
     Qt::Svg
     KF6::CoreAddons
     KF6::I18n
+    KF6::I18nQml
     KF6::Kirigami
     KirigamiApp
     KirigamiAddonsComponents
     Minuet::Interfaces
     Minuet::Utils
 )
-
-if(TARGET KF6::I18nQml)
-    target_link_libraries(minuet PRIVATE KF6::I18nQml)
-endif()
 
 if(ANDROID)
     set_target_properties(minuet PROPERTIES
