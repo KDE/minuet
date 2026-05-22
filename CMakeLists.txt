@@ -64,6 +64,7 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     Kirigami
     I18n
 )
+find_package(KF6I18nQml ${KF_MIN_VERSION} CONFIG QUIET)
 find_package(KF6KirigamiAddons REQUIRED)
 ecm_find_qmlmodule(org.kde.kirigami REQUIRED)
 ecm_find_qmlmodule(org.kde.coreaddons REQUIRED)

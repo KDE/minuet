@@ -101,10 +101,15 @@ target_link_libraries(minuet PRIVATE
     KF6::CoreAddons
     KF6::I18n
     KF6::Kirigami
+    KirigamiApp
     KirigamiAddonsComponents
     Minuet::Interfaces
     Minuet::Utils
 )
+
+if(TARGET KF6::I18nQml)
+    target_link_libraries(minuet PRIVATE KF6::I18nQml)
+endif()
 
 if(ANDROID)
     set_target_properties(minuet PROPERTIES
@@ -120,6 +125,7 @@ if(ANDROID)
         Minuet::FluidSynthSoundController
     )
     kirigami_package_breeze_icons(ICONS
+        ${KIRIGAMI_ADDONS_ICONS}
         dialog-close
     )
     ecm_add_android_apk(minuet ANDROID_DIR ${CMAKE_SOURCE_DIR}/android)
