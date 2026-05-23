@@ -9,6 +9,7 @@ Dependencies:
     'frameworks/ki18n': '@latest-kf6'
     'frameworks/kirigami': '@latest-kf6'
     'libraries/kirigami-addons': '@latest-kf6'
+    'third-party/fluidsynth': '@latest'
 
  - 'on': ['Android/Qt6']
    'require':

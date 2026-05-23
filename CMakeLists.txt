@@ -80,7 +80,6 @@ ELSE()
     find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
         ColorScheme
     )
-    ecm_find_qmlmodule(org.kde.breeze REQUIRED)
 ENDIF()
 
 include_directories(${minuet_SOURCE_DIR}/src/ ${minuet_BINARY_DIR}/src/)

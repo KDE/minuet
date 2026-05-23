@@ -70,9 +70,7 @@ Kirigami.ApplicationWindow {
         currentExercise = undefined
         currentExerciseSelection = { kind: "about" }
         pageStack.clear()
-        pageStack.push(Qt.createComponent("org.kde.kirigamiaddons.formcard", "AboutPage"), {
-            title: i18n("About"),
-        })
+        pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
     }
 
     function openSettings(): void {

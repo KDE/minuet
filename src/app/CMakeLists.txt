@@ -52,6 +52,7 @@ qt_add_qml_module(minuet
         settingscontroller.h
     QML_FILES
         qml/Main.qml
+        qml/AboutPage.qml
         qml/ActionListItem.qml
         qml/ExerciseMenuPage.qml
         qml/ExercisePage.qml
