@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <manifest package="org.kde.minuet"
           xmlns:android="http://schemas.android.com/apk/res/android"
-          android:versionName="-- %%INSERT_VERSION_NAME%% --"
-          android:versionCode="-- %%INSERT_VERSION_CODE%% --"
+          android:versionName="${versionName}"
+          android:versionCode="${versionCode}"
           android:installLocation="auto">
 
     <!-- %%INSERT_PERMISSIONS -->

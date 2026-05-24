@@ -123,10 +123,12 @@ if(ANDROID)
     )
     kirigami_package_breeze_icons(ICONS
         ${KIRIGAMI_ADDONS_ICONS}
+        arrow-up
+        arrow-down
         dialog-close
         go-home
-        settings-configure
         help-about-symbolic
+        settings-configure
         view-list-details
     )
     ecm_add_android_apk(minuet ANDROID_DIR ${CMAKE_SOURCE_DIR}/android)

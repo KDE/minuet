@@ -17,6 +17,7 @@ Makefile
 avail
 random_seed
 build*
+!android/build.gradle
 CMakeLists.txt.user*
 *.unc-backup*
 .vscode

@@ -275,7 +275,10 @@ FormCard.FormCardPage {
                 root.selectedMelodicGroup = currentValue
                 Core.settingsController.instrumentGroup = currentValue
                 root.rebuildInstrumentsForGroup()
-                melodicInstrumentSelector.currentIndex = root.melodicInstrumentIndex(Core.settingsController.instrument)
+                melodicInstrumentSelector.currentIndex = instrumentsForGroupModel.count > 0 ? 0 : -1
+                if (melodicInstrumentSelector.currentIndex >= 0) {
+                    Core.settingsController.instrument = instrumentsForGroupModel.get(melodicInstrumentSelector.currentIndex).program
+                }
             }
         }
 
