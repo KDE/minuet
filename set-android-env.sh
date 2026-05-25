@@ -1,9 +1,0 @@
-export BASE_DIR=/data/teste-livro
-export ANDROID_NDK=$BASE_DIR/android-ndk-r20
-export ANDROID_SDK_ROOT=$BASE_DIR/android-sdk-4333796
-export Qt5_android=$BASE_DIR/Qt/5.13.2/android_arm64_v8a
-export PATH=$ANDROID_SDK_ROOT/platform-tools/:$PATH
-export ANT=/usr/bin/ant
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk/
-export INSTALL_DIR=../install
-export CMAKE_SYSROOT=$ANDROID_NDK/platforms/android-21/arch-arm64

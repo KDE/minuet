@@ -13,10 +13,19 @@ import org.qtproject.qt.android.bindings.QtActivity;
 
 public class MinuetActivity extends QtActivity
 {
+    private static volatile boolean s_keepSplashScreenVisible = true;
+
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
-        SplashScreen.installSplashScreen(this);
+        s_keepSplashScreenVisible = true;
+        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
+        splashScreen.setKeepOnScreenCondition(() -> s_keepSplashScreenVisible);
         super.onCreate(savedInstanceState);
+    }
+
+    public static void hideSplashScreen()
+    {
+        s_keepSplashScreenVisible = false;
     }
 }
