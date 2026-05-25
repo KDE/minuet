@@ -20,8 +20,9 @@
                  android:allowBackup="false"
                  android:theme="@style/MinuetTheme">
         <activity android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|layoutDirection|locale|fontScale|keyboard|keyboardHidden|navigation|mcc|mnc|density"
-                  android:name="org.qtproject.qt.android.bindings.QtActivity"
+                  android:name="org.kde.minuet.MinuetActivity"
                   android:label="Minuet"
+                  android:theme="@style/MinuetTheme.Starting"
                   android:screenOrientation="unspecified"
                   android:launchMode="singleTop"
                   android:windowSoftInputMode="adjustResize"
@@ -32,7 +33,6 @@
             </intent-filter>
 
             <meta-data android:name="android.app.lib_name" android:value="minuet"/>
-            <meta-data android:name="android.app.splash_screen_drawable" android:resource="@drawable/splash"/>
             <meta-data android:name="android.app.background_running" android:value="false"/>
             <meta-data android:name="android.app.extract_android_style" android:value="minimal"/>
         </activity>

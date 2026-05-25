@@ -24,6 +24,7 @@ apply from: '../ecm-version.gradle'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    implementation 'androidx.core:core-splashscreen:1.2.0'
 }
 
 android {
