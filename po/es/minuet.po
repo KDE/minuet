@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-24 00:40+0000\n"
-"PO-Revision-Date: 2026-05-08 16:22+0100\n"
+"POT-Creation-Date: 2026-05-25 00:40+0000\n"
+"PO-Revision-Date: 2026-05-24 10:47+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 26.04.0\n"
+"X-Generator: Lokalize 26.04.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1199,33 +1199,33 @@ msgstr "Diseñador del icono de Minuet"
 #, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 - %1 elemento"
+msgstr[1] "%2 - %1 elementos"
 
 #: src/app/qml/ExerciseMenuPage.qml:77
 #, kde-format
 msgid "Practice identifying this exercise by ear."
-msgstr ""
+msgstr "Practicar a identificar este ejercicio de oído."
 
 #: src/app/qml/ExerciseMenuPage.qml:79
 #, kde-format
 msgid "Practice rhythm recognition."
-msgstr ""
+msgstr "Practicar el reconocimiento del ritmo."
 
 #: src/app/qml/ExerciseMenuPage.qml:81
 #, kde-format
 msgid "Identify the scale by ear."
-msgstr ""
+msgstr "Identificar la escala de oído."
 
 #: src/app/qml/ExerciseMenuPage.qml:83
 #, kde-format
 msgid "Identify the chord or interval by ear."
-msgstr ""
+msgstr "Identificar el acorde o el intervalo de oído."
 
 #: src/app/qml/ExerciseMenuPage.qml:87
 #, kde-format
 msgid "%1 Includes %2 possible answers."
-msgstr ""
+msgstr "%1 Incluye %2 posibles respuestas."
 
 #: src/app/qml/ExerciseView.qml:64
 #, kde-format
@@ -1299,15 +1299,14 @@ msgid "Available Answers"
 msgstr "Respuestas disponibles"
 
 #: src/app/qml/ExerciseView.qml:547
-#, fuzzy, kde-format
-#| msgid "Your Answer(s)"
+#, kde-format
 msgid "Correct Answer(s)"
-msgstr "Su(s) respuesta(s)"
+msgstr "Respuesta correcta"
 
 #: src/app/qml/ExerciseView.qml:547
 #, kde-format
 msgid "Your Answer(s)"
-msgstr "Su(s) respuesta(s)"
+msgstr "Su respuesta"
 
 #: src/app/qml/ExerciseView.qml:578
 #, kde-format
@@ -1317,27 +1316,28 @@ msgstr "Retroceso"
 #: src/app/qml/Main.qml:115
 #, kde-format
 msgid "Choose an exercise"
-msgstr ""
+msgstr "Escoja un ejercicio"
 
 #: src/app/qml/Main.qml:116
 #, kde-format
 msgid "Start with a topic, then pick the specific training level."
 msgstr ""
+"Empiece por un tema y luego seleccione un determinado nivel de formación."
 
 #: src/app/qml/MinuetDrawer.qml:56 src/app/qml/MinuetDrawer.qml:231
 #, kde-format
 msgid "All exercises"
-msgstr ""
+msgstr "Todos los ejercicios"
 
 #: src/app/qml/MinuetDrawer.qml:132
 #, kde-format
 msgid "Search…"
-msgstr ""
+msgstr "Buscar…"
 
 #: src/app/qml/MinuetDrawer.qml:153
 #, kde-format
 msgid "Welcome to Minuet"
-msgstr ""
+msgstr "Bienvenido a Minuet"
 
 #: src/app/qml/MinuetDrawer.qml:164
 #, kde-format
@@ -1345,16 +1345,18 @@ msgid ""
 "Practice ear training with exercises for intervals, chords, rhythm, scales, "
 "and more."
 msgstr ""
+"Practique el entrenamiento auditivo con ejercicios de intervalos, acordes, "
+"ritmo, escalas y mucho más."
 
 #: src/app/qml/MinuetDrawer.qml:181
 #, kde-format
 msgid "Home"
-msgstr ""
+msgstr "Inicio"
 
 #: src/app/qml/MinuetDrawer.qml:194 src/app/qml/SettingsPage.qml:34
 #, kde-format
 msgid "Settings"
-msgstr ""
+msgstr "Preferencias"
 
 #: src/app/qml/MinuetDrawer.qml:208
 #, kde-format
@@ -1370,27 +1372,27 @@ msgstr "Octava %1"
 #: src/app/qml/SettingsPage.qml:204
 #, kde-format
 msgid "Player"
-msgstr ""
+msgstr "Reproductor"
 
 #: src/app/qml/SettingsPage.qml:221
 #, kde-format
 msgid "Volume"
-msgstr ""
+msgstr "Volumen"
 
 #: src/app/qml/SettingsPage.qml:226
 #, kde-format
 msgid "%1%"
-msgstr ""
+msgstr "%1 %"
 
 #: src/app/qml/SettingsPage.qml:249
 #, kde-format
 msgid "SoundFont"
-msgstr ""
+msgstr "SoundFont"
 
 #: src/app/qml/SettingsPage.qml:254
 #, kde-format
 msgid "No melodic instruments available"
-msgstr ""
+msgstr "No hay instrumentos melódicos disponibles"
 
 #: src/app/qml/SettingsPage.qml:255
 #, kde-format
@@ -1398,63 +1400,64 @@ msgid ""
 "The active sound controller did not report any General MIDI bank 0 "
 "instruments."
 msgstr ""
+"El controlador de sonido activo no ha detectado ningún instrumento del banco "
+"0 de General MIDI."
 
 #: src/app/qml/SettingsPage.qml:261
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Melodic Intervals"
+#, kde-format
 msgid "Melodic Exercises"
-msgstr "Intervalos melódicos"
+msgstr "Ejercicios melódicos"
 
 #: src/app/qml/SettingsPage.qml:262
 #, kde-format
 msgid "Used for scales, intervals, and chords."
-msgstr ""
+msgstr "Se usan para escalas, intervalos y acordes."
 
 #: src/app/qml/SettingsPage.qml:269
 #, kde-format
 msgid "Instrument group:"
-msgstr ""
+msgstr "Grupo de instrumentos:"
 
-#: src/app/qml/SettingsPage.qml:285
+#: src/app/qml/SettingsPage.qml:288
 #, kde-format
 msgid "Instrument:"
-msgstr ""
+msgstr "Instrumento:"
 
-#: src/app/qml/SettingsPage.qml:301
+#: src/app/qml/SettingsPage.qml:304
 #, kde-format
 msgid "Rhythmic Exercises"
-msgstr ""
+msgstr "Ejercicios rítmicos"
 
-#: src/app/qml/SettingsPage.qml:302
+#: src/app/qml/SettingsPage.qml:305
 #, kde-format
 msgid "Used for rhythm figures. The count-in keeps its own sound."
 msgstr ""
+"Se usan para figuras rítmicas. La cuenta atrás conserva su propio sonido."
 
-#: src/app/qml/SettingsPage.qml:309
+#: src/app/qml/SettingsPage.qml:312
 #, kde-format
 msgid "Percussion sound:"
-msgstr ""
+msgstr "Sonido de percusión:"
 
-#: src/app/qml/SettingsPage.qml:321
+#: src/app/qml/SettingsPage.qml:324
 #, kde-format
 msgid "Rhythm Exercises"
-msgstr ""
+msgstr "Ejercicios de ritmo"
 
-#: src/app/qml/SettingsPage.qml:333
+#: src/app/qml/SettingsPage.qml:336
 #, kde-format
 msgid "Number of rhythm patterns"
-msgstr ""
+msgstr "Número de patrones de ritmo"
 
-#: src/app/qml/SettingsPage.qml:348
+#: src/app/qml/SettingsPage.qml:351
 #, kde-format
 msgid "Tests"
-msgstr ""
+msgstr "Pruebas"
 
-#: src/app/qml/SettingsPage.qml:360
+#: src/app/qml/SettingsPage.qml:363
 #, kde-format
 msgid "Number of exercises"
-msgstr ""
+msgstr "Número de ejercicios"
 
 #: src/app/uicontroller.cpp:48
 #, kde-format
@@ -1465,388 +1468,388 @@ msgstr "No se ha podido cargar la interfaz principal de usuario."
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Acoustic Bass Drum"
-msgstr ""
+msgstr "Bombo acústico"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:429
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Bass Drum 1"
-msgstr ""
+msgstr "Bombo 1"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:431
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Side Stick"
-msgstr ""
+msgstr "Aro de caja"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:433
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Acoustic Snare"
-msgstr ""
+msgstr "Caja acústica"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:435
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hand Clap"
-msgstr ""
+msgstr "Palmada"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:437
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Electric Snare"
-msgstr ""
+msgstr "Caja eléctrica"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:439
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Floor Tom"
-msgstr ""
+msgstr "Tom de suelo grave"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:441
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Closed Hi-hat"
-msgstr ""
+msgstr "Charles cerrado"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:443
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Floor Tom"
-msgstr ""
+msgstr "Tom de suelo agudo"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:445
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Pedal Hi-hat"
-msgstr ""
+msgstr "Pedal de charles"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:447
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Tom"
-msgstr ""
+msgstr "Tom grave"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:449
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Hi-hat"
-msgstr ""
+msgstr "Charles abierto"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:451
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low-Mid Tom"
-msgstr ""
+msgstr "Tom grave-medio"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:453
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hi-Mid Tom"
-msgstr ""
+msgstr "Tom agudo-medio"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:455
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Crash Cymbal 1"
-msgstr ""
+msgstr "Platillo crash 1"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:457
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Tom"
-msgstr ""
+msgstr "Tom agudo"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:459
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Ride Cymbal 1"
-msgstr ""
+msgstr "Platillo ride 1"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:461
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Chinese Cymbal"
-msgstr ""
+msgstr "Platillo chino"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:463
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Ride Bell"
-msgstr ""
+msgstr "Campana ride"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:465
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Tambourine"
-msgstr ""
+msgstr "Pandereta"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:467
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Splash Cymbal"
-msgstr ""
+msgstr "Platillo splash"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:469
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Cowbell"
-msgstr ""
+msgstr "Cencerro"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:471
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Crash Cymbal 2"
-msgstr ""
+msgstr "Platillo crash 2"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:473
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Vibraslap"
-msgstr ""
+msgstr "VibraSlap"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:475
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Ride Cymbal 2"
-msgstr ""
+msgstr "Platillo ride 2"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:477
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hi Bongo"
-msgstr ""
+msgstr "Bongó agudo"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:479
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Bongo"
-msgstr ""
+msgstr "Bongó grave"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:481
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Mute Hi Conga"
-msgstr ""
+msgstr "Conga aguda tapada"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:483
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Hi Conga"
-msgstr ""
+msgstr "Conga aguda abierta"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:485
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Conga"
-msgstr ""
+msgstr "Conga grave"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:487
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Timbale"
-msgstr ""
+msgstr "Timbal agudo"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:489
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Timbale"
-msgstr ""
+msgstr "Timbal grave"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:491
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Agogo"
-msgstr ""
+msgstr "Agogó agudo"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:493
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Agogo"
-msgstr ""
+msgstr "Agogó grave"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:495
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Cabasa"
-msgstr ""
+msgstr "Cabasa"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:497
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Maracas"
-msgstr ""
+msgstr "Maracas"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:499
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Short Whistle"
-msgstr ""
+msgstr "Silbido corto"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:501
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Long Whistle"
-msgstr ""
+msgstr "Silbido largo"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:503
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Short Guiro"
-msgstr ""
+msgstr "Guiro corto"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:505
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Long Guiro"
-msgstr ""
+msgstr "Guiro largo"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:507
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Claves"
-msgstr ""
+msgstr "Claves"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:509
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hi Wood Block"
-msgstr ""
+msgstr "Bloque de madera agudo"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:511
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Wood Block"
-msgstr ""
+msgstr "Bloque de madera grave"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:513
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Mute Cuica"
-msgstr ""
+msgstr "Cuica tapada"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:515
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Cuica"
-msgstr ""
+msgstr "Cuica abierta"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:517
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Mute Triangle"
-msgstr ""
+msgstr "Triángulo tapado"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:519
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Triangle"
-msgstr ""
+msgstr "Triángulo abierto"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:521
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Percussion"
-msgstr ""
+msgstr "Percusión"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:529
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Piano"
-msgstr ""
+msgstr "Piano"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:531
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Chromatic Percussion"
-msgstr ""
+msgstr "Percusión afinada"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:533
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Organ"
-msgstr ""
+msgstr "Órgano"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:535
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Guitar"
-msgstr ""
+msgstr "Guitarra"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:537
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Bass"
-msgstr ""
+msgstr "Bajo"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:539
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Strings"
-msgstr ""
+msgstr "Cuerdas"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:541
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Ensemble"
-msgstr ""
+msgstr "Conjuntos"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:543
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Brass"
-msgstr ""
+msgstr "Viento (metal)"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:545
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Reed"
-msgstr ""
+msgstr "Viento (lengüeta)"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:547
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Pipe"
-msgstr ""
+msgstr "Viento (madera)"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:549
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Synth Lead"
-msgstr ""
+msgstr "Solos de sintetizador"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:551
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Synth Pad"
-msgstr ""
+msgstr "Colchones de sintetizador"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:553
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Synth Effects"
-msgstr ""
+msgstr "Efectos de sintetizador"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:555
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Ethnic"
-msgstr ""
+msgstr "Étnicos"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:557
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Percussive"
-msgstr ""
+msgstr "Percusivos"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:559
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Sound Effects"
-msgstr ""
+msgstr "Efectos de sonido"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:561
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Other"
-msgstr ""
+msgstr "Otros"
