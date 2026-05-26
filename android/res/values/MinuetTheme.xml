@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="MinuetTheme" parent="android:style/Theme.Holo">
-        <item name="android:windowBackground">@drawable/minuet_preview_background</item>
+        <item name="android:windowBackground">@color/minuet_splash_background</item>
     </style>
 
     <style name="MinuetTheme.Starting" parent="Theme.SplashScreen">
