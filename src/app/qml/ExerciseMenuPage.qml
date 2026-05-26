@@ -92,11 +92,18 @@ Kirigami.Page {
     function openExercise(exercise: var, iconName: string): void {
         const exerciseTitle = i18nc("technical term, do you have a musician friend?", exercise.name)
         applicationWindow().currentExercise = exercise
-        applicationWindow().pageStack.push(Qt.resolvedUrl("ExercisePage.qml"), {
+        const exercisePage = exercisePageComponent.createObject(applicationWindow().pageStack, {
             title: exerciseTitle,
             currentExercise: exercise,
             pathText: page.pathText + " / " + exerciseTitle,
         })
+        applicationWindow().pageStack.push(exercisePage)
+    }
+
+    Component {
+        id: exercisePageComponent
+
+        ExercisePage {}
     }
 
     ColumnLayout {

@@ -23,7 +23,7 @@
 import QtQuick
 import org.kde.kirigami as Kirigami
 
-Kirigami.Heading {
+Text {
     id: root
 
     FontLoader {
@@ -36,4 +36,7 @@ Kirigami.Heading {
         family: bravura.name
         pixelSize: 40
     }
+    lineHeightMode: Text.FixedHeight
+    lineHeight: font.pixelSize
+    color: Kirigami.Theme.textColor
 }

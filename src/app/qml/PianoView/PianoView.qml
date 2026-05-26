@@ -47,6 +47,9 @@ Flickable {
     }
     function noteMark(chan: int, pitch: int, vel: int, color: color): void {
         const noteItem = itemForPitch(pitch)
+        if (noteItem === undefined || noteItem === null) {
+            return
+        }
         clearMarksFromKey(noteItem)
         noteItem.markColor = color
         noteItem.marked = true
@@ -61,7 +64,7 @@ Flickable {
         }
     }
     function clearMarksFromKey(noteItem: Item): void {
-        if (noteItem === undefined) {
+        if (noteItem === undefined || noteItem === null) {
             return
         }
 

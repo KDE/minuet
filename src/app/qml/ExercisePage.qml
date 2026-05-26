@@ -72,7 +72,7 @@ Kirigami.Page {
             anchors.centerIn: countInBubble
             text: exerciseView.countIn.toString()
             level: 1
-            font.pixelSize: Kirigami.Units.gridUnit * 5
+            font.pointSize: Kirigami.Units.gridUnit * 3.5
             color: Kirigami.Theme.highlightColor
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter

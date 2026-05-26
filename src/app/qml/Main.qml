@@ -43,7 +43,7 @@ Kirigami.ApplicationWindow {
         currentExercise = undefined
         currentExerciseSelection = null
         pageStack.clear()
-        pageStack.push(homePageComponent)
+        pageStack.push(createHomePage())
     }
 
     function openExerciseFilter(exerciseModel: var, title: string, inheritedIconName: string, selectionKind: string): void {
@@ -59,11 +59,12 @@ Kirigami.ApplicationWindow {
             currentExerciseSelection = null
         }
         pageStack.clear()
-        pageStack.push(Qt.resolvedUrl("ExerciseMenuPage.qml"), {
+        const page = exerciseMenuPageComponent.createObject(pageStack, {
             exerciseModel: exerciseModel,
             inheritedIconName: inheritedIconName,
             pathText: title,
         })
+        pageStack.push(page)
     }
 
     function openAbout(): void {
@@ -100,7 +101,11 @@ Kirigami.ApplicationWindow {
         onSettingsRequested: window.openSettings()
     }
 
-    pageStack.initialPage: homePageComponent
+    Component.onCompleted: pageStack.push(createHomePage())
+
+    function createHomePage(): Kirigami.Page {
+        return homePageComponent.createObject(pageStack)
+    }
 
     Component {
         id: homePageComponent
@@ -116,6 +121,12 @@ Kirigami.ApplicationWindow {
                 explanation: i18n("Start with a topic, then pick the specific training level.")
             }
         }
+    }
+
+    Component {
+        id: exerciseMenuPageComponent
+
+        ExerciseMenuPage {}
     }
 
     Binding {
