@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-25 00:40+0000\n"
+"POT-Creation-Date: 2026-05-26 00:40+0000\n"
 "PO-Revision-Date: 2026-05-24 07:56+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -1458,7 +1458,7 @@ msgstr "בדיקות"
 msgid "Number of exercises"
 msgstr "מספר התרגולים:"
 
-#: src/app/uicontroller.cpp:48
+#: src/app/uicontroller.cpp:63
 #, kde-format
 msgid "Could not load the main user interface."
 msgstr "לא ניתן לטעון את ממשק המשתמש הראשי."

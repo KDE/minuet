@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-25 00:40+0000\n"
+"POT-Creation-Date: 2026-05-26 00:40+0000\n"
 "PO-Revision-Date: 2026-05-24 11:35+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -1460,7 +1460,7 @@ msgstr "Proves"
 msgid "Number of exercises"
 msgstr "Nombre d'exercicis"
 
-#: src/app/uicontroller.cpp:48
+#: src/app/uicontroller.cpp:63
 #, kde-format
 msgid "Could not load the main user interface."
 msgstr "No s'ha pogut carregar la interfície d'usuari principal."
