@@ -194,12 +194,12 @@ void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedEx
         unsigned int chosenRootNote
             = selectedExerciseOption.toObject()[u"rootNote"_s].toString().toInt();
         if (m_playMode != u"rhythm"_s) {
-            appendEvent(1, chosenRootNote, 127, 1000 * (60.0 / m_tempo));
+            const unsigned int noteDuration
+                = ((m_playMode == u"scale"_s) ? 1000 : 4000) * (60.0 / m_tempo);
+            appendEvent(1, chosenRootNote, 127, noteDuration);
             const QStringList additionalNotes = sequence.split(' ');
             for (const QString &additionalNote : additionalNotes) {
-                appendEvent(1, chosenRootNote + additionalNote.toInt(), 127,
-                            ((m_playMode == u"scale"_s) ? 1000 : 4000)
-                                * (60.0 / m_tempo));
+                appendEvent(1, chosenRootNote + additionalNote.toInt(), 127, noteDuration);
             }
         } else {
             // appendEvent(9, 80, 127, 1000*(60.0/m_tempo));
@@ -247,6 +247,14 @@ void FluidSynthSoundController::play()
         m_countInNextValue = m_playMode == u"rhythm"_s ? 4 : 0;
         m_countInVisible = false;
         unsigned int now = fluid_sequencer_get_tick(m_sequencer);
+        unsigned int chordDuration = 0;
+        if (m_playMode == u"chord"_s) {
+            for (fluid_event_t *event : std::as_const(*m_song.data())) {
+                if (fluid_event_get_type(event) == FLUID_SEQ_NOTE) {
+                    chordDuration = std::max(chordDuration, fluid_event_get_duration(event));
+                }
+            }
+        }
         for (fluid_event_t *event : std::as_const(*m_song.data())) {
             if (fluid_event_get_type(event) != FLUID_SEQ_ALLNOTESOFF
                 || m_playMode != u"chord"_s) {
@@ -254,7 +262,12 @@ void FluidSynthSoundController::play()
                 fluid_sequencer_send_at(m_sequencer, event, now, 1);
             }
             fluid_event_set_dest(event, m_callbackSeqID);
-            fluid_sequencer_send_at(m_sequencer, event, now, 1);
+            fluid_sequencer_send_at(m_sequencer, event,
+                                    now + ((m_playMode == u"chord"_s
+                                            && fluid_event_get_type(event) == FLUID_SEQ_ALLNOTESOFF)
+                                               ? chordDuration
+                                               : 0),
+                                    1);
             now += (m_playMode == u"rhythm"_s)  ? fluid_event_get_duration(event)
                    : (m_playMode == u"scale"_s) ? 1000 * (60.0 / m_tempo)
                                                             : 0;

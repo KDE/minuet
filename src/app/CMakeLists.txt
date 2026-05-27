@@ -5,6 +5,7 @@ set(minuet_SRCS
     plugincontroller.cpp
     exercisecontroller.cpp
     settingscontroller.cpp
+    smuflmetadata.cpp
 )
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
@@ -50,6 +51,7 @@ qt_add_qml_module(minuet
         core.h
         interfaceqmltypes.h
         settingscontroller.h
+        smuflmetadata.h
     QML_FILES
         qml/Main.qml
         qml/AboutPage.qml
@@ -71,6 +73,7 @@ qt_add_qml_module(minuet
         qml/SheetMusicView/SheetMusicView.qml
     RESOURCES
         qml/SheetMusicView/Bravura.otf
+        qml/SheetMusicView/bravura_metadata.json
 )
 
 qt_add_resources(minuet minuet_assets

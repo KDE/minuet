@@ -31,16 +31,45 @@ Item {
     property var model: []
     property bool spaced: true
     readonly property int staffStep: Math.max(4, Math.min(7, Math.round(height / 24)))
-    readonly property real staffLineWidth: Math.max(1, Math.round(staffStep / 6))
+    readonly property real staffLineWidth: Math.max(1, Math.round(metadata.engravingDefault("staffLineThickness") * staffStep))
+    readonly property real ledgerLineThickness: Math.max(1, Math.round(metadata.engravingDefault("legerLineThickness") * staffStep))
     readonly property real staffPixelOffset: staffLineWidth % 2 === 1 ? 0.5 : 0
     readonly property real middleCY: Math.round(height / 2)
-    readonly property real ledgerLineWidth: staffStep * 5
-    readonly property real clefWidth: staffStep * 9
+    readonly property real ledgerLineExtension: metadata.engravingDefault("legerLineExtension") * staffStep
+    readonly property real noteheadBBoxWidth: (metadata.glyphBBoxValue("noteheadBlack", "bBoxNE", 0) - metadata.glyphBBoxValue("noteheadBlack", "bBoxSW", 0)) * staffStep * noteheadScale
+    readonly property real ledgerLineWidth: noteheadBBoxWidth + ledgerLineExtension * 2
+    readonly property real systemTopY: yForDiatonicIndex(38)
+    readonly property real systemBottomY: yForDiatonicIndex(18)
+    readonly property real systemHeight: systemBottomY - systemTopY
+    readonly property real braceBBoxHeight: metadata.glyphBBoxValue("brace", "bBoxNE", 1) - metadata.glyphBBoxValue("brace", "bBoxSW", 1)
+    readonly property real braceBBoxBottom: metadata.glyphBBoxValue("brace", "bBoxSW", 1)
+    readonly property real braceFontPixelSize: braceBBoxHeight > 0 ? systemHeight * 4 / braceBBoxHeight : staffStep * 20
+    readonly property real systemStartX: Math.round(staffStep * 3.2)
+    readonly property real clefStartX: Math.round(systemStartX + staffStep * 1.4)
+    readonly property real clefScale: 2
+    readonly property real clefWidth: Math.max(
+        metadata.glyphBBoxValue("gClef", "bBoxNE", 0) - metadata.glyphBBoxValue("gClef", "bBoxSW", 0),
+        metadata.glyphBBoxValue("fClef", "bBoxNE", 0) - metadata.glyphBBoxValue("fClef", "bBoxSW", 0)
+    ) * staffStep * clefScale
     readonly property real noteSpacing: Kirigami.Units.gridUnit * (spaced ? 2.1 : 0.7)
-    readonly property real noteStartX: Math.round(clefWidth + Kirigami.Units.largeSpacing)
-    readonly property real accidentalCenterOffset: -staffStep * 2.6
-    readonly property real accidentalColumnSpacing: staffStep * 1.8
-    readonly property real noteheadCollisionOffset: staffStep * 1.35
+    readonly property real noteStartX: Math.round(clefStartX + clefWidth + accidentalReserveWidth + Kirigami.Units.largeSpacing)
+    readonly property real accidentalNoteheadGap: (metadata.engravingDefault("legerLineExtension") + metadata.engravingDefault("legerLineThickness") + metadata.engravingDefault("stemThickness")) * staffStep
+    readonly property real accidentalColumnSpacing: accidentalMaxWidth + ledgerLineExtension
+    readonly property int accidentalColumnCount: 3
+    readonly property real noteheadFontPixelSize: staffStep * 6
+    readonly property real noteheadScale: noteheadFontPixelSize / (staffStep * 4)
+    readonly property real normalNoteheadX: ledgerLineWidth / 2
+    readonly property real noteheadStemUpSEX: metadata.anchor("noteheadBlack", "stemUpSE")[0] * staffStep * noteheadScale
+    readonly property real noteheadStemUpSEY: metadata.anchor("noteheadBlack", "stemUpSE")[1] * staffStep * noteheadScale
+    readonly property real stemThickness: Math.max(1, Math.round(metadata.engravingDefault("stemThickness") * staffStep))
+    readonly property real stemExtension: metadata.glyphBBoxValue("metNoteQuarterUp", "bBoxNE", 1) * staffStep
+    readonly property real accidentalMaxWidth: Math.max(
+        metadata.glyphBBoxValue("accidentalSharp", "bBoxNE", 0) - metadata.glyphBBoxValue("accidentalSharp", "bBoxSW", 0),
+        metadata.glyphBBoxValue("accidentalFlat", "bBoxNE", 0) - metadata.glyphBBoxValue("accidentalFlat", "bBoxSW", 0),
+        metadata.glyphBBoxValue("accidentalDoubleFlat", "bBoxNE", 0) - metadata.glyphBBoxValue("accidentalDoubleFlat", "bBoxSW", 0),
+        metadata.glyphBBoxValue("accidentalDoubleSharp", "bBoxNE", 0) - metadata.glyphBBoxValue("accidentalDoubleSharp", "bBoxSW", 0)
+    ) * staffStep
+    readonly property real accidentalReserveWidth: accidentalNoteheadGap + (accidentalColumnCount - 1) * accidentalColumnSpacing + accidentalMaxWidth + Kirigami.Units.smallSpacing
     readonly property color staffColor: Kirigami.Theme.textColor
     property alias activeClef: trebleClef
 
@@ -117,14 +146,23 @@ Item {
         return lines
     }
 
+    SmuflMetadata {
+        id: metadata
+    }
+
     function displayNotes(): var {
+        if (!metadata.ready) {
+            return []
+        }
+
         var notes = []
         for (var i = 0; i < model.length; ++i) {
             notes.push({
                 "pitch": model[i],
                 "position": spaced ? i : 0,
                 "noteIndex": diatonicIndex(model[i]),
-                "noteheadOffset": 0,
+                "noteheadX": normalNoteheadX,
+                "groupLeftX": 0,
                 "accidentalColumn": 0
             })
         }
@@ -148,25 +186,68 @@ Item {
                 const previousNote = group[noteIndex - 1]
                 const currentNote = group[noteIndex]
                 if (currentNote.noteIndex - previousNote.noteIndex === 1) {
-                    currentNote.noteheadOffset = previousNote.noteheadOffset === 0 ? noteheadCollisionOffset : 0
+                    currentNote.noteheadX = previousNote.noteheadX === normalNoteheadX ? normalNoteheadX + noteheadStemUpSEX : normalNoteheadX
                 }
             }
 
-            var accidentalColumns = []
-            for (var accidentalIndex = 0; accidentalIndex < group.length; ++accidentalIndex) {
+            var groupLeftX = group[0].noteheadX
+            for (var groupLeftIndex = 1; groupLeftIndex < group.length; ++groupLeftIndex) {
+                groupLeftX = Math.min(groupLeftX, group[groupLeftIndex].noteheadX)
+            }
+            for (var groupNoteIndex = 0; groupNoteIndex < group.length; ++groupNoteIndex) {
+                group[groupNoteIndex].groupLeftX = groupLeftX
+            }
+
+            var accidentalColumn = 0
+            for (var accidentalIndex = group.length - 1; accidentalIndex >= 0; --accidentalIndex) {
                 const accidentalNote = group[accidentalIndex]
                 if (root.accident(accidentalNote.pitch % 12) === 0) {
                     continue
                 }
-                var column = 0
-                while (column < accidentalColumns.length && Math.abs(accidentalNote.noteIndex - accidentalColumns[column]) < 4) {
-                    ++column
-                }
-                accidentalNote.accidentalColumn = column
-                accidentalColumns[column] = accidentalNote.noteIndex
+                accidentalNote.accidentalColumn = accidentalColumn % accidentalColumnCount
+                ++accidentalColumn
             }
         }
         return notes
+    }
+
+    function displayStems(): var {
+        if (!metadata.ready) {
+            return []
+        }
+
+        var stems = []
+        var positions = []
+        var position
+        for (var i = 0; i < model.length; ++i) {
+            position = spaced ? i : 0
+            if (positions.indexOf(position) === -1) {
+                positions.push(position)
+            }
+        }
+
+        for (var positionIndex = 0; positionIndex < positions.length; ++positionIndex) {
+            position = positions[positionIndex]
+            var minNoteIndex = Number.MAX_VALUE
+            var maxNoteIndex = -Number.MAX_VALUE
+            for (var modelIndex = 0; modelIndex < model.length; ++modelIndex) {
+                if ((spaced ? modelIndex : 0) !== position) {
+                    continue
+                }
+                const currentNoteIndex = diatonicIndex(model[modelIndex])
+                minNoteIndex = Math.min(minNoteIndex, currentNoteIndex)
+                maxNoteIndex = Math.max(maxNoteIndex, currentNoteIndex)
+            }
+
+            const topY = root.yForDiatonicIndex(maxNoteIndex) - stemExtension
+            const bottomY = root.yForDiatonicIndex(minNoteIndex) - noteheadStemUpSEY
+            stems.push({
+                "position": position,
+                "topY": topY,
+                "height": Math.max(staffStep, bottomY - topY)
+            })
+        }
+        return stems
     }
 
     Repeater {
@@ -175,12 +256,29 @@ Item {
         Rectangle {
             required property int modelData
 
-            x: 0
+            x: root.systemStartX
             y: root.yForDiatonicIndex(modelData) - height / 2
-            width: root.width
+            width: root.width - root.systemStartX
             height: root.staffLineWidth
             color: root.staffColor
         }
+    }
+
+    BravuraText {
+        id: systemBrace
+
+        x: root.staffStep * 0.55
+        y: root.systemBottomY + root.braceBBoxBottom * root.braceFontPixelSize / 4 - baselineOffset
+        text: "\ue000"
+        font.pixelSize: root.braceFontPixelSize
+    }
+
+    Rectangle {
+        x: root.systemStartX - width / 2
+        y: root.systemTopY - root.staffLineWidth / 2
+        width: root.staffLineWidth
+        height: root.systemHeight + root.staffLineWidth
+        color: root.staffColor
     }
 
     BravuraText {
@@ -188,21 +286,35 @@ Item {
 
         property int clefType: 0
 
-        x: 0
+        x: root.clefStartX
         y: root.yForDiatonicIndex(32) - height / 2
         text: "\ue050"
         font.pixelSize: root.staffStep * 8
     }
 
     BravuraText {
-        x: 0
+        x: root.clefStartX
         y: root.yForDiatonicIndex(24) - height / 2
         text: "\ue062"
         font.pixelSize: root.staffStep * 8
     }
 
     Repeater {
-        model: root.displayNotes()
+        model: root.displayStems()
+
+        Rectangle {
+            required property var modelData
+
+            x: root.noteX(modelData.position) + root.normalNoteheadX + root.noteheadStemUpSEX - width / 2
+            y: modelData.topY
+            width: root.stemThickness
+            height: modelData.height
+            color: root.staffColor
+        }
+    }
+
+    Repeater {
+        model: metadata.ready ? root.displayNotes() : []
 
         Item {
             id: noteItem
@@ -210,11 +322,13 @@ Item {
             required property var modelData
             readonly property int pitch: modelData.pitch
             readonly property int noteIndex: modelData.noteIndex
-            readonly property real noteheadOffset: modelData.noteheadOffset
+            readonly property real noteheadX: modelData.noteheadX
+            readonly property real noteheadCenterX: noteheadX + root.noteheadStemUpSEX / 2
+            readonly property real groupLeftX: modelData.groupLeftX
 
             x: root.noteX(modelData.position)
             y: 0
-            width: root.ledgerLineWidth + Math.abs(noteheadOffset)
+            width: root.ledgerLineWidth + root.noteheadStemUpSEX
             height: root.height
 
             Repeater {
@@ -223,10 +337,10 @@ Item {
                 Rectangle {
                     required property int modelData
 
-                    x: Math.min(0, noteItem.noteheadOffset)
+                    x: noteItem.noteheadCenterX - root.ledgerLineWidth / 2
                     y: root.yForDiatonicIndex(modelData) - noteItem.y - height / 2
-                    width: noteItem.width
-                    height: root.staffLineWidth
+                    width: root.ledgerLineWidth
+                    height: root.ledgerLineThickness
                     color: root.staffColor
                 }
             }
@@ -234,7 +348,9 @@ Item {
             BravuraText {
                 readonly property string symbol: root.accidentalPrefix(noteItem.pitch)
 
-                x: root.ledgerLineWidth / 2 + root.accidentalCenterOffset - modelData.accidentalColumn * root.accidentalColumnSpacing - width / 2
+                x: root.spaced
+                    ? noteItem.noteheadX - width - root.accidentalNoteheadGap
+                    : noteItem.groupLeftX - width - root.accidentalNoteheadGap - modelData.accidentalColumn * root.accidentalColumnSpacing
                 y: root.yForDiatonicIndex(noteItem.noteIndex) - noteItem.y - height / 2
                 visible: symbol.length > 0
                 text: symbol
@@ -242,10 +358,10 @@ Item {
             }
 
             BravuraText {
-                x: root.ledgerLineWidth / 2 + noteItem.noteheadOffset - width / 2
+                x: noteItem.noteheadX
                 y: root.yForDiatonicIndex(noteItem.noteIndex) - noteItem.y - height / 2
-                text: "\ue1d5"
-                font.pixelSize: root.staffStep * 6
+                text: "\ue0a4"
+                font.pixelSize: root.noteheadFontPixelSize
             }
         }
     }

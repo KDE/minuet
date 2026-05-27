@@ -221,7 +221,17 @@ Item {
         showAnswers([])
     }
 
+    function canShowPitchPreview(): bool {
+        return exerciseView.currentExercise !== undefined
+            && exerciseView.currentExercise["playMode"] !== "rhythm"
+            && exerciseView.state === "waitingForAnswer"
+    }
+
     function showAvailableAnswerPreview(answerRectangle: Item): void {
+        if (!canShowPitchPreview()) {
+            return
+        }
+
         internal.hoveredAvailableAnswer = answerRectangle
         showAnswers([{
             "model": answerRectangle.model,
@@ -235,7 +245,9 @@ Item {
         }
 
         internal.hoveredAvailableAnswer = null
-        showQuestionRootOnPiano()
+        if (canShowPitchPreview()) {
+            showQuestionRootOnPiano()
+        }
     }
 
     function showSubmittedAnswerCorrection(position: int): void {
@@ -782,7 +794,7 @@ Item {
             }
 
             onHoveredChanged: {
-                if (hovered && exerciseView.currentExercise["playMode"] !== "rhythm") {
+                if (hovered && canShowPitchPreview()) {
                     showAvailableAnswerPreview(answerDelegate)
                 } else {
                     restoreAvailableAnswerPreview(answerDelegate)
@@ -790,7 +802,7 @@ Item {
             }
 
             onActiveFocusChanged: {
-                if (activeFocus && exerciseView.currentExercise["playMode"] !== "rhythm") {
+                if (activeFocus && canShowPitchPreview()) {
                     showAvailableAnswerPreview(answerDelegate)
                 } else {
                     restoreAvailableAnswerPreview(answerDelegate)
@@ -798,7 +810,7 @@ Item {
             }
 
             onPressAndHold: {
-                if (exerciseView.currentExercise["playMode"] !== "rhythm") {
+                if (canShowPitchPreview()) {
                     longPressed = true
                     showAvailableAnswerPreview(answerDelegate)
                 }
