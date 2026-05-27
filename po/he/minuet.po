@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-26 00:40+0000\n"
-"PO-Revision-Date: 2026-05-24 07:56+0300\n"
+"POT-Creation-Date: 2026-05-27 00:40+0000\n"
+"PO-Revision-Date: 2026-05-26 08:59+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1227,99 +1227,145 @@ msgstr "זיהוי האקורד או המרווח לפי האוזן."
 msgid "%1 Includes %2 possible answers."
 msgstr "%1 כולל %2 תשובות אפשריות."
 
-#: src/app/qml/ExerciseView.qml:64
+#: src/app/qml/ExerciseView.qml:85
 #, kde-format
 msgid "Click 'New Question' to start!"
 msgstr "יש ללחוץ על ‚שאלה חדשה’ כדי להתחיל!"
 
-#: src/app/qml/ExerciseView.qml:227
+#: src/app/qml/ExerciseView.qml:217
+#, fuzzy, kde-format
+#| msgid "Choose an exercise"
+msgid "Choose 1 answer"
+msgstr "בחירת תרגול"
+
+#: src/app/qml/ExerciseView.qml:217
+#, fuzzy, kde-format
+#| msgid "Choose an exercise"
+msgid "Choose %1 answers"
+msgstr "בחירת תרגול"
+
+#: src/app/qml/ExerciseView.qml:321
 #, kde-format
 msgid "Here is the answer"
 msgstr "הנה התשובה"
 
-#: src/app/qml/ExerciseView.qml:227
+#: src/app/qml/ExerciseView.qml:321
 #, kde-format
 msgid "Congratulations, you answered correctly!"
 msgstr "כל הכבוד, ענית נכון!"
 
-#: src/app/qml/ExerciseView.qml:227
+#: src/app/qml/ExerciseView.qml:321
 #, kde-format
 msgid "Oops, not this time! Try again!"
 msgstr "אופס, פספסת הפעם! אפשר לנסות שוב!"
 
-#: src/app/qml/ExerciseView.qml:229
+#: src/app/qml/ExerciseView.qml:323
 #, kde-format
 msgid "You answered correctly %1%"
 msgstr "ענית נכון על %1%"
 
-#: src/app/qml/ExerciseView.qml:282
+#: src/app/qml/ExerciseView.qml:393
 #, kde-format
 msgid "Question %1 out of %2"
 msgstr "שאלה %1 מתוך %2"
 
-#: src/app/qml/ExerciseView.qml:311
+#: src/app/qml/ExerciseView.qml:460
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "userMessage"
 msgstr "הודעת משתמש"
 
-#: src/app/qml/ExerciseView.qml:329
+#: src/app/qml/ExerciseView.qml:475
+#, kde-format
+msgid "Playing..."
+msgstr ""
+
+#: src/app/qml/ExerciseView.qml:496
 #, kde-format
 msgid "New Question"
 msgstr "שאלה חדשה"
 
-#: src/app/qml/ExerciseView.qml:329
+#: src/app/qml/ExerciseView.qml:496
 #, kde-format
 msgid "Play Question"
 msgstr "השמעת שאלה"
 
-#: src/app/qml/ExerciseView.qml:343
+#: src/app/qml/ExerciseView.qml:512
 #, kde-format
 msgid "Give Up"
 msgstr "ויתרתי"
 
-#: src/app/qml/ExerciseView.qml:370
+#: src/app/qml/ExerciseView.qml:534
 #, kde-format
 msgid "Stop Test"
 msgstr "עצירת הבחינה"
 
-#: src/app/qml/ExerciseView.qml:370
+#: src/app/qml/ExerciseView.qml:534
 #, kde-format
 msgid "Start Test"
 msgstr "התחלת הבחינה"
 
-#: src/app/qml/ExerciseView.qml:384
+#: src/app/qml/ExerciseView.qml:547
 #, kde-format
 msgid "Click 'New Question' to start"
 msgstr "יש ללחוץ על ‚שאלה חדשה’ כדי להתחיל"
 
-#: src/app/qml/ExerciseView.qml:391
+#: src/app/qml/ExerciseView.qml:579
 #, kde-format
 msgid "Available Answers"
 msgstr "שאלות זמינות"
 
-#: src/app/qml/ExerciseView.qml:547
-#, fuzzy, kde-format
-#| msgid "Your Answer(s)"
-msgid "Correct Answer(s)"
-msgstr "התשובות שלך"
+#: src/app/qml/ExerciseView.qml:584
+#, kde-format
+msgid "Scroll for more"
+msgstr ""
 
-#: src/app/qml/ExerciseView.qml:547
+#: src/app/qml/ExerciseView.qml:616
+#, kde-format
+msgid "Correct Answer(s)"
+msgstr "תשובות נכונות"
+
+#: src/app/qml/ExerciseView.qml:616
 #, kde-format
 msgid "Your Answer(s)"
 msgstr "התשובות שלך"
 
-#: src/app/qml/ExerciseView.qml:578
+#: src/app/qml/ExerciseView.qml:620
+#, kde-format
+msgid "%1 / %2"
+msgstr ""
+
+#: src/app/qml/ExerciseView.qml:625
 #, kde-format
 msgid "Backspace"
 msgstr "Backspace"
 
-#: src/app/qml/Main.qml:115
+#: src/app/qml/ExerciseView.qml:725
+#, kde-format
+msgid "Keyboard"
+msgstr ""
+
+#: src/app/qml/ExerciseView.qml:729
+#, kde-format
+msgid "Staff"
+msgstr ""
+
+#: src/app/qml/ExerciseView.qml:856
+#, kde-format
+msgid "Empty answer slot"
+msgstr ""
+
+#: src/app/qml/ExerciseView.qml:884
+#, kde-format
+msgid "Answer %1"
+msgstr ""
+
+#: src/app/qml/Main.qml:120
 #, kde-format
 msgid "Choose an exercise"
 msgstr "בחירת תרגול"
 
-#: src/app/qml/Main.qml:116
+#: src/app/qml/Main.qml:121
 #, kde-format
 msgid "Start with a topic, then pick the specific training level."
 msgstr "יש להתחיל בנושא ואז לבחור את רמת התרגול הנקודתית."
@@ -1363,7 +1409,7 @@ msgstr "הגדרות"
 msgid "About"
 msgstr "על אודות"
 
-#: src/app/qml/PianoView/PianoView.qml:111
+#: src/app/qml/PianoView/PianoView.qml:114
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave %1"
@@ -1402,11 +1448,9 @@ msgid ""
 msgstr "בקר המוזיקה הפעיל לא דיווח על כלי MIDI כלליים בבנק 0."
 
 #: src/app/qml/SettingsPage.qml:261
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Melodic Intervals"
+#, kde-format
 msgid "Melodic Exercises"
-msgstr "מרווחים מלודיים"
+msgstr "תרגולים מלודיים"
 
 #: src/app/qml/SettingsPage.qml:262
 #, kde-format
@@ -1485,19 +1529,19 @@ msgstr ""
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Acoustic Snare"
-msgstr ""
+msgstr "סנר אקוסטי"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:435
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hand Clap"
-msgstr ""
+msgstr "מחיאת כף"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:437
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Electric Snare"
-msgstr ""
+msgstr "סנר אלקטרוני"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:439
 #, kde-format
@@ -1593,7 +1637,7 @@ msgstr ""
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Cowbell"
-msgstr ""
+msgstr "פעמון פרות"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:471
 #, kde-format
@@ -1605,7 +1649,7 @@ msgstr ""
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Vibraslap"
-msgstr ""
+msgstr "ויברה סלאפ"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:475
 #, kde-format
@@ -1671,43 +1715,43 @@ msgstr ""
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Cabasa"
-msgstr ""
+msgstr "קבסה"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:497
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Maracas"
-msgstr ""
+msgstr "מרקס"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:499
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Short Whistle"
-msgstr ""
+msgstr "שריקה קצרה"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:501
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Long Whistle"
-msgstr ""
+msgstr "שריקה ארוה"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:503
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Short Guiro"
-msgstr ""
+msgstr "גואירו קצר"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:505
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Long Guiro"
-msgstr ""
+msgstr "גואירו ארוך"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:507
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Claves"
-msgstr ""
+msgstr "קלאווה"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:509
 #, kde-format
@@ -1731,7 +1775,7 @@ msgstr ""
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Cuica"
-msgstr ""
+msgstr "קוויקה פתוחה"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:517
 #, kde-format
@@ -1743,19 +1787,19 @@ msgstr ""
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Triangle"
-msgstr ""
+msgstr "משולש פתוח"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:521
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Percussion"
-msgstr ""
+msgstr "כלי הקשה"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:529
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Piano"
-msgstr ""
+msgstr "פסנתר"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:531
 #, kde-format
@@ -1767,49 +1811,49 @@ msgstr ""
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Organ"
-msgstr ""
+msgstr "אורגן"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:535
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Guitar"
-msgstr ""
+msgstr "גיטרה"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:537
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Bass"
-msgstr ""
+msgstr "בס"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:539
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Strings"
-msgstr ""
+msgstr "מיתרים"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:541
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Ensemble"
-msgstr ""
+msgstr "הרכב"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:543
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Brass"
-msgstr ""
+msgstr "מתכת"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:545
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Reed"
-msgstr ""
+msgstr "עלה"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:547
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Pipe"
-msgstr ""
+msgstr "צינור"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:549
 #, kde-format
@@ -1833,7 +1877,7 @@ msgstr ""
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Ethnic"
-msgstr ""
+msgstr "אתני"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:557
 #, kde-format
@@ -1845,13 +1889,13 @@ msgstr ""
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Sound Effects"
-msgstr ""
+msgstr "אפקטים קוליים"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:561
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Other"
-msgstr ""
+msgstr "אחר"
 
 #~ msgctxt "technical term, do you have a musician friend?"
 #~ msgid "eighth-dot-sixteenth"

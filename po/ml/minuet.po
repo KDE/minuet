@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-26 00:40+0000\n"
+"POT-Creation-Date: 2026-05-27 00:40+0000\n"
 "PO-Revision-Date: 2019-12-12 21:32+0000\n"
 "Last-Translator: Vivek KJ Pazhedath <vivekkj2004@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc."
@@ -1225,98 +1225,143 @@ msgstr ""
 msgid "%1 Includes %2 possible answers."
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:64
+#: src/app/qml/ExerciseView.qml:85
 #, kde-format
 msgid "Click 'New Question' to start!"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:227
+#: src/app/qml/ExerciseView.qml:217
+#, kde-format
+msgid "Choose 1 answer"
+msgstr ""
+
+#: src/app/qml/ExerciseView.qml:217
+#, kde-format
+msgid "Choose %1 answers"
+msgstr ""
+
+#: src/app/qml/ExerciseView.qml:321
 #, kde-format
 msgid "Here is the answer"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:227
+#: src/app/qml/ExerciseView.qml:321
 #, kde-format
 msgid "Congratulations, you answered correctly!"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:227
+#: src/app/qml/ExerciseView.qml:321
 #, kde-format
 msgid "Oops, not this time! Try again!"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:229
+#: src/app/qml/ExerciseView.qml:323
 #, kde-format
 msgid "You answered correctly %1%"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:282
+#: src/app/qml/ExerciseView.qml:393
 #, kde-format
 msgid "Question %1 out of %2"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:311
+#: src/app/qml/ExerciseView.qml:460
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "userMessage"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:329
+#: src/app/qml/ExerciseView.qml:475
+#, kde-format
+msgid "Playing..."
+msgstr ""
+
+#: src/app/qml/ExerciseView.qml:496
 #, kde-format
 msgid "New Question"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:329
+#: src/app/qml/ExerciseView.qml:496
 #, kde-format
 msgid "Play Question"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:343
+#: src/app/qml/ExerciseView.qml:512
 #, kde-format
 msgid "Give Up"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:370
+#: src/app/qml/ExerciseView.qml:534
 #, kde-format
 msgid "Stop Test"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:370
+#: src/app/qml/ExerciseView.qml:534
 #, kde-format
 msgid "Start Test"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:384
+#: src/app/qml/ExerciseView.qml:547
 #, kde-format
 msgid "Click 'New Question' to start"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:391
+#: src/app/qml/ExerciseView.qml:579
 #, kde-format
 msgid "Available Answers"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:547
+#: src/app/qml/ExerciseView.qml:584
+#, kde-format
+msgid "Scroll for more"
+msgstr ""
+
+#: src/app/qml/ExerciseView.qml:616
 #, kde-format
 msgid "Correct Answer(s)"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:547
+#: src/app/qml/ExerciseView.qml:616
 #, kde-format
 msgid "Your Answer(s)"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:578
+#: src/app/qml/ExerciseView.qml:620
+#, kde-format
+msgid "%1 / %2"
+msgstr ""
+
+#: src/app/qml/ExerciseView.qml:625
 #, kde-format
 msgid "Backspace"
 msgstr ""
 
-#: src/app/qml/Main.qml:115
+#: src/app/qml/ExerciseView.qml:725
+#, kde-format
+msgid "Keyboard"
+msgstr ""
+
+#: src/app/qml/ExerciseView.qml:729
+#, kde-format
+msgid "Staff"
+msgstr ""
+
+#: src/app/qml/ExerciseView.qml:856
+#, kde-format
+msgid "Empty answer slot"
+msgstr ""
+
+#: src/app/qml/ExerciseView.qml:884
+#, kde-format
+msgid "Answer %1"
+msgstr ""
+
+#: src/app/qml/Main.qml:120
 #, kde-format
 msgid "Choose an exercise"
 msgstr ""
 
-#: src/app/qml/Main.qml:116
+#: src/app/qml/Main.qml:121
 #, kde-format
 msgid "Start with a topic, then pick the specific training level."
 msgstr ""
@@ -1358,7 +1403,7 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: src/app/qml/PianoView/PianoView.qml:111
+#: src/app/qml/PianoView/PianoView.qml:114
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave %1"
