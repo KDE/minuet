@@ -36,7 +36,7 @@ namespace Minuet
 class MINUETINTERFACES_EXPORT ISoundController : public IPlugin
 {
     Q_OBJECT
-    QML_NAMED_ELEMENT(ISoundController)
+    QML_ELEMENT
     QML_UNCREATABLE("ISoundController is provided by Core")
 
     // Read-write properties with simple mutators

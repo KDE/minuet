@@ -51,9 +51,9 @@ Kirigami.GlobalDrawer {
     onCurrentSearchTextChanged: resetMenu()
 
     function createDrawerActions(searchText: string): var {
-        const normalizedSearchText = normalizedText(searchText)
+        const normalizedSearchText = Core.exerciseCatalogController.normalizedText(searchText)
         const exerciseActions = createExerciseActions(exerciseModel, normalizedSearchText, "")
-        if (normalizedSearchText === "" || actionMatches(i18n("All exercises"), normalizedSearchText)) {
+        if (normalizedSearchText === "" || Core.exerciseCatalogController.actionMatches(i18n("All exercises"), normalizedSearchText)) {
             return [
                 allExercisesAction,
             ].concat(exerciseActions)
@@ -64,13 +64,13 @@ Kirigami.GlobalDrawer {
     function createExerciseActions(exercises: var, searchText: string, inheritedIconName: string): var {
         const exerciseActions = []
         for (const exercise of exercises) {
-            const actionIconName = resolvedIconName(exercise, inheritedIconName)
+            const actionIconName = Core.exerciseCatalogController.actionIconNameForExercise(exercise, inheritedIconName)
             const hasChildren = exercise.children !== undefined && exercise.children.length > 0
             const exerciseChildren = hasChildren ? createExerciseActions(exercise.children, searchText, actionIconName) : []
             if (!hasChildren) {
                 continue
             }
-            if (searchText !== "" && !exerciseMatchesSearch(exercise, searchText, inheritedIconName)) {
+            if (searchText !== "" && !Core.exerciseCatalogController.exerciseMatchesSearch(exercise, searchText, inheritedIconName)) {
                 continue
             }
 
@@ -81,41 +81,6 @@ Kirigami.GlobalDrawer {
             }))
         }
         return exerciseActions
-    }
-
-    function exerciseMatchesSearch(exercise: var, searchText: string, inheritedIconName: string): bool {
-        const exerciseTitle = i18nc("technical term, do you have a musician friend?", exercise.name)
-        if (actionMatches(exerciseTitle, searchText)) {
-            return true
-        }
-
-        if (exercise.children === undefined || exercise.children.length === 0) {
-            return false
-        }
-
-        const childIconName = resolvedIconName(exercise, inheritedIconName)
-        for (const childExercise of exercise.children) {
-            if (exerciseMatchesSearch(childExercise, searchText, childIconName)) {
-                return true
-            }
-        }
-        return false
-    }
-
-    function normalizedText(text: string): string {
-        return text.trim().toLocaleLowerCase()
-    }
-
-    function actionMatches(actionText: string, searchText: string): bool {
-        return normalizedText(actionText).includes(searchText)
-    }
-
-    function resolvedIconName(exercise: var, inheritedIconName: string): string {
-        const iconName = exercise._icon ? exercise._icon : inheritedIconName
-        if (iconName === "") {
-            return ""
-        }
-        return iconName.startsWith("qrc:/") ? iconName : "qrc:/icons/22-actions-" + iconName
     }
 
     header: Kirigami.AbstractApplicationHeader {

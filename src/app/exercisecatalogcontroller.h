@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2016 by Sandro S. Andrade <sandroandrade@kde.org>
+** Copyright (C) 2026 by Sandro S. Andrade <sandroandrade@kde.org>
 **
 ** This program is free software; you can redistribute it and/or
 ** modify it under the terms of the GNU General Public License as
@@ -20,39 +20,42 @@
 **
 ****************************************************************************/
 
-#ifndef MINUET_EXERCISECONTROLLER_H
-#define MINUET_EXERCISECONTROLLER_H
+#ifndef MINUET_EXERCISECATALOGCONTROLLER_H
+#define MINUET_EXERCISECATALOGCONTROLLER_H
 
-#include <interfaces/iexercisecontroller.h>
-
+#include <QObject>
+#include <QJsonArray>
 #include <QJsonObject>
-#include <QStringList>
+#include <QVariantList>
+#include <QVariantMap>
+#include <qqmlregistration.h>
 
 namespace Minuet
 {
-class Core;
-
-class ExerciseController : public IExerciseController
+class ExerciseCatalogController : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_UNCREATABLE("ExerciseCatalogController is provided by Core")
+    Q_PROPERTY(QJsonArray exercises READ exercises CONSTANT)
 
 public:
-    virtual ~ExerciseController() = default;
+    bool initialize();
+    QString errorString() const;
+    QJsonArray exercises() const;
 
-    bool initialize(Core *core);
-    QString errorString() const override;
-
-    Q_INVOKABLE unsigned int chosenRootNote() const;
-
-    QJsonArray exercises() const override;
-
-public Q_SLOTS:
-    void randomlySelectExerciseOptions(int selectedOptionCount = -1) override;
+    Q_INVOKABLE QString iconNameForExercise(const QVariantMap &exercise, const QString &inheritedIconName) const;
+    Q_INVOKABLE QString actionIconNameForExercise(const QVariantMap &exercise, const QString &inheritedIconName) const;
+    Q_INVOKABLE QVariantList collectExercises(const QVariantList &exercises, const QString &inheritedIconName) const;
+    Q_INVOKABLE QString exerciseDescription(const QVariantMap &exercise) const;
+    Q_INVOKABLE QString normalizedText(const QString &text) const;
+    Q_INVOKABLE bool actionMatches(const QString &actionText, const QString &searchText) const;
+    Q_INVOKABLE bool exerciseMatchesSearch(const QVariantMap &exercise, const QString &searchText, const QString &inheritedIconName) const;
 
 private:
     friend class Core;
 
-    explicit ExerciseController(QObject *parent = nullptr);
+    explicit ExerciseCatalogController(QObject *parent = nullptr);
 
     bool mergeJsonFiles(const QString directoryName, QJsonObject &targetObject,
                         bool applyDefinitionsFlag = false, QString commonKey = nullptr,
@@ -65,13 +68,13 @@ private:
                                   DefinitionFilteringMode definitionFilteringMode);
     QJsonArray mergeJsonArrays(QJsonArray oldFile, QJsonArray newFile, QString commonKey = nullptr,
                                QString mergeKey = nullptr);
+    void collectExercise(const QVariantMap &exercise, const QString &inheritedIconName, QVariantList &collectedExercises) const;
+    QString resolvedIconName(const QVariantMap &exercise, const QString &inheritedIconName, const QString &fallbackIconName) const;
 
     QJsonObject m_exercises;
     QJsonObject m_definitions;
-    unsigned int m_chosenRootNote;
     QString m_errorString;
 };
-
 }
 
-#endif  // MINUET_EXERCISECONTROLLER_H
+#endif

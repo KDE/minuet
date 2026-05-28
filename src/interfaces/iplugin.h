@@ -33,7 +33,7 @@ namespace Minuet
 class MINUETINTERFACES_EXPORT IPlugin : public QObject
 {
     Q_OBJECT
-    QML_NAMED_ELEMENT(IPlugin)
+    QML_ELEMENT
     QML_UNCREATABLE("IPlugin is provided by Core")
 
 public:

@@ -53,182 +53,90 @@ Item {
         const fittedColumns = Math.max(1, Math.floor(availableWidth / preferredWidth))
         return Math.max(1, Math.min(wide ? 5 : 4, fittedColumns))
     }
+    readonly property var availableAnswers: Core.exerciseSessionController.availableAnswersModel(exerciseView.currentExercise || {})
+    readonly property int selectedOptionCount: Core.exerciseSessionController.selectedOptionCount(exerciseView.currentExercise || {}, Core.settingsController.rhythmPatternCount)
+    readonly property int maximumExercises: Core.settingsController.testExerciseCount
+    readonly property bool canShowPitchPreview: exerciseView.currentExercise !== undefined
+        && exerciseView.currentExercise["playMode"] !== "rhythm"
+        && exerciseView.state === "waitingForAnswer"
+    readonly property bool canEditUserAnswers: Core.exerciseSessionController.canEditUserAnswers(
+        exerciseView.state,
+        exerciseView.selectedOptionCount,
+        animation.running
+    )
 
     FontLoader { id: bravura; source: "SheetMusicView/Bravura.otf" }
 
     QtObject {
         id: internal
 
-        property int currentAnswer
         property var colors: ["#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9", "#bc80bd", "#ccebc5", "#ffed6f", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"]
         property Item rightAnswerRectangle
-        property var userAnswers: []
-        property bool answersAreRight
-        property bool giveUp
-        property bool isTest: false
-        property int correctAnswers: 0
-        property int currentExercise: 0
         property int countIn: 0
-        property bool showingCorrectAnswers: false
         property Item hoveredAvailableAnswer
-        property int correctedAnswerPosition: -1
-        property bool highlightingSingleAnswer: false
-        property string highlightedAnswerName: ""
-        property string statusText: ""
     }
 
     onCurrentExerciseChanged: {
         internal.countIn = 0
-        clearUserAnswers()
-        if (exerciseView.currentExercise !== undefined) {
-            sheetMusicView.spaced = exerciseView.currentExercise["playMode"] !== "chord"
-            internal.statusText = i18n("Click 'New Question' to start!")
-            exerciseView.state = "waitingForNewQuestion"
-        }
-    }
-
-    function clearUserAnswers(): void {
         pianoView.clearAllMarks()
         sheetMusicView.clearAllMarks()
-        internal.showingCorrectAnswers = false
-        internal.correctedAnswerPosition = -1
-        internal.highlightingSingleAnswer = false
-        internal.highlightedAnswerName = ""
         internal.hoveredAvailableAnswer = null
-        internal.currentAnswer = 0
-        internal.userAnswers = []
-    }
-
-    function availableAnswersModel(): var {
-        if (exerciseView.currentExercise === undefined || exerciseView.currentExercise.options === undefined) {
-            return []
+        if (exerciseView.currentExercise !== undefined) {
+            Core.exerciseSessionController.resetForExercise()
+            sheetMusicView.spaced = exerciseView.currentExercise["playMode"] !== "chord"
+            exerciseView.state = "waitingForNewQuestion"
+        } else {
+            Core.exerciseSessionController.clearUserAnswers()
         }
-        return exerciseView.currentExercise.options
-    }
-
-    function answerModel(answer: var): var {
-        if (answer === undefined || answer === null) {
-            return {}
-        }
-        return answer.model !== undefined ? answer.model : answer
     }
 
     function colorForAnswerIndex(index: int): color {
-        if (!isFinite(index) || index < 0 || index >= internal.colors.length) {
-            return "white"
-        }
-        return internal.colors[index % internal.colors.length]
-    }
-
-    function answerIndexForName(answerName: string): int {
-        const answers = availableAnswersModel()
-        for (var i = 0; i < answers.length; ++i) {
-            if (answerModel(answers[i]).name === answerName) {
-                return i
-            }
-        }
-        return -1
+        return Core.exerciseSessionController.colorForAnswerIndex(index, internal.colors)
     }
 
     function colorForAnswer(answer: var): color {
-        if (answer.color !== undefined) {
-            return answer.color
-        }
-
-        var model = answerModel(answer)
-        var index = answerIndexForName(model.name)
-        return index >= 0 ? colorForAnswerIndex(index) : "white"
-    }
-
-    function submittedAnswerFor(option: var): var {
-        const index = answerIndexForName(option.name)
-        return {
-            "name": option.name,
-            "model": option,
-            "index": index,
-            "color": index >= 0 ? colorForAnswerIndex(index) : "white"
-        }
+        return Core.exerciseSessionController.colorForAnswer(answer || {}, exerciseView.availableAnswers, internal.colors)
     }
 
     function showAnswers(answers: var): void {
-        if (exerciseView.currentExercise["playMode"] === "rhythm") {
+        const presentation = Core.exerciseSessionController.answerPresentation(
+            answers,
+            Core.exerciseSessionController.chosenRootNote,
+            exerciseView.currentExercise || {},
+            exerciseView.availableAnswers,
+            internal.colors
+        )
+        if (presentation.isRhythm) {
             return
         }
 
-        var rootNote = Core.exerciseController.chosenRootNote()
-        var sheetMusicModel = [rootNote]
         pianoView.clearAllMarks()
-        pianoView.noteMark(0, rootNote, 0, "white")
-        pianoView.scrollToNote(rootNote)
-
-        for (var i = 0; i < answers.length; ++i) {
-            var model = answerModel(answers[i])
-            var color = colorForAnswer(answers[i])
-            model.sequence.split(' ').forEach(function(note: string): void {
-                var pitch = rootNote + parseInt(note)
-                pianoView.noteMark(0, pitch, 0, color)
-                sheetMusicModel.push(pitch)
-            })
+        for (const mark of presentation.pianoMarks) {
+            pianoView.noteMark(0, mark.pitch, 0, mark.color)
         }
-        sheetMusicView.model = sheetMusicModel
+        pianoView.scrollToNote(presentation.rootPitch)
+        sheetMusicView.model = presentation.sheetMusicModel
     }
 
     function showUserAnswers(): void {
-        showAnswers(internal.userAnswers)
+        showAnswers(Core.exerciseSessionController.userAnswers)
     }
 
     function showCorrectAnswers(): void {
-        showAnswers(Core.exerciseController.selectedExerciseOptions)
-    }
-
-    function correctAnswerAt(position: int): var {
-        return Core.exerciseController.selectedExerciseOptions[position]
-    }
-
-    function isWrongSubmittedAnswer(position: int): bool {
-        var rightAnswer = correctAnswerAt(position)
-        return rightAnswer !== undefined
-            && internal.userAnswers[position] !== undefined
-            && internal.userAnswers[position].name !== rightAnswer.name
+        showAnswers(Core.exerciseSessionController.selectedExerciseOptions)
     }
 
     function canShowSubmittedAnswerCorrection(position: int): bool {
-        return exerciseView.currentExercise !== undefined
-            && internal.currentAnswer >= selectedOptionCount()
-            && isWrongSubmittedAnswer(position)
-    }
-
-    function selectedOptionCount(): int {
-        if (exerciseView.currentExercise === undefined) {
-            return 0
-        }
-        if (exerciseView.currentExercise["playMode"] === "rhythm") {
-            return Core.settingsController.rhythmPatternCount
-        }
-        return exerciseView.currentExercise.numberOfSelectedOptions
-    }
-
-    function maximumExercises(): int {
-        return Core.settingsController.testExerciseCount
-    }
-
-    function answerInstruction(): string {
-        const count = selectedOptionCount()
-        return count === 1 ? i18n("Choose 1 answer") : i18n("Choose %1 answers", count)
-    }
-
-    function showQuestionRootOnPiano(): void {
-        showAnswers([])
-    }
-
-    function canShowPitchPreview(): bool {
-        return exerciseView.currentExercise !== undefined
-            && exerciseView.currentExercise["playMode"] !== "rhythm"
-            && exerciseView.state === "waitingForAnswer"
+        return Core.exerciseSessionController.canShowSubmittedAnswerCorrection(
+            position,
+            exerciseView.currentExercise || {},
+            exerciseView.selectedOptionCount,
+            Core.exerciseSessionController.selectedExerciseOptions
+        )
     }
 
     function showAvailableAnswerPreview(answerRectangle: Item): void {
-        if (!canShowPitchPreview()) {
+        if (!exerciseView.canShowPitchPreview) {
             return
         }
 
@@ -245,8 +153,8 @@ Item {
         }
 
         internal.hoveredAvailableAnswer = null
-        if (canShowPitchPreview()) {
-            showQuestionRootOnPiano()
+        if (exerciseView.canShowPitchPreview) {
+            showAnswers([])
         }
     }
 
@@ -255,8 +163,7 @@ Item {
             return
         }
 
-        internal.correctedAnswerPosition = position
-        internal.showingCorrectAnswers = true
+        Core.exerciseSessionController.showSubmittedAnswerCorrection(position)
         showCorrectAnswers()
     }
 
@@ -265,13 +172,12 @@ Item {
             return
         }
 
-        internal.correctedAnswerPosition = -1
-        internal.showingCorrectAnswers = false
+        Core.exerciseSessionController.restoreSubmittedAnswerCorrection()
         showUserAnswers()
     }
 
     function toggleSubmittedAnswerCorrection(position: int): void {
-        if (internal.correctedAnswerPosition === position) {
+        if (Core.exerciseSessionController.correctedAnswerPosition === position) {
             restoreSubmittedAnswerCorrection(position)
         } else {
             showSubmittedAnswerCorrection(position)
@@ -279,78 +185,40 @@ Item {
     }
 
     function chooseAnswer(answer: var, index: int): void {
-        if (exerciseView.state !== "waitingForAnswer" || animation.running || internal.currentAnswer >= selectedOptionCount()) {
+        if (exerciseView.state !== "waitingForAnswer" || animation.running || Core.exerciseSessionController.currentAnswer >= exerciseView.selectedOptionCount) {
             return
         }
 
-        internal.userAnswers = internal.userAnswers.concat([{
-            "name": answer.name,
-            "model": answer,
-            "index": index,
-            "color": colorForAnswerIndex(index)
-        }])
-        internal.currentAnswer++
-        if (internal.currentAnswer === selectedOptionCount()) {
+        if (Core.exerciseSessionController.chooseAnswer(answer, index, exerciseView.selectedOptionCount, internal.colors)) {
             checkAnswers()
         }
     }
 
-    function canEditUserAnswers(): bool {
-        return exerciseView.state === "waitingForAnswer"
-            && internal.currentAnswer > 0
-            && internal.currentAnswer < selectedOptionCount()
-            && !animation.running
-    }
-
-    function removeUserAnswerAt(position: int): void {
-        if (!canEditUserAnswers() || position < 0 || position >= internal.userAnswers.length) {
-            return
-        }
-        var answers = internal.userAnswers.slice()
-        answers.splice(position, 1)
-        internal.userAnswers = answers
-        internal.currentAnswer--
-        showUserAnswers()
-    }
-
     function removeLastUserAnswer(): void {
-        removeUserAnswerAt(internal.userAnswers.length - 1)
+        if (exerciseView.canEditUserAnswers && Core.exerciseSessionController.removeLastUserAnswer()) {
+            showUserAnswers()
+        }
     }
 
     function checkAnswers(): void {
-        var rightAnswers = Core.exerciseController.selectedExerciseOptions
+        var rightAnswers = Core.exerciseSessionController.selectedExerciseOptions
         internal.hoveredAvailableAnswer = null
-        internal.answersAreRight = true
-        var expectedAnswers = selectedOptionCount()
-        for (var i = 0; i < expectedAnswers; ++i) {
-            if (internal.userAnswers[i].name !== rightAnswers[i].name) {
-                internal.answersAreRight = false
-            } else {
-                if (internal.isTest)
-                    internal.correctAnswers++
-            }
-        }
-        internal.statusText = (internal.giveUp) ? i18n("Here is the answer") : (internal.answersAreRight) ? i18n("Congratulations, you answered correctly!") : i18n("Oops, not this time! Try again!")
-        if (internal.currentExercise === maximumExercises()) {
-            internal.statusText = i18n("You answered correctly %1%", internal.correctAnswers * 100 / maximumExercises() / expectedAnswers)
-            resetTest()
-        }
+        var expectedAnswers = exerciseView.selectedOptionCount
+        Core.exerciseSessionController.checkAnswers(rightAnswers, expectedAnswers, exerciseView.maximumExercises)
 
         showUserAnswers()
-        if (selectedOptionCount() === 1)
+        if (exerciseView.selectedOptionCount === 1)
             highlightRightAnswer()
         else
             exerciseView.state = "waitingForNewQuestion"
-        internal.giveUp = false
     }
 
     function highlightRightAnswer(): void {
-        var chosenExercises = Core.exerciseController.selectedExerciseOptions
-        var rightAnswerIndex = answerIndexForName(chosenExercises[0].name)
+        var chosenExercises = Core.exerciseSessionController.selectedExerciseOptions
+        var rightAnswerIndex = Core.exerciseSessionController.answerIndexForName(exerciseView.availableAnswers, chosenExercises[0].name)
         internal.rightAnswerRectangle = null
-        internal.highlightingSingleAnswer = true
-        internal.highlightedAnswerName = chosenExercises[0].name
-        if (rightAnswerIndex >= 0 && !internal.answersAreRight) {
+        Core.exerciseSessionController.setSingleAnswerHighlight(chosenExercises[0].name)
+        if (rightAnswerIndex >= 0 && !Core.exerciseSessionController.answersAreRight) {
             answerGridView.positionViewAtIndex(rightAnswerIndex, GridView.Contain)
         }
         for (var i = 0; i < answerGridView.count; ++i) {
@@ -370,18 +238,12 @@ Item {
         }
     }
 
-    function resetTest(): void {
-        internal.isTest = false
-        internal.correctAnswers = 0
-        internal.currentExercise = 0
-    }
-
     function finishSingleAnswerFeedback(): void {
-        exerciseView.state = internal.isTest ? "waitingForAnswer" : "waitingForNewQuestion"
-        if (internal.isTest) {
+        exerciseView.state = Core.exerciseSessionController.isTest ? "waitingForAnswer" : "waitingForNewQuestion"
+        if (Core.exerciseSessionController.isTest) {
             nextTestExercise()
-            if (internal.currentExercise === maximumExercises() + 1)
-                internal.isTest = false
+            if (Core.exerciseSessionController.currentExercise === exerciseView.maximumExercises + 1)
+                Core.exerciseSessionController.resetTest()
         }
     }
 
@@ -392,30 +254,25 @@ Item {
                 answerItem.opacity = 1
             }
         }
-        pianoView.clearAllMarks()
-        sheetMusicView.clearAllMarks()
-        clearUserAnswers()
-        generateNewQuestion(true)
+        generateNewQuestion()
         Core.soundController.play()
     }
 
     function generateNewQuestion(): void {
-        clearUserAnswers()
-        if (internal.isTest)
-            internal.statusText = i18n("Question %1 out of %2", internal.currentExercise + 1, maximumExercises())
-        else
-            internal.statusText = ""
-        Core.exerciseController.randomlySelectExerciseOptions(selectedOptionCount())
-        var chosenExercises = Core.exerciseController.selectedExerciseOptions
+        pianoView.clearAllMarks()
+        sheetMusicView.clearAllMarks()
+        internal.hoveredAvailableAnswer = null
+        Core.exerciseSessionController.beginQuestion(exerciseView.maximumExercises)
+        Core.exerciseSessionController.randomlySelectExerciseOptions(exerciseView.selectedOptionCount)
+        var chosenExercises = Core.exerciseSessionController.selectedExerciseOptions
         Core.soundController.prepareFromExerciseOptions(chosenExercises)
         if (exerciseView.currentExercise["playMode"] !== "rhythm") {
-            pianoView.noteMark(0, Core.exerciseController.chosenRootNote(), 0, "white")
-            pianoView.scrollToNote(Core.exerciseController.chosenRootNote())
-            sheetMusicView.model = [Core.exerciseController.chosenRootNote()]
+            pianoView.noteMark(0, Core.exerciseSessionController.chosenRootNote, 0, "white")
+            pianoView.scrollToNote(Core.exerciseSessionController.chosenRootNote)
+            sheetMusicView.model = [Core.exerciseSessionController.chosenRootNote]
         }
         exerciseView.state = "waitingForAnswer"
-        if (internal.isTest)
-            internal.currentExercise++
+        Core.exerciseSessionController.finishQuestionGeneration()
     }
 
     Flickable {
@@ -467,7 +324,7 @@ Item {
                                     return ""
                                 }
                                 if (exerciseView.state === "waitingForAnswer") {
-                                    return answerInstruction()
+                                    return Core.exerciseSessionController.answerInstruction(exerciseView.selectedOptionCount)
                                 }
                                 return i18nc("technical term, do you have a musician friend?", exerciseView.currentExercise["userMessage"])
                             }
@@ -484,7 +341,7 @@ Item {
                             maximumLineCount: 1
                             elide: Text.ElideRight
                             color: exerciseView.exercisePlaying ? Kirigami.Theme.highlightColor : Kirigami.Theme.textColor
-                            text: exerciseView.exercisePlaying ? i18n("Playing...") : internal.statusText
+                            text: exerciseView.exercisePlaying ? i18n("Playing...") : Core.exerciseSessionController.statusText
                         }
                     }
 
@@ -525,16 +382,8 @@ Item {
                                 enabled: exerciseView.state === "waitingForAnswer" && !animation.running && !exerciseView.exercisePlaying
 
                                 onClicked: {
-                                    if (internal.isTest)
-                                        internal.correctAnswers--
-                                    internal.giveUp = true
-                                    var rightAnswers = Core.exerciseController.selectedExerciseOptions
-                                    var userAnswers = []
-                                    for (var i = 0; i < selectedOptionCount(); ++i) {
-                                        userAnswers.push(submittedAnswerFor(rightAnswers[i]))
-                                    }
-                                    internal.userAnswers = userAnswers
-                                    internal.currentAnswer = selectedOptionCount()
+                                    var rightAnswers = Core.exerciseSessionController.selectedExerciseOptions
+                                    Core.exerciseSessionController.giveUpWithCorrectAnswers(rightAnswers, exerciseView.availableAnswers, internal.colors, exerciseView.selectedOptionCount)
                                     checkAnswers()
                                 }
                             }
@@ -543,20 +392,18 @@ Item {
                                 id: testButton
 
                                 width: actionButtons.buttonWidth
-                                text: internal.isTest ? i18n("Stop Test") : i18n("Start Test")
+                                text: Core.exerciseSessionController.isTest ? i18n("Stop Test") : i18n("Start Test")
                                 enabled: !exerciseView.exercisePlaying
 
                                 onClicked: {
-                                    if (!internal.isTest) {
-                                        resetTest()
-                                        internal.isTest = true
+                                    if (!Core.exerciseSessionController.isTest) {
+                                        Core.exerciseSessionController.startTest()
                                         generateNewQuestion()
-                                        if (internal.isTest)
+                                        if (Core.exerciseSessionController.isTest)
                                             Core.soundController.play()
                                     } else {
-                                        resetTest()
+                                        Core.exerciseSessionController.stopTest()
                                         exerciseView.state = "waitingForNewQuestion"
-                                        internal.statusText = i18n("Click 'New Question' to start")
                                     }
                                 }
                             }
@@ -608,7 +455,7 @@ Item {
                             cellWidth: Math.max(1, width / exerciseView.answerColumnCount)
                             cellHeight: exerciseView.answerCellHeight
                             clip: true
-                            model: exerciseView.availableAnswersModel()
+                            model: exerciseView.availableAnswers
                             delegate: answerOption
 
                             ScrollIndicator.vertical: ScrollIndicator { active: answerGridView.contentHeight > answerGridView.height }
@@ -625,11 +472,11 @@ Item {
                             Kirigami.Heading {
                                 Layout.fillWidth: true
                                 level: 3
-                                text: internal.showingCorrectAnswers ? i18n("Correct Answer(s)") : i18n("Your Answer(s)")
+                                text: Core.exerciseSessionController.showingCorrectAnswers ? i18n("Correct Answer(s)") : i18n("Your Answer(s)")
                             }
 
                             Label {
-                                text: i18n("%1 / %2", internal.currentAnswer, selectedOptionCount())
+                                text: i18n("%1 / %2", Core.exerciseSessionController.currentAnswer, exerciseView.selectedOptionCount)
                                 color: Kirigami.Theme.disabledTextColor
                             }
 
@@ -637,8 +484,8 @@ Item {
                                 text: i18n("Backspace")
                                 visible: exerciseView.currentExercise !== undefined
                                     && exerciseView.currentExercise["playMode"] === "rhythm"
-                                    || canEditUserAnswers()
-                                enabled: canEditUserAnswers()
+                                    || exerciseView.canEditUserAnswers
+                                enabled: exerciseView.canEditUserAnswers
                                 onClicked: removeLastUserAnswer()
                             }
                         }
@@ -662,7 +509,7 @@ Item {
                                 spacing: Kirigami.Units.smallSpacing
 
                                 Repeater {
-                                    model: selectedOptionCount()
+                                    model: exerciseView.selectedOptionCount
                                     delegate: selectedAnswerDelegate
                                 }
                             }
@@ -761,7 +608,7 @@ Item {
             property var model: modelData
             property color accentColor: colorForAnswerIndex(index)
             property bool longPressed: false
-            property bool dimmedByHighlight: internal.highlightingSingleAnswer && model !== undefined && model.name !== internal.highlightedAnswerName
+            property bool dimmedByHighlight: Core.exerciseSessionController.highlightingSingleAnswer && model !== undefined && model.name !== Core.exerciseSessionController.highlightedAnswerName
 
             width: GridView.view.cellWidth - exerciseView.answerCellSpacing
             height: GridView.view.cellHeight - exerciseView.answerCellSpacing
@@ -794,7 +641,7 @@ Item {
             }
 
             onHoveredChanged: {
-                if (hovered && canShowPitchPreview()) {
+                if (hovered && exerciseView.canShowPitchPreview) {
                     showAvailableAnswerPreview(answerDelegate)
                 } else {
                     restoreAvailableAnswerPreview(answerDelegate)
@@ -802,7 +649,7 @@ Item {
             }
 
             onActiveFocusChanged: {
-                if (activeFocus && canShowPitchPreview()) {
+                if (activeFocus && exerciseView.canShowPitchPreview) {
                     showAvailableAnswerPreview(answerDelegate)
                 } else {
                     restoreAvailableAnswerPreview(answerDelegate)
@@ -810,7 +657,7 @@ Item {
             }
 
             onPressAndHold: {
-                if (canShowPitchPreview()) {
+                if (exerciseView.canShowPitchPreview) {
                     longPressed = true
                     showAvailableAnswerPreview(answerDelegate)
                 }
@@ -840,20 +687,23 @@ Item {
 
             required property int index
 
-            property var submittedAnswer: index < internal.userAnswers.length ? internal.userAnswers[index] : undefined
+            property var submittedAnswer: index < Core.exerciseSessionController.userAnswers.length ? Core.exerciseSessionController.userAnswers[index] : undefined
+            property var expectedAnswer: Core.exerciseSessionController.selectedExerciseOptions[index]
             property bool filled: submittedAnswer !== undefined
-            property bool submitted: internal.currentAnswer >= selectedOptionCount()
-            property bool wrongAnswer: filled && submitted && isWrongSubmittedAnswer(index)
+            property bool submitted: Core.exerciseSessionController.currentAnswer >= exerciseView.selectedOptionCount
+            property bool wrongAnswer: filled
+                && submitted
+                && expectedAnswer !== undefined
+                && submittedAnswer.name !== expectedAnswer.name
             property bool correctAnswer: filled && submitted && !wrongAnswer
-            property bool showingCorrection: internal.correctedAnswerPosition === index
-            property var displayedAnswer: showingCorrection ? correctAnswerAt(index) : submittedAnswer
+            property bool showingCorrection: Core.exerciseSessionController.correctedAnswerPosition === index
+            property var displayedAnswer: showingCorrection ? expectedAnswer : submittedAnswer
             property color accentColor: {
                 if (!filled) {
                     return Kirigami.Theme.backgroundColor
                 }
                 if (showingCorrection) {
-                    const correctAnswer = correctAnswerAt(index)
-                    return correctAnswer !== undefined ? colorForAnswer(correctAnswer) : Kirigami.Theme.backgroundColor
+                    return expectedAnswer !== undefined ? colorForAnswer(expectedAnswer) : Kirigami.Theme.backgroundColor
                 }
                 return submittedAnswer.color !== undefined ? submittedAnswer.color : Kirigami.Theme.backgroundColor
             }
@@ -869,14 +719,16 @@ Item {
 
             background: Rectangle {
                 color: selectedDelegate.filled ? selectedDelegate.accentColor : Kirigami.Theme.alternateBackgroundColor
-                border.color: selectedDelegate.wrongAnswer
-                    ? Kirigami.Theme.negativeTextColor
-                    : selectedDelegate.correctAnswer
+                border.color: selectedDelegate.showingCorrection
+                    ? Kirigami.Theme.positiveTextColor
+                    : selectedDelegate.wrongAnswer
+                        ? Kirigami.Theme.negativeTextColor
+                        : selectedDelegate.correctAnswer
                         ? Kirigami.Theme.positiveTextColor
                         : selectedDelegate.activeFocus
                             ? Kirigami.Theme.highlightColor
                             : Kirigami.Theme.textColor
-                border.width: selectedDelegate.activeFocus || selectedDelegate.wrongAnswer || selectedDelegate.correctAnswer ? 2 : 1
+                border.width: selectedDelegate.activeFocus || selectedDelegate.wrongAnswer || selectedDelegate.correctAnswer || selectedDelegate.showingCorrection ? 2 : 1
                 radius: Kirigami.Units.cornerRadius
             }
 
@@ -911,7 +763,7 @@ Item {
 
     Shortcut {
         sequence: "Backspace"
-        enabled: canEditUserAnswers()
+        enabled: exerciseView.canEditUserAnswers
         onActivated: removeLastUserAnswer()
     }
 
@@ -923,8 +775,7 @@ Item {
             name: "waitingForAnswer"
             StateChangeScript {
                 script: {
-                    internal.highlightingSingleAnswer = false
-                    internal.highlightedAnswerName = ""
+                    Core.exerciseSessionController.clearSingleAnswerHighlight()
                 }
             }
         }
@@ -950,12 +801,12 @@ Item {
     }
 
     Connections {
-        target: Core.exerciseController
+        target: Core.exerciseSessionController
         function onSelectedExerciseOptionsChanged(): void { pianoView.clearAllMarks() }
     }
 
     Connections {
-        target: Core.exerciseController
+        target: Core.exerciseSessionController
         function onSelectedExerciseOptionsChanged(): void { sheetMusicView.clearAllMarks() }
     }
 

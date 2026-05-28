@@ -23,37 +23,54 @@
 #ifndef MINUET_SETTINGSCONTROLLER_H
 #define MINUET_SETTINGSCONTROLLER_H
 
-#include <interfaces/isettingscontroller.h>
-
+#include <QObject>
 #include <QString>
 
 namespace Minuet
 {
-class SettingsController : public ISettingsController
+class SettingsController : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(int rhythmPatternCount READ rhythmPatternCount WRITE setRhythmPatternCount NOTIFY rhythmPatternCountChanged)
+    Q_PROPERTY(int testExerciseCount READ testExerciseCount WRITE setTestExerciseCount NOTIFY testExerciseCountChanged)
+    Q_PROPERTY(int volume READ volume WRITE setVolume NOTIFY volumeChanged)
+    Q_PROPERTY(int pitch READ pitch WRITE setPitch NOTIFY pitchChanged)
+    Q_PROPERTY(int tempo READ tempo WRITE setTempo NOTIFY tempoChanged)
+    Q_PROPERTY(int instrumentGroup READ instrumentGroup WRITE setInstrumentGroup NOTIFY instrumentGroupChanged)
+    Q_PROPERTY(int instrument READ instrument WRITE setInstrument NOTIFY instrumentChanged)
+    Q_PROPERTY(int rhythmInstrument READ rhythmInstrument WRITE setRhythmInstrument NOTIFY rhythmInstrumentChanged)
 
 public:
     ~SettingsController() override = default;
 
-    int rhythmPatternCount() const override;
-    int testExerciseCount() const override;
-    int volume() const override;
-    int pitch() const override;
-    int tempo() const override;
-    int instrumentGroup() const override;
-    int instrument() const override;
-    int rhythmInstrument() const override;
+    int rhythmPatternCount() const;
+    int testExerciseCount() const;
+    int volume() const;
+    int pitch() const;
+    int tempo() const;
+    int instrumentGroup() const;
+    int instrument() const;
+    int rhythmInstrument() const;
 
 public Q_SLOTS:
-    void setRhythmPatternCount(int rhythmPatternCount) override;
-    void setTestExerciseCount(int testExerciseCount) override;
-    void setVolume(int volume) override;
-    void setPitch(int pitch) override;
-    void setTempo(int tempo) override;
-    void setInstrumentGroup(int instrumentGroup) override;
-    void setInstrument(int instrument) override;
-    void setRhythmInstrument(int rhythmInstrument) override;
+    void setRhythmPatternCount(int rhythmPatternCount);
+    void setTestExerciseCount(int testExerciseCount);
+    void setVolume(int volume);
+    void setPitch(int pitch);
+    void setTempo(int tempo);
+    void setInstrumentGroup(int instrumentGroup);
+    void setInstrument(int instrument);
+    void setRhythmInstrument(int rhythmInstrument);
+
+Q_SIGNALS:
+    void rhythmPatternCountChanged(int rhythmPatternCount);
+    void testExerciseCountChanged(int testExerciseCount);
+    void volumeChanged(int volume);
+    void pitchChanged(int pitch);
+    void tempoChanged(int tempo);
+    void instrumentGroupChanged(int instrumentGroup);
+    void instrumentChanged(int instrument);
+    void rhythmInstrumentChanged(int rhythmInstrument);
 
 private:
     friend class Core;

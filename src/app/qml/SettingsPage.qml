@@ -34,145 +34,44 @@ FormCard.FormCardPage {
     title: i18n("Settings")
 
     property int selectedMelodicGroup: -1
-
-    function melodicGroupForInstrument(instrument: int): int {
-        for (let i = 0; i < instrumentsModel.count; ++i) {
-            const entry = instrumentsModel.get(i)
-            if (entry.program === instrument) {
-                return entry.group
-            }
-        }
-        return groupsModel.count > 0 ? groupsModel.get(0).id : -1
-    }
-
-    function melodicGroupIndex(group: int): int {
-        for (let i = 0; i < groupsModel.count; ++i) {
-            if (groupsModel.get(i).id === group) {
-                return i
-            }
-        }
-        return -1
-    }
-
-    function melodicInstrumentIndex(instrument: int): int {
-        for (let i = 0; i < instrumentsForGroupModel.count; ++i) {
-            if (instrumentsForGroupModel.get(i).program === instrument) {
-                return i
-            }
-        }
-        return -1
-    }
-
-    function rhythmInstrumentIndex(instrument: int): int {
-        for (let i = 0; i < rhythmInstrumentsModel.count; ++i) {
-            if (rhythmInstrumentsModel.get(i).key === instrument) {
-                return i
-            }
-        }
-        return -1
-    }
-
-    function rebuildModels(): void {
-        groupsModel.clear()
-        instrumentsModel.clear()
-        rhythmInstrumentsModel.clear()
-
-        if (!Core.soundController) {
-            root.selectedMelodicGroup = -1
-            instrumentsForGroupModel.clear()
-            return
-        }
-
-        const instrumentGroups = JSON.parse(Core.soundController.instrumentGroupsJson || "[]")
-        const instruments = JSON.parse(Core.soundController.instrumentsJson || "[]")
-        const rhythmInstruments = JSON.parse(Core.soundController.rhythmInstrumentsJson || "[]")
-
-        for (const group of instrumentGroups) {
-            groupsModel.append({
-                id: group.id,
-                name: group.name,
-            })
-        }
-
-        for (const instrument of instruments) {
-            instrumentsModel.append({
-                group: instrument.group,
-                bank: instrument.bank,
-                program: instrument.program,
-                number: instrument.number,
-                name: instrument.name,
-                displayName: instrument.displayName,
-            })
-        }
-
-        for (const instrument of rhythmInstruments) {
-            rhythmInstrumentsModel.append({
-                key: instrument.key,
-                number: instrument.number,
-                name: instrument.name,
-                displayName: instrument.displayName,
-            })
-        }
-
-        syncSelectionFromController()
-    }
-
-    function rebuildInstrumentsForGroup(): void {
-        instrumentsForGroupModel.clear()
-        for (let i = 0; i < instrumentsModel.count; ++i) {
-            const instrument = instrumentsModel.get(i)
-            if (instrument.group === root.selectedMelodicGroup) {
-                instrumentsForGroupModel.append(instrument)
-            }
-        }
-    }
+    readonly property string instrumentGroupsJson: Core.soundController ? Core.soundController.instrumentGroupsJson || "[]" : "[]"
+    readonly property string instrumentsJson: Core.soundController ? Core.soundController.instrumentsJson || "[]" : "[]"
+    readonly property string rhythmInstrumentsJson: Core.soundController ? Core.soundController.rhythmInstrumentsJson || "[]" : "[]"
+    readonly property var groupsModel: Core.instrumentCatalogController.instrumentGroups(instrumentGroupsJson)
+    readonly property var instrumentsModel: Core.instrumentCatalogController.melodicInstruments(instrumentsJson)
+    readonly property var rhythmInstrumentsModel: Core.instrumentCatalogController.rhythmInstruments(rhythmInstrumentsJson)
+    readonly property var instrumentsForGroupModel: Core.instrumentCatalogController.melodicInstrumentsForGroup(instrumentsModel, selectedMelodicGroup)
 
     function syncSelectionFromController(): void {
         if (!Core.soundController) {
+            root.selectedMelodicGroup = -1
             return
         }
 
-        root.selectedMelodicGroup = melodicGroupIndex(Core.settingsController.instrumentGroup) >= 0
+        root.selectedMelodicGroup = Core.instrumentCatalogController.melodicGroupIndex(groupsModel, Core.settingsController.instrumentGroup) >= 0
             ? Core.settingsController.instrumentGroup
-            : melodicGroupForInstrument(Core.settingsController.instrument)
+            : Core.instrumentCatalogController.melodicGroupForInstrument(groupsModel, instrumentsModel, Core.settingsController.instrument)
         if (root.selectedMelodicGroup !== Core.settingsController.instrumentGroup) {
             Core.settingsController.instrumentGroup = root.selectedMelodicGroup
         }
-        groupSelector.currentIndex = melodicGroupIndex(root.selectedMelodicGroup)
-        rebuildInstrumentsForGroup()
-        melodicInstrumentSelector.currentIndex = melodicInstrumentIndex(Core.settingsController.instrument)
-        rhythmInstrumentSelector.currentIndex = rhythmInstrumentIndex(Core.settingsController.rhythmInstrument)
-    }
-
-    ListModel {
-        id: groupsModel
-    }
-
-    ListModel {
-        id: instrumentsModel
-    }
-
-    ListModel {
-        id: instrumentsForGroupModel
-    }
-
-    ListModel {
-        id: rhythmInstrumentsModel
+        groupSelector.currentIndex = Core.instrumentCatalogController.melodicGroupIndex(groupsModel, root.selectedMelodicGroup)
+        melodicInstrumentSelector.currentIndex = Core.instrumentCatalogController.melodicInstrumentIndex(instrumentsForGroupModel, Core.settingsController.instrument)
+        rhythmInstrumentSelector.currentIndex = Core.instrumentCatalogController.rhythmInstrumentIndex(rhythmInstrumentsModel, Core.settingsController.rhythmInstrument)
     }
 
     Connections {
         target: Core.soundController
 
         function onInstrumentGroupsChanged(): void {
-            root.rebuildModels()
+            Qt.callLater(root.syncSelectionFromController)
         }
 
         function onInstrumentsChanged(): void {
-            root.rebuildModels()
+            Qt.callLater(root.syncSelectionFromController)
         }
 
         function onRhythmInstrumentsChanged(): void {
-            root.rebuildModels()
+            Qt.callLater(root.syncSelectionFromController)
         }
 
         function onInstrumentChanged(): void {
@@ -254,13 +153,13 @@ FormCard.FormCardPage {
             text: i18n("No melodic instruments available")
             description: i18n("The active sound controller did not report any General MIDI bank 0 instruments.")
             icon.name: "dialog-warning-symbolic"
-            visible: groupsModel.count === 0
+            visible: groupsModel.length === 0
         }
 
         FormCard.FormTextDelegate {
             text: i18n("Melodic Exercises")
             description: i18n("Used for scales, intervals, and chords.")
-            visible: groupsModel.count > 0
+            visible: groupsModel.length > 0
         }
 
         FormCard.FormComboBoxDelegate {
@@ -270,14 +169,13 @@ FormCard.FormCardPage {
             textRole: "name"
             valueRole: "id"
             model: groupsModel
-            visible: groupsModel.count > 0
+            visible: groupsModel.length > 0
             onActivated: {
                 root.selectedMelodicGroup = currentValue
                 Core.settingsController.instrumentGroup = currentValue
-                root.rebuildInstrumentsForGroup()
-                melodicInstrumentSelector.currentIndex = instrumentsForGroupModel.count > 0 ? 0 : -1
+                melodicInstrumentSelector.currentIndex = instrumentsForGroupModel.length > 0 ? 0 : -1
                 if (melodicInstrumentSelector.currentIndex >= 0) {
-                    Core.settingsController.instrument = instrumentsForGroupModel.get(melodicInstrumentSelector.currentIndex).program
+                    Core.settingsController.instrument = instrumentsForGroupModel[melodicInstrumentSelector.currentIndex].program
                 }
             }
         }
@@ -289,7 +187,7 @@ FormCard.FormCardPage {
             textRole: "displayName"
             valueRole: "program"
             model: instrumentsForGroupModel
-            visible: groupsModel.count > 0
+            visible: groupsModel.length > 0
             onActivated: {
                 Core.settingsController.instrumentGroup = root.selectedMelodicGroup
                 Core.settingsController.instrument = currentValue
@@ -297,13 +195,13 @@ FormCard.FormCardPage {
         }
 
         FormCard.FormDelegateSeparator {
-            visible: groupsModel.count > 0 && rhythmInstrumentsModel.count > 0
+            visible: groupsModel.length > 0 && rhythmInstrumentsModel.length > 0
         }
 
         FormCard.FormTextDelegate {
             text: i18n("Rhythmic Exercises")
             description: i18n("Used for rhythm figures. The count-in keeps its own sound.")
-            visible: rhythmInstrumentsModel.count > 0
+            visible: rhythmInstrumentsModel.length > 0
         }
 
         FormCard.FormComboBoxDelegate {
@@ -313,7 +211,7 @@ FormCard.FormCardPage {
             textRole: "displayName"
             valueRole: "key"
             model: rhythmInstrumentsModel
-            visible: rhythmInstrumentsModel.count > 0
+            visible: rhythmInstrumentsModel.length > 0
             onActivated: {
                 Core.settingsController.rhythmInstrument = currentValue
             }
@@ -374,5 +272,5 @@ FormCard.FormCardPage {
         }
     }
 
-    Component.onCompleted: root.rebuildModels()
+    Component.onCompleted: root.syncSelectionFromController()
 }

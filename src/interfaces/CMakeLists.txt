@@ -1,11 +1,6 @@
 set(minuetinterfaces_LIB_SRCS
-    icore.cpp
     iplugin.cpp
-    iplugincontroller.cpp
-    iuicontroller.cpp
     isoundcontroller.cpp
-    iexercisecontroller.cpp
-    isettingscontroller.cpp
 )
 
 if(ANDROID)
@@ -42,13 +37,8 @@ IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
     )
 
     install(FILES
-        icore.h
         iplugin.h
-        iplugincontroller.h
-        iuicontroller.h
         isoundcontroller.h
-        iexercisecontroller.h
-        isettingscontroller.h
         DESTINATION ${KDE_INSTALL_INCLUDEDIR}/minuet/interfaces
         COMPONENT Devel
     )

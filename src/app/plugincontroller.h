@@ -23,9 +23,11 @@
 #ifndef MINUET_PLUGINCONTROLLER_H
 #define MINUET_PLUGINCONTROLLER_H
 
-#include <interfaces/iplugincontroller.h>
+#include <QObject>
+#include <QString>
 
 #ifndef Q_OS_ANDROID
+#include <QHash>
 #include <KPluginMetaData>
 #include <QVector>
 #endif
@@ -35,7 +37,7 @@ namespace Minuet
 class Core;
 class IPlugin;
 
-class PluginController : public IPluginController
+class PluginController : public QObject
 {
     Q_OBJECT
 
@@ -43,7 +45,7 @@ public:
     ~PluginController() override;
 
     bool initialize(Core *core);
-    QString errorString() const override;
+    QString errorString() const;
 
 private:
     friend class Core;

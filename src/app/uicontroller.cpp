@@ -48,7 +48,7 @@ void hideAndroidSplashScreen()
 
 namespace Minuet
 {
-UiController::UiController(QObject *parent) : IUiController(parent) {}
+UiController::UiController(QObject *parent) : QObject(parent) {}
 
 bool UiController::initialize(Core *core)
 {

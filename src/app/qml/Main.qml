@@ -90,10 +90,10 @@ Kirigami.ApplicationWindow {
     }
 
     globalDrawer: MinuetDrawer {
-        exerciseModel: Core.exerciseController.exercises
+        exerciseModel: Core.exerciseCatalogController.exercises
         currentExerciseSelection: window.currentExerciseSelection
         wideScreen: window.wideScreen
-        onExerciseFilterSelected: function(exerciseModel: var, title: string, inheritedIconName: string, selectionKind: string): void {
+        onExerciseFilterSelected: function(exerciseModel, title, inheritedIconName, selectionKind) {
             window.openExerciseFilter(exerciseModel, title, inheritedIconName, selectionKind)
         }
         onHomeRequested: window.openHome()
@@ -130,8 +130,8 @@ Kirigami.ApplicationWindow {
     }
 
     Binding {
-        target: Core.exerciseController
-        property: "currentExercise"
+        target: Core.exerciseSessionController
+        property: "activeExercise"
         value: window.currentExercise
     }
     

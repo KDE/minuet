@@ -43,7 +43,7 @@ Flickable {
             noteOff(chan, pitch, vel)
     }
     function noteOff(chan: int, pitch: int, vel: int): void {
-        highlightKey(pitch, ([1,3,6,8,10].indexOf(pitch % 12) > -1) ? "black":"white")
+        highlightKey(pitch, Core.pianoKeyboardController.isBlackKey(pitch) ? "black" : "white")
     }
     function noteMark(chan: int, pitch: int, vel: int, color: color): void {
         const noteItem = itemForPitch(pitch)
@@ -71,24 +71,15 @@ Flickable {
         noteItem.marked = false
     }
     function scrollToNote(pitch: int): void {
-        const targetX = flickable.contentWidth / 88 * (pitch - 21) - flickable.width / 2
-        flickable.contentX = Math.max(0, Math.min(targetX, Math.max(0, flickable.contentWidth - flickable.width)))
+        flickable.contentX = Core.pianoKeyboardController.scrollTargetX(pitch, flickable.contentWidth, flickable.width)
     }
     function highlightKey(pitch: int, color: color): void {
         itemForPitch(pitch).color = color
     }
     function itemForPitch(pitch: int): Item {
-        var noteItem
-        if (pitch < 24) {
-            noteItem = keyboard.children[pitch-21]
-        } else if (pitch === 108) {
-            noteItem = whiteKeyC
-        } else {
-            var note = (pitch - 24) % 12
-            var octave = (pitch - 24 - note) / 12
-            noteItem = keyboard.children[3+octave].children[note]
-        }
-        return noteItem
+        const keyItem = keyboard.children[Core.pianoKeyboardController.keyboardChildIndex(pitch)]
+        const octaveChildIndex = Core.pianoKeyboardController.octaveChildIndex(pitch)
+        return octaveChildIndex >= 0 ? keyItem.children[octaveChildIndex] : keyItem
     }
 
     Rectangle {

@@ -35,59 +35,9 @@ Kirigami.Page {
     property var exerciseModel: []
     property string inheritedIconName: ""
     property string pathText: title
-    readonly property var exerciseList: collectExercises(exerciseModel, inheritedIconName)
+    readonly property var exerciseList: Core.exerciseCatalogController.collectExercises(exerciseModel, inheritedIconName)
 
     title: exerciseList.length > 0 ? i18np("%2 - %1 item", "%2 - %1 items", exerciseList.length, pathText) : pathText
-
-    function iconNameForExercise(exercise: var, inheritedIconName: string): string {
-        const iconName = exercise._icon ? exercise._icon : inheritedIconName
-        if (iconName === "") {
-            return "view-list-details"
-        }
-        return iconName.startsWith("qrc:/") ? iconName : "qrc:/icons/22-actions-" + iconName
-    }
-
-    function collectExercises(exercises: var, inheritedIconName: string): var {
-        const collectedExercises = []
-        for (const exercise of exercises) {
-            collectExercise(exercise, inheritedIconName, collectedExercises)
-        }
-        return collectedExercises
-    }
-
-    function collectExercise(exercise: var, inheritedIconName: string, collectedExercises: var): void {
-        const iconName = iconNameForExercise(exercise, inheritedIconName)
-        if (exercise.children !== undefined) {
-            for (const childExercise of exercise.children) {
-                collectExercise(childExercise, iconName, collectedExercises)
-            }
-            return
-        }
-        collectedExercises.push({
-            exercise: exercise,
-            iconName: iconName,
-        })
-    }
-
-    function exerciseDescription(exercise: var): string {
-        if (exercise.userMessage !== undefined && exercise.userMessage !== "") {
-            return exercise.userMessage
-        }
-
-        let description = i18n("Practice identifying this exercise by ear.")
-        if (exercise.playMode === "rhythm") {
-            description = i18n("Practice rhythm recognition.")
-        } else if (exercise.playMode === "scale") {
-            description = i18n("Identify the scale by ear.")
-        } else if (exercise.playMode === "chord") {
-            description = i18n("Identify the chord or interval by ear.")
-        }
-
-        if (exercise.options !== undefined && exercise.options.length > 0) {
-            return i18n("%1 Includes %2 possible answers.", description, exercise.options.length)
-        }
-        return description
-    }
 
     function openExercise(exercise: var, iconName: string): void {
         const exerciseTitle = i18nc("technical term, do you have a musician friend?", exercise.name)
@@ -162,7 +112,7 @@ Kirigami.Page {
                                 }
 
                                 QQC2.Label {
-                                    text: page.exerciseDescription(exerciseCard.modelData.exercise)
+                                    text: Core.exerciseCatalogController.exerciseDescription(exerciseCard.modelData.exercise)
                                     wrapMode: Text.WordWrap
                                     maximumLineCount: 2
                                     elide: Text.ElideRight

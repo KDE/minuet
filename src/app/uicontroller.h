@@ -23,13 +23,14 @@
 #ifndef MINUET_UICONTROLLER_H
 #define MINUET_UICONTROLLER_H
 
-#include <interfaces/iuicontroller.h>
+#include <QObject>
+#include <QString>
 
 namespace Minuet
 {
 class Core;
 
-class UiController : public IUiController
+class UiController : public QObject
 {
     Q_OBJECT
 
@@ -37,7 +38,7 @@ public:
     ~UiController() override = default;
 
     bool initialize(Core *core);
-    QString errorString() const override;
+    QString errorString() const;
 
 private:
     friend class Core;

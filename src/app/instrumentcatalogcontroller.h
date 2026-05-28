@@ -20,39 +20,38 @@
 **
 ****************************************************************************/
 
-#ifndef MINUET_SMUFLMETADATA_H
-#define MINUET_SMUFLMETADATA_H
+#ifndef MINUET_INSTRUMENTCATALOGCONTROLLER_H
+#define MINUET_INSTRUMENTCATALOGCONTROLLER_H
 
-#include <QJsonObject>
 #include <QObject>
 #include <QVariantList>
 #include <qqmlregistration.h>
 
 namespace Minuet
 {
-class SmuflMetadata : public QObject
+class InstrumentCatalogController : public QObject
 {
     Q_OBJECT
     QML_ELEMENT
-    QML_UNCREATABLE("SmuflMetadata is provided by SheetMusicController")
-    Q_PROPERTY(bool ready READ ready CONSTANT)
+    QML_UNCREATABLE("InstrumentCatalogController is provided by Core")
 
 public:
-    bool ready() const;
-
-    Q_INVOKABLE QVariantList anchor(const QString &glyphName, const QString &anchorName) const;
-    Q_INVOKABLE double engravingDefault(const QString &name) const;
-    Q_INVOKABLE double glyphBBoxValue(const QString &glyphName, const QString &cornerName, int axis) const;
+    Q_INVOKABLE QVariantList instrumentGroups(const QString &json) const;
+    Q_INVOKABLE QVariantList melodicInstruments(const QString &json) const;
+    Q_INVOKABLE QVariantList rhythmInstruments(const QString &json) const;
+    Q_INVOKABLE QVariantList melodicInstrumentsForGroup(const QVariantList &instruments, int group) const;
+    Q_INVOKABLE int melodicGroupForInstrument(const QVariantList &groups, const QVariantList &instruments, int instrument) const;
+    Q_INVOKABLE int melodicGroupIndex(const QVariantList &groups, int group) const;
+    Q_INVOKABLE int melodicInstrumentIndex(const QVariantList &instruments, int instrument) const;
+    Q_INVOKABLE int rhythmInstrumentIndex(const QVariantList &instruments, int instrument) const;
 
 private:
-    friend class SheetMusicController;
+    friend class Core;
 
-    explicit SmuflMetadata(QObject *parent = nullptr);
+    explicit InstrumentCatalogController(QObject *parent = nullptr);
 
-    bool hasRequiredData() const;
-
-    QJsonObject m_data;
-    bool m_ready = false;
+    QVariantList parseArray(const QString &json) const;
+    int indexByRole(const QVariantList &items, const QString &role, int value) const;
 };
 }
 

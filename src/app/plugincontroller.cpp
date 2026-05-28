@@ -44,7 +44,7 @@ using namespace Qt::StringLiterals;
 
 namespace Minuet
 {
-PluginController::PluginController(QObject *parent) : IPluginController(parent)
+PluginController::PluginController(QObject *parent) : QObject(parent)
 {
 #if !defined(Q_OS_ANDROID)
     m_plugins = KPluginMetaData::findPlugins(u"minuet"_s);

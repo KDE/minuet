@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2016 by Sandro S. Andrade <sandroandrade@kde.org>
+** Copyright (C) 2026 by Sandro S. Andrade <sandroandrade@kde.org>
 **
 ** This program is free software; you can redistribute it and/or
 ** modify it under the terms of the GNU General Public License as
@@ -20,12 +20,31 @@
 **
 ****************************************************************************/
 
-#include "iplugincontroller.h"
+#ifndef MINUET_PIANOKEYBOARDCONTROLLER_H
+#define MINUET_PIANOKEYBOARDCONTROLLER_H
+
+#include <QObject>
+#include <qqmlregistration.h>
 
 namespace Minuet
 {
-IPluginController::IPluginController(QObject *parent) : QObject(parent) {}
+class PianoKeyboardController : public QObject
+{
+    Q_OBJECT
+    QML_ELEMENT
+    QML_UNCREATABLE("PianoKeyboardController is provided by Core")
 
+public:
+    Q_INVOKABLE bool isBlackKey(int pitch) const;
+    Q_INVOKABLE double scrollTargetX(int pitch, double contentWidth, double viewportWidth) const;
+    Q_INVOKABLE int keyboardChildIndex(int pitch) const;
+    Q_INVOKABLE int octaveChildIndex(int pitch) const;
+
+private:
+    friend class Core;
+
+    explicit PianoKeyboardController(QObject *parent = nullptr);
+};
 }
 
-#include "moc_iplugincontroller.cpp"
+#endif

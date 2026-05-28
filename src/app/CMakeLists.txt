@@ -1,10 +1,14 @@
 set(minuet_SRCS
     main.cpp
     core.cpp
+    exercisecatalogcontroller.cpp
+    exercisesessioncontroller.cpp
+    instrumentcatalogcontroller.cpp
+    pianokeyboardcontroller.cpp
     uicontroller.cpp
     plugincontroller.cpp
-    exercisecontroller.cpp
     settingscontroller.cpp
+    sheetmusiccontroller.cpp
     smuflmetadata.cpp
 )
 
@@ -49,9 +53,16 @@ qt_add_qml_module(minuet
     SOURCES
         ${minuet_SRCS}
         core.h
+        exercisecatalogcontroller.h
+        exercisesessioncontroller.h
+        instrumentcatalogcontroller.h
         interfaceqmltypes.h
+        pianokeyboardcontroller.h
+        plugincontroller.h
         settingscontroller.h
+        sheetmusiccontroller.h
         smuflmetadata.h
+        uicontroller.h
     QML_FILES
         qml/Main.qml
         qml/AboutPage.qml

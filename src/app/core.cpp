@@ -24,15 +24,24 @@
 
 #include <QQmlEngine>
 
-#include "exercisecontroller.h"
+#include "exercisecatalogcontroller.h"
+#include "exercisesessioncontroller.h"
+#include "instrumentcatalogcontroller.h"
+#include "pianokeyboardcontroller.h"
 #include "plugincontroller.h"
 #include "settingscontroller.h"
+#include "sheetmusiccontroller.h"
 #include "uicontroller.h"
-
-#include <interfaces/isoundcontroller.h>
 
 namespace Minuet
 {
+Core *Core::m_self = nullptr;
+
+Core::~Core()
+{
+    m_self = nullptr;
+}
+
 bool Core::initialize()
 {
     if (m_self) {
@@ -55,9 +64,9 @@ Core *Core::create(QQmlEngine *qmlEngine, QJSEngine *jsEngine)
     return core;
 }
 
-IPluginController *Core::pluginController()
+Core *Core::self()
 {
-    return m_pluginController;
+    return m_self;
 }
 
 ISoundController *Core::soundController()
@@ -65,19 +74,34 @@ ISoundController *Core::soundController()
     return m_soundController;
 }
 
-IExerciseController *Core::exerciseController()
-{
-    return m_exerciseController;
-}
-
-ISettingsController *Core::settingsController()
+SettingsController *Core::settingsController()
 {
     return m_settingsController;
 }
 
-IUiController *Core::uiController()
+SheetMusicController *Core::sheetMusicController()
 {
-    return m_uiController;
+    return m_sheetMusicController;
+}
+
+ExerciseCatalogController *Core::exerciseCatalogController()
+{
+    return m_exerciseCatalogController;
+}
+
+InstrumentCatalogController *Core::instrumentCatalogController()
+{
+    return m_instrumentCatalogController;
+}
+
+PianoKeyboardController *Core::pianoKeyboardController()
+{
+    return m_pianoKeyboardController;
+}
+
+ExerciseSessionController *Core::exerciseSessionController()
+{
+    return m_exerciseSessionController;
 }
 
 void Core::setSoundController(ISoundController *soundController)
@@ -95,49 +119,56 @@ void Core::setSoundController(ISoundController *soundController)
     }
 }
 
-Core::Core(QObject *parent) : ICore(parent), m_soundController(nullptr)
+Core::Core(QObject *parent) : QObject(parent), m_soundController(nullptr)
 {
+    Q_ASSERT(m_self == nullptr);
+    m_self = this;
+
     m_settingsController = new SettingsController(this);
-    connect(m_settingsController, &ISettingsController::volumeChanged, this, [this](int volume) {
+    connect(m_settingsController, &SettingsController::volumeChanged, this, [this](int volume) {
         if (m_soundController) {
             m_soundController->setVolume(volume);
         }
     });
-    connect(m_settingsController, &ISettingsController::pitchChanged, this, [this](int pitch) {
+    connect(m_settingsController, &SettingsController::pitchChanged, this, [this](int pitch) {
         if (m_soundController) {
             m_soundController->setPitch(pitch);
         }
     });
-    connect(m_settingsController, &ISettingsController::tempoChanged, this, [this](int tempo) {
+    connect(m_settingsController, &SettingsController::tempoChanged, this, [this](int tempo) {
         if (m_soundController) {
             m_soundController->setTempo(tempo);
         }
     });
-    connect(m_settingsController, &ISettingsController::instrumentChanged, this, [this](int instrument) {
+    connect(m_settingsController, &SettingsController::instrumentChanged, this, [this](int instrument) {
         if (m_soundController) {
             m_soundController->setInstrument(instrument);
         }
     });
-    connect(m_settingsController, &ISettingsController::rhythmInstrumentChanged, this, [this](int rhythmInstrument) {
+    connect(m_settingsController, &SettingsController::rhythmInstrumentChanged, this, [this](int rhythmInstrument) {
         if (m_soundController) {
             m_soundController->setRhythmInstrument(rhythmInstrument);
         }
     });
 
+    m_sheetMusicController = new SheetMusicController(this);
+    m_exerciseCatalogController = new ExerciseCatalogController(this);
+    if (!m_exerciseCatalogController->initialize()) {
+        qCritical() << m_exerciseCatalogController->errorString();
+        exit(-2);
+    }
+    m_instrumentCatalogController = new InstrumentCatalogController(this);
+    m_pianoKeyboardController = new PianoKeyboardController(this);
+    m_exerciseSessionController = new ExerciseSessionController(this);
+
     m_pluginController = new PluginController(this);
-    if (!((PluginController *)m_pluginController)->initialize(this)) {
+    if (!m_pluginController->initialize(this)) {
         qCritical() << m_pluginController->errorString();
         exit(-1);
     }
 
-    m_exerciseController = new ExerciseController(this);
-    if (!((ExerciseController *)m_exerciseController)->initialize(this)) {
-        qCritical() << m_exerciseController->errorString();
-        exit(-2);
-    }
-
     m_uiController = new UiController(this);
-    if (!((UiController *)m_uiController)->initialize(this)) {
+    if (!m_uiController->initialize(this)) {
         qCritical() << m_uiController->errorString();
         exit(-3);
     }
