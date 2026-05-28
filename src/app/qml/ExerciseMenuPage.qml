@@ -38,78 +38,63 @@ Kirigami.Page {
         ExercisePage {}
     }
 
-    ColumnLayout {
-        id: pageContent
-
+    Kirigami.CardsListView {
         anchors.fill: parent
         anchors.margins: Kirigami.Units.largeSpacing
-        spacing: Kirigami.Units.largeSpacing
+        boundsBehavior: Flickable.StopAtBounds
+        clip: true
+        spacing: Kirigami.Units.smallSpacing
+        topMargin: 0
+        bottomMargin: 0
+        leftMargin: 0
+        rightMargin: 0
+        model: page.exerciseList
 
-        Flickable {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            boundsBehavior: Flickable.StopAtBounds
-            contentWidth: width
-            contentHeight: exerciseListLayout.height
-            clip: true
+        delegate: Kirigami.AbstractCard {
+            id: exerciseCard
 
-            ColumnLayout {
-                id: exerciseListLayout
+            required property var modelData
 
-                width: parent.width
-                spacing: Kirigami.Units.smallSpacing
+            height: Math.max(implicitHeight, Kirigami.Units.gridUnit * 5)
+            showClickFeedback: true
 
-                Repeater {
-                    model: page.exerciseList
+            contentItem: RowLayout {
+                spacing: Kirigami.Units.largeSpacing
 
-                    Kirigami.AbstractCard {
-                        id: exerciseCard
+                Kirigami.Icon {
+                    source: exerciseCard.modelData.iconName
+                    visible: exerciseCard.modelData.iconName !== ""
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.preferredWidth: Kirigami.Units.iconSizes.medium
+                    Layout.preferredHeight: Kirigami.Units.iconSizes.medium
+                }
 
-                        required property var modelData
+                ColumnLayout {
+                    Layout.fillWidth: true
+                    spacing: Kirigami.Units.smallSpacing
 
+                    Kirigami.Heading {
+                        text: i18nc("technical term, do you have a musician friend?", exerciseCard.modelData.exercise.name)
+                        level: 3
+                        elide: Text.ElideRight
+                        maximumLineCount: 1
                         Layout.fillWidth: true
-                        Layout.minimumHeight: Kirigami.Units.gridUnit * 5
+                    }
 
-                        contentItem: RowLayout {
-                            spacing: Kirigami.Units.largeSpacing
-
-                            Kirigami.Icon {
-                                source: exerciseCard.modelData.iconName
-                                visible: exerciseCard.modelData.iconName !== ""
-                                Layout.alignment: Qt.AlignVCenter
-                                Layout.preferredWidth: Kirigami.Units.iconSizes.medium
-                                Layout.preferredHeight: Kirigami.Units.iconSizes.medium
-                            }
-
-                            ColumnLayout {
-                                Layout.fillWidth: true
-                                spacing: Kirigami.Units.smallSpacing
-
-                                Kirigami.Heading {
-                                    text: i18nc("technical term, do you have a musician friend?", exerciseCard.modelData.exercise.name)
-                                    level: 3
-                                    elide: Text.ElideRight
-                                    maximumLineCount: 1
-                                    Layout.fillWidth: true
-                                }
-
-                                QQC2.Label {
-                                    text: i18nc("technical term, do you have a musician friend?", Core.exerciseCatalogController.exerciseDescription(exerciseCard.modelData.exercise))
-                                    wrapMode: Text.WordWrap
-                                    maximumLineCount: 2
-                                    elide: Text.ElideRight
-                                    color: Kirigami.Theme.disabledTextColor
-                                    Layout.fillWidth: true
-                                }
-                            }
-                        }
-
-                        onClicked: page.openExercise(modelData.exercise, modelData.iconName)
+                    QQC2.Label {
+                        text: i18nc("technical term, do you have a musician friend?", Core.exerciseCatalogController.exerciseDescription(exerciseCard.modelData.exercise))
+                        wrapMode: Text.WordWrap
+                        maximumLineCount: 2
+                        elide: Text.ElideRight
+                        color: Kirigami.Theme.disabledTextColor
+                        Layout.fillWidth: true
                     }
                 }
             }
 
-            QQC2.ScrollIndicator.vertical: QQC2.ScrollIndicator { active: true }
+            onClicked: page.openExercise(modelData.exercise, modelData.iconName)
         }
+
+        QQC2.ScrollIndicator.vertical: QQC2.ScrollIndicator { active: true }
     }
 }

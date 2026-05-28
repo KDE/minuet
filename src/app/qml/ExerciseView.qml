@@ -18,11 +18,8 @@ Item {
     property alias countIn: internal.countIn
     readonly property bool exercisePlaying: Core.soundController !== null
         && Core.soundController.state === ISoundController.PlayingState
-    readonly property bool compactPortrait: exerciseView.width < Kirigami.Units.gridUnit * 38
+    readonly property bool musicViewsTabbed: !applicationWindow().wideScreen
         && exerciseView.height > exerciseView.width
-    readonly property bool compact: exerciseView.width < Kirigami.Units.gridUnit * 52
-    readonly property bool wide: exerciseView.width >= Kirigami.Units.gridUnit * 72
-    readonly property real maximumContentWidth: Kirigami.Units.gridUnit * 86
     readonly property real answerCellSpacing: Kirigami.Units.smallSpacing
     readonly property real answerCellHeight: Math.max(Kirigami.Units.gridUnit * 3.0, Kirigami.Units.iconSizes.medium + Kirigami.Units.largeSpacing * 2)
     readonly property real answerCardWidth: Math.max(1, answerGridView.cellWidth - answerCellSpacing)
@@ -30,14 +27,14 @@ Item {
     readonly property real rhythmAnswerCardTextSize: Math.round(Kirigami.Theme.defaultFont.pointSize * 2.0)
     readonly property real rhythmAnswerCardVerticalOffset: Math.round(rhythmAnswerCardTextSize * 0.22)
     readonly property real answerCardHorizontalPadding: Kirigami.Units.largeSpacing
-    readonly property real minimumAnswerCardWidth: Kirigami.Units.gridUnit * (compactPortrait ? 10 : compact ? 9 : 13)
+    readonly property real minimumAnswerCardWidth: Kirigami.Units.gridUnit * 10
     readonly property real selectedAnswerHeight: answerCellHeight
     readonly property real sectionPadding: Kirigami.Units.smallSpacing
     readonly property int answerColumnCount: {
         const availableWidth = Math.max(1, answerGridView.width)
         const fittedColumns = Math.max(1, Math.floor((availableWidth + answerCellSpacing) / (minimumAnswerCardWidth + answerCellSpacing)))
         const availableAnswerCount = Math.max(1, availableAnswers.length)
-        return Math.max(1, Math.min(wide ? 5 : 4, fittedColumns, availableAnswerCount))
+        return Math.max(1, Math.min(5, fittedColumns, availableAnswerCount))
     }
     readonly property var availableAnswers: Core.exerciseSessionController.availableAnswersModel(exerciseView.currentExercise || {})
     readonly property int selectedOptionCount: Core.exerciseSessionController.selectedOptionCount(exerciseView.currentExercise || {}, Core.settingsController.rhythmPatternCount)
@@ -100,7 +97,7 @@ Item {
         for (const mark of presentation.pianoMarks) {
             pianoView.noteMark(0, mark.pitch, 0, mark.color)
         }
-        pianoView.scrollToNote(presentation.rootPitch)
+        pianoView.scrollToMarkedKeys()
         sheetMusicView.model = presentation.sheetMusicModel
     }
 
@@ -254,7 +251,7 @@ Item {
         Core.soundController.prepareFromExerciseOptions(chosenExercises)
         if (exerciseView.currentExercise["playMode"] !== "rhythm") {
             pianoView.noteMark(0, Core.exerciseSessionController.chosenRootNote, 0, "white")
-            pianoView.scrollToNote(Core.exerciseSessionController.chosenRootNote)
+            pianoView.scrollToMarkedKeys()
             sheetMusicView.model = [Core.exerciseSessionController.chosenRootNote]
         }
         exerciseView.state = "waitingForAnswer"
@@ -264,10 +261,7 @@ Item {
     Item {
         id: contentShell
 
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
-        width: Math.min(parent.width, exerciseView.maximumContentWidth)
+        anchors.fill: parent
 
         ColumnLayout {
             id: contentLayout
@@ -280,12 +274,10 @@ Item {
                 spacing: 0
 
                 Kirigami.Heading {
-                    level: exerciseView.compactPortrait ? 3 : 2
+                    level: exerciseView.musicViewsTabbed ? 3 : 2
                     Layout.fillWidth: true
                     Layout.maximumHeight: implicitHeight
                     horizontalAlignment: Text.AlignHCenter
-                    wrapMode: Text.WordWrap
-                    maximumLineCount: 2
                     elide: Text.ElideRight
                     text: {
                         if (exerciseView.currentExercise === undefined) {
@@ -305,8 +297,6 @@ Item {
                     Layout.fillWidth: true
                     Layout.maximumHeight: implicitHeight
                     horizontalAlignment: Text.AlignHCenter
-                    wrapMode: Text.WordWrap
-                    maximumLineCount: 1
                     elide: Text.ElideRight
                     color: exerciseView.exercisePlaying ? Kirigami.Theme.highlightColor : Kirigami.Theme.textColor
                     text: exerciseView.exercisePlaying ? i18n("Playing...") : Core.exerciseSessionController.statusText
@@ -457,7 +447,7 @@ Item {
                         }
 
                         Label {
-                            visible: selectedAnswersFlickable.contentWidth > selectedAnswersFlickable.width
+                            visible: selectedAnswersFlickable.canScrollHorizontally
                             text: i18n("Scroll for more |")
                             color: Kirigami.Theme.disabledTextColor
                         }
@@ -484,6 +474,8 @@ Item {
                         Flickable {
                             id: selectedAnswersFlickable
 
+                            readonly property bool canScrollHorizontally: contentWidth > width
+
                             anchors.fill: parent
                             anchors.margins: exerciseView.sectionPadding
                             boundsBehavior: Flickable.StopAtBounds
@@ -505,7 +497,20 @@ Item {
                                 }
                             }
 
-                            ScrollIndicator.horizontal: ScrollIndicator { active: selectedAnswersFlickable.contentWidth > selectedAnswersFlickable.width }
+                            ScrollIndicator.horizontal: ScrollIndicator {
+                                id: selectedAnswersScrollIndicator
+
+                                active: selectedAnswersFlickable.canScrollHorizontally
+                                visible: selectedAnswersFlickable.canScrollHorizontally
+
+                                contentItem: Rectangle {
+                                    implicitWidth: 2
+                                    implicitHeight: 2
+                                    color: selectedAnswersScrollIndicator.palette.mid
+                                    opacity: 0.75
+                                    visible: selectedAnswersScrollIndicator.visible && selectedAnswersScrollIndicator.size < 1.0
+                                }
+                            }
                         }
                     }
                 }
@@ -525,7 +530,7 @@ Item {
                 GridLayout {
                     id: musicViewsLayout
 
-                    readonly property bool tabbed: exerciseView.compactPortrait
+                    readonly property bool tabbed: exerciseView.musicViewsTabbed
                     readonly property real musicViewWidth: tabbed ? width : (width - columnSpacing) / 2
 
                     Layout.fillWidth: true
@@ -548,7 +553,6 @@ Item {
                             anchors.right: parent.right
                             anchors.verticalCenter: parent.verticalCenter
                             height: Math.min(sheetMusicView.staffGroupHeight, parent.height)
-                            ScrollIndicator.horizontal: ScrollIndicator { active: true }
                         }
                     }
 
@@ -571,7 +575,7 @@ Item {
                     id: musicTabs
 
                     Layout.fillWidth: true
-                    visible: exerciseView.compactPortrait
+                    visible: exerciseView.musicViewsTabbed
                     position: TabBar.Footer
 
                     TabButton {
@@ -603,7 +607,7 @@ Item {
             width: GridView.view.cellWidth - (index % exerciseView.answerColumnCount === exerciseView.answerColumnCount - 1 ? 0 : exerciseView.answerCellSpacing)
             height: GridView.view.cellHeight - exerciseView.answerCellSpacing
             opacity: dimmedByHighlight ? 0.25 : enabled ? 1 : 0.45
-            hoverEnabled: Qt.platform.os !== "android"
+            hoverEnabled: !Kirigami.Settings.isMobile
             enabled: exerciseView.state === "waitingForAnswer" && !animation.running
             padding: 0
             leftInset: 0

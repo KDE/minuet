@@ -23,7 +23,7 @@ Item {
     readonly property real ledgerLineWidth: noteheadBBoxWidth + ledgerLineExtension * 2
     readonly property real systemTopY: Core.sheetMusicController.yForDiatonicIndex(38, middleCY, staffStep, staffPixelOffset)
     readonly property real systemBottomY: Core.sheetMusicController.yForDiatonicIndex(18, middleCY, staffStep, staffPixelOffset)
-    readonly property real systemHeight: systemBottomY - systemTopY
+    readonly property real systemHeight: (38 - 18) * staffStep
     readonly property real braceBBoxHeight: metadata.glyphBBoxValue("brace", "bBoxNE", 1) - metadata.glyphBBoxValue("brace", "bBoxSW", 1)
     readonly property real braceBBoxBottom: metadata.glyphBBoxValue("brace", "bBoxSW", 1)
     readonly property real braceFontPixelSize: braceBBoxHeight > 0 ? systemHeight * 4 / braceBBoxHeight : staffStep * 20

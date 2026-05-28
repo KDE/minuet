@@ -63,7 +63,7 @@ Kirigami.ApplicationWindow {
         currentExercise = undefined
         currentExerciseSelection = { kind: "about" }
         pageStack.clear()
-        pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+        pageStack.push(createAboutPage())
     }
 
     function openSettings(): void {
@@ -71,7 +71,7 @@ Kirigami.ApplicationWindow {
         currentExercise = undefined
         currentExerciseSelection = { kind: "settings" }
         pageStack.clear()
-        pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
+        pageStack.push(createSettingsPage())
     }
 
     pageStack {
@@ -96,7 +96,6 @@ Kirigami.ApplicationWindow {
     globalDrawer: MinuetDrawer {
         exerciseModel: Core.exerciseCatalogController.exercises
         currentExerciseSelection: window.currentExerciseSelection
-        wideScreen: window.wideScreen
         onExerciseFilterSelected: function(exerciseModel, title, inheritedIconName, selectionKind) {
             window.openExerciseFilter(exerciseModel, title, inheritedIconName, selectionKind)
         }
@@ -109,6 +108,14 @@ Kirigami.ApplicationWindow {
 
     function createHomePage(): Kirigami.Page {
         return homePageComponent.createObject(pageStack)
+    }
+
+    function createAboutPage(): Kirigami.Page {
+        return aboutPageComponent.createObject(pageStack)
+    }
+
+    function createSettingsPage(): Kirigami.Page {
+        return settingsPageComponent.createObject(pageStack)
     }
 
     Component {
@@ -131,6 +138,18 @@ Kirigami.ApplicationWindow {
         id: exerciseMenuPageComponent
 
         ExerciseMenuPage {}
+    }
+
+    Component {
+        id: aboutPageComponent
+
+        AboutPage {}
+    }
+
+    Component {
+        id: settingsPageComponent
+
+        SettingsPage {}
     }
 
     Binding {

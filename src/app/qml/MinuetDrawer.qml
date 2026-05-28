@@ -14,7 +14,6 @@ Kirigami.GlobalDrawer {
 
     property var exerciseModel: []
     property var currentExerciseSelection: null
-    property bool wideScreen: false
     property string currentSearchText: ""
     readonly property int defaultPreferredSize: Kirigami.Units.gridUnit * 24
 
@@ -24,8 +23,8 @@ Kirigami.GlobalDrawer {
     signal aboutRequested()
 
     interactiveResizeEnabled: true
-    modal: !wideScreen
-    drawerOpen: wideScreen
+    modal: !applicationWindow().wideScreen
+    drawerOpen: applicationWindow().wideScreen
     resetMenuOnTriggered: false
     actions: createDrawerActions(currentSearchText)
     preferredSize: defaultPreferredSize
@@ -75,7 +74,7 @@ Kirigami.GlobalDrawer {
             }
 
             objectName: "searchField"
-            focus: drawer.wideScreen && !Kirigami.InputMethod.willShowOnActive
+            focus: applicationWindow().wideScreen && !Kirigami.InputMethod.willShowOnActive
             placeholderText: i18n("Search…")
             onTextChanged: drawer.currentSearchText = text
         }

@@ -11,7 +11,7 @@ Flickable {
     id: flickable
 
     implicitHeight: Math.round(3.4 * 16) + octaveLabelHeight + keyboardBottomMargin
-    contentWidth: piano.width
+    contentWidth: piano.width + sidePadding * 2
     boundsBehavior: Flickable.StopAtBounds
     clip: true
 
@@ -20,6 +20,11 @@ Flickable {
     property int keyHeight: Math.max(1, height - octaveLabelHeight - keyboardBottomMargin)
     property int keyWidth: Math.max(1, Math.round(keyHeight / 3.4))
     readonly property int markerHeight: 2
+    readonly property bool canScrollHorizontally: piano.width > width
+    readonly property real sidePadding: canScrollHorizontally ? width / 2 : 0
+
+    onWidthChanged: Qt.callLater(scrollToMarkedKeys)
+    onContentWidthChanged: Qt.callLater(scrollToMarkedKeys)
 
     function noteOn(chan: int, pitch: int, vel: int): void {
         if (vel > 0)
@@ -38,6 +43,7 @@ Flickable {
         clearMarksFromKey(noteItem)
         noteItem.markColor = color
         noteItem.marked = true
+        Qt.callLater(scrollToMarkedKeys)
     }
     function noteUnmark(chan: int, pitch: int, vel: int, color: color): void {
         clearMarksFromKey(itemForPitch(pitch))
@@ -56,7 +62,47 @@ Flickable {
         noteItem.marked = false
     }
     function scrollToNote(pitch: int): void {
-        flickable.contentX = Core.pianoKeyboardController.scrollTargetX(pitch, flickable.contentWidth, flickable.width)
+        const noteItem = itemForPitch(pitch)
+        if (noteItem === undefined || noteItem === null) {
+            return
+        }
+
+        const notePosition = noteItem.mapToItem(piano, 0, 0)
+        scrollToX(piano.x + notePosition.x + noteItem.width / 2 - flickable.width / 2, true)
+    }
+    function scrollToMarkedKeys(): void {
+        var left = Number.POSITIVE_INFINITY
+        var right = Number.NEGATIVE_INFINITY
+        for (var pitch = 21; pitch <= 108; ++pitch) {
+            const noteItem = itemForPitch(pitch)
+            if (noteItem === undefined || noteItem === null || !noteItem.marked) {
+                continue
+            }
+
+            const notePosition = noteItem.mapToItem(piano, 0, 0)
+            left = Math.min(left, notePosition.x)
+            right = Math.max(right, notePosition.x + noteItem.width)
+        }
+
+        if (left === Number.POSITIVE_INFINITY) {
+            scrollToX(flickable.sidePadding, false)
+            return
+        }
+
+        scrollToX(piano.x + (left + right) / 2 - flickable.width / 2, true)
+    }
+    function scrollToX(targetX: real, animated: bool): void {
+        const clampedTargetX = Math.max(0, Math.min(targetX, Math.max(0, flickable.contentWidth - flickable.width)))
+        if (!animated || Math.abs(flickable.contentX - clampedTargetX) < 1) {
+            scrollAnimation.stop()
+            flickable.contentX = clampedTargetX
+            return
+        }
+
+        scrollAnimation.stop()
+        scrollAnimation.from = flickable.contentX
+        scrollAnimation.to = clampedTargetX
+        scrollAnimation.start()
     }
     function highlightKey(pitch: int, color: color): void {
         itemForPitch(pitch).color = color
@@ -67,11 +113,20 @@ Flickable {
         return octaveChildIndex >= 0 ? keyItem.children[octaveChildIndex] : keyItem
     }
 
+    NumberAnimation {
+        id: scrollAnimation
+
+        target: flickable
+        property: "contentX"
+        duration: 180
+        easing.type: Easing.InOutQuad
+    }
+
     Rectangle {
         id: piano
 
         width: 3 * flickable.keyWidth + 7 * (7 * flickable.keyWidth); height: parent.height
-        x: 0
+        x: flickable.sidePadding
         radius: 5
         color: "#141414"
 
@@ -121,5 +176,18 @@ Flickable {
             }
         }
     }
-    ScrollIndicator.horizontal: ScrollIndicator { active: true }
+    ScrollIndicator.horizontal: ScrollIndicator {
+        id: pianoScrollIndicator
+
+        active: flickable.canScrollHorizontally
+        visible: flickable.canScrollHorizontally
+
+        contentItem: Rectangle {
+            implicitWidth: 2
+            implicitHeight: 2
+            color: pianoScrollIndicator.palette.mid
+            opacity: 0.75
+            visible: pianoScrollIndicator.visible && pianoScrollIndicator.size < 1.0
+        }
+    }
 }
