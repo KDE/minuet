@@ -1,8 +1,3 @@
-/*
-    SPDX-FileCopyrightText: 2026 Sandro Andrade <sandroandrade@kde.org>
-    SPDX-License-Identifier: BSD-3-Clause
-*/
-
 buildscript {
     repositories {
         google()

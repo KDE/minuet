@@ -4,7 +4,7 @@
       "name": "Chords",
       "root": "29..84",
       "playMode": "chord",
-      "userMessage": "Hear the chord and then choose an answer from options below",
+      "userMessage": "Hear the chord and choose your answer",
       "numberOfSelectedOptions": 1,
       "_icon": "minuet-chords.svg",
       "children": [
@@ -15,41 +15,50 @@
             {
               "name": "Minor and major chords",
               "and-tags": ["triad", "root-position"],
-              "or-tags": ["minor", "major"]
+              "or-tags": ["minor", "major"],
+              "description": "Practice distinguishing minor and major triads by ear."
             },
             {
               "name": "Diminished and Augmented Chords",
               "and-tags": ["triad", "root-position"],
-              "or-tags": ["diminished", "augmented"]
+              "or-tags": ["diminished", "augmented"],
+              "description": "Practice distinguishing diminished and augmented triads by ear."
             },
             {
               "name": "Triads",
-              "and-tags": ["triad", "root-position"]
+              "and-tags": ["triad", "root-position"],
+              "description": "Practice recognizing the basic triad qualities in root position."
             },
             {
               "name": "Major - inversions",
-              "and-tags": ["triad", "major"]
+              "and-tags": ["triad", "major"],
+              "description": "Practice recognizing major triads in different inversions."
             },
             {
               "name": "Minor - inversions",
-              "and-tags": ["triad", "minor"]
+              "and-tags": ["triad", "minor"],
+              "description": "Practice recognizing minor triads in different inversions."
             },
             {
               "name": "Diminished - inversions",
-              "and-tags": ["triad", "diminished"]
+              "and-tags": ["triad", "diminished"],
+              "description": "Practice recognizing diminished triads in different inversions."
             },
             {
               "name": "Triads - inversions",
-              "and-tags": ["triad"]
+              "and-tags": ["triad"],
+              "description": "Practice recognizing triads across root position and inversions."
             },
             {
               "name": "Suspended chords",
-              "and-tags": ["sus", "root-position", "three-note"]
+              "and-tags": ["sus", "root-position", "three-note"],
+              "description": "Practice distinguishing suspended chord sounds from major and minor harmony."
             },
             {
               "name": "All three note chords",
               "and-tags": ["root-position"],
-              "or-tags": ["triad", "three-note"]
+              "or-tags": ["triad", "three-note"],
+              "description": "Practice recognizing all three-note chord types by ear."
             }
           ]
         }

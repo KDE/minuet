@@ -4,7 +4,7 @@
       "name": "Chords",
       "root": "29..75",
       "playMode": "chord",
-      "userMessage": "Hear the chord and then choose an answer from options below",
+      "userMessage": "Hear the chord and choose your answer",
       "numberOfSelectedOptions": 1,
       "_icon": "minuet-chords.svg",
       "children": [
@@ -15,27 +15,33 @@
             {
               "name": "Basic ninth chords",
               "and-tags": ["ninth", "9"],
-              "or-tags": ["minor", "major"]
+              "or-tags": ["minor", "major"],
+              "description": "Practice recognizing basic minor and major ninth chord colors."
             },
             {
               "name": "All ninth chords",
-              "and-tags": ["ninth"]
+              "and-tags": ["ninth"],
+              "description": "Practice recognizing the full range of ninth chord colors by ear."
             },
             {
               "name": "Basic eleventh chords",
-              "and-tags": ["eleventh", "11"]
+              "and-tags": ["eleventh", "11"],
+              "description": "Practice recognizing eleventh chord colors by ear."
             },
             {
               "name": "Sharp eleventh chords",
-              "and-tags": ["eleventh", "11+"]
+              "and-tags": ["eleventh", "11+"],
+              "description": "Practice recognizing the distinctive color of sharp-eleventh chords."
             },
             {
               "name": "All eleventh chords",
-              "and-tags": ["eleventh"]
+              "and-tags": ["eleventh"],
+              "description": "Practice recognizing the full range of eleventh chord colors by ear."
             },
             {
               "name": "All extended chords",
-              "and-tags": ["extended"]
+              "and-tags": ["extended"],
+              "description": "Practice recognizing ninth, eleventh, and other extended chord sounds."
             }
           ]
         }

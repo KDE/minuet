@@ -1,24 +1,6 @@
-/****************************************************************************
-**
-** Copyright (C) 2016 by Sandro S. Andrade <sandroandrade@kde.org>
-**
-** This program is free software; you can redistribute it and/or
-** modify it under the terms of the GNU General Public License as
-** published by the Free Software Foundation; either version 2 of
-** the License or (at your option) version 3 or any later version
-** accepted by the membership of KDE e.V. (or its successor approved
-** by the membership of KDE e.V.), which shall act as a proxy
-** defined in Section 14 of version 3 of the license.
-**
-** This program is distributed in the hope that it will be useful,
-** but WITHOUT ANY WARRANTY; without even the implied warranty of
-** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-** GNU General Public License for more details.
-**
-** You should have received a copy of the GNU General Public License
-** along with this program.  If not, see <http://www.gnu.org/licenses/>.
-**
-****************************************************************************/
+// SPDX-FileCopyrightText: 2016 Sandro Andrade <sandroandrade@kde.org>
+//
+// SPDX-License-Identifier: GPL-2.0-or-later
 
 pragma ComponentBehavior: Bound
 
@@ -35,11 +17,19 @@ Kirigami.ApplicationWindow {
     property string titleText: "Home"
     property var currentExercise
     property var currentExerciseSelection
+    property int previousPageStackIndex: 0
     readonly property var currentPage: pageStack.depth > 0 ? pageStack.get(pageStack.currentIndex) : null
 
     title: currentPage?.title ?? titleText
 
+    function stopExercisePlayback(): void {
+        if (Core.soundController !== null) {
+            Core.soundController.stop()
+        }
+    }
+
     function openHome(): void {
+        stopExercisePlayback()
         currentExercise = undefined
         currentExerciseSelection = null
         pageStack.clear()
@@ -47,6 +37,7 @@ Kirigami.ApplicationWindow {
     }
 
     function openExerciseFilter(exerciseModel: var, title: string, inheritedIconName: string, selectionKind: string): void {
+        stopExercisePlayback()
         currentExercise = undefined
         if (selectionKind === "all") {
             currentExerciseSelection = { kind: "all" }
@@ -68,6 +59,7 @@ Kirigami.ApplicationWindow {
     }
 
     function openAbout(): void {
+        stopExercisePlayback()
         currentExercise = undefined
         currentExerciseSelection = { kind: "about" }
         pageStack.clear()
@@ -75,6 +67,7 @@ Kirigami.ApplicationWindow {
     }
 
     function openSettings(): void {
+        stopExercisePlayback()
         currentExercise = undefined
         currentExerciseSelection = { kind: "settings" }
         pageStack.clear()
@@ -86,6 +79,17 @@ Kirigami.ApplicationWindow {
         globalToolBar {
             style: Kirigami.ApplicationHeaderStyle.ToolBar
             showNavigationButtons: pageStack.currentIndex > 0 ? Kirigami.ApplicationHeaderStyle.ShowBackButton : Kirigami.ApplicationHeaderStyle.None
+        }
+    }
+
+    Connections {
+        target: pageStack
+
+        function onCurrentIndexChanged(): void {
+            if (pageStack.currentIndex < window.previousPageStackIndex) {
+                window.stopExercisePlayback()
+            }
+            window.previousPageStackIndex = pageStack.currentIndex
         }
     }
 

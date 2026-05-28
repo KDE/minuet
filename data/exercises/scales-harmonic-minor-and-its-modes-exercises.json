@@ -4,13 +4,14 @@
       "name": "Scales",
       "root": "29..81",
       "playMode": "scale",
-      "userMessage": "Hear the scale and then choose an answer from options below",
+      "userMessage": "Hear the scale and choose your answer",
       "numberOfSelectedOptions": 1,
       "_icon": "minuet-scales.svg",
       "children": [
         {
           "name": "Harmonic Minor Scale and its Modes",
-          "and-tags": ["scale", "harmonic", "minor"]
+          "and-tags": ["scale", "harmonic", "minor"],
+          "description": "Practice recognizing harmonic minor and its modal colors."
         }
       ]
     }

@@ -4,13 +4,14 @@
       "name": "Scales",
       "root": "29..81",
       "playMode": "scale",
-      "userMessage": "Hear the scale and then choose an answer from options below",
+      "userMessage": "Hear the scale and choose your answer",
       "numberOfSelectedOptions": 1,
       "_icon": "minuet-scales.svg",
       "children": [
         {
           "name": "Bebop Scales",
-          "and-tags": ["scale", "bebop"]
+          "and-tags": ["scale", "bebop"],
+          "description": "Practice recognizing bebop scales with added passing tones."
         }
       ]
     }

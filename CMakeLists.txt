@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2016 Sandro Andrade <sandroandrade@kde.org>
+#
+# SPDX-License-Identifier: GPL-2.0-or-later
+
 cmake_minimum_required(VERSION 3.16)
 
 set(CMAKE_AUTOMOC ON)

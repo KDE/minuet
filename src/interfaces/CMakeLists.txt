@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2016 Sandro Andrade <sandroandrade@kde.org>
+#
+# SPDX-License-Identifier: GPL-2.0-or-later
+
 set(minuetinterfaces_LIB_SRCS
     iplugin.cpp
     isoundcontroller.cpp

@@ -4,7 +4,7 @@
       "name": "Intervals",
       "root": "29..69",
       "playMode": "chord",
-      "userMessage": "Hear the interval and then choose an answer from options below",
+      "userMessage": "Hear the interval and choose your answer",
       "numberOfSelectedOptions": 1,
       "_icon": "minuet-intervals.svg",
       "children": [
@@ -14,63 +14,78 @@
           "children": [
             {
               "name": "Seconds",
-              "or-tags": ["2"]
+              "or-tags": ["2"],
+              "description": "Practice identifying harmonic seconds by ear."
             },
             {
               "name": "Thirds",
-              "or-tags": ["3"]
+              "or-tags": ["3"],
+              "description": "Practice identifying harmonic thirds by ear."
             },
             {
               "name": "Fourths and Fifths",
-              "or-tags": ["4", "5"]
+              "or-tags": ["4", "5"],
+              "description": "Practice identifying harmonic fourths and fifths by ear."
             },
             {
               "name": "Sixths",
-              "or-tags": ["6"]
+              "or-tags": ["6"],
+              "description": "Practice identifying harmonic sixths by ear."
             },
             {
               "name": "Sevenths",
-              "or-tags": ["7"]
+              "or-tags": ["7"],
+              "description": "Practice identifying harmonic sevenths by ear."
             },
             {
               "name": "Ninths",
-              "or-tags": ["9"]
+              "or-tags": ["9"],
+              "description": "Practice identifying harmonic ninths by ear."
             },
             {
               "name": "Tenths",
-              "or-tags": ["10"]
+              "or-tags": ["10"],
+              "description": "Practice identifying harmonic tenths by ear."
             },
             {
               "name": "Tritone and Sevenths",
-              "or-tags": ["tritone", "7"]
+              "or-tags": ["tritone", "7"],
+              "description": "Practice identifying harmonic tritones and sevenths by ear."
             },
             {
               "name": "Fourths, Fifths, and Octave",
-              "or-tags": ["4", "5", "8"]
+              "or-tags": ["4", "5", "8"],
+              "description": "Practice identifying harmonic fourths, fifths, and octaves by ear."
             },
             {
               "name": "Seconds and Thirds",
-              "or-tags": ["2", "3"]
+              "or-tags": ["2", "3"],
+              "description": "Practice identifying harmonic seconds and thirds by ear."
             },
             {
               "name": "Sixths and Sevenths",
-              "or-tags": ["6", "7"]
+              "or-tags": ["6", "7"],
+              "description": "Practice identifying harmonic sixths and sevenths by ear."
             },
             {
               "name": "Sevenths and Ninths",
-              "or-tags": ["7", "9"]
+              "or-tags": ["7", "9"],
+              "description": "Practice identifying harmonic sevenths and ninths by ear."
             },
             {
               "name": "Second to Octave",
-              "or-tags": ["2", "3", "4", "tritone", "5", "6", "7", "8"]
+              "or-tags": ["2", "3", "4", "tritone", "5", "6", "7", "8"],
+              "description": "Practice identifying harmonic intervals from a second through an octave by ear."
             },
             {
               "name": "Second to Tenth",
-              "or-tags": ["2", "3", "4", "tritone", "5", "6", "7", "8", "9", "10"]
+              "or-tags": ["2", "3", "4", "tritone", "5", "6", "7", "8", "9", "10"],
+              "description": "Practice identifying harmonic intervals from a second through a tenth by ear."
             },
             {
               "name": "Second to 15th",
-              "or-tags": ["2", "3", "4", "tritone", "5", "6", "7", "8", "9", "10", "11", "8+tritone", "12", "13", "14", "double8"]
+              "or-tags": ["2", "3", "4", "tritone", "5", "6", "7", "8", "9", "10", "11", "8+tritone", "12", "13", "14", "double8"],
+              "description": "Practice identifying harmonic compound intervals from a second through a fifteenth by ear."
             }
           ]
         }

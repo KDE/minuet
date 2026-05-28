@@ -3,13 +3,14 @@
     {
       "name": "Rhythm",
       "playMode": "rhythm",
-      "userMessage": "Hear the rhythm and then choose an answer from options below",
+      "userMessage": "Hear the rhythm and choose your answers",
       "template": "lilypond-templates/rhythm.ly.tmpl",
       "_icon": "minuet-rhythms.svg",
       "children": [
         {
-            "name": "Medium",
-            "and-tags": ["rhythm", "medium"]
+          "name": "Medium",
+          "and-tags": ["rhythm", "medium"],
+          "description": "Practice recognizing longer rhythm figures and more varied rhythmic patterns by ear."
         }
       ]
     }

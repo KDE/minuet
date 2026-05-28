@@ -1,24 +1,6 @@
-/****************************************************************************
-**
-** Copyright (C) 2016 by Sandro S. Andrade <sandroandrade@kde.org>
-**
-** This program is free software; you can redistribute it and/or
-** modify it under the terms of the GNU General Public License as
-** published by the Free Software Foundation; either version 2 of
-** the License or (at your option) version 3 or any later version
-** accepted by the membership of KDE e.V. (or its successor approved
-** by the membership of KDE e.V.), which shall act as a proxy
-** defined in Section 14 of version 3 of the license.
-**
-** This program is distributed in the hope that it will be useful,
-** but WITHOUT ANY WARRANTY; without even the implied warranty of
-** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-** GNU General Public License for more details.
-**
-** You should have received a copy of the GNU General Public License
-** along with this program.  If not, see <http://www.gnu.org/licenses/>.
-**
-****************************************************************************/
+// SPDX-FileCopyrightText: 2016 Sandro Andrade <sandroandrade@kde.org>
+//
+// SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "fluidsynthsoundcontroller.h"
 
@@ -42,6 +24,8 @@
 using namespace Qt::StringLiterals;
 
 unsigned int FluidSynthSoundController::m_initialTime = 0;
+static constexpr int MelodicChannel = 1;
+static constexpr int RhythmChannel = 9;
 static constexpr short RhythmCountInKey = 76; // High Wood Block
 static constexpr short DefaultRhythmInstrumentKey = 37; // Side Stick
 static constexpr short FirstRhythmInstrumentKey = 35;
@@ -60,7 +44,7 @@ FluidSynthSoundController::FluidSynthSoundController(QObject *parent)
 
     m_synth = new_fluid_synth(m_settings);
 
-    fluid_synth_cc(m_synth, 1, 100, 0);
+    fluid_synth_cc(m_synth, MelodicChannel, 100, 0);
 
 #ifdef Q_OS_ANDROID
     const QString sf_path = QStandardPaths::locate(
@@ -121,10 +105,10 @@ void FluidSynthSoundController::setPitch(qint8 pitch)
         return;
     }
     m_pitch = pitch;
-    fluid_synth_cc(m_synth, 1, 101, 0);
-    fluid_synth_cc(m_synth, 1, 6, 12);
+    fluid_synth_cc(m_synth, MelodicChannel, 101, 0);
+    fluid_synth_cc(m_synth, MelodicChannel, 6, 12);
     float accurate_pitch = (m_pitch + 12) * (2.0 / 3) * 1024;
-    fluid_synth_pitch_bend(m_synth, 1, std::min(qRound(accurate_pitch), 16 * 1024 - 1));
+    fluid_synth_pitch_bend(m_synth, MelodicChannel, std::min(qRound(accurate_pitch), 16 * 1024 - 1));
     emit pitchChanged(m_pitch);
 }
 
@@ -134,7 +118,9 @@ void FluidSynthSoundController::setVolume(quint8 volume)
         return;
     }
     m_volume = volume;
-    fluid_synth_cc(m_synth, 1, 7, m_volume * 127 / 200);
+    const int midiVolume = m_volume * 127 / 200;
+    fluid_synth_cc(m_synth, MelodicChannel, 7, midiVolume);
+    fluid_synth_cc(m_synth, RhythmChannel, 7, midiVolume);
     emit volumeChanged(m_volume);
 }
 
@@ -184,7 +170,7 @@ void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedEx
 
     if (m_playMode == u"rhythm"_s) {
         for (int i = 0; i < 4; ++i) {
-            appendEvent(9, RhythmCountInKey, 127, 1000 * (60.0 / m_tempo));
+            appendEvent(RhythmChannel, RhythmCountInKey, 127, 1000 * (60.0 / m_tempo));
         }
     }
 
@@ -196,10 +182,10 @@ void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedEx
         if (m_playMode != u"rhythm"_s) {
             const unsigned int noteDuration
                 = ((m_playMode == u"scale"_s) ? 1000 : 4000) * (60.0 / m_tempo);
-            appendEvent(1, chosenRootNote, 127, noteDuration);
+            appendEvent(MelodicChannel, chosenRootNote, 127, noteDuration);
             const QStringList additionalNotes = sequence.split(' ');
             for (const QString &additionalNote : additionalNotes) {
-                appendEvent(1, chosenRootNote + additionalNote.toInt(), 127, noteDuration);
+                appendEvent(MelodicChannel, chosenRootNote + additionalNote.toInt(), 127, noteDuration);
             }
         } else {
             // appendEvent(9, 80, 127, 1000*(60.0/m_tempo));
@@ -219,7 +205,7 @@ void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedEx
                 }
                 unsigned int duration
                     = dotted * 1000 * (60.0 / m_tempo) * (4.0 / denominator);
-                appendEvent(9, m_rhythmInstrument, 127, duration);
+                appendEvent(RhythmChannel, m_rhythmInstrument, 127, duration);
             }
         }
     }
@@ -228,7 +214,11 @@ void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedEx
 
     fluid_event_t *event = new_fluid_event();
     fluid_event_set_source(event, -1);
-    fluid_event_all_notes_off(event, 1);
+    fluid_event_all_notes_off(event, MelodicChannel);
+    m_song->append(event);
+    event = new_fluid_event();
+    fluid_event_set_source(event, -1);
+    fluid_event_all_notes_off(event, RhythmChannel);
     m_song->append(event);
 }
 
@@ -284,7 +274,13 @@ void FluidSynthSoundController::stop()
     if (m_state != State::StoppedState) {
         fluid_event_t *event = new_fluid_event();
         fluid_event_set_source(event, -1);
-        fluid_event_all_notes_off(event, 1);
+        fluid_event_all_notes_off(event, MelodicChannel);
+        fluid_event_set_dest(event, m_synthSeqID);
+        fluid_sequencer_send_now(m_sequencer, event);
+        delete_fluid_event(event);
+        event = new_fluid_event();
+        fluid_event_set_source(event, -1);
+        fluid_event_all_notes_off(event, RhythmChannel);
         fluid_event_set_dest(event, m_synthSeqID);
         fluid_sequencer_send_now(m_sequencer, event);
         delete_fluid_event(event);
@@ -427,9 +423,9 @@ void FluidSynthSoundController::applyInstrument()
 
     const int soundFontId = m_instrumentSoundFontIds.value(m_instrument, -1);
     if (soundFontId >= 0) {
-        fluid_synth_program_select(m_synth, 1, soundFontId, 0, m_instrument);
+        fluid_synth_program_select(m_synth, MelodicChannel, soundFontId, 0, m_instrument);
     } else {
-        fluid_synth_program_change(m_synth, 1, m_instrument);
+        fluid_synth_program_change(m_synth, MelodicChannel, m_instrument);
     }
 }
 
@@ -588,7 +584,7 @@ void FluidSynthSoundController::sequencerCallback(unsigned int time, fluid_event
     case FLUID_SEQ_NOTE: {
         const int channel = fluid_event_get_channel(event);
         const short key = fluid_event_get_key(event);
-        if (soundController->m_playMode == u"rhythm"_s && channel == 9) {
+        if (soundController->m_playMode == u"rhythm"_s && channel == RhythmChannel) {
             if (key == RhythmCountInKey && soundController->m_countInNextValue < 5) {
                 soundController->m_countInVisible = true;
                 emit soundController->countInChanged(soundController->m_countInNextValue);

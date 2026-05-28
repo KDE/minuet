@@ -4,7 +4,7 @@
       "name": "Chords",
       "root": "29..75",
       "playMode": "chord",
-      "userMessage": "Hear the chord and then choose an answer from options below",
+      "userMessage": "Hear the chord and choose your answer",
       "numberOfSelectedOptions": 1,
       "_icon": "minuet-chords.svg",
       "children": [
@@ -14,39 +14,48 @@
           "children": [
             {
               "name": "Major chords",
-              "and-tags": ["root-position", "major"]
+              "and-tags": ["root-position", "major"],
+              "description": "Practice recognizing major chord qualities by ear."
             },
             {
               "name": "Minor chords",
-              "and-tags": ["root-position", "minor"]
+              "and-tags": ["root-position", "minor"],
+              "description": "Practice recognizing minor chord qualities by ear."
             },
             {
               "name": "Diminished chords",
-              "and-tags": ["root-position", "diminished"]
+              "and-tags": ["root-position", "diminished"],
+              "description": "Practice recognizing tense diminished chord sounds by ear."
             },
             {
               "name": "Augmented chords",
-              "and-tags": ["root-position", "augmented"]
+              "and-tags": ["root-position", "augmented"],
+              "description": "Practice recognizing bright augmented chord sounds by ear."
             },
             {
               "name": "Suspended chords",
-              "and-tags": ["sus", "root-position"]
+              "and-tags": ["sus", "root-position"],
+              "description": "Practice distinguishing suspended chord sounds from major and minor harmony."
             },
             {
               "name": "Chords with a minor seven",
-              "and-tags": ["root-position", "7-"]
+              "and-tags": ["root-position", "7-"],
+              "description": "Practice recognizing chords that include a minor seventh by ear."
             },
             {
               "name": "Chords with a major seven",
-              "and-tags": ["root-position", "7+"]
+              "and-tags": ["root-position", "7+"],
+              "description": "Practice recognizing chords that include a major seventh by ear."
             },
             {
               "name": "Chords with inversions",
-              "or-tags": ["triad", "basic"]
+              "or-tags": ["triad", "basic"],
+              "description": "Practice identifying chord qualities when notes are rearranged in inversion."
             },
             {
               "name": "Lots of Chords",
-              "and-tags": ["root-position"]
+              "and-tags": ["root-position"],
+              "description": "Practice recognizing a broad mix of common chord qualities by ear."
             }
           ]
         }

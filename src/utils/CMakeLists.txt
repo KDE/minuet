@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2016 Sandro Andrade <sandroandrade@kde.org>
+#
+# SPDX-License-Identifier: GPL-2.0-or-later
+
 set(minuetutils_LIB_SRCS
     xdgdatadirs.cpp
 )

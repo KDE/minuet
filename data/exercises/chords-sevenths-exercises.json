@@ -4,7 +4,7 @@
       "name": "Chords",
       "root": "29..82",
       "playMode": "chord",
-      "userMessage": "Hear the chord and then choose an answer from options below",
+      "userMessage": "Hear the chord and choose your answer",
       "numberOfSelectedOptions": 1,
       "_icon": "minuet-chords.svg",
       "children": [
@@ -14,40 +14,49 @@
           "children": [
             {
               "name": "Basic seventh chords",
-              "and-tags": ["basic", "root-position"]
+              "and-tags": ["basic", "root-position"],
+              "description": "Practice recognizing common seventh chord qualities in root position."
             },
             {
               "name": "Dominant seventh - inversions",
-              "and-tags": ["basic", "dominant"]
+              "and-tags": ["basic", "dominant"],
+              "description": "Practice recognizing dominant seventh chords in different inversions."
             },
             {
               "name": "Major seventh - inversions",
-              "and-tags": ["basic", "major"]
+              "and-tags": ["basic", "major"],
+              "description": "Practice recognizing major seventh chords in different inversions."
             },
             {
               "name": "Minor seventh - inversions",
-              "and-tags": ["basic", "minor"]
+              "and-tags": ["basic", "minor"],
+              "description": "Practice recognizing minor seventh chords in different inversions."
             },
             {
               "name": "Inversions of basic seventh chords",
-              "and-tags": ["basic"]
+              "and-tags": ["basic"],
+              "description": "Practice recognizing basic seventh chords across inversions."
             },
             {
               "name": "Seventh chords with an altered five",
               "and-tags": ["root-position"],
-              "or-tags": ["5-", "5+"]
+              "or-tags": ["5-", "5+"],
+              "description": "Practice recognizing seventh chords with flattened or sharpened fifths."
             },
             {
               "name": "Seventh chords with a minor seven",
-              "and-tags": ["7-", "root-position"]
+              "and-tags": ["7-", "root-position"],
+              "description": "Practice recognizing seventh chords built with a minor seventh by ear."
             },
             {
               "name": "Seventh chords with a major seven",
-              "and-tags": ["7+", "root-position"]
+              "and-tags": ["7+", "root-position"],
+              "description": "Practice recognizing seventh chords built with a major seventh by ear."
             },
             {
               "name": "All seventh chords",
-              "and-tags": ["root-position"]
+              "and-tags": ["root-position"],
+              "description": "Practice recognizing a full set of seventh chord qualities by ear."
             }
           ]
         }

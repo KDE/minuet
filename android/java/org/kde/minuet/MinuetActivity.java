@@ -1,7 +1,6 @@
-/*
-    SPDX-FileCopyrightText: 2026 Sandro Andrade <sandroandrade@kde.org>
-    SPDX-License-Identifier: BSD-3-Clause
-*/
+// SPDX-FileCopyrightText: 2016 Sandro Andrade <sandroandrade@kde.org>
+//
+// SPDX-License-Identifier: GPL-2.0-or-later
 
 package org.kde.minuet;
 

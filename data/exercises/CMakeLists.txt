@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2016 Sandro Andrade <sandroandrade@kde.org>
+#
+# SPDX-License-Identifier: GPL-2.0-or-later
+
 set(minuet_EXERCISES
     intervals-ascending-melodic-exercises.json
     intervals-descending-melodic-exercises.json
