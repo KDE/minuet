@@ -31,7 +31,7 @@ Item {
     property var model: []
     property bool spaced: true
     readonly property var metadata: Core.sheetMusicController.metadata
-    readonly property int staffStep: Math.max(4, Math.min(7, Math.round(height / 24)))
+    readonly property int staffStep: 5
     readonly property real staffLineWidth: Math.max(1, Math.round(metadata.engravingDefault("staffLineThickness") * staffStep))
     readonly property real ledgerLineThickness: Math.max(1, Math.round(metadata.engravingDefault("legerLineThickness") * staffStep))
     readonly property real staffPixelOffset: staffLineWidth % 2 === 1 ? 0.5 : 0
@@ -52,14 +52,13 @@ Item {
         metadata.glyphBBoxValue("gClef", "bBoxNE", 0) - metadata.glyphBBoxValue("gClef", "bBoxSW", 0),
         metadata.glyphBBoxValue("fClef", "bBoxNE", 0) - metadata.glyphBBoxValue("fClef", "bBoxSW", 0)
     ) * staffStep * clefScale
-    readonly property real noteSpacing: Kirigami.Units.gridUnit * (spaced ? 2.1 : 0.7)
-    readonly property real noteStartX: Math.round(clefStartX + clefWidth + accidentalReserveWidth + Kirigami.Units.largeSpacing)
-    readonly property real accidentalNoteheadGap: (metadata.engravingDefault("legerLineExtension") + metadata.engravingDefault("legerLineThickness") + metadata.engravingDefault("stemThickness")) * staffStep
+    readonly property real accidentalNoteheadGap: Math.max(1, (metadata.engravingDefault("legerLineThickness") + metadata.engravingDefault("stemThickness")) * staffStep)
     readonly property real accidentalColumnSpacing: accidentalMaxWidth + ledgerLineExtension
     readonly property int accidentalColumnCount: 3
     readonly property real noteheadFontPixelSize: staffStep * 6
     readonly property real noteheadScale: noteheadFontPixelSize / (staffStep * 4)
     readonly property real normalNoteheadX: ledgerLineWidth / 2
+    readonly property real noteheadVerticalOffset: staffLineWidth
     readonly property real noteheadStemUpSEX: metadata.anchor("noteheadBlack", "stemUpSE")[0] * staffStep * noteheadScale
     readonly property real noteheadStemUpSEY: metadata.anchor("noteheadBlack", "stemUpSE")[1] * staffStep * noteheadScale
     readonly property real stemThickness: Math.max(1, Math.round(metadata.engravingDefault("stemThickness") * staffStep))
@@ -71,10 +70,21 @@ Item {
         metadata.glyphBBoxValue("accidentalDoubleSharp", "bBoxNE", 0) - metadata.glyphBBoxValue("accidentalDoubleSharp", "bBoxSW", 0)
     ) * staffStep
     readonly property real accidentalReserveWidth: accidentalNoteheadGap + (accidentalColumnCount - 1) * accidentalColumnSpacing + accidentalMaxWidth + Kirigami.Units.smallSpacing
+    readonly property real noteStartX: Math.round(clefStartX + clefWidth + accidentalReserveWidth + Kirigami.Units.smallSpacing)
+    readonly property int notePositionCount: spaced ? Math.max(1, model.length) : 1
+    readonly property real noteAreaRightPadding: Kirigami.Units.smallSpacing
+    readonly property real noteTailWidth: ledgerLineWidth + noteheadStemUpSEX
+    readonly property real preferredSpacedNoteSpacing: Kirigami.Units.gridUnit * 1.6
+    readonly property real fittedSpacedNoteSpacing: notePositionCount > 1
+        ? Math.max(1, (width - noteStartX - noteTailWidth - noteAreaRightPadding) / (notePositionCount - 1))
+        : preferredSpacedNoteSpacing
+    readonly property real noteSpacing: spaced ? Math.min(preferredSpacedNoteSpacing, fittedSpacedNoteSpacing) : Kirigami.Units.gridUnit * 0.7
+    readonly property real staffGroupHeight: systemHeight + staffLineWidth
+    readonly property real verticalMargin: staffStep * 10
     readonly property color staffColor: Kirigami.Theme.textColor
     property alias activeClef: trebleClef
 
-    implicitHeight: Kirigami.Units.gridUnit * 9
+    implicitHeight: staffGroupHeight + verticalMargin * 2
     clip: true
 
     function clearAllMarks(): void {
@@ -147,8 +157,8 @@ Item {
         Rectangle {
             required property var modelData
 
-            x: Core.sheetMusicController.noteX(modelData.position, root.noteStartX, root.noteSpacing) + root.normalNoteheadX + root.noteheadStemUpSEX - width / 2
-            y: modelData.topY
+            x: Core.sheetMusicController.noteX(modelData.position, root.noteStartX, root.noteSpacing) + root.normalNoteheadX + root.noteheadStemUpSEX - width / 2 - 1
+            y: modelData.topY + root.noteheadVerticalOffset
             width: root.stemThickness
             height: modelData.height
             color: root.staffColor
@@ -203,7 +213,7 @@ Item {
 
             BravuraText {
                 x: noteItem.noteheadX
-                y: Core.sheetMusicController.yForDiatonicIndex(noteItem.noteIndex, root.middleCY, root.staffStep, root.staffPixelOffset) - noteItem.y - height / 2
+                y: Core.sheetMusicController.yForDiatonicIndex(noteItem.noteIndex, root.middleCY, root.staffStep, root.staffPixelOffset) - noteItem.y - baselineOffset + root.noteheadVerticalOffset
                 text: "\ue0a4"
                 font.pixelSize: root.noteheadFontPixelSize
             }

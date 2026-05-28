@@ -244,7 +244,7 @@ void FluidSynthSoundController::play()
     }
 
     if (m_state != State::PlayingState) {
-        m_countInNextValue = m_playMode == u"rhythm"_s ? 4 : 0;
+        m_countInNextValue = m_playMode == u"rhythm"_s ? 1 : 0;
         m_countInVisible = false;
         unsigned int now = fluid_sequencer_get_tick(m_sequencer);
         unsigned int chordDuration = 0;
@@ -589,10 +589,10 @@ void FluidSynthSoundController::sequencerCallback(unsigned int time, fluid_event
         const int channel = fluid_event_get_channel(event);
         const short key = fluid_event_get_key(event);
         if (soundController->m_playMode == u"rhythm"_s && channel == 9) {
-            if (key == RhythmCountInKey && soundController->m_countInNextValue > 0) {
+            if (key == RhythmCountInKey && soundController->m_countInNextValue < 5) {
                 soundController->m_countInVisible = true;
                 emit soundController->countInChanged(soundController->m_countInNextValue);
-                --soundController->m_countInNextValue;
+                ++soundController->m_countInNextValue;
             } else if (key == soundController->m_rhythmInstrument) {
                 soundController->hideCountIn();
             }

@@ -2,7 +2,7 @@
   "exercises": [
     {
       "name": "Intervals",
-      "root": "53..93",
+      "root": "29..93",
       "playMode": "scale",
       "userMessage": "Hear the interval and then choose an answer from options below",
       "numberOfSelectedOptions": 1,
