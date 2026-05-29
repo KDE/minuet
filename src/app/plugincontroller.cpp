@@ -62,6 +62,8 @@ bool PluginController::initialize(Core *core)
                         << soundController->metaObject()->className();
                 core->setSoundController(soundController);
             }
+        } else {
+            qWarning() << "Could not load plugin" << pluginMetaData.fileName() << loader.errorString();
         }
     }
     if (!soundController) {

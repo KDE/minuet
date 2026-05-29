@@ -15,6 +15,7 @@
 #include <KLocalizedString>
 
 #include <QCommandLineParser>
+#include <QCoreApplication>
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
@@ -31,6 +32,10 @@ using namespace Qt::StringLiterals;
 int main(int argc, char *argv[])
 {
     QGuiApplication application(argc, argv);
+
+#if defined(Q_OS_MACOS)
+    QCoreApplication::addLibraryPath(QDir(QCoreApplication::applicationDirPath()).absoluteFilePath(u"../PlugIns"_s));
+#endif
 
 #if !defined(Q_OS_ANDROID)
     KCrash::initialize();
