@@ -7,7 +7,11 @@
 
 #include <interfaces/isoundcontroller.h>
 
+#ifdef Q_OS_MACOS
+#include <FluidSynth/fluidsynth.h>
+#else
 #include <fluidsynth.h>
+#endif
 
 #include <QHash>
 

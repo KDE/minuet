@@ -18,7 +18,7 @@ target_link_libraries(minuetfluidsynthsoundcontroller
     KF6::I18n
     Minuet::Interfaces
     Minuet::Utils
-    ${MINUET_FLUIDSYNTH_TARGET}
+    FluidSynth::libfluidsynth
 )
 
 if(ANDROID)
