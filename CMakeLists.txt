@@ -50,9 +50,17 @@ if(COMMAND qt_policy AND QT_KNOWN_POLICY_QTP0004)
 endif()
 include(ECMAddAndroidApk)
 
-find_package(FluidSynth 2.5.3 CONFIG REQUIRED)
-if(NOT TARGET FluidSynth::libfluidsynth)
-    message(FATAL_ERROR "Minuet requires the FluidSynth::libfluidsynth library target")
+if(APPLE OR ANDROID)
+    find_package(FluidSynth 2.5.3 CONFIG REQUIRED)
+    if(NOT TARGET FluidSynth::libfluidsynth)
+        message(FATAL_ERROR "Minuet requires the FluidSynth::libfluidsynth library target")
+    endif()
+else()
+    find_package(PkgConfig REQUIRED)
+    pkg_check_modules(FLUIDSYNTH REQUIRED IMPORTED_TARGET "fluidsynth>=2.5.3")
+
+    add_library(FluidSynth::libfluidsynth INTERFACE IMPORTED)
+    target_link_libraries(FluidSynth::libfluidsynth INTERFACE PkgConfig::FLUIDSYNTH)
 endif()
 
 find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS

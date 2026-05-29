@@ -8,6 +8,7 @@
 
 #include <QHash>
 #include <QDebug>
+#include <QCoreApplication>
 #include <QDir>
 #include <QFile>
 #include <QJsonObject>
@@ -31,6 +32,42 @@ static constexpr short DefaultRhythmInstrumentKey = 37; // Side Stick
 static constexpr short FirstRhythmInstrumentKey = 35;
 static constexpr short LastRhythmInstrumentKey = 81;
 
+static QString locateSoundFont()
+{
+#ifdef Q_OS_ANDROID
+    return QStandardPaths::locate(QStandardPaths::AppDataLocation,
+                                  u"soundfonts/GeneralUser-v1.47.sf2"_s);
+#elif defined(Q_OS_WIN)
+    return QStandardPaths::locate(QStandardPaths::AppDataLocation,
+                                  u"minuet/soundfonts/GeneralUser-v1.47.sf2"_s);
+#else
+#ifdef Q_OS_MACOS
+    const QString bundleSoundFont = QDir(QCoreApplication::applicationDirPath()).absoluteFilePath(
+        u"../Resources/minuet/soundfonts/GeneralUser-v1.47.sf2"_s);
+    if (QFile::exists(bundleSoundFont)) {
+        return QDir::cleanPath(bundleSoundFont);
+    }
+#endif
+
+    QString soundFont = QStandardPaths::locate(QStandardPaths::AppDataLocation,
+                                               u"soundfonts/GeneralUser-v1.47.sf2"_s);
+#ifdef Q_OS_MACOS
+    if (soundFont.isEmpty()) {
+        const QStringList xdgDataDirs = Utils::xdgDataDirs();
+        for (const auto &dirPath : xdgDataDirs) {
+            const QFile testFile(QDir(dirPath).absoluteFilePath(
+                u"minuet/soundfonts/GeneralUser-v1.47.sf2"_s));
+            if (testFile.exists()) {
+                soundFont = testFile.fileName();
+                break;
+            }
+        }
+    }
+#endif
+    return soundFont;
+#endif
+}
+
 FluidSynthSoundController::FluidSynthSoundController(QObject *parent)
     : Minuet::ISoundController(parent), m_settings(nullptr), m_audioDriver(nullptr),
       m_sequencer(nullptr), m_synth(nullptr), m_unregisteringEvent(nullptr), m_synthSeqID(0),
@@ -46,33 +83,12 @@ FluidSynthSoundController::FluidSynthSoundController(QObject *parent)
 
     fluid_synth_cc(m_synth, MelodicChannel, 100, 0);
 
-#ifdef Q_OS_ANDROID
-    const QString sf_path = QStandardPaths::locate(
-        QStandardPaths::AppDataLocation, u"soundfonts/GeneralUser-v1.47.sf2"_s);
-#elif defined(Q_OS_WIN)
-    const QString sf_path = QStandardPaths::locate(
-        QStandardPaths::AppDataLocation, u"minuet/soundfonts/GeneralUser-v1.47.sf2"_s);
-#else
-    QString sf_path = QStandardPaths::locate(QStandardPaths::AppDataLocation,
-                                             u"soundfonts/GeneralUser-v1.47.sf2"_s);
-#ifdef Q_OS_MACOS
-    if (sf_path.isEmpty()) {
-        const QStringList xdgDataDirs = Utils::xdgDataDirs();
-        for (const auto &dirPath : xdgDataDirs) {
-            const QFile testFile(QDir(dirPath).absoluteFilePath(
-                u"minuet/soundfonts/GeneralUser-v1.47.sf2"_s));
-            if (testFile.exists()) {
-                sf_path = testFile.fileName();
-                break;
-            }
-        }
-    }
-#endif
-#endif
-
-    int fluid_res = fluid_synth_sfload(m_synth, sf_path.toLatin1(), 1);
+    const QString sf_path = locateSoundFont();
+    int fluid_res = fluid_synth_sfload(m_synth, sf_path.toUtf8().constData(), 1);
     if (fluid_res == FLUID_FAILED) {
         qCritical() << "Error when loading soundfont in:" << sf_path;
+    } else {
+        qInfo() << "Loaded soundfont:" << sf_path;
     }
     populateInstruments();
     populateRhythmInstruments();
@@ -644,12 +660,17 @@ void FluidSynthSoundController::resetEngine()
         fluid_settings_setstr(m_settings, "audio.driver", "alsa");
         m_audioDriver = new_fluid_audio_driver(m_settings, m_synth);
     }
+#elif defined(Q_OS_MACOS)
+    fluid_settings_setstr(m_settings, "audio.driver", "coreaudio");
+    m_audioDriver = new_fluid_audio_driver(m_settings, m_synth);
 #elif defined(Q_OS_WIN)
     fluid_settings_setstr(m_settings, "audio.driver", "dsound");
     m_audioDriver = new_fluid_audio_driver(m_settings, m_synth);
 #endif
     if (!m_audioDriver) {
         qCritical() << "Couldn't start audio driver!";
+    } else {
+        qInfo() << "Started FluidSynth audio driver";
     }
 
     m_sequencer = new_fluid_sequencer2(0);
