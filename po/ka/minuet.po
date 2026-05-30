@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-29 00:39+0000\n"
-"PO-Revision-Date: 2026-05-27 06:49+0200\n"
+"POT-Creation-Date: 2026-05-30 00:41+0000\n"
+"PO-Revision-Date: 2026-05-29 08:34+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -563,33 +563,25 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Harmonic Minor Scale and its Modes"
 msgstr "ჰარმონიული მინორის კილო და მისი რეჟიმები"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Hear the chord and then choose an answer from options below"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the chord and choose your answer"
-msgstr "მოისმინეთ აკორდი და აირჩიეთ პასუხი ქვედა ვარიანტებიდან"
+msgstr "მოისმინეთ აკორდი და აირჩიეთ თქვენი პასუხი"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Hear the interval and then choose an answer from options below"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the interval and choose your answer"
-msgstr "მოისმინეთ ინტერვალი და აირჩიეთ პასუხი ქვედა ვარიანტებიდან"
+msgstr "მოისმინეთ ინტერვალი და აირჩიეთ თქვენი პასუხი"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Hear the rhythm and then choose an answer from options below"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the rhythm and choose your answers"
-msgstr "მოისმინეთ რიტმი და აირჩიეთ პასუხი ქვედა ვარიანტებიდან"
+msgstr "მოისმინეთ რიტმი და აირჩიეთ თქვენი პასუხი"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Hear the scale and then choose an answer from options below"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the scale and choose your answer"
-msgstr "მოისმინეთ კილო და აირჩიეთ პასუხი ქვედა ვარიანტებიდან"
+msgstr "მოისმინეთ კილო და აირჩიეთ თქვენი პასუხი"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -976,23 +968,22 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Phrygian Dominant"
 msgstr "დომინანტური ფრიგიული"
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice distinguishing diminished and augmented triads by ear."
-msgstr "ივარჯიშეთ ამ სავარჯიშოს ყურით ამოცნობაში."
+msgstr "ივარჯიშეთ სმენით გაარჩიოთ შემცირებული და გადიდებული სამხმოვანებები."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice distinguishing minor and major triads by ear."
-msgstr "ივარჯიშეთ ამ სავარჯიშოს ყურით ამოცნობაში."
+msgstr "ივარჯიშეთ მინორული და მაჟორული სამხმოვანებების სმენით გარჩევაში."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice distinguishing suspended chord sounds from major and minor harmony."
 msgstr ""
+"ივარჯიშეთ მაჟორული და მინორული ჰარმონიის შეკავებული აკორდების განსხვავებაში."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1000,6 +991,8 @@ msgid ""
 "Practice identifying ascending melodic compound intervals from a second "
 "through a fifteenth by ear."
 msgstr ""
+"ივარჯიშეთ აღმავალი შედგენილი მელოდიური ინტერვალების ყურით იდენტიფიცირებაში/"
+"გამორჩევაში სეკუნდადან კვინტდეციმას ჩათვლით."
 
 #, fuzzy, kde-format
 #| msgid "Practice identifying this exercise by ear."
@@ -1020,6 +1013,8 @@ msgid ""
 "Practice identifying ascending melodic intervals from a second through an "
 "octave by ear."
 msgstr ""
+"ივარჯიშეთ აღმავალი მელოდიური ინტერვალების ყურით გამორჩევაში სეკუნდადან "
+"ოქტავას ჩათვლით."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1027,6 +1022,8 @@ msgid ""
 "Practice identifying ascending melodic intervals from a second through a "
 "tenth by ear."
 msgstr ""
+"ივარჯიშეთ აღმავალი მელოდიური ინტერვალების ყურით გამორჩევაში სეკუნდადან "
+"დეციმას ჩათვლით."
 
 #, fuzzy, kde-format
 #| msgid "Practice identifying this exercise by ear."
@@ -1093,6 +1090,8 @@ msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying chord qualities when notes are rearranged in inversion."
 msgstr ""
+"ივარჯიშე აკორდის სახეობების გამორჩევაში, როცა ნოტები სეკვენციურადაა "
+"დალაგებული."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1100,6 +1099,8 @@ msgid ""
 "Practice identifying descending melodic compound intervals from a second "
 "through a fifteenth by ear."
 msgstr ""
+"ივარჯიშეთ დაღმავალი შედგენილი მელოდიური ინტერვალების ყურით იდენტიფიცირებაში/"
+"გამორჩევაში სეკუნდადან კვინტდეციმას ჩათვლით."
 
 #, fuzzy, kde-format
 #| msgid "Practice identifying this exercise by ear."
@@ -1794,11 +1795,10 @@ msgid "%1 Includes %2 possible answers."
 msgstr "%1 შეიცავს %2 შესაძლო პასუხს."
 
 #: src/app/exercisecatalogcontroller.cpp:108
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "%1"
-msgstr "%1%"
+msgstr "%1"
 
 #: src/app/exercisecatalogcontroller.cpp:201
 #, kde-format
@@ -1850,44 +1850,46 @@ msgstr "დასაწყებად დააჭირეთ \"ახალ �
 msgid "Question %1 out of %2"
 msgstr "%1 პასუხი %2-დან"
 
-#: src/app/main.cpp:41
+#: src/app/main.cpp:46
 #, kde-format
 msgid "Minuet"
 msgstr "Minuet"
 
-#: src/app/main.cpp:43
+#: src/app/main.cpp:48
 #, kde-format
 msgid "A KDE application for music education"
 msgstr "KDE-ის აპლიკაცია მუსიკალური განათლებისთვის"
 
-#: src/app/main.cpp:44
+#: src/app/main.cpp:49
 #, kde-format
 msgid "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 msgstr "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 
-#: src/app/main.cpp:49 src/app/main.cpp:51
+#: src/app/main.cpp:54 src/app/main.cpp:56
 #, kde-format
 msgid "Developer"
 msgstr "პროგრამისტი"
 
-#: src/app/main.cpp:53
+#: src/app/main.cpp:58
 #, kde-format
 msgid "Minuet Icon Designer"
 msgstr "მინუეტის ხატულის დიზაინერი"
 
-#: src/app/main.cpp:55
+#: src/app/main.cpp:60
 #, kde-format
 msgctxt "@info:credit"
 msgid "Fluidsynth"
-msgstr ""
+msgstr "Fluidsynth"
 
-#: src/app/main.cpp:55
+#: src/app/main.cpp:60
 #, kde-format
 msgctxt "@info:credit"
 msgid ""
 "Software synthesizer based on the SoundFont 2 specifications. © 2003 Peter "
 "Hanappe and others."
 msgstr ""
+"პროგრამული სინთეზატორი, რომელიც ეყრდნობა SoundFont 2-ის სპეციფიკაციას. © "
+"2003 Peter Hanappe and others."
 
 #: src/app/qml/ExerciseMenuPage.qml:22
 #, kde-format
@@ -1953,10 +1955,9 @@ msgid "Your Answer(s)"
 msgstr "თქვენ პასუხი"
 
 #: src/app/qml/ExerciseView.qml:451
-#, fuzzy, kde-format
-#| msgid "Scroll for more"
+#, kde-format
 msgid "Scroll for more |"
-msgstr "გადაახვიეთ მეტისთვის"
+msgstr "გადაახვიეთ მეტისთვის |"
 
 #: src/app/qml/ExerciseView.qml:456
 #, kde-format
@@ -2136,391 +2137,391 @@ msgstr "სავარჯიშოების რაოდენობა"
 msgid "Could not load the main user interface."
 msgstr "მთავარი მომხმარებლის ინტერფეისის ჩატვირთვა შეუძლებელია."
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:436
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:452
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Acoustic Bass Drum"
 msgstr "აკუსტიკური ბას-დრამი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:438
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:454
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Bass Drum 1"
 msgstr "ბას-დრამი 1"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:440
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:456
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Side Stick"
 msgstr "გვერდითი ჯოხი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:442
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:458
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Acoustic Snare"
 msgstr "აკუსტიკური დოლი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:444
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:460
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hand Clap"
 msgstr "ტაშის დაკვრა"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:446
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:462
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Electric Snare"
 msgstr "ელექტროდოლი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:448
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:464
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Floor Tom"
 msgstr "დაბალი იატაკის ტომი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:450
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:466
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Closed Hi-hat"
 msgstr "დახურული ჰაი ჰეტი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:452
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:468
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Floor Tom"
 msgstr "მაღალი იატაკის ტომი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:454
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:470
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Pedal Hi-hat"
 msgstr "პედლის ჰაი ჰეტი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:456
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:472
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Tom"
 msgstr "დაბალი ტომი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:458
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:474
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Hi-hat"
 msgstr "ღია ჰაი ჰეტი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:460
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:476
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low-Mid Tom"
 msgstr "დაბალი - საშუალო ტომი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:462
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:478
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hi-Mid Tom"
 msgstr "მაღაი - საშუალო ტომი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:464
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:480
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Crash Cymbal 1"
 msgstr "დასარტყამი თეფში 1"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:466
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:482
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Tom"
 msgstr "მაღალი ტომი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:468
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:484
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Ride Cymbal 1"
 msgstr "დასარტყამი თეფში 1"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:470
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:486
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Chinese Cymbal"
 msgstr "ჩინური თეფში"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:472
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:488
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Ride Bell"
 msgstr "დასარტყამი ზარი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:474
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:490
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Tambourine"
 msgstr "დაირა"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:476
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:492
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Splash Cymbal"
 msgstr "დრამის თეფში"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:478
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:494
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Cowbell"
 msgstr "ეჟვანი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:480
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:496
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Crash Cymbal 2"
 msgstr "დასარტყამი ციმბალი 2"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:482
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:498
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Vibraslap"
 msgstr "ვიბრასლაპი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:484
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:500
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Ride Cymbal 2"
 msgstr "დასარტყამი თეფში 2"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:486
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:502
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hi Bongo"
 msgstr "მაღ. ბონგო"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:488
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:504
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Bongo"
 msgstr "დაბალი ბონგო"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:490
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:506
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Mute Hi Conga"
 msgstr "მაღალი კონგას დადუმება"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:492
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:508
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Hi Conga"
 msgstr "მაღალი კონგას გახსნა"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:494
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:510
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Conga"
 msgstr "დაბალი კონნგა"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:496
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:512
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Timbale"
 msgstr "მაღალი ტიმბალი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:498
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:514
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Timbale"
 msgstr "დაბალი ტიმბალი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:500
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:516
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Agogo"
 msgstr "მაღალი აგოგო"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:502
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:518
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Agogo"
 msgstr "დაბალი აგოგო"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:504
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:520
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Cabasa"
 msgstr "კაბასა"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:506
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:522
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Maracas"
 msgstr "მარაკები"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:508
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:524
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Short Whistle"
 msgstr "მოკლე სტვენა"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:510
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:526
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Long Whistle"
 msgstr "გრძელი სტვენა"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:512
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:528
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Short Guiro"
 msgstr "მოკლე პერკუსია"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:514
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:530
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Long Guiro"
 msgstr "გრძელი პერკუსია"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:516
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:532
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Claves"
 msgstr "კლავესები"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:518
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:534
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hi Wood Block"
 msgstr "მაღალი ხის ბლოკი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:520
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:536
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Wood Block"
 msgstr "დაბალი ის ბლოკი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:522
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:538
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Mute Cuica"
 msgstr "კუიკას დადუმება"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:524
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:540
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Cuica"
 msgstr "ღია კუიკა"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:526
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:542
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Mute Triangle"
 msgstr "სამკუთხედის დადუმება"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:528
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:544
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Triangle"
 msgstr "სამკუთხედის გახსნა"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:530
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:546
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Percussion"
 msgstr "პერკუსია"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:538
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:554
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Piano"
 msgstr "პიანინო"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:540
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:556
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Chromatic Percussion"
 msgstr "ქრომატიული პერკუსია"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:542
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:558
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Organ"
 msgstr "ორღანი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:544
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:560
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Guitar"
 msgstr "გიტარა"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:546
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:562
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Bass"
 msgstr "ბასი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:548
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:564
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Strings"
 msgstr "სტრიქონები"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:550
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:566
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Ensemble"
 msgstr "ანსამბლი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:552
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:568
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Brass"
 msgstr "სასულე საკრავები"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:554
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:570
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Reed"
 msgstr "სალამური"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:556
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:572
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Pipe"
 msgstr "სტვირი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:558
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:574
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Synth Lead"
 msgstr "სინთეზირებული ხმა"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:560
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:576
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Synth Pad"
 msgstr "სინთ. საფარი"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:562
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:578
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Synth Effects"
 msgstr "სინთეზატორის ეფექტები"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:564
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:580
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Ethnic"
 msgstr "ეთნიკური"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:566
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:582
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Percussive"
 msgstr "პერკუსიული"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:568
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:584
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Sound Effects"
 msgstr "ხმის ეფექტები"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:570
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:586
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Other"

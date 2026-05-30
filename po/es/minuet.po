@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-29 00:39+0000\n"
-"PO-Revision-Date: 2026-05-27 11:13+0100\n"
+"POT-Creation-Date: 2026-05-30 00:41+0000\n"
+"PO-Revision-Date: 2026-05-29 19:08+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -564,34 +564,25 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Harmonic Minor Scale and its Modes"
 msgstr "Escala menor armónica y sus modos"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Hear the chord and then choose an answer from options below"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the chord and choose your answer"
-msgstr "Escuche el acorde y escoja una respuesta de las que se muestran abajo"
+msgstr "Escuche el acorde y escoja la respuesta"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Hear the interval and then choose an answer from options below"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the interval and choose your answer"
-msgstr ""
-"Escuche el intervalo y escoja una respuesta de las que se muestran abajo"
+msgstr "Escuche el intervalo y escoja la respuesta"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Hear the rhythm and then choose an answer from options below"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the rhythm and choose your answers"
-msgstr "Escuche el ritmo y escoja una respuesta de las que se muestran abajo"
+msgstr "Escuche el ritmo y escoja las respuestas"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Hear the scale and then choose an answer from options below"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the scale and choose your answer"
-msgstr "Escuche la escala y escoja una respuesta de las que se muestran abajo"
+msgstr "Escuche la escala y escoja la respuesta"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -978,23 +969,23 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Phrygian Dominant"
 msgstr "Frigia dominante"
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice distinguishing diminished and augmented triads by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la distinción de tríadas disminuidas y aumentadas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice distinguishing minor and major triads by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la distinción de tríadas menores y mayores de oído."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice distinguishing suspended chord sounds from major and minor harmony."
 msgstr ""
+"Practicar la distinción de sonidos de acordes suspendidos de armonías "
+"mayores y menores."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1002,19 +993,23 @@ msgid ""
 "Practice identifying ascending melodic compound intervals from a second "
 "through a fifteenth by ear."
 msgstr ""
+"Practicar la identificación de intervalos melódicos compuestos ascendentes "
+"de una segunda mediante una decimoquinta de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic fourths and fifths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar la identificación de cuartas y quintas melódicas ascendentes de "
+"oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying ascending melodic fourths, fifths, and octaves by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar la identificación de cuartas, quintas y octavas melódicas "
+"ascendentes de oído."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1022,6 +1017,8 @@ msgid ""
 "Practice identifying ascending melodic intervals from a second through an "
 "octave by ear."
 msgstr ""
+"Practicar la identificación de intervalos melódicos ascendentes de una "
+"segunda mediante una octava de oído."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1029,72 +1026,74 @@ msgid ""
 "Practice identifying ascending melodic intervals from a second through a "
 "tenth by ear."
 msgstr ""
+"Practicar la identificación de intervalos melódicos ascendentes de una "
+"segunda mediante una quinta de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic ninths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de novenas melódicas ascendentes de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic seconds and thirds by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar la identificación de segundas y terceras melódicas ascendentes de "
+"oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic seconds by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de segundas melódicas ascendentes de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic sevenths and ninths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar la identificación de séptimas y novenas melódicas ascendentes de "
+"oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic sevenths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de séptimas melódicas ascendentes de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic sixths and sevenths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar la identificación de sextas y séptimas melódicas ascendentes de "
+"oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic sixths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de sextas melódicas ascendentes de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic tenths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de décimas melódicas ascendentes de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic thirds by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de terceras melódicas ascendentes de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic tritones and sevenths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar la identificación de tritonos y séptimas melódicos ascendentes de "
+"oído."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying chord qualities when notes are rearranged in inversion."
 msgstr ""
+"Practicar la identificación de las cualidades de los acordes cuando las "
+"notas se reorganizan en inversión."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1102,19 +1101,23 @@ msgid ""
 "Practice identifying descending melodic compound intervals from a second "
 "through a fifteenth by ear."
 msgstr ""
+"Practicar la identificación de intervalos melódicos compuestos descendentes "
+"de una segunda mediante una decimoquinta de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic fourths and fifths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar la identificación de cuartas y quintas melódicas descendentes de "
+"oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying descending melodic fourths, fifths, and octaves by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar la identificación de cuartas, quintas y octavas melódicas "
+"descendentes de oído."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1122,6 +1125,8 @@ msgid ""
 "Practice identifying descending melodic intervals from a second through an "
 "octave by ear."
 msgstr ""
+"Practicar la identificación de intervalos melódicos descendentes de una "
+"segunda mediante una octava de oído."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1129,66 +1134,69 @@ msgid ""
 "Practice identifying descending melodic intervals from a second through a "
 "tenth by ear."
 msgstr ""
+"Practicar la identificación de intervalos melódicos descendentes de una "
+"segunda mediante una décima de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic ninths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de novenas melódicas descendentes de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic seconds and thirds by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar la identificación de segundas y terceras melódicas ascendentes de "
+"oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic seconds by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar la identificación de segundas melódicas descendentes de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic sevenths and ninths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar la identificación de séptimas y novenas melódicas descendentes de "
+"oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic sevenths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar la identificación de séptimas melódicas descendentes de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic sixths and sevenths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar la identificación de sextas y séptimas melódicas descendentes de "
+"oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic sixths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de sextas melódicas descendentes de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic tenths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de décimas melódicas descendentes de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic thirds by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar la identificación de terceras melódicas descendentes de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic tritones and sevenths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar la identificación de tritonos y séptimas melódicos descendentes de "
+"oído."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1196,93 +1204,86 @@ msgid ""
 "Practice identifying harmonic compound intervals from a second through a "
 "fifteenth by ear."
 msgstr ""
+"Practicar la identificación de intervalos armónicos compuestos de una "
+"segunda mediante una decimoquinta de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic fourths and fifths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de cuartas y quintas armónicas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic fourths, fifths, and octaves by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar la identificación de cuartas, quintas y octavas armónicas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying harmonic intervals from a second through an octave by "
 "ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar la identificación de intervalos armónicos de una segunda mediante "
+"una octava de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying harmonic intervals from a second through a tenth by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar la identificación de intervalos armónicos de una segunda mediante "
+"una décima de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic ninths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de novenas armónicas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic seconds and thirds by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de segundas y terceras armónicas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic seconds by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de segundas armónicas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic sevenths and ninths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de séptimas y novenas armónicas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic sevenths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de séptimas armónicas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic sixths and sevenths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de sextas y séptimas armónicas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic sixths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de sextas armónicas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic tenths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de décimas armónicas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic thirds by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de terceras armónicas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic tritones and sevenths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de tritonos y séptimas armónicos de oído."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1290,113 +1291,114 @@ msgid ""
 "Practice identifying melodic compound intervals from a second through a "
 "fifteenth by ear."
 msgstr ""
+"Practicar la identificación de intervalos melódicos compuestos de una "
+"segunda mediante una decimoquinta de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic fourths and fifths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de cuartas y quintas melódicas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic fourths, fifths, and octaves by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar la identificación de cuartas, quintas y octavas melódicas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying melodic intervals from a second through an octave by "
 "ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar la identificación de intervalos melódicos de una segunda mediante "
+"una octava de oído."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying melodic intervals from a second through a tenth by ear."
 msgstr ""
+"Practicar la identificación de intervalos melódicos de una segunda mediante "
+"una décima de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic ninths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de novenas melódicas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic seconds and thirds by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de segundas y terceras melódicas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic seconds by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de segundas melódicas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic sevenths and ninths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de séptimas y novenas melódicas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic sevenths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de séptimas melódicas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic sixths and sevenths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de sextas y séptimas melódicas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic sixths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de sextas melódicas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic tenths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de décimas melódicas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic thirds by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de terceras melódicas de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic tritones and sevenths by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr "Practicar la identificación de tritonos y séptimas melódicos de oído."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing a broad mix of common chord qualities by ear."
 msgstr ""
+"Practicar el reconocimiento de una amplia variedad de cualidades de acordes "
+"comunes de oído."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing a full set of seventh chord qualities by ear."
 msgstr ""
+"Practicar el reconocimiento de un conjunto completo de cualidades de acordes "
+"de séptima de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing all three-note chord types by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar el reconocimiento de todos los tipos de acordes de tres notas de "
+"oído."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing basic minor and major ninth chord colors."
 msgstr ""
+"Practicar el reconocimiento de los colores básicos de los acordes de novena "
+"mayor y menor."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1404,63 +1406,82 @@ msgid ""
 "Practice recognizing basic rhythm figures and simple rhythmic patterns by "
 "ear."
 msgstr ""
+"Practicar el reconocimiento de figuras rítmicas básicas y patrones rítmicos "
+"simples de oído."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing basic seventh chords across inversions."
 msgstr ""
+"Practicar el reconocimiento de acordes básicos de séptima en diferentes "
+"inversiones."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing bebop scales with added passing tones."
 msgstr ""
+"Practicar el reconocimiento de escalas de bebop con notas de paso añadidas."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing bright augmented chord sounds by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar el reconocimiento de los sonidos brillantes de acordes aumentados "
+"de oído."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing chords that include a major seventh by ear."
 msgstr ""
+"Practicar el reconocimiento de acordes que incluyen una séptima mayor de "
+"oído."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing chords that include a minor seventh by ear."
 msgstr ""
+"Practicar el reconocimiento de acordes que incluyen una séptima menor de "
+"oído."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing common seventh chord qualities in root position."
 msgstr ""
+"Practicar el reconocimiento de cualidades comunes de los acordes de séptima "
+"en posición fundamental."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing diminished triads in different inversions."
 msgstr ""
+"Practicar el reconocimiento de tríadas disminuidas en diferentes inversiones."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing dominant seventh chords in different inversions."
 msgstr ""
+"Practicar el reconocimiento de acordes de séptima dominante en diferentes "
+"inversiones."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing eleventh chord colors by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar el reconocimiento de colores de los acordes de undécima de oído."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing harmonic major and its modal colors."
 msgstr ""
+"Practicar el reconocimiento de la escala mayor armónica y sus colores "
+"modales."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing harmonic minor and its modal colors."
 msgstr ""
+"Practicar el reconocimiento de la escala menor armónica y sus colores "
+"modales."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1468,67 +1489,81 @@ msgid ""
 "Practice recognizing longer rhythm figures and more varied rhythmic patterns "
 "by ear."
 msgstr ""
+"Practicar el reconocimiento de figuras rítmicas más largas y patrones "
+"rítmicos más variados de oído."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing major chord qualities by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar el reconocimiento de las cualidades de los acordes mayores de oído."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing major pentatonic sounds and their modes."
 msgstr ""
+"Practicar el reconocimiento de los sonidos de la escala pentatónica mayor y "
+"sus modos."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing major seventh chords in different inversions."
 msgstr ""
+"Practicar el reconocimiento de acordes de séptima mayor en diferentes "
+"inversiones."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing major triads in different inversions."
 msgstr ""
+"Practicar el reconocimiento de tríadas mayores en diferentes inversiones."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing minor chord qualities by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar el reconocimiento de las cualidades de los acordes menores de oído."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing minor seventh chords in different inversions."
 msgstr ""
+"Practicar el reconocimiento de acordes de séptima menor en diferentes "
+"inversiones."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing minor triads in different inversions."
 msgstr ""
+"Practicar el reconocimiento de tríadas menores en diferentes inversiones."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing ninth, eleventh, and other extended chord sounds."
 msgstr ""
+"Practicar el reconocimiento de los sonidos de acordes de novena, undécima y "
+"otros acordes extendidos."
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Seventh chords with a major seven"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing seventh chords built with a major seventh by ear."
-msgstr "Acordes de séptima con una séptima mayor"
+msgstr ""
+"Practicar el reconocimiento de acordes de séptima construidos con una "
+"séptima mayor de oído."
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Seventh chords with a minor seven"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing seventh chords built with a minor seventh by ear."
-msgstr "Acordes de séptima con una séptima menor"
+msgstr ""
+"Practicar el reconocimiento de acordes de séptima construidos con una "
+"séptima menor de oído."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing seventh chords with flattened or sharpened fifths."
 msgstr ""
+"Practicar el reconocimiento de acordes de séptima con quintas disminuidas o "
+"aumentadas."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1536,44 +1571,53 @@ msgid ""
 "Practice recognizing symmetric scale sounds such as whole-tone and "
 "diminished patterns."
 msgstr ""
+"Practicar el reconocimiento de sonidos de escalas simétricas, como las de "
+"tonos enteros y patrones disminuidos."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing tense diminished chord sounds by ear."
-msgstr "Practicar a identificar este ejercicio de oído."
+msgstr ""
+"Practicar el reconocimiento de sonidos de acordes disminuidos tensos de oído."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the basic triad qualities in root position."
 msgstr ""
+"Practicar el reconocimiento de las cualidades básicas de la tríada en "
+"posición fundamental."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the distinctive color of sharp-eleventh chords."
 msgstr ""
+"Practicar el reconocimiento del color distintivo de los acordes de undécima "
+"aumentada."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the full range of eleventh chord colors by ear."
 msgstr ""
+"Practicar el reconocimiento de toda la gama de colores de los acordes de "
+"undécima de oído."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the full range of ninth chord colors by ear."
 msgstr ""
+"Practicar el reconocimiento de toda la gama de colores de los acordes de "
+"novena de oído."
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Pentatonic Major Scale and its Modes"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the major scale and its diatonic modes."
-msgstr "Escala pentatónica mayor y sus modos"
+msgstr "Practicar el reconocimiento de la escala mayor y sus modos diatónicos."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing triads across root position and inversions."
 msgstr ""
+"Practicar el reconocimiento de tríadas en posición fundamental e inversiones."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1796,11 +1840,10 @@ msgid "%1 Includes %2 possible answers."
 msgstr "%1 Incluye %2 posibles respuestas."
 
 #: src/app/exercisecatalogcontroller.cpp:108
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "%1"
-msgstr "%1 %"
+msgstr "%1"
 
 #: src/app/exercisecatalogcontroller.cpp:201
 #, kde-format
@@ -1852,44 +1895,46 @@ msgstr "Pulse «Nueva pregunta» para comenzar"
 msgid "Question %1 out of %2"
 msgstr "Pregunta %1 de %2"
 
-#: src/app/main.cpp:41
+#: src/app/main.cpp:46
 #, kde-format
 msgid "Minuet"
 msgstr "Minuet"
 
-#: src/app/main.cpp:43
+#: src/app/main.cpp:48
 #, kde-format
 msgid "A KDE application for music education"
 msgstr "Una aplicación de KDE para aprendizaje musical"
 
-#: src/app/main.cpp:44
+#: src/app/main.cpp:49
 #, kde-format
 msgid "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 msgstr "© 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 
-#: src/app/main.cpp:49 src/app/main.cpp:51
+#: src/app/main.cpp:54 src/app/main.cpp:56
 #, kde-format
 msgid "Developer"
 msgstr "Desarrollador"
 
-#: src/app/main.cpp:53
+#: src/app/main.cpp:58
 #, kde-format
 msgid "Minuet Icon Designer"
 msgstr "Diseñador del icono de Minuet"
 
-#: src/app/main.cpp:55
+#: src/app/main.cpp:60
 #, kde-format
 msgctxt "@info:credit"
 msgid "Fluidsynth"
-msgstr ""
+msgstr "FluidSynth"
 
-#: src/app/main.cpp:55
+#: src/app/main.cpp:60
 #, kde-format
 msgctxt "@info:credit"
 msgid ""
 "Software synthesizer based on the SoundFont 2 specifications. © 2003 Peter "
 "Hanappe and others."
 msgstr ""
+"Sintetizador de software basado en las especificaciones de SoundFont 2. © "
+"2003 Peter Hanappe y otros."
 
 #: src/app/qml/ExerciseMenuPage.qml:22
 #, kde-format
@@ -1955,10 +2000,9 @@ msgid "Your Answer(s)"
 msgstr "Su respuesta"
 
 #: src/app/qml/ExerciseView.qml:451
-#, fuzzy, kde-format
-#| msgid "Scroll for more"
+#, kde-format
 msgid "Scroll for more |"
-msgstr "Desplace para más"
+msgstr "Desplace para más |"
 
 #: src/app/qml/ExerciseView.qml:456
 #, kde-format
@@ -2141,391 +2185,391 @@ msgstr "Número de ejercicios"
 msgid "Could not load the main user interface."
 msgstr "No se ha podido cargar la interfaz principal de usuario."
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:436
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:452
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Acoustic Bass Drum"
 msgstr "Bombo acústico"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:438
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:454
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Bass Drum 1"
 msgstr "Bombo 1"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:440
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:456
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Side Stick"
 msgstr "Aro de caja"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:442
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:458
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Acoustic Snare"
 msgstr "Caja acústica"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:444
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:460
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hand Clap"
 msgstr "Palmada"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:446
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:462
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Electric Snare"
 msgstr "Caja eléctrica"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:448
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:464
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Floor Tom"
 msgstr "Tom de suelo grave"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:450
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:466
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Closed Hi-hat"
 msgstr "Charles cerrado"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:452
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:468
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Floor Tom"
 msgstr "Tom de suelo agudo"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:454
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:470
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Pedal Hi-hat"
 msgstr "Pedal de charles"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:456
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:472
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Tom"
 msgstr "Tom grave"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:458
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:474
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Hi-hat"
 msgstr "Charles abierto"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:460
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:476
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low-Mid Tom"
 msgstr "Tom grave-medio"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:462
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:478
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hi-Mid Tom"
 msgstr "Tom agudo-medio"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:464
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:480
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Crash Cymbal 1"
 msgstr "Platillo crash 1"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:466
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:482
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Tom"
 msgstr "Tom agudo"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:468
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:484
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Ride Cymbal 1"
 msgstr "Platillo ride 1"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:470
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:486
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Chinese Cymbal"
 msgstr "Platillo chino"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:472
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:488
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Ride Bell"
 msgstr "Campana ride"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:474
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:490
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Tambourine"
 msgstr "Pandereta"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:476
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:492
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Splash Cymbal"
 msgstr "Platillo splash"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:478
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:494
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Cowbell"
 msgstr "Cencerro"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:480
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:496
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Crash Cymbal 2"
 msgstr "Platillo crash 2"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:482
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:498
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Vibraslap"
 msgstr "VibraSlap"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:484
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:500
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Ride Cymbal 2"
 msgstr "Platillo ride 2"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:486
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:502
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hi Bongo"
 msgstr "Bongó agudo"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:488
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:504
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Bongo"
 msgstr "Bongó grave"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:490
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:506
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Mute Hi Conga"
 msgstr "Conga aguda tapada"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:492
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:508
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Hi Conga"
 msgstr "Conga aguda abierta"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:494
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:510
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Conga"
 msgstr "Conga grave"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:496
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:512
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Timbale"
 msgstr "Timbal agudo"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:498
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:514
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Timbale"
 msgstr "Timbal grave"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:500
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:516
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Agogo"
 msgstr "Agogó agudo"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:502
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:518
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Agogo"
 msgstr "Agogó grave"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:504
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:520
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Cabasa"
 msgstr "Cabasa"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:506
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:522
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Maracas"
 msgstr "Maracas"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:508
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:524
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Short Whistle"
 msgstr "Silbido corto"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:510
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:526
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Long Whistle"
 msgstr "Silbido largo"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:512
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:528
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Short Guiro"
 msgstr "Guiro corto"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:514
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:530
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Long Guiro"
 msgstr "Guiro largo"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:516
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:532
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Claves"
 msgstr "Claves"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:518
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:534
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hi Wood Block"
 msgstr "Bloque de madera agudo"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:520
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:536
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Wood Block"
 msgstr "Bloque de madera grave"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:522
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:538
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Mute Cuica"
 msgstr "Cuica tapada"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:524
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:540
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Cuica"
 msgstr "Cuica abierta"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:526
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:542
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Mute Triangle"
 msgstr "Triángulo tapado"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:528
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:544
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Triangle"
 msgstr "Triángulo abierto"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:530
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:546
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Percussion"
 msgstr "Percusión"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:538
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:554
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Piano"
 msgstr "Piano"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:540
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:556
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Chromatic Percussion"
 msgstr "Percusión afinada"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:542
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:558
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Organ"
 msgstr "Órgano"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:544
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:560
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Guitar"
 msgstr "Guitarra"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:546
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:562
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Bass"
 msgstr "Bajo"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:548
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:564
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Strings"
 msgstr "Cuerdas"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:550
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:566
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Ensemble"
 msgstr "Conjuntos"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:552
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:568
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Brass"
 msgstr "Viento (metal)"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:554
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:570
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Reed"
 msgstr "Viento (lengüeta)"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:556
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:572
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Pipe"
 msgstr "Viento (madera)"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:558
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:574
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Synth Lead"
 msgstr "Solos de sintetizador"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:560
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:576
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Synth Pad"
 msgstr "Colchones de sintetizador"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:562
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:578
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Synth Effects"
 msgstr "Efectos de sintetizador"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:564
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:580
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Ethnic"
 msgstr "Étnicos"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:566
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:582
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Percussive"
 msgstr "Percusivos"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:568
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:584
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Sound Effects"
 msgstr "Efectos de sonido"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:570
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:586
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Other"
