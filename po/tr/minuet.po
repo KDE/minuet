@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-09 00:39+0000\n"
-"PO-Revision-Date: 2026-05-24 13:37+0300\n"
+"PO-Revision-Date: 2026-05-29 12:46+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -125,7 +125,7 @@ msgstr "Minör Bebop"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Bebop Scales"
-msgstr "Bebop Ölçekleri"
+msgstr "Bebop Gamları"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -305,7 +305,7 @@ msgstr "Uyumlu Majör"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Harmonic Major Scale and its Modes"
-msgstr "Uyumlu Majör Ölçeği ve Onun Kipleri"
+msgstr "Uyumlu Majör Gam ve Onun Kipleri"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -315,7 +315,7 @@ msgstr "Uyumlu Minör"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Harmonic Minor Scale and its Modes"
-msgstr "Uyumlu Minör Ölçeği ve Onun Kipleri"
+msgstr "Uyumlu Minör Gam ve Onun Kipleri"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -450,7 +450,7 @@ msgstr "Majör Pentatonik"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Scale and its Modes"
-msgstr "Majör Ölçek ve Onun Kipleri"
+msgstr "Majör Gam ve Onun Kipleri"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -670,7 +670,7 @@ msgstr "Oktav + Üç Tonlu"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Pentatonic Major Scale and its Modes"
-msgstr "Pentatonik Majör Ölçek ve Onun Kipleri"
+msgstr "Pentatonik Majör Gam ve Onun Kipleri"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -735,7 +735,7 @@ msgstr "Rumen"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Scales"
-msgstr "Ölçekler"
+msgstr "Gamlar"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -830,7 +830,7 @@ msgstr "Askıya Alınmış Pentatonik"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Symmetric Scales"
-msgstr "Simetrik Ölçekler"
+msgstr "Simetrik Gamlar"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
