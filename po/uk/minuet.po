@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-30 00:41+0000\n"
-"PO-Revision-Date: 2026-05-29 19:21+0300\n"
+"PO-Revision-Date: 2026-05-30 13:58+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -970,11 +970,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Phrygian Dominant"
 msgstr "Фрігійський (домінанта)"
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice distinguishing diminished and augmented triads by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr ""
+"Вправляння у розрізненні визначенні зменшених і збільшених тріад на слух."
 
 #, fuzzy, kde-format
 #| msgid "Practice identifying this exercise by ear."
@@ -1400,7 +1400,7 @@ msgstr ""
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing basic seventh chords across inversions."
-msgstr ""
+msgstr "Вправляння у розпізнаванні базових семерних акордів у інверсіях."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1417,42 +1417,47 @@ msgstr "Вправляння у визначенні на слух."
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing chords that include a major seventh by ear."
 msgstr ""
+"Вправляння у розпізнаванні акордів, до яких входить мажорна сьома, на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing chords that include a minor seventh by ear."
 msgstr ""
+"Вправляння у розпізнаванні акордів, до яких входить мінорна сьома, на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing common seventh chord qualities in root position."
 msgstr ""
+"Вправляння у визначенні типових якостей септакорду в кореневій позиції."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing diminished triads in different inversions."
-msgstr ""
+msgstr "Вправляння у розпізнаванні зменшених тріад у різних інверсіях."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing dominant seventh chords in different inversions."
 msgstr ""
+"Вправляння у розпізнаванні домінантних семерних акордів у різних інверсіях."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing eleventh chord colors by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні одинацятних акордних кольорів на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing harmonic major and its modal colors."
 msgstr ""
+"Вправляння у розпізнаванні мажорної гармоніки та її модальних кольорів."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing harmonic minor and its modal colors."
 msgstr ""
+"Вправляння у розпізнаванні мінорної гармоніки та її модальних кольорів."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1461,11 +1466,10 @@ msgid ""
 "by ear."
 msgstr ""
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing major chord qualities by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні мажорних акордів на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1482,11 +1486,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing major triads in different inversions."
 msgstr ""
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing minor chord qualities by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні мінорних акордів на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1503,12 +1506,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing ninth, eleventh, and other extended chord sounds."
 msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Seventh chords with a major seven"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing seventh chords built with a major seventh by ear."
-msgstr "Септима з мажорним сьомим"
+msgstr "Вправляння у розпізнаванні септими з мажорним сьомим на слух."
 
 #, fuzzy, kde-format
 #| msgctxt "technical term, do you have a musician friend?"
@@ -1528,12 +1529,13 @@ msgid ""
 "Practice recognizing symmetric scale sounds such as whole-tone and "
 "diminished patterns."
 msgstr ""
+"Вправляння у розпізнаванні звуків симетричних гам, зокрема повного тону та "
+"зменшених структур."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing tense diminished chord sounds by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні напруженого зменшеного акорду на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1555,12 +1557,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the full range of ninth chord colors by ear."
 msgstr ""
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Pentatonic Major Scale and its Modes"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the major scale and its diatonic modes."
-msgstr "Пентатонічна мажорна гама і її лади"
+msgstr "Вправляння у розпізнаванні мажорної гами і її діатонічних мод."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -2116,7 +2116,7 @@ msgstr "Вправи на ритм"
 #: src/app/qml/SettingsPage.qml:216
 #, kde-format
 msgid "Number of rhythm patterns"
-msgstr "Кількість ритмічних взірців"
+msgstr "Кількість ритмічних структур"
 
 #: src/app/qml/SettingsPage.qml:231
 #, kde-format

@@ -1,0 +1,329 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Turkish "INCLUDE">
+]>
+<book id="minuet" lang="&language;">
+
+<bookinfo>
+<title
+>&minuet; El Kitabı</title>
+
+<authorgroup>
+<author
+><personname
+> <firstname
+>Sandro</firstname
+> <othername
+>S.</othername
+> <surname
+>Andrade</surname
+> </personname
+> <email
+>&Sandro.Andrade.mail;</email
+> </author>
+<othercredit role="translator"
+><firstname
+>Emir</firstname
+><surname
+>SARI</surname
+><affiliation
+><address
+><email
+>emir_sari@icloud.com</email
+></address
+></affiliation
+><contrib
+>Çeviri</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2016</year>
+<holder
+>&Sandro.Andrade;</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021‒10‒19</date>
+
+<releaseinfo
+>0.4 (KDE Gear 21.08)</releaseinfo>
+
+<abstract>
+<para
+>&minuet;, müzik eğitimi için bir uygulamadır. Aralıklar, akorlar ve gamlar ile ilgili bir dizi kulak eğitimi alıştırması içerir. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kde eğitim</keyword>
+<keyword
+>müzik</keyword>
+<keyword
+>eğitim</keyword>
+<keyword
+>aralıklar</keyword>
+<keyword
+>akorlar</keyword>
+<keyword
+>gamlar</keyword>
+<keyword
+>Minuet</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Giriş</title>
+
+<para
+>Müzik eğitimi için bir yazılım olan &minuet;’e hoş geldiniz. &minuet;, öğrencileri ve öğretmenleri kulak eğitimi, nota okuma, solfej, gamlar, ritim, armoni ve doğaçlama gibi müzik eğitiminin birçok alanında desteklemeyi amaçlamaktadır. &minuet;, ses düzeyi, tempo ve perde değişiklikleri ile ilgili eksiksiz bir özellik kümesi sağlamak için &MIDI; yeteneklerinden yoğun bir şekilde yararlanır; bu da &minuet;’i hem yeni başlayan hem de deneyimli müzisyenler için değerli bir araç haline getirir. </para>
+<para
+>&minuet;, zengin bir kulak eğitimi alıştırmaları kümesi içerir ve işlevselliğini genişletmek ve çeşitli müzik eğitimi bağlamlarına uyarlamak için yenileri <link linkend="creating-exercises"
+>sorunsuz bir şekilde</link
+> eklenebilir. </para>
+
+<screenshot>
+  <screeninfo
+>&minuet; ana penceresi</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-screenshot.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>&minuet;’in kulak eğitimi için akor alıştırmaları</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+</chapter>
+
+<chapter id="using-minuet">
+<title
+>&minuet;’i kullanmak</title>
+
+<para
+>Sonraki iki bölümde —<link linkend="starting-minuet"
+>&minuet;’i Başlatmak</link
+> ve <link linkend="minuet-exercises"
+>&minuet; Alıştırmaları</link
+>— &minuet;’i açıp kullanmaya başlamak için gerekli adımları anlatacağız. </para>
+
+<sect1 id="starting-minuet">
+<title
+>&minuet;’i Başlatmak</title>
+
+<para
+>&minuet; uygulamasını uygulama başlatıcısından başlatabilirsiniz. Ekranınızın sol alt köşesindeki sistem tepsisinde bulunan uygulama başlatıcı simgesine tıklayarak global menüyü açın. Bu, bir menü açacaktır. İmlecinizi menüdeki <menuchoice
+><guimenu
+>Uygulamalar</guimenu
+> <guisubmenu
+>Eğitim</guisubmenu
+> <guisubmenu
+>Çeşitli</guisubmenu
+> <guimenuitem
+>&minuet; (Müzik Eğitimi Yazılımı)</guimenuitem
+></menuchoice
+> menü ögesine getirin veya <keycombo action="simul"
+>&Alt;<keycap
+>F2</keycap
+></keycombo
+> düğmesine basıp giriş alanına <command
+>minuet</command
+> yazın. </para>
+</sect1>
+
+<sect1 id="minuet-exercises">
+<title
+>&minuet; Alıştırmaları ve İş Akışı</title>
+
+<para
+>&minuet;’in kullanıcı arayüzü üç adet ana bileşenden oluşur: </para>
+
+<screenshot>
+  <screeninfo
+>&minuet; ana penceresi</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-ui-components.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>&minuet;’in arayüz bileşenleri</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>Dolaşım Menüsü</guilabel
+></term>
+<listitem
+><para
+>&minuet;’in alıştırma kategorilerinde gezinmeyi ve belirli bir alıştırmayı seçmeyi sağlar. Dolaşım Menüsü, <link linkend="creating-exercises"
+>Alıştırma Oluşturma</link
+> bölümünde açıklandığı gibi, alıştırma belirtim dosyalarına göre devingen olarak oluşturulur. &minuet;’in alıştırmaları; aralıklar, gamlar ve akorlar gibi sınıflara göre gruplandırılmıştır.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Klavye Görünümü</guilabel
+></term>
+<listitem
+><para
+>Bir &MIDI; dosyası veya bir alıştırma yürütülmesiyle sıralanan olaylar hakkında &MIDI; <parameter
+>notası</parameter
+> sergiler.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Alıştırma Görünümü</guilabel
+></term>
+<listitem
+><para
+>Belirli bir alıştırma için alıştırma sunumunu denetleyen düğmeler ve alıştırmanın olası yanıtlarını gösterir. Bir alıştırma çalıştırması, <guibutton
+>Testi Başlat</guibutton
+> düğmesine tıklanarak başlar. &minuet; tarafından rastgele seçilen bir aralık/akor/gam çalınır ve ardından öğrencinin yanıt tablosunda gösterilenler arasından bir yanıt seçmesi beklenir. &minuet; her zaman —klavye görünümünde beyaz küçük bir daire olarak— seçilen aralığın/gamın ilk notasını veya seçilen akorun kök notasını gösterir. Olası bir yanıtın üzerine gelindiğinde &minuet;, klavye görünümünde karşılık gelen görsel temsilini vurgular. Üzerine gelinen yanıtın kalan notaları, üzerine gelinen yanıtın düğmesinin rengiyle aynı renkte küçük daireler olarak gösterilir. Öğrenci, <guibutton
+>Soruyu Oynat</guibutton
+> düğmesine tıklayarak alıştırmayı yeniden dinleyebilir, seçilen yanıt düğmesine tıklayabilir veya <guibutton
+>Vazgeç</guibutton
+> düğmesine tıklayarak doğru yanıtı alabilir. Aynı alıştırmayı bir kez daha başlatmak için <guibutton
+>Testi Durdur</guibutton
+> düğmesine basıp ardından <guibutton
+>Yeni Soru</guibutton
+> düğmesine yeniden basabilirsiniz.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+</chapter>
+
+<chapter id="creating-exercises">
+<title
+>Yeni &minuet; Alıştırmaları Oluşturmak</title>
+
+<para
+>&minuet;’in alıştırmaları, &JSON; biçiminde yazılmış alıştırma belirtim dosyalarında tanımlanmıştır: </para>
+<para>
+<programlisting
+>{
+  "exercises": [
+    {
+      "name": "Aralıklar",
+      "root": "21..104",
+      "playMode": "scale",
+      "children": [
+        {
+          "name": "Çıkıcı Melodik Aralıklar",
+          "children": [
+            {
+              "name": "İkililer",
+              "options": [
+                {
+                  "name": "Minör İkili",
+                  "sequenceFromRoot": "1"
+                },
+                {
+                  "name": "Majör İkili",
+                  "sequenceFromRoot": "2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+</programlisting>
+</para>
+<para
+>&minuet;’in alıştırma belirtim dosyaları, <parameter
+>exercises</parameter
+> (alıştırmalar) dizilişini içeren en üst düzey bir &JSON; nesnesi içerir. Bu diziliş, kategorilere göre gruplandırılmış alıştırmaların hiyerarşik bir yapısını tanımlar. Her kategori/alıştırmanın bir adı vardır. Kategori &JSON; nesneleri, söz konusu kategorinin içerdiği alt kategorileri/alıştırmaları açıklayan <parameter
+>children</parameter
+> (alt ögeler) adlı bir özellik içerir. Alıştırma &JSON; nesneleri, söz konusu alıştırma için olası yanıtları tanımlayan <parameter
+>options</parameter
+> (seçenekler) adlı bir özellik içerir. Her alıştırma çalışmasında, &minuet; olası yanıtlar arasından rastgele birini seçer ve öğrencinin seçilen yanıta karşılık gelen düğmeye tıklaması beklenir. </para>
+<para
+>Herhangi bir (alt) kategori, bu kategorideki tüm alıştırmalar için başlangıç aralığının/akordun/gamın notasının rastgele seçileceği erimi belirtmek üzere bir <parameter
+>root</parameter
+> (kök) parametresi tanımlayabilir. Bu erim, standart &MIDI; nota numaralarına karşılık gelir ve <parameter
+>&lt;min-value&gt;..&lt;max-value&gt;</parameter
+> (en düşük, en yüksek değer) biçimini izler. Yukarıda sunulan örnek, olası kök notalar olarak tüm klavye erimini (21..104) kullanır. <parameter
+>playMode</parameter
+> parametresi, olası yanıtların nasıl çalınması gerektiğini gösterir: Bir <parameter
+>scale</parameter
+> (gam) olarak (bir nota diğerinin ardından) veya bir <parameter
+>chord</parameter
+> (akor) olarak (tüm notalar aynı anda çalınır). </para>
+<para
+>Her alıştırmanın seçeneği, her alıştırma çalışmasında rastgele seçilen kök notadan çalınması gereken notaların adını ve sırasını tanımlar. Bu nota dizisi, kök notadan göreceli uzaklıklar olarak tanımlanır ve her notanın kök nota ile birlikte oluşturduğu aralığı açıklar. Örneğin, bir majör gam için nota dizisi <quote
+>2 4 5 7 9 11 12</quote
+> şeklindedir ve bu sırasıyla <quote
+>tam tam yarım tam tam tam yarım</quote
+> majör gam yapısını ifade eder. <parameter
+>sequenceFromRoot</parameter
+> parametresi herhangi bir uzunlukta nota içerebilir. Ayrıca, &minuet;’in çekirdeği, yalnızca tüm notaları klavye erimi içinde bulunan yanıtların rastgele seçilmesini sağlar. </para>
+<para
+>Çok sayıda alıştırma belirtim dosyasını düzenlemek için daha iyi bir altyapı sağlamak amacıyla, &minuet;’in çekirdeği, Dolaşım menüsünde sunulan nihaî alıştırma hiyerarşisini oluşturmak üzere kendiliğinden birleştirilen çeşitli belirtim dosyalarının kullanımını destekler. Alıştırmalar, farklı belirtim dosyaları alıştırmaları tanımlarken aynı (alt) kategori adını kullandığı sürece doğru şekilde birleştirilir. Şimdilik, &minuet; alıştırma belirtimleri oluşturmak için herhangi bir arayüz sağlamamaktadır, bu nedenle bu tür &JSON; dosyalarını elle oluşturmanız gerekir. &minuet;’in alıştırma belirtim dosyaları, sistem genelinde veya yerel olarak <filename class="directory"
+>minuet/exercises/</filename
+> klasörüne <userinput
+><command
+>qtpaths</command
+> <option
+>--paths GenericDataLocation</option
+></userinput
+> içinde kurulabilir. </para>
+
+</chapter>
+
+<chapter id="credits">
+
+<title
+>Emeği Geçenler ve Lisans</title>
+
+<para
+>&minuet; </para>
+<para
+>Program telif hakkı &copy; 2016 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
+
+<para
+>Belgelendirme telif hakkı &copy; 2016 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
+
+<para
+>Çeviri: Emir SARI <email
+>emir_sari@icloud.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->
