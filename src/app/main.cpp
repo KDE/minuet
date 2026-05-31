@@ -9,6 +9,9 @@
 
 #if !defined(Q_OS_ANDROID)
 #include <KCrash>
+#if defined(Q_OS_MACOS)
+#include <KIconTheme>
+#endif
 #else
 #include <KColorSchemeManager>
 #endif
@@ -31,6 +34,10 @@ using namespace Qt::StringLiterals;
 
 int main(int argc, char *argv[])
 {
+#if defined(Q_OS_MACOS)
+    KIconTheme::initTheme();
+#endif
+
     QGuiApplication application(argc, argv);
 
 #if defined(Q_OS_MACOS)

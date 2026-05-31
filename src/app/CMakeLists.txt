@@ -134,14 +134,11 @@ if(ANDROID)
         QT_ANDROID_VERSION_CODE ${RELEASE_SERVICE_COMPACT_VERSION}
         QT_ANDROID_VERSION_NAME ${PROJECT_VERSION}
     )
+
     target_link_libraries(minuet PRIVATE
         KF6::ColorScheme
         Minuet::FluidSynthSoundController
     )
-    ecm_add_android_apk(minuet ANDROID_DIR ${CMAKE_SOURCE_DIR}/android)
-endif()
-
-if(ANDROID OR APPLE)
     kirigami_package_breeze_icons(ICONS
         ${KIRIGAMI_ADDONS_ICONS}
         arrow-up
@@ -152,6 +149,11 @@ if(ANDROID OR APPLE)
         settings-configure
         view-list-details
     )
+    ecm_add_android_apk(minuet ANDROID_DIR ${CMAKE_SOURCE_DIR}/android)
+endif()
+
+if(APPLE)
+    target_link_libraries(minuet PRIVATE KF6::IconThemes)
 endif()
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
