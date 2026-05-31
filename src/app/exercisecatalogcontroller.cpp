@@ -6,6 +6,7 @@
 
 #include <KLocalizedString>
 
+#include <QCoreApplication>
 #include <QDebug>
 #include <QDir>
 #include <QFile>
@@ -169,6 +170,11 @@ bool ExerciseCatalogController::mergeJsonFiles(const QString directoryName, QJso
     jsonDirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, directoryName,
                                          QStandardPaths::LocateDirectory);
 #ifdef Q_OS_MACOS
+    const QString bundleJsonDir = QDir(QCoreApplication::applicationDirPath()).absoluteFilePath(
+        u"../Resources/minuet/"_s + directoryName);
+    if (QDir(bundleJsonDir).exists()) {
+        jsonDirs << QDir::cleanPath(bundleJsonDir);
+    }
     if (jsonDirs.isEmpty()) {
         const QStringList xdgDataDirs = Utils::xdgDataDirs();
         for (const auto &dirPath : xdgDataDirs) {
