@@ -120,43 +120,31 @@
   <url type="help">https://docs.kde.org/?application=minuet</url>
   <url type="donation">https://www.kde.org/community/donations/?app=minuet&amp;source=appdata</url>
   <url type="vcs-browser">https://invent.kde.org/education/minuet</url>
+  <url type="contribute">https://community.kde.org/Get_Involved</url>
+  <url type="translate">https://l10n.kde.org</url>
+  <custom>
+    <value key="KDE::windows_store">https://www.microsoft.com/store/apps/9p3tmg67ndl8</value>
+    <value key="KDE::windows_store::StoreLogo9x16">https://invent.kde.org/education/minuet/-/raw/master/src/app/icons/windows/storelogo-720x1080.png</value>
+    <value key="KDE::windows_store::StoreLogoSquare">https://invent.kde.org/education/minuet/-/raw/master/src/app/icons/windows/storelogo-1080x1080.png</value>
+    <value key="KDE::windows_store::Icon">https://invent.kde.org/education/minuet/-/raw/master/src/app/icons/windows/icon-300x300.png</value>
+    <value key="KDE::windows_store::PromotionalArt16x9">https://invent.kde.org/education/minuet/-/raw/master/src/app/icons/windows/promoimage-1920x1080.png</value>
+  </custom>
   <screenshots>
     <screenshot type="default">
-      <caption>Training with Minuet</caption>
-      <caption xml:lang="ar">التدرب مع منويت</caption>
-      <caption xml:lang="ca">Entrenant amb el Minuet</caption>
-      <caption xml:lang="ca-valencia">Entrenant amb Minuet</caption>
-      <caption xml:lang="cs">Procvičování s Minuet</caption>
-      <caption xml:lang="de">Übungen mit Minuet</caption>
-      <caption xml:lang="el">Εξάσκηση με το Μινουέτο</caption>
-      <caption xml:lang="en-GB">Training with Minuet</caption>
-      <caption xml:lang="eo">Trejnado per Minuet</caption>
-      <caption xml:lang="es">Entrenamiento con Minuet</caption>
-      <caption xml:lang="et">Harjutamine Minuetiga</caption>
-      <caption xml:lang="eu">«Minuet»ekin trebatzea</caption>
-      <caption xml:lang="fi">Harjoittelu Minuetin Avulla</caption>
-      <caption xml:lang="fr">Entraînement sur Menuet</caption>
-      <caption xml:lang="gl">Adestrando con Minuet.</caption>
-      <caption xml:lang="he">תרגול עם מינואט</caption>
-      <caption xml:lang="id">Berlatih dengan Minuet</caption>
-      <caption xml:lang="it">Esercitazione con Minuet</caption>
-      <caption xml:lang="ka">ვარჯიში Minuet-თან ერთად</caption>
-      <caption xml:lang="ko">Minuet로 연습하기</caption>
-      <caption xml:lang="nl">Oefenen met Minuet</caption>
-      <caption xml:lang="nn">Musikkopplæring med Minuet</caption>
-      <caption xml:lang="pl">Ćwiczenia w Minuet</caption>
-      <caption xml:lang="pt">A exercitar no Minuet</caption>
-      <caption xml:lang="pt-BR">Treinando com o Minuet</caption>
-      <caption xml:lang="ro">Pregătire cu Minuet</caption>
-      <caption xml:lang="ru">Тренировка в Minuet</caption>
-      <caption xml:lang="sk">Tréning s Minuet</caption>
-      <caption xml:lang="sl">Vadba z Minuet</caption>
-      <caption xml:lang="sv">Övning med Minuet</caption>
-      <caption xml:lang="tr">Minuet ile alıştırmalar</caption>
-      <caption xml:lang="uk">Вправляння у Minuet</caption>
-      <caption xml:lang="zh-CN">使用 Minuet 训练</caption>
-      <caption xml:lang="zh-TW">使用 Minuet 訓練</caption>
-      <image>https://cdn.kde.org/screenshots/minuet/minuet.png</image>
+      <caption>Choose music training exercises</caption>
+      <image>https://cdn.kde.org/screenshots/minuet/minuet-home.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Practice recognizing chords</caption>
+      <image>https://cdn.kde.org/screenshots/minuet/minuet-chords.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Improve rhythm recognition</caption>
+      <image>https://cdn.kde.org/screenshots/minuet/minuet-rhythms.png</image>
+    </screenshot>
+    <screenshot environment="plasma-mobile">
+      <caption>Train your ear on mobile</caption>
+      <image>https://cdn.kde.org/screenshots/minuet/minuet-mobile.png</image>
     </screenshot>
   </screenshots>
   <categories>
@@ -165,11 +153,24 @@
     <category>Education</category>
     <category>Music</category>
   </categories>
+  <keywords>
+    <keyword>music</keyword>
+    <keyword>education</keyword>
+    <keyword>ear training</keyword>
+    <keyword>intervals</keyword>
+    <keyword>chords</keyword>
+    <keyword>scales</keyword>
+    <keyword>rhythm</keyword>
+  </keywords>
   <project_group>KDE</project_group>
   <provides>
     <binary>minuet</binary>
   </provides>
   <content_rating type="oars-1.1"/>
+  <branding>
+    <color type="primary" scheme_preference="light">#DDE7F0</color>
+    <color type="primary" scheme_preference="dark">#405468</color>
+  </branding>
   <releases>
     <release version="0.4.0.26042" date="2026-06-04"/>
     <release version="0.4.0.26041" date="2026-05-07"/>
