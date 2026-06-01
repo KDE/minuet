@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-30 00:41+0000\n"
+"POT-Creation-Date: 2026-06-01 00:39+0000\n"
 "PO-Revision-Date: 2026-05-26 08:59+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -1768,39 +1768,39 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Whole Tone"
 msgstr "טונים שלמים"
 
-#: src/app/exercisecatalogcontroller.cpp:79
+#: src/app/exercisecatalogcontroller.cpp:80
 #, kde-format
 msgid "Practice identifying this exercise by ear."
 msgstr "אימון בזיהוי התרגיל הזה לפי האוזן."
 
-#: src/app/exercisecatalogcontroller.cpp:82
+#: src/app/exercisecatalogcontroller.cpp:83
 #, kde-format
 msgid "Practice rhythm recognition."
 msgstr "תרגול זיהוי מקצב."
 
-#: src/app/exercisecatalogcontroller.cpp:84
+#: src/app/exercisecatalogcontroller.cpp:85
 #, kde-format
 msgid "Identify the scale by ear."
 msgstr "זיהוי הסולם לפי האוזן."
 
-#: src/app/exercisecatalogcontroller.cpp:86
+#: src/app/exercisecatalogcontroller.cpp:87
 #, kde-format
 msgid "Identify the chord or interval by ear."
 msgstr "זיהוי האקורד או המרווח לפי האוזן."
 
-#: src/app/exercisecatalogcontroller.cpp:91
+#: src/app/exercisecatalogcontroller.cpp:92
 #, kde-format
 msgid "%1 Includes %2 possible answers."
 msgstr "%1 כולל %2 תשובות אפשריות."
 
-#: src/app/exercisecatalogcontroller.cpp:108
+#: src/app/exercisecatalogcontroller.cpp:109
 #, fuzzy, kde-format
 #| msgid "%1%"
 msgctxt "technical term, do you have a musician friend?"
 msgid "%1"
 msgstr "%1%"
 
-#: src/app/exercisecatalogcontroller.cpp:201
+#: src/app/exercisecatalogcontroller.cpp:207
 #, kde-format
 msgid "Could not open JSON file \"%1\"."
 msgstr "לא ניתן לפתוח את הקובץ ה־JSON ‏„%1”."
@@ -1852,38 +1852,38 @@ msgstr "יש ללחוץ על ‚שאלה חדשה’ כדי להתחיל"
 msgid "Question %1 out of %2"
 msgstr "שאלה %1 מתוך %2"
 
-#: src/app/main.cpp:46
+#: src/app/main.cpp:53
 #, kde-format
 msgid "Minuet"
 msgstr "מינואט"
 
-#: src/app/main.cpp:48
+#: src/app/main.cpp:55
 #, kde-format
 msgid "A KDE application for music education"
 msgstr "יישום KDE לחינוך מוזיקלי"
 
-#: src/app/main.cpp:49
+#: src/app/main.cpp:56
 #, kde-format
 msgid "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 msgstr "‏(c) 2016, סנדרו ס. אנדרייד (sandroandrade@kde.org)"
 
-#: src/app/main.cpp:54 src/app/main.cpp:56
+#: src/app/main.cpp:61 src/app/main.cpp:63
 #, kde-format
 msgid "Developer"
 msgstr "מפתח"
 
-#: src/app/main.cpp:58
+#: src/app/main.cpp:65
 #, kde-format
 msgid "Minuet Icon Designer"
 msgstr "מעצב הסמל של מינואט"
 
-#: src/app/main.cpp:60
+#: src/app/main.cpp:67
 #, kde-format
 msgctxt "@info:credit"
 msgid "Fluidsynth"
 msgstr ""
 
-#: src/app/main.cpp:60
+#: src/app/main.cpp:67
 #, kde-format
 msgctxt "@info:credit"
 msgid ""

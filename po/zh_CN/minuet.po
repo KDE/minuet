@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-30 00:41+0000\n"
+"POT-Creation-Date: 2026-06-01 00:39+0000\n"
 "PO-Revision-Date: 2024-04-22 16:05\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1694,38 +1694,38 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Whole Tone"
 msgstr "全音音阶"
 
-#: src/app/exercisecatalogcontroller.cpp:79
+#: src/app/exercisecatalogcontroller.cpp:80
 #, kde-format
 msgid "Practice identifying this exercise by ear."
 msgstr ""
 
-#: src/app/exercisecatalogcontroller.cpp:82
+#: src/app/exercisecatalogcontroller.cpp:83
 #, kde-format
 msgid "Practice rhythm recognition."
 msgstr ""
 
-#: src/app/exercisecatalogcontroller.cpp:84
+#: src/app/exercisecatalogcontroller.cpp:85
 #, kde-format
 msgid "Identify the scale by ear."
 msgstr ""
 
-#: src/app/exercisecatalogcontroller.cpp:86
+#: src/app/exercisecatalogcontroller.cpp:87
 #, kde-format
 msgid "Identify the chord or interval by ear."
 msgstr ""
 
-#: src/app/exercisecatalogcontroller.cpp:91
+#: src/app/exercisecatalogcontroller.cpp:92
 #, kde-format
 msgid "%1 Includes %2 possible answers."
 msgstr ""
 
-#: src/app/exercisecatalogcontroller.cpp:108
+#: src/app/exercisecatalogcontroller.cpp:109
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "%1"
 msgstr ""
 
-#: src/app/exercisecatalogcontroller.cpp:201
+#: src/app/exercisecatalogcontroller.cpp:207
 #, kde-format
 msgid "Could not open JSON file \"%1\"."
 msgstr "无法打开 JSON 文件 \"%1\"。"
@@ -1775,38 +1775,38 @@ msgstr "点击“新的题目”，开始答题"
 msgid "Question %1 out of %2"
 msgstr "第 %1 题，共 %2 题"
 
-#: src/app/main.cpp:46
+#: src/app/main.cpp:53
 #, kde-format
 msgid "Minuet"
 msgstr "Minuet"
 
-#: src/app/main.cpp:48
+#: src/app/main.cpp:55
 #, kde-format
 msgid "A KDE application for music education"
 msgstr "一个 KDE 音乐教育应用程序"
 
-#: src/app/main.cpp:49
+#: src/app/main.cpp:56
 #, kde-format
 msgid "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 msgstr "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 
-#: src/app/main.cpp:54 src/app/main.cpp:56
+#: src/app/main.cpp:61 src/app/main.cpp:63
 #, kde-format
 msgid "Developer"
 msgstr "开发者"
 
-#: src/app/main.cpp:58
+#: src/app/main.cpp:65
 #, kde-format
 msgid "Minuet Icon Designer"
 msgstr "Minuet 图标设计器"
 
-#: src/app/main.cpp:60
+#: src/app/main.cpp:67
 #, kde-format
 msgctxt "@info:credit"
 msgid "Fluidsynth"
 msgstr ""
 
-#: src/app/main.cpp:60
+#: src/app/main.cpp:67
 #, kde-format
 msgctxt "@info:credit"
 msgid ""

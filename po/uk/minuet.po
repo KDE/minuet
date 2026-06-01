@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-30 00:41+0000\n"
-"PO-Revision-Date: 2026-05-30 13:58+0300\n"
+"POT-Creation-Date: 2026-06-01 00:39+0000\n"
+"PO-Revision-Date: 2026-05-31 18:47+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -976,17 +976,18 @@ msgid "Practice distinguishing diminished and augmented triads by ear."
 msgstr ""
 "Вправляння у розрізненні визначенні зменшених і збільшених тріад на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice distinguishing minor and major triads by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у розрізненні мінорних і мажорних тріад на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice distinguishing suspended chord sounds from major and minor harmony."
 msgstr ""
+"Вправляння у розрізненні відкладених звуків акордів з мажорної та мінорної "
+"гармоніки."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -994,19 +995,22 @@ msgid ""
 "Practice identifying ascending melodic compound intervals from a second "
 "through a fifteenth by ear."
 msgstr ""
+"Вправляння у визначенні нарощувальних мелодичних складених інтервалів від "
+"другого до п'ятнадцятого на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic fourths and fifths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr ""
+"Вправляння у визначенні нарощувальних мелодичних четвертих і п'ятих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying ascending melodic fourths, fifths, and octaves by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr ""
+"Вправляння у визначенні нарощувальних мелодичних четвертих, п'ятих та октав "
+"на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1014,6 +1018,8 @@ msgid ""
 "Practice identifying ascending melodic intervals from a second through an "
 "octave by ear."
 msgstr ""
+"Вправляння у визначенні нарощувальних мелодичних інтервалів від другого до "
+"октави на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1021,72 +1027,70 @@ msgid ""
 "Practice identifying ascending melodic intervals from a second through a "
 "tenth by ear."
 msgstr ""
+"Вправляння у визначенні нарощувальних мелодичних інтервалів від другого до "
+"десятого на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic ninths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні нарощувальних мелодичних дев'ятих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic seconds and thirds by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr ""
+"Вправляння у визначенні нарощувальних мелодичних других і третіх на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic seconds by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні нарощувальних мелодичних других на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic sevenths and ninths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr ""
+"Вправляння у визначенні нарощувальних мелодичних сьомих та дев'ятих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic sevenths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні нарощувальних мелодичних сьомих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic sixths and sevenths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr ""
+"Вправляння у визначенні нарощувальних мелодичних шостих і сьомих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic sixths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні нарощувальних мелодичних шостих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic tenths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні нарощувальних мелодичних десятих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic thirds by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні нарощувальних мелодичних третіх на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic tritones and sevenths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr ""
+"Вправляння у визначенні нарощувальних мелодичних тритонів і сьомих на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying chord qualities when notes are rearranged in inversion."
 msgstr ""
+"Вправляння у визначені якостей акордів, якщо тори перевпорядковано в "
+"інверсії."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1094,19 +1098,21 @@ msgid ""
 "Practice identifying descending melodic compound intervals from a second "
 "through a fifteenth by ear."
 msgstr ""
+"Вправляння у визначенні спадних мелодичних складених інтервалів від другого "
+"до п'ятнадцятого на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic fourths and fifths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні спадних мелодичних четвертих і п'ятих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying descending melodic fourths, fifths, and octaves by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr ""
+"Вправляння у визначенні спадних мелодичних четвертих, п'ятих та октав на "
+"слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1114,6 +1120,8 @@ msgid ""
 "Practice identifying descending melodic intervals from a second through an "
 "octave by ear."
 msgstr ""
+"Вправляння у визначенні спадних мелодичних інтервалів від другого до октави "
+"на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1121,66 +1129,58 @@ msgid ""
 "Practice identifying descending melodic intervals from a second through a "
 "tenth by ear."
 msgstr ""
+"Вправляння у визначенні спадних мелодичних інтервалів від другого до "
+"десятого на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic ninths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні спадних мелодичних дев'ятих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic seconds and thirds by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні спадних мелодичних других і третіх на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic seconds by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні спадних мелодичних других на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic sevenths and ninths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні спадних мелодичних сьомих і дев'ятих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic sevenths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні спадних мелодичних сьомих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic sixths and sevenths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні спадних мелодичних шостих і сьомих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic sixths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні спадних мелодичних шостих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic tenths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні спадних мелодичних десятих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic thirds by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні спадних мелодичних третіх на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic tritones and sevenths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні спадних мелодичних тритонів і сьомих на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1188,93 +1188,85 @@ msgid ""
 "Practice identifying harmonic compound intervals from a second through a "
 "fifteenth by ear."
 msgstr ""
+"Вправляння у визначенні гармонійних складених інтервалів від другого до "
+"п'ятнадцятого на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic fourths and fifths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні гармонійних четвертих і п'ятих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic fourths, fifths, and octaves by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr ""
+"Вправляння у визначенні гармонійних четвертих, п'ятих та октав на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying harmonic intervals from a second through an octave by "
 "ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr ""
+"Вправляння у визначенні гармонійних інтервалів від другого до октави на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying harmonic intervals from a second through a tenth by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr ""
+"Вправляння у визначенні гармонійних інтервалів від другого до десятого на "
+"слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic ninths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні гармонійних дев'ятих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic seconds and thirds by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні гармонійних других і третіх на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic seconds by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні гармонійних других на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic sevenths and ninths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні гармонійних сьомих і дев'ятих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic sevenths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні гармонійних сьомих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic sixths and sevenths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні гармонійних шостих і сьомих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic sixths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні гармонійних шостих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic tenths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні гармонійних десятих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic thirds by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні гармонійних третіх на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic tritones and sevenths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні гармонійних тритонів і сьомих на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1282,113 +1274,107 @@ msgid ""
 "Practice identifying melodic compound intervals from a second through a "
 "fifteenth by ear."
 msgstr ""
+"Вправляння у визначенні мелодичних складених інтервалів від другого до "
+"п'ятнадцятого на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic fourths and fifths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні мелодичних четвертих і п'ятих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic fourths, fifths, and octaves by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні мелодичних четвертих, п'ятих та октав на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying melodic intervals from a second through an octave by "
 "ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr ""
+"Вправляння у визначенні мелодичних інтервалів від другого до октави на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying melodic intervals from a second through a tenth by ear."
 msgstr ""
+"Вправляння у визначенні мелодичних інтервалів від другого до десятого на "
+"слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic ninths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні мелодичних дев'ятих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic seconds and thirds by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні мелодичних других і третіх на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic seconds by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні мелодичних других на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic sevenths and ninths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні мелодичних сьомих та дев'ятих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic sevenths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні мелодичних сьомих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic sixths and sevenths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні мелодичних шостих і сьомих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic sixths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні мелодичних шостих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic tenths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні мелодичних десятих на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic thirds by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні мелодичних третіх на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic tritones and sevenths by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні мелодичних тритонів і сьомих на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing a broad mix of common chord qualities by ear."
 msgstr ""
+"Вправляння у визначенні широкої суміші типових якостей акордів на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing a full set of seventh chord qualities by ear."
-msgstr ""
+msgstr "Вправляння у визначенні повного набору сьомих акордів на слух."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing all three-note chord types by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні усіх типів тринотних акордів на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing basic minor and major ninth chord colors."
 msgstr ""
+"Вправляння у розпізнаванні основних кольорів мінорних та мажорних дев'ятних "
+"акордів."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1396,6 +1382,8 @@ msgid ""
 "Practice recognizing basic rhythm figures and simple rhythmic patterns by "
 "ear."
 msgstr ""
+"Вправлення у розпізнаванні основних ритмічних фігур та простих ритмічних "
+"патернів на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1406,12 +1394,12 @@ msgstr "Вправляння у розпізнаванні базових сем
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing bebop scales with added passing tones."
 msgstr ""
+"Вправлення у розпізнаванні гами у стилі бібоп з додаванням прохідних тонів."
 
-#, fuzzy, kde-format
-#| msgid "Practice identifying this exercise by ear."
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing bright augmented chord sounds by ear."
-msgstr "Вправляння у визначенні на слух."
+msgstr "Вправляння у визначенні звуків яскравих доповнених акордів на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1465,6 +1453,8 @@ msgid ""
 "Practice recognizing longer rhythm figures and more varied rhythmic patterns "
 "by ear."
 msgstr ""
+"Вправлення у розпізнаванні довгих ритмічних фігур та варійованих ритмічних "
+"патернів на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1474,17 +1464,18 @@ msgstr "Вправляння у визначенні мажорних акорд
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing major pentatonic sounds and their modes."
-msgstr ""
+msgstr "Вправляння у розпізнаванні мажорних пентатонічних звуків та їхніх мод."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing major seventh chords in different inversions."
 msgstr ""
+"Вправляння у розпізнаванні мажорних семерних акордів у різних інверсіях."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing major triads in different inversions."
-msgstr ""
+msgstr "Вправляння у розпізнаванні мажорних тріад у різних інверсіях."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1495,33 +1486,36 @@ msgstr "Вправляння у визначенні мінорних акорд
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing minor seventh chords in different inversions."
 msgstr ""
+"Вправляння у розпізнаванні мінорних семерних акордів у різних інверсіях."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing minor triads in different inversions."
-msgstr ""
+msgstr "Вправляння у розпізнаванні мінорних тріад у різних інверсіях."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing ninth, eleventh, and other extended chord sounds."
 msgstr ""
+"Вправляння у визначенні дев'ятних, одинацятних та інших звуків розширених "
+"акордів."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing seventh chords built with a major seventh by ear."
 msgstr "Вправляння у розпізнаванні септими з мажорним сьомим на слух."
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Seventh chords with a minor seven"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing seventh chords built with a minor seventh by ear."
-msgstr "Септима з мінорним сьомим"
+msgstr "Вправляння у розпізнаванні септими з мінорним сьомим на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing seventh chords with flattened or sharpened fifths."
 msgstr ""
+"Вправляння у розпізнаванні семерних акордів зі сплюченими або загостреними "
+"квінтами."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1540,22 +1534,27 @@ msgstr "Вправляння у визначенні напруженого зм
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the basic triad qualities in root position."
-msgstr ""
+msgstr "Вправляння у визначенні якостей базових тріад в кореневій позиції."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the distinctive color of sharp-eleventh chords."
 msgstr ""
+"Вправляння у розпізнаванні визначного кольору ді'єз-одинадцятних акордів."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the full range of eleventh chord colors by ear."
 msgstr ""
+"Вправляння у визначенні повного діапазону одинацятних акордних кольорів на "
+"слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the full range of ninth chord colors by ear."
 msgstr ""
+"Вправляння у визначенні повного діапазону дев'ятних акордних кольорів на "
+"слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1566,6 +1565,8 @@ msgstr "Вправляння у розпізнаванні мажорної га
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing triads across root position and inversions."
 msgstr ""
+"Вправляння у розпізнаванні тріад за різними кореневими позиціями та "
+"інверсіями."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1762,38 +1763,38 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Whole Tone"
 msgstr "Повний тон"
 
-#: src/app/exercisecatalogcontroller.cpp:79
+#: src/app/exercisecatalogcontroller.cpp:80
 #, kde-format
 msgid "Practice identifying this exercise by ear."
 msgstr "Вправляння у визначенні на слух."
 
-#: src/app/exercisecatalogcontroller.cpp:82
+#: src/app/exercisecatalogcontroller.cpp:83
 #, kde-format
 msgid "Practice rhythm recognition."
 msgstr "Вправляння у визначенні ритму."
 
-#: src/app/exercisecatalogcontroller.cpp:84
+#: src/app/exercisecatalogcontroller.cpp:85
 #, kde-format
 msgid "Identify the scale by ear."
 msgstr "Визначення розміру на слух"
 
-#: src/app/exercisecatalogcontroller.cpp:86
+#: src/app/exercisecatalogcontroller.cpp:87
 #, kde-format
 msgid "Identify the chord or interval by ear."
 msgstr "Визначення акордів або інтервалів на слух."
 
-#: src/app/exercisecatalogcontroller.cpp:91
+#: src/app/exercisecatalogcontroller.cpp:92
 #, kde-format
 msgid "%1 Includes %2 possible answers."
 msgstr "%1 включає %2 можливих відповідей."
 
-#: src/app/exercisecatalogcontroller.cpp:108
+#: src/app/exercisecatalogcontroller.cpp:109
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "%1"
 msgstr "%1"
 
-#: src/app/exercisecatalogcontroller.cpp:201
+#: src/app/exercisecatalogcontroller.cpp:207
 #, kde-format
 msgid "Could not open JSON file \"%1\"."
 msgstr "Не вдалося відкрити файл JSON «%1»."
@@ -1843,38 +1844,38 @@ msgstr "Натисніть «Нове питання», щоб почати"
 msgid "Question %1 out of %2"
 msgstr "Питання %1 з %2"
 
-#: src/app/main.cpp:46
+#: src/app/main.cpp:53
 #, kde-format
 msgid "Minuet"
 msgstr "Minuet"
 
-#: src/app/main.cpp:48
+#: src/app/main.cpp:55
 #, kde-format
 msgid "A KDE application for music education"
 msgstr "Програма KDE для навчання музики"
 
-#: src/app/main.cpp:49
+#: src/app/main.cpp:56
 #, kde-format
 msgid "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 msgstr "© Sandro S. Andrade (sandroandrade@kde.org), 2016"
 
-#: src/app/main.cpp:54 src/app/main.cpp:56
+#: src/app/main.cpp:61 src/app/main.cpp:63
 #, kde-format
 msgid "Developer"
 msgstr "Розробник"
 
-#: src/app/main.cpp:58
+#: src/app/main.cpp:65
 #, kde-format
 msgid "Minuet Icon Designer"
 msgstr "Автор піктограми Minuet"
 
-#: src/app/main.cpp:60
+#: src/app/main.cpp:67
 #, kde-format
 msgctxt "@info:credit"
 msgid "Fluidsynth"
 msgstr "FluidSynth"
 
-#: src/app/main.cpp:60
+#: src/app/main.cpp:67
 #, kde-format
 msgctxt "@info:credit"
 msgid ""
