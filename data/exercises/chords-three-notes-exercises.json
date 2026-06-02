@@ -19,7 +19,7 @@
               "description": "Practice distinguishing minor and major triads by ear."
             },
             {
-              "name": "Diminished and Augmented Chords",
+              "name": "Diminished and augmented chords",
               "and-tags": ["triad", "root-position"],
               "or-tags": ["diminished", "augmented"],
               "description": "Practice distinguishing diminished and augmented triads by ear."
@@ -30,22 +30,22 @@
               "description": "Practice recognizing the basic triad qualities in root position."
             },
             {
-              "name": "Major - inversions",
+              "name": "Major inversions",
               "and-tags": ["triad", "major"],
               "description": "Practice recognizing major triads in different inversions."
             },
             {
-              "name": "Minor - inversions",
+              "name": "Minor inversions",
               "and-tags": ["triad", "minor"],
               "description": "Practice recognizing minor triads in different inversions."
             },
             {
-              "name": "Diminished - inversions",
+              "name": "Diminished inversions",
               "and-tags": ["triad", "diminished"],
               "description": "Practice recognizing diminished triads in different inversions."
             },
             {
-              "name": "Triads - inversions",
+              "name": "Triad inversions",
               "and-tags": ["triad"],
               "description": "Practice recognizing triads across root position and inversions."
             },

@@ -32,27 +32,27 @@
     },
     {
       "tags": ["chord", "first-inversion", "minor", "triad"],
-      "name": "Minor - first inversion",
+      "name": "Minor, first inversion",
       "sequence": "4 9"
     },
     {
       "tags": ["chord", "first-inversion", "major", "triad"],
-      "name": "Major - first inversion",
+      "name": "Major, first inversion",
       "sequence": "3 8"
     },
     {
       "tags": ["chord", "first-inversion", "diminished", "triad"],
-      "name": "Diminished - first inversion",
+      "name": "Diminished, first inversion",
       "sequence": "6 9"
     },
     {
       "tags": ["chord", "second-inversion", "minor", "triad"],
-      "name": "Minor - second inversion",
+      "name": "Minor, second inversion",
       "sequence": "5 8"
     },
     {
       "tags": ["chord", "second-inversion", "major", "triad"],
-      "name": "Major - second inversion",
+      "name": "Major, second inversion",
       "sequence": "5 9"
     }
   ]

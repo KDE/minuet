@@ -27,7 +27,6 @@ Kirigami.Page {
         const exercisePage = exercisePageComponent.createObject(applicationWindow().pageStack, {
             title: exerciseTitle,
             currentExercise: exercise,
-            pathText: page.pathText + " / " + exerciseTitle,
         })
         applicationWindow().pageStack.push(exercisePage)
     }

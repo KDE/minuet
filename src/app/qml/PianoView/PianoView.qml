@@ -26,12 +26,6 @@ Flickable {
     onWidthChanged: Qt.callLater(scrollToMarkedKeys)
     onContentWidthChanged: Qt.callLater(scrollToMarkedKeys)
 
-    function noteOn(chan: int, pitch: int, vel: int): void {
-        if (vel > 0)
-            highlightKey(pitch, "#778692")
-        else
-            noteOff(chan, pitch, vel)
-    }
     function noteOff(chan: int, pitch: int, vel: int): void {
         highlightKey(pitch, Core.pianoKeyboardController.isBlackKey(pitch) ? "black" : "white")
     }
@@ -45,9 +39,6 @@ Flickable {
         noteItem.marked = true
         Qt.callLater(scrollToMarkedKeys)
     }
-    function noteUnmark(chan: int, pitch: int, vel: int, color: color): void {
-        clearMarksFromKey(itemForPitch(pitch))
-    }
     function clearAllMarks(): void {
         for (var index = 21; index <= 108; ++index) {
             noteOff(0, index, 0)
@@ -60,15 +51,6 @@ Flickable {
         }
 
         noteItem.marked = false
-    }
-    function scrollToNote(pitch: int): void {
-        const noteItem = itemForPitch(pitch)
-        if (noteItem === undefined || noteItem === null) {
-            return
-        }
-
-        const notePosition = noteItem.mapToItem(piano, 0, 0)
-        scrollToX(piano.x + notePosition.x + noteItem.width / 2 - flickable.width / 2, true)
     }
     function scrollToMarkedKeys(): void {
         var left = Number.POSITIVE_INFINITY

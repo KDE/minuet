@@ -299,7 +299,7 @@ Item {
                     horizontalAlignment: Text.AlignHCenter
                     elide: Text.ElideRight
                     color: exerciseView.exercisePlaying ? Kirigami.Theme.highlightColor : Kirigami.Theme.textColor
-                    text: exerciseView.exercisePlaying ? i18n("Playing...") : Core.exerciseSessionController.statusText
+                    text: exerciseView.exercisePlaying ? i18n("Playing…") : Core.exerciseSessionController.statusText
                 }
             }
 
@@ -388,7 +388,7 @@ Item {
                         Kirigami.Heading {
                             Layout.fillWidth: true
                             level: 3
-                            text: i18n("Available Answers")
+                            text: i18n("Available answers")
                         }
 
                         Label {
@@ -443,7 +443,9 @@ Item {
                         Kirigami.Heading {
                             Layout.fillWidth: true
                             level: 3
-                            text: Core.exerciseSessionController.showingCorrectAnswers ? i18n("Correct Answer(s)") : i18n("Your Answer(s)")
+                            text: Core.exerciseSessionController.showingCorrectAnswers
+                                ? i18np("Correct answer", "Correct answers", exerciseView.selectedOptionCount)
+                                : i18np("Your answer", "Your answers", exerciseView.selectedOptionCount)
                         }
 
                         Label {

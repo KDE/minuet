@@ -17,47 +17,47 @@
     },
     {
       "tags": ["chord", "first-inversion", "minor", "7-", "seventh", "basic"],
-      "name": "Minor seventh - first inversion",
+      "name": "Minor seventh, first inversion",
       "sequence": "4 7 9"
     },
     {
       "tags": ["chord", "first-inversion", "dominant", "7-", "seventh", "basic"],
-      "name": "Dominant seventh - first inversion",
+      "name": "Dominant seventh, first inversion",
       "sequence": "3 6 8"
     },
     {
       "tags": ["chord", "first-inversion", "major", "7+", "seventh", "basic"],
-      "name": "Major seventh - first inversion",
+      "name": "Major seventh, first inversion",
       "sequence": "3 7 8"
     },
     {
       "tags": ["chord", "second-inversion", "minor", "7-", "seventh", "basic"],
-      "name": "Minor seventh - second inversion",
+      "name": "Minor seventh, second inversion",
       "sequence": "3 5 8"
     },
     {
       "tags": ["chord", "second-inversion", "dominant", "7-", "seventh", "basic"],
-      "name": "Dominant seventh - second inversion",
+      "name": "Dominant seventh, second inversion",
       "sequence": "3 5 9"
     },
     {
       "tags": ["chord", "second-inversion", "major", "7+", "seventh", "basic"],
-      "name": "Major seventh - second inversion",
+      "name": "Major seventh, second inversion",
       "sequence": "4 5 9"
     },
     {
       "tags": ["chord", "third-inversion", "minor", "7-", "seventh", "basic"],
-      "name": "Minor seventh - third inversion",
+      "name": "Minor seventh, third inversion",
       "sequence": "2 5 9"
     },
     {
       "tags": ["chord", "third-inversion", "dominant", "7-", "seventh", "basic"],
-      "name": "Dominant seventh - third inversion",
+      "name": "Dominant seventh, third inversion",
       "sequence": "2 6 9"
     },
     {
       "tags": ["chord", "third-inversion", "major", "7+", "seventh", "basic"],
-      "name": "Major seventh - third inversion",
+      "name": "Major seventh, third inversion",
       "sequence": "1 5 8"
     },
     {

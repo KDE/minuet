@@ -10,7 +10,6 @@ Kirigami.Page {
     id: page
 
     property var currentExercise
-    property string pathText: title
 
     padding: 0
 

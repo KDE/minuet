@@ -22,9 +22,7 @@ class ExerciseSessionController : public QObject
     Q_PROPERTY(int currentAnswer READ currentAnswer NOTIFY sessionChanged)
     Q_PROPERTY(QVariantList userAnswers READ userAnswers NOTIFY sessionChanged)
     Q_PROPERTY(bool answersAreRight READ answersAreRight NOTIFY sessionChanged)
-    Q_PROPERTY(bool giveUp READ giveUp NOTIFY sessionChanged)
     Q_PROPERTY(bool isTest READ isTest NOTIFY sessionChanged)
-    Q_PROPERTY(int correctAnswers READ correctAnswers NOTIFY sessionChanged)
     Q_PROPERTY(int currentExercise READ currentExercise NOTIFY sessionChanged)
     Q_PROPERTY(bool showingCorrectAnswers READ showingCorrectAnswers NOTIFY sessionChanged)
     Q_PROPERTY(int correctedAnswerPosition READ correctedAnswerPosition NOTIFY sessionChanged)
@@ -39,9 +37,7 @@ public:
     int currentAnswer() const;
     QVariantList userAnswers() const;
     bool answersAreRight() const;
-    bool giveUp() const;
     bool isTest() const;
-    int correctAnswers() const;
     int currentExercise() const;
     bool showingCorrectAnswers() const;
     int correctedAnswerPosition() const;
@@ -52,7 +48,6 @@ public:
     QJsonArray selectedExerciseOptions() const;
     unsigned int chosenRootNote() const;
 
-    Q_INVOKABLE QString errorString() const;
     Q_INVOKABLE void resetForExercise();
     Q_INVOKABLE void clearUserAnswers();
     Q_INVOKABLE QVariantList availableAnswersModel(const QVariantMap &exercise) const;

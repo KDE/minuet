@@ -9,7 +9,7 @@
       "_icon": "minuet-intervals.svg",
       "children": [
         {
-          "name": "Ascending Melodic Intervals",
+          "name": "Ascending melodic intervals",
           "and-tags": ["interval", "ascending"],
           "children": [
             {
@@ -23,7 +23,7 @@
               "description": "Practice identifying ascending melodic thirds by ear."
             },
             {
-              "name": "Fourths and Fifths",
+              "name": "Fourths and fifths",
               "or-tags": ["4", "5"],
               "description": "Practice identifying ascending melodic fourths and fifths by ear."
             },
@@ -48,37 +48,37 @@
               "description": "Practice identifying ascending melodic tenths by ear."
             },
             {
-              "name": "Tritone and Sevenths",
+              "name": "Tritone and sevenths",
               "or-tags": ["tritone", "7"],
               "description": "Practice identifying ascending melodic tritones and sevenths by ear."
             },
             {
-              "name": "Fourths, Fifths, and Octave",
+              "name": "Fourths, fifths, and octave",
               "or-tags": ["4", "5", "8"],
               "description": "Practice identifying ascending melodic fourths, fifths, and octaves by ear."
             },
             {
-              "name": "Seconds and Thirds",
+              "name": "Seconds and thirds",
               "or-tags": ["2", "3"],
               "description": "Practice identifying ascending melodic seconds and thirds by ear."
             },
             {
-              "name": "Sixths and Sevenths",
+              "name": "Sixths and sevenths",
               "or-tags": ["6", "7"],
               "description": "Practice identifying ascending melodic sixths and sevenths by ear."
             },
             {
-              "name": "Sevenths and Ninths",
+              "name": "Sevenths and ninths",
               "or-tags": ["7", "9"],
               "description": "Practice identifying ascending melodic sevenths and ninths by ear."
             },
             {
-              "name": "Second to Octave",
+              "name": "Second to octave",
               "or-tags": ["2", "3", "4", "tritone", "5", "6", "7", "8"],
               "description": "Practice identifying ascending melodic intervals from a second through an octave by ear."
             },
             {
-              "name": "Second to Tenth",
+              "name": "Second to tenth",
               "or-tags": ["2", "3", "4", "tritone", "5", "6", "7", "8", "9", "10"],
               "description": "Practice identifying ascending melodic intervals from a second through a tenth by ear."
             },

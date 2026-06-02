@@ -38,19 +38,9 @@ bool ExerciseSessionController::answersAreRight() const
     return m_answersAreRight;
 }
 
-bool ExerciseSessionController::giveUp() const
-{
-    return m_giveUp;
-}
-
 bool ExerciseSessionController::isTest() const
 {
     return m_isTest;
-}
-
-int ExerciseSessionController::correctAnswers() const
-{
-    return m_correctAnswers;
 }
 
 int ExerciseSessionController::currentExercise() const
@@ -98,15 +88,10 @@ unsigned int ExerciseSessionController::chosenRootNote() const
     return m_chosenRootNote;
 }
 
-QString ExerciseSessionController::errorString() const
-{
-    return m_errorString;
-}
-
 void ExerciseSessionController::resetForExercise()
 {
     clearUserAnswers();
-    setStatusText(i18n("Click 'New Question' to start!"));
+    setStatusText(i18n("Select New Question to start"));
 }
 
 void ExerciseSessionController::clearUserAnswers()
@@ -354,15 +339,15 @@ void ExerciseSessionController::checkAnswers(const QVariantList &correctAnswers,
     }
 
     if (m_giveUp) {
-        setStatusText(i18n("Here is the answer"));
+        setStatusText(i18n("Answer shown"));
     } else if (m_answersAreRight) {
-        setStatusText(i18n("Congratulations, you answered correctly!"));
+        setStatusText(i18n("Correct answer"));
     } else {
-        setStatusText(i18n("Oops, not this time! Try again!"));
+        setStatusText(i18n("Incorrect answer, try again"));
     }
 
     if (m_currentExercise == maximumExercises) {
-        setStatusText(i18n("You answered correctly %1%", m_correctAnswers * 100 / maximumExercises / expectedAnswers));
+        setStatusText(i18n("Score: %1%", m_correctAnswers * 100 / maximumExercises / expectedAnswers));
         resetTest();
     }
 
@@ -388,7 +373,7 @@ void ExerciseSessionController::startTest()
 void ExerciseSessionController::stopTest()
 {
     resetTest();
-    setStatusText(i18n("Click 'New Question' to start"));
+    setStatusText(i18n("Select New Question to start"));
 }
 
 void ExerciseSessionController::setActiveExercise(const QVariantMap &activeExercise)

@@ -14,7 +14,7 @@ Kirigami.ApplicationWindow {
     width: Screen.width; height: Screen.height
     visibility: Window.Maximized
 
-    property string titleText: "Home"
+    property string titleText: i18n("Home")
     property var currentExercise
     property var currentExerciseSelection
     property int previousPageStackIndex: 0
@@ -22,14 +22,17 @@ Kirigami.ApplicationWindow {
 
     title: currentPage?.title ?? titleText
 
-    function stopExercisePlayback(): void {
+    function stopExerciseActivity(): void {
         if (Core.soundController !== null) {
             Core.soundController.stop()
+        }
+        if (Core.exerciseSessionController.isTest) {
+            Core.exerciseSessionController.stopTest()
         }
     }
 
     function openHome(): void {
-        stopExercisePlayback()
+        stopExerciseActivity()
         currentExercise = undefined
         currentExerciseSelection = null
         pageStack.clear()
@@ -37,7 +40,7 @@ Kirigami.ApplicationWindow {
     }
 
     function openExerciseFilter(exerciseModel: var, title: string, inheritedIconName: string, selectionKind: string): void {
-        stopExercisePlayback()
+        stopExerciseActivity()
         currentExercise = undefined
         if (selectionKind === "all") {
             currentExerciseSelection = { kind: "all" }
@@ -59,7 +62,7 @@ Kirigami.ApplicationWindow {
     }
 
     function openAbout(): void {
-        stopExercisePlayback()
+        stopExerciseActivity()
         currentExercise = undefined
         currentExerciseSelection = { kind: "about" }
         pageStack.clear()
@@ -67,7 +70,7 @@ Kirigami.ApplicationWindow {
     }
 
     function openSettings(): void {
-        stopExercisePlayback()
+        stopExerciseActivity()
         currentExercise = undefined
         currentExerciseSelection = { kind: "settings" }
         pageStack.clear()
@@ -87,7 +90,7 @@ Kirigami.ApplicationWindow {
 
         function onCurrentIndexChanged(): void {
             if (pageStack.currentIndex < window.previousPageStackIndex) {
-                window.stopExercisePlayback()
+                window.stopExerciseActivity()
             }
             window.previousPageStackIndex = pageStack.currentIndex
         }

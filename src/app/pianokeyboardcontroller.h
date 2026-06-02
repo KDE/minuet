@@ -18,7 +18,6 @@ class PianoKeyboardController : public QObject
 
 public:
     Q_INVOKABLE bool isBlackKey(int pitch) const;
-    Q_INVOKABLE double scrollTargetX(int pitch, double contentWidth, double viewportWidth) const;
     Q_INVOKABLE int keyboardChildIndex(int pitch) const;
     Q_INVOKABLE int octaveChildIndex(int pitch) const;
 

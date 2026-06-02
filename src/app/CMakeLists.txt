@@ -81,10 +81,6 @@ qt_add_qml_module(minuet
         qml/PianoView/PianoView.qml
         qml/PianoView/WhiteKey.qml
         qml/SheetMusicView/BravuraText.qml
-        qml/SheetMusicView/Clef.qml
-        qml/SheetMusicView/Note.qml
-        qml/SheetMusicView/Score.qml
-        qml/SheetMusicView/Sequence.qml
         qml/SheetMusicView/SheetMusicView.qml
     RESOURCES
         qml/SheetMusicView/Bravura.otf
