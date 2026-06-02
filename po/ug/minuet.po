@@ -1,992 +1,987 @@
-# Copyright (C) YEAR This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
+# Uyghur translation for minuet.
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the minuet package.
+# Abduqadir Abliz <sahranbay@gmail.com>, 2026., YEAR.
 #
-# SPDX-FileCopyrightText: 2022-2026 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-01 00:39+0000\n"
-"PO-Revision-Date: 2026-06-01 18:58+0300\n"
-"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
-"Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
-"Language: tr\n"
+"PO-Revision-Date: 2026-06-01 16:23-0400\n"
+"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
+"Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
+"Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 26.04.0\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Emir SARI"
+msgstr "ئابدۇقادىر ئابلىز، غەيرەت كەنجى"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "emir_sari@icloud.com"
+msgstr "sahranbay@gmail.com, gheyret@gmail.com"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Aeolian"
-msgstr "Eolyen"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All eleventh chords"
-msgstr "Tüm On Birli Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All extended chords"
-msgstr "Tüm Genişletilmiş Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All ninth chords"
-msgstr "Tüm Dokuzlu Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All seventh chords"
-msgstr "Tüm Yedili Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All three note chords"
-msgstr "Tüm Üç Sesli Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Fourteenth"
-msgstr "Çıkıcı Majör On Dörtlü"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Ninth"
-msgstr "Çıkıcı Majör Dokuzlu"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Second"
-msgstr "Çıkıcı Majör İkili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Seventh"
-msgstr "Çıkıcı Majör Yedili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Sixth"
-msgstr "Çıkıcı Majör Altılı"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Tenth"
-msgstr "Çıkıcı Majör Onlu"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Third"
-msgstr "Çıkıcı Majör Üçlü"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Thirteenth"
-msgstr "Çıkıcı Majör On Üçlü"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Melodic Intervals"
-msgstr "Çıkıcı Melodik Aralıklar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Fourteenth"
-msgstr "Çıkıcı Minör On Dörtlü"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Ninth"
-msgstr "Çıkıcı Minör Dokuzlu"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Second"
-msgstr "Çıkıcı Minör İkili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Seventh"
-msgstr "Çıkıcı Minör Yedili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Sixth"
-msgstr "Çıkıcı Minör Altılı"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Tenth"
-msgstr "Çıkıcı Minör Onlu"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Third"
-msgstr "Çıkıcı Minör Üçlü"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Thirteenth"
-msgstr "Çıkıcı Minör On Üçlü"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Octave + Tritone"
-msgstr "Çıkıcı Oktav + Triton"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Double Octave"
-msgstr "Çıkıcı Tam Çift Oktav"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Eleventh"
-msgstr "Çıkıcı Tam On Birli"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Fifth"
-msgstr "Çıkıcı Tam Beşli"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Fourth"
-msgstr "Çıkıcı Tam Dörtlü"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Octave"
-msgstr "Çıkıcı Tam Oktav"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Twelfth"
-msgstr "Çıkıcı Tam On İkili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Tritone"
-msgstr "Çıkıcı Triton"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented"
-msgstr "Artırılmış"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented chords"
-msgstr "Artırılmış Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented Inverse Scale"
-msgstr "Artırılmış ters gam"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented Scale"
-msgstr "Artırılmış gam"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented seventh"
-msgstr "Artırılmış yedili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Basic eleventh chords"
-msgstr "Temel On Birli Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Basic ninth chords"
-msgstr "Temel Dokuzlu Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Basic seventh chords"
-msgstr "Temel Yedili Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Bebop Dominant"
-msgstr "Bebop Dominant"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Bebop Dorian"
-msgstr "Bebop Doryen"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Bebop Locrian"
-msgstr "Bebop Lokriyen"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Bebop Major"
-msgstr "Bebop Majör"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Bebop Minor"
-msgstr "Bebop Minör"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Bebop Scales"
-msgstr "Bebop Gamları"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Chords"
-msgstr "Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Chords with a major seven"
-msgstr "Majör Yedili İçeren Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Chords with a minor seven"
-msgstr "Minör Yedili İçeren Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Chords with inversions"
-msgstr "Çevrimli Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Chords with three notes"
-msgstr "Üç Sesli Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Combined"
-msgstr "Birleşik"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Fourteenth"
-msgstr "İnici Majör On Dörtlü"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Ninth"
-msgstr "İnici Majör Dokuzlu"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Second"
-msgstr "İnici Majör İkili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Seventh"
-msgstr "İnici Majör Yedili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Sixth"
-msgstr "İnici Majör Altılı"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Tenth"
-msgstr "İnici Majör Onlu"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Third"
-msgstr "İnici Majör Üçlü"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Thirteenth"
-msgstr "İnici Majör On Üçlü"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Melodic Intervals"
-msgstr "İnici Melodik Aralıklar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Fourteenth"
-msgstr "İnici Minör On Dörtlü"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Ninth"
-msgstr "İnici Minör Dokuzlu"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Second"
-msgstr "İnici Minör İkili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Seventh"
-msgstr "İnici Minör Yedili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Sixth"
-msgstr "İnici Minör Altılı"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Tenth"
-msgstr "İnici Minör Onlu"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Third"
-msgstr "İnici Minör Üçlü"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Thirteenth"
-msgstr "İnici Minör On Üçlü"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Octave + Tritone"
-msgstr "İnici Oktav + Triton"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Double Octave"
-msgstr "İnici Tam Çift Oktav"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Eleventh"
-msgstr "İnici Tam On Birli"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Fifth"
-msgstr "İnici Tam Beşli"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Fourth"
-msgstr "İnici Tam Dörtlü"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Octave"
-msgstr "İnici Tam Oktav"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Twelfth"
-msgstr "İnici Tam On İkili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Tritone"
-msgstr "İnici Triton"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished"
-msgstr "Eksilmiş"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished and Augmented Chords"
-msgstr "Eksilmiş ve Artırılmış Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished chords"
-msgstr "Eksilmiş Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished - first inversion"
-msgstr "Eksilmiş — birinci çevrim"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished H-W"
-msgstr "Eksilmiş Y–T (Yarım–Tam)"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished - inversions"
-msgstr "Eksilmiş — Akor Çevrimleri"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished major seventh"
-msgstr "Eksilmiş majör yedili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished seventh"
-msgstr "Eksilmiş yedili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished W-H"
-msgstr "Eksilmiş T–Y (Tam–Yarım)"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant 7#9"
-msgstr "Dominant 7#9"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant eleventh"
-msgstr "Dominant on birli"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant ninth"
-msgstr "Dominant dokuzlu"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh"
-msgstr "Dominant yedili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh - first inversion"
-msgstr "Dominant yedili — birinci çevrim"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh flat five"
-msgstr "Dominant yedili bemol beş"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh - inversions"
-msgstr "Dominant Yedili — Akor Çevrimleri"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh - second inversion"
-msgstr "Dominant yedili — ikinci çevrim"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh - third inversion"
-msgstr "Dominant yedili — üçüncü çevrim"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant sharp eleventh"
-msgstr "Dominant diyez on birli"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dorian"
-msgstr "Doryen"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dorian b5"
-msgstr "Doryen b5"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Easy"
-msgstr "Kolay"
+msgstr "ئاسان"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Extended chords"
-msgstr "Genişletilmiş Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Fourths and Fifths"
-msgstr "Dörtlüler ve Beşliler"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Fourths, Fifths, and Octave"
-msgstr "Dörtlüler, Beşliler ve Oktav"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Half Diminished seventh"
-msgstr "Yarı eksilmiş yedili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Harmonic Intervals"
-msgstr "Armonik Aralıklar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Harmonic Major"
-msgstr "Armonik Majör"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Harmonic Major Scale and its Modes"
-msgstr "Armonik Majör Gamı ve Kipleri"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Harmonic Minor"
-msgstr "Armonik Minör"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Harmonic Minor Scale and its Modes"
-msgstr "Armonik Minör Gamı ve Kipleri"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the chord and choose your answer"
-msgstr "Akoru dinleyin ve yanıtınızı seçin"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the interval and choose your answer"
-msgstr "Aralığı dinleyin ve yanıtınızı seçin"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the rhythm and choose your answers"
-msgstr "Ritmi dinleyin ve yanıtlarınızı seçin"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the scale and choose your answer"
-msgstr "Gamı dinleyin ve yanıtınızı seçin"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Intervals"
-msgstr "Aralıklar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Inversions of basic seventh chords"
-msgstr "Temel Yedili Akorların Çevrimleri"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ionian"
-msgstr "İonyen"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ionian Augmented"
-msgstr "Artırılmış İonyen"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Jazz sus chord"
-msgstr "Caz sus akoru"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Locrian"
-msgstr "Lokriyen"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Locrian #6"
-msgstr "Lokriyen #6"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Locrian bb7"
-msgstr "Lokriyen bb7"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Lots of Chords"
-msgstr "Bir Sürü Akor"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Lydian"
-msgstr "Lidyen"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Lydian #2"
-msgstr "Lidyen #2"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Lydian #2 #5"
-msgstr "Lidyen #2 #5"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Lydian b3"
-msgstr "Lidyen b3"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major"
-msgstr "Majör"
+msgstr "ئاساسىي"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major chords"
-msgstr "Majör Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major eleventh"
-msgstr "Majör on birli"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major - first inversion"
-msgstr "Majör — birinci çevrim"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Fourteenth"
-msgstr "Majör On Dörtlü"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major - inversions"
-msgstr "Majör — Akor Çevrimleri"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major ninth"
-msgstr "Majör dokuzlu"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Ninth"
-msgstr "Majör Dokuzlu"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Pentatonic"
-msgstr "Majör Pentatonik"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Scale and its Modes"
-msgstr "Majör Gamı ve Kipleri"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Second"
-msgstr "Majör İkili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major - second inversion"
-msgstr "Majör — ikinci çevrim"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh"
-msgstr "Majör yedili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Seventh"
-msgstr "Majör Yedili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh - first inversion"
-msgstr "Majör yedili — birinci çevrim"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh flat five"
-msgstr "Majör yedili bemol beş"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh - inversions"
-msgstr "Majör Yedili — Akor Çevrimleri"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh - second inversion"
-msgstr "Majör yedili — ikinci çevrim"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh - third inversion"
-msgstr "Majör yedili — üçüncü çevrim"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major sharp eleventh"
-msgstr "Majör diyez on birli"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Sixth"
-msgstr "Majör Altılı"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Tenth"
-msgstr "Majör Onlu"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Third"
-msgstr "Majör Üçlü"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Thirteenth"
-msgstr "Majör On Üçlü"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Man Gong"
-msgstr "Man Gong"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Medium"
-msgstr "Orta"
+msgstr "ئوتتۇراھال"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Melodic Intervals"
-msgstr "Melodik Aralıklar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor"
-msgstr "Minör"
+msgstr "قوشۇمچە"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor and major chords"
-msgstr "Minör ve Majör Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor chords"
-msgstr "Minör Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor eleventh"
-msgstr "Minör on birli"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor - first inversion"
-msgstr "Minör — birinci çevrim"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor Fourteenth"
-msgstr "Minör On Dörtlü"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor - inversions"
-msgstr "Minör — Akor Çevrimleri"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor major seventh"
-msgstr "Minör majör yedili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor ninth"
-msgstr "Minör dokuzlu"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor Ninth"
-msgstr "Minör Dokuzlu"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor Pentatonic"
-msgstr "Minör Pentatonik"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor Second"
-msgstr "Minör İkili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor - second inversion"
-msgstr "Minör — ikinci çevrim"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh"
-msgstr "Minör yedili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor Seventh"
-msgstr "Minör Yedili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh - first inversion"
-msgstr "Minör yedili — birinci çevrim"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh - inversions"
-msgstr "Minör Yedili — Akor Çevrimleri"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh - second inversion"
-msgstr "Minör yedili — ikinci çevrim"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh - third inversion"
-msgstr "Minör yedili — üçüncü çevrim"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor Sixth"
-msgstr "Minör Altılı"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor Tenth"
-msgstr "Minör Onlu"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor Third"
-msgstr "Minör Üçlü"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor Thirteenth"
-msgstr "Minör On Üçlü"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Mixolydian"
-msgstr "Miksolidyen"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Mixolydian b9"
-msgstr "Miksolidyen b9"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ninths"
-msgstr "Dokuzlular"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave + Tritone"
-msgstr "Oktav + Triton"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Pentatonic Major Scale and its Modes"
-msgstr "Pentatonik Majör Gamı ve Kipleri"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Perfect Double Octave"
-msgstr "Tam Çift Oktav"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Perfect Eleventh"
-msgstr "Tam On Birli"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Perfect Fifth"
-msgstr "Tam Beşli"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Perfect Fourth"
-msgstr "Tam Dörtlü"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Perfect Octave"
-msgstr "Tam Oktav"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Perfect Twelfth"
-msgstr "Tam On İkili"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Phrygian"
-msgstr "Frigyen"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Phrygian b4"
-msgstr "Frigyen b4"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Phrygian Dominant"
-msgstr "Frigyen Dominant"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice distinguishing diminished and augmented triads by ear."
 msgstr ""
-"Eksilmiş ve artırılmış üç sesli akorları (triad) kulaktan ayırt etme pratiği "
-"yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice distinguishing minor and major triads by ear."
 msgstr ""
-"Minör ve majör üç sesli akorları (triad) kulaktan ayırt etme pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice distinguishing suspended chord sounds from major and minor harmony."
 msgstr ""
-"Gecikmeli (sus) akor tınılarını, majör ve minör armonilerden kulaktan ayırt "
-"etme pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -994,22 +989,17 @@ msgid ""
 "Practice identifying ascending melodic compound intervals from a second "
 "through a fifteenth by ear."
 msgstr ""
-"İkiliden on beşliye kadar olan çıkıcı melodik bileşik aralıkları kulaktan "
-"tanıma pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic fourths and fifths by ear."
 msgstr ""
-"Çıkıcı melodik dörtlü ve beşli aralıkları kulaktan tanıma pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying ascending melodic fourths, fifths, and octaves by ear."
 msgstr ""
-"Çıkıcı melodik dörtlü, beşli ve oktavları kulaktan duyarak belirleme pratiği "
-"yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1017,8 +1007,6 @@ msgid ""
 "Practice identifying ascending melodic intervals from a second through an "
 "octave by ear."
 msgstr ""
-"İkiliden oktava kadar olan çıkıcı melodik aralıkları kulaktan tanıma pratiği "
-"yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1026,67 +1014,62 @@ msgid ""
 "Practice identifying ascending melodic intervals from a second through a "
 "tenth by ear."
 msgstr ""
-"İkiliden onluya kadar olan çıkıcı melodik aralıkları kulaktan tanıma pratiği "
-"yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic ninths by ear."
-msgstr "Çıkıcı melodik dokuzluları kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic seconds and thirds by ear."
-msgstr "Çıkıcı melodik ikili ve üçlü aralıkları kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic seconds by ear."
-msgstr "Çıkıcı melodik ikilileri kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic sevenths and ninths by ear."
 msgstr ""
-"Çıkıcı melodik yedili ve dokuzuncu aralıkları kulaktan tanıma pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic sevenths by ear."
-msgstr "Çıkıcı melodik yedilileri kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic sixths and sevenths by ear."
-msgstr "Çıkıcı melodik altılı ve yedilileri kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic sixths by ear."
-msgstr "Çıkıcı melodik altılıları kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic tenths by ear."
-msgstr "Çıkıcı melodik onluları kulaktan duyarak belirleme pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic thirds by ear."
-msgstr "Çıkıcı melodik üçlüleri kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic tritones and sevenths by ear."
-msgstr "Çıkıcı melodik triton ve yedilileri kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying chord qualities when notes are rearranged in inversion."
 msgstr ""
-"Notalar çevrim halinde yeniden düzenlendiğinde akor niteliklerini kulaktan "
-"belirleme pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1094,21 +1077,17 @@ msgid ""
 "Practice identifying descending melodic compound intervals from a second "
 "through a fifteenth by ear."
 msgstr ""
-"İkiliden on beşliye kadar olan inici melodik bileşik aralıkları kulaktan "
-"tanıma pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic fourths and fifths by ear."
 msgstr ""
-"İnici melodik dörtlü ve beşli aralıkları kulaktan tanıma pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying descending melodic fourths, fifths, and octaves by ear."
 msgstr ""
-"İnici melodik dörtlü, beşli ve oktavları kulaktan tanıma pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1116,8 +1095,6 @@ msgid ""
 "Practice identifying descending melodic intervals from a second through an "
 "octave by ear."
 msgstr ""
-"İkiliden oktava kadar olan inici melodik aralıkları kulaktan tanıma pratiği "
-"yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1125,61 +1102,56 @@ msgid ""
 "Practice identifying descending melodic intervals from a second through a "
 "tenth by ear."
 msgstr ""
-"İkiliden onluya kadar olan inici melodik aralıkları kulaktan tanıma pratiği "
-"yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic ninths by ear."
-msgstr "İnici melodik dokuzluları kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic seconds and thirds by ear."
-msgstr "İnici melodik ikili ve üçlü aralıkları kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic seconds by ear."
-msgstr "İnici melodik ikilileri kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic sevenths and ninths by ear."
 msgstr ""
-"İnici melodik yedili ve dokuzuncu aralıkları kulaktan tanıma pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic sevenths by ear."
-msgstr "İnici melodik yedilileri kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic sixths and sevenths by ear."
 msgstr ""
-"İnici melodik altılı ve yedili aralıkları kulaktan tanıma pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic sixths by ear."
-msgstr "İnici melodik altılıları kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic tenths by ear."
-msgstr "İnici melodik onluları kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic thirds by ear."
-msgstr "İnici melodik üçlüleri kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying descending melodic tritones and sevenths by ear."
 msgstr ""
-"İnici melodik triton ve yedili aralıkları kulaktan tanıma pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1187,18 +1159,16 @@ msgid ""
 "Practice identifying harmonic compound intervals from a second through a "
 "fifteenth by ear."
 msgstr ""
-"İkiliden on beşliye kadar olan armonik bileşik aralıkları kulaktan tanıma "
-"pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic fourths and fifths by ear."
-msgstr "Armonik dörtlü ve beşli aralıkları kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic fourths, fifths, and octaves by ear."
-msgstr "Armonik dörtlü, beşli ve oktavları kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1206,64 +1176,62 @@ msgid ""
 "Practice identifying harmonic intervals from a second through an octave by "
 "ear."
 msgstr ""
-"İkiliden oktava kadar olan armonik aralıkları kulaktan tanıma pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying harmonic intervals from a second through a tenth by ear."
 msgstr ""
-"İkiliden onluya kadar olan armonik aralıkları kulaktan tanıma pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic ninths by ear."
-msgstr "Armonik dokuzluları kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic seconds and thirds by ear."
-msgstr "Armonik ikili ve üçlü aralıkları kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic seconds by ear."
-msgstr "Armonik ikilileri kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic sevenths and ninths by ear."
-msgstr "Armonik yedili ve dokuzlu aralıkları kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic sevenths by ear."
-msgstr "Armonik yedilileri kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic sixths and sevenths by ear."
-msgstr "Armonik altılı ve yedili aralıkları kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic sixths by ear."
-msgstr "Armonik altılıları kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic tenths by ear."
-msgstr "Armonik onluları kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic thirds by ear."
-msgstr "Armonik üçlüleri kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic tritones and sevenths by ear."
-msgstr "Armonik triton ve yedili aralıkları kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1271,18 +1239,16 @@ msgid ""
 "Practice identifying melodic compound intervals from a second through a "
 "fifteenth by ear."
 msgstr ""
-"İkiliden on beşliye kadar olan melodik bileşik aralıkları kulaktan tanıma "
-"pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic fourths and fifths by ear."
-msgstr "Melodik dörtlü ve beşli aralıkları kulaktan tanımayı öğrenin."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic fourths, fifths, and octaves by ear."
-msgstr "Melodik dörtlü, beşli ve oktavları kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1290,86 +1256,82 @@ msgid ""
 "Practice identifying melodic intervals from a second through an octave by "
 "ear."
 msgstr ""
-"İkiliden oktava kadar olan melodik aralıkları kulaktan tanıma pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying melodic intervals from a second through a tenth by ear."
 msgstr ""
-"İkiliden onluya kadar olan melodik aralıkları kulaktan tanıma pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic ninths by ear."
-msgstr "Melodik dokuzluları kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic seconds and thirds by ear."
-msgstr "Melodik ikili ve üçlü aralıkları kulaktan tanımayı öğrenin."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic seconds by ear."
-msgstr "Melodik ikilileri kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic sevenths and ninths by ear."
-msgstr "Melodik yedili ve dokuzlu aralıkları kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic sevenths by ear."
-msgstr "Melodik yedilileri kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic sixths and sevenths by ear."
-msgstr "Melodik altılı ve yedilileri kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic sixths by ear."
-msgstr "Melodik altılıları kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic tenths by ear."
-msgstr "Melodik onluları kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic thirds by ear."
-msgstr "Melodik üçlüleri kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic tritones and sevenths by ear."
-msgstr "Melodik triton ve yedili aralıkları kulaktan tanımayı öğrenin."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing a broad mix of common chord qualities by ear."
 msgstr ""
-"Yaygın olarak kullanılan çeşitli akor tınılarını kulaktan tanıma pratiği "
-"yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing a full set of seventh chord qualities by ear."
-msgstr "Yedili akor türlerinin tamamını kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing all three-note chord types by ear."
-msgstr "Üç sesli tüm akor (triad) türlerini kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing basic minor and major ninth chord colors."
-msgstr "Temel minör ve majör dokuzlu akor renklerini tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1377,64 +1339,61 @@ msgid ""
 "Practice recognizing basic rhythm figures and simple rhythmic patterns by "
 "ear."
 msgstr ""
-"Temel ritim figürlerini ve basit ritmik kalıpları kulaktan tanıma pratiği "
-"yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing basic seventh chords across inversions."
-msgstr "Temel yedili akorları tüm çevrimleriyle kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing bebop scales with added passing tones."
-msgstr "Ek geçiş tonları içeren bebop gamlarını tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing bright augmented chord sounds by ear."
-msgstr "Parlak, artırılmış akor tınılarını kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing chords that include a major seventh by ear."
-msgstr "Majör yedili içeren akorları kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing chords that include a minor seventh by ear."
-msgstr "Minör yedili içeren akorları kulaktan tanımayı öğrenin."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing common seventh chord qualities in root position."
 msgstr ""
-"Kök pozisyondaki yaygın yedili akor niteliklerini tanıma pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing diminished triads in different inversions."
-msgstr "Farklı çevrimlerdeki eksilmiş üçlüleri (triad) tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing dominant seventh chords in different inversions."
-msgstr "Farklı çevrimlerdeki dominant yedili akorları tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing eleventh chord colors by ear."
-msgstr "On birli akor renklerini kulaktan tanımayı öğrenin."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing harmonic major and its modal colors."
-msgstr "Armonik majör gamı ve onun kip (mod) renklerini tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing harmonic minor and its modal colors."
-msgstr "Armonik minör gamı ve onun kip (mod) renklerini tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1442,70 +1401,61 @@ msgid ""
 "Practice recognizing longer rhythm figures and more varied rhythmic patterns "
 "by ear."
 msgstr ""
-"Daha uzun ritim figürlerini ve daha çeşitli ritmik kalıpları kulaktan tanıma "
-"pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing major chord qualities by ear."
-msgstr "Majör akor niteliklerini kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing major pentatonic sounds and their modes."
-msgstr "Majör pentatonik tınıları ve onların kiplerini tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing major seventh chords in different inversions."
-msgstr "Majör yedili akorları farklı çevrimlerde tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing major triads in different inversions."
-msgstr "Farklı çevrimlerdeki majör üçlüleri (triad) tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing minor chord qualities by ear."
-msgstr "Minör akor niteliklerini kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing minor seventh chords in different inversions."
-msgstr "Minör yedili akorları farklı çevrimlerde tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing minor triads in different inversions."
-msgstr "Minör üçlü akorları farklı çevrimlerde tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing ninth, eleventh, and other extended chord sounds."
 msgstr ""
-"Dokuzlu, on birli ve diğer genişletilmiş akor tınılarını tanıma pratiği "
-"yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing seventh chords built with a major seventh by ear."
 msgstr ""
-"Büyük yedili (maj7) aralığı içeren yedili akorları kulaktan tanıma pratiği "
-"yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing seventh chords built with a minor seventh by ear."
 msgstr ""
-"Küçük yedili aralığı içeren yedili akorları kulaktan tanıma pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing seventh chords with flattened or sharpened fifths."
 msgstr ""
-"Beşlisi bemolleştirilmiş veya diyezleştirilmiş (altered) yedili akorları "
-"tanıma pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1513,356 +1463,348 @@ msgid ""
 "Practice recognizing symmetric scale sounds such as whole-tone and "
 "diminished patterns."
 msgstr ""
-"Tam ton ve eksilmiş kalıplar gibi simetrik gam tınılarını tanıma pratiği "
-"yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing tense diminished chord sounds by ear."
-msgstr "Gergin eksilmiş akor tınılarını kulaktan tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the basic triad qualities in root position."
 msgstr ""
-"Kök pozisyondaki temel üç sesli akor (triad) niteliklerini tanıma pratiği "
-"yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the distinctive color of sharp-eleventh chords."
-msgstr "Diyez on birli akorların kendine özgü rengini tanımayı öğrenin."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the full range of eleventh chord colors by ear."
 msgstr ""
-"On birli akor renklerinin tüm yelpazesini kulaktan tanıma pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the full range of ninth chord colors by ear."
 msgstr ""
-"Dokuzlu akor renklerinin tüm yelpazesini kulaktan tanıma pratiği yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the major scale and its diatonic modes."
-msgstr "Majör gamı ve onun diyatonik kiplerini tanıma pratiği yapın."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing triads across root position and inversions."
 msgstr ""
-"Kök pozisyonundaki ve çevrimlerdeki üç sesli akorları (triad) tanıma pratiği "
-"yapın."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Rhythm"
-msgstr "Ritim"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ritusen"
-msgstr "Ritusen"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Romanian"
-msgstr "Rumen"
+msgstr "رۇمىنچە"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Scales"
-msgstr "Gamlar"
+msgstr "ئۆلچەكلەر"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Seconds"
-msgstr "İkililer"
+msgstr "سېكۇنت"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Seconds and Thirds"
-msgstr "İkililer ve Üçlüler"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Second to 15th"
-msgstr "İkiliden On Beşliye"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Second to Octave"
-msgstr "İkiliden Oktava"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Second to Tenth"
-msgstr "İkiliden Onluya"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Seventh chords"
-msgstr "Yedili Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Seventh chords with a major seven"
-msgstr "Majör Yedili İçeren Yedili Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Seventh chords with a minor seven"
-msgstr "Minör Yedili İçeren Yedili Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Seventh chords with an altered five"
-msgstr "Değiştirilmiş Beşli İçeren Yedili Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Sevenths"
-msgstr "Yedililer"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Sevenths and Ninths"
-msgstr "Yedililer ve Dokuzlular"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Sharp eleventh chords"
-msgstr "Diyez On Birli Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Sixths"
-msgstr "Altılılar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Sixths and Sevenths"
-msgstr "Altılılar ve Yedililer"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Sus2"
-msgstr "Sus2"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Sus4"
-msgstr "Sus4"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Suspended chords"
-msgstr "Gecikmeli Akorlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Suspended Pentatonic"
-msgstr "Gecikmeli Pentatonik"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Symmetric Scales"
-msgstr "Simetrik Gamlar"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Tenths"
-msgstr "Onlular"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Thirds"
-msgstr "Üçlüler"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Triads"
-msgstr "Üç Sesli Akorlar (Triad)"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Triads - inversions"
-msgstr "Üç Sesli Akorlar — Akor Çevrimleri"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Tritone"
-msgstr "Triton"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Tritone and Sevenths"
-msgstr "Triton ve Yedililer"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0"
-msgstr "uE1F0"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F7uE1F2"
-msgstr "uE1F0uE1F7uE1F2"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
-msgstr "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F7uE1FCuE1F7uE1F4"
-msgstr "uE1F0uE1F7uE1FCuE1F7uE1F4"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F2uE1F7uE1F4"
-msgstr "uE1F0uE1F9uE1F2uE1F7uE1F4"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F2uE1FC"
-msgstr "uE1F0uE1F9uE1F2uE1FC"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F4uE1F7uE1F2"
-msgstr "uE1F0uE1F9uE1F4uE1F7uE1F2"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
-msgstr "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ultralocrian"
-msgstr "Ultra Lokriyen"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Whole Tone"
-msgstr "Tam Ton"
+msgstr ""
 
 #: src/app/exercisecatalogcontroller.cpp:80
 #, kde-format
 msgid "Practice identifying this exercise by ear."
-msgstr "Bu alıştırmayı kulaktan tanımlama pratiği yapın."
+msgstr ""
 
 #: src/app/exercisecatalogcontroller.cpp:83
 #, kde-format
 msgid "Practice rhythm recognition."
-msgstr "Ritim tanıma pratiği yapın."
+msgstr ""
 
 #: src/app/exercisecatalogcontroller.cpp:85
 #, kde-format
 msgid "Identify the scale by ear."
-msgstr "Gamı kulaktan tanımlayın."
+msgstr ""
 
 #: src/app/exercisecatalogcontroller.cpp:87
 #, kde-format
 msgid "Identify the chord or interval by ear."
-msgstr "Akoru veya aralığı kulaktan tanımlayın."
+msgstr ""
 
 #: src/app/exercisecatalogcontroller.cpp:92
 #, kde-format
 msgid "%1 Includes %2 possible answers."
-msgstr "%1, %2 olası yanıt içeriyor."
+msgstr ""
 
 #: src/app/exercisecatalogcontroller.cpp:109
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "%1"
-msgstr "%1"
+msgstr ""
 
 #: src/app/exercisecatalogcontroller.cpp:207
 #, kde-format
 msgid "Could not open JSON file \"%1\"."
-msgstr "“%1” JSON dosyası açılamadı."
+msgstr ""
 
 #: src/app/exercisesessioncontroller.cpp:109
 #, kde-format
 msgid "Click 'New Question' to start!"
-msgstr "Başlamak için “Yeni Soru”ya tıklayın!"
+msgstr ""
 
 #: src/app/exercisesessioncontroller.cpp:246
 #, kde-format
 msgid "Choose 1 answer"
-msgstr "1 yanıt seçin"
+msgstr ""
 
 #: src/app/exercisesessioncontroller.cpp:246
 #, kde-format
 msgid "Choose %1 answers"
-msgstr "%1 yanıt seçin"
+msgstr ""
 
 #: src/app/exercisesessioncontroller.cpp:357
 #, kde-format
 msgid "Here is the answer"
-msgstr "Yanıt burada"
+msgstr ""
 
 #: src/app/exercisesessioncontroller.cpp:359
 #, kde-format
 msgid "Congratulations, you answered correctly!"
-msgstr "Tebrikler, doğru yanıtladınız!"
+msgstr ""
 
 #: src/app/exercisesessioncontroller.cpp:361
 #, kde-format
 msgid "Oops, not this time! Try again!"
-msgstr "Maalesef bu sefer olmadı. Yeniden deneyin!"
+msgstr ""
 
 #: src/app/exercisesessioncontroller.cpp:365
 #, kde-format
 msgid "You answered correctly %1%"
-msgstr "Başarı oranınız: %​%1"
+msgstr ""
 
 #: src/app/exercisesessioncontroller.cpp:391
 #, kde-format
 msgid "Click 'New Question' to start"
-msgstr "Başlamak için “Yeni Soru”ya tıklayın"
+msgstr ""
 
 #: src/app/exercisesessioncontroller.cpp:538
 #, kde-format
 msgid "Question %1 out of %2"
-msgstr "Soru %1 / %2"
+msgstr ""
 
 #: src/app/main.cpp:53
 #, kde-format
 msgid "Minuet"
-msgstr "Minuet"
+msgstr ""
 
 #: src/app/main.cpp:55
 #, kde-format
 msgid "A KDE application for music education"
-msgstr "Müzik eğitimi için bir KDE uygulaması"
+msgstr ""
 
 #: src/app/main.cpp:56
 #, kde-format
 msgid "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
-msgstr "© 2016, Sandro S. Andrade (sandroandrade@kde.org)"
+msgstr ""
 
 #: src/app/main.cpp:61 src/app/main.cpp:63
 #, kde-format
 msgid "Developer"
-msgstr "Geliştirici"
+msgstr "ئىجادكار"
 
 #: src/app/main.cpp:65
 #, kde-format
 msgid "Minuet Icon Designer"
-msgstr "Minuet Simge Tasarımcısı"
+msgstr ""
 
 #: src/app/main.cpp:67
 #, kde-format
 msgctxt "@info:credit"
 msgid "Fluidsynth"
-msgstr "Fluidsynth"
+msgstr ""
 
 #: src/app/main.cpp:67
 #, kde-format
@@ -1871,131 +1813,129 @@ msgid ""
 "Software synthesizer based on the SoundFont 2 specifications. © 2003 Peter "
 "Hanappe and others."
 msgstr ""
-"SoundFont 2 özelliklerine dayalı yazılım sentezleyici. © 2003 Peter Hanappe "
-"ve diğerleri."
 
 #: src/app/qml/ExerciseMenuPage.qml:22
 #, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%2 — %1 öge"
-msgstr[1] "%2 — %1 öge"
+msgstr[0] ""
+msgstr[1] ""
 
 #: src/app/qml/ExerciseView.qml:289
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "userMessage"
-msgstr "Kullanıcı İletisi"
+msgstr ""
 
 #: src/app/qml/ExerciseView.qml:302
 #, kde-format
 msgid "Playing..."
-msgstr "Çalınıyor…"
+msgstr ""
 
 #: src/app/qml/ExerciseView.qml:323
 #, kde-format
 msgid "New Question"
-msgstr "Yeni Soru"
+msgstr ""
 
 #: src/app/qml/ExerciseView.qml:323
 #, kde-format
 msgid "Play Question"
-msgstr "Soruyu Çal"
+msgstr ""
 
 #: src/app/qml/ExerciseView.qml:339
 #, kde-format
 msgid "Give Up"
-msgstr "Pes Et"
+msgstr ""
 
 #: src/app/qml/ExerciseView.qml:353
 #, kde-format
 msgid "Stop Test"
-msgstr "Testi Durdur"
+msgstr ""
 
 #: src/app/qml/ExerciseView.qml:353
 #, kde-format
 msgid "Start Test"
-msgstr "Testi Başlat"
+msgstr ""
 
 #: src/app/qml/ExerciseView.qml:391
 #, kde-format
 msgid "Available Answers"
-msgstr "Kullanılabilir Yanıtlar"
+msgstr ""
 
 #: src/app/qml/ExerciseView.qml:396
 #, kde-format
 msgid "Scroll for more"
-msgstr "Daha fazlası için kaydırın"
+msgstr ""
 
 #: src/app/qml/ExerciseView.qml:446
 #, kde-format
 msgid "Correct Answer(s)"
-msgstr "Doğru Yanıt(lar)"
+msgstr ""
 
 #: src/app/qml/ExerciseView.qml:446
 #, kde-format
 msgid "Your Answer(s)"
-msgstr "Yanıtınız/Yanıtlarınız"
+msgstr ""
 
 #: src/app/qml/ExerciseView.qml:451
 #, kde-format
 msgid "Scroll for more |"
-msgstr "Daha fazlası için kaydırın |"
+msgstr ""
 
 #: src/app/qml/ExerciseView.qml:456
 #, kde-format
 msgid "%1 / %2"
-msgstr "%1 / %2"
+msgstr ""
 
 #: src/app/qml/ExerciseView.qml:461
 #, kde-format
 msgid "Backspace"
-msgstr "Geri Sil"
+msgstr "Backspace"
 
 #: src/app/qml/ExerciseView.qml:582
 #, kde-format
 msgid "Keyboard"
-msgstr "Klavye (Piyano)"
+msgstr ""
 
 #: src/app/qml/ExerciseView.qml:586
 #, kde-format
 msgid "Staff"
-msgstr "Dizek (Porte)"
+msgstr ""
 
 #: src/app/qml/ExerciseView.qml:728
 #, kde-format
 msgid "Empty answer slot"
-msgstr "Boş yanıt yuvası"
+msgstr ""
 
 #: src/app/qml/ExerciseView.qml:761
 #, kde-format
 msgid "Answer %1"
-msgstr "Yanıt %1"
+msgstr ""
 
 #: src/app/qml/Main.qml:131
 #, kde-format
 msgid "Choose an exercise"
-msgstr "Bir alıştırma seçin"
+msgstr ""
 
 #: src/app/qml/Main.qml:132
 #, kde-format
 msgid "Start with a topic, then pick the specific training level."
-msgstr "Bir konu seçin ve sonrasında belirli çalışma düzeyini belirleyin."
+msgstr ""
 
 #: src/app/qml/MinuetDrawer.qml:37 src/app/qml/MinuetDrawer.qml:177
 #, kde-format
 msgid "All exercises"
-msgstr "Tüm Alıştırmalar"
+msgstr ""
 
 #: src/app/qml/MinuetDrawer.qml:78
 #, kde-format
 msgid "Search…"
-msgstr "Ara…"
+msgstr ""
 
 #: src/app/qml/MinuetDrawer.qml:99
 #, kde-format
 msgid "Welcome to Minuet"
-msgstr "Minuet’e hoş geldiniz"
+msgstr ""
 
 #: src/app/qml/MinuetDrawer.qml:110
 #, kde-format
@@ -2003,508 +1943,506 @@ msgid ""
 "Practice ear training with exercises for intervals, chords, rhythm, scales, "
 "and more."
 msgstr ""
-"Aralıklar, akorlar, ritimler, gamlar ve çok daha fazlası için alıştırmalarla "
-"kulak eğitiminizi geliştirin."
 
 #: src/app/qml/MinuetDrawer.qml:127
 #, kde-format
 msgid "Home"
-msgstr "Ana Sayfa"
+msgstr ""
 
 #: src/app/qml/MinuetDrawer.qml:140 src/app/qml/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
-msgstr "Ayarlar"
+msgstr ""
 
 #: src/app/qml/MinuetDrawer.qml:154
 #, kde-format
 msgid "About"
-msgstr "Hakkında"
+msgstr ""
 
 #: src/app/qml/PianoView/PianoView.qml:145
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave %1"
-msgstr "Oktav %1"
+msgstr ""
 
 #: src/app/qml/SettingsPage.qml:85
 #, kde-format
 msgid "Player"
-msgstr "Çalar"
+msgstr ""
 
 #: src/app/qml/SettingsPage.qml:102
 #, kde-format
 msgid "Volume"
-msgstr "Ses Düzeyi"
+msgstr ""
 
 #: src/app/qml/SettingsPage.qml:107
 #, kde-format
 msgid "%1%"
-msgstr "%%1"
+msgstr ""
 
 #: src/app/qml/SettingsPage.qml:130
 #, kde-format
 msgid "SoundFont"
-msgstr "SoundFont"
+msgstr ""
 
 #: src/app/qml/SettingsPage.qml:135
 #, kde-format
 msgid "No melodic instruments available"
-msgstr "Kullanılabilir melodik çalgı yok"
+msgstr ""
 
 #: src/app/qml/SettingsPage.qml:136
 #, kde-format
 msgid ""
 "The active sound controller did not report any General MIDI bank 0 "
 "instruments."
-msgstr "Etkin ses denetimcisi hiçbir genel MIDI bank 0 çalgısını bulamadı."
+msgstr ""
 
 #: src/app/qml/SettingsPage.qml:142
 #, kde-format
 msgid "Melodic Exercises"
-msgstr "Melodik Alıştırmalar"
+msgstr ""
 
 #: src/app/qml/SettingsPage.qml:143
 #, kde-format
 msgid "Used for scales, intervals, and chords."
-msgstr "Gamlar, aralıklar ve akorlar için kullanılır."
+msgstr ""
 
 #: src/app/qml/SettingsPage.qml:150
 #, kde-format
 msgid "Instrument group:"
-msgstr "Çalgı grubu:"
+msgstr ""
 
 #: src/app/qml/SettingsPage.qml:168
 #, kde-format
 msgid "Instrument:"
-msgstr "Çalgı:"
+msgstr ""
 
 #: src/app/qml/SettingsPage.qml:184
 #, kde-format
 msgid "Rhythmic Exercises"
-msgstr "Ritmik Alıştırmalar"
+msgstr ""
 
 #: src/app/qml/SettingsPage.qml:185
 #, kde-format
 msgid "Used for rhythm figures. The count-in keeps its own sound."
-msgstr "Ritim figürleri için kullanılır. Giriş sayımı kendi sesini korur."
+msgstr ""
 
 #: src/app/qml/SettingsPage.qml:192
 #, kde-format
 msgid "Percussion sound:"
-msgstr "Vurmalı sesi:"
+msgstr ""
 
 #: src/app/qml/SettingsPage.qml:204
 #, kde-format
 msgid "Rhythm Exercises"
-msgstr "Ritim Alıştırmaları"
+msgstr ""
 
 #: src/app/qml/SettingsPage.qml:216
 #, kde-format
 msgid "Number of rhythm patterns"
-msgstr "Ritim kalıpları sayısı"
+msgstr ""
 
 #: src/app/qml/SettingsPage.qml:231
 #, kde-format
 msgid "Tests"
-msgstr "Testler"
+msgstr ""
 
 #: src/app/qml/SettingsPage.qml:243
 #, kde-format
 msgid "Number of exercises"
-msgstr "Alıştırma sayısı"
+msgstr ""
 
 #: src/app/uicontroller.cpp:45
 #, kde-format
 msgid "Could not load the main user interface."
-msgstr "Ana kullanıcı arayüzü yüklenemedi."
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:452
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Acoustic Bass Drum"
-msgstr "Akustik Bas Davul"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:454
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Bass Drum 1"
-msgstr "Bas Davul 1"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:456
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Side Stick"
-msgstr "Kasnak (Side Stick)"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:458
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Acoustic Snare"
-msgstr "Akustik Trampet"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:460
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hand Clap"
-msgstr "El Çırpma"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:462
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Electric Snare"
-msgstr "Elektronik Trampet"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:464
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Floor Tom"
-msgstr "Alt Yer Tomu"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:466
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Closed Hi-hat"
-msgstr "Kapalı Hi-hat"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:468
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Floor Tom"
-msgstr "Üst Yer Tomu"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:470
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Pedal Hi-hat"
-msgstr "Pedallı Hi-hat"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:472
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Tom"
-msgstr "Alt Tom"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:474
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Hi-hat"
-msgstr "Açık Hi-hat"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:476
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low-Mid Tom"
-msgstr "Alt Orta Tom"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:478
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hi-Mid Tom"
-msgstr "Üst Orta Tom"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:480
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Crash Cymbal 1"
-msgstr "Crash Zili 1"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:482
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Tom"
-msgstr "Üst Tom"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:484
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Ride Cymbal 1"
-msgstr "Ride Zili 1"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:486
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Chinese Cymbal"
-msgstr "Çin Zili (Chinese Cymbal)"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:488
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Ride Bell"
-msgstr "Ride Çanı"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:490
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Tambourine"
-msgstr "Def (Tef)"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:492
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Splash Cymbal"
-msgstr "Splash Zili"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:494
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Cowbell"
-msgstr "Cowbell"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:496
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Crash Cymbal 2"
-msgstr "Crash Zili 2"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:498
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Vibraslap"
-msgstr "Vibraslap"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:500
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Ride Cymbal 2"
-msgstr "Ride Zili 2"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:502
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hi Bongo"
-msgstr "Tiz Bongo"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:504
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Bongo"
-msgstr "Bas Bongo"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:506
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Mute Hi Conga"
-msgstr "Kapalı Tiz Conga"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:508
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Hi Conga"
-msgstr "Açık Tiz Conga"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:510
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Conga"
-msgstr "Bas Conga"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:512
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Timbale"
-msgstr "Tiz Timbale"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:514
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Timbale"
-msgstr "Bas Timbale"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:516
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Agogo"
-msgstr "Tiz Agogo"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:518
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Agogo"
-msgstr "Bas Agogo"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:520
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Cabasa"
-msgstr "Cabasa"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:522
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Maracas"
-msgstr "Marakas"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:524
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Short Whistle"
-msgstr "Kısa Düdük"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:526
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Long Whistle"
-msgstr "Uzun Düdük"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:528
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Short Guiro"
-msgstr "Kısa Guiro"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:530
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Long Guiro"
-msgstr "Uzun Guiro"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:532
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Claves"
-msgstr "Klav (Claves)"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:534
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hi Wood Block"
-msgstr "Tiz Tahta Blok"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:536
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Wood Block"
-msgstr "Bas Tahta Blok"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:538
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Mute Cuica"
-msgstr "Kapalı Cuica"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:540
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Cuica"
-msgstr "Açık Cuica"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:542
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Mute Triangle"
-msgstr "Kapatılmış Üçgen"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:544
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Triangle"
-msgstr "Açık Üçgen"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:546
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Percussion"
-msgstr "Vurmalılar"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:554
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Piano"
-msgstr "Piyano"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:556
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Chromatic Percussion"
-msgstr "Kromatik Vurmalılar"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:558
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Organ"
-msgstr "Org"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:560
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Guitar"
-msgstr "Gitar"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:562
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Bass"
-msgstr "Bas"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:564
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Strings"
-msgstr "Yaylı Çalgılar"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:566
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Ensemble"
-msgstr "Ansambl / Topluluk"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:568
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Brass"
-msgstr "Bakır Üflemeliler"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:570
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Reed"
-msgstr "Kamışlı Çalgılar"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:572
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Pipe"
-msgstr "Flütler / Borulu Çalgılar"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:574
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Synth Lead"
-msgstr "Sentetik Solo (Lead)"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:576
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Synth Pad"
-msgstr "Sentetik Arka Plan (Pad)"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:578
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Synth Effects"
-msgstr "Sentetik Efektler"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:580
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Ethnic"
-msgstr "Etnik Çalgılar"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:582
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Percussive"
-msgstr "Vurmalılar"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:584
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Sound Effects"
-msgstr "Ses Efektleri"
+msgstr ""
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:586
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Other"
-msgstr "Diğer"
+msgstr ""
