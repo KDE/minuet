@@ -19,18 +19,110 @@
 
 #include <QCommandLineParser>
 #include <QCoreApplication>
+#include <QByteArray>
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
 #include <QGuiApplication>
 #include <QIcon>
+#include <QLocale>
 #include <QQuickStyle>
+#include <QSet>
 #include <QStandardPaths>
 #include <QStringList>
 
 #include <QDebug>
 
+#if defined(Q_OS_MACOS)
+#include <CoreFoundation/CoreFoundation.h>
+#endif
+
 using namespace Qt::StringLiterals;
+
+#if defined(Q_OS_MACOS)
+static QString stringFromCFString(CFStringRef string)
+{
+    const CFIndex length = CFStringGetLength(string);
+    const CFIndex maxSize = CFStringGetMaximumSizeForEncoding(length, kCFStringEncodingUTF8) + 1;
+    QByteArray buffer(maxSize, Qt::Uninitialized);
+    if (!CFStringGetCString(string, buffer.data(), buffer.size(), kCFStringEncodingUTF8)) {
+        return {};
+    }
+    return QString::fromUtf8(buffer.constData());
+}
+
+static QString macosLanguageToKdeLanguage(const QString &language)
+{
+    if (language == u"ca-ES-valencia"_s) {
+        return u"ca@valencia"_s;
+    }
+    if (language.startsWith(u"zh-Hans"_s)) {
+        return u"zh_CN"_s;
+    }
+    if (language.startsWith(u"zh-Hant"_s)) {
+        return u"zh_TW"_s;
+    }
+
+    return QString(language).replace(u'-', u'_');
+}
+
+static QStringList preferredMacOSLanguages()
+{
+    QStringList languages;
+    CFPropertyListRef value = CFPreferencesCopyAppValue(CFSTR("AppleLanguages"), CFSTR("org.kde.minuet"));
+    if (value) {
+        if (CFGetTypeID(value) == CFArrayGetTypeID()) {
+            CFArrayRef languageArray = static_cast<CFArrayRef>(value);
+            const CFIndex count = CFArrayGetCount(languageArray);
+            for (CFIndex i = 0; i < count; ++i) {
+                CFTypeRef item = CFArrayGetValueAtIndex(languageArray, i);
+                if (item && CFGetTypeID(item) == CFStringGetTypeID()) {
+                    const QString language = stringFromCFString(static_cast<CFStringRef>(item));
+                    if (!language.isEmpty() && !languages.contains(language)) {
+                        languages.append(language);
+                    }
+                }
+            }
+        }
+        CFRelease(value);
+    }
+
+    const QStringList systemLanguages = QLocale::system().uiLanguages();
+    for (const QString &systemLanguage : systemLanguages) {
+        if (!languages.contains(systemLanguage)) {
+            languages.append(systemLanguage);
+        }
+    }
+    return languages;
+}
+
+static void applyMacOSApplicationLanguages()
+{
+    const QSet<QString> availableTranslations = KLocalizedString::availableApplicationTranslations();
+    QStringList languages;
+
+    const QStringList uiLanguages = preferredMacOSLanguages();
+    for (const QString &uiLanguage : uiLanguages) {
+        const QString kdeLanguage = macosLanguageToKdeLanguage(uiLanguage);
+        const QString genericLanguage = kdeLanguage.section(u'_', 0, 0);
+        const QStringList candidates = kdeLanguage == genericLanguage ? QStringList{kdeLanguage} : QStringList{kdeLanguage, genericLanguage};
+
+        for (const QString &candidate : candidates) {
+            if (!languages.contains(candidate) && availableTranslations.contains(candidate)) {
+                languages.append(candidate);
+            }
+        }
+
+        if (genericLanguage == u"en"_s && languages.isEmpty()) {
+            return;
+        }
+    }
+
+    if (!languages.isEmpty()) {
+        KLocalizedString::setLanguages(languages);
+    }
+}
+#endif
 
 int main(int argc, char *argv[])
 {
@@ -49,6 +141,9 @@ int main(int argc, char *argv[])
 #endif
 
     KLocalizedString::setApplicationDomain("minuet");
+#if defined(Q_OS_MACOS)
+    applyMacOSApplicationLanguages();
+#endif
 
     KAboutData aboutData(u"minuet"_s, i18n("Minuet"),
                          QString::fromUtf8(MINUET_VERSION_STRING),

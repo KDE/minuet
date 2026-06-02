@@ -153,7 +153,8 @@ if(ANDROID)
 endif()
 
 if(APPLE)
-    target_link_libraries(minuet PRIVATE KF6::IconThemes)
+    find_library(CoreFoundation_FRAMEWORK CoreFoundation REQUIRED)
+    target_link_libraries(minuet PRIVATE KF6::IconThemes ${CoreFoundation_FRAMEWORK})
 endif()
 
 IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
