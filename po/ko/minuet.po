@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-01 00:39+0000\n"
+"POT-Creation-Date: 2026-06-03 00:43+0000\n"
 "PO-Revision-Date: 2024-02-11 00:05+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -124,9 +124,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Thirteenth"
 msgstr "장13화음"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Ascending Melodic Intervals"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Ascending Melodic Intervals"
+msgid "Ascending melodic intervals"
 msgstr "상행 음정"
 
 #, fuzzy, kde-format
@@ -314,9 +316,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Bebop Minor"
 msgstr "비밥 단조"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Bebop Scales"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Bebop Scales"
+msgid "Bebop scales"
 msgstr "비밥 스케일"
 
 #, kde-format
@@ -413,9 +417,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Thirteenth"
 msgstr "장13화음"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Descending Melodic Intervals"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Descending Melodic Intervals"
+msgid "Descending melodic intervals"
 msgstr "하강 음정"
 
 #, fuzzy, kde-format
@@ -535,9 +541,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished"
 msgstr "감"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Diminished and Augmented Chords"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Diminished and Augmented Chords"
+msgid "Diminished and augmented chords"
 msgstr "증감 화음"
 
 #, fuzzy, kde-format
@@ -551,7 +559,7 @@ msgstr "감"
 #| msgctxt "technical term, do you have a musician friend?"
 #| msgid "Diminished Seventh"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Diminished - first inversion"
+msgid "Diminished, first inversion"
 msgstr "감소7화음"
 
 #, kde-format
@@ -563,7 +571,7 @@ msgstr "감소 H-W(절반-전체) 화음"
 #| msgctxt "technical term, do you have a musician friend?"
 #| msgid "Diminished Seventh"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Diminished - inversions"
+msgid "Diminished inversions"
 msgstr "감소7화음"
 
 #, fuzzy, kde-format
@@ -613,30 +621,38 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh"
 msgstr "도미넌트7화음"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Diminished Seventh"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Dominant seventh - first inversion"
-msgstr ""
+msgid "Dominant seventh, first inversion"
+msgstr "감소7화음"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh flat five"
 msgstr ""
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Minor Seventh"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Dominant seventh - inversions"
-msgstr ""
+msgid "Dominant seventh inversions"
+msgstr "단7화음"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Minor Seventh"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Dominant seventh - second inversion"
-msgstr ""
+msgid "Dominant seventh, second inversion"
+msgstr "단7화음"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Minor Seventh"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Dominant seventh - third inversion"
-msgstr ""
+msgid "Dominant seventh, third inversion"
+msgstr "단7화음"
 
 #, fuzzy, kde-format
 #| msgctxt "technical term, do you have a musician friend?"
@@ -667,14 +683,18 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Extended chords"
 msgstr "변화화음"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Fourths and Fifths"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Fourths and Fifths"
+msgid "Fourths and fifths"
 msgstr "4화음과 5화음"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Fourths, Fifths, and Octave"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Fourths, Fifths, and Octave"
+msgid "Fourths, fifths, and octave"
 msgstr "4화음, 5화음, 그리고 옥타브"
 
 #, kde-format
@@ -682,9 +702,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Half Diminished seventh"
 msgstr "반감7화음"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Harmonic Intervals"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Harmonic Intervals"
+msgid "Harmonic intervals"
 msgstr "화성음정"
 
 #, kde-format
@@ -692,9 +714,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Harmonic Major"
 msgstr "하모닉 장조"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Harmonic Major Scale and its Modes"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Harmonic Major Scale and its Modes"
+msgid "Harmonic major scale and its modes"
 msgstr "하모닉 장조 스케일과 그 모드들"
 
 #, kde-format
@@ -702,9 +726,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Harmonic Minor"
 msgstr "하모닉 단조"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Harmonic Minor Scale and its Modes"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Harmonic Minor Scale and its Modes"
+msgid "Harmonic minor scale and its modes"
 msgstr "하모닉 단조 스케일과 그 모드들"
 
 #, fuzzy, kde-format
@@ -775,9 +801,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Locrian bb7"
 msgstr "로크라이언 bb7"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Lots of Chords"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Lots of Chords"
+msgid "Lots of chords"
 msgstr "많은 화음들"
 
 #, kde-format
@@ -815,10 +843,12 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Major eleventh"
 msgstr "장11화음"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Major Second"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Major - first inversion"
-msgstr ""
+msgid "Major, first inversion"
+msgstr "장2화음"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -829,7 +859,7 @@ msgstr "장14화음"
 #| msgctxt "technical term, do you have a musician friend?"
 #| msgid "Major Second"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Major - inversions"
+msgid "Major inversions"
 msgstr "장2화음"
 
 #, kde-format
@@ -847,9 +877,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Major Pentatonic"
 msgstr "메이저 펜타토닉"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Major Scale and its Modes"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Major Scale and its Modes"
+msgid "Major scale and its modes"
 msgstr "메이저 스케일과 그 모드들"
 
 #, kde-format
@@ -861,7 +893,7 @@ msgstr "장2화음"
 #| msgctxt "technical term, do you have a musician friend?"
 #| msgid "Major Second"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Major - second inversion"
+msgid "Major, second inversion"
 msgstr "장2화음"
 
 #, kde-format
@@ -874,10 +906,12 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Major Seventh"
 msgstr "장7화음"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Major Seventh"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Major seventh - first inversion"
-msgstr ""
+msgid "Major seventh, first inversion"
+msgstr "장7화음"
 
 #, fuzzy, kde-format
 #| msgctxt "technical term, do you have a musician friend?"
@@ -890,18 +924,22 @@ msgstr "장7화음"
 #| msgctxt "technical term, do you have a musician friend?"
 #| msgid "Major Seventh"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Major seventh - inversions"
+msgid "Major seventh inversions"
 msgstr "장7화음"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Major Seventh"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Major seventh - second inversion"
-msgstr ""
+msgid "Major seventh, second inversion"
+msgstr "장7화음"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Major Seventh"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Major seventh - third inversion"
-msgstr ""
+msgid "Major seventh, third inversion"
+msgstr "장7화음"
 
 #, fuzzy, kde-format
 #| msgctxt "technical term, do you have a musician friend?"
@@ -944,7 +982,7 @@ msgstr "미디움(중간)"
 #| msgctxt "technical term, do you have a musician friend?"
 #| msgid "Ascending Melodic Intervals"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Melodic Intervals"
+msgid "Melodic intervals"
 msgstr "상행 음정"
 
 #, kde-format
@@ -967,10 +1005,12 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Minor eleventh"
 msgstr "단11화음"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Minor Second"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Minor - first inversion"
-msgstr ""
+msgid "Minor, first inversion"
+msgstr "단2화음"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -981,7 +1021,7 @@ msgstr "단14화음"
 #| msgctxt "technical term, do you have a musician friend?"
 #| msgid "Minor Second"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Minor - inversions"
+msgid "Minor inversions"
 msgstr "단2화음"
 
 #, fuzzy, kde-format
@@ -1015,7 +1055,7 @@ msgstr "단2화음"
 #| msgctxt "technical term, do you have a musician friend?"
 #| msgid "Minor Second"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Minor - second inversion"
+msgid "Minor, second inversion"
 msgstr "단2화음"
 
 #, kde-format
@@ -1028,27 +1068,33 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Minor Seventh"
 msgstr "단7화음"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Minor Seventh"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Minor seventh - first inversion"
-msgstr ""
+msgid "Minor seventh, first inversion"
+msgstr "단7화음"
 
 #, fuzzy, kde-format
 #| msgctxt "technical term, do you have a musician friend?"
 #| msgid "Minor Seventh"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Minor seventh - inversions"
+msgid "Minor seventh inversions"
 msgstr "단7화음"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Minor Seventh"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Minor seventh - second inversion"
-msgstr ""
+msgid "Minor seventh, second inversion"
+msgstr "단7화음"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Minor Seventh"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Minor seventh - third inversion"
-msgstr ""
+msgid "Minor seventh, third inversion"
+msgstr "단7화음"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1090,9 +1136,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Octave + Tritone"
 msgstr "Octave + Tritone"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Pentatonic Major Scale and its Modes"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Pentatonic Major Scale and its Modes"
+msgid "Pentatonic major scale and its modes"
 msgstr "펜타토닉 메이저 스케일과 모드"
 
 #, kde-format
@@ -1699,9 +1747,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Seconds"
 msgstr "2화음"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Seconds and Thirds"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Seconds and Thirds"
+msgid "Seconds and thirds"
 msgstr "2화음과 3화음"
 
 #, kde-format
@@ -1709,14 +1759,18 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Second to 15th"
 msgstr "2화음부터 15화음까지"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Second to Octave"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Second to Octave"
+msgid "Second to octave"
 msgstr "2화음부터 옥타브까지"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Second to Tenth"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Second to Tenth"
+msgid "Second to tenth"
 msgstr "2화음부터 10화음까지"
 
 #, fuzzy, kde-format
@@ -1746,9 +1800,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Sevenths"
 msgstr "7화음"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Sevenths and Ninths"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Sevenths and Ninths"
+msgid "Sevenths and ninths"
 msgstr "7화음과 9화음"
 
 #, kde-format
@@ -1761,9 +1817,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Sixths"
 msgstr "6화음"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Sixths and Sevenths"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Sixths and Sevenths"
+msgid "Sixths and sevenths"
 msgstr "6화음과 7화음"
 
 #, kde-format
@@ -1788,9 +1846,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Suspended Pentatonic"
 msgstr "서스펜드 펜타토닉"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Symmetric Scales"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Symmetric Scales"
+msgid "Symmetric scales"
 msgstr "대칭음계"
 
 #, kde-format
@@ -1803,6 +1863,13 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Thirds"
 msgstr "3화음"
 
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Major Second"
+msgctxt "technical term, do you have a musician friend?"
+msgid "Triad inversions"
+msgstr "장2화음"
+
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Triads"
@@ -1810,17 +1877,14 @@ msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
-msgid "Triads - inversions"
-msgstr ""
-
-#, kde-format
-msgctxt "technical term, do you have a musician friend?"
 msgid "Tritone"
 msgstr "셋온음"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Tritone and Sevenths"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Tritone and Sevenths"
+msgid "Tritone and sevenths"
 msgstr "셋온음과 7화음"
 
 #, kde-format
@@ -1909,83 +1973,83 @@ msgstr ""
 msgid "Could not open JSON file \"%1\"."
 msgstr "JSON 파일 \"%1\"을(를) 열 수 없습니다."
 
-#: src/app/exercisesessioncontroller.cpp:109
-#, kde-format
-msgid "Click 'New Question' to start!"
-msgstr "'새 문제'를 클릭해 시작하세요!"
+#: src/app/exercisesessioncontroller.cpp:94
+#: src/app/exercisesessioncontroller.cpp:376
+#, fuzzy, kde-format
+#| msgid "Click 'New Question' to start"
+msgid "Select New Question to start"
+msgstr "'새 질문'을 클릭해 시작하세요"
 
-#: src/app/exercisesessioncontroller.cpp:246
+#: src/app/exercisesessioncontroller.cpp:231
 #, kde-format
 msgid "Choose 1 answer"
 msgstr ""
 
-#: src/app/exercisesessioncontroller.cpp:246
+#: src/app/exercisesessioncontroller.cpp:231
 #, kde-format
 msgid "Choose %1 answers"
 msgstr ""
 
-#: src/app/exercisesessioncontroller.cpp:357
+#: src/app/exercisesessioncontroller.cpp:342
 #, kde-format
-msgid "Here is the answer"
-msgstr "이것이 정답입니다"
+msgid "Answer shown"
+msgstr ""
 
-#: src/app/exercisesessioncontroller.cpp:359
+#: src/app/exercisesessioncontroller.cpp:344 src/app/qml/ExerciseView.qml:447
+#, fuzzy, kde-format
+#| msgid "Your Answer(s)"
+msgid "Correct answer"
+msgid_plural "Correct answers"
+msgstr[0] "내 응답"
+
+#: src/app/exercisesessioncontroller.cpp:346
 #, kde-format
-msgid "Congratulations, you answered correctly!"
-msgstr "축하합니다, 정확하게 응답하셨습니다!"
+msgid "Incorrect answer, try again"
+msgstr ""
 
-#: src/app/exercisesessioncontroller.cpp:361
+#: src/app/exercisesessioncontroller.cpp:350
 #, kde-format
-msgid "Oops, not this time! Try again!"
-msgstr "아쉽네요! 다시 해 보세요!"
+msgid "Score: %1%"
+msgstr ""
 
-#: src/app/exercisesessioncontroller.cpp:365
-#, kde-format
-msgid "You answered correctly %1%"
-msgstr "%1%를 정확히 응답하셨습니다"
-
-#: src/app/exercisesessioncontroller.cpp:391
-#, kde-format
-msgid "Click 'New Question' to start"
-msgstr "'새 질문'을 클릭해 시작하세요"
-
-#: src/app/exercisesessioncontroller.cpp:538
+#: src/app/exercisesessioncontroller.cpp:523
 #, kde-format
 msgid "Question %1 out of %2"
 msgstr "문제 %2개 중 %1"
 
-#: src/app/main.cpp:53
+#: src/app/main.cpp:148
 #, kde-format
 msgid "Minuet"
 msgstr "Minuet"
 
-#: src/app/main.cpp:55
+#: src/app/main.cpp:150
 #, kde-format
 msgid "A KDE application for music education"
 msgstr "음악 교육을 위한 KDE 소프트웨어"
 
-#: src/app/main.cpp:56
+#: src/app/main.cpp:151
 #, kde-format
 msgid "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 msgstr "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 
-#: src/app/main.cpp:61 src/app/main.cpp:63
+#: src/app/main.cpp:156 src/app/main.cpp:158
 #, kde-format
 msgid "Developer"
 msgstr "개발자"
 
-#: src/app/main.cpp:65
-#, kde-format
-msgid "Minuet Icon Designer"
+#: src/app/main.cpp:160
+#, fuzzy, kde-format
+#| msgid "Minuet Icon Designer"
+msgid "Minuet icon designer"
 msgstr "Minuet 아이콘 디자이너"
 
-#: src/app/main.cpp:67
+#: src/app/main.cpp:162
 #, kde-format
 msgctxt "@info:credit"
 msgid "Fluidsynth"
 msgstr ""
 
-#: src/app/main.cpp:67
+#: src/app/main.cpp:162
 #, kde-format
 msgctxt "@info:credit"
 msgid ""
@@ -2007,7 +2071,7 @@ msgstr "userMessage"
 
 #: src/app/qml/ExerciseView.qml:302
 #, kde-format
-msgid "Playing..."
+msgid "Playing…"
 msgstr ""
 
 #: src/app/qml/ExerciseView.qml:323
@@ -2036,8 +2100,9 @@ msgid "Start Test"
 msgstr "테스트 시작하기"
 
 #: src/app/qml/ExerciseView.qml:391
-#, kde-format
-msgid "Available Answers"
+#, fuzzy, kde-format
+#| msgid "Available Answers"
+msgid "Available answers"
 msgstr "가능한 정답"
 
 #: src/app/qml/ExerciseView.qml:396
@@ -2045,58 +2110,59 @@ msgstr "가능한 정답"
 msgid "Scroll for more"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:446
+#: src/app/qml/ExerciseView.qml:448
 #, fuzzy, kde-format
 #| msgid "Your Answer(s)"
-msgid "Correct Answer(s)"
-msgstr "내 응답"
+msgid "Your answer"
+msgid_plural "Your answers"
+msgstr[0] "내 응답"
 
-#: src/app/qml/ExerciseView.qml:446
-#, kde-format
-msgid "Your Answer(s)"
-msgstr "내 응답"
-
-#: src/app/qml/ExerciseView.qml:451
+#: src/app/qml/ExerciseView.qml:453
 #, kde-format
 msgid "Scroll for more |"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:456
+#: src/app/qml/ExerciseView.qml:458
 #, kde-format
 msgid "%1 / %2"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:461
+#: src/app/qml/ExerciseView.qml:463
 #, kde-format
 msgid "Backspace"
 msgstr "이전(백스페이스)"
 
-#: src/app/qml/ExerciseView.qml:582
+#: src/app/qml/ExerciseView.qml:584
 #, kde-format
 msgid "Keyboard"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:586
+#: src/app/qml/ExerciseView.qml:588
 #, kde-format
 msgid "Staff"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:728
+#: src/app/qml/ExerciseView.qml:730
 #, kde-format
 msgid "Empty answer slot"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:761
+#: src/app/qml/ExerciseView.qml:763
 #, kde-format
 msgid "Answer %1"
 msgstr ""
 
-#: src/app/qml/Main.qml:131
+#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:127
+#, kde-format
+msgid "Home"
+msgstr ""
+
+#: src/app/qml/Main.qml:134
 #, kde-format
 msgid "Choose an exercise"
 msgstr ""
 
-#: src/app/qml/Main.qml:132
+#: src/app/qml/Main.qml:135
 #, kde-format
 msgid "Start with a topic, then pick the specific training level."
 msgstr ""
@@ -2123,11 +2189,6 @@ msgid ""
 "and more."
 msgstr ""
 
-#: src/app/qml/MinuetDrawer.qml:127
-#, kde-format
-msgid "Home"
-msgstr ""
-
 #: src/app/qml/MinuetDrawer.qml:140 src/app/qml/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
@@ -2138,7 +2199,7 @@ msgstr ""
 msgid "About"
 msgstr "정보"
 
-#: src/app/qml/PianoView/PianoView.qml:145
+#: src/app/qml/PianoView/PianoView.qml:127
 #, fuzzy, kde-format
 #| msgctxt "technical term, do you have a musician friend?"
 #| msgid "Octave"
@@ -2629,6 +2690,21 @@ msgstr ""
 msgctxt "General MIDI instrument group"
 msgid "Other"
 msgstr ""
+
+#~ msgid "Click 'New Question' to start!"
+#~ msgstr "'새 문제'를 클릭해 시작하세요!"
+
+#~ msgid "Here is the answer"
+#~ msgstr "이것이 정답입니다"
+
+#~ msgid "Congratulations, you answered correctly!"
+#~ msgstr "축하합니다, 정확하게 응답하셨습니다!"
+
+#~ msgid "Oops, not this time! Try again!"
+#~ msgstr "아쉽네요! 다시 해 보세요!"
+
+#~ msgid "You answered correctly %1%"
+#~ msgstr "%1%를 정확히 응답하셨습니다"
 
 #~ msgctxt "technical term, do you have a musician friend?"
 #~ msgid "eighth-dot-sixteenth"

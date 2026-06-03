@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-01 00:39+0000\n"
+"POT-Creation-Date: 2026-06-03 00:43+0000\n"
 "PO-Revision-Date: 2026-05-29 19:08+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -99,9 +99,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Thirteenth"
 msgstr "Decimotercera mayor ascendente"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Ascending Melodic Intervals"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Ascending Melodic Intervals"
+msgid "Ascending melodic intervals"
 msgstr "Intervalos melódicos ascendentes"
 
 #, kde-format
@@ -249,9 +251,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Bebop Minor"
 msgstr "Bebop menor"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Bebop Scales"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Bebop Scales"
+msgid "Bebop scales"
 msgstr "Escalas bebop"
 
 #, kde-format
@@ -324,9 +328,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Thirteenth"
 msgstr "Decimotercera mayor descendente"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Descending Melodic Intervals"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Descending Melodic Intervals"
+msgid "Descending melodic intervals"
 msgstr "Intervalos melódicos descendentes"
 
 #, kde-format
@@ -414,9 +420,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished"
 msgstr "Disminuida"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Diminished and Augmented Chords"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Diminished and Augmented Chords"
+msgid "Diminished and augmented chords"
 msgstr "Acordes disminuidos y aumentados"
 
 #, kde-format
@@ -424,9 +432,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished chords"
 msgstr "Acordes disminuidos"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Diminished - first inversion"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Diminished - first inversion"
+msgid "Diminished, first inversion"
 msgstr "Disminuida - primera inversión"
 
 #, kde-format
@@ -434,9 +444,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished H-W"
 msgstr "Disminuida H-W"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Diminished - inversions"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Diminished - inversions"
+msgid "Diminished inversions"
 msgstr "Disminuida - inversiones"
 
 #, kde-format
@@ -474,9 +486,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh"
 msgstr "Séptima dominante"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Dominant seventh - first inversion"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Dominant seventh - first inversion"
+msgid "Dominant seventh, first inversion"
 msgstr "Séptima dominante - primera inversión"
 
 #, kde-format
@@ -484,19 +498,25 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh flat five"
 msgstr "Séptima dominante con quinta bemol"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Dominant seventh - inversions"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Dominant seventh - inversions"
+msgid "Dominant seventh inversions"
 msgstr "Séptima dominante - inversiones"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Dominant seventh - second inversion"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Dominant seventh - second inversion"
+msgid "Dominant seventh, second inversion"
 msgstr "Séptima dominante - segunda inversión"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Dominant seventh - third inversion"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Dominant seventh - third inversion"
+msgid "Dominant seventh, third inversion"
 msgstr "Séptima dominante - tercera inversión"
 
 #, kde-format
@@ -524,14 +544,18 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Extended chords"
 msgstr "Acordes extendidos"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Fourths and Fifths"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Fourths and Fifths"
+msgid "Fourths and fifths"
 msgstr "Cuartas y quintas"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Fourths, Fifths, and Octave"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Fourths, Fifths, and Octave"
+msgid "Fourths, fifths, and octave"
 msgstr "Cuartas, quintas y octava"
 
 #, kde-format
@@ -539,9 +563,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Half Diminished seventh"
 msgstr "Séptima semidisminuida"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Harmonic Intervals"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Harmonic Intervals"
+msgid "Harmonic intervals"
 msgstr "Intervalos armónicos"
 
 #, kde-format
@@ -549,9 +575,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Harmonic Major"
 msgstr "Mayor armónico"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Harmonic Major Scale and its Modes"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Harmonic Major Scale and its Modes"
+msgid "Harmonic major scale and its modes"
 msgstr "Escala mayor armónica y sus modos"
 
 #, kde-format
@@ -559,9 +587,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Harmonic Minor"
 msgstr "Menor armónico"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Harmonic Minor Scale and its Modes"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Harmonic Minor Scale and its Modes"
+msgid "Harmonic minor scale and its modes"
 msgstr "Escala menor armónica y sus modos"
 
 #, kde-format
@@ -624,9 +654,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Locrian bb7"
 msgstr "Locrio bb7"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Lots of Chords"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Lots of Chords"
+msgid "Lots of chords"
 msgstr "Series de acordes"
 
 #, kde-format
@@ -664,9 +696,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Major eleventh"
 msgstr "Undécima mayor"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Major - first inversion"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Major - first inversion"
+msgid "Major, first inversion"
 msgstr "Mayor - primera inversión"
 
 #, kde-format
@@ -674,9 +708,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Major Fourteenth"
 msgstr "Decimocuarta mayor"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Major - inversions"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Major - inversions"
+msgid "Major inversions"
 msgstr "Mayor - inversiones"
 
 #, kde-format
@@ -694,9 +730,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Major Pentatonic"
 msgstr "Pentatónica mayor"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Major Scale and its Modes"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Major Scale and its Modes"
+msgid "Major scale and its modes"
 msgstr "Escala mayor y sus modos"
 
 #, kde-format
@@ -704,9 +742,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Major Second"
 msgstr "Segunda mayor"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Major - second inversion"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Major - second inversion"
+msgid "Major, second inversion"
 msgstr "Mayor - segunda inversión"
 
 #, kde-format
@@ -719,9 +759,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Major Seventh"
 msgstr "Séptima mayor"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Major seventh - first inversion"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Major seventh - first inversion"
+msgid "Major seventh, first inversion"
 msgstr "Séptima mayor - primera inversión"
 
 #, kde-format
@@ -729,19 +771,25 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh flat five"
 msgstr "Séptima mayor con quinta bemol"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Major seventh - inversions"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Major seventh - inversions"
+msgid "Major seventh inversions"
 msgstr "Séptima mayor - inversiones"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Major seventh - second inversion"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Major seventh - second inversion"
+msgid "Major seventh, second inversion"
 msgstr "Séptima mayor - segunda inversión"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Major seventh - third inversion"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Major seventh - third inversion"
+msgid "Major seventh, third inversion"
 msgstr "Séptima mayor - tercera inversión"
 
 #, kde-format
@@ -779,9 +827,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Medium"
 msgstr "Medio"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Melodic Intervals"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Melodic Intervals"
+msgid "Melodic intervals"
 msgstr "Intervalos melódicos"
 
 #, kde-format
@@ -804,9 +854,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Minor eleventh"
 msgstr "Undécima menor"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Minor - first inversion"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Minor - first inversion"
+msgid "Minor, first inversion"
 msgstr "Menor - primera inversión"
 
 #, kde-format
@@ -814,9 +866,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Minor Fourteenth"
 msgstr "Decimocuarta menor"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Minor - inversions"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Minor - inversions"
+msgid "Minor inversions"
 msgstr "Menor - inversiones"
 
 #, kde-format
@@ -844,9 +898,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Minor Second"
 msgstr "Segunda menor"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Minor - second inversion"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Minor - second inversion"
+msgid "Minor, second inversion"
 msgstr "Menor - segunda inversión"
 
 #, kde-format
@@ -859,24 +915,32 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Minor Seventh"
 msgstr "Séptima menor"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Minor seventh - first inversion"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Minor seventh - first inversion"
+msgid "Minor seventh, first inversion"
 msgstr "Séptima menor - primera inversión"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Minor seventh - inversions"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Minor seventh - inversions"
+msgid "Minor seventh inversions"
 msgstr "Séptima menor - inversiones"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Minor seventh - second inversion"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Minor seventh - second inversion"
+msgid "Minor seventh, second inversion"
 msgstr "Séptima menor - segunda inversión"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Minor seventh - third inversion"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Minor seventh - third inversion"
+msgid "Minor seventh, third inversion"
 msgstr "Séptima menor - tercera inversión"
 
 #, kde-format
@@ -919,9 +983,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Octave + Tritone"
 msgstr "Octava + tritono"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Pentatonic Major Scale and its Modes"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Pentatonic Major Scale and its Modes"
+msgid "Pentatonic major scale and its modes"
 msgstr "Escala pentatónica mayor y sus modos"
 
 #, kde-format
@@ -1644,9 +1710,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Seconds"
 msgstr "Segundas"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Seconds and Thirds"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Seconds and Thirds"
+msgid "Seconds and thirds"
 msgstr "Segundas y terceras"
 
 #, kde-format
@@ -1654,14 +1722,18 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Second to 15th"
 msgstr "Segunda a decimoquinta"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Second to Octave"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Second to Octave"
+msgid "Second to octave"
 msgstr "Segunda a octava"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Second to Tenth"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Second to Tenth"
+msgid "Second to tenth"
 msgstr "Segunda a décima"
 
 #, kde-format
@@ -1689,9 +1761,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Sevenths"
 msgstr "Séptimas"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Sevenths and Ninths"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Sevenths and Ninths"
+msgid "Sevenths and ninths"
 msgstr "Séptimas y novenas"
 
 #, kde-format
@@ -1704,9 +1778,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Sixths"
 msgstr "Sextas"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Sixths and Sevenths"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Sixths and Sevenths"
+msgid "Sixths and sevenths"
 msgstr "Sextas y séptimas"
 
 #, kde-format
@@ -1729,9 +1805,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Suspended Pentatonic"
 msgstr "Pentatónica suspendida"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Symmetric Scales"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Symmetric Scales"
+msgid "Symmetric scales"
 msgstr "Escalas simétricas"
 
 #, kde-format
@@ -1744,6 +1822,13 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Thirds"
 msgstr "Terceras"
 
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Triads - inversions"
+msgctxt "technical term, do you have a musician friend?"
+msgid "Triad inversions"
+msgstr "Tríadas - inversiones"
+
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Triads"
@@ -1751,17 +1836,14 @@ msgstr "Tríadas"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
-msgid "Triads - inversions"
-msgstr "Tríadas - inversiones"
-
-#, kde-format
-msgctxt "technical term, do you have a musician friend?"
 msgid "Tritone"
 msgstr "Tritono"
 
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Tritone and Sevenths"
 msgctxt "technical term, do you have a musician friend?"
-msgid "Tritone and Sevenths"
+msgid "Tritone and sevenths"
 msgstr "Tritono y séptimas"
 
 #, kde-format
@@ -1850,83 +1932,85 @@ msgstr "%1"
 msgid "Could not open JSON file \"%1\"."
 msgstr "No se ha podido abrir el archivo JSON «%1»."
 
-#: src/app/exercisesessioncontroller.cpp:109
-#, kde-format
-msgid "Click 'New Question' to start!"
-msgstr "Pulse «Nueva pregunta» para comenzar."
+#: src/app/exercisesessioncontroller.cpp:94
+#: src/app/exercisesessioncontroller.cpp:376
+#, fuzzy, kde-format
+#| msgid "Click 'New Question' to start"
+msgid "Select New Question to start"
+msgstr "Pulse «Nueva pregunta» para comenzar"
 
-#: src/app/exercisesessioncontroller.cpp:246
+#: src/app/exercisesessioncontroller.cpp:231
 #, kde-format
 msgid "Choose 1 answer"
 msgstr "Escoja 1 respuesta"
 
-#: src/app/exercisesessioncontroller.cpp:246
+#: src/app/exercisesessioncontroller.cpp:231
 #, kde-format
 msgid "Choose %1 answers"
 msgstr "Escoja %1 respuestas"
 
-#: src/app/exercisesessioncontroller.cpp:357
-#, kde-format
-msgid "Here is the answer"
-msgstr "Esta es la respuesta"
+#: src/app/exercisesessioncontroller.cpp:342
+#, fuzzy, kde-format
+#| msgid "Answer %1"
+msgid "Answer shown"
+msgstr "Respuesta %1"
 
-#: src/app/exercisesessioncontroller.cpp:359
-#, kde-format
-msgid "Congratulations, you answered correctly!"
-msgstr "¡Enhorabuena! Ha respondido correctamente."
+#: src/app/exercisesessioncontroller.cpp:344 src/app/qml/ExerciseView.qml:447
+#, fuzzy, kde-format
+#| msgid "Correct Answer(s)"
+msgid "Correct answer"
+msgid_plural "Correct answers"
+msgstr[0] "Respuesta correcta"
+msgstr[1] "Respuesta correcta"
 
-#: src/app/exercisesessioncontroller.cpp:361
+#: src/app/exercisesessioncontroller.cpp:346
 #, kde-format
-msgid "Oops, not this time! Try again!"
-msgstr "¡Vaya! Esta vez no. Vuelva a probar."
+msgid "Incorrect answer, try again"
+msgstr ""
 
-#: src/app/exercisesessioncontroller.cpp:365
+#: src/app/exercisesessioncontroller.cpp:350
 #, kde-format
-msgid "You answered correctly %1%"
-msgstr "Ha respondido correctamente el %1 %"
+msgid "Score: %1%"
+msgstr ""
 
-#: src/app/exercisesessioncontroller.cpp:391
-#, kde-format
-msgid "Click 'New Question' to start"
-msgstr "Pulse «Nueva pregunta» para comenzar"
-
-#: src/app/exercisesessioncontroller.cpp:538
+#: src/app/exercisesessioncontroller.cpp:523
 #, kde-format
 msgid "Question %1 out of %2"
 msgstr "Pregunta %1 de %2"
 
-#: src/app/main.cpp:53
+#: src/app/main.cpp:148
 #, kde-format
 msgid "Minuet"
 msgstr "Minuet"
 
-#: src/app/main.cpp:55
+#: src/app/main.cpp:150
 #, kde-format
 msgid "A KDE application for music education"
 msgstr "Una aplicación de KDE para aprendizaje musical"
 
-#: src/app/main.cpp:56
+#: src/app/main.cpp:151
 #, kde-format
 msgid "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 msgstr "© 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 
-#: src/app/main.cpp:61 src/app/main.cpp:63
+#: src/app/main.cpp:156 src/app/main.cpp:158
 #, kde-format
 msgid "Developer"
 msgstr "Desarrollador"
 
-#: src/app/main.cpp:65
-#, kde-format
-msgid "Minuet Icon Designer"
+#: src/app/main.cpp:160
+#, fuzzy, kde-format
+#| msgid "Minuet Icon Designer"
+msgid "Minuet icon designer"
 msgstr "Diseñador del icono de Minuet"
 
-#: src/app/main.cpp:67
+#: src/app/main.cpp:162
 #, kde-format
 msgctxt "@info:credit"
 msgid "Fluidsynth"
 msgstr "FluidSynth"
 
-#: src/app/main.cpp:67
+#: src/app/main.cpp:162
 #, kde-format
 msgctxt "@info:credit"
 msgid ""
@@ -1950,8 +2034,9 @@ msgid "userMessage"
 msgstr "mensajeUsuario"
 
 #: src/app/qml/ExerciseView.qml:302
-#, kde-format
-msgid "Playing..."
+#, fuzzy, kde-format
+#| msgid "Playing..."
+msgid "Playing…"
 msgstr "Reproduciendo…"
 
 #: src/app/qml/ExerciseView.qml:323
@@ -1980,8 +2065,9 @@ msgid "Start Test"
 msgstr "Iniciar el test"
 
 #: src/app/qml/ExerciseView.qml:391
-#, kde-format
-msgid "Available Answers"
+#, fuzzy, kde-format
+#| msgid "Available Answers"
+msgid "Available answers"
 msgstr "Respuestas disponibles"
 
 #: src/app/qml/ExerciseView.qml:396
@@ -1989,57 +2075,60 @@ msgstr "Respuestas disponibles"
 msgid "Scroll for more"
 msgstr "Desplace para más"
 
-#: src/app/qml/ExerciseView.qml:446
-#, kde-format
-msgid "Correct Answer(s)"
-msgstr "Respuesta correcta"
+#: src/app/qml/ExerciseView.qml:448
+#, fuzzy, kde-format
+#| msgid "Your Answer(s)"
+msgid "Your answer"
+msgid_plural "Your answers"
+msgstr[0] "Su respuesta"
+msgstr[1] "Su respuesta"
 
-#: src/app/qml/ExerciseView.qml:446
-#, kde-format
-msgid "Your Answer(s)"
-msgstr "Su respuesta"
-
-#: src/app/qml/ExerciseView.qml:451
+#: src/app/qml/ExerciseView.qml:453
 #, kde-format
 msgid "Scroll for more |"
 msgstr "Desplace para más |"
 
-#: src/app/qml/ExerciseView.qml:456
+#: src/app/qml/ExerciseView.qml:458
 #, kde-format
 msgid "%1 / %2"
 msgstr "%1 / %2"
 
-#: src/app/qml/ExerciseView.qml:461
+#: src/app/qml/ExerciseView.qml:463
 #, kde-format
 msgid "Backspace"
 msgstr "Retroceso"
 
-#: src/app/qml/ExerciseView.qml:582
+#: src/app/qml/ExerciseView.qml:584
 #, kde-format
 msgid "Keyboard"
 msgstr "Teclado"
 
-#: src/app/qml/ExerciseView.qml:586
+#: src/app/qml/ExerciseView.qml:588
 #, kde-format
 msgid "Staff"
 msgstr "Pentagrama"
 
-#: src/app/qml/ExerciseView.qml:728
+#: src/app/qml/ExerciseView.qml:730
 #, kde-format
 msgid "Empty answer slot"
 msgstr "Espacio de respuesta vacío"
 
-#: src/app/qml/ExerciseView.qml:761
+#: src/app/qml/ExerciseView.qml:763
 #, kde-format
 msgid "Answer %1"
 msgstr "Respuesta %1"
 
-#: src/app/qml/Main.qml:131
+#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:127
+#, kde-format
+msgid "Home"
+msgstr "Inicio"
+
+#: src/app/qml/Main.qml:134
 #, kde-format
 msgid "Choose an exercise"
 msgstr "Escoja un ejercicio"
 
-#: src/app/qml/Main.qml:132
+#: src/app/qml/Main.qml:135
 #, kde-format
 msgid "Start with a topic, then pick the specific training level."
 msgstr ""
@@ -2069,11 +2158,6 @@ msgstr ""
 "Practique el entrenamiento auditivo con ejercicios de intervalos, acordes, "
 "ritmo, escalas y mucho más."
 
-#: src/app/qml/MinuetDrawer.qml:127
-#, kde-format
-msgid "Home"
-msgstr "Inicio"
-
 #: src/app/qml/MinuetDrawer.qml:140 src/app/qml/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
@@ -2084,7 +2168,7 @@ msgstr "Preferencias"
 msgid "About"
 msgstr "Acerca de"
 
-#: src/app/qml/PianoView/PianoView.qml:145
+#: src/app/qml/PianoView/PianoView.qml:127
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave %1"
@@ -2574,3 +2658,18 @@ msgstr "Efectos de sonido"
 msgctxt "General MIDI instrument group"
 msgid "Other"
 msgstr "Otros"
+
+#~ msgid "Click 'New Question' to start!"
+#~ msgstr "Pulse «Nueva pregunta» para comenzar."
+
+#~ msgid "Here is the answer"
+#~ msgstr "Esta es la respuesta"
+
+#~ msgid "Congratulations, you answered correctly!"
+#~ msgstr "¡Enhorabuena! Ha respondido correctamente."
+
+#~ msgid "Oops, not this time! Try again!"
+#~ msgstr "¡Vaya! Esta vez no. Vuelva a probar."
+
+#~ msgid "You answered correctly %1%"
+#~ msgstr "Ha respondido correctamente el %1 %"
