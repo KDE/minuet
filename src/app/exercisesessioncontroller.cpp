@@ -73,6 +73,11 @@ QString ExerciseSessionController::statusText() const
     return m_statusText;
 }
 
+ExerciseSessionController::StatusRole ExerciseSessionController::statusRole() const
+{
+    return m_statusRole;
+}
+
 QVariantMap ExerciseSessionController::activeExercise() const
 {
     return m_activeExercise;
@@ -341,9 +346,9 @@ void ExerciseSessionController::checkAnswers(const QVariantList &correctAnswers,
     if (m_giveUp) {
         setStatusText(i18n("Answer shown"));
     } else if (m_answersAreRight) {
-        setStatusText(i18n("Correct answer"));
+        setStatusText(i18n("That's right"), PositiveStatus);
     } else {
-        setStatusText(i18n("Incorrect answer, try again"));
+        setStatusText(i18n("Not quite, try again"), NegativeStatus);
     }
 
     if (m_currentExercise == maximumExercises) {
@@ -545,9 +550,10 @@ void ExerciseSessionController::clearSingleAnswerHighlight()
     emit sessionChanged();
 }
 
-void ExerciseSessionController::setStatusText(const QString &statusText)
+void ExerciseSessionController::setStatusText(const QString &statusText, StatusRole statusRole)
 {
     m_statusText = statusText;
+    m_statusRole = statusRole;
     emit sessionChanged();
 }
 }

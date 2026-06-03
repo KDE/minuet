@@ -29,11 +29,19 @@ class ExerciseSessionController : public QObject
     Q_PROPERTY(bool highlightingSingleAnswer READ highlightingSingleAnswer NOTIFY sessionChanged)
     Q_PROPERTY(QString highlightedAnswerName READ highlightedAnswerName NOTIFY sessionChanged)
     Q_PROPERTY(QString statusText READ statusText NOTIFY sessionChanged)
+    Q_PROPERTY(StatusRole statusRole READ statusRole NOTIFY sessionChanged)
     Q_PROPERTY(QVariantMap activeExercise READ activeExercise WRITE setActiveExercise NOTIFY activeExerciseChanged)
     Q_PROPERTY(QJsonArray selectedExerciseOptions READ selectedExerciseOptions NOTIFY selectedExerciseOptionsChanged)
     Q_PROPERTY(unsigned int chosenRootNote READ chosenRootNote NOTIFY selectedExerciseOptionsChanged)
 
 public:
+    enum StatusRole {
+        NeutralStatus,
+        PositiveStatus,
+        NegativeStatus,
+    };
+    Q_ENUM(StatusRole)
+
     int currentAnswer() const;
     QVariantList userAnswers() const;
     bool answersAreRight() const;
@@ -44,6 +52,7 @@ public:
     bool highlightingSingleAnswer() const;
     QString highlightedAnswerName() const;
     QString statusText() const;
+    StatusRole statusRole() const;
     QVariantMap activeExercise() const;
     QJsonArray selectedExerciseOptions() const;
     unsigned int chosenRootNote() const;
@@ -96,7 +105,7 @@ private:
 
     explicit ExerciseSessionController(QObject *parent = nullptr);
 
-    void setStatusText(const QString &statusText);
+    void setStatusText(const QString &statusText, StatusRole statusRole = NeutralStatus);
 
     int m_currentAnswer = 0;
     QVariantList m_userAnswers;
@@ -114,6 +123,7 @@ private:
     bool m_highlightingSingleAnswer = false;
     QString m_highlightedAnswerName;
     QString m_statusText;
+    StatusRole m_statusRole = NeutralStatus;
 };
 }
 

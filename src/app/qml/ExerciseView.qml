@@ -47,6 +47,19 @@ Item {
         exerciseView.selectedOptionCount,
         animation.running
     )
+    readonly property color statusMessageColor: {
+        if (exerciseView.exercisePlaying) {
+            return Kirigami.Theme.highlightColor
+        }
+        switch (Core.exerciseSessionController.statusRole) {
+        case ExerciseSessionController.PositiveStatus:
+            return Kirigami.Theme.positiveTextColor
+        case ExerciseSessionController.NegativeStatus:
+            return Kirigami.Theme.negativeTextColor
+        default:
+            return Kirigami.Theme.textColor
+        }
+    }
 
     FontLoader { id: bravura; source: "SheetMusicView/Bravura.otf" }
 
@@ -298,7 +311,7 @@ Item {
                     Layout.maximumHeight: implicitHeight
                     horizontalAlignment: Text.AlignHCenter
                     elide: Text.ElideRight
-                    color: exerciseView.exercisePlaying ? Kirigami.Theme.highlightColor : Kirigami.Theme.textColor
+                    color: exerciseView.statusMessageColor
                     text: exerciseView.exercisePlaying ? i18n("Playing…") : Core.exerciseSessionController.statusText
                 }
             }
