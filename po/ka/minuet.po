@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-04 00:39+0000\n"
-"PO-Revision-Date: 2026-06-03 11:11+0200\n"
+"PO-Revision-Date: 2026-06-04 05:21+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1833,17 +1833,17 @@ msgstr "ნაჩვენებია პასუხი"
 #: src/app/exercisesessioncontroller.cpp:349
 #, kde-format
 msgid "That's right"
-msgstr ""
+msgstr "სწორია"
 
 #: src/app/exercisesessioncontroller.cpp:351
 #, kde-format
 msgid "Not quite, try again"
-msgstr ""
+msgstr "არც ისე. კიდევ სცადეთ"
 
 #: src/app/exercisesessioncontroller.cpp:355
 #, kde-format
 msgid "Score: %1%"
-msgstr ""
+msgstr "ქულები: %1%"
 
 #: src/app/exercisesessioncontroller.cpp:528
 #, kde-format

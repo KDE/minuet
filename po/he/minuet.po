@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-04 00:39+0000\n"
-"PO-Revision-Date: 2026-06-03 09:12+0300\n"
+"PO-Revision-Date: 2026-06-04 08:25+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -2252,7 +2252,7 @@ msgid "Cowbell"
 msgstr "פעמון פרות"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:496
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Crash Cymbal 2"
 msgstr "מצילת קראש 2"
@@ -2264,7 +2264,7 @@ msgid "Vibraslap"
 msgstr "ויברה סלאפ"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:500
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Ride Cymbal 2"
 msgstr "מצילת רייד 2"

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-04 00:39+0000\n"
-"PO-Revision-Date: 2026-06-03 14:00+0100\n"
+"PO-Revision-Date: 2026-06-04 11:51+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1874,13 +1874,12 @@ msgstr "Respuesta mostrada"
 #: src/app/exercisesessioncontroller.cpp:349
 #, kde-format
 msgid "That's right"
-msgstr ""
+msgstr "Correcto"
 
 #: src/app/exercisesessioncontroller.cpp:351
-#, fuzzy, kde-format
-#| msgid "Incorrect answer, try again"
+#, kde-format
 msgid "Not quite, try again"
-msgstr "Respuesta incorrecta. Pruebe otra vez."
+msgstr "No está bien del todo. Pruebe otra vez."
 
 #: src/app/exercisesessioncontroller.cpp:355
 #, kde-format
