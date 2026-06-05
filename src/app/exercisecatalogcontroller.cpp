@@ -20,6 +20,45 @@ using namespace Qt::StringLiterals;
 
 namespace Minuet
 {
+namespace
+{
+constexpr const char *technicalTermContext = "technical term, do you have a musician friend?";
+
+QString translatedCatalogText(const QString &text)
+{
+    return text.isEmpty() ? QString() : i18nc(technicalTermContext, text.toUtf8().constData());
+}
+
+QString translatedDescriptionForSearch(const QVariantMap &exercise)
+{
+    const QString exerciseDescription = exercise.value(u"description"_s).toString();
+    if (!exerciseDescription.isEmpty()) {
+        return translatedCatalogText(exerciseDescription);
+    }
+
+    const QString userMessage = exercise.value(u"userMessage"_s).toString();
+    if (!userMessage.isEmpty()) {
+        return translatedCatalogText(userMessage);
+    }
+
+    QString description = i18n("Practice identifying this exercise by ear.");
+    const QString playMode = exercise.value(u"playMode"_s).toString();
+    if (playMode == u"rhythm"_s) {
+        description = i18n("Practice rhythm recognition.");
+    } else if (playMode == u"scale"_s) {
+        description = i18n("Identify the scale by ear.");
+    } else if (playMode == u"chord"_s) {
+        description = i18n("Identify the chord or interval by ear.");
+    }
+
+    const QVariantList options = exercise.value(u"options"_s).toList();
+    if (!options.isEmpty()) {
+        return i18n("%1 Includes %2 possible answers.", description, options.size());
+    }
+    return description;
+}
+}
+
 ExerciseCatalogController::ExerciseCatalogController(QObject *parent)
     : QObject(parent)
 {
@@ -106,8 +145,8 @@ bool ExerciseCatalogController::actionMatches(const QString &actionText, const Q
 
 bool ExerciseCatalogController::exerciseMatchesSearch(const QVariantMap &exercise, const QString &searchText, const QString &inheritedIconName) const
 {
-    const QString exerciseTitle = i18nc("technical term, do you have a musician friend?", "%1", exercise.value(u"name"_s).toString());
-    if (actionMatches(exerciseTitle, searchText)) {
+    if (actionMatches(translatedCatalogText(exercise.value(u"name"_s).toString()), searchText)
+        || actionMatches(translatedDescriptionForSearch(exercise), searchText)) {
         return true;
     }
 

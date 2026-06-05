@@ -9,21 +9,20 @@ import org.kde.kirigami as Kirigami
 Kirigami.Page {
     id: page
 
-    property var currentExercise
+    Kirigami.Theme.colorSet: Kirigami.Theme.View
+    Kirigami.Theme.inherit: false
 
     padding: 0
 
-    ColumnLayout {
-        anchors.fill: parent
-        anchors.margins: Kirigami.Units.largeSpacing
-        spacing: Kirigami.Units.largeSpacing
+    property var currentExercise
+    property string currentExerciseIconName: ""
 
-        ExerciseView {
-            id: exerciseView
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            currentExercise: page.currentExercise
-        }
+    ExerciseView {
+        id: exerciseView
+
+        anchors.fill: parent
+        currentExercise: page.currentExercise
+        currentExerciseIconName: page.currentExerciseIconName
     }
 
     Rectangle {

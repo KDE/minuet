@@ -9,10 +9,11 @@ import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 
-Kirigami.Page {
+Kirigami.ScrollablePage {
     id: page
 
-    padding: 0
+    Kirigami.Theme.colorSet: Kirigami.Theme.Window
+    Kirigami.Theme.inherit: false
 
     property var exerciseModel: []
     property string inheritedIconName: ""
@@ -27,6 +28,7 @@ Kirigami.Page {
         const exercisePage = exercisePageComponent.createObject(applicationWindow().pageStack, {
             title: exerciseTitle,
             currentExercise: exercise,
+            currentExerciseIconName: iconName,
         })
         applicationWindow().pageStack.push(exercisePage)
     }
@@ -42,11 +44,6 @@ Kirigami.Page {
         anchors.margins: Kirigami.Units.largeSpacing
         boundsBehavior: Flickable.StopAtBounds
         clip: true
-        spacing: Kirigami.Units.smallSpacing
-        topMargin: 0
-        bottomMargin: 0
-        leftMargin: 0
-        rightMargin: 0
         model: page.exerciseList
 
         delegate: Kirigami.AbstractCard {
@@ -93,7 +90,5 @@ Kirigami.Page {
 
             onClicked: page.openExercise(modelData.exercise, modelData.iconName)
         }
-
-        QQC2.ScrollIndicator.vertical: QQC2.ScrollIndicator { active: true }
     }
 }

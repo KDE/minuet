@@ -20,6 +20,7 @@ Flickable {
     property int keyHeight: Math.max(1, height - octaveLabelHeight - keyboardBottomMargin)
     property int keyWidth: Math.max(1, Math.round(keyHeight / 3.4))
     readonly property int markerHeight: 2
+    readonly property int octaveLabelTextHeight: Math.max(1, octaveLabelHeight - markerHeight)
     readonly property bool canScrollHorizontally: piano.width > width
     readonly property real sidePadding: canScrollHorizontally ? width / 2 : 0
 
@@ -127,9 +128,10 @@ Flickable {
                     text: i18nc("technical term, do you have a musician friend?", "Octave %1", 1 + modelData)
                     width: 7 * flickable.keyWidth
                     color: "white"
-                    height: parent.height
-                    bottomPadding: flickable.markerHeight
-                    verticalAlignment: Text.AlignBottom
+                    height: flickable.octaveLabelTextHeight
+                    anchors.top: parent.top
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
                 }
             }
         }

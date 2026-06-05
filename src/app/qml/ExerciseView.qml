@@ -15,9 +15,11 @@ Item {
     visible: exerciseView.currentExercise !== undefined
 
     property var currentExercise
+    property string currentExerciseIconName: ""
     property alias countIn: internal.countIn
     readonly property bool exercisePlaying: Core.soundController !== null
         && Core.soundController.state === ISoundController.PlayingState
+    readonly property bool compactMode: !applicationWindow().wideScreen || Kirigami.Settings.isMobile
     readonly property bool musicViewsTabbed: !applicationWindow().wideScreen
         && exerciseView.height > exerciseView.width
     readonly property real answerCellSpacing: Kirigami.Units.smallSpacing
@@ -30,6 +32,7 @@ Item {
     readonly property real minimumAnswerCardWidth: Kirigami.Units.gridUnit * 10
     readonly property real selectedAnswerHeight: answerCellHeight
     readonly property real sectionPadding: Kirigami.Units.smallSpacing
+    readonly property real contentPadding: Kirigami.Units.largeSpacing * 2
     readonly property int answerColumnCount: {
         const availableWidth = Math.max(1, answerGridView.width)
         const fittedColumns = Math.max(1, Math.floor((availableWidth + answerCellSpacing) / (minimumAnswerCardWidth + answerCellSpacing)))
@@ -280,104 +283,152 @@ Item {
             id: contentLayout
 
             anchors.fill: parent
-            spacing: Kirigami.Units.smallSpacing
+            spacing: 0
 
-            ColumnLayout {
+            Rectangle {
+                id: exerciseHeader
+
                 Layout.fillWidth: true
-                spacing: 0
+                Layout.preferredHeight: headerLayout.implicitHeight + headerSeparator.implicitHeight
+                color: Kirigami.Theme.alternateBackgroundColor
 
-                Kirigami.Heading {
-                    level: exerciseView.musicViewsTabbed ? 3 : 2
-                    Layout.fillWidth: true
-                    Layout.maximumHeight: implicitHeight
-                    horizontalAlignment: Text.AlignHCenter
-                    elide: Text.ElideRight
-                    text: {
-                        if (exerciseView.currentExercise === undefined) {
-                            return ""
-                        }
-                        if (exerciseView.state === "waitingForAnswer") {
-                            return Core.exerciseSessionController.answerInstruction(exerciseView.selectedOptionCount)
-                        }
-                        return i18nc("technical term, do you have a musician friend?", exerciseView.currentExercise["userMessage"])
-                    }
-                }
+                RowLayout {
+                    id: headerLayout
 
-                Kirigami.Heading {
-                    id: messageText
-
-                    level: 3
-                    Layout.fillWidth: true
-                    Layout.maximumHeight: implicitHeight
-                    horizontalAlignment: Text.AlignHCenter
-                    elide: Text.ElideRight
-                    color: exerciseView.statusMessageColor
-                    text: exerciseView.exercisePlaying ? i18n("Playing…") : Core.exerciseSessionController.statusText
-                }
-            }
-
-            Item {
-                Layout.alignment: Qt.AlignHCenter
-                Layout.fillWidth: true
-                Layout.preferredHeight: actionButtons.implicitHeight
-
-                Row {
-                    id: actionButtons
-
-                    readonly property real buttonWidth: Math.max(playQuestionButton.implicitWidth, giveUpButton.implicitWidth, testButton.implicitWidth)
-
-                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.top: parent.top
+                    anchors.bottom: headerSeparator.top
                     spacing: Kirigami.Units.smallSpacing
 
-                    Button {
-                        id: playQuestionButton
+                    Kirigami.Icon {
+                        id: exerciseIcon
 
-                        width: actionButtons.buttonWidth
-                        text: (exerciseView.state === "waitingForNewQuestion") ? i18n("New Question") : i18n("Play Question")
-                        highlighted: exerciseView.state === "waitingForNewQuestion" || exerciseView.state === "waitingForAnswer"
-                        enabled: !animation.running && !exerciseView.exercisePlaying
+                        readonly property real sideLength: visible ? headerCenter.implicitHeight : 0
 
-                        onClicked: {
-                            if (exerciseView.state === "waitingForNewQuestion") {
-                                generateNewQuestion()
-                            }
-                            Core.soundController.play()
-                        }
+                        Layout.alignment: Qt.AlignVCenter
+                        Layout.preferredWidth: sideLength
+                        Layout.preferredHeight: sideLength * 0.75
+                        visible: exerciseView.currentExerciseIconName.length > 0 && !exerciseView.compactMode
+                        source: exerciseView.currentExerciseIconName
                     }
 
-                    Button {
-                        id: giveUpButton
+                    ColumnLayout {
+                        id: headerCenter
 
-                        width: actionButtons.buttonWidth
-                        text: i18n("Give Up")
-                        enabled: exerciseView.state === "waitingForAnswer" && !animation.running && !exerciseView.exercisePlaying
+                        Layout.fillWidth: true
+                        spacing: 0
 
-                        onClicked: {
-                            var rightAnswers = Core.exerciseSessionController.selectedExerciseOptions
-                            Core.exerciseSessionController.giveUpWithCorrectAnswers(rightAnswers, exerciseView.availableAnswers, internal.colors, exerciseView.selectedOptionCount)
-                            checkAnswers()
-                        }
-                    }
-
-                    Button {
-                        id: testButton
-
-                        width: actionButtons.buttonWidth
-                        text: Core.exerciseSessionController.isTest ? i18n("Stop Test") : i18n("Start Test")
-                        enabled: !exerciseView.exercisePlaying
-
-                        onClicked: {
-                            if (!Core.exerciseSessionController.isTest) {
-                                Core.exerciseSessionController.startTest()
-                                generateNewQuestion()
-                                if (Core.exerciseSessionController.isTest)
-                                    Core.soundController.play()
-                            } else {
-                                Core.exerciseSessionController.stopTest()
-                                exerciseView.state = "waitingForNewQuestion"
+                        Kirigami.Heading {
+                            level: exerciseView.musicViewsTabbed ? 3 : 2
+                            Layout.fillWidth: true
+                            Layout.maximumHeight: implicitHeight
+                            Layout.topMargin: 2 * Kirigami.Units.largeSpacing
+                            horizontalAlignment: Text.AlignHCenter
+                            elide: Text.ElideRight
+                            text: {
+                                if (exerciseView.currentExercise === undefined) {
+                                    return ""
+                                }
+                                if (exerciseView.state === "waitingForAnswer") {
+                                    return Core.exerciseSessionController.answerInstruction(exerciseView.selectedOptionCount)
+                                }
+                                return i18nc("technical term, do you have a musician friend?", exerciseView.currentExercise["userMessage"])
                             }
                         }
+
+                        Kirigami.Heading {
+                            id: messageText
+
+                            level: 3
+                            Layout.fillWidth: true
+                            Layout.maximumHeight: implicitHeight
+                            horizontalAlignment: Text.AlignHCenter
+                            elide: Text.ElideRight
+                            color: exerciseView.statusMessageColor
+                            text: exerciseView.exercisePlaying ? i18n("Playing…") : Core.exerciseSessionController.statusText
+                        }
+
+                        Item {
+                            Layout.alignment: Qt.AlignHCenter
+                            Layout.fillWidth: true
+                            Layout.topMargin: Kirigami.Units.smallSpacing
+                            Layout.bottomMargin: 2 * Kirigami.Units.largeSpacing
+                            Layout.preferredHeight: actionButtons.implicitHeight
+
+                            Row {
+                                id: actionButtons
+
+                                readonly property real buttonWidth: Math.max(playQuestionButton.implicitWidth, giveUpButton.implicitWidth, testButton.implicitWidth)
+
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                spacing: Kirigami.Units.smallSpacing
+
+                                Button {
+                                    id: playQuestionButton
+
+                                    width: actionButtons.buttonWidth
+                                    text: (exerciseView.state === "waitingForNewQuestion") ? i18n("New Question") : i18n("Play Question")
+                                    highlighted: exerciseView.state === "waitingForNewQuestion" || exerciseView.state === "waitingForAnswer"
+                                    enabled: !animation.running && !exerciseView.exercisePlaying
+
+                                    onClicked: {
+                                        if (exerciseView.state === "waitingForNewQuestion") {
+                                            generateNewQuestion()
+                                        }
+                                        Core.soundController.play()
+                                    }
+                                }
+
+                                Button {
+                                    id: giveUpButton
+
+                                    width: actionButtons.buttonWidth
+                                    text: i18n("Give Up")
+                                    enabled: exerciseView.state === "waitingForAnswer" && !animation.running && !exerciseView.exercisePlaying
+
+                                    onClicked: {
+                                        var rightAnswers = Core.exerciseSessionController.selectedExerciseOptions
+                                        Core.exerciseSessionController.giveUpWithCorrectAnswers(rightAnswers, exerciseView.availableAnswers, internal.colors, exerciseView.selectedOptionCount)
+                                        checkAnswers()
+                                    }
+                                }
+
+                                Button {
+                                    id: testButton
+
+                                    width: actionButtons.buttonWidth
+                                    text: Core.exerciseSessionController.isTest ? i18n("Stop Test") : i18n("Start Test")
+                                    enabled: !exerciseView.exercisePlaying
+
+                                    onClicked: {
+                                        if (!Core.exerciseSessionController.isTest) {
+                                            Core.exerciseSessionController.startTest()
+                                            generateNewQuestion()
+                                            if (Core.exerciseSessionController.isTest)
+                                                Core.soundController.play()
+                                        } else {
+                                            Core.exerciseSessionController.stopTest()
+                                            exerciseView.state = "waitingForNewQuestion"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
+
+                    Item {
+                        Layout.preferredWidth: exerciseIcon.sideLength
+                        Layout.preferredHeight: 1
+                    }
+                }
+
+                Kirigami.Separator {
+                    id: headerSeparator
+
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.bottom: parent.bottom
                 }
             }
 
@@ -386,6 +437,9 @@ Item {
 
                 Layout.fillWidth: true
                 Layout.fillHeight: true
+                Layout.leftMargin: exerciseView.contentPadding
+                Layout.rightMargin: exerciseView.contentPadding
+                Layout.topMargin: exerciseView.contentPadding
                 Layout.minimumHeight: availableAnswersHeading.implicitHeight + Kirigami.Units.smallSpacing + exerciseView.answerCellHeight + exerciseView.sectionPadding * 2
 
                 ColumnLayout {
@@ -396,7 +450,6 @@ Item {
                         id: availableAnswersHeading
 
                         Layout.fillWidth: true
-                        Layout.topMargin: Kirigami.Units.largeSpacing
 
                         Kirigami.Heading {
                             Layout.fillWidth: true
@@ -441,9 +494,14 @@ Item {
                 id: selectedAnswersFrame
 
                 Layout.fillWidth: true
-                Layout.preferredHeight: selectedAnswersHeading.implicitHeight + Kirigami.Units.smallSpacing + exerciseView.selectedAnswerHeight + exerciseView.sectionPadding * 2
+                Layout.leftMargin: exerciseView.contentPadding
+                Layout.rightMargin: exerciseView.contentPadding
+                Layout.bottomMargin: exerciseView.currentExercise !== undefined && exerciseView.currentExercise["playMode"] === "rhythm" ? exerciseView.contentPadding : 0
+                Layout.preferredHeight: selectedAnswersLayout.implicitHeight
 
                 ColumnLayout {
+                    id: selectedAnswersLayout
+
                     anchors.fill: parent
                     spacing: Kirigami.Units.smallSpacing
 
@@ -537,6 +595,9 @@ Item {
                 readonly property real viewHeight: Math.max(sheetMusicView.implicitHeight, pianoView.implicitHeight)
 
                 Layout.fillWidth: true
+                Layout.leftMargin: exerciseView.contentPadding
+                Layout.rightMargin: exerciseView.contentPadding
+                Layout.bottomMargin: visible ? exerciseView.contentPadding : 0
                 Layout.preferredHeight: visible ? viewHeight + (musicTabs.visible ? musicTabs.implicitHeight + spacing : 0) : 0
                 Layout.maximumHeight: visible ? viewHeight + (musicTabs.visible ? musicTabs.implicitHeight + spacing : 0) : 0
                 visible: exerciseView.currentExercise !== undefined && exerciseView.currentExercise["playMode"] !== "rhythm"

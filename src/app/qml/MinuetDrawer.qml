@@ -29,8 +29,6 @@ Kirigami.GlobalDrawer {
     actions: createDrawerActions(currentSearchText)
     preferredSize: defaultPreferredSize
 
-    onCurrentSearchTextChanged: resetMenu()
-
     function createDrawerActions(searchText: string): var {
         const normalizedSearchText = Core.exerciseCatalogController.normalizedText(searchText)
         const exerciseActions = createExerciseActions(exerciseModel, normalizedSearchText, "")
@@ -167,6 +165,12 @@ Kirigami.GlobalDrawer {
             Layout.topMargin: 2 * Kirigami.Units.largeSpacing
             Layout.leftMargin: Kirigami.Units.largeSpacing
             Layout.rightMargin: Kirigami.Units.largeSpacing
+        },
+
+        Item {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            visible: Core.exerciseCatalogController.normalizedText(drawer.currentSearchText) !== "" && drawer.actions.length === 0
         }
     ]
 
