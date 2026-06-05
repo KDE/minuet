@@ -160,6 +160,7 @@ int main(int argc, char *argv[])
     aboutData.addAuthor(u"Alessandro Longo"_s, i18n("Minuet icon designer"),
                         u"alessandro.longo@kdemail.net"_s);
     aboutData.addComponent(i18nc("@info:credit", "Fluidsynth"), i18nc("@info:credit", "Software synthesizer based on the SoundFont 2 specifications. © 2003 Peter Hanappe and others."), {}, u"https://github.com/FluidSynth/fluidsynth"_s, KAboutLicense::LGPL_V2_1);
+    aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
 
 #if defined(Q_OS_ANDROID)
     QQuickStyle::setStyle(u"org.kde.breeze"_s);
