@@ -48,7 +48,11 @@ if(NOT MINUET_MOBILE_PLATFORM)
     ecm_install_icons(ICONS ${minuet_ICONS_PNG} ${minuet_ICONS_SVG} DESTINATION ${KDE_INSTALL_ICONDIR} THEME hicolor)
 endif()
 
-qt_add_executable(minuet)
+if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
+    qt_add_executable(minuet)
+else()
+    add_executable(minuet)
+endif()
 
 if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
     set_target_properties(minuet PROPERTIES
