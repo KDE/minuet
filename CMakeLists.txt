@@ -39,6 +39,48 @@ include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(FeatureSummary)
 
+file(GLOB MINUET_PO_FILES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/po/*/minuet.po")
+set(MINUET_PLATFORM_TRANSLATED_LANGUAGES)
+foreach(pofile IN LISTS MINUET_PO_FILES)
+    get_filename_component(language_dir "${pofile}" DIRECTORY)
+    get_filename_component(language "${language_dir}" NAME)
+
+    if(language STREQUAL "ca@valencia")
+        set(platform_language "ca-ES-valencia")
+    elseif(language STREQUAL "zh_CN")
+        set(platform_language "zh-CN")
+    elseif(language STREQUAL "zh_TW")
+        set(platform_language "zh-TW")
+    else()
+        string(REPLACE "_" "-" platform_language "${language}")
+    endif()
+    list(APPEND MINUET_PLATFORM_TRANSLATED_LANGUAGES "${platform_language}")
+endforeach()
+
+if(APPLE)
+    set(QT_I18N_SOURCE_LANGUAGE en)
+    set(QT_I18N_TRANSLATED_LANGUAGES ${MINUET_PLATFORM_TRANSLATED_LANGUAGES})
+endif()
+
+if(ANDROID)
+    set(MINUET_ANDROID_PACKAGE_DIR "${CMAKE_CURRENT_BINARY_DIR}/android-package")
+    file(GLOB_RECURSE minuet_android_package_files CONFIGURE_DEPENDS
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/app/android/*"
+    )
+    file(REMOVE_RECURSE "${MINUET_ANDROID_PACKAGE_DIR}")
+    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/src/app/android/"
+        DESTINATION "${MINUET_ANDROID_PACKAGE_DIR}"
+    )
+
+    set(android_locale_config "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<locale-config xmlns:android=\"http://schemas.android.com/apk/res/android\">\n")
+    foreach(language IN LISTS MINUET_PLATFORM_TRANSLATED_LANGUAGES)
+        string(APPEND android_locale_config "    <locale android:name=\"${language}\"/>\n")
+    endforeach()
+    string(APPEND android_locale_config "</locale-config>\n")
+    file(MAKE_DIRECTORY "${MINUET_ANDROID_PACKAGE_DIR}/res/xml")
+    file(WRITE "${MINUET_ANDROID_PACKAGE_DIR}/res/xml/locales_config.xml" "${android_locale_config}")
+endif()
+
 ecm_setup_version(${PROJECT_VERSION} VARIABLE_PREFIX MINUET
     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/src/app/minuet_version.h"
 )
@@ -126,9 +168,27 @@ include_directories(${minuet_SOURCE_DIR}/src/ ${minuet_BINARY_DIR}/src/)
 
 add_subdirectory(src)
 add_subdirectory(data)
+ki18n_install(po)
+add_dependencies(minuet pofiles)
+
+if(ANDROID)
+    add_custom_target(minuet_android_translations
+        COMMAND ${CMAKE_COMMAND} -E remove_directory
+            "${MINUET_ANDROID_PACKAGE_DIR}/assets/share/locale"
+        COMMAND ${CMAKE_COMMAND} -E make_directory
+            "${MINUET_ANDROID_PACKAGE_DIR}/assets/share"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+            "${CMAKE_CURRENT_BINARY_DIR}/locale"
+            "${MINUET_ANDROID_PACKAGE_DIR}/assets/share/locale"
+        COMMENT "Copying Minuet translations into the Android package"
+        VERBATIM
+    )
+    add_dependencies(minuet_android_translations pofiles)
+    add_dependencies(create-apk-minuet minuet_android_translations)
+endif()
+
 if(NOT MINUET_MOBILE_PLATFORM)
     add_subdirectory(doc)
-    ki18n_install(po)
     if (KF6DocTools_FOUND)
         kdoctools_install(po)
     endif()

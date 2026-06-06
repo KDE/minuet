@@ -18,6 +18,7 @@
                  android:label="Minuet"
                  android:icon="@drawable/minuet"
                  android:allowBackup="false"
+                 android:localeConfig="@xml/locales_config"
                  android:theme="@style/MinuetTheme">
         <activity android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|layoutDirection|locale|fontScale|keyboard|keyboardHidden|navigation|mcc|mnc|density"
                   android:name="org.kde.minuet.MinuetActivity"

@@ -132,6 +132,19 @@ qt_add_qml_module(minuet
         qml/SheetMusicView/bravura_metadata.json
 )
 
+if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
+    foreach(pofile IN LISTS MINUET_PO_FILES)
+        get_filename_component(language_dir "${pofile}" DIRECTORY)
+        get_filename_component(language "${language_dir}" NAME)
+        set(mofile "${CMAKE_BINARY_DIR}/locale/${language}/LC_MESSAGES/minuet.mo")
+        set_source_files_properties("${mofile}" PROPERTIES
+            GENERATED TRUE
+            MACOSX_PACKAGE_LOCATION "Resources/locale/${language}/LC_MESSAGES"
+        )
+        target_sources(minuet PRIVATE "${mofile}")
+    endforeach()
+endif()
+
 qt_add_resources(minuet minuet_assets
     PREFIX /
     FILES
@@ -214,7 +227,7 @@ if(ANDROID)
         QT_ANDROID_VERSION_CODE ${RELEASE_SERVICE_COMPACT_VERSION}
         QT_ANDROID_VERSION_NAME ${PROJECT_VERSION}
     )
-    ecm_add_android_apk(minuet ANDROID_DIR ${CMAKE_CURRENT_SOURCE_DIR}/android)
+    ecm_add_android_apk(minuet ANDROID_DIR ${MINUET_ANDROID_PACKAGE_DIR})
 endif()
 
 if(MINUET_MOBILE_PLATFORM)
@@ -224,9 +237,13 @@ if(MINUET_MOBILE_PLATFORM)
     )
 endif()
 
-if(APPLE AND NOT (CMAKE_SYSTEM_NAME STREQUAL "iOS"))
+if(APPLE)
     find_library(CoreFoundation_FRAMEWORK CoreFoundation REQUIRED)
-    target_link_libraries(minuet PRIVATE KF6::IconThemes ${CoreFoundation_FRAMEWORK})
+    target_link_libraries(minuet PRIVATE ${CoreFoundation_FRAMEWORK})
+endif()
+
+if(APPLE AND NOT (CMAKE_SYSTEM_NAME STREQUAL "iOS"))
+    target_link_libraries(minuet PRIVATE KF6::IconThemes)
 endif()
 
 if(NOT MINUET_MOBILE_PLATFORM)
