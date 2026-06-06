@@ -114,8 +114,12 @@ if(NOT MINUET_MOBILE_PLATFORM)
 else()
     find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
         ColorScheme
-        IconThemes
     )
+    if(IOS)
+        find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
+            IconThemes
+        )
+    endif()
 endif()
 
 include_directories(${minuet_SOURCE_DIR}/src/ ${minuet_BINARY_DIR}/src/)
