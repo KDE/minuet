@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-04 00:39+0000\n"
+"POT-Creation-Date: 2026-06-06 00:39+0000\n"
 "PO-Revision-Date: 2026-06-04 13:29+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -16,16 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 26.04.0\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Emir SARI"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "emir_sari@icloud.com"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1752,38 +1742,37 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Whole Tone"
 msgstr "Tam Ton"
 
-#: src/app/exercisecatalogcontroller.cpp:80
+#: src/app/exercisecatalogcontroller.cpp:44
+#: src/app/exercisecatalogcontroller.cpp:119
 #, kde-format
 msgid "Practice identifying this exercise by ear."
 msgstr "Bu alıştırmayı kulaktan tanımlama pratiği yapın."
 
-#: src/app/exercisecatalogcontroller.cpp:83
+#: src/app/exercisecatalogcontroller.cpp:47
+#: src/app/exercisecatalogcontroller.cpp:122
 #, kde-format
 msgid "Practice rhythm recognition."
 msgstr "Ritim tanıma pratiği yapın."
 
-#: src/app/exercisecatalogcontroller.cpp:85
+#: src/app/exercisecatalogcontroller.cpp:49
+#: src/app/exercisecatalogcontroller.cpp:124
 #, kde-format
 msgid "Identify the scale by ear."
 msgstr "Gamı kulaktan tanımlayın."
 
-#: src/app/exercisecatalogcontroller.cpp:87
+#: src/app/exercisecatalogcontroller.cpp:51
+#: src/app/exercisecatalogcontroller.cpp:126
 #, kde-format
 msgid "Identify the chord or interval by ear."
 msgstr "Akoru veya aralığı kulaktan tanımlayın."
 
-#: src/app/exercisecatalogcontroller.cpp:92
+#: src/app/exercisecatalogcontroller.cpp:56
+#: src/app/exercisecatalogcontroller.cpp:131
 #, kde-format
 msgid "%1 Includes %2 possible answers."
 msgstr "%1, %2 olası yanıt içeriyor."
 
-#: src/app/exercisecatalogcontroller.cpp:109
-#, kde-format
-msgctxt "technical term, do you have a musician friend?"
-msgid "%1"
-msgstr "%1"
-
-#: src/app/exercisecatalogcontroller.cpp:207
+#: src/app/exercisecatalogcontroller.cpp:246
 #, kde-format
 msgid "Could not open JSON file \"%1\"."
 msgstr "“%1” JSON dosyası açılamadı."
@@ -1870,109 +1859,121 @@ msgstr ""
 "SoundFont 2 özelliklerine dayalı yazılım sentezleyici. © 2003 Peter Hanappe "
 "ve diğerleri."
 
-#: src/app/qml/ExerciseMenuPage.qml:22
+#: src/app/main.cpp:163
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Emir SARI"
+
+#: src/app/main.cpp:163
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "emir_sari@icloud.com"
+
+#: src/app/qml/ExerciseMenuPage.qml:23
 #, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
 msgstr[0] "%2 — %1 öge"
 msgstr[1] "%2 — %1 öge"
 
-#: src/app/qml/ExerciseView.qml:302
+#: src/app/qml/ExerciseView.qml:336
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "userMessage"
 msgstr "Kullanıcı İletisi"
 
-#: src/app/qml/ExerciseView.qml:315
+#: src/app/qml/ExerciseView.qml:349
 #, kde-format
 msgid "Playing…"
 msgstr "Çalınıyor…"
 
-#: src/app/qml/ExerciseView.qml:336
+#: src/app/qml/ExerciseView.qml:371
 #, kde-format
 msgid "New Question"
 msgstr "Yeni Soru"
 
-#: src/app/qml/ExerciseView.qml:336
+#: src/app/qml/ExerciseView.qml:371
 #, kde-format
 msgid "Play Question"
 msgstr "Soruyu Çal"
 
-#: src/app/qml/ExerciseView.qml:352
+#: src/app/qml/ExerciseView.qml:387
 #, kde-format
 msgid "Give Up"
 msgstr "Pes Et"
 
-#: src/app/qml/ExerciseView.qml:366
+#: src/app/qml/ExerciseView.qml:401
 #, kde-format
 msgid "Stop Test"
 msgstr "Testi Durdur"
 
-#: src/app/qml/ExerciseView.qml:366
+#: src/app/qml/ExerciseView.qml:401
 #, kde-format
 msgid "Start Test"
 msgstr "Testi Başlat"
 
-#: src/app/qml/ExerciseView.qml:404
+#: src/app/qml/ExerciseView.qml:457
 #, kde-format
 msgid "Available answers"
 msgstr "Kullanılabilir yanıtlar"
 
-#: src/app/qml/ExerciseView.qml:409
+#: src/app/qml/ExerciseView.qml:462
 #, kde-format
 msgid "Scroll for more"
 msgstr "Daha fazlası için kaydırın"
 
-#: src/app/qml/ExerciseView.qml:460
+#: src/app/qml/ExerciseView.qml:518
 #, kde-format
 msgid "Correct answer"
 msgid_plural "Correct answers"
 msgstr[0] "Doğru yanıt"
 msgstr[1] "Doğru yanıtlar"
 
-#: src/app/qml/ExerciseView.qml:461
+#: src/app/qml/ExerciseView.qml:519
 #, kde-format
 msgid "Your answer"
 msgid_plural "Your answers"
 msgstr[0] "Yanıtınız"
 msgstr[1] "Yanıtlarınız"
 
-#: src/app/qml/ExerciseView.qml:466
+#: src/app/qml/ExerciseView.qml:524
 #, kde-format
 msgid "Scroll for more |"
 msgstr "Daha fazlası için kaydırın |"
 
-#: src/app/qml/ExerciseView.qml:471
+#: src/app/qml/ExerciseView.qml:529
 #, kde-format
 msgid "%1 / %2"
 msgstr "%1 / %2"
 
-#: src/app/qml/ExerciseView.qml:476
+#: src/app/qml/ExerciseView.qml:534
 #, kde-format
 msgid "Backspace"
 msgstr "Geri Sil"
 
-#: src/app/qml/ExerciseView.qml:597
+#: src/app/qml/ExerciseView.qml:658
 #, kde-format
 msgid "Keyboard"
 msgstr "Klavye (Piyano)"
 
-#: src/app/qml/ExerciseView.qml:601
+#: src/app/qml/ExerciseView.qml:662
 #, kde-format
 msgid "Staff"
 msgstr "Dizek (Porte)"
 
-#: src/app/qml/ExerciseView.qml:743
+#: src/app/qml/ExerciseView.qml:804
 #, kde-format
 msgid "Empty answer slot"
 msgstr "Boş yanıt yuvası"
 
-#: src/app/qml/ExerciseView.qml:776
+#: src/app/qml/ExerciseView.qml:837
 #, kde-format
 msgid "Answer %1"
 msgstr "Yanıt %1"
 
-#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:127
+#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:125
 #, kde-format
 msgid "Home"
 msgstr "Ana Sayfa"
@@ -1987,22 +1988,22 @@ msgstr "Bir alıştırma seçin"
 msgid "Start with a topic, then pick the specific training level."
 msgstr "Bir konu seçin ve sonrasında belirli çalışma düzeyini belirleyin."
 
-#: src/app/qml/MinuetDrawer.qml:37 src/app/qml/MinuetDrawer.qml:177
+#: src/app/qml/MinuetDrawer.qml:35 src/app/qml/MinuetDrawer.qml:181
 #, kde-format
 msgid "All exercises"
 msgstr "Tüm Alıştırmalar"
 
-#: src/app/qml/MinuetDrawer.qml:78
+#: src/app/qml/MinuetDrawer.qml:76
 #, kde-format
 msgid "Search…"
 msgstr "Ara…"
 
-#: src/app/qml/MinuetDrawer.qml:99
+#: src/app/qml/MinuetDrawer.qml:97
 #, kde-format
 msgid "Welcome to Minuet"
 msgstr "Minuet’e hoş geldiniz"
 
-#: src/app/qml/MinuetDrawer.qml:110
+#: src/app/qml/MinuetDrawer.qml:108
 #, kde-format
 msgid ""
 "Practice ear training with exercises for intervals, chords, rhythm, scales, "
@@ -2011,17 +2012,17 @@ msgstr ""
 "Aralıklar, akorlar, ritimler, gamlar ve çok daha fazlası için alıştırmalarla "
 "kulak eğitiminizi geliştirin."
 
-#: src/app/qml/MinuetDrawer.qml:140 src/app/qml/SettingsPage.qml:16
+#: src/app/qml/MinuetDrawer.qml:138 src/app/qml/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "Ayarlar"
 
-#: src/app/qml/MinuetDrawer.qml:154
+#: src/app/qml/MinuetDrawer.qml:152
 #, kde-format
 msgid "About"
 msgstr "Hakkında"
 
-#: src/app/qml/PianoView/PianoView.qml:127
+#: src/app/qml/PianoView/PianoView.qml:128
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave %1"
@@ -2508,6 +2509,10 @@ msgstr "Ses Efektleri"
 msgctxt "General MIDI instrument group"
 msgid "Other"
 msgstr "Diğer"
+
+#~ msgctxt "technical term, do you have a musician friend?"
+#~ msgid "%1"
+#~ msgstr "%1"
 
 #~ msgid "Click 'New Question' to start!"
 #~ msgstr "Başlamak için “Yeni Soru”ya tıklayın!"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-04 00:39+0000\n"
+"POT-Creation-Date: 2026-06-06 00:39+0000\n"
 "PO-Revision-Date: 2026-06-04 05:21+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -17,16 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.9\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Temuri Doghonadze"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "Temuri.doghonadze@gmail.com"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1773,38 +1763,37 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Whole Tone"
 msgstr "მთლიანი ტონი"
 
-#: src/app/exercisecatalogcontroller.cpp:80
+#: src/app/exercisecatalogcontroller.cpp:44
+#: src/app/exercisecatalogcontroller.cpp:119
 #, kde-format
 msgid "Practice identifying this exercise by ear."
 msgstr "ივარჯიშეთ ამ სავარჯიშოს ყურით ამოცნობაში."
 
-#: src/app/exercisecatalogcontroller.cpp:83
+#: src/app/exercisecatalogcontroller.cpp:47
+#: src/app/exercisecatalogcontroller.cpp:122
 #, kde-format
 msgid "Practice rhythm recognition."
 msgstr "ივარჯიშეთ რიტმის ამოცნობაში."
 
-#: src/app/exercisecatalogcontroller.cpp:85
+#: src/app/exercisecatalogcontroller.cpp:49
+#: src/app/exercisecatalogcontroller.cpp:124
 #, kde-format
 msgid "Identify the scale by ear."
 msgstr "ამოიცანით მასშტაბი მოსმენით."
 
-#: src/app/exercisecatalogcontroller.cpp:87
+#: src/app/exercisecatalogcontroller.cpp:51
+#: src/app/exercisecatalogcontroller.cpp:126
 #, kde-format
 msgid "Identify the chord or interval by ear."
 msgstr "ამოიცანით აკორდი, ან ინტერვალი მოსმენით."
 
-#: src/app/exercisecatalogcontroller.cpp:92
+#: src/app/exercisecatalogcontroller.cpp:56
+#: src/app/exercisecatalogcontroller.cpp:131
 #, kde-format
 msgid "%1 Includes %2 possible answers."
 msgstr "%1 შეიცავს %2 შესაძლო პასუხს."
 
-#: src/app/exercisecatalogcontroller.cpp:109
-#, kde-format
-msgctxt "technical term, do you have a musician friend?"
-msgid "%1"
-msgstr "%1"
-
-#: src/app/exercisecatalogcontroller.cpp:207
+#: src/app/exercisecatalogcontroller.cpp:246
 #, kde-format
 msgid "Could not open JSON file \"%1\"."
 msgstr "JSON ფაილის გახსნის შეცდომა: %1."
@@ -1891,109 +1880,121 @@ msgstr ""
 "პროგრამული სინთეზატორი, რომელიც ეყრდნობა SoundFont 2-ის სპეციფიკაციას. © "
 "2003 Peter Hanappe and others."
 
-#: src/app/qml/ExerciseMenuPage.qml:22
+#: src/app/main.cpp:163
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Temuri Doghonadze"
+
+#: src/app/main.cpp:163
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "Temuri.doghonadze@gmail.com"
+
+#: src/app/qml/ExerciseMenuPage.qml:23
 #, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
 msgstr[0] "%2 - %1 ჩანაწერი"
 msgstr[1] "%2 - %1 ჩანაწერი"
 
-#: src/app/qml/ExerciseView.qml:302
+#: src/app/qml/ExerciseView.qml:336
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "userMessage"
 msgstr "userMessage"
 
-#: src/app/qml/ExerciseView.qml:315
+#: src/app/qml/ExerciseView.qml:349
 #, kde-format
 msgid "Playing…"
 msgstr "მიმდინარეობს დაკვრა…"
 
-#: src/app/qml/ExerciseView.qml:336
+#: src/app/qml/ExerciseView.qml:371
 #, kde-format
 msgid "New Question"
 msgstr "ახალი კითხვა"
 
-#: src/app/qml/ExerciseView.qml:336
+#: src/app/qml/ExerciseView.qml:371
 #, kde-format
 msgid "Play Question"
 msgstr "კითხვის დაკვრა"
 
-#: src/app/qml/ExerciseView.qml:352
+#: src/app/qml/ExerciseView.qml:387
 #, kde-format
 msgid "Give Up"
 msgstr "დანებება"
 
-#: src/app/qml/ExerciseView.qml:366
+#: src/app/qml/ExerciseView.qml:401
 #, kde-format
 msgid "Stop Test"
 msgstr "ტესტის გაჩერება"
 
-#: src/app/qml/ExerciseView.qml:366
+#: src/app/qml/ExerciseView.qml:401
 #, kde-format
 msgid "Start Test"
 msgstr "ტესტის დაწყება"
 
-#: src/app/qml/ExerciseView.qml:404
+#: src/app/qml/ExerciseView.qml:457
 #, kde-format
 msgid "Available answers"
 msgstr "ხელმისაწვდომი პასუხები"
 
-#: src/app/qml/ExerciseView.qml:409
+#: src/app/qml/ExerciseView.qml:462
 #, kde-format
 msgid "Scroll for more"
 msgstr "გადაახვიეთ მეტისთვის"
 
-#: src/app/qml/ExerciseView.qml:460
+#: src/app/qml/ExerciseView.qml:518
 #, kde-format
 msgid "Correct answer"
 msgid_plural "Correct answers"
 msgstr[0] "სწორი პასუხი"
 msgstr[1] "სწორი პასუხები"
 
-#: src/app/qml/ExerciseView.qml:461
+#: src/app/qml/ExerciseView.qml:519
 #, kde-format
 msgid "Your answer"
 msgid_plural "Your answers"
 msgstr[0] "თქვენ პასუხი"
 msgstr[1] "თქვენ პასუხები"
 
-#: src/app/qml/ExerciseView.qml:466
+#: src/app/qml/ExerciseView.qml:524
 #, kde-format
 msgid "Scroll for more |"
 msgstr "გადაახვიეთ მეტისთვის |"
 
-#: src/app/qml/ExerciseView.qml:471
+#: src/app/qml/ExerciseView.qml:529
 #, kde-format
 msgid "%1 / %2"
 msgstr "%1 / %2"
 
-#: src/app/qml/ExerciseView.qml:476
+#: src/app/qml/ExerciseView.qml:534
 #, kde-format
 msgid "Backspace"
 msgstr "Backspace"
 
-#: src/app/qml/ExerciseView.qml:597
+#: src/app/qml/ExerciseView.qml:658
 #, kde-format
 msgid "Keyboard"
 msgstr "კლავიატურა"
 
-#: src/app/qml/ExerciseView.qml:601
+#: src/app/qml/ExerciseView.qml:662
 #, kde-format
 msgid "Staff"
 msgstr "პერსონალი"
 
-#: src/app/qml/ExerciseView.qml:743
+#: src/app/qml/ExerciseView.qml:804
 #, kde-format
 msgid "Empty answer slot"
 msgstr "ცარიელი პასუხის სლოტი"
 
-#: src/app/qml/ExerciseView.qml:776
+#: src/app/qml/ExerciseView.qml:837
 #, kde-format
 msgid "Answer %1"
 msgstr "პასუხი %1"
 
-#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:127
+#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:125
 #, kde-format
 msgid "Home"
 msgstr "საწყისი"
@@ -2008,22 +2009,22 @@ msgstr "აირჩიეთ სავარჯიშო"
 msgid "Start with a topic, then pick the specific training level."
 msgstr "დაიწყეთ თემით, შემდეგ კი აირჩიეთ ვარჯიშის კონკრეტული დონე."
 
-#: src/app/qml/MinuetDrawer.qml:37 src/app/qml/MinuetDrawer.qml:177
+#: src/app/qml/MinuetDrawer.qml:35 src/app/qml/MinuetDrawer.qml:181
 #, kde-format
 msgid "All exercises"
 msgstr "ყველა სავარჯიშო"
 
-#: src/app/qml/MinuetDrawer.qml:78
+#: src/app/qml/MinuetDrawer.qml:76
 #, kde-format
 msgid "Search…"
 msgstr "ძებნა…"
 
-#: src/app/qml/MinuetDrawer.qml:99
+#: src/app/qml/MinuetDrawer.qml:97
 #, kde-format
 msgid "Welcome to Minuet"
 msgstr "კეთილი იყოს თქვენი მობრძანება Minuet-ში"
 
-#: src/app/qml/MinuetDrawer.qml:110
+#: src/app/qml/MinuetDrawer.qml:108
 #, kde-format
 msgid ""
 "Practice ear training with exercises for intervals, chords, rhythm, scales, "
@@ -2032,17 +2033,17 @@ msgstr ""
 "ივარჯიშეთ მოსმენით ამოცნობა ინტერვალების, აკორდების, რიტმის, მასშტაბის და ა."
 "შ."
 
-#: src/app/qml/MinuetDrawer.qml:140 src/app/qml/SettingsPage.qml:16
+#: src/app/qml/MinuetDrawer.qml:138 src/app/qml/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "მორგება"
 
-#: src/app/qml/MinuetDrawer.qml:154
+#: src/app/qml/MinuetDrawer.qml:152
 #, kde-format
 msgid "About"
 msgstr "შესახებ"
 
-#: src/app/qml/PianoView/PianoView.qml:127
+#: src/app/qml/PianoView/PianoView.qml:128
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave %1"
@@ -2530,3 +2531,7 @@ msgstr "ხმის ეფექტები"
 msgctxt "General MIDI instrument group"
 msgid "Other"
 msgstr "სხვა"
+
+#~ msgctxt "technical term, do you have a musician friend?"
+#~ msgid "%1"
+#~ msgstr "%1"

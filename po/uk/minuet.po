@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-04 00:39+0000\n"
+"POT-Creation-Date: 2026-06-06 00:39+0000\n"
 "PO-Revision-Date: 2026-06-04 14:27+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -19,16 +19,6 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 23.04.3\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Юрій Чорноіван"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "yurchor@ukr.net"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1764,38 +1754,37 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Whole Tone"
 msgstr "Повний тон"
 
-#: src/app/exercisecatalogcontroller.cpp:80
+#: src/app/exercisecatalogcontroller.cpp:44
+#: src/app/exercisecatalogcontroller.cpp:119
 #, kde-format
 msgid "Practice identifying this exercise by ear."
 msgstr "Вправляння у визначенні на слух."
 
-#: src/app/exercisecatalogcontroller.cpp:83
+#: src/app/exercisecatalogcontroller.cpp:47
+#: src/app/exercisecatalogcontroller.cpp:122
 #, kde-format
 msgid "Practice rhythm recognition."
 msgstr "Вправляння у визначенні ритму."
 
-#: src/app/exercisecatalogcontroller.cpp:85
+#: src/app/exercisecatalogcontroller.cpp:49
+#: src/app/exercisecatalogcontroller.cpp:124
 #, kde-format
 msgid "Identify the scale by ear."
 msgstr "Визначення розміру на слух"
 
-#: src/app/exercisecatalogcontroller.cpp:87
+#: src/app/exercisecatalogcontroller.cpp:51
+#: src/app/exercisecatalogcontroller.cpp:126
 #, kde-format
 msgid "Identify the chord or interval by ear."
 msgstr "Визначення акордів або інтервалів на слух."
 
-#: src/app/exercisecatalogcontroller.cpp:92
+#: src/app/exercisecatalogcontroller.cpp:56
+#: src/app/exercisecatalogcontroller.cpp:131
 #, kde-format
 msgid "%1 Includes %2 possible answers."
 msgstr "%1 включає %2 можливих відповідей."
 
-#: src/app/exercisecatalogcontroller.cpp:109
-#, kde-format
-msgctxt "technical term, do you have a musician friend?"
-msgid "%1"
-msgstr "%1"
-
-#: src/app/exercisecatalogcontroller.cpp:207
+#: src/app/exercisecatalogcontroller.cpp:246
 #, kde-format
 msgid "Could not open JSON file \"%1\"."
 msgstr "Не вдалося відкрити файл JSON «%1»."
@@ -1882,7 +1871,19 @@ msgstr ""
 "Програмний синтезатор на основі специфікації SoundFont 2. © Peter Hanappe та "
 "інші, 2003."
 
-#: src/app/qml/ExerciseMenuPage.qml:22
+#: src/app/main.cpp:163
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Юрій Чорноіван"
+
+#: src/app/main.cpp:163
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "yurchor@ukr.net"
+
+#: src/app/qml/ExerciseMenuPage.qml:23
 #, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
@@ -1891,53 +1892,53 @@ msgstr[1] "%2 – %1 записи"
 msgstr[2] "%2 – %1 записів"
 msgstr[3] "%2 – %1 запис"
 
-#: src/app/qml/ExerciseView.qml:302
+#: src/app/qml/ExerciseView.qml:336
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "userMessage"
 msgstr "Повідомлення користувачу"
 
-#: src/app/qml/ExerciseView.qml:315
+#: src/app/qml/ExerciseView.qml:349
 #, kde-format
 msgid "Playing…"
 msgstr "Відтворення…"
 
-#: src/app/qml/ExerciseView.qml:336
+#: src/app/qml/ExerciseView.qml:371
 #, kde-format
 msgid "New Question"
 msgstr "Нове питання"
 
-#: src/app/qml/ExerciseView.qml:336
+#: src/app/qml/ExerciseView.qml:371
 #, kde-format
 msgid "Play Question"
 msgstr "Відтворити питання"
 
-#: src/app/qml/ExerciseView.qml:352
+#: src/app/qml/ExerciseView.qml:387
 #, kde-format
 msgid "Give Up"
 msgstr "Здатися"
 
-#: src/app/qml/ExerciseView.qml:366
+#: src/app/qml/ExerciseView.qml:401
 #, kde-format
 msgid "Stop Test"
 msgstr "Припинити вправу"
 
-#: src/app/qml/ExerciseView.qml:366
+#: src/app/qml/ExerciseView.qml:401
 #, kde-format
 msgid "Start Test"
 msgstr "Почати вправу"
 
-#: src/app/qml/ExerciseView.qml:404
+#: src/app/qml/ExerciseView.qml:457
 #, kde-format
 msgid "Available answers"
 msgstr "Доступні відповіді"
 
-#: src/app/qml/ExerciseView.qml:409
+#: src/app/qml/ExerciseView.qml:462
 #, kde-format
 msgid "Scroll for more"
 msgstr "Гортайте для доступу до іншого"
 
-#: src/app/qml/ExerciseView.qml:460
+#: src/app/qml/ExerciseView.qml:518
 #, kde-format
 msgid "Correct answer"
 msgid_plural "Correct answers"
@@ -1946,7 +1947,7 @@ msgstr[1] "Правильних відповідей"
 msgstr[2] "Правильні відповіді"
 msgstr[3] "Правильні відповіді"
 
-#: src/app/qml/ExerciseView.qml:461
+#: src/app/qml/ExerciseView.qml:519
 #, kde-format
 msgid "Your answer"
 msgid_plural "Your answers"
@@ -1955,42 +1956,42 @@ msgstr[1] "Ваші відповіді"
 msgstr[2] "Ваші відповіді"
 msgstr[3] "Ваша відповідь"
 
-#: src/app/qml/ExerciseView.qml:466
+#: src/app/qml/ExerciseView.qml:524
 #, kde-format
 msgid "Scroll for more |"
 msgstr "Гортайте для доступу до іншого |"
 
-#: src/app/qml/ExerciseView.qml:471
+#: src/app/qml/ExerciseView.qml:529
 #, kde-format
 msgid "%1 / %2"
 msgstr "%1 / %2"
 
-#: src/app/qml/ExerciseView.qml:476
+#: src/app/qml/ExerciseView.qml:534
 #, kde-format
 msgid "Backspace"
 msgstr "Backspace"
 
-#: src/app/qml/ExerciseView.qml:597
+#: src/app/qml/ExerciseView.qml:658
 #, kde-format
 msgid "Keyboard"
 msgstr "Клавіатура"
 
-#: src/app/qml/ExerciseView.qml:601
+#: src/app/qml/ExerciseView.qml:662
 #, kde-format
 msgid "Staff"
 msgstr "Нотні лінійки"
 
-#: src/app/qml/ExerciseView.qml:743
+#: src/app/qml/ExerciseView.qml:804
 #, kde-format
 msgid "Empty answer slot"
 msgstr "Порожній слот відповіді"
 
-#: src/app/qml/ExerciseView.qml:776
+#: src/app/qml/ExerciseView.qml:837
 #, kde-format
 msgid "Answer %1"
 msgstr "Відповідь %1"
 
-#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:127
+#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:125
 #, kde-format
 msgid "Home"
 msgstr "Домівка"
@@ -2005,22 +2006,22 @@ msgstr "Виберіть вправу"
 msgid "Start with a topic, then pick the specific training level."
 msgstr "Почніть з теми, а потім виберіть рівень вправ."
 
-#: src/app/qml/MinuetDrawer.qml:37 src/app/qml/MinuetDrawer.qml:177
+#: src/app/qml/MinuetDrawer.qml:35 src/app/qml/MinuetDrawer.qml:181
 #, kde-format
 msgid "All exercises"
 msgstr "Усі вправи"
 
-#: src/app/qml/MinuetDrawer.qml:78
+#: src/app/qml/MinuetDrawer.qml:76
 #, kde-format
 msgid "Search…"
 msgstr "Шукати…"
 
-#: src/app/qml/MinuetDrawer.qml:99
+#: src/app/qml/MinuetDrawer.qml:97
 #, kde-format
 msgid "Welcome to Minuet"
 msgstr "Вітаємо у Minuet"
 
-#: src/app/qml/MinuetDrawer.qml:110
+#: src/app/qml/MinuetDrawer.qml:108
 #, kde-format
 msgid ""
 "Practice ear training with exercises for intervals, chords, rhythm, scales, "
@@ -2028,17 +2029,17 @@ msgid ""
 msgstr ""
 "Тренуйте слух за допомогою вправ на інтервали, акорди, ритм, розміри тощо."
 
-#: src/app/qml/MinuetDrawer.qml:140 src/app/qml/SettingsPage.qml:16
+#: src/app/qml/MinuetDrawer.qml:138 src/app/qml/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "Параметри"
 
-#: src/app/qml/MinuetDrawer.qml:154
+#: src/app/qml/MinuetDrawer.qml:152
 #, kde-format
 msgid "About"
 msgstr "Про програму"
 
-#: src/app/qml/PianoView/PianoView.qml:127
+#: src/app/qml/PianoView/PianoView.qml:128
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave %1"
@@ -2528,6 +2529,10 @@ msgstr "Звукові ефекти"
 msgctxt "General MIDI instrument group"
 msgid "Other"
 msgstr "Інші"
+
+#~ msgctxt "technical term, do you have a musician friend?"
+#~ msgid "%1"
+#~ msgstr "%1"
 
 #~ msgid "Click 'New Question' to start!"
 #~ msgstr "Натисніть «Нове питання», щоб почати!"
