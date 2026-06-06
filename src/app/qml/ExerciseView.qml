@@ -691,6 +691,8 @@ Item {
             readonly property real cardWidth: Math.max(1, (GridView.view.width - exerciseView.answerCellSpacing * (exerciseView.answerColumnCount - 1)) / exerciseView.answerColumnCount)
             readonly property real cardOffset: column * exerciseView.answerCellSpacing / exerciseView.answerColumnCount
 
+            implicitWidth: GridView.view.cellWidth
+            implicitHeight: GridView.view.cellHeight - exerciseView.answerCellSpacing
             width: GridView.view.cellWidth
             height: GridView.view.cellHeight - exerciseView.answerCellSpacing
             opacity: dimmedByHighlight ? 0.25 : enabled ? 1 : 0.45

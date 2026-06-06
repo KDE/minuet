@@ -66,7 +66,7 @@ Kirigami.GlobalDrawer {
         minimumHeight: searchField.implicitHeight
         preferredHeight: searchField.implicitHeight + topPadding + bottomPadding
         maximumHeight: searchField.implicitHeight
-        topPadding: 0
+        topPadding: Kirigami.Units.largeSpacing
         bottomPadding: Kirigami.Units.largeSpacing
 
         contentItem: Kirigami.SearchField {

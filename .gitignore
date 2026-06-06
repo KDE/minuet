@@ -17,7 +17,7 @@ Makefile
 avail
 random_seed
 build*
-!android/build.gradle
+!src/app/android/build.gradle
 !scripts/build-ios-minuet.sh
 CMakeLists.txt.user*
 *.unc-backup*

@@ -14,16 +14,22 @@
 
 #if defined(Q_OS_ANDROID)
 #include <QJniObject>
+#elif defined(Q_OS_IOS)
+#include "ios/iossplashscreen.h"
 #endif
 
 using namespace Qt::StringLiterals;
 
-#if defined(Q_OS_ANDROID)
+#if defined(Q_OS_ANDROID) || defined(Q_OS_IOS)
 namespace
 {
-void hideAndroidSplashScreen()
+void hidePlatformSplashScreen()
 {
+#if defined(Q_OS_ANDROID)
     QJniObject::callStaticMethod<void>("org/kde/minuet/MinuetActivity", "hideSplashScreen", "()V");
+#else
+    Minuet::hideIosSplashScreen();
+#endif
 }
 }
 #endif
@@ -42,22 +48,31 @@ bool UiController::initialize(Core *core)
     engine->loadFromModule(u"org.kde.minuet"_s, u"Main"_s);
 
     if (engine->rootObjects().isEmpty()) {
+#if defined(Q_OS_ANDROID) || defined(Q_OS_IOS)
+        hidePlatformSplashScreen();
+#endif
         m_errorString = i18n("Could not load the main user interface.");
         return false;
     }
 
-#if defined(Q_OS_ANDROID)
+#if defined(Q_OS_ANDROID) || defined(Q_OS_IOS)
     if (auto *window = qobject_cast<QQuickWindow *>(engine->rootObjects().constFirst())) {
+#if defined(Q_OS_IOS)
+        Minuet::showIosSplashScreen();
+#endif
         QObject::connect(
             window,
             &QQuickWindow::frameSwapped,
             window,
             []() {
-                hideAndroidSplashScreen();
+                hidePlatformSplashScreen();
             },
             Qt::SingleShotConnection);
+#if defined(Q_OS_IOS)
+        window->update();
+#endif
     } else {
-        hideAndroidSplashScreen();
+        hidePlatformSplashScreen();
     }
 #endif
 

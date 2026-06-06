@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24128" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Splash-ViewController">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24030"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <scene sceneID="Splash-Scene">
+            <objects>
+                <viewController id="Splash-ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Splash-View">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Splash-Icon">
+                                <rect key="frame" x="136.5" y="366" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="Splash-Icon-Width"/>
+                                    <constraint firstAttribute="height" constant="120" id="Splash-Icon-Height"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchBranding" translatesAutoresizingMaskIntoConstraints="NO" id="Splash-Branding">
+                                <rect key="frame" x="96.5" y="714" width="200" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Splash-Branding-Width"/>
+                                    <constraint firstAttribute="height" constant="80" id="Splash-Branding-Height"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Splash-SafeArea"/>
+                        <color key="backgroundColor" name="SplashBackground"/>
+                        <constraints>
+                            <constraint firstItem="Splash-Icon" firstAttribute="centerX" secondItem="Splash-View" secondAttribute="centerX" id="Splash-Icon-CenterX"/>
+                            <constraint firstItem="Splash-Icon" firstAttribute="centerY" secondItem="Splash-View" secondAttribute="centerY" id="Splash-Icon-CenterY"/>
+                            <constraint firstItem="Splash-Branding" firstAttribute="centerX" secondItem="Splash-View" secondAttribute="centerX" id="Splash-Branding-CenterX"/>
+                            <constraint firstItem="Splash-Branding" firstAttribute="bottom" secondItem="Splash-SafeArea" secondAttribute="bottom" constant="-24" id="Splash-Branding-Bottom"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Splash-FirstResponder" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="LaunchBranding" width="200" height="80"/>
+        <image name="LaunchIcon" width="120" height="120"/>
+        <namedColor name="SplashBackground">
+            <color red="0.973" green="0.980" blue="0.988" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

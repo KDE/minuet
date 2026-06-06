@@ -16,6 +16,16 @@ set(minuet_SRCS
     smuflmetadata.cpp
 )
 
+if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
+    list(APPEND minuet_SRCS
+        ios/iossplashscreen.h
+        ios/iossplashscreen.mm
+    )
+    set_source_files_properties(ios/iossplashscreen.mm PROPERTIES
+        COMPILE_OPTIONS "-fobjc-arc"
+    )
+endif()
+
 if(NOT MINUET_MOBILE_PLATFORM)
     set(minuet_ICONS_PNG
         ${CMAKE_CURRENT_SOURCE_DIR}/icons/16-apps-minuet.png
@@ -56,6 +66,7 @@ endif()
 
 if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
     set(IOS_ASSETS ${CMAKE_CURRENT_SOURCE_DIR}/ios/Assets.xcassets)
+    set(IOS_LAUNCH_SCREEN ${CMAKE_CURRENT_SOURCE_DIR}/ios/LaunchScreen.storyboard)
     target_sources(minuet PRIVATE ${IOS_ASSETS})
     set_source_files_properties(${IOS_ASSETS} PROPERTIES
         MACOSX_PACKAGE_LOCATION Resources
@@ -67,6 +78,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
         MACOSX_BUNDLE_BUNDLE_NAME Minuet
         MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
         MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION}
+        QT_IOS_LAUNCH_SCREEN ${IOS_LAUNCH_SCREEN}
         XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_APPICON_NAME AppIcon
         XCODE_ATTRIBUTE_CURRENT_PROJECT_VERSION ${PROJECT_VERSION}
     )
@@ -202,7 +214,7 @@ if(ANDROID)
         QT_ANDROID_VERSION_CODE ${RELEASE_SERVICE_COMPACT_VERSION}
         QT_ANDROID_VERSION_NAME ${PROJECT_VERSION}
     )
-    ecm_add_android_apk(minuet ANDROID_DIR ${CMAKE_SOURCE_DIR}/android)
+    ecm_add_android_apk(minuet ANDROID_DIR ${CMAKE_CURRENT_SOURCE_DIR}/android)
 endif()
 
 if(MINUET_MOBILE_PLATFORM)

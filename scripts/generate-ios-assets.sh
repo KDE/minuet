@@ -18,6 +18,10 @@ SRC="$REPO_ROOT/src/app/icons/128-apps-minuet.svg"
 XCASSETS="$REPO_ROOT/src/app/ios/Assets.xcassets"
 ICONSET="$XCASSETS/AppIcon.appiconset"
 LAUNCHICON="$XCASSETS/LaunchIcon.imageset"
+LAUNCHBRANDING="$XCASSETS/LaunchBranding.imageset"
+SPLASHCOLOR="$XCASSETS/SplashBackground.colorset"
+BRANDING_LIGHT="$REPO_ROOT/src/app/android/artwork/minuet-splash-branding-light.svg"
+BRANDING_DARK="$REPO_ROOT/src/app/android/artwork/minuet-splash-branding-dark.svg"
 
 # --- Sanity checks -----------------------------------------------------------
 
@@ -114,4 +118,57 @@ cat > "$LAUNCHICON/Contents.json" << 'JSON'
 JSON
 
 echo "✅ LaunchIcon.imageset done"
+
+# --- Generate launch screen branding ----------------------------------------
+
+mkdir -p "$LAUNCHBRANDING"
+
+echo "🎨 Generating launch screen branding"
+
+for SCALE in 1 2 3; do
+    WIDTH=$((200 * SCALE))
+    HEIGHT=$((80 * SCALE))
+    rsvg-convert -w "$WIDTH" -h "$HEIGHT" "$BRANDING_LIGHT" -o "$LAUNCHBRANDING/launch-branding-${SCALE}x.png"
+    rsvg-convert -w "$WIDTH" -h "$HEIGHT" "$BRANDING_DARK" -o "$LAUNCHBRANDING/launch-branding-dark-${SCALE}x.png"
+done
+
+cat > "$LAUNCHBRANDING/Contents.json" << 'JSON'
+{
+  "images": [
+    { "idiom": "universal", "scale": "1x", "filename": "launch-branding-1x.png" },
+    { "idiom": "universal", "scale": "2x", "filename": "launch-branding-2x.png" },
+    { "idiom": "universal", "scale": "3x", "filename": "launch-branding-3x.png" },
+    { "appearances": [{ "appearance": "luminosity", "value": "dark" }], "idiom": "universal", "scale": "1x", "filename": "launch-branding-dark-1x.png" },
+    { "appearances": [{ "appearance": "luminosity", "value": "dark" }], "idiom": "universal", "scale": "2x", "filename": "launch-branding-dark-2x.png" },
+    { "appearances": [{ "appearance": "luminosity", "value": "dark" }], "idiom": "universal", "scale": "3x", "filename": "launch-branding-dark-3x.png" }
+  ],
+  "info": { "author": "xcode", "version": 1 }
+}
+JSON
+
+mkdir -p "$SPLASHCOLOR"
+cat > "$SPLASHCOLOR/Contents.json" << 'JSON'
+{
+  "colors": [
+    {
+      "color": {
+        "color-space": "srgb",
+        "components": { "alpha": "1.000", "blue": "0.988", "green": "0.980", "red": "0.973" }
+      },
+      "idiom": "universal"
+    },
+    {
+      "appearances": [{ "appearance": "luminosity", "value": "dark" }],
+      "color": {
+        "color-space": "srgb",
+        "components": { "alpha": "1.000", "blue": "0.094", "green": "0.078", "red": "0.063" }
+      },
+      "idiom": "universal"
+    }
+  ],
+  "info": { "author": "xcode", "version": 1 }
+}
+JSON
+
+echo "✅ Launch screen branding and colors done"
 echo "✅ All done: $XCASSETS"
