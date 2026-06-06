@@ -34,9 +34,13 @@ Item {
     readonly property real sectionPadding: Kirigami.Units.smallSpacing
     readonly property real contentPadding: Kirigami.Units.largeSpacing * 2
     readonly property int answerColumnCount: {
+        const availableAnswerCount = Math.max(1, availableAnswers.length)
+        if (compactMode && availableAnswerCount >= 2) {
+            return 2
+        }
+
         const availableWidth = Math.max(1, answerGridView.width)
         const fittedColumns = Math.max(1, Math.floor((availableWidth + answerCellSpacing) / (minimumAnswerCardWidth + answerCellSpacing)))
-        const availableAnswerCount = Math.max(1, availableAnswers.length)
         return Math.max(1, Math.min(5, fittedColumns, availableAnswerCount))
     }
     readonly property var availableAnswers: Core.exerciseSessionController.availableAnswersModel(exerciseView.currentExercise || {})
@@ -469,12 +473,17 @@ Item {
                         Layout.fillHeight: true
                         Layout.minimumHeight: exerciseView.answerCellHeight + exerciseView.sectionPadding * 2
                         padding: 0
+                        leftPadding: 0
+                        rightPadding: 0
+                        topPadding: 0
+                        bottomPadding: 0
 
                         GridView {
                             id: answerGridView
 
                             anchors.fill: parent
-                            anchors.margins: exerciseView.answerCellSpacing
+                            anchors.topMargin: exerciseView.answerCellSpacing
+                            anchors.bottomMargin: exerciseView.answerCellSpacing
                             boundsBehavior: Flickable.StopAtBounds
                             flow: GridView.FlowLeftToRight
                             layoutDirection: Qt.LeftToRight
@@ -597,7 +606,6 @@ Item {
                 Layout.fillWidth: true
                 Layout.leftMargin: exerciseView.contentPadding
                 Layout.rightMargin: exerciseView.contentPadding
-                Layout.bottomMargin: visible ? exerciseView.contentPadding : 0
                 Layout.preferredHeight: visible ? viewHeight + (musicTabs.visible ? musicTabs.implicitHeight + spacing : 0) : 0
                 Layout.maximumHeight: visible ? viewHeight + (musicTabs.visible ? musicTabs.implicitHeight + spacing : 0) : 0
                 visible: exerciseView.currentExercise !== undefined && exerciseView.currentExercise["playMode"] !== "rhythm"
@@ -679,15 +687,20 @@ Item {
             property color accentColor: colorForAnswerIndex(index)
             property bool longPressed: false
             property bool dimmedByHighlight: Core.exerciseSessionController.highlightingSingleAnswer && model !== undefined && model.name !== Core.exerciseSessionController.highlightedAnswerName
+            readonly property int column: index % exerciseView.answerColumnCount
+            readonly property real cardWidth: Math.max(1, (GridView.view.width - exerciseView.answerCellSpacing * (exerciseView.answerColumnCount - 1)) / exerciseView.answerColumnCount)
+            readonly property real cardOffset: column * exerciseView.answerCellSpacing / exerciseView.answerColumnCount
 
-            width: GridView.view.cellWidth - (index % exerciseView.answerColumnCount === exerciseView.answerColumnCount - 1 ? 0 : exerciseView.answerCellSpacing)
+            width: GridView.view.cellWidth
             height: GridView.view.cellHeight - exerciseView.answerCellSpacing
             opacity: dimmedByHighlight ? 0.25 : enabled ? 1 : 0.45
             hoverEnabled: !Kirigami.Settings.isMobile
             enabled: exerciseView.state === "waitingForAnswer" && !animation.running
             padding: 0
-            leftInset: 0
-            rightInset: 0
+            leftPadding: cardOffset
+            rightPadding: width - cardOffset - cardWidth
+            leftInset: cardOffset
+            rightInset: width - cardOffset - cardWidth
             topInset: 0
             bottomInset: 0
 
@@ -701,8 +714,6 @@ Item {
             }
 
             contentItem: Item {
-                anchors.fill: parent
-
                 Text {
                     readonly property bool rhythmCard: exerciseView.currentExercise["playMode"] === "rhythm"
 

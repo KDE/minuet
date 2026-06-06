@@ -141,5 +141,3 @@ void ISoundController::setRhythmInstruments(const QVariantList &rhythmInstrument
 }
 
 }
-
-#include "moc_isoundcontroller.cpp"

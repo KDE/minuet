@@ -1,0 +1,255 @@
+diff --git a/KF6KirigamiMacros.cmake b/KF6KirigamiMacros.cmake
+index 5acd18af..ec8c4994 100644
+--- a/KF6KirigamiMacros.cmake
++++ b/KF6KirigamiMacros.cmake
+@@ -6,14 +6,15 @@
+ include(ExternalProject)
+ 
+ function(kirigami_package_breeze_icons)
++    set(_oneValueArgs TARGET)
+     set(_multiValueArgs ICONS)
+-    cmake_parse_arguments(ARG "" "" "${_multiValueArgs}" ${ARGN} )
++    cmake_parse_arguments(ARG "" "${_oneValueArgs}" "${_multiValueArgs}" ${ARGN} )
+ 
+     if(NOT ARG_ICONS)
+         message(FATAL_ERROR "No ICONS argument given to kirigami_package_breeze_icons")
+     endif()
+ 
+-    if(NOT ANDROID)
++    if(NOT ANDROID AND NOT CMAKE_SYSTEM_NAME STREQUAL "iOS")
+         return() # not needed on other platforms
+     endif()
+ 
+@@ -61,6 +62,47 @@ function(kirigami_package_breeze_icons)
+         view-right-close
+     )
+ 
++    if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
++        if(NOT ARG_TARGET)
++            message(FATAL_ERROR "No TARGET argument given to kirigami_package_breeze_icons on iOS")
++        endif()
++        if(NOT TARGET ${ARG_TARGET})
++            message(FATAL_ERROR "Target '${ARG_TARGET}' does not exist")
++        endif()
++
++        find_path(_BREEZE_THEME_DIR
++            NAMES index.theme
++            PATHS "${KDE_INSTALL_FULL_ICONDIR}/breeze"
++            NO_DEFAULT_PATH
++        )
++        if(NOT _BREEZE_THEME_DIR)
++            message(FATAL_ERROR "Could not find the installed Breeze icon theme")
++        endif()
++
++        set(_breeze_resource_files "${_BREEZE_THEME_DIR}/index.theme")
++        foreach(_iconName IN LISTS ARG_ICONS)
++            file(GLOB _icon_paths LIST_DIRECTORIES FALSE "${_BREEZE_THEME_DIR}/*/22/${_iconName}.svg")
++            list(LENGTH _icon_paths _count_paths)
++            if(_count_paths EQUAL 0)
++                message(WARNING "Could not find Breeze icon '${_iconName}'")
++                continue()
++            endif()
++            if(_count_paths GREATER 1)
++                message(WARNING "Found more than one version of '${_iconName}': ${_icon_paths}")
++            endif()
++            list(GET _icon_paths 0 _icon_path)
++            list(APPEND _breeze_resource_files "${_icon_path}")
++        endforeach()
++
++        list(REMOVE_DUPLICATES _breeze_resource_files)
++        qt_add_resources(${ARG_TARGET} ${ARG_TARGET}_kirigami_breeze_icons
++            PREFIX /icons/breeze
++            BASE "${_BREEZE_THEME_DIR}"
++            FILES ${_breeze_resource_files}
++        )
++        return()
++    endif()
++
+     function(_find_breeze_icon icon)
+         foreach(_size 48 32 22 16 12)
+             SET(path "")
+diff --git a/autotests/tst_globaldrawer.qml b/autotests/tst_globaldrawer.qml
+index 380b67da..70b611f4 100644
+--- a/autotests/tst_globaldrawer.qml
++++ b/autotests/tst_globaldrawer.qml
+@@ -67,7 +67,7 @@ TestCase {
+             Rectangle {
+                 id: topItem
+                 Layout.fillWidth: true
+-                Layout.fillHeight: true
++                implicitHeight: 60
+                 color: "green"
+                 radius: 20 // to see its bounds
+             }
+@@ -130,6 +130,33 @@ TestCase {
+         });
+     }
+ 
++    function test_topPaddingAppliedOnce() {
++        const app = createTemporaryObject(appItemComponent, this);
++        verify(app);
++
++        const drawer = app.globalDrawer;
++        const topItem = app.topItem;
++        drawer.topPadding = 0;
++        waitForRendering(drawer.contentItem);
++
++        const initialY = topItem.mapToItem(T.Overlay.overlay, 0, 0).y;
++        const padding = 40;
++        drawer.topPadding = padding;
++
++        tryVerify(() => {
++            const paddedY = topItem.mapToItem(T.Overlay.overlay, 0, 0).y;
++            return Math.round(paddedY - initialY) === padding;
++        });
++    }
++
++    function test_topContentUsesImplicitHeight() {
++        const app = createTemporaryObject(appItemComponent, this);
++        verify(app);
++        waitForRendering(app.globalDrawer.contentItem);
++
++        compare(Math.round(app.topItem.parent.height), Math.round(app.topItem.parent.implicitHeight));
++    }
++
+     component AppItemLoaderComponent : Kirigami.ApplicationItem {
+         globalDrawer: globalDrawerLoader.item
+         contextDrawer: contextDrawerLoader.item
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 5b523bf8..f15763c9 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -127,6 +127,13 @@ qt_target_qml_sources(Kirigami RESOURCES
+     OUTPUT_TARGETS _out_targets_1
+ )
+ 
++if (CMAKE_SYSTEM_NAME STREQUAL "iOS")
++    qt_target_qml_sources(Kirigami RESOURCES
++        styles/iOS/Theme.qml
++        OUTPUT_TARGETS _out_targets_ios
++    )
++endif()
++
+ if (DESKTOP_ENABLED)
+     qt_target_qml_sources(Kirigami RESOURCES
+         styles/org.kde.desktop/AbstractApplicationHeader.qml
+@@ -190,7 +197,7 @@ else()
+     )
+ endif()
+ 
+-install(TARGETS Kirigami ${_out_targets_1} ${_out_targets_2} EXPORT KirigamiTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
++install(TARGETS Kirigami ${_out_targets_1} ${_out_targets_ios} ${_out_targets_2} EXPORT KirigamiTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
+ install(EXPORT KirigamiTargets
+     DESTINATION ${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6Kirigami
+     FILE KF6KirigamiTargets.cmake
+diff --git a/src/controls/GlobalDrawer.qml b/src/controls/GlobalDrawer.qml
+index 93ee232a..5cd73b13 100644
+--- a/src/controls/GlobalDrawer.qml
++++ b/src/controls/GlobalDrawer.qml
+@@ -585,9 +585,7 @@ KC.OverlayDrawer {
+                         Layout.leftMargin: root.leftPadding
+                         Layout.rightMargin: root.rightPadding
+                         Layout.bottomMargin: Platform.Units.smallSpacing
+-                        Layout.topMargin: root.topPadding
+                         Layout.fillWidth: true
+-                        Layout.fillHeight: true
+                         Layout.preferredHeight: implicitHeight * opacity
+                         // NOTE: why this? just Layout.fillWidth: true doesn't seem sufficient
+                         // as items are added only after this column creation
+diff --git a/src/styles/iOS/Theme.qml b/src/styles/iOS/Theme.qml
+new file mode 100644
+index 00000000..9983f5b1
+--- /dev/null
++++ b/src/styles/iOS/Theme.qml
+@@ -0,0 +1,91 @@
++/*
++ *  SPDX-FileCopyrightText: 2026 Sandro Andrade <sandroandrade@kde.org>
++ *
++ *  SPDX-License-Identifier: LGPL-2.0-or-later
++ */
++
++import QtQuick
++import org.kde.kirigami as Kirigami
++
++Kirigami.BasicThemeDefinition {
++    textColor: palette.windowText
++    disabledTextColor: disabledPalette.windowText
++
++    highlightColor: palette.highlight
++    highlightedTextColor: palette.highlightedText
++    backgroundColor: palette.window
++    alternateBackgroundColor: Qt.darker(palette.window, 1.05)
++    activeTextColor: palette.highlightedText
++    activeBackgroundColor: palette.highlight
++    linkColor: "#2980B9"
++    linkBackgroundColor: "#2980B9"
++    visitedLinkColor: "#7F8C8D"
++    visitedLinkBackgroundColor: "#7F8C8D"
++    hoverColor: palette.highlight
++    focusColor: palette.highlight
++    negativeTextColor: "#DA4453"
++    negativeBackgroundColor: "#DA4453"
++    neutralTextColor: "#F67400"
++    neutralBackgroundColor: "#F67400"
++    positiveTextColor: "#27AE60"
++    positiveBackgroundColor: "#27AE60"
++
++    buttonTextColor: palette.buttonText
++    buttonBackgroundColor: palette.button
++    buttonAlternateBackgroundColor: Qt.darker(palette.button, 1.05)
++    buttonHoverColor: palette.highlight
++    buttonFocusColor: palette.highlight
++
++    viewTextColor: palette.text
++    viewBackgroundColor: palette.base
++    viewAlternateBackgroundColor: palette.alternateBase
++    viewHoverColor: palette.highlight
++    viewFocusColor: palette.highlight
++
++    selectionTextColor: palette.highlightedText
++    selectionBackgroundColor: palette.highlight
++    selectionAlternateBackgroundColor: Qt.darker(palette.highlight, 1.05)
++    selectionHoverColor: palette.highlight
++    selectionFocusColor: palette.highlight
++
++    tooltipTextColor: palette.text
++    tooltipBackgroundColor: palette.base
++    tooltipAlternateBackgroundColor: palette.alternateBase
++    tooltipHoverColor: palette.highlight
++    tooltipFocusColor: palette.highlight
++
++    complementaryTextColor: palette.text
++    complementaryBackgroundColor: palette.base
++    complementaryAlternateBackgroundColor: palette.alternateBase
++    complementaryHoverColor: palette.highlight
++    complementaryFocusColor: palette.highlight
++
++    headerTextColor: palette.text
++    headerBackgroundColor: palette.base
++    headerAlternateBackgroundColor: palette.alternateBase
++    headerHoverColor: palette.highlight
++    headerFocusColor: palette.highlight
++
++    defaultFont: fontMetrics.font
++
++    property list<QtObject> children: [
++        TextMetrics {
++            id: fontMetrics
++        },
++        SystemPalette {
++            id: palette
++            colorGroup: SystemPalette.Active
++        },
++        SystemPalette {
++            id: disabledPalette
++            colorGroup: SystemPalette.Disabled
++        }
++    ]
++
++    function __propagateColorSet(object, context) {}
++
++    function __propagateTextColor(object, color) {}
++    function __propagateBackgroundColor(object, color) {}
++    function __propagatePrimaryColor(object, color) {}
++    function __propagateAccentColor(object, color) {}
++}

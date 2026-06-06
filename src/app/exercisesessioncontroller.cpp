@@ -331,7 +331,7 @@ bool ExerciseSessionController::removeUserAnswerAt(int position)
 
 bool ExerciseSessionController::removeLastUserAnswer()
 {
-    return removeUserAnswerAt(m_userAnswers.size() - 1);
+    return removeUserAnswerAt(static_cast<int>(m_userAnswers.size() - 1));
 }
 
 void ExerciseSessionController::checkAnswers(const QVariantList &correctAnswers, int expectedAnswers, int maximumExercises)
@@ -434,7 +434,7 @@ void ExerciseSessionController::randomlySelectExerciseOptions(int selectedOption
     QJsonArray remainingExerciseOptions = exerciseOptions;
     for (int i = 0; i < numberOfSelectedOptions; ++i) {
         const QJsonArray &selectableExerciseOptions = playMode == u"rhythm"_s ? exerciseOptions : remainingExerciseOptions;
-        const int chosenExerciseOption = generator->bounded(selectableExerciseOptions.size());
+        const int chosenExerciseOption = static_cast<int>(generator->bounded(selectableExerciseOptions.size()));
         if (!selectableExerciseOptions[chosenExerciseOption].isObject()) {
             failSelection(u"Current exercise option is not an object."_s);
             return;

@@ -166,7 +166,10 @@
       "name": "kirigami",
       "url": "https://invent.kde.org/frameworks/kirigami.git",
       "refEnv": "KDE_REF",
-      "defaultRef": "master"
+      "defaultRef": "master",
+      "patches": [
+        "kirigami-ios.patch"
+      ]
     },
     {
       "name": "breeze-icons",

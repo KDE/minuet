@@ -63,6 +63,12 @@ Kirigami.GlobalDrawer {
     }
 
     header: Kirigami.AbstractApplicationHeader {
+        minimumHeight: searchField.implicitHeight
+        preferredHeight: searchField.implicitHeight + topPadding + bottomPadding
+        maximumHeight: searchField.implicitHeight
+        topPadding: 0
+        bottomPadding: Kirigami.Units.largeSpacing
+
         contentItem: Kirigami.SearchField {
             id: searchField
 
@@ -162,9 +168,6 @@ Kirigami.GlobalDrawer {
 
         Kirigami.Separator {
             Layout.fillWidth: true
-            Layout.topMargin: 2 * Kirigami.Units.largeSpacing
-            Layout.leftMargin: Kirigami.Units.largeSpacing
-            Layout.rightMargin: Kirigami.Units.largeSpacing
         },
 
         Item {

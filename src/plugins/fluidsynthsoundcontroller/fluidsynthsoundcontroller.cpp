@@ -702,5 +702,3 @@ void FluidSynthSoundController::deleteEngine()
         m_audioDriver = nullptr;
     }
 }
-
-#include "moc_fluidsynthsoundcontroller.cpp"
