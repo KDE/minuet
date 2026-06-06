@@ -6,14 +6,14 @@
 
 #include "core.h"
 
-#if defined(Q_OS_ANDROID)
+#if defined(Q_OS_ANDROID) || defined(Q_OS_IOS)
 #include "../plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.h"
 #endif
 
 #include <interfaces/iplugin.h>
 #include <interfaces/isoundcontroller.h>
 
-#if !defined(Q_OS_ANDROID)
+#if !defined(Q_OS_ANDROID) && !defined(Q_OS_IOS)
 #include <QPluginLoader>
 #include <KPluginMetaData>
 #endif
@@ -28,14 +28,14 @@ namespace Minuet
 {
 PluginController::PluginController(QObject *parent) : QObject(parent)
 {
-#if !defined(Q_OS_ANDROID)
+#if !defined(Q_OS_ANDROID) && !defined(Q_OS_IOS)
     m_plugins = KPluginMetaData::findPlugins(u"minuet"_s);
 #endif
 }
 
 PluginController::~PluginController()
 {
-#if !defined(Q_OS_ANDROID)
+#if !defined(Q_OS_ANDROID) && !defined(Q_OS_IOS)
     const auto &loadedPlugins = m_loadedPlugins.values();
     qDeleteAll(loadedPlugins.begin(), loadedPlugins.end());
     m_loadedPlugins.clear();
@@ -45,7 +45,7 @@ PluginController::~PluginController()
 bool PluginController::initialize(Core *core)
 {
     m_errorString.clear();
-#if !defined(Q_OS_ANDROID)
+#if !defined(Q_OS_ANDROID) && !defined(Q_OS_IOS)
     ISoundController *soundController = nullptr;
     for (const KPluginMetaData &pluginMetaData : std::as_const(m_plugins)) {
         if (m_loadedPlugins.value(pluginMetaData)) {

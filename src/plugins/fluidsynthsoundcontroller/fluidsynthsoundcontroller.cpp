@@ -660,7 +660,7 @@ void FluidSynthSoundController::resetEngine()
         fluid_settings_setstr(m_settings, "audio.driver", "alsa");
         m_audioDriver = new_fluid_audio_driver(m_settings, m_synth);
     }
-#elif defined(Q_OS_MACOS)
+#elif defined(Q_OS_MACOS) || defined(Q_OS_IOS)
     fluid_settings_setstr(m_settings, "audio.driver", "coreaudio");
     m_audioDriver = new_fluid_audio_driver(m_settings, m_synth);
 #elif defined(Q_OS_WIN)

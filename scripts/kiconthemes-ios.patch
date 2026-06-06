@@ -1,0 +1,68 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index ef464ec..99cbb97 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,10 +1,12 @@
+ configure_file(config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h)
+ 
+-add_subdirectory(tools/kiconfinder)
++if(NOT IOS)
++    add_subdirectory(tools/kiconfinder)
++endif()
+ if (KICONTHEMES_USE_QTQUICK)
+     add_subdirectory(qml)
+ endif()
+-if (APPLE)
++if(APPLE AND NOT IOS)
+     add_subdirectory(tools/ksvg2icns)
+ endif()
+ 
+@@ -99,17 +101,20 @@ install(FILES
+   DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/KIconThemes COMPONENT Devel
+ )
+ 
+-add_library(KIconEnginePlugin MODULE kiconengineplugin.cpp)
+-
+-target_link_libraries(KIconEnginePlugin
+-    PRIVATE
+-        Qt6::Gui
+-        KF6::IconThemes
+-)
++if(NOT IOS)
++    add_library(KIconEnginePlugin MODULE kiconengineplugin.cpp)
++    target_link_libraries(KIconEnginePlugin
++        PRIVATE
++            Qt6::Gui
++            KF6::IconThemes
++    )
++endif()
+ 
+ # install in an extra directory we will add to the plugin path later just for this one engine
+ # we can overwrite the system one with that trick
+-install(TARGETS KIconEnginePlugin DESTINATION ${KDE_INSTALL_QTPLUGINDIR}/kiconthemes6/iconengines)
++if(NOT IOS)
++    install(TARGETS KIconEnginePlugin DESTINATION ${KDE_INSTALL_QTPLUGINDIR}/kiconthemes6/iconengines)
++endif()
+ 
+ ecm_qt_install_logging_categories(
+     EXPORT KICONTHEMES
+diff --git a/src/tools/ksvg2icns/ksvg2icns.cpp b/src/tools/ksvg2icns/ksvg2icns.cpp
+index ddd9042..49381f4 100644
+--- a/src/tools/ksvg2icns/ksvg2icns.cpp
++++ b/src/tools/ksvg2icns/ksvg2icns.cpp
+@@ -131,6 +131,7 @@ int main(int argc, char *argv[])
+                                                << "icns"
+                                                << "-o" << outIcns << outPath;
+ 
++#if !defined(Q_OS_IOS)
+     QProcess iconUtil;
+ 
+     iconUtil.start(iconutilExec, utilArgs, QIODevice::ReadOnly);
+@@ -139,6 +140,7 @@ int main(int argc, char *argv[])
+ 
+     EXIT_ON_ERROR(iconUtil.exitStatus() == QProcess::NormalExit, "iconutil crashed!\n");
+     EXIT_ON_ERROR(iconUtil.exitCode() == 0, "iconutil returned %d\n", iconUtil.exitCode());
++#endif
+ 
+     return 0;
+ }

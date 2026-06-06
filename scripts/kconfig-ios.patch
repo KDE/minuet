@@ -1,0 +1,28 @@
+diff --git a/src/core/kconfig.cpp b/src/core/kconfig.cpp
+index 73d005d9..278c4eae 100644
+--- a/src/core/kconfig.cpp
++++ b/src/core/kconfig.cpp
+@@ -557,8 +557,10 @@ void KConfig::checkUpdate(const QString &id, const QString &updateFile)
+     const QString cfg_id = updateFile + QLatin1Char(':') + id;
+     const QStringList ids = cg.readEntry("update_info", QStringList());
+     if (!ids.contains(cfg_id)) {
++#if !defined(Q_OS_IOS)
+         QProcess::execute(QStringLiteral(KCONF_UPDATE_INSTALL_LOCATION), QStringList{QStringLiteral("--check"), updateFile});
+         reparseConfiguration();
++#endif
+     }
+ }
+ 
+@@ -989,10 +991,12 @@ bool KConfig::isConfigWritable(bool warnUser)
+ 
+         // Note: We don't ask the user if we should not ask this question again because we can't save the answer.
+         errorMsg += QCoreApplication::translate("KConfig", "Please contact your system administrator.");
++#if !defined(Q_OS_IOS)
+         QString cmdToExec = QStandardPaths::findExecutable(QStringLiteral("kdialog"));
+         if (!cmdToExec.isEmpty()) {
+             QProcess::execute(cmdToExec, QStringList{QStringLiteral("--title"), QCoreApplication::applicationName(), QStringLiteral("--msgbox"), errorMsg});
+         }
++#endif
+     }
+ 
+     d->configState = allWritable ? ReadWrite : ReadOnly; // update the read/write status

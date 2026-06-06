@@ -7,7 +7,7 @@
 
 #include <KAboutData>
 
-#if !defined(Q_OS_ANDROID)
+#if !defined(Q_OS_ANDROID) && !defined(Q_OS_IOS)
 #include <KCrash>
 #if defined(Q_OS_MACOS)
 #include <KIconTheme>
@@ -130,13 +130,20 @@ int main(int argc, char *argv[])
     KIconTheme::initTheme();
 #endif
 
+#if defined(Q_OS_IOS)
+    // Direct Qt to search for icon assets inside our compiled virtual resource bundle (qrc)
+    QIcon::setThemeSearchPaths(QStringList() << QStringLiteral(":/icons"));
+    // Force the active fallback theme name to match our virtual prefix directory layout
+    QIcon::setThemeName(QStringLiteral("breeze"));
+#endif
+
     QGuiApplication application(argc, argv);
 
 #if defined(Q_OS_MACOS)
     QCoreApplication::addLibraryPath(QDir(QCoreApplication::applicationDirPath()).absoluteFilePath(u"../PlugIns"_s));
 #endif
 
-#if !defined(Q_OS_ANDROID)
+#if !defined(Q_OS_ANDROID) && !defined(Q_OS_IOS)
     KCrash::initialize();
 #endif
 
@@ -165,6 +172,9 @@ int main(int argc, char *argv[])
 #if defined(Q_OS_ANDROID)
     QQuickStyle::setStyle(u"org.kde.breeze"_s);
     KColorSchemeManager::instance();
+#elif defined(Q_OS_IOS)
+    QQuickStyle::setStyle(u"iOS"_s);
+    KColorSchemeManager::instance();
 #else
     if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
         QQuickStyle::setStyle(u"org.kde.desktop"_s);
@@ -175,18 +185,18 @@ int main(int argc, char *argv[])
 
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
-#if !defined(Q_OS_ANDROID)
+#if !defined(Q_OS_ANDROID) && !defined(Q_OS_IOS)
     aboutData.setupCommandLine(&parser);
 #else
     parser.addHelpOption();
     parser.addVersionOption();
 #endif
     parser.process(application);
-#if !defined(Q_OS_ANDROID)
+#if !defined(Q_OS_ANDROID) && !defined(Q_OS_IOS)
     aboutData.processCommandLine(&parser);
 #endif
 
-#if defined(Q_OS_ANDROID)
+#if defined(Q_OS_ANDROID) || defined(Q_OS_IOS)
     const QDir writableDataDir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
     const QString soundfontDirPath = writableDataDir.absoluteFilePath(u"soundfonts"_s);
     const QString soundfontPath = QDir(soundfontDirPath).absoluteFilePath(u"GeneralUser-v1.47.sf2"_s);
@@ -196,6 +206,7 @@ int main(int argc, char *argv[])
             u"assets:/share/minuet/soundfonts/GeneralUser-v1.47.sf2"_s,
             u"assets:/data/soundfonts/GeneralUser-v1.47.sf2"_s,
             u"assets:/share/GeneralUser-v1.47.sf2"_s,
+            u":/src/plugins/fluidsynthsoundcontroller/GeneralUser-v1.47.sf2"_s,
         };
         for (const QString &assetPath : assetPaths) {
             QFile assetFile(assetPath);

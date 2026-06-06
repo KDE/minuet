@@ -8,7 +8,7 @@
 #include <QObject>
 #include <QString>
 
-#ifndef Q_OS_ANDROID
+#if !defined(Q_OS_ANDROID) && !defined(Q_OS_IOS)
 #include <QHash>
 #include <KPluginMetaData>
 #include <QVector>
@@ -34,7 +34,7 @@ private:
 
     explicit PluginController(QObject *parent = nullptr);
 
-#ifndef Q_OS_ANDROID
+#if !defined(Q_OS_ANDROID) && !defined(Q_OS_IOS)
     QVector<KPluginMetaData> m_plugins;
 
     typedef QHash<KPluginMetaData, IPlugin *> InfoToPluginMap;

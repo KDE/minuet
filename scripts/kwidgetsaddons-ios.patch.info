@@ -1,0 +1,25 @@
+Title: Avoid launching the desktop MIME type editor on iOS
+
+## Problem
+
+`KMimeTypeEditor::editMimeType()` launches the external `keditfiletype`
+executable with `QProcess::startDetached()`.
+
+iOS applications cannot launch arbitrary external processes, Qt for iOS does
+not provide this process-launching operation, and `keditfiletype` is not
+available in an iOS application bundle. The call therefore prevents
+KWidgetsAddons from compiling for iOS and cannot provide meaningful behavior
+at runtime.
+
+## Proposed change
+
+On iOS, replace the external process launch with a modal error message stating
+that MIME type editing is unsupported. Keep the existing `keditfiletype`
+behavior on all other platforms.
+
+## Impact
+
+Applications can continue calling the API on iOS and receive a clear user-facing
+result instead of an unavailable desktop workflow. Other platforms are
+unaffected.
+

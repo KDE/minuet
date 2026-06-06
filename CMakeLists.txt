@@ -18,6 +18,11 @@ set (RELEASE_SERVICE_COMPACT_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}${RELEASE_
 
 project(minuet VERSION ${RELEASE_SERVICE_VERSION})
 
+set(MINUET_MOBILE_PLATFORM FALSE)
+if(ANDROID OR CMAKE_SYSTEM_NAME STREQUAL "iOS")
+    set(MINUET_MOBILE_PLATFORM TRUE)
+endif()
+
 set(QT_MIN_VERSION "6.6.2")
 set(KF_MIN_VERSION "6.7.0")
 
@@ -50,7 +55,32 @@ if(COMMAND qt_policy AND QT_KNOWN_POLICY_QTP0004)
 endif()
 include(ECMAddAndroidApk)
 
-if(APPLE OR ANDROID)
+if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
+    find_package(PkgConfig REQUIRED)
+    pkg_check_modules(FLUIDSYNTH REQUIRED "fluidsynth>=2.5.3")
+
+    find_library(FLUIDSYNTH_STATIC_LIBRARY
+        NAMES fluidsynth
+        PATHS ${FLUIDSYNTH_LIBRARY_DIRS}
+        NO_DEFAULT_PATH
+        REQUIRED
+    )
+
+    set(_minuet_fluidsynth_static_libraries ${FLUIDSYNTH_STATIC_LIBRARIES})
+    list(REMOVE_ITEM _minuet_fluidsynth_static_libraries fluidsynth)
+
+    add_library(FluidSynth::libfluidsynth STATIC IMPORTED)
+    set_target_properties(FluidSynth::libfluidsynth PROPERTIES
+        IMPORTED_LOCATION "${FLUIDSYNTH_STATIC_LIBRARY}"
+        INTERFACE_INCLUDE_DIRECTORIES "${FLUIDSYNTH_INCLUDE_DIRS}"
+    )
+    target_link_libraries(FluidSynth::libfluidsynth INTERFACE
+        ${_minuet_fluidsynth_static_libraries}
+    )
+    target_link_options(FluidSynth::libfluidsynth INTERFACE
+        ${FLUIDSYNTH_STATIC_LDFLAGS_OTHER}
+    )
+elseif(APPLE OR ANDROID)
     find_package(FluidSynth 2.5.3 CONFIG REQUIRED)
     if(NOT TARGET FluidSynth::libfluidsynth)
         message(FATAL_ERROR "Minuet requires the FluidSynth::libfluidsynth library target")
@@ -73,7 +103,7 @@ ecm_find_qmlmodule(org.kde.kirigami REQUIRED)
 ecm_find_qmlmodule(org.kde.coreaddons REQUIRED)
 ecm_find_qmlmodule(org.kde.kirigamiaddons.formcard REQUIRED)
 
-IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
+if(NOT MINUET_MOBILE_PLATFORM)
     find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
         Crash
         DocTools
@@ -81,23 +111,24 @@ IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
         QQC2DesktopStyle
     )
     ecm_find_qmlmodule(org.kde.desktop REQUIRED)
-ELSE()
+else()
     find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
         ColorScheme
+        IconThemes
     )
-ENDIF()
+endif()
 
 include_directories(${minuet_SOURCE_DIR}/src/ ${minuet_BINARY_DIR}/src/)
 
 add_subdirectory(src)
 add_subdirectory(data)
-IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
+if(NOT MINUET_MOBILE_PLATFORM)
     add_subdirectory(doc)
     ki18n_install(po)
     if (KF6DocTools_FOUND)
         kdoctools_install(po)
     endif()
     install(FILES org.kde.minuet.metainfo.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
-ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
+endif()
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)

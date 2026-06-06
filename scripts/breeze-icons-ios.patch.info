@@ -1,0 +1,29 @@
+Title: Avoid oversized Xcode script input lists
+
+## Problem
+
+When Breeze Icons is generated with the Xcode CMake generator, the custom
+command for `breeze-icons.qrc` adds every SVG icon to the Xcode script phase's
+`inputPaths`.
+
+Breeze contains enough SVG files for this generated list to exceed macOS's
+process argument and environment size limit. Xcode then fails before executing
+the resource-generation command:
+
+    unable to spawn process '/bin/sh' (Argument list too long)
+
+This prevents Breeze Icons from being cross-compiled for iOS.
+
+## Proposed change
+
+Keep the complete per-SVG dependency list for other CMake generators, but omit
+it when generating an Xcode project. The Xcode custom command still depends on
+the three theme input files and still generates the same QRC and icon content.
+
+## Impact
+
+This changes only incremental dependency tracking under the Xcode generator.
+Changing an individual SVG may require explicitly rebuilding or regenerating
+the Xcode project. Other generators retain the existing per-file dependency
+tracking.
+

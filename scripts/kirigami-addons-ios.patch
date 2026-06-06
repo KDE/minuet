@@ -1,0 +1,78 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c32050d9..b6da183e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -41,7 +41,10 @@ endif()
+ if (ANDROID)
+     find_package(Gradle REQUIRED)
+ else()
+-    find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS Crash IconThemes)
++    find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS IconThemes)
++    if (NOT IOS)
++        find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS Crash)
++    endif()
+ endif()
+ 
+ if(NOT WIN32 AND NOT APPLE AND NOT ANDROID AND NOT HAIKU)
+diff --git a/src/app/CMakeLists.txt b/src/app/CMakeLists.txt
+index b3ca43a8..cd3f76e0 100644
+--- a/src/app/CMakeLists.txt
++++ b/src/app/CMakeLists.txt
+@@ -17,7 +17,10 @@ target_link_libraries(KirigamiApp PRIVATE
+     KF6::ColorScheme
+ )
+ if(NOT ANDROID)
+-    target_link_libraries(KirigamiApp PRIVATE Qt6::Widgets KF6::Crash KF6::IconThemes)
++    target_link_libraries(KirigamiApp PRIVATE Qt6::Widgets KF6::IconThemes)
++    if(NOT IOS)
++        target_link_libraries(KirigamiApp PRIVATE KF6::Crash)
++    endif()
+ endif()
+ 
+ target_include_directories(KirigamiApp
+diff --git a/src/app/kirigamiappdefaults.cpp b/src/app/kirigamiappdefaults.cpp
+index 4e787bdf..d6944ad5 100644
+--- a/src/app/kirigamiappdefaults.cpp
++++ b/src/app/kirigamiappdefaults.cpp
+@@ -16,7 +16,9 @@
+ #include <kcoreaddons_version.h>
+ 
+ #ifndef Q_OS_ANDROID
++#ifndef Q_OS_IOS
+ #include <KCrash>
++#endif
+ #include <KIconTheme>
+ #include <QApplication>
+ #include <QStyleFactory>
+@@ -75,7 +77,7 @@ void apply(QGuiApplication *app)
+     app->setFont(font);
+ #endif
+ 
+-#ifndef Q_OS_ANDROID
++#if !defined(Q_OS_ANDROID) && !defined(Q_OS_IOS)
+ #if KCOREADDONS_VERSION >= QT_VERSION_CHECK(6, 19, 0)
+     // Embrace KCrash. If an application misbehaves, we should know as much as possible about it.
+     // Needs initialising KAboutData::setApplicationData
+diff --git a/src/formcard/aboutcomponent.cpp b/src/formcard/aboutcomponent.cpp
+index 015b8f1e..1a5f14bc 100644
+--- a/src/formcard/aboutcomponent.cpp
++++ b/src/formcard/aboutcomponent.cpp
+@@ -5,7 +5,9 @@
+ 
+ #include <KCoreAddons>
+ #include <KLocalizedString>
++#ifndef Q_OS_IOS
+ #include <KSandbox>
++#endif
+ #include <QGuiApplication>
+ #include <QClipboard>
+ 
+@@ -39,7 +41,7 @@ QList<KAboutComponent> AboutComponent::components() const
+                                           QStringLiteral("https://www.qt.io/"),
+                                           KAboutLicense::LGPL_V3));
+ 
+-#if defined(Q_OS_LINUX) && !defined(Q_OS_ANDROID)
++#if defined(Q_OS_LINUX) && !defined(Q_OS_ANDROID) && !defined(Q_OS_IOS)
+     QString packageText = i18nc("Linux packaging format", "Unknown/Default");
+     if (KSandbox::isFlatpak()) {
+         packageText = i18nc("Linux packaging format", "Flatpak");

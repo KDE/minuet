@@ -1,0 +1,33 @@
+Title: Make KCrash and Linux sandbox integration optional on iOS
+
+## Problem
+
+Kirigami Addons currently includes iOS in several broad non-Android or
+non-Windows platform branches. This causes an iOS build to require and use
+desktop-specific facilities:
+
+- KF6Crash is required, linked, and initialized by the application helpers.
+- `KSandbox` is included by the About component even though its packaging
+  detection is Linux-specific.
+
+KCrash depends on process and signal handling assumptions that are not
+available or appropriate in the iOS application model. Requiring it prevents
+Kirigami Addons from being cross-compiled for iOS. The sandbox packaging code
+is relevant only to Linux package formats and should not be exposed to an iOS
+translation unit.
+
+## Proposed change
+
+Do not require, link, include, or initialize KCrash when targeting iOS. Also
+exclude the KSandbox include and Linux package-format detection from iOS
+builds.
+
+KIconThemes, Qt Widgets, and the rest of the Kirigami application defaults
+remain enabled where they are otherwise supported.
+
+## Impact
+
+Kirigami Addons applications on iOS do not install KCrash handlers and do not
+report Linux packaging information. Existing behavior on desktop platforms and
+Android remains unchanged.
+

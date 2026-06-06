@@ -4,7 +4,7 @@
 
 set(fluidsynthsoundcontroller_PLUGIN_SRCS fluidsynthsoundcontroller.cpp)
 
-if(ANDROID)
+if(MINUET_MOBILE_PLATFORM)
   add_library(minuetfluidsynthsoundcontroller STATIC
               ${fluidsynthsoundcontroller_PLUGIN_SRCS})
   add_library(Minuet::FluidSynthSoundController ALIAS
@@ -18,7 +18,7 @@ target_link_libraries(
   minuetfluidsynthsoundcontroller Qt::Core KF6::I18n Minuet::Interfaces
   Minuet::Utils FluidSynth::libfluidsynth)
 
-if(APPLE)
+if(APPLE AND NOT (CMAKE_SYSTEM_NAME STREQUAL "iOS"))
   get_target_property(_minuet_fluidsynth_is_framework FluidSynth::libfluidsynth
                       FRAMEWORK)
   if(_minuet_fluidsynth_is_framework)
@@ -81,7 +81,7 @@ if(APPLE)
   endif()
 endif()
 
-if(ANDROID)
+if(MINUET_MOBILE_PLATFORM)
   install(FILES GeneralUser-v1.47.sf2
           DESTINATION ${KDE_INSTALL_DATADIR}/minuet/soundfonts)
 elseif(APPLE)

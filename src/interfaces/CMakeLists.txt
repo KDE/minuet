@@ -7,7 +7,7 @@ set(minuetinterfaces_LIB_SRCS
     isoundcontroller.cpp
 )
 
-if(ANDROID)
+if(MINUET_MOBILE_PLATFORM)
     add_library(minuetinterfaces STATIC ${minuetinterfaces_LIB_SRCS})
 else()
     add_library(minuetinterfaces ${minuetinterfaces_LIB_SRCS})
@@ -18,7 +18,7 @@ set_target_properties(minuetinterfaces PROPERTIES VERSION 0.3.0)
 
 generate_export_header(minuetinterfaces EXPORT_FILE_NAME minuetinterfacesexport.h)
 
-if(ANDROID)
+if(MINUET_MOBILE_PLATFORM)
     target_compile_definitions(minuetinterfaces PUBLIC MINUETINTERFACES_STATIC_DEFINE)
 endif()
 
@@ -27,7 +27,7 @@ target_link_libraries(minuetinterfaces
     Qt::Quick
 )
 
-IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
+if(NOT MINUET_MOBILE_PLATFORM)
     install(FILES
         ${CMAKE_CURRENT_BINARY_DIR}/minuetinterfacesexport.h
         DESTINATION ${KDE_INSTALL_INCLUDEDIR}/minuet/interfaces
@@ -46,4 +46,4 @@ IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
         DESTINATION ${KDE_INSTALL_INCLUDEDIR}/minuet/interfaces
         COMPONENT Devel
     )
-ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
+endif()

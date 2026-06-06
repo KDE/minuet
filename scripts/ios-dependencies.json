@@ -1,0 +1,226 @@
+{
+  "hostToolingDependencies": [
+    "extra-cmake-modules",
+    "kconfig",
+    "breeze-icons"
+  ],
+  "dependencies": [
+    {
+      "name": "extra-cmake-modules",
+      "url": "https://invent.kde.org/frameworks/extra-cmake-modules.git",
+      "refEnv": "KDE_REF",
+      "defaultRef": "master"
+    },
+    {
+      "name": "libintl-lite",
+      "url": "https://github.com/j-jorge/libintl-lite.git",
+      "refEnv": "LIBINTL_LITE_REF",
+      "defaultRef": "ba1514607d02ce3711d828e784a7e9e2bb25aa84",
+      "cmakeOptions": [
+        "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+      ]
+    },
+    {
+      "name": "fluidsynth",
+      "url": "https://github.com/FluidSynth/fluidsynth.git",
+      "refEnv": "FLUIDSYNTH_REF",
+      "defaultRef": "v2.5.3",
+      "cmakeOptions": [
+        "-DLIB_SUFFIX=",
+        "-DCMAKE_MACOSX_BUNDLE=OFF",
+        "-Dosal=cpp11",
+        "-Denable-framework=OFF",
+        "-Denable-coreaudio=ON",
+        "-Denable-aufile=OFF",
+        "-Denable-libsndfile=OFF",
+        "-Denable-libinstpatch=OFF",
+        "-Denable-dbus=OFF",
+        "-Denable-alsa=OFF",
+        "-Denable-pulseaudio=OFF",
+        "-Denable-jack=OFF",
+        "-Denable-pipewire=OFF",
+        "-Denable-oss=OFF",
+        "-Denable-portaudio=OFF",
+        "-Denable-sdl3=OFF",
+        "-Denable-ladspa=OFF",
+        "-Denable-readline=OFF",
+        "-Denable-network=OFF",
+        "-Denable-openmp=OFF",
+        "-Denable-native-dls=OFF"
+      ],
+      "buildTargets": [
+        "libfluidsynth-OBJ"
+      ],
+      "stagedArchives": [
+        {
+          "from": "build/libfluidsynth-OBJ.build/{CONFIG}-{SDK}/liblibfluidsynth-OBJ.a",
+          "to": "src/{CONFIG}-{SDK}/libfluidsynth.a"
+        }
+      ],
+      "installComponents": [
+        "fluidsynth_development"
+      ]
+    },
+    {
+      "name": "kconfig",
+      "url": "https://invent.kde.org/frameworks/kconfig.git",
+      "refEnv": "KDE_REF",
+      "defaultRef": "master",
+      "cmakeOptions": [
+        "-DKCONFIG_USE_QML=OFF"
+      ],
+      "patches": [
+        "kconfig-ios.patch"
+      ],
+      "buildTargets": [
+        "KF6ConfigCore",
+        "KF6ConfigGui"
+      ],
+      "installedArchives": [
+        {
+          "from": "lib/{CONFIG}/libKF6ConfigCore.a",
+          "to": "lib/libKF6ConfigCore.a"
+        },
+        {
+          "from": "lib/{CONFIG}/libKF6ConfigGui.a",
+          "to": "lib/libKF6ConfigGui.a"
+        }
+      ],
+      "installedFiles": [
+        {
+          "from": "src/core/meta_types/qt6kf6configcore_metatypes.json",
+          "to": "metatypes/qt6kf6configcore_metatypes.json"
+        },
+        {
+          "from": "src/gui/meta_types/qt6kf6configgui_metatypes.json",
+          "to": "metatypes/qt6kf6configgui_metatypes.json"
+        }
+      ],
+      "installComponents": [
+        "Devel"
+      ]
+    },
+    {
+      "name": "kcoreaddons",
+      "url": "https://invent.kde.org/frameworks/kcoreaddons.git",
+      "refEnv": "KDE_REF",
+      "defaultRef": "master"
+    },
+    {
+      "name": "karchive",
+      "url": "https://invent.kde.org/frameworks/karchive.git",
+      "refEnv": "KDE_REF",
+      "defaultRef": "master",
+      "cmakeOptions": [
+        "-DWITH_LIBLZMA=OFF",
+        "-DWITH_OPENSSL=OFF",
+        "-DWITH_LIBZSTD=OFF",
+        "-DLibZstd_FOUND=FALSE",
+        "-DCMAKE_DISABLE_FIND_PACKAGE_PkgConfig=ON"
+      ]
+    },
+    {
+      "name": "kwidgetsaddons",
+      "url": "https://invent.kde.org/frameworks/kwidgetsaddons.git",
+      "refEnv": "KDE_REF",
+      "defaultRef": "master",
+      "patches": [
+        "kwidgetsaddons-ios.patch"
+      ]
+    },
+    {
+      "name": "kitemviews",
+      "url": "https://invent.kde.org/frameworks/kitemviews.git",
+      "refEnv": "KDE_REF",
+      "defaultRef": "master"
+    },
+    {
+      "name": "kguiaddons",
+      "url": "https://invent.kde.org/frameworks/kguiaddons.git",
+      "refEnv": "KDE_REF",
+      "defaultRef": "master",
+      "cmakeOptions": [
+        "-DWITH_WAYLAND=OFF",
+        "-DWITH_X11=OFF"
+      ],
+      "patches": [
+        "kguiaddons-ios.patch"
+      ]
+    },
+    {
+      "name": "ki18n",
+      "url": "https://invent.kde.org/frameworks/ki18n.git",
+      "refEnv": "KDE_REF",
+      "defaultRef": "master",
+      "cmakeOptions": [
+        "-DHAVE_NL_MSG_CAT_CNTR=OFF"
+      ]
+    },
+    {
+      "name": "kcolorscheme",
+      "url": "https://invent.kde.org/frameworks/kcolorscheme.git",
+      "refEnv": "KDE_REF",
+      "defaultRef": "master"
+    },
+    {
+      "name": "kirigami",
+      "url": "https://invent.kde.org/frameworks/kirigami.git",
+      "refEnv": "KDE_REF",
+      "defaultRef": "master"
+    },
+    {
+      "name": "breeze-icons",
+      "url": "https://invent.kde.org/frameworks/breeze-icons.git",
+      "refEnv": "KDE_REF",
+      "defaultRef": "master",
+      "cmakeOptions": [
+        "-DWITH_ICON_GENERATION=OFF"
+      ],
+      "patches": [
+        "breeze-icons-ios.patch"
+      ],
+      "hostBuildTargets": [
+        "generate-symbolic-dark",
+        "qrcAlias"
+      ],
+      "hostInstalledFiles": [
+        {
+          "from": "bin/generate-symbolic-dark",
+          "to": "bin/generate-symbolic-dark"
+        },
+        {
+          "from": "bin/qrcAlias",
+          "to": "bin/qrcAlias"
+        }
+      ],
+      "skipHostInstall": true
+    },
+    {
+      "name": "kiconthemes",
+      "url": "https://invent.kde.org/frameworks/kiconthemes.git",
+      "refEnv": "KDE_REF",
+      "defaultRef": "master",
+      "cmakeOptions": [
+        "-DWITH_BREEZEICONS=ON"
+      ],
+      "patches": [
+        "kiconthemes-ios.patch"
+      ]
+    },
+    {
+      "name": "kirigami-addons",
+      "url": "https://invent.kde.org/libraries/kirigami-addons.git",
+      "refEnv": "KIRIGAMI_ADDONS_REF",
+      "defaultRef": "master",
+      "patches": [
+        "kirigami-addons-ios.patch"
+      ]
+    },
+    {
+      "name": "qqc2-breeze-style",
+      "url": "https://invent.kde.org/plasma/qqc2-breeze-style.git",
+      "refEnv": "PLASMA_REF",
+      "defaultRef": "master"
+    }
+  ]
+}

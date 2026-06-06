@@ -1,0 +1,28 @@
+Title: Use iOS-compatible platform and URL handling
+
+## Problem
+
+KGuiAddons currently treats every Apple platform as macOS:
+
+- It links AppKit and builds the macOS color scheme watcher implementation.
+- Its help URL handler attempts to start the desktop `khelpcenter` executable
+  with `QProcess`.
+
+AppKit is a macOS framework and is unavailable when targeting iOS. iOS
+applications also cannot launch arbitrary external executables, and
+`khelpcenter` is not present on the platform. Together these assumptions
+prevent KGuiAddons from building for iOS.
+
+## Proposed change
+
+Limit the AppKit-based color scheme watcher to Apple platforms other than iOS.
+On iOS, make the KHelpCenter-specific handler report that it did not handle the
+URL. This allows the existing caller to fall back to
+`QDesktopServices::openUrl()`, which uses the native iOS URL handling path.
+
+## Impact
+
+iOS does not use the macOS AppKit color scheme watcher or KHelpCenter. Help
+URLs continue through Qt's platform URL handler. Existing behavior on macOS
+and other platforms remains unchanged.
+
