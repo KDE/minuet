@@ -16,6 +16,9 @@ Kirigami.GlobalDrawer {
     property var currentExerciseSelection: null
     property string currentSearchText: ""
     readonly property int defaultPreferredSize: Kirigami.Units.gridUnit * 24
+    readonly property real drawerActionBottomPadding: homeActionItem.bottomPadding
+    readonly property real drawerActionTopPadding: homeActionItem.topPadding
+    readonly property real drawerActionVerticalSpacing: drawerActionTopPadding + drawerActionBottomPadding
     property var exerciseModel: []
 
     signal aboutRequested
@@ -140,10 +143,12 @@ Kirigami.GlobalDrawer {
         },
         Kirigami.Separator {
             Layout.fillWidth: true
-            Layout.topMargin: 2 * Kirigami.Units.largeSpacing
-            Layout.bottomMargin: 4
+            Layout.topMargin: drawer.drawerActionVerticalSpacing
+            Layout.bottomMargin: drawer.drawerActionBottomPadding
         },
         ActionListItem {
+            id: homeActionItem
+
             action: Kirigami.Action {
                 icon.name: "go-home"
                 text: i18n("Home")
@@ -171,6 +176,8 @@ Kirigami.GlobalDrawer {
             }
         },
         ActionListItem {
+            id: aboutActionItem
+
             action: Kirigami.Action {
                 icon.name: "help-about-symbolic"
                 text: i18n("About")
@@ -185,7 +192,8 @@ Kirigami.GlobalDrawer {
         },
         Kirigami.Separator {
             Layout.fillWidth: true
-            Layout.topMargin: 6 + Platform.Units.smallSpacing
+            Layout.topMargin: drawer.drawerActionVerticalSpacing - aboutActionItem.bottomPadding
+            Layout.bottomMargin: Math.max(0, drawer.drawerActionBottomPadding - Platform.Units.smallSpacing)
         },
         Item {
             Layout.fillHeight: true
