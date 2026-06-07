@@ -41,8 +41,10 @@ Kirigami.Page {
             height: width
             radius: width / 2
             color: Kirigami.Theme.backgroundColor
-            border.color: Kirigami.Theme.highlightColor
-            border.width: 3
+            border {
+                color: Kirigami.Theme.highlightColor
+                width: 3
+            }
             opacity: 0.92
         }
 

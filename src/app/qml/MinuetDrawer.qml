@@ -112,8 +112,10 @@ Kirigami.GlobalDrawer {
             source: "qrc:/qml/images/minuet-icon.png"
             fillMode: Image.PreserveAspectFit
             asynchronous: true
-            sourceSize.width: 128
-            sourceSize.height: 128
+            sourceSize {
+                width: 128
+                height: 128
+            }
             Accessible.ignored: true
             Layout.alignment: Qt.AlignHCenter
             Layout.preferredWidth: preferredIconSize

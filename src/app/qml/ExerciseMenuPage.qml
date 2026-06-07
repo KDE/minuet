@@ -40,8 +40,10 @@ Kirigami.ScrollablePage {
     }
 
     Kirigami.CardsListView {
-        anchors.fill: parent
-        anchors.margins: Kirigami.Units.largeSpacing
+        anchors {
+            fill: parent
+            margins: Kirigami.Units.largeSpacing
+        }
         boundsBehavior: Flickable.StopAtBounds
         clip: true
         model: page.exerciseList

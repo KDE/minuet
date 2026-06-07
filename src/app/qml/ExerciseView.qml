@@ -299,10 +299,12 @@ Item {
                 RowLayout {
                     id: headerLayout
 
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    anchors.top: parent.top
-                    anchors.bottom: headerSeparator.top
+                    anchors {
+                        left: parent.left
+                        right: parent.right
+                        top: parent.top
+                        bottom: headerSeparator.top
+                    }
                     spacing: Kirigami.Units.smallSpacing
 
                     Kirigami.Icon {
@@ -430,9 +432,11 @@ Item {
                 Kirigami.Separator {
                     id: headerSeparator
 
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    anchors.bottom: parent.bottom
+                    anchors {
+                        left: parent.left
+                        right: parent.right
+                        bottom: parent.bottom
+                    }
                 }
             }
 
@@ -481,8 +485,10 @@ Item {
                         GridView {
                             id: answerGridView
 
-                            anchors.fill: parent
-                            anchors.margins: exerciseView.answerCellSpacing
+                            anchors {
+                                fill: parent
+                                margins: exerciseView.answerCellSpacing
+                            }
                             boundsBehavior: Flickable.StopAtBounds
                             flow: GridView.FlowLeftToRight
                             layoutDirection: Qt.LeftToRight
@@ -557,8 +563,10 @@ Item {
 
                             readonly property bool canScrollHorizontally: contentWidth > width
 
-                            anchors.fill: parent
-                            anchors.margins: exerciseView.sectionPadding
+                            anchors {
+                                fill: parent
+                                margins: exerciseView.sectionPadding
+                            }
                             boundsBehavior: Flickable.StopAtBounds
                             clip: true
                             contentWidth: selectedAnswersRow.width
@@ -632,9 +640,11 @@ Item {
                         PianoView {
                             id: pianoView
 
-                            anchors.left: parent.left
-                            anchors.right: parent.right
-                            anchors.verticalCenter: parent.verticalCenter
+                            anchors {
+                                left: parent.left
+                                right: parent.right
+                                verticalCenter: parent.verticalCenter
+                            }
                             height: Math.min(sheetMusicView.staffGroupHeight, parent.height)
                         }
                     }
@@ -709,8 +719,10 @@ Item {
 
             background: Rectangle {
                 color: answerDelegate.accentColor
-                border.color: answerDelegate.activeFocus ? Kirigami.Theme.highlightColor : Kirigami.Theme.textColor
-                border.width: answerDelegate.activeFocus ? 2 : 1
+                border {
+                    color: answerDelegate.activeFocus ? Kirigami.Theme.highlightColor : Kirigami.Theme.textColor
+                    width: answerDelegate.activeFocus ? 2 : 1
+                }
                 radius: Kirigami.Units.cornerRadius
             }
 
@@ -728,8 +740,10 @@ Item {
                     elide: Text.ElideRight
                     text: answerDelegate.model !== undefined && answerDelegate.model.name !== undefined ? i18nc("technical term, do you have a musician friend?", answerDelegate.model.name) : ""
                     color: "#202124"
-                    font.family: rhythmCard ? bravura.name : Kirigami.Theme.defaultFont.family
-                    font.pixelSize: rhythmCard ? exerciseView.rhythmAnswerCardTextSize : exerciseView.answerCardTextSize
+                    font {
+                        family: rhythmCard ? bravura.name : Kirigami.Theme.defaultFont.family
+                        pixelSize: rhythmCard ? exerciseView.rhythmAnswerCardTextSize : exerciseView.answerCardTextSize
+                    }
                 }
             }
 
@@ -817,16 +831,18 @@ Item {
 
             background: Rectangle {
                 color: selectedDelegate.filled ? selectedDelegate.accentColor : Kirigami.Theme.alternateBackgroundColor
-                border.color: selectedDelegate.showingCorrection
-                    ? Kirigami.Theme.positiveTextColor
-                    : selectedDelegate.wrongAnswer
-                        ? Kirigami.Theme.negativeTextColor
-                        : selectedDelegate.correctAnswer
+                border {
+                    color: selectedDelegate.showingCorrection
                         ? Kirigami.Theme.positiveTextColor
-                        : selectedDelegate.activeFocus
-                            ? Kirigami.Theme.highlightColor
-                            : Kirigami.Theme.textColor
-                border.width: selectedDelegate.activeFocus || selectedDelegate.wrongAnswer || selectedDelegate.correctAnswer || selectedDelegate.showingCorrection ? 2 : 1
+                        : selectedDelegate.wrongAnswer
+                            ? Kirigami.Theme.negativeTextColor
+                            : selectedDelegate.correctAnswer
+                            ? Kirigami.Theme.positiveTextColor
+                            : selectedDelegate.activeFocus
+                                ? Kirigami.Theme.highlightColor
+                                : Kirigami.Theme.textColor
+                    width: selectedDelegate.activeFocus || selectedDelegate.wrongAnswer || selectedDelegate.correctAnswer || selectedDelegate.showingCorrection ? 2 : 1
+                }
                 radius: Kirigami.Units.cornerRadius
             }
 
@@ -848,8 +864,10 @@ Item {
                         ? i18nc("technical term, do you have a musician friend?", selectedDelegate.displayedAnswer.name)
                         : i18n("Answer %1", selectedDelegate.index + 1)
                     color: selectedDelegate.filled ? "#202124" : Kirigami.Theme.disabledTextColor
-                    font.family: rhythmCard ? bravura.name : Kirigami.Theme.defaultFont.family
-                    font.pixelSize: rhythmCard ? exerciseView.rhythmAnswerCardTextSize : exerciseView.answerCardTextSize
+                    font {
+                        family: rhythmCard ? bravura.name : Kirigami.Theme.defaultFont.family
+                        pixelSize: rhythmCard ? exerciseView.rhythmAnswerCardTextSize : exerciseView.answerCardTextSize
+                    }
                 }
             }
 

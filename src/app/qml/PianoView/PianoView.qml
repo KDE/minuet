@@ -116,8 +116,10 @@ Flickable {
         Row {
             id: octaveNumber
             width: parent.width; height: flickable.octaveLabelHeight
-            anchors.left: parent.left
-            anchors.leftMargin: 2 * flickable.keyWidth
+            anchors {
+                left: parent.left
+                leftMargin: 2 * flickable.keyWidth
+            }
 
             Repeater {
                 model: 7
