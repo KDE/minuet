@@ -64,10 +64,31 @@ Kirigami.GlobalDrawer {
 
     header: Kirigami.AbstractApplicationHeader {
         minimumHeight: searchField.implicitHeight
-        preferredHeight: searchField.implicitHeight + topPadding + bottomPadding
         maximumHeight: searchField.implicitHeight
-        topPadding: Kirigami.Units.smallSpacing
-        bottomPadding: Kirigami.Units.smallSpacing
+
+        Binding {
+            when: Qt.platform.os === "android" || Qt.platform.os === "ios"
+            target: parent
+            restoreMode: Binding.RestoreBindingOrValue
+            property: "preferredHeight"
+            value: searchField.implicitHeight + parent.topPadding + parent.bottomPadding
+        }
+
+        Binding {
+            when: Qt.platform.os === "android" || Qt.platform.os === "ios"
+            target: parent
+            restoreMode: Binding.RestoreBindingOrValue
+            property: "topPadding"
+            value: Kirigami.Units.smallSpacing
+        }
+
+        Binding {
+            when: Qt.platform.os === "android" || Qt.platform.os === "ios"
+            target: parent
+            restoreMode: Binding.RestoreBindingOrValue
+            property: "bottomPadding"
+            value: Kirigami.Units.smallSpacing
+        }
 
         contentItem: Kirigami.SearchField {
             id: searchField
