@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-06 00:39+0000\n"
+"POT-Creation-Date: 2026-06-07 00:39+0000\n"
 "PO-Revision-Date: 2026-04-14 17:15+0200\n"
 "Last-Translator: Roman Paholík <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -1888,7 +1888,7 @@ msgstr "Identifikujte akord alebo interval podľa sluchu."
 msgid "%1 Includes %2 possible answers."
 msgstr "%1 Obsahuje %2 možných odpovedí."
 
-#: src/app/exercisecatalogcontroller.cpp:246
+#: src/app/exercisecatalogcontroller.cpp:248
 #, kde-format
 msgid "Could not open JSON file \"%1\"."
 msgstr "Nemôžem otvoriť JSON súbor \"%1\"."
@@ -1936,39 +1936,39 @@ msgstr ""
 msgid "Question %1 out of %2"
 msgstr "Otázka %1 z %2"
 
-#: src/app/main.cpp:148
+#: src/app/main.cpp:158
 #, kde-format
 msgid "Minuet"
 msgstr "Minuet"
 
-#: src/app/main.cpp:150
+#: src/app/main.cpp:160
 #, kde-format
 msgid "A KDE application for music education"
 msgstr "KDE aplikácia na výuku hudby"
 
-#: src/app/main.cpp:151
+#: src/app/main.cpp:161
 #, kde-format
 msgid "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 msgstr "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 
-#: src/app/main.cpp:156 src/app/main.cpp:158
+#: src/app/main.cpp:166 src/app/main.cpp:168
 #, kde-format
 msgid "Developer"
 msgstr "Vývojár"
 
-#: src/app/main.cpp:160
+#: src/app/main.cpp:170
 #, fuzzy, kde-format
 #| msgid "Minuet Icon Designer"
 msgid "Minuet icon designer"
 msgstr "Návrhár ikon Minuet"
 
-#: src/app/main.cpp:162
+#: src/app/main.cpp:172
 #, kde-format
 msgctxt "@info:credit"
 msgid "Fluidsynth"
 msgstr "Fluidsynth"
 
-#: src/app/main.cpp:162
+#: src/app/main.cpp:172
 #, kde-format
 msgctxt "@info:credit"
 msgid ""
@@ -1978,13 +1978,13 @@ msgstr ""
 "Softvérový syntetizátor založený na špecifikáciách SoundFont 2. © 2003 Peter "
 "Hanappe a ďalší."
 
-#: src/app/main.cpp:163
+#: src/app/main.cpp:173
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Jose Riha"
 
-#: src/app/main.cpp:163
+#: src/app/main.cpp:173
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -1998,55 +1998,55 @@ msgstr[0] "%2 - %1 položka"
 msgstr[1] "%2 - %1 položky"
 msgstr[2] "%2 - %1 položiek"
 
-#: src/app/qml/ExerciseView.qml:336
+#: src/app/qml/ExerciseView.qml:340
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "userMessage"
 msgstr "správaPoužívateľa"
 
-#: src/app/qml/ExerciseView.qml:349
+#: src/app/qml/ExerciseView.qml:353
 #, fuzzy, kde-format
 #| msgid "Playing..."
 msgid "Playing…"
 msgstr "Prehráva sa..."
 
-#: src/app/qml/ExerciseView.qml:371
+#: src/app/qml/ExerciseView.qml:375
 #, kde-format
 msgid "New Question"
 msgstr "Nová otázka"
 
-#: src/app/qml/ExerciseView.qml:371
+#: src/app/qml/ExerciseView.qml:375
 #, kde-format
 msgid "Play Question"
 msgstr "Prehrať otázku"
 
-#: src/app/qml/ExerciseView.qml:387
+#: src/app/qml/ExerciseView.qml:391
 #, kde-format
 msgid "Give Up"
 msgstr "Vzdať sa"
 
-#: src/app/qml/ExerciseView.qml:401
+#: src/app/qml/ExerciseView.qml:405
 #, kde-format
 msgid "Stop Test"
 msgstr "Zastaviť test"
 
-#: src/app/qml/ExerciseView.qml:401
+#: src/app/qml/ExerciseView.qml:405
 #, kde-format
 msgid "Start Test"
 msgstr "Spustiť test"
 
-#: src/app/qml/ExerciseView.qml:457
+#: src/app/qml/ExerciseView.qml:461
 #, fuzzy, kde-format
 #| msgid "Available Answers"
 msgid "Available answers"
 msgstr "Dostupné odpovede"
 
-#: src/app/qml/ExerciseView.qml:462
+#: src/app/qml/ExerciseView.qml:466
 #, kde-format
 msgid "Scroll for more"
 msgstr "Posuňte pre viac"
 
-#: src/app/qml/ExerciseView.qml:518
+#: src/app/qml/ExerciseView.qml:527
 #, fuzzy, kde-format
 #| msgid "Correct Answer(s)"
 msgid "Correct answer"
@@ -2055,7 +2055,7 @@ msgstr[0] "Správne odpovede"
 msgstr[1] "Správne odpovede"
 msgstr[2] "Správne odpovede"
 
-#: src/app/qml/ExerciseView.qml:519
+#: src/app/qml/ExerciseView.qml:528
 #, fuzzy, kde-format
 #| msgid "Your Answer(s)"
 msgid "Your answer"
@@ -2064,42 +2064,42 @@ msgstr[0] "Vaše odpovede"
 msgstr[1] "Vaše odpovede"
 msgstr[2] "Vaše odpovede"
 
-#: src/app/qml/ExerciseView.qml:524
+#: src/app/qml/ExerciseView.qml:533
 #, kde-format
 msgid "Scroll for more |"
 msgstr "Posuňte pre viac |"
 
-#: src/app/qml/ExerciseView.qml:529
+#: src/app/qml/ExerciseView.qml:538
 #, kde-format
 msgid "%1 / %2"
 msgstr "%1 / %2"
 
-#: src/app/qml/ExerciseView.qml:534
+#: src/app/qml/ExerciseView.qml:543
 #, kde-format
 msgid "Backspace"
 msgstr "Backspace"
 
-#: src/app/qml/ExerciseView.qml:658
+#: src/app/qml/ExerciseView.qml:666
 #, kde-format
 msgid "Keyboard"
 msgstr "Klaviatúra"
 
-#: src/app/qml/ExerciseView.qml:662
+#: src/app/qml/ExerciseView.qml:670
 #, kde-format
 msgid "Staff"
 msgstr "Notová osnova"
 
-#: src/app/qml/ExerciseView.qml:804
+#: src/app/qml/ExerciseView.qml:817
 #, kde-format
 msgid "Empty answer slot"
 msgstr "Prázdne miesto pre odpoveď"
 
-#: src/app/qml/ExerciseView.qml:837
+#: src/app/qml/ExerciseView.qml:850
 #, kde-format
 msgid "Answer %1"
 msgstr "Odpoveď %1"
 
-#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:125
+#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:131
 #, kde-format
 msgid "Home"
 msgstr "Domov"
@@ -2114,22 +2114,22 @@ msgstr "Vyberte si cvičenie"
 msgid "Start with a topic, then pick the specific training level."
 msgstr "Začnite s témou a potom si vyberte konkrétnu úroveň tréningu."
 
-#: src/app/qml/MinuetDrawer.qml:35 src/app/qml/MinuetDrawer.qml:181
+#: src/app/qml/MinuetDrawer.qml:35 src/app/qml/MinuetDrawer.qml:184
 #, kde-format
 msgid "All exercises"
 msgstr "Všetky cvičenia"
 
-#: src/app/qml/MinuetDrawer.qml:76
+#: src/app/qml/MinuetDrawer.qml:82
 #, kde-format
 msgid "Search…"
 msgstr "Hľadať…"
 
-#: src/app/qml/MinuetDrawer.qml:97
+#: src/app/qml/MinuetDrawer.qml:103
 #, kde-format
 msgid "Welcome to Minuet"
 msgstr "Vitajte v Minuet"
 
-#: src/app/qml/MinuetDrawer.qml:108
+#: src/app/qml/MinuetDrawer.qml:114
 #, kde-format
 msgid ""
 "Practice ear training with exercises for intervals, chords, rhythm, scales, "
@@ -2138,12 +2138,12 @@ msgstr ""
 "Precvičujte sluchový tréning s cvičeniami pre intervaly, akordy, rytmus, "
 "stupnice a ďalšie."
 
-#: src/app/qml/MinuetDrawer.qml:138 src/app/qml/SettingsPage.qml:16
+#: src/app/qml/MinuetDrawer.qml:144 src/app/qml/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "Nastavenia"
 
-#: src/app/qml/MinuetDrawer.qml:152
+#: src/app/qml/MinuetDrawer.qml:158
 #, kde-format
 msgid "About"
 msgstr "O programe"
@@ -2242,7 +2242,7 @@ msgstr "Testy"
 msgid "Number of exercises"
 msgstr "Počet cvičení"
 
-#: src/app/uicontroller.cpp:45
+#: src/app/uicontroller.cpp:54
 #, kde-format
 msgid "Could not load the main user interface."
 msgstr "Nepodarilo sa načítať hlavné používateľské rozhranie."

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-06 00:39+0000\n"
-"PO-Revision-Date: 2026-06-04 08:25+0300\n"
+"POT-Creation-Date: 2026-06-07 00:39+0000\n"
+"PO-Revision-Date: 2026-06-06 06:50+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1077,14 +1077,14 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic tritones and sevenths by ear."
 msgstr ""
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying chord qualities when notes are rearranged in inversion."
 msgstr ""
 "אימון בזיהוי סוגי אקורדים גם כאשר משנים את סדר הצלילים שלהם (היפוך אקורד)."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying descending melodic compound intervals from a second "
@@ -1104,7 +1104,7 @@ msgid ""
 "Practice identifying descending melodic fourths, fifths, and octaves by ear."
 msgstr ""
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying descending melodic intervals from a second through an "
@@ -1113,7 +1113,7 @@ msgstr ""
 "אימון בזיהוי מרווחים מלודיים בירידה (ממרווח שני/סקונדה ועד אוקטבה) לפי "
 "השמיעה."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying descending melodic intervals from a second through a "
@@ -1334,7 +1334,7 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying melodic tritones and sevenths by ear."
 msgstr ""
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing a broad mix of common chord qualities by ear."
 msgstr "אימון בזיהוי מגוון רחב של סוגי אקורדים נפוצים לפי השמיעה."
@@ -1347,7 +1347,7 @@ msgstr "אימון בזיהוי סט מלא של סוגי אקורדי שבע ל
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing all three-note chord types by ear."
-msgstr ""
+msgstr "אימון בזיהוי כל האקורדים של שלושה תווים לפי השמיעה."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1361,12 +1361,12 @@ msgid ""
 "ear."
 msgstr "אימון בזיהוי צורות קצב בסיסיות ותבניות מקצב פשוטות לפי השמיעה."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing basic seventh chords across inversions."
 msgstr "אימון בזיהוי אקורדי שבע בסיסיים בכל ההיפוכים."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing bebop scales with added passing tones."
 msgstr "אימון בזיהוי סולמות ביבופ עם תווי מעבר נוספים."
@@ -1376,27 +1376,27 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing bright augmented chord sounds by ear."
 msgstr ""
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing chords that include a major seventh by ear."
 msgstr "אימון בזיהוי אקורדים שכוללים שביעית גדולה לפי השמיעה."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing chords that include a minor seventh by ear."
 msgstr "אימון בזיהוי אקורדים שכוללים שביעית קטנה לפי השמיעה."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing common seventh chord qualities in root position."
 msgstr "אימון בזיהוי סוגי אקורדי שבע נפוצים במצב יסודי."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing diminished triads in different inversions."
 msgstr "אימון בזיהוי משולשים מוקטנים בהיפוכים שונים."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing dominant seventh chords in different inversions."
 msgstr "אימון בזיהוי אקורדי דומיננט־שבע בהיפוכים שונים."
@@ -1406,17 +1406,17 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing eleventh chord colors by ear."
 msgstr ""
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing harmonic major and its modal colors."
 msgstr "אימון בזיהוי סולם מז׳ור הרמוני והגוונים המודאליים שלו."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing harmonic minor and its modal colors."
 msgstr "אימון בזיהוי סולם מינור הרמוני והגוונים המודאליים שלו."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice recognizing longer rhythm figures and more varied rhythmic patterns "
@@ -1553,9 +1553,7 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Seconds"
 msgstr "סקונדות"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Seconds and Thirds"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Seconds and thirds"
 msgstr "סקונדות וטרצות"
@@ -1565,16 +1563,12 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Second to 15th"
 msgstr "סקונדה עד קווינטדצימה"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Second to Octave"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Second to octave"
 msgstr "סקונדה עד אוקטבה"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Second to Tenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Second to tenth"
 msgstr "סקונדה עד דצימה"
@@ -1621,9 +1615,7 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Sixths"
 msgstr "סקסטות"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Sixths and Sevenths"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Sixths and sevenths"
 msgstr "סקסטות וספטימות"
@@ -1648,9 +1640,7 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Suspended Pentatonic"
 msgstr "פנטטוני מושהה"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Symmetric Scales"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Symmetric scales"
 msgstr "סולמות סימטריים"
@@ -1767,7 +1757,7 @@ msgstr "זיהוי האקורד או המרווח לפי שמיעה."
 msgid "%1 Includes %2 possible answers."
 msgstr "%1 כולל %2 תשובות אפשריות."
 
-#: src/app/exercisecatalogcontroller.cpp:246
+#: src/app/exercisecatalogcontroller.cpp:248
 #, kde-format
 msgid "Could not open JSON file \"%1\"."
 msgstr "לא ניתן לפתוח את הקובץ ה־JSON ‏„%1”."
@@ -1814,52 +1804,52 @@ msgstr "ניקוד: %1%"
 msgid "Question %1 out of %2"
 msgstr "שאלה %1 מתוך %2"
 
-#: src/app/main.cpp:148
+#: src/app/main.cpp:158
 #, kde-format
 msgid "Minuet"
 msgstr "מינואט"
 
-#: src/app/main.cpp:150
+#: src/app/main.cpp:160
 #, kde-format
 msgid "A KDE application for music education"
 msgstr "יישום KDE לחינוך מוזיקלי"
 
-#: src/app/main.cpp:151
+#: src/app/main.cpp:161
 #, kde-format
 msgid "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 msgstr "‏(c) 2016, סנדרו ס. אנדרייד (sandroandrade@kde.org)"
 
-#: src/app/main.cpp:156 src/app/main.cpp:158
+#: src/app/main.cpp:166 src/app/main.cpp:168
 #, kde-format
 msgid "Developer"
 msgstr "מפתח"
 
-#: src/app/main.cpp:160
+#: src/app/main.cpp:170
 #, kde-format
 msgid "Minuet icon designer"
 msgstr "מעצב הסמלים של מינואט"
 
-#: src/app/main.cpp:162
+#: src/app/main.cpp:172
 #, kde-format
 msgctxt "@info:credit"
 msgid "Fluidsynth"
 msgstr "Fluidsynth"
 
-#: src/app/main.cpp:162
-#, fuzzy, kde-format
+#: src/app/main.cpp:172
+#, kde-format
 msgctxt "@info:credit"
 msgid ""
 "Software synthesizer based on the SoundFont 2 specifications. © 2003 Peter "
 "Hanappe and others."
 msgstr "סינתיסייזר תוכנה המבוסס על מפרט SoundFont 2. ‏© 2003 פיטר הנאפה ואחרים."
 
-#: src/app/main.cpp:163
+#: src/app/main.cpp:173
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "צוות התרגום של KDE ישראל"
 
-#: src/app/main.cpp:163
+#: src/app/main.cpp:173
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -1874,53 +1864,53 @@ msgstr[1] "%2 - שני פריטים"
 msgstr[2] "%2 - %1 פריטים"
 msgstr[3] "%2 - %1 פריטים"
 
-#: src/app/qml/ExerciseView.qml:336
+#: src/app/qml/ExerciseView.qml:340
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "userMessage"
 msgstr "הודעת משתמש"
 
-#: src/app/qml/ExerciseView.qml:349
+#: src/app/qml/ExerciseView.qml:353
 #, kde-format
 msgid "Playing…"
 msgstr "מתנגן…"
 
-#: src/app/qml/ExerciseView.qml:371
+#: src/app/qml/ExerciseView.qml:375
 #, kde-format
 msgid "New Question"
 msgstr "שאלה חדשה"
 
-#: src/app/qml/ExerciseView.qml:371
+#: src/app/qml/ExerciseView.qml:375
 #, kde-format
 msgid "Play Question"
 msgstr "השמעת שאלה"
 
-#: src/app/qml/ExerciseView.qml:387
+#: src/app/qml/ExerciseView.qml:391
 #, kde-format
 msgid "Give Up"
 msgstr "ויתרתי"
 
-#: src/app/qml/ExerciseView.qml:401
+#: src/app/qml/ExerciseView.qml:405
 #, kde-format
 msgid "Stop Test"
 msgstr "עצירת הבחינה"
 
-#: src/app/qml/ExerciseView.qml:401
+#: src/app/qml/ExerciseView.qml:405
 #, kde-format
 msgid "Start Test"
 msgstr "התחלת הבחינה"
 
-#: src/app/qml/ExerciseView.qml:457
+#: src/app/qml/ExerciseView.qml:461
 #, kde-format
 msgid "Available answers"
 msgstr "שאלות זמינות"
 
-#: src/app/qml/ExerciseView.qml:462
+#: src/app/qml/ExerciseView.qml:466
 #, kde-format
 msgid "Scroll for more"
 msgstr "יש לגלול לעוד"
 
-#: src/app/qml/ExerciseView.qml:518
+#: src/app/qml/ExerciseView.qml:527
 #, kde-format
 msgid "Correct answer"
 msgid_plural "Correct answers"
@@ -1929,7 +1919,7 @@ msgstr[1] "תשובות נכונות"
 msgstr[2] "תשובות נכונות"
 msgstr[3] "תשובות נכונות"
 
-#: src/app/qml/ExerciseView.qml:519
+#: src/app/qml/ExerciseView.qml:528
 #, kde-format
 msgid "Your answer"
 msgid_plural "Your answers"
@@ -1938,42 +1928,42 @@ msgstr[1] "התשובות שלך"
 msgstr[2] "התשובות שלך"
 msgstr[3] "התשובות שלך"
 
-#: src/app/qml/ExerciseView.qml:524
+#: src/app/qml/ExerciseView.qml:533
 #, kde-format
 msgid "Scroll for more |"
 msgstr "יש לגלול לעוד |"
 
-#: src/app/qml/ExerciseView.qml:529
+#: src/app/qml/ExerciseView.qml:538
 #, kde-format
 msgid "%1 / %2"
 msgstr "%1 / %2"
 
-#: src/app/qml/ExerciseView.qml:534
+#: src/app/qml/ExerciseView.qml:543
 #, kde-format
 msgid "Backspace"
 msgstr "Backspace"
 
-#: src/app/qml/ExerciseView.qml:658
+#: src/app/qml/ExerciseView.qml:666
 #, kde-format
 msgid "Keyboard"
 msgstr "מקלדת"
 
-#: src/app/qml/ExerciseView.qml:662
+#: src/app/qml/ExerciseView.qml:670
 #, kde-format
 msgid "Staff"
 msgstr "חמשה"
 
-#: src/app/qml/ExerciseView.qml:804
+#: src/app/qml/ExerciseView.qml:817
 #, kde-format
 msgid "Empty answer slot"
 msgstr "משבצת תשובה ריקה"
 
-#: src/app/qml/ExerciseView.qml:837
+#: src/app/qml/ExerciseView.qml:850
 #, kde-format
 msgid "Answer %1"
 msgstr "תשובה %1"
 
-#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:125
+#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:131
 #, kde-format
 msgid "Home"
 msgstr "בית"
@@ -1988,22 +1978,22 @@ msgstr "בחירת תרגול"
 msgid "Start with a topic, then pick the specific training level."
 msgstr "יש להתחיל בנושא ואז לבחור את רמת התרגול הנקודתית."
 
-#: src/app/qml/MinuetDrawer.qml:35 src/app/qml/MinuetDrawer.qml:181
+#: src/app/qml/MinuetDrawer.qml:35 src/app/qml/MinuetDrawer.qml:184
 #, kde-format
 msgid "All exercises"
 msgstr "כל התרגולים"
 
-#: src/app/qml/MinuetDrawer.qml:76
+#: src/app/qml/MinuetDrawer.qml:82
 #, kde-format
 msgid "Search…"
 msgstr "חיפוש…"
 
-#: src/app/qml/MinuetDrawer.qml:97
+#: src/app/qml/MinuetDrawer.qml:103
 #, kde-format
 msgid "Welcome to Minuet"
 msgstr "ברוך בואך ל־Minuet"
 
-#: src/app/qml/MinuetDrawer.qml:108
+#: src/app/qml/MinuetDrawer.qml:114
 #, kde-format
 msgid ""
 "Practice ear training with exercises for intervals, chords, rhythm, scales, "
@@ -2012,12 +2002,12 @@ msgstr ""
 "אפשר לתרגל את אימון השמיעה עם תרגילים לחיזוק היכולות לזיהוי מרווחים, "
 "אקורדים, מקצבים, סולמות ועוד."
 
-#: src/app/qml/MinuetDrawer.qml:138 src/app/qml/SettingsPage.qml:16
+#: src/app/qml/MinuetDrawer.qml:144 src/app/qml/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "הגדרות"
 
-#: src/app/qml/MinuetDrawer.qml:152
+#: src/app/qml/MinuetDrawer.qml:158
 #, kde-format
 msgid "About"
 msgstr "על אודות"
@@ -2115,7 +2105,7 @@ msgstr "בדיקות"
 msgid "Number of exercises"
 msgstr "מספר התרגולים:"
 
-#: src/app/uicontroller.cpp:45
+#: src/app/uicontroller.cpp:54
 #, kde-format
 msgid "Could not load the main user interface."
 msgstr "לא ניתן לטעון את ממשק המשתמש הראשי."
@@ -2510,6 +2500,7 @@ msgctxt "General MIDI instrument group"
 msgid "Other"
 msgstr "אחר"
 
+#~| msgid "%1%"
 #~ msgctxt "technical term, do you have a musician friend?"
 #~ msgid "%1"
 #~ msgstr "%1"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-06 00:39+0000\n"
+"POT-Creation-Date: 2026-06-07 00:39+0000\n"
 "PO-Revision-Date: 2026-05-26 07:31+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
@@ -1883,7 +1883,7 @@ msgstr "Identifiez l'accord ou l'intervalle à l'oreille."
 msgid "%1 Includes %2 possible answers."
 msgstr "%1 permet %2 réponses possibles."
 
-#: src/app/exercisecatalogcontroller.cpp:246
+#: src/app/exercisecatalogcontroller.cpp:248
 #, kde-format
 msgid "Could not open JSON file \"%1\"."
 msgstr "Impossible d'ouvrir le fichier « JSON » « %1 »."
@@ -1932,39 +1932,39 @@ msgstr ""
 msgid "Question %1 out of %2"
 msgstr "Question %1 parmi %2"
 
-#: src/app/main.cpp:148
+#: src/app/main.cpp:158
 #, kde-format
 msgid "Minuet"
 msgstr "Minuet"
 
-#: src/app/main.cpp:150
+#: src/app/main.cpp:160
 #, kde-format
 msgid "A KDE application for music education"
 msgstr "Une application KDE pour l'enseignement de la musique"
 
-#: src/app/main.cpp:151
+#: src/app/main.cpp:161
 #, kde-format
 msgid "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 msgstr "(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"
 
-#: src/app/main.cpp:156 src/app/main.cpp:158
+#: src/app/main.cpp:166 src/app/main.cpp:168
 #, kde-format
 msgid "Developer"
 msgstr "Développeur"
 
-#: src/app/main.cpp:160
+#: src/app/main.cpp:170
 #, fuzzy, kde-format
 #| msgid "Minuet Icon Designer"
 msgid "Minuet icon designer"
 msgstr "Concepteur de l'icône Minuet"
 
-#: src/app/main.cpp:162
+#: src/app/main.cpp:172
 #, kde-format
 msgctxt "@info:credit"
 msgid "Fluidsynth"
 msgstr ""
 
-#: src/app/main.cpp:162
+#: src/app/main.cpp:172
 #, kde-format
 msgctxt "@info:credit"
 msgid ""
@@ -1972,13 +1972,13 @@ msgid ""
 "Hanappe and others."
 msgstr ""
 
-#: src/app/main.cpp:163
+#: src/app/main.cpp:173
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Maxime Corteel, Vincent Pinon, Xavier Besnard"
 
-#: src/app/main.cpp:163
+#: src/app/main.cpp:173
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -1991,54 +1991,54 @@ msgid_plural "%2 - %1 items"
 msgstr[0] "%2 - élément %1"
 msgstr[1] "%2 - %1 éléments"
 
-#: src/app/qml/ExerciseView.qml:336
+#: src/app/qml/ExerciseView.qml:340
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "userMessage"
 msgstr "Message utilisateur"
 
-#: src/app/qml/ExerciseView.qml:349
+#: src/app/qml/ExerciseView.qml:353
 #, kde-format
 msgid "Playing…"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:371
+#: src/app/qml/ExerciseView.qml:375
 #, kde-format
 msgid "New Question"
 msgstr "Nouvelle question"
 
-#: src/app/qml/ExerciseView.qml:371
+#: src/app/qml/ExerciseView.qml:375
 #, kde-format
 msgid "Play Question"
 msgstr "Jouer la question"
 
-#: src/app/qml/ExerciseView.qml:387
+#: src/app/qml/ExerciseView.qml:391
 #, kde-format
 msgid "Give Up"
 msgstr "Abandonner"
 
-#: src/app/qml/ExerciseView.qml:401
+#: src/app/qml/ExerciseView.qml:405
 #, kde-format
 msgid "Stop Test"
 msgstr " Arrêter le test"
 
-#: src/app/qml/ExerciseView.qml:401
+#: src/app/qml/ExerciseView.qml:405
 #, kde-format
 msgid "Start Test"
 msgstr "Démarrer le test"
 
-#: src/app/qml/ExerciseView.qml:457
+#: src/app/qml/ExerciseView.qml:461
 #, fuzzy, kde-format
 #| msgid "Available Answers"
 msgid "Available answers"
 msgstr "Réponses possibles"
 
-#: src/app/qml/ExerciseView.qml:462
+#: src/app/qml/ExerciseView.qml:466
 #, kde-format
 msgid "Scroll for more"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:518
+#: src/app/qml/ExerciseView.qml:527
 #, fuzzy, kde-format
 #| msgid "Correct Answer(s)"
 msgid "Correct answer"
@@ -2046,7 +2046,7 @@ msgid_plural "Correct answers"
 msgstr[0] "Votre(vos) réponse(s) correcte(s)"
 msgstr[1] "Votre(vos) réponse(s) correcte(s)"
 
-#: src/app/qml/ExerciseView.qml:519
+#: src/app/qml/ExerciseView.qml:528
 #, fuzzy, kde-format
 #| msgid "Your Answer(s)"
 msgid "Your answer"
@@ -2054,42 +2054,42 @@ msgid_plural "Your answers"
 msgstr[0] "Votre(vos) réponse(s)"
 msgstr[1] "Votre(vos) réponse(s)"
 
-#: src/app/qml/ExerciseView.qml:524
+#: src/app/qml/ExerciseView.qml:533
 #, kde-format
 msgid "Scroll for more |"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:529
+#: src/app/qml/ExerciseView.qml:538
 #, kde-format
 msgid "%1 / %2"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:534
+#: src/app/qml/ExerciseView.qml:543
 #, kde-format
 msgid "Backspace"
 msgstr "Retour arrière"
 
-#: src/app/qml/ExerciseView.qml:658
+#: src/app/qml/ExerciseView.qml:666
 #, kde-format
 msgid "Keyboard"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:662
+#: src/app/qml/ExerciseView.qml:670
 #, kde-format
 msgid "Staff"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:804
+#: src/app/qml/ExerciseView.qml:817
 #, kde-format
 msgid "Empty answer slot"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:837
+#: src/app/qml/ExerciseView.qml:850
 #, kde-format
 msgid "Answer %1"
 msgstr ""
 
-#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:125
+#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:131
 #, kde-format
 msgid "Home"
 msgstr "Accueil"
@@ -2105,22 +2105,22 @@ msgid "Start with a topic, then pick the specific training level."
 msgstr ""
 "Commencez par un sujet, puis sélectionnez le niveau spécifique de formation."
 
-#: src/app/qml/MinuetDrawer.qml:35 src/app/qml/MinuetDrawer.qml:181
+#: src/app/qml/MinuetDrawer.qml:35 src/app/qml/MinuetDrawer.qml:184
 #, kde-format
 msgid "All exercises"
 msgstr "Tous les exercices"
 
-#: src/app/qml/MinuetDrawer.qml:76
+#: src/app/qml/MinuetDrawer.qml:82
 #, kde-format
 msgid "Search…"
 msgstr "Rechercher…"
 
-#: src/app/qml/MinuetDrawer.qml:97
+#: src/app/qml/MinuetDrawer.qml:103
 #, kde-format
 msgid "Welcome to Minuet"
 msgstr "Bienvenue à Minuet"
 
-#: src/app/qml/MinuetDrawer.qml:108
+#: src/app/qml/MinuetDrawer.qml:114
 #, kde-format
 msgid ""
 "Practice ear training with exercises for intervals, chords, rhythm, scales, "
@@ -2129,12 +2129,12 @@ msgstr ""
 "Exercez votre oreille avec des exercices pour les intervalles, les accords, "
 "le rythme, les gammes, et plus encore."
 
-#: src/app/qml/MinuetDrawer.qml:138 src/app/qml/SettingsPage.qml:16
+#: src/app/qml/MinuetDrawer.qml:144 src/app/qml/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "Configuration"
 
-#: src/app/qml/MinuetDrawer.qml:152
+#: src/app/qml/MinuetDrawer.qml:158
 #, kde-format
 msgid "About"
 msgstr "À propos"
@@ -2236,7 +2236,7 @@ msgstr "Tests"
 msgid "Number of exercises"
 msgstr "Nombre d'exercices"
 
-#: src/app/uicontroller.cpp:45
+#: src/app/uicontroller.cpp:54
 #, kde-format
 msgid "Could not load the main user interface."
 msgstr "Impossible de charger l'interface utilisateur principale."
