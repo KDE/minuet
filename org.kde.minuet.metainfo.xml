@@ -40,6 +40,7 @@
   <name xml:lang="zh-CN">Minuet</name>
   <name xml:lang="zh-TW">Minuet</name>
   <summary>Music education software</summary>
+  <summary xml:lang="ar">برنامج تعلم موسيقى</summary>
   <summary xml:lang="ca">Programari d'educació musical</summary>
   <summary xml:lang="ca-valencia">Programari d'educació musical</summary>
   <summary xml:lang="es">Software de aprendizaje musical</summary>
@@ -56,6 +57,7 @@
   </developer>
   <description>
     <p>Minuet is an application for music education. It features a set of ear training exercises regarding intervals, chords, scales, and more.</p>
+    <p xml:lang="ar">منويت هو تطبيق لتعليم الموسيقى. يتميز بمجموعة من تمارين تدريب الأذن فيما يتعلق بالفواصل الزمنية والأوتار والمقاييس والمزيد.</p>
     <p xml:lang="ca">El Minuet és una aplicació per a l'educació musical. Disposa d'un conjunt d'exercicis d'entrenament de l'oïda referits a intervals, acords, escales i altres.</p>
     <p xml:lang="ca-valencia">Minuet és una aplicació per a l'educació musical. Disposa d'un conjunt d'exercicis d'entrenament de l'oïda referits a intervals, acords, escales i altres.</p>
     <p xml:lang="es">Minuet es una aplicación para el aprendizaje musical. Contiene un conjunto de ejercicios de entrenamiento auditivo que contemplan el uso de intervalos, acordes y escalas, entre otras cosas.</p>
@@ -84,6 +86,7 @@
   <screenshots>
     <screenshot type="default">
       <caption>Choose music training exercises</caption>
+      <caption xml:lang="ar">اختر تمارين تدريب الموسيقى</caption>
       <caption xml:lang="ca">Trieu exercicis d'entrenament musical</caption>
       <caption xml:lang="ca-valencia">Trieu exercicis d'entrenament musical</caption>
       <caption xml:lang="es">Selección de ejercicios de aprendizaje musical</caption>
@@ -99,6 +102,7 @@
     </screenshot>
     <screenshot>
       <caption>Practice recognizing chords</caption>
+      <caption xml:lang="ar">تمرين التعرف على الأوتار</caption>
       <caption xml:lang="ca">Practiqueu el reconeixement d'acords</caption>
       <caption xml:lang="ca-valencia">Practiqueu el reconeixement d'acords</caption>
       <caption xml:lang="es">Práctica de reconocimiento de acordes</caption>
@@ -114,6 +118,7 @@
     </screenshot>
     <screenshot>
       <caption>Improve rhythm recognition</caption>
+      <caption xml:lang="ar">تحسين التعرف على الإيقاع</caption>
       <caption xml:lang="ca">Milloreu el reconeixement del ritme</caption>
       <caption xml:lang="ca-valencia">Milloreu el reconeixement del ritme</caption>
       <caption xml:lang="es">Mejora del reconocimiento del ritmo</caption>
@@ -129,6 +134,7 @@
     </screenshot>
     <screenshot environment="plasma-mobile">
       <caption>Train your ear on mobile</caption>
+      <caption xml:lang="ar">درّب أذنك على الجهاز المحمول</caption>
       <caption xml:lang="ca">Entreneu la vostra oïda al mòbil</caption>
       <caption xml:lang="ca-valencia">Entreneu la vostra oïda al mòbil</caption>
       <caption xml:lang="es">Entrenamiento del oído en el móvil</caption>
