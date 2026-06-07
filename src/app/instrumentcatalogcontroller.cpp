@@ -4,11 +4,11 @@
 
 #include "instrumentcatalogcontroller.h"
 
+#include <QDebug>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonParseError>
 #include <QVariantMap>
-#include <QDebug>
 
 using namespace Qt::StringLiterals;
 

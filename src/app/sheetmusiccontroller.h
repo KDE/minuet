@@ -35,11 +35,8 @@ public:
     Q_INVOKABLE QString accidentalPrefix(int pitch) const;
     Q_INVOKABLE QString accidentalSymbol(int accidentValue) const;
     Q_INVOKABLE QVariantList ledgerLinesForPitch(int pitch) const;
-    Q_INVOKABLE QVariantList displayNotes(const QVariantList &model,
-                                          bool spaced,
-                                          double normalNoteheadX,
-                                          double noteheadStemUpSEX,
-                                          int accidentalColumnCount) const;
+    Q_INVOKABLE QVariantList
+    displayNotes(const QVariantList &model, bool spaced, double normalNoteheadX, double noteheadStemUpSEX, int accidentalColumnCount) const;
     Q_INVOKABLE QVariantList displayStems(const QVariantList &model,
                                           bool spaced,
                                           double staffStep,

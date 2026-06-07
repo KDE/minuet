@@ -153,10 +153,10 @@ QString ExerciseSessionController::colorForAnswer(const QVariant &answer, const 
 }
 
 QVariantMap ExerciseSessionController::answerPresentation(const QVariantList &answers,
-                                                         int rootPitch,
-                                                         const QVariantMap &exercise,
-                                                         const QVariantList &availableAnswers,
-                                                         const QVariantList &colors) const
+                                                          int rootPitch,
+                                                          const QVariantMap &exercise,
+                                                          const QVariantList &availableAnswers,
+                                                          const QVariantList &colors) const
 {
     QVariantMap presentation;
     const bool isRhythm = exercise.value(u"playMode"_s).toString() == u"rhythm"_s;
@@ -263,9 +263,7 @@ bool ExerciseSessionController::canShowSubmittedAnswerCorrection(int position,
                                                                  int selectedOptionCount,
                                                                  const QVariantList &correctAnswers) const
 {
-    return !exercise.isEmpty()
-        && m_currentAnswer >= selectedOptionCount
-        && isWrongSubmittedAnswer(m_userAnswers, correctAnswers, position);
+    return !exercise.isEmpty() && m_currentAnswer >= selectedOptionCount && isWrongSubmittedAnswer(m_userAnswers, correctAnswers, position);
 }
 
 void ExerciseSessionController::showSubmittedAnswerCorrection(int position)
@@ -283,9 +281,9 @@ void ExerciseSessionController::restoreSubmittedAnswerCorrection()
 }
 
 void ExerciseSessionController::toggleSubmittedAnswerCorrection(int position,
-                                                               const QVariantMap &exercise,
-                                                               int selectedOptionCount,
-                                                               const QVariantList &correctAnswers)
+                                                                const QVariantMap &exercise,
+                                                                int selectedOptionCount,
+                                                                const QVariantList &correctAnswers)
 {
     if (!canShowSubmittedAnswerCorrection(position, exercise, selectedOptionCount, correctAnswers)) {
         return;
@@ -311,10 +309,7 @@ bool ExerciseSessionController::chooseAnswer(const QVariantMap &answer, int inde
 
 bool ExerciseSessionController::canEditUserAnswers(const QString &viewState, int selectedOptionCount, bool animationRunning) const
 {
-    return viewState == u"waitingForAnswer"_s
-        && m_currentAnswer > 0
-        && m_currentAnswer < selectedOptionCount
-        && !animationRunning;
+    return viewState == u"waitingForAnswer"_s && m_currentAnswer > 0 && m_currentAnswer < selectedOptionCount && !animationRunning;
 }
 
 bool ExerciseSessionController::removeUserAnswerAt(int position)
@@ -413,9 +408,7 @@ void ExerciseSessionController::randomlySelectExerciseOptions(int selectedOption
     auto *generator = QRandomGenerator::global();
     const QJsonObject activeExerciseObject = QJsonObject::fromVariantMap(m_activeExercise);
     const QString playMode = activeExerciseObject[u"playMode"_s].toString();
-    const int numberOfSelectedOptions = selectedOptionCount > 0
-        ? selectedOptionCount
-        : activeExerciseObject[u"numberOfSelectedOptions"_s].toInt();
+    const int numberOfSelectedOptions = selectedOptionCount > 0 ? selectedOptionCount : activeExerciseObject[u"numberOfSelectedOptions"_s].toInt();
     if (numberOfSelectedOptions <= 0) {
         failSelection(u"Current exercise has no selected options count."_s);
         return;
@@ -504,9 +497,9 @@ void ExerciseSessionController::randomlySelectExerciseOptions(int selectedOption
 }
 
 void ExerciseSessionController::giveUpWithCorrectAnswers(const QVariantList &correctAnswers,
-                                                        const QVariantList &availableAnswers,
-                                                        const QVariantList &colors,
-                                                        int expectedAnswers)
+                                                         const QVariantList &availableAnswers,
+                                                         const QVariantList &colors,
+                                                         int expectedAnswers)
 {
     if (m_isTest) {
         --m_correctAnswers;

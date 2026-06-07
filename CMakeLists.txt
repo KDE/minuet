@@ -195,4 +195,8 @@ if(NOT MINUET_MOBILE_PLATFORM)
     install(FILES org.kde.minuet.metainfo.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 endif()
 
+include(KDEClangFormat)
+file(GLOB_RECURSE ALL_FORMAT_FILES src/*.cpp src/*.h)
+kde_clang_format(${ALL_FORMAT_FILES})
+
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)

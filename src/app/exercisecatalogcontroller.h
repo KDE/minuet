@@ -5,9 +5,9 @@
 #ifndef MINUET_EXERCISECATALOGCONTROLLER_H
 #define MINUET_EXERCISECATALOGCONTROLLER_H
 
-#include <QObject>
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QObject>
 #include <QVariantList>
 #include <QVariantMap>
 #include <qqmlregistration.h>
@@ -39,17 +39,19 @@ private:
 
     explicit ExerciseCatalogController(QObject *parent = nullptr);
 
-    bool mergeJsonFiles(const QString directoryName, QJsonObject &targetObject,
-                        bool applyDefinitionsFlag = false, QString commonKey = nullptr,
+    bool mergeJsonFiles(const QString directoryName,
+                        QJsonObject &targetObject,
+                        bool applyDefinitionsFlag = false,
+                        QString commonKey = nullptr,
                         QString mergeKey = nullptr);
-    QJsonArray applyDefinitions(QJsonArray exercises, QJsonArray definitions,
-                                QJsonObject collectedProperties = QJsonObject());
-    enum class DefinitionFilteringMode { AndFiltering, OrFiltering };
-    static void filterDefinitions(QJsonArray &definitions, QJsonObject &exerciseObject,
-                                  const QString &filterTagsKey,
-                                  DefinitionFilteringMode definitionFilteringMode);
-    QJsonArray mergeJsonArrays(QJsonArray oldFile, QJsonArray newFile, QString commonKey = nullptr,
-                               QString mergeKey = nullptr);
+    QJsonArray applyDefinitions(QJsonArray exercises, QJsonArray definitions, QJsonObject collectedProperties = QJsonObject());
+    enum class DefinitionFilteringMode {
+        AndFiltering,
+        OrFiltering
+    };
+    static void
+    filterDefinitions(QJsonArray &definitions, QJsonObject &exerciseObject, const QString &filterTagsKey, DefinitionFilteringMode definitionFilteringMode);
+    QJsonArray mergeJsonArrays(QJsonArray oldFile, QJsonArray newFile, QString commonKey = nullptr, QString mergeKey = nullptr);
     void collectExercise(const QVariantMap &exercise, const QString &inheritedIconName, QVariantList &collectedExercises) const;
     QString resolvedIconName(const QVariantMap &exercise, const QString &inheritedIconName, const QString &fallbackIconName) const;
 

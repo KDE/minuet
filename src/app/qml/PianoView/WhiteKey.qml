@@ -8,23 +8,34 @@ Rectangle {
     id: root
 
     property Item anchor
-    property int keyWidth
     property int keyHeight
-    property bool marked: false
+    property int keyWidth
     property color markColor: "transparent"
+    property bool marked: false
 
-    width: root.keyWidth; height: root.keyHeight
-    border { width: 1; color: "black" }
     color: "white"
+    height: root.keyHeight
+    width: root.keyWidth
 
+    Component.onCompleted: if (root.anchor !== null)
+        anchors.left = root.anchor.right
+
+    border {
+        color: "black"
+        width: 1
+    }
     Rectangle {
-        width: root.keyWidth - 4; height: root.keyWidth - 4
-        radius: (root.keyWidth - 4) / 2
         border.color: "black"
         color: root.markColor
+        height: root.keyWidth - 4
+        radius: (root.keyWidth - 4) / 2
         visible: root.marked
-        anchors { horizontalCenter: parent.horizontalCenter; bottom: parent.bottom; bottomMargin: 2 }
-    }
+        width: root.keyWidth - 4
 
-    Component.onCompleted: if (root.anchor !== null) anchors.left = root.anchor.right
+        anchors {
+            bottom: parent.bottom
+            bottomMargin: 2
+            horizontalCenter: parent.horizontalCenter
+        }
+    }
 }

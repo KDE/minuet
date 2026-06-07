@@ -17,9 +17,9 @@
 #endif
 #include <KLocalizedString>
 
+#include <QByteArray>
 #include <QCommandLineParser>
 #include <QCoreApplication>
-#include <QByteArray>
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
@@ -155,21 +155,24 @@ int main(int argc, char *argv[])
     applyAppleApplicationLanguages();
 #endif
 
-    KAboutData aboutData(u"minuet"_s, i18n("Minuet"),
+    KAboutData aboutData(u"minuet"_s,
+                         i18n("Minuet"),
                          QString::fromUtf8(MINUET_VERSION_STRING),
-                         i18n("A KDE application for music education"), KAboutLicense::GPL,
+                         i18n("A KDE application for music education"),
+                         KAboutLicense::GPL,
                          i18n("(c) 2016, Sandro S. Andrade (sandroandrade@kde.org)"));
     aboutData.setHomepage(u"https://minuet.kde.org"_s);
     aboutData.setBugAddress("submit@bugs.kde.org");
     aboutData.setProductName("minuet");
     aboutData.setDesktopFileName(u"org.kde.minuet"_s);
-    aboutData.addAuthor(u"Sandro S. Andrade"_s, i18n("Developer"),
-                        u"sandroandrade@kde.org"_s);
-    aboutData.addAuthor(u"Ayush Shah"_s, i18n("Developer"),
-                        u"1595ayush@gmail.com"_s);
-    aboutData.addAuthor(u"Alessandro Longo"_s, i18n("Minuet icon designer"),
-                        u"alessandro.longo@kdemail.net"_s);
-    aboutData.addComponent(i18nc("@info:credit", "Fluidsynth"), i18nc("@info:credit", "Software synthesizer based on the SoundFont 2 specifications. © 2003 Peter Hanappe and others."), {}, u"https://github.com/FluidSynth/fluidsynth"_s, KAboutLicense::LGPL_V2_1);
+    aboutData.addAuthor(u"Sandro S. Andrade"_s, i18n("Developer"), u"sandroandrade@kde.org"_s);
+    aboutData.addAuthor(u"Ayush Shah"_s, i18n("Developer"), u"1595ayush@gmail.com"_s);
+    aboutData.addAuthor(u"Alessandro Longo"_s, i18n("Minuet icon designer"), u"alessandro.longo@kdemail.net"_s);
+    aboutData.addComponent(i18nc("@info:credit", "Fluidsynth"),
+                           i18nc("@info:credit", "Software synthesizer based on the SoundFont 2 specifications. © 2003 Peter Hanappe and others."),
+                           {},
+                           u"https://github.com/FluidSynth/fluidsynth"_s,
+                           KAboutLicense::LGPL_V2_1);
     aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
 
 #if defined(Q_OS_ANDROID)
@@ -214,8 +217,7 @@ int main(int argc, char *argv[])
         for (const QString &assetPath : assetPaths) {
             QFile assetFile(assetPath);
             if (assetFile.exists() && assetFile.copy(soundfontPath)) {
-                qDebug() << "Copied" << QFileInfo(soundfontPath).size()
-                         << "b soundfont file to" << soundfontPath;
+                qDebug() << "Copied" << QFileInfo(soundfontPath).size() << "b soundfont file to" << soundfontPath;
                 break;
             }
         }

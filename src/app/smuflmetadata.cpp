@@ -4,11 +4,11 @@
 
 #include "smuflmetadata.h"
 
+#include <QDebug>
 #include <QFile>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonParseError>
-#include <QDebug>
 
 using namespace Qt::StringLiterals;
 
@@ -51,10 +51,7 @@ QVariantList SmuflMetadata::anchor(const QString &glyphName, const QString &anch
         return {0.0, 0.0};
     }
 
-    const QJsonValue anchorValue = m_data[u"glyphsWithAnchors"_s].toObject()
-        .value(glyphName)
-        .toObject()
-        .value(anchorName);
+    const QJsonValue anchorValue = m_data[u"glyphsWithAnchors"_s].toObject().value(glyphName).toObject().value(anchorName);
     const QJsonArray anchorArray = anchorValue.toArray();
     if (anchorArray.size() != 2) {
         qWarning() << "Bravura metadata is missing anchor" << glyphName << anchorName;
@@ -89,10 +86,7 @@ double SmuflMetadata::glyphBBoxValue(const QString &glyphName, const QString &co
         return 0.0;
     }
 
-    const QJsonValue cornerValue = m_data[u"glyphBBoxes"_s].toObject()
-        .value(glyphName)
-        .toObject()
-        .value(cornerName);
+    const QJsonValue cornerValue = m_data[u"glyphBBoxes"_s].toObject().value(glyphName).toObject().value(cornerName);
     const QJsonArray cornerArray = cornerValue.toArray();
     if (cornerArray.size() != 2) {
         qWarning() << "Bravura metadata is missing bounding box corner" << glyphName << cornerName;
@@ -111,14 +105,9 @@ bool SmuflMetadata::hasRequiredData() const
     const QJsonObject noteheadBlackBBox = glyphBBoxes[u"noteheadBlack"_s].toObject();
     const QJsonObject metNoteQuarterUpBBox = glyphBBoxes[u"metNoteQuarterUp"_s].toObject();
 
-    return noteheadBlack[u"stemUpSE"_s].isArray()
-        && noteheadBlack[u"stemDownNW"_s].isArray()
-        && engravingDefaults[u"staffLineThickness"_s].isDouble()
-        && engravingDefaults[u"legerLineThickness"_s].isDouble()
-        && engravingDefaults[u"legerLineExtension"_s].isDouble()
-        && engravingDefaults[u"stemThickness"_s].isDouble()
-        && noteheadBlackBBox[u"bBoxNE"_s].isArray()
-        && noteheadBlackBBox[u"bBoxSW"_s].isArray()
+    return noteheadBlack[u"stemUpSE"_s].isArray() && noteheadBlack[u"stemDownNW"_s].isArray() && engravingDefaults[u"staffLineThickness"_s].isDouble()
+        && engravingDefaults[u"legerLineThickness"_s].isDouble() && engravingDefaults[u"legerLineExtension"_s].isDouble()
+        && engravingDefaults[u"stemThickness"_s].isDouble() && noteheadBlackBBox[u"bBoxNE"_s].isArray() && noteheadBlackBBox[u"bBoxSW"_s].isArray()
         && metNoteQuarterUpBBox[u"bBoxNE"_s].isArray();
 }
 }

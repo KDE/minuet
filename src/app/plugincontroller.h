@@ -9,8 +9,8 @@
 #include <QString>
 
 #if !defined(Q_OS_ANDROID) && !defined(Q_OS_IOS)
-#include <QHash>
 #include <KPluginMetaData>
+#include <QHash>
 #include <QVector>
 #endif
 

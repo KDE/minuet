@@ -115,11 +115,8 @@ QVariantList SheetMusicController::ledgerLinesForPitch(int pitch) const
     return lines;
 }
 
-QVariantList SheetMusicController::displayNotes(const QVariantList &model,
-                                                      bool spaced,
-                                                      double normalNoteheadX,
-                                                      double noteheadStemUpSEX,
-                                                      int accidentalColumnCount) const
+QVariantList
+SheetMusicController::displayNotes(const QVariantList &model, bool spaced, double normalNoteheadX, double noteheadStemUpSEX, int accidentalColumnCount) const
 {
     QVariantList notes;
     notes.reserve(model.size());
@@ -154,8 +151,7 @@ QVariantList SheetMusicController::displayNotes(const QVariantList &model,
         }
 
         std::sort(group.begin(), group.end(), [&notes](int first, int second) {
-            return notes.at(first).toMap().value(QStringLiteral("noteIndex")).toInt()
-                < notes.at(second).toMap().value(QStringLiteral("noteIndex")).toInt();
+            return notes.at(first).toMap().value(QStringLiteral("noteIndex")).toInt() < notes.at(second).toMap().value(QStringLiteral("noteIndex")).toInt();
         });
 
         for (size_t i = 1; i < group.size(); ++i) {
@@ -195,12 +191,12 @@ QVariantList SheetMusicController::displayNotes(const QVariantList &model,
 }
 
 QVariantList SheetMusicController::displayStems(const QVariantList &model,
-                                                      bool spaced,
-                                                      double staffStep,
-                                                      double stemExtension,
-                                                      double noteheadStemUpSEY,
-                                                      double middleCY,
-                                                      double staffPixelOffset) const
+                                                bool spaced,
+                                                double staffStep,
+                                                double stemExtension,
+                                                double noteheadStemUpSEY,
+                                                double middleCY,
+                                                double staffPixelOffset) const
 {
     std::vector<int> positions;
     positions.reserve(model.size());

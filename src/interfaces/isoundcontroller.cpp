@@ -11,7 +11,8 @@ using namespace Qt::StringLiterals;
 
 namespace Minuet
 {
-ISoundController::ISoundController(QObject *parent) : IPlugin(parent)
+ISoundController::ISoundController(QObject *parent)
+    : IPlugin(parent)
 {
     m_pitch = 0;
     m_volume = 100;
@@ -114,8 +115,7 @@ void ISoundController::setInstrumentGroups(const QVariantList &instrumentGroups)
 {
     if (m_instrumentGroups != instrumentGroups) {
         m_instrumentGroups = instrumentGroups;
-        m_instrumentGroupsJson = QString::fromUtf8(
-            QJsonDocument(QJsonArray::fromVariantList(m_instrumentGroups)).toJson(QJsonDocument::Compact));
+        m_instrumentGroupsJson = QString::fromUtf8(QJsonDocument(QJsonArray::fromVariantList(m_instrumentGroups)).toJson(QJsonDocument::Compact));
         emit instrumentGroupsChanged();
     }
 }
@@ -124,8 +124,7 @@ void ISoundController::setInstruments(const QVariantList &instruments)
 {
     if (m_instruments != instruments) {
         m_instruments = instruments;
-        m_instrumentsJson = QString::fromUtf8(
-            QJsonDocument(QJsonArray::fromVariantList(m_instruments)).toJson(QJsonDocument::Compact));
+        m_instrumentsJson = QString::fromUtf8(QJsonDocument(QJsonArray::fromVariantList(m_instruments)).toJson(QJsonDocument::Compact));
         emit instrumentsChanged();
     }
 }
@@ -134,8 +133,7 @@ void ISoundController::setRhythmInstruments(const QVariantList &rhythmInstrument
 {
     if (m_rhythmInstruments != rhythmInstruments) {
         m_rhythmInstruments = rhythmInstruments;
-        m_rhythmInstrumentsJson = QString::fromUtf8(
-            QJsonDocument(QJsonArray::fromVariantList(m_rhythmInstruments)).toJson(QJsonDocument::Compact));
+        m_rhythmInstrumentsJson = QString::fromUtf8(QJsonDocument(QJsonArray::fromVariantList(m_rhythmInstruments)).toJson(QJsonDocument::Compact));
         emit rhythmInstrumentsChanged();
     }
 }

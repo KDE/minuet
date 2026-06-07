@@ -5,8 +5,8 @@
 #ifndef MINUET_EXERCISESESSIONCONTROLLER_H
 #define MINUET_EXERCISESESSIONCONTROLLER_H
 
-#include <QObject>
 #include <QJsonArray>
+#include <QObject>
 #include <QVariant>
 #include <QVariantList>
 #include <QVariantMap>
@@ -75,7 +75,8 @@ public:
     Q_INVOKABLE QString answerInstruction(int count) const;
     Q_INVOKABLE bool isWrongSubmittedAnswer(const QVariantList &userAnswers, const QVariantList &correctAnswers, int position) const;
     Q_INVOKABLE bool answersMatch(const QVariantList &userAnswers, const QVariantList &correctAnswers, int expectedAnswers) const;
-    Q_INVOKABLE bool canShowSubmittedAnswerCorrection(int position, const QVariantMap &exercise, int selectedOptionCount, const QVariantList &correctAnswers) const;
+    Q_INVOKABLE bool
+    canShowSubmittedAnswerCorrection(int position, const QVariantMap &exercise, int selectedOptionCount, const QVariantList &correctAnswers) const;
     Q_INVOKABLE void showSubmittedAnswerCorrection(int position);
     Q_INVOKABLE void restoreSubmittedAnswerCorrection();
     Q_INVOKABLE void toggleSubmittedAnswerCorrection(int position, const QVariantMap &exercise, int selectedOptionCount, const QVariantList &correctAnswers);
@@ -89,7 +90,8 @@ public:
     Q_INVOKABLE void stopTest();
     Q_INVOKABLE void setActiveExercise(const QVariantMap &activeExercise);
     Q_INVOKABLE void randomlySelectExerciseOptions(int selectedOptionCount = -1);
-    Q_INVOKABLE void giveUpWithCorrectAnswers(const QVariantList &correctAnswers, const QVariantList &availableAnswers, const QVariantList &colors, int expectedAnswers);
+    Q_INVOKABLE void
+    giveUpWithCorrectAnswers(const QVariantList &correctAnswers, const QVariantList &availableAnswers, const QVariantList &colors, int expectedAnswers);
     Q_INVOKABLE void beginQuestion(int maximumExercises);
     Q_INVOKABLE void finishQuestionGeneration();
     Q_INVOKABLE void setSingleAnswerHighlight(const QString &answerName);

@@ -10,117 +10,116 @@ import org.kde.kirigami as Kirigami
 Kirigami.ApplicationWindow {
     id: window
 
-    visible: true
-    width: Screen.width; height: Screen.height
-    visibility: Window.Maximized
-
-    property string titleText: i18n("Home")
     property var currentExercise
     property var currentExerciseSelection
-    property int previousPageStackIndex: 0
     readonly property var currentPage: pageStack.depth > 0 ? pageStack.get(pageStack.currentIndex) : null
+    property int previousPageStackIndex: 0
+    property string titleText: i18n("Home")
 
-    title: currentPage?.title ?? titleText
-
-    function stopExerciseActivity(): void {
-        if (Core.soundController !== null) {
-            Core.soundController.stop()
-        }
-        if (Core.exerciseSessionController.isTest) {
-            Core.exerciseSessionController.stopTest()
-        }
+    function createAboutPage(): Kirigami.Page {
+        return aboutPageComponent.createObject(pageStack);
     }
-
-    function openHome(): void {
-        stopExerciseActivity()
-        currentExercise = undefined
-        currentExerciseSelection = null
-        pageStack.clear()
-        pageStack.push(createHomePage())
+    function createHomePage(): Kirigami.Page {
+        return homePageComponent.createObject(pageStack);
     }
-
+    function createSettingsPage(): Kirigami.Page {
+        return settingsPageComponent.createObject(pageStack);
+    }
+    function openAbout(): void {
+        stopExerciseActivity();
+        currentExercise = undefined;
+        currentExerciseSelection = {
+            kind: "about"
+        };
+        pageStack.clear();
+        pageStack.push(createAboutPage());
+    }
     function openExerciseFilter(exerciseModel: var, title: string, inheritedIconName: string, selectionKind: string): void {
-        stopExerciseActivity()
-        currentExercise = undefined
+        stopExerciseActivity();
+        currentExercise = undefined;
         if (selectionKind === "all") {
-            currentExerciseSelection = { kind: "all" }
+            currentExerciseSelection = {
+                kind: "all"
+            };
         } else if (selectionKind === "category" && Array.isArray(exerciseModel) && exerciseModel.length === 1) {
             currentExerciseSelection = {
                 kind: "category",
-                exercise: exerciseModel[0],
-            }
+                exercise: exerciseModel[0]
+            };
         } else {
-            currentExerciseSelection = null
+            currentExerciseSelection = null;
         }
-        pageStack.clear()
+        pageStack.clear();
         const page = exerciseMenuPageComponent.createObject(pageStack, {
             exerciseModel: exerciseModel,
             inheritedIconName: inheritedIconName,
-            pathText: title,
-        })
-        pageStack.push(page)
+            pathText: title
+        });
+        pageStack.push(page);
     }
-
-    function openAbout(): void {
-        stopExerciseActivity()
-        currentExercise = undefined
-        currentExerciseSelection = { kind: "about" }
-        pageStack.clear()
-        pageStack.push(createAboutPage())
+    function openHome(): void {
+        stopExerciseActivity();
+        currentExercise = undefined;
+        currentExerciseSelection = null;
+        pageStack.clear();
+        pageStack.push(createHomePage());
     }
-
     function openSettings(): void {
-        stopExerciseActivity()
-        currentExercise = undefined
-        currentExerciseSelection = { kind: "settings" }
-        pageStack.clear()
-        pageStack.push(createSettingsPage())
+        stopExerciseActivity();
+        currentExercise = undefined;
+        currentExerciseSelection = {
+            kind: "settings"
+        };
+        pageStack.clear();
+        pageStack.push(createSettingsPage());
     }
-
-    pageStack {
-        columnView.columnResizeMode: Kirigami.ColumnView.SingleColumn
-        globalToolBar {
-            style: Kirigami.ApplicationHeaderStyle.ToolBar
-            showNavigationButtons: pageStack.currentIndex > 0 ? Kirigami.ApplicationHeaderStyle.ShowBackButton : Kirigami.ApplicationHeaderStyle.None
+    function stopExerciseActivity(): void {
+        if (Core.soundController !== null) {
+            Core.soundController.stop();
+        }
+        if (Core.exerciseSessionController.isTest) {
+            Core.exerciseSessionController.stopTest();
         }
     }
 
-    Connections {
-        target: pageStack
-
-        function onCurrentIndexChanged(): void {
-            if (pageStack.currentIndex < window.previousPageStackIndex) {
-                window.stopExerciseActivity()
-            }
-            window.previousPageStackIndex = pageStack.currentIndex
-        }
-    }
+    height: Screen.height
+    title: currentPage?.title ?? titleText
+    visibility: Window.Maximized
+    visible: true
+    width: Screen.width
 
     globalDrawer: MinuetDrawer {
-        exerciseModel: Core.exerciseCatalogController.exercises
         currentExerciseSelection: window.currentExerciseSelection
-        onExerciseFilterSelected: function(exerciseModel, title, inheritedIconName, selectionKind) {
-            window.openExerciseFilter(exerciseModel, title, inheritedIconName, selectionKind)
+        exerciseModel: Core.exerciseCatalogController.exercises
+
+        onAboutRequested: window.openAbout()
+        onExerciseFilterSelected: function (exerciseModel, title, inheritedIconName, selectionKind) {
+            window.openExerciseFilter(exerciseModel, title, inheritedIconName, selectionKind);
         }
         onHomeRequested: window.openHome()
-        onAboutRequested: window.openAbout()
         onSettingsRequested: window.openSettings()
     }
 
     Component.onCompleted: pageStack.push(createHomePage())
 
-    function createHomePage(): Kirigami.Page {
-        return homePageComponent.createObject(pageStack)
-    }
+    pageStack {
+        columnView.columnResizeMode: Kirigami.ColumnView.SingleColumn
 
-    function createAboutPage(): Kirigami.Page {
-        return aboutPageComponent.createObject(pageStack)
+        globalToolBar {
+            showNavigationButtons: pageStack.currentIndex > 0 ? Kirigami.ApplicationHeaderStyle.ShowBackButton : Kirigami.ApplicationHeaderStyle.None
+            style: Kirigami.ApplicationHeaderStyle.ToolBar
+        }
     }
+    Connections {
+        function onCurrentIndexChanged(): void {
+            if (pageStack.currentIndex < window.previousPageStackIndex) {
+                window.stopExerciseActivity();
+            }
+            window.previousPageStackIndex = pageStack.currentIndex;
+        }
 
-    function createSettingsPage(): Kirigami.Page {
-        return settingsPageComponent.createObject(pageStack)
+        target: pageStack
     }
-
     Component {
         id: homePageComponent
 
@@ -129,46 +128,44 @@ Kirigami.ApplicationWindow {
 
             Kirigami.PlaceholderMessage {
                 anchors.centerIn: parent
-                width: Math.min(parent.width - Kirigami.Units.gridUnit * 2, Kirigami.Units.gridUnit * 28)
+                explanation: i18n("Start with a topic, then pick the specific training level.")
                 icon.name: "qrc:/icons/64-apps-minuet.png"
                 text: i18n("Choose an exercise")
-                explanation: i18n("Start with a topic, then pick the specific training level.")
+                width: Math.min(parent.width - Kirigami.Units.gridUnit * 2, Kirigami.Units.gridUnit * 28)
             }
         }
     }
-
     Component {
         id: exerciseMenuPageComponent
 
-        ExerciseMenuPage {}
+        ExerciseMenuPage {
+        }
     }
-
     Component {
         id: aboutPageComponent
 
-        AboutPage {}
+        AboutPage {
+        }
     }
-
     Component {
         id: settingsPageComponent
 
-        SettingsPage {}
+        SettingsPage {
+        }
     }
-
     Binding {
-        target: Core.exerciseSessionController
         property: "activeExercise"
+        target: Core.exerciseSessionController
         value: window.currentExercise
     }
-    
     Binding {
-        target: Core.soundController
         property: "playMode"
+        target: Core.soundController
         value: (window.currentExercise !== undefined) ? window.currentExercise["playMode"] : ""
     }
-    
     Shortcut {
         sequences: [StandardKey.Quit]
+
         onActivated: Qt.quit()
     }
 }

@@ -6,6 +6,9 @@
 
 namespace Minuet
 {
-IPlugin::IPlugin(QObject *parent) : QObject(parent) {}
+IPlugin::IPlugin(QObject *parent)
+    : QObject(parent)
+{
+}
 
 }

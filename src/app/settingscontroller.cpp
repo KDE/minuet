@@ -12,7 +12,8 @@ using namespace Qt::StringLiterals;
 
 namespace Minuet
 {
-SettingsController::SettingsController(QObject *parent) : QObject(parent)
+SettingsController::SettingsController(QObject *parent)
+    : QObject(parent)
 {
     load();
 }

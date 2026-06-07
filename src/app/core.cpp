@@ -101,7 +101,9 @@ void Core::setSoundController(ISoundController *soundController)
     }
 }
 
-Core::Core(QObject *parent) : QObject(parent), m_soundController(nullptr)
+Core::Core(QObject *parent)
+    : QObject(parent)
+    , m_soundController(nullptr)
 {
     Q_ASSERT(m_self == nullptr);
     m_self = this;

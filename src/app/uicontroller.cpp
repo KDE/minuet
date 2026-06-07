@@ -36,7 +36,10 @@ void hidePlatformSplashScreen()
 
 namespace Minuet
 {
-UiController::UiController(QObject *parent) : QObject(parent) {}
+UiController::UiController(QObject *parent)
+    : QObject(parent)
+{
+}
 
 bool UiController::initialize(Core *core)
 {

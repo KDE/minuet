@@ -11,28 +11,28 @@ import org.kde.kirigami.delegates as KD
 QQC2.ItemDelegate {
     id: item
 
-    Layout.fillWidth: true
-    activeFocusOnTab: true
-
-    Keys.onEnterPressed: trigger()
-    Keys.onReturnPressed: trigger()
-    Accessible.onPressAction: trigger()
-
     function trigger(): void {
         if (enabled && action) {
-            action.trigger()
+            action.trigger();
         }
     }
+
+    Layout.fillWidth: true
+    activeFocusOnTab: true
 
     contentItem: RowLayout {
         spacing: Kirigami.Units.largeSpacing
 
         KD.IconTitleSubtitle {
             Layout.fillWidth: true
-            icon: icon.fromControlsIcon(item.icon)
-            title: item.text
-            selected: item.highlighted || item.pressed
             font: item.font
+            icon: icon.fromControlsIcon(item.icon)
+            selected: item.highlighted || item.pressed
+            title: item.text
         }
     }
+
+    Accessible.onPressAction: trigger()
+    Keys.onEnterPressed: trigger()
+    Keys.onReturnPressed: trigger()
 }

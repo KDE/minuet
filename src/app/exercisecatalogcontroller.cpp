@@ -70,8 +70,7 @@ bool ExerciseCatalogController::initialize()
 {
     m_errorString.clear();
     const bool definitionsMerge = mergeJsonFiles(u"definitions"_s, m_definitions);
-    const bool exercisesMerge = mergeJsonFiles(u"exercises"_s, m_exercises, true,
-                                               u"name"_s, u"children"_s);
+    const bool exercisesMerge = mergeJsonFiles(u"exercises"_s, m_exercises, true, u"name"_s, u"children"_s);
     return definitionsMerge && exercisesMerge;
 }
 
@@ -193,8 +192,10 @@ QString ExerciseCatalogController::resolvedIconName(const QVariantMap &exercise,
     return iconName.startsWith(u"qrc:/"_s) ? iconName : u"qrc:/icons/22-actions-"_s + iconName;
 }
 
-bool ExerciseCatalogController::mergeJsonFiles(const QString directoryName, QJsonObject &targetObject,
-                                               bool applyDefinitionsFlag, QString commonKey,
+bool ExerciseCatalogController::mergeJsonFiles(const QString directoryName,
+                                               QJsonObject &targetObject,
+                                               bool applyDefinitionsFlag,
+                                               QString commonKey,
                                                QString mergeKey)
 {
     QStringList jsonDirs;
@@ -204,15 +205,11 @@ bool ExerciseCatalogController::mergeJsonFiles(const QString directoryName, QJso
 #elif defined(Q_OS_IOS)
     jsonDirs << u":/data/"_s + directoryName;
 #elif defined(Q_OS_WIN)
-    jsonDirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation,
-                                         u"minuet/"_s + directoryName,
-                                         QStandardPaths::LocateDirectory);
+    jsonDirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, u"minuet/"_s + directoryName, QStandardPaths::LocateDirectory);
 #else
-    jsonDirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, directoryName,
-                                         QStandardPaths::LocateDirectory);
+    jsonDirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, directoryName, QStandardPaths::LocateDirectory);
 #ifdef Q_OS_MACOS
-    const QString bundleJsonDir = QDir(QCoreApplication::applicationDirPath()).absoluteFilePath(
-        u"../Resources/minuet/"_s + directoryName);
+    const QString bundleJsonDir = QDir(QCoreApplication::applicationDirPath()).absoluteFilePath(u"../Resources/minuet/"_s + directoryName);
     if (QDir(bundleJsonDir).exists()) {
         jsonDirs << QDir::cleanPath(bundleJsonDir);
     }
@@ -272,10 +269,7 @@ bool ExerciseCatalogController::mergeJsonFiles(const QString directoryName, QJso
                 jsonObject[directoryName] = applyDefinitions(jsonObject[directoryName].toArray(), m_definitions[u"definitions"_s].toArray());
             }
 
-            targetObject[directoryName] = mergeJsonArrays(targetObject[directoryName].toArray(),
-                                                          jsonObject[directoryName].toArray(),
-                                                          commonKey,
-                                                          mergeKey);
+            targetObject[directoryName] = mergeJsonArrays(targetObject[directoryName].toArray(), jsonObject[directoryName].toArray(), commonKey, mergeKey);
         }
     }
     return true;

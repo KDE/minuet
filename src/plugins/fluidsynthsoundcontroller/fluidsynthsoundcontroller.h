@@ -44,8 +44,7 @@ public Q_SLOTS:
 
 private:
     void appendEvent(int channel, short key, short velocity, unsigned int duration);
-    static void sequencerCallback(unsigned int time, fluid_event_t *event, fluid_sequencer_t *seq,
-                                  void *data);
+    static void sequencerCallback(unsigned int time, fluid_event_t *event, fluid_sequencer_t *seq, void *data);
     void populateInstruments();
     void populateRhythmInstruments();
     void applyInstrument();

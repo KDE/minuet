@@ -8,17 +8,17 @@ import org.kde.kirigami as Kirigami
 Text {
     id: root
 
+    color: Kirigami.Theme.textColor
+    lineHeight: font.pixelSize
+    lineHeightMode: Text.FixedHeight
+
     FontLoader {
         id: bravura
 
         source: "Bravura.otf"
     }
-
     font {
         family: bravura.name
         pixelSize: 40
     }
-    lineHeightMode: Text.FixedHeight
-    lineHeight: font.pixelSize
-    color: Kirigami.Theme.textColor
 }

@@ -1,0 +1,87 @@
+# SPDX-FileCopyrightText: 2026 Sandro Andrade <sandroandrade@kde.org>
+#
+# SPDX-License-Identifier: GPL-2.0-or-later
+
+minimum_pre_commit_version: "3.2.0"
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-symlinks
+      - id: check-xml
+      - id: check-yaml
+      - id: end-of-file-fixer
+        exclude: ^po/
+      - id: mixed-line-ending
+        args: [--fix=lf]
+        exclude: ^po/
+      - id: trailing-whitespace
+        exclude: ^po/|\.patch$
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.4.1
+    hooks:
+      - id: codespell
+        exclude: >-
+          (?x)^(
+            po/|
+            src/app/icons/|
+            src/app/android/res/.*\.(png|webp)$|
+            src/app/ios/Assets\.xcassets/.*\.(png|json)$|
+            src/app/qml/SheetMusicView/(Bravura\.otf|bravura_metadata\.json)$|
+            src/plugins/fluidsynthsoundcontroller/GeneralUser-v1\.47\.sf2$|
+            .*\.(ico|png|svgz)$
+          )
+
+  - repo: https://github.com/fsfe/reuse-tool
+    rev: v6.2.0
+    hooks:
+      - id: reuse
+        stages: [manual]
+
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.11.0.1
+    hooks:
+      - id: shellcheck
+        types_or: [shell]
+        files: ^(Messages\.sh|scripts/.*\.sh)$
+
+  - repo: https://github.com/cheshirekow/cmake-format-precommit
+    rev: v0.6.13
+    hooks:
+      - id: cmake-lint
+        files: (^|/)CMakeLists\.txt$|\.cmake$
+
+  - repo: local
+    hooks:
+      - id: desktop-file-validate
+        name: desktop-file-validate
+        entry: desktop-file-validate
+        language: system
+        files: ^src/app/org\.kde\.minuet\.desktop$
+
+      - id: appstreamcli-validate
+        name: appstreamcli validate
+        entry: appstreamcli validate --no-net
+        language: system
+        files: ^org\.kde\.minuet\.metainfo\.xml$
+
+      - id: qmlformat
+        name: qmlformat
+        entry: qmlformat -n -i
+        language: system
+        files: ^src/app/qml/.*\.qml$
+
+      - id: qmllint
+        name: qmllint
+        entry: qmllint
+        language: system
+        files: ^src/app/qml/.*\.qml$
+        stages: [manual]

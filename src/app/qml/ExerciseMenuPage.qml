@@ -12,38 +12,33 @@ import org.kde.kirigami as Kirigami
 Kirigami.ScrollablePage {
     id: page
 
-    Kirigami.Theme.colorSet: Kirigami.Theme.Window
-    Kirigami.Theme.inherit: false
-
+    readonly property var exerciseList: Core.exerciseCatalogController.collectExercises(exerciseModel, inheritedIconName)
     property var exerciseModel: []
     property string inheritedIconName: ""
     property string pathText: title
-    readonly property var exerciseList: Core.exerciseCatalogController.collectExercises(exerciseModel, inheritedIconName)
-
-    title: exerciseList.length > 0 ? i18np("%2 - %1 item", "%2 - %1 items", exerciseList.length, pathText) : pathText
 
     function openExercise(exercise: var, iconName: string): void {
-        const exerciseTitle = i18nc("technical term, do you have a musician friend?", exercise.name)
-        applicationWindow().currentExercise = exercise
+        const exerciseTitle = i18nc("technical term, do you have a musician friend?", exercise.name);
+        applicationWindow().currentExercise = exercise;
         const exercisePage = exercisePageComponent.createObject(applicationWindow().pageStack, {
             title: exerciseTitle,
             currentExercise: exercise,
-            currentExerciseIconName: iconName,
-        })
-        applicationWindow().pageStack.push(exercisePage)
+            currentExerciseIconName: iconName
+        });
+        applicationWindow().pageStack.push(exercisePage);
     }
+
+    Kirigami.Theme.colorSet: Kirigami.Theme.Window
+    Kirigami.Theme.inherit: false
+    title: exerciseList.length > 0 ? i18np("%2 - %1 item", "%2 - %1 items", exerciseList.length, pathText) : pathText
 
     Component {
         id: exercisePageComponent
 
-        ExercisePage {}
-    }
-
-    Kirigami.CardsListView {
-        anchors {
-            fill: parent
-            margins: Kirigami.Units.largeSpacing
+        ExercisePage {
         }
+    }
+    Kirigami.CardsListView {
         boundsBehavior: Flickable.StopAtBounds
         clip: true
         model: page.exerciseList
@@ -60,37 +55,40 @@ Kirigami.ScrollablePage {
                 spacing: Kirigami.Units.largeSpacing
 
                 Kirigami.Icon {
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.preferredHeight: Kirigami.Units.iconSizes.medium
+                    Layout.preferredWidth: Kirigami.Units.iconSizes.medium
                     source: exerciseCard.modelData.iconName
                     visible: exerciseCard.modelData.iconName !== ""
-                    Layout.alignment: Qt.AlignVCenter
-                    Layout.preferredWidth: Kirigami.Units.iconSizes.medium
-                    Layout.preferredHeight: Kirigami.Units.iconSizes.medium
                 }
-
                 ColumnLayout {
                     Layout.fillWidth: true
                     spacing: Kirigami.Units.smallSpacing
 
                     Kirigami.Heading {
-                        text: i18nc("technical term, do you have a musician friend?", exerciseCard.modelData.exercise.name)
-                        level: 3
-                        elide: Text.ElideRight
-                        maximumLineCount: 1
                         Layout.fillWidth: true
+                        elide: Text.ElideRight
+                        level: 3
+                        maximumLineCount: 1
+                        text: i18nc("technical term, do you have a musician friend?", exerciseCard.modelData.exercise.name)
                     }
-
                     QQC2.Label {
+                        Layout.fillWidth: true
+                        color: Kirigami.Theme.disabledTextColor
+                        elide: Text.ElideRight
+                        maximumLineCount: 2
                         text: i18nc("technical term, do you have a musician friend?", Core.exerciseCatalogController.exerciseDescription(exerciseCard.modelData.exercise))
                         wrapMode: Text.WordWrap
-                        maximumLineCount: 2
-                        elide: Text.ElideRight
-                        color: Kirigami.Theme.disabledTextColor
-                        Layout.fillWidth: true
                     }
                 }
             }
 
             onClicked: page.openExercise(modelData.exercise, modelData.iconName)
+        }
+
+        anchors {
+            fill: parent
+            margins: Kirigami.Units.largeSpacing
         }
     }
 }

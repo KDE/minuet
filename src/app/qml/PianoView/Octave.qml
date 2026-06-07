@@ -8,22 +8,82 @@ Item {
     id: root
 
     property Item initialAnchor
-    property int keyWidth
     property int keyHeight
+    property int keyWidth
 
-    width: 7 * root.keyWidth; height: root.keyHeight - 10
     anchors.left: root.initialAnchor.right
+    height: root.keyHeight - 10
+    width: 7 * root.keyWidth
 
-    WhiteKey { id: whiteKey1; keyWidth: root.keyWidth; keyHeight: root.keyHeight }
-    BlackKey { anchor: whiteKey1; keyWidth: root.keyWidth; keyHeight: root.keyHeight }
-    WhiteKey { id: whiteKey2; anchor: whiteKey1; keyWidth: root.keyWidth; keyHeight: root.keyHeight }
-    BlackKey { anchor: whiteKey2; keyWidth: root.keyWidth; keyHeight: root.keyHeight }
-    WhiteKey { id: whiteKey3; anchor: whiteKey2; keyWidth: root.keyWidth; keyHeight: root.keyHeight }
-    WhiteKey { id: whiteKey4; anchor: whiteKey3; keyWidth: root.keyWidth; keyHeight: root.keyHeight }
-    BlackKey { anchor: whiteKey4; keyWidth: root.keyWidth; keyHeight: root.keyHeight }
-    WhiteKey { id: whiteKey5; anchor: whiteKey4; keyWidth: root.keyWidth; keyHeight: root.keyHeight }
-    BlackKey { anchor: whiteKey5; keyWidth: root.keyWidth; keyHeight: root.keyHeight }
-    WhiteKey { id: whiteKey6; anchor: whiteKey5; keyWidth: root.keyWidth; keyHeight: root.keyHeight }
-    BlackKey { anchor: whiteKey6; keyWidth: root.keyWidth; keyHeight: root.keyHeight }
-    WhiteKey { anchor: whiteKey6; keyWidth: root.keyWidth; keyHeight: root.keyHeight }
+    WhiteKey {
+        id: whiteKey1
+
+        keyHeight: root.keyHeight
+        keyWidth: root.keyWidth
+    }
+    BlackKey {
+        anchor: whiteKey1
+        keyHeight: root.keyHeight
+        keyWidth: root.keyWidth
+    }
+    WhiteKey {
+        id: whiteKey2
+
+        anchor: whiteKey1
+        keyHeight: root.keyHeight
+        keyWidth: root.keyWidth
+    }
+    BlackKey {
+        anchor: whiteKey2
+        keyHeight: root.keyHeight
+        keyWidth: root.keyWidth
+    }
+    WhiteKey {
+        id: whiteKey3
+
+        anchor: whiteKey2
+        keyHeight: root.keyHeight
+        keyWidth: root.keyWidth
+    }
+    WhiteKey {
+        id: whiteKey4
+
+        anchor: whiteKey3
+        keyHeight: root.keyHeight
+        keyWidth: root.keyWidth
+    }
+    BlackKey {
+        anchor: whiteKey4
+        keyHeight: root.keyHeight
+        keyWidth: root.keyWidth
+    }
+    WhiteKey {
+        id: whiteKey5
+
+        anchor: whiteKey4
+        keyHeight: root.keyHeight
+        keyWidth: root.keyWidth
+    }
+    BlackKey {
+        anchor: whiteKey5
+        keyHeight: root.keyHeight
+        keyWidth: root.keyWidth
+    }
+    WhiteKey {
+        id: whiteKey6
+
+        anchor: whiteKey5
+        keyHeight: root.keyHeight
+        keyWidth: root.keyWidth
+    }
+    BlackKey {
+        anchor: whiteKey6
+        keyHeight: root.keyHeight
+        keyWidth: root.keyWidth
+    }
+    WhiteKey {
+        anchor: whiteKey6
+        keyHeight: root.keyHeight
+        keyWidth: root.keyWidth
+    }
 }

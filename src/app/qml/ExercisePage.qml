@@ -9,13 +9,12 @@ import org.kde.kirigami as Kirigami
 Kirigami.Page {
     id: page
 
-    Kirigami.Theme.colorSet: Kirigami.Theme.View
-    Kirigami.Theme.inherit: false
-
-    padding: 0
-
     property var currentExercise
     property string currentExerciseIconName: ""
+
+    Kirigami.Theme.colorSet: Kirigami.Theme.View
+    Kirigami.Theme.inherit: false
+    padding: 0
 
     ExerciseView {
         id: exerciseView
@@ -24,75 +23,72 @@ Kirigami.Page {
         currentExercise: page.currentExercise
         currentExerciseIconName: page.currentExerciseIconName
     }
-
     Rectangle {
         id: countInOverlay
 
         anchors.fill: parent
-        z: 10
-        visible: exerciseView.countIn > 0 && page.currentExercise != undefined && page.currentExercise["playMode"] === "rhythm"
         color: Qt.rgba(0, 0, 0, 0.28)
+        visible: exerciseView.countIn > 0 && page.currentExercise != undefined && page.currentExercise["playMode"] === "rhythm"
+        z: 10
 
         Rectangle {
             id: countInBubble
 
             anchors.centerIn: parent
-            width: Kirigami.Units.gridUnit * 10
-            height: width
-            radius: width / 2
             color: Kirigami.Theme.backgroundColor
+            height: width
+            opacity: 0.92
+            radius: width / 2
+            width: Kirigami.Units.gridUnit * 10
+
             border {
                 color: Kirigami.Theme.highlightColor
                 width: 3
             }
-            opacity: 0.92
         }
-
         Kirigami.Heading {
             id: countInNumber
 
             anchors.centerIn: countInBubble
-            text: exerciseView.countIn.toString()
-            level: 1
-            font.pointSize: Kirigami.Units.gridUnit * 3.5
             color: Kirigami.Theme.highlightColor
+            font.pointSize: Kirigami.Units.gridUnit * 3.5
             horizontalAlignment: Text.AlignHCenter
+            level: 1
+            text: exerciseView.countIn.toString()
             verticalAlignment: Text.AlignVCenter
         }
     }
-
     ParallelAnimation {
         id: countInPulse
 
         NumberAnimation {
-            target: countInNumber
-            property: "scale"
-            from: 0.65
-            to: 1.0
             duration: 180
             easing.type: Easing.OutBack
-        }
-
-        NumberAnimation {
-            target: countInBubble
+            from: 0.65
             property: "scale"
-            from: 0.85
+            target: countInNumber
             to: 1.0
+        }
+        NumberAnimation {
             duration: 180
             easing.type: Easing.OutCubic
+            from: 0.85
+            property: "scale"
+            target: countInBubble
+            to: 1.0
         }
     }
-
     Connections {
-        target: Core.soundController
         function onCountInChanged(count: int): void {
             if (count > 0) {
-                countInPulse.restart()
+                countInPulse.restart();
             } else {
-                countInPulse.stop()
-                countInNumber.scale = 1
-                countInBubble.scale = 1
+                countInPulse.stop();
+                countInNumber.scale = 1;
+                countInBubble.scale = 1;
             }
         }
+
+        target: Core.soundController
     }
 }

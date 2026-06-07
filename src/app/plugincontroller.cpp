@@ -14,8 +14,8 @@
 #include <interfaces/isoundcontroller.h>
 
 #if !defined(Q_OS_ANDROID) && !defined(Q_OS_IOS)
-#include <QPluginLoader>
 #include <KPluginMetaData>
+#include <QPluginLoader>
 #endif
 
 #include <QDebug>
@@ -26,7 +26,8 @@ using namespace Qt::StringLiterals;
 
 namespace Minuet
 {
-PluginController::PluginController(QObject *parent) : QObject(parent)
+PluginController::PluginController(QObject *parent)
+    : QObject(parent)
 {
 #if !defined(Q_OS_ANDROID) && !defined(Q_OS_IOS)
     m_plugins = KPluginMetaData::findPlugins(u"minuet"_s);
@@ -56,10 +57,8 @@ bool PluginController::initialize(Core *core)
         IPlugin *plugin = qobject_cast<IPlugin *>(loader.instance());
         if (plugin) {
             m_loadedPlugins.insert(pluginMetaData, plugin);
-            if (!core->soundController()
-                && (soundController = qobject_cast<ISoundController *>(plugin))) {
-                qInfo() << "Setting soundcontroller to"
-                        << soundController->metaObject()->className();
+            if (!core->soundController() && (soundController = qobject_cast<ISoundController *>(plugin))) {
+                qInfo() << "Setting soundcontroller to" << soundController->metaObject()->className();
                 core->setSoundController(soundController);
             }
         } else {
