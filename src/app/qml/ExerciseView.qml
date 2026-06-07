@@ -482,8 +482,7 @@ Item {
                             id: answerGridView
 
                             anchors.fill: parent
-                            anchors.topMargin: exerciseView.answerCellSpacing
-                            anchors.bottomMargin: exerciseView.answerCellSpacing
+                            anchors.margins: exerciseView.answerCellSpacing
                             boundsBehavior: Flickable.StopAtBounds
                             flow: GridView.FlowLeftToRight
                             layoutDirection: Qt.LeftToRight
