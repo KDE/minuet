@@ -27,6 +27,8 @@ target_link_libraries(minuetinterfaces
     Qt::Quick
 )
 
+qt_extract_metatypes(minuetinterfaces)
+
 if(NOT MINUET_MOBILE_PLATFORM)
     install(FILES
         ${CMAKE_CURRENT_BINARY_DIR}/minuetinterfacesexport.h

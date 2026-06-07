@@ -8,6 +8,7 @@ import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
+import org.kde.kirigami.platform as Platform
 
 Kirigami.GlobalDrawer {
     id: drawer
@@ -140,6 +141,7 @@ Kirigami.GlobalDrawer {
         Kirigami.Separator {
             Layout.fillWidth: true
             Layout.topMargin: 2 * Kirigami.Units.largeSpacing
+            Layout.bottomMargin: 4
         },
         ActionListItem {
             action: Kirigami.Action {
@@ -183,6 +185,7 @@ Kirigami.GlobalDrawer {
         },
         Kirigami.Separator {
             Layout.fillWidth: true
+            Layout.topMargin: 6 + Platform.Units.smallSpacing
         },
         Item {
             Layout.fillHeight: true

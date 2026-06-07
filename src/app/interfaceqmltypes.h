@@ -13,10 +13,10 @@ namespace Minuet
 {
 namespace InterfaceQmlTypes
 {
-struct ISoundController {
+struct ISoundControllerForeign {
     Q_GADGET
     QML_FOREIGN(Minuet::ISoundController)
-    QML_ELEMENT
+    QML_NAMED_ELEMENT(ISoundController)
     QML_UNCREATABLE("ISoundController is provided by Core")
 };
 }
