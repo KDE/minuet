@@ -5,21 +5,19 @@ set -euo pipefail
 usage()
 {
     cat <<EOF
-Usage: $(basename "$0") [--skip-clone-checkout] [--qt-host-prefix <qt-macos-prefix>] <qt-ios-prefix>
+Usage: $(basename "$0") [--qt-host-prefix <qt-macos-prefix>] <qt-ios-prefix>
 
 Build Minuet's iOS dependency stack into <qt-ios-prefix> and generate
 device and simulator Xcode projects below ../build relative to this script.
 
 Options:
-  --skip-clone-checkout  Use existing dependency source trees in ../build/ios-src
-                         and start directly from configure/build/install.
   --qt-host-prefix PATH  Qt for macOS prefix used to build host tools. Defaults
                          to a sibling "macos" prefix next to <qt-ios-prefix>.
   -h, --help             Show this help.
 
 Example:
   $(basename "$0") /Users/sandroandrade/Qt/6.11.1/ios
-  $(basename "$0") --skip-clone-checkout /Users/sandroandrade/Qt/6.11.1/ios
+  SKIP_CLONE_CHECKOUT=1 SINGLE_DEPENDENCY=kirigami $(basename "$0") /Users/sandroandrade/Qt/6.11.1/ios
   $(basename "$0") --qt-host-prefix /Users/sandroandrade/Qt/6.11.1/macos /Users/sandroandrade/Qt/6.11.1/ios
 
 Environment overrides:
@@ -32,6 +30,8 @@ Environment overrides:
   LIBINTL_LITE_REF=ba1514607d02ce3711d828e784a7e9e2bb25aa84
   FLUIDSYNTH_REF=v2.5.3
   BUILD_DEPENDENCIES=0|1
+  SKIP_CLONE_CHECKOUT=0|1
+  SINGLE_DEPENDENCY=<manifest dependency name>
   GIT_RETRY_COUNT=3
   GIT_RETRY_DELAY=5
 EOF
@@ -46,7 +46,8 @@ CONFIG="${CONFIG:-Release}"
 DEVICE_ARCHS="${DEVICE_ARCHS:-arm64}"
 SIMULATOR_ARCHS="${SIMULATOR_ARCHS:-x86_64}"
 BUILD_DEPENDENCIES="${BUILD_DEPENDENCIES:-1}"
-SKIP_CLONE_CHECKOUT=0
+SKIP_CLONE_CHECKOUT="${SKIP_CLONE_CHECKOUT:-0}"
+SINGLE_DEPENDENCY="${SINGLE_DEPENDENCY:-}"
 GIT_RETRY_COUNT="${GIT_RETRY_COUNT:-3}"
 GIT_RETRY_DELAY="${GIT_RETRY_DELAY:-5}"
 
@@ -443,7 +444,7 @@ fetch_sources()
         url="$(manifest_query url "$dep")"
         ref="$(manifest_query ref "$dep")"
         fetch_git "$dep" "$url" "$ref"
-    done < <(manifest_query names)
+    done < <(selected_dependency_names)
 }
 
 check_existing_sources()
@@ -456,7 +457,7 @@ check_existing_sources()
             printf 'error: missing dependency source directory: %s\n' "$SRC_DIR/$dep" >&2
             missing=1
         fi
-    done < <(manifest_query names)
+    done < <(selected_dependency_names)
 
     [ "$missing" -eq 0 ] || die "Cannot skip clone/checkout with missing dependency sources"
 }
@@ -469,6 +470,11 @@ apply_dependency_patch()
 
     [ -f "$patch_file" ] || die "Dependency patch does not exist: $patch_file"
     [ -d "$source_dir" ] || return 0
+
+    if [ "$SKIP_CLONE_CHECKOUT" = "1" ] && [ -n "$(git -C "$source_dir" status --porcelain)" ]; then
+        log "Skipping patch for dirty $dep source tree: $(basename "$patch_file")"
+        return 0
+    fi
 
     if git -C "$source_dir" apply --reverse --check "$patch_file" >/dev/null 2>&1; then
         log "Patch already applied for $dep: $(basename "$patch_file")"
@@ -490,7 +496,34 @@ patch_dependency_sources()
             [ -n "$patch" ] || continue
             apply_dependency_patch "$dep" "$SCRIPT_DIR/$patch"
         done < <(manifest_query patches "$dep")
-    done < <(manifest_query names)
+    done < <(selected_dependency_names)
+}
+
+selected_dependency_names()
+{
+    if [ -n "$SINGLE_DEPENDENCY" ]; then
+        manifest_query url "$SINGLE_DEPENDENCY" >/dev/null
+        printf '%s\n' "$SINGLE_DEPENDENCY"
+    else
+        manifest_query names
+    fi
+}
+
+selected_host_tooling_names()
+{
+    local dep
+
+    if [ -z "$SINGLE_DEPENDENCY" ]; then
+        manifest_query host-tooling-names
+        return
+    fi
+
+    while IFS= read -r dep; do
+        if [ "$dep" = "$SINGLE_DEPENDENCY" ]; then
+            printf '%s\n' "$dep"
+            return
+        fi
+    done < <(manifest_query host-tooling-names)
 }
 
 common_cmake_args()
@@ -819,10 +852,17 @@ configure_build_install_host_tool()
 build_host_tooling()
 {
     local dep
+    local built_any=0
 
     while IFS= read -r dep; do
+        built_any=1
         configure_build_install_host_tool "$dep"
-    done < <(manifest_query host-tooling-names)
+    done < <(selected_host_tooling_names)
+
+    if [ -n "$SINGLE_DEPENDENCY" ] && [ "$built_any" -eq 0 ]; then
+        log "Skipping host tooling build for SINGLE_DEPENDENCY=$SINGLE_DEPENDENCY"
+        return 0
+    fi
 
     [ -f "$HOST_TOOLS_PREFIX/lib/cmake/KF6Config/KF6ConfigCompilerTargets.cmake" ] \
         || die "KConfig host compiler targets were not installed into $HOST_TOOLS_PREFIX"
@@ -884,6 +924,11 @@ build_dependency_stack()
 {
     local dep
 
+    if [ -n "$SINGLE_DEPENDENCY" ]; then
+        manifest_query url "$SINGLE_DEPENDENCY" >/dev/null
+        log "Building single dependency: $SINGLE_DEPENDENCY"
+    fi
+
     if [ "$SKIP_CLONE_CHECKOUT" = "1" ]; then
         log "Skipping dependency clone/checkout; using sources in $SRC_DIR"
         check_existing_sources
@@ -897,7 +942,7 @@ build_dependency_stack()
     while IFS= read -r dep; do
         configure_build_install "$dep" iphoneos "$DEVICE_ARCHS" "$QT_IOS_PREFIX" "$DEVICE_BUILD_ROOT"
         configure_build_install "$dep" iphonesimulator "$SIMULATOR_ARCHS" "$SIM_PREFIX" "$SIM_BUILD_ROOT"
-    done < <(manifest_query names)
+    done < <(selected_dependency_names)
 
     merge_simulator_binaries
 }

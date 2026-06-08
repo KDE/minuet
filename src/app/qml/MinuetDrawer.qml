@@ -64,6 +64,8 @@ Kirigami.GlobalDrawer {
     resetMenuOnTriggered: false
 
     header: Kirigami.AbstractApplicationHeader {
+        id: appHeader
+
         maximumHeight: searchField.implicitHeight
         minimumHeight: searchField.implicitHeight
 
@@ -85,21 +87,21 @@ Kirigami.GlobalDrawer {
         Binding {
             property: "preferredHeight"
             restoreMode: Binding.RestoreBindingOrValue
-            target: parent
+            target: appHeader
             value: searchField.implicitHeight + parent.topPadding + parent.bottomPadding
             when: Qt.platform.os === "android" || Qt.platform.os === "ios"
         }
         Binding {
             property: "topPadding"
             restoreMode: Binding.RestoreBindingOrValue
-            target: parent
+            target: appHeader
             value: Kirigami.Units.smallSpacing
             when: Qt.platform.os === "android" || Qt.platform.os === "ios"
         }
         Binding {
             property: "bottomPadding"
             restoreMode: Binding.RestoreBindingOrValue
-            target: parent
+            target: appHeader
             value: Kirigami.Units.smallSpacing
             when: Qt.platform.os === "android" || Qt.platform.os === "ios"
         }
@@ -142,9 +144,9 @@ Kirigami.GlobalDrawer {
             wrapMode: Text.WordWrap
         },
         Kirigami.Separator {
+            Layout.bottomMargin: drawer.drawerActionBottomPadding
             Layout.fillWidth: true
             Layout.topMargin: drawer.drawerActionVerticalSpacing
-            Layout.bottomMargin: drawer.drawerActionBottomPadding
         },
         ActionListItem {
             id: homeActionItem
@@ -191,9 +193,9 @@ Kirigami.GlobalDrawer {
             }
         },
         Kirigami.Separator {
+            Layout.bottomMargin: Math.max(0, drawer.drawerActionBottomPadding - Platform.Units.smallSpacing)
             Layout.fillWidth: true
             Layout.topMargin: drawer.drawerActionVerticalSpacing - aboutActionItem.bottomPadding
-            Layout.bottomMargin: Math.max(0, drawer.drawerActionBottomPadding - Platform.Units.smallSpacing)
         },
         Item {
             Layout.fillHeight: true

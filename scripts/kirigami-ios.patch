@@ -69,19 +69,72 @@ index 5acd18af..ec8c4994 100644
          foreach(_size 48 32 22 16 12)
              SET(path "")
 diff --git a/autotests/tst_globaldrawer.qml b/autotests/tst_globaldrawer.qml
-index 380b67da..70b611f4 100644
+index 380b67da..f32ce826 100644
 --- a/autotests/tst_globaldrawer.qml
 +++ b/autotests/tst_globaldrawer.qml
-@@ -67,7 +67,7 @@ TestCase {
-             Rectangle {
-                 id: topItem
-                 Layout.fillWidth: true
+@@ -63,14 +63,16 @@ TestCase {
+                 }
+             ]
+ 
+-            // Create some item which we can use to measure actual header height
+-            Rectangle {
+-                id: topItem
+-                Layout.fillWidth: true
 -                Layout.fillHeight: true
-+                implicitHeight: 60
-                 color: "green"
-                 radius: 20 // to see its bounds
-             }
-@@ -130,6 +130,33 @@ TestCase {
+-                color: "green"
+-                radius: 20 // to see its bounds
+-            }
++            topContent: [
++                // Create some item which we can use to measure actual header height
++                Rectangle {
++                    id: topItem
++                    Layout.fillWidth: true
++                    implicitHeight: 60
++                    color: "green"
++                    radius: 20 // to see its bounds
++                }
++            ]
+         }
+ 
+         pageStack.initialPage: startPage
+@@ -101,35 +103,59 @@ TestCase {
+         }
+         const app = createTemporaryObject(appItemComponent, this);
+         verify(app);
+-        const { headerItem, topItem } = app;
++        const { headerItem } = app;
++        app.globalDrawer.showHeaderWhenCollapsed = true;
+ 
+         compare(app.globalDrawer.parent, app.T.Overlay.overlay);
+ 
+         waitForRendering(app.globalDrawer.contentItem);
+ 
+-        const overlay = T.Overlay.overlay;
+         verify(headerItem.height !== 0);
+ 
+-        // Due to margins, position won't be exactly zero...
+-        const position = topItem.mapToItem(overlay, 0, 0);
+-        verify(position.y > 0);
+-        const oldY = position.y;
++        const drawerLayout = app.globalDrawer.contentItem;
++        const oldY = drawerLayout.contentItem.y;
++        verify(oldY > 0);
+ 
+-        // ...but with visible header it would be greater than with invisible.
++        // With visible header the content item is lower than with invisible header.
+         headerItem.visible = false;
+         tryVerify(() => {
+-            const position = topItem.mapToItem(overlay, 0, 0);
+-            return position.y < oldY;
++            return drawerLayout.contentItem.y < oldY;
+         });
+ 
+         // And now return it back to where we started.
+         headerItem.visible = true;
+         tryVerify(() => {
+-            const position = topItem.mapToItem(overlay, 0, 0);
+-            return position.y === oldY;
++            return drawerLayout.contentItem.y === oldY;
          });
      }
  
@@ -156,12 +209,70 @@ index 93ee232a..5cd73b13 100644
                          Layout.preferredHeight: implicitHeight * opacity
                          // NOTE: why this? just Layout.fillWidth: true doesn't seem sufficient
                          // as items are added only after this column creation
+diff --git a/src/controls/private/GlobalDrawerActionItem.qml b/src/controls/private/GlobalDrawerActionItem.qml
+index 95d2db3b..7a8200b2 100644
+--- a/src/controls/private/GlobalDrawerActionItem.qml
++++ b/src/controls/private/GlobalDrawerActionItem.qml
+@@ -28,17 +28,20 @@ QQC2.ItemDelegate {
+     readonly property bool hasChildren: kAction ? kAction.children.length > 0 : false
+     readonly property bool hasVisibleMenu: actionsMenu?.visible ?? false
+     readonly property bool hasToolTip: kAction ? kAction.tooltip !== "" : false
++    readonly property bool useIOSDarkDrawerStyle: Qt.platform.os === "ios" && Qt.styleHints.colorScheme === Qt.Dark
+ 
+     checked: checkedBinding()
+     highlighted: checked
+     activeFocusOnTab: true
++    palette.light: Platform.Theme.backgroundColor
+ 
+     contentItem: RowLayout {
+         spacing: Platform.Units.largeSpacing
+ 
+         Primitives.Icon {
+             id: iconItem
+-            color: listItem.tAction.icon.color
++            color: listItem.useIOSDarkDrawerStyle ? Platform.Theme.textColor : listItem.tAction.icon.color
++            isMask: listItem.useIOSDarkDrawerStyle
+             source: listItem.tAction.icon.name || listItem.tAction.icon.source
+ 
+             readonly property int size: Platform.Units.iconSizes.smallMedium
+@@ -47,7 +50,7 @@ QQC2.ItemDelegate {
+             Layout.minimumWidth: size
+             Layout.maximumWidth: size
+ 
+-            selected: (listItem.highlighted || listItem.checked || listItem.down)
++            selected: listItem.useIOSDarkDrawerStyle || listItem.highlighted || listItem.checked || listItem.down
+             visible: source !== undefined && !listItem.isSeparator
+         }
+ 
+@@ -111,6 +114,22 @@ QQC2.ItemDelegate {
+         }
+     }
+ 
++    Binding {
++        property: "color"
++        restoreMode: Binding.RestoreBindingOrValue
++        target: listItem.background
++        value: Platform.Theme.backgroundColor
++        when: listItem.useIOSDarkDrawerStyle && listItem.background
++    }
++
++    Binding {
++        property: "visible"
++        restoreMode: Binding.RestoreBindingOrValue
++        target: listItem.background && listItem.background.children.length > 0 ? listItem.background.children[0] : null
++        value: false
++        when: listItem.useIOSDarkDrawerStyle && listItem.background && listItem.background.children.length > 0
++    }
++
+     Accessible.name: Primitives.MnemonicData.plainTextLabel
+     Primitives.MnemonicData.enabled: enabled && visible
+     Primitives.MnemonicData.controlType: Primitives.MnemonicData.MenuItem
 diff --git a/src/styles/iOS/Theme.qml b/src/styles/iOS/Theme.qml
 new file mode 100644
-index 00000000..9983f5b1
+index 00000000..e4c84cda
 --- /dev/null
 +++ b/src/styles/iOS/Theme.qml
-@@ -0,0 +1,91 @@
+@@ -0,0 +1,116 @@
 +/*
 + *  SPDX-FileCopyrightText: 2026 Sandro Andrade <sandroandrade@kde.org>
 + *
@@ -172,14 +283,18 @@ index 00000000..9983f5b1
 +import org.kde.kirigami as Kirigami
 +
 +Kirigami.BasicThemeDefinition {
-+    textColor: palette.windowText
++    readonly property bool darkMode: Qt.styleHints.colorScheme === Qt.Dark
++    readonly property color controlBackgroundColor: darkMode ? palette.window : palette.base
++    readonly property color controlTextColor: darkMode ? "white" : palette.windowText
++
++    textColor: controlTextColor
 +    disabledTextColor: disabledPalette.windowText
 +
 +    highlightColor: palette.highlight
-+    highlightedTextColor: palette.highlightedText
-+    backgroundColor: palette.window
-+    alternateBackgroundColor: Qt.darker(palette.window, 1.05)
-+    activeTextColor: palette.highlightedText
++    highlightedTextColor: darkMode ? "white" : palette.highlightedText
++    backgroundColor: controlBackgroundColor
++    alternateBackgroundColor: darkMode ? controlBackgroundColor : Qt.darker(controlBackgroundColor, 1.05)
++    activeTextColor: highlightedTextColor
 +    activeBackgroundColor: palette.highlight
 +    linkColor: "#2980B9"
 +    linkBackgroundColor: "#2980B9"
@@ -194,39 +309,39 @@ index 00000000..9983f5b1
 +    positiveTextColor: "#27AE60"
 +    positiveBackgroundColor: "#27AE60"
 +
-+    buttonTextColor: palette.buttonText
-+    buttonBackgroundColor: palette.button
-+    buttonAlternateBackgroundColor: Qt.darker(palette.button, 1.05)
++    buttonTextColor: controlTextColor
++    buttonBackgroundColor: controlBackgroundColor
++    buttonAlternateBackgroundColor: alternateBackgroundColor
 +    buttonHoverColor: palette.highlight
 +    buttonFocusColor: palette.highlight
 +
-+    viewTextColor: palette.text
-+    viewBackgroundColor: palette.base
-+    viewAlternateBackgroundColor: palette.alternateBase
++    viewTextColor: controlTextColor
++    viewBackgroundColor: controlBackgroundColor
++    viewAlternateBackgroundColor: darkMode ? controlBackgroundColor : palette.alternateBase
 +    viewHoverColor: palette.highlight
 +    viewFocusColor: palette.highlight
 +
-+    selectionTextColor: palette.highlightedText
++    selectionTextColor: highlightedTextColor
 +    selectionBackgroundColor: palette.highlight
 +    selectionAlternateBackgroundColor: Qt.darker(palette.highlight, 1.05)
 +    selectionHoverColor: palette.highlight
 +    selectionFocusColor: palette.highlight
 +
-+    tooltipTextColor: palette.text
-+    tooltipBackgroundColor: palette.base
-+    tooltipAlternateBackgroundColor: palette.alternateBase
++    tooltipTextColor: controlTextColor
++    tooltipBackgroundColor: controlBackgroundColor
++    tooltipAlternateBackgroundColor: alternateBackgroundColor
 +    tooltipHoverColor: palette.highlight
 +    tooltipFocusColor: palette.highlight
 +
-+    complementaryTextColor: palette.text
-+    complementaryBackgroundColor: palette.base
-+    complementaryAlternateBackgroundColor: palette.alternateBase
++    complementaryTextColor: controlTextColor
++    complementaryBackgroundColor: controlBackgroundColor
++    complementaryAlternateBackgroundColor: alternateBackgroundColor
 +    complementaryHoverColor: palette.highlight
 +    complementaryFocusColor: palette.highlight
 +
-+    headerTextColor: palette.text
-+    headerBackgroundColor: palette.base
-+    headerAlternateBackgroundColor: palette.alternateBase
++    headerTextColor: controlTextColor
++    headerBackgroundColor: controlBackgroundColor
++    headerAlternateBackgroundColor: alternateBackgroundColor
 +    headerHoverColor: palette.highlight
 +    headerFocusColor: palette.highlight
 +
@@ -245,6 +360,27 @@ index 00000000..9983f5b1
 +            colorGroup: SystemPalette.Disabled
 +        }
 +    ]
++
++    onSync: object => {
++        if (object.palette === undefined) {
++            return;
++        }
++
++        object.palette.windowText = object.Kirigami.Theme.textColor;
++        object.palette.text = object.Kirigami.Theme.textColor;
++        object.palette.buttonText = object.Kirigami.Theme.textColor;
++        object.palette.window = object.Kirigami.Theme.backgroundColor;
++        object.palette.base = object.Kirigami.Theme.backgroundColor;
++        object.palette.button = object.Kirigami.Theme.backgroundColor;
++        object.palette.alternateBase = object.Kirigami.Theme.alternateBackgroundColor;
++        object.palette.highlight = object.Kirigami.Theme.highlightColor;
++        object.palette.highlightedText = object.Kirigami.Theme.highlightedTextColor;
++
++        if (darkMode) {
++            object.palette.light = object.Kirigami.Theme.backgroundColor;
++            object.palette.midlight = object.Kirigami.Theme.backgroundColor;
++        }
++    }
 +
 +    function __propagateColorSet(object, context) {}
 +
