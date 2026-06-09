@@ -48,6 +48,7 @@
   <summary xml:lang="ka">მუსიკის სწავლის პროგრამა</summary>
   <summary xml:lang="nl">Software voor muziekonderwijs</summary>
   <summary xml:lang="pt-BR">Software para ensino de música</summary>
+  <summary xml:lang="sk">Hudobný vzdelávací softvér</summary>
   <summary xml:lang="sl">Programje za glasbeno izobraževanje</summary>
   <summary xml:lang="tr">Müzik eğitimi yazılımı</summary>
   <summary xml:lang="uk">Програмне забезпечення для навчання музики</summary>
@@ -65,6 +66,7 @@
     <p xml:lang="ka">Minuet მუსიკის შესასწავლი აპლიკაციაა. მის ფუნქციებში შედის ყურის ვარჯიშის ნაკრები ინტერვალების, აკორდებისა და ა.შ. შესახებ.</p>
     <p xml:lang="nl">Minuet is een toepassing voor muziekonderwijs. Het biedt een set mogelijkheden voor trainingsoefeningen voor het gehoor betreffende intervallen, akkoorden, toonladders en meer.</p>
     <p xml:lang="pt-BR">Minuet é um software para educação musical. Ele oferece um conjunto de exercícios para treinamento de ouvido, incluindo intervalos, acordes, escalas e mais.</p>
+    <p xml:lang="sk">Minuet je aplikácia na výučbu hudby. Obsahuje sadu sluchových cvičení na intervaly, akordy, hudobné stupnice a ďalšie.</p>
     <p xml:lang="sl">Minuet je aplikacija za glasbeno izobraževanje. Vsebuje nabor vadb za posluh glede intervalov, akordov, lestvic in še več.</p>
     <p xml:lang="tr">Minuet, müzik eğitimi için bir uygulamadır. Aralıklar, akorlar, gamlar ve daha fazlasıyla ilgili bir dizi kulak eğitimi alıştırması içerir.</p>
     <p xml:lang="uk">Minuet — програма для навчання музиці. У ній передбачено набір вправ для розвитку слуху, зокрема вивчення інтервалів, акордів, гами тощо.</p>
@@ -95,6 +97,7 @@
       <caption xml:lang="ka">აირჩიეთ მუსიკალური სავარჯიშოები</caption>
       <caption xml:lang="nl">Kies oefeningen voor muziektrainingen</caption>
       <caption xml:lang="pt-BR">Escolha exercícios de treinamento musical</caption>
+      <caption xml:lang="sk">Vyberte si hudobné cvičenia</caption>
       <caption xml:lang="sl">Izberite glasbene vaje</caption>
       <caption xml:lang="tr">Müzik eğitimi alıştırmaları seçin</caption>
       <caption xml:lang="uk">Вибір музичних вправ</caption>
@@ -111,6 +114,7 @@
       <caption xml:lang="ka">აკორდების ამოცნობაში ვარჯიში</caption>
       <caption xml:lang="nl">Oefen herkennen van akkoorden</caption>
       <caption xml:lang="pt-BR">Pratique o reconhecimento de acordes</caption>
+      <caption xml:lang="sk">Precvičujte si rozpoznávanie akordov</caption>
       <caption xml:lang="sl">Vadite prepoznavanje akordov</caption>
       <caption xml:lang="tr">Akor tanıma pratiği yapın</caption>
       <caption xml:lang="uk">Вправа на розпізнавання акордів</caption>
@@ -127,6 +131,7 @@
       <caption xml:lang="ka">რიტმის ამოცნობის გაუმჯობესება</caption>
       <caption xml:lang="nl">Verbeter herkenning van ritme</caption>
       <caption xml:lang="pt-BR">Melhore o reconhecimento do ritmo</caption>
+      <caption xml:lang="sk">Zlepšite si rozpoznávanie rytmu</caption>
       <caption xml:lang="sl">Izboljšajte prepoznavanje ritma</caption>
       <caption xml:lang="tr">Ritim tanımayı iyileştirin</caption>
       <caption xml:lang="uk">Удосконалення розпізнавання ритму</caption>
@@ -143,6 +148,7 @@
       <caption xml:lang="ka">ავარჯიშეთ ყური მობილურზე</caption>
       <caption xml:lang="nl">Oefen uw gehoor op de mobiel</caption>
       <caption xml:lang="pt-BR">Treine seu ouvido no celular</caption>
+      <caption xml:lang="sk">Trénujte si sluch na mobile</caption>
       <caption xml:lang="sl">Vadite svoj posluh na mobilni napravi</caption>
       <caption xml:lang="tr">Dışarıda olsanız bile kulak alıştırmaları yapın</caption>
       <caption xml:lang="uk">Тренування слуху на мобільному</caption>
