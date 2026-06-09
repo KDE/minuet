@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-08 00:39+0000\n"
+"POT-Creation-Date: 2026-06-09 00:39+0000\n"
 "PO-Revision-Date: 2026-06-06 06:50+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -1963,7 +1963,7 @@ msgstr "משבצת תשובה ריקה"
 msgid "Answer %1"
 msgstr "תשובה %1"
 
-#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:154
+#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:156
 #, kde-format
 msgid "Home"
 msgstr "בית"
@@ -1978,22 +1978,22 @@ msgstr "יש להתחיל בנושא ואז לבחור את רמת התרגול 
 msgid "Choose an exercise"
 msgstr "בחירת תרגול"
 
-#: src/app/qml/MinuetDrawer.qml:32 src/app/qml/MinuetDrawer.qml:210
+#: src/app/qml/MinuetDrawer.qml:32 src/app/qml/MinuetDrawer.qml:212
 #, kde-format
 msgid "All exercises"
 msgstr "כל התרגולים"
 
-#: src/app/qml/MinuetDrawer.qml:75
+#: src/app/qml/MinuetDrawer.qml:77
 #, kde-format
 msgid "Search…"
 msgstr "חיפוש…"
 
-#: src/app/qml/MinuetDrawer.qml:131
+#: src/app/qml/MinuetDrawer.qml:133
 #, kde-format
 msgid "Welcome to Minuet"
 msgstr "ברוך בואך ל־Minuet"
 
-#: src/app/qml/MinuetDrawer.qml:141
+#: src/app/qml/MinuetDrawer.qml:143
 #, kde-format
 msgid ""
 "Practice ear training with exercises for intervals, chords, rhythm, scales, "
@@ -2002,12 +2002,12 @@ msgstr ""
 "אפשר לתרגל את אימון השמיעה עם תרגילים לחיזוק היכולות לזיהוי מרווחים, "
 "אקורדים, מקצבים, סולמות ועוד."
 
-#: src/app/qml/MinuetDrawer.qml:168 src/app/qml/SettingsPage.qml:40
+#: src/app/qml/MinuetDrawer.qml:170 src/app/qml/SettingsPage.qml:40
 #, kde-format
 msgid "Settings"
 msgstr "הגדרות"
 
-#: src/app/qml/MinuetDrawer.qml:183
+#: src/app/qml/MinuetDrawer.qml:185
 #, kde-format
 msgid "About"
 msgstr "על אודות"

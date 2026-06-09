@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-08 00:39+0000\n"
+"POT-Creation-Date: 2026-06-09 00:39+0000\n"
 "PO-Revision-Date: 2026-04-14 17:15+0200\n"
 "Last-Translator: Roman Paholík <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -2010,7 +2010,7 @@ msgstr "Prázdne miesto pre odpoveď"
 msgid "Answer %1"
 msgstr "Odpoveď %1"
 
-#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:154
+#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:156
 #, kde-format
 msgid "Home"
 msgstr "Domov"
@@ -2025,22 +2025,22 @@ msgstr "Začnite s témou a potom si vyberte konkrétnu úroveň tréningu."
 msgid "Choose an exercise"
 msgstr "Vyberte si cvičenie"
 
-#: src/app/qml/MinuetDrawer.qml:32 src/app/qml/MinuetDrawer.qml:210
+#: src/app/qml/MinuetDrawer.qml:32 src/app/qml/MinuetDrawer.qml:212
 #, kde-format
 msgid "All exercises"
 msgstr "Všetky cvičenia"
 
-#: src/app/qml/MinuetDrawer.qml:75
+#: src/app/qml/MinuetDrawer.qml:77
 #, kde-format
 msgid "Search…"
 msgstr "Hľadať…"
 
-#: src/app/qml/MinuetDrawer.qml:131
+#: src/app/qml/MinuetDrawer.qml:133
 #, kde-format
 msgid "Welcome to Minuet"
 msgstr "Vitajte v Minuet"
 
-#: src/app/qml/MinuetDrawer.qml:141
+#: src/app/qml/MinuetDrawer.qml:143
 #, kde-format
 msgid ""
 "Practice ear training with exercises for intervals, chords, rhythm, scales, "
@@ -2049,12 +2049,12 @@ msgstr ""
 "Precvičujte sluchový tréning s cvičeniami pre intervaly, akordy, rytmus, "
 "stupnice a ďalšie."
 
-#: src/app/qml/MinuetDrawer.qml:168 src/app/qml/SettingsPage.qml:40
+#: src/app/qml/MinuetDrawer.qml:170 src/app/qml/SettingsPage.qml:40
 #, kde-format
 msgid "Settings"
 msgstr "Nastavenia"
 
-#: src/app/qml/MinuetDrawer.qml:183
+#: src/app/qml/MinuetDrawer.qml:185
 #, kde-format
 msgid "About"
 msgstr "O programe"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-08 00:39+0000\n"
+"POT-Creation-Date: 2026-06-09 00:39+0000\n"
 "PO-Revision-Date: 2026-06-04 09:37+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -2004,7 +2004,7 @@ msgstr "Ranura de resposta buida"
 msgid "Answer %1"
 msgstr "Resposta %1"
 
-#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:154
+#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:156
 #, kde-format
 msgid "Home"
 msgstr "Inici"
@@ -2019,22 +2019,22 @@ msgstr "Comenceu per un tema, després trieu el nivell d'entrenament específic.
 msgid "Choose an exercise"
 msgstr "Trieu un exercici"
 
-#: src/app/qml/MinuetDrawer.qml:32 src/app/qml/MinuetDrawer.qml:210
+#: src/app/qml/MinuetDrawer.qml:32 src/app/qml/MinuetDrawer.qml:212
 #, kde-format
 msgid "All exercises"
 msgstr "Tots els exercicis"
 
-#: src/app/qml/MinuetDrawer.qml:75
+#: src/app/qml/MinuetDrawer.qml:77
 #, kde-format
 msgid "Search…"
 msgstr "Busca…"
 
-#: src/app/qml/MinuetDrawer.qml:131
+#: src/app/qml/MinuetDrawer.qml:133
 #, kde-format
 msgid "Welcome to Minuet"
 msgstr "Us donem la benvinguda a Minuet"
 
-#: src/app/qml/MinuetDrawer.qml:141
+#: src/app/qml/MinuetDrawer.qml:143
 #, kde-format
 msgid ""
 "Practice ear training with exercises for intervals, chords, rhythm, scales, "
@@ -2043,12 +2043,12 @@ msgstr ""
 "Practiqueu l'entrenament de l'oïda amb exercicis d'intervals, acords, "
 "ritmes, escales, etc."
 
-#: src/app/qml/MinuetDrawer.qml:168 src/app/qml/SettingsPage.qml:40
+#: src/app/qml/MinuetDrawer.qml:170 src/app/qml/SettingsPage.qml:40
 #, kde-format
 msgid "Settings"
 msgstr "Configuració"
 
-#: src/app/qml/MinuetDrawer.qml:183
+#: src/app/qml/MinuetDrawer.qml:185
 #, kde-format
 msgid "About"
 msgstr "Quant a"
