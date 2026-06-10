@@ -6,7 +6,7 @@
       "playMode": "chord",
       "userMessage": "Hear the interval and choose your answer",
       "numberOfSelectedOptions": 1,
-      "_icon": "minuet-intervals.svg",
+      "_icon": "minuet-intervals-symbolic.svg",
       "children": [
         {
           "name": "Harmonic intervals",

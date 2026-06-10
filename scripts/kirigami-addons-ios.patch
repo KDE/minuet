@@ -15,7 +15,7 @@ index c32050d9..b6da183e 100644
  
  if(NOT WIN32 AND NOT APPLE AND NOT ANDROID AND NOT HAIKU)
 diff --git a/src/app/CMakeLists.txt b/src/app/CMakeLists.txt
-index b3ca43a8..cd3f76e0 100644
+index b3ca43a8..bcd3e7a6 100644
 --- a/src/app/CMakeLists.txt
 +++ b/src/app/CMakeLists.txt
 @@ -17,7 +17,10 @@ target_link_libraries(KirigamiApp PRIVATE
@@ -25,13 +25,13 @@ index b3ca43a8..cd3f76e0 100644
 -    target_link_libraries(KirigamiApp PRIVATE Qt6::Widgets KF6::Crash KF6::IconThemes)
 +    target_link_libraries(KirigamiApp PRIVATE Qt6::Widgets KF6::IconThemes)
 +    if(NOT IOS)
-+        target_link_libraries(KirigamiApp PRIVATE KF6::Crash)
++          target_link_libraries(KirigamiApp PRIVATE KF6::Crash)
 +    endif()
  endif()
  
  target_include_directories(KirigamiApp
 diff --git a/src/app/kirigamiappdefaults.cpp b/src/app/kirigamiappdefaults.cpp
-index 4e787bdf..d6944ad5 100644
+index 8d7aed45..d8b65e32 100644
 --- a/src/app/kirigamiappdefaults.cpp
 +++ b/src/app/kirigamiappdefaults.cpp
 @@ -16,7 +16,9 @@
@@ -44,15 +44,22 @@ index 4e787bdf..d6944ad5 100644
  #include <KIconTheme>
  #include <QApplication>
  #include <QStyleFactory>
-@@ -75,7 +77,7 @@ void apply(QGuiApplication *app)
+@@ -70,6 +72,7 @@ void apply(QGuiApplication *app)
+     font.setPointSize(10);
      app->setFont(font);
  #endif
- 
--#ifndef Q_OS_ANDROID
 +#if !defined(Q_OS_ANDROID) && !defined(Q_OS_IOS)
  #if KCOREADDONS_VERSION >= QT_VERSION_CHECK(6, 19, 0)
      // Embrace KCrash. If an application misbehaves, we should know as much as possible about it.
      // Needs initialising KAboutData::setApplicationData
+@@ -78,6 +81,7 @@ void apply(QGuiApplication *app)
+     });
+ #endif
+ #endif
++#endif
+ }
+ 
+ }
 diff --git a/src/formcard/aboutcomponent.cpp b/src/formcard/aboutcomponent.cpp
 index 015b8f1e..1a5f14bc 100644
 --- a/src/formcard/aboutcomponent.cpp

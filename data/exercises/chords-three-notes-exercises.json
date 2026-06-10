@@ -6,7 +6,7 @@
       "playMode": "chord",
       "userMessage": "Hear the chord and choose your answer",
       "numberOfSelectedOptions": 1,
-      "_icon": "minuet-chords.svg",
+      "_icon": "minuet-chords-symbolic.svg",
       "children": [
         {
           "name": "Chords with three notes",

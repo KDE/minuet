@@ -152,7 +152,7 @@ Kirigami.GlobalDrawer {
             id: homeActionItem
 
             action: Kirigami.Action {
-                icon.name: "go-home"
+                icon.name: "go-home-symbolic"
                 text: i18n("Home")
 
                 onTriggered: {
@@ -166,7 +166,7 @@ Kirigami.GlobalDrawer {
         ActionListItem {
             action: Kirigami.Action {
                 checked: drawer.currentExerciseSelection?.kind === "settings"
-                icon.name: "settings-configure"
+                icon.name: "settings-configure-symbolic"
                 text: i18n("Settings")
 
                 onTriggered: {
@@ -208,7 +208,7 @@ Kirigami.GlobalDrawer {
         id: allExercisesAction
 
         checked: drawer.currentExerciseSelection?.kind === "all"
-        icon.name: "view-list-details"
+        icon.name: "view-list-details-symbolic"
         text: i18n("All exercises")
 
         onTriggered: {
@@ -228,7 +228,7 @@ Kirigami.GlobalDrawer {
 
             checked: drawer.currentExerciseSelection?.kind === "category" && drawer.currentExerciseSelection.exercise === exercise
             children: actionChildren
-            icon.name: actionIconName
+            icon.source: actionIconName
             text: exercise ? i18nc("technical term, do you have a musician friend?", exercise.name) : ""
 
             onTriggered: {

@@ -6,7 +6,7 @@
       "playMode": "scale",
       "userMessage": "Hear the scale and choose your answer",
       "numberOfSelectedOptions": 1,
-      "_icon": "minuet-scales.svg",
+      "_icon": "minuet-scales-symbolic.svg",
       "children": [
         {
           "name": "Bebop scales",

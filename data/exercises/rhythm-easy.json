@@ -5,7 +5,7 @@
       "playMode": "rhythm",
       "userMessage": "Hear the rhythm and choose your answers",
       "template": "lilypond-templates/rhythm.ly.tmpl",
-      "_icon": "minuet-rhythms.svg",
+      "_icon": "minuet-rhythms-symbolic.svg",
       "children": [
         {
           "name": "Easy",

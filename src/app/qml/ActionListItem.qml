@@ -12,7 +12,16 @@ import org.kde.kirigami.primitives as Primitives
 QQC2.ItemDelegate {
     id: item
 
-    readonly property bool useIOSDarkDrawerStyle: Qt.platform.os === "ios" && Qt.styleHints.colorScheme === Qt.Dark
+    readonly property bool active: highlighted || checked || down || pressed
+    readonly property color backgroundColor: active ? Kirigami.Theme.highlightColor : Kirigami.Theme.backgroundColor
+    readonly property color foregroundColor: active ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
+    readonly property bool hasIcon: icon.name.length > 0 || icon.source.toString().length > 0
+    readonly property bool iconIsSymbolic: {
+        const iconName = icon.name;
+        const iconSource = icon.source.toString();
+
+        return iconName.endsWith("-symbolic") || iconSource.endsWith("-symbolic.svg") || iconSource.includes("-symbolic.");
+    }
 
     function trigger(): void {
         if (enabled && action) {
@@ -22,9 +31,15 @@ QQC2.ItemDelegate {
 
     Layout.fillWidth: true
     activeFocusOnTab: true
-    icon.color: useIOSDarkDrawerStyle ? Kirigami.Theme.textColor : Qt.rgba(0, 0, 0, 0)
+    palette.base: Kirigami.Theme.backgroundColor
+    palette.button: Kirigami.Theme.backgroundColor
     palette.light: Kirigami.Theme.backgroundColor
+    palette.midlight: Kirigami.Theme.backgroundColor
+    palette.window: Kirigami.Theme.backgroundColor
 
+    background: Rectangle {
+        color: item.backgroundColor
+    }
     contentItem: RowLayout {
         spacing: Kirigami.Units.largeSpacing
 
@@ -35,16 +50,16 @@ QQC2.ItemDelegate {
             Layout.maximumWidth: size
             Layout.minimumHeight: size
             Layout.minimumWidth: size
-            color: item.icon.color
-            isMask: item.useIOSDarkDrawerStyle
-            selected: item.useIOSDarkDrawerStyle || item.highlighted || item.pressed
+            color: item.iconIsSymbolic ? item.foregroundColor : item.icon.color
+            isMask: item.iconIsSymbolic
+            selected: item.active
             source: item.icon.name || item.icon.source
-            visible: source !== undefined && source.toString().length > 0
+            visible: item.hasIcon
         }
         KD.TitleSubtitle {
             Layout.fillWidth: true
             font: item.font
-            selected: item.useIOSDarkDrawerStyle || item.highlighted || item.pressed
+            selected: item.active
             title: item.text
         }
     }
@@ -52,19 +67,4 @@ QQC2.ItemDelegate {
     Accessible.onPressAction: trigger()
     Keys.onEnterPressed: trigger()
     Keys.onReturnPressed: trigger()
-
-    Binding {
-        property: "color"
-        restoreMode: Binding.RestoreBindingOrValue
-        target: item.background
-        value: Kirigami.Theme.backgroundColor
-        when: item.useIOSDarkDrawerStyle && item.background
-    }
-    Binding {
-        property: "visible"
-        restoreMode: Binding.RestoreBindingOrValue
-        target: item.background && item.background.children.length > 0 ? item.background.children[0] : null
-        value: false
-        when: item.useIOSDarkDrawerStyle && item.background && item.background.children.length > 0
-    }
 }

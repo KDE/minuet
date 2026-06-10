@@ -70,7 +70,6 @@
         "-DKCONFIG_USE_QML=OFF"
       ],
       "patches": [
-        "kconfig-ios.patch"
       ],
       "buildTargets": [
         "KF6ConfigCore",
@@ -125,7 +124,6 @@
       "refEnv": "KDE_REF",
       "defaultRef": "master",
       "patches": [
-        "kwidgetsaddons-ios.patch"
       ]
     },
     {
@@ -144,7 +142,6 @@
         "-DWITH_X11=OFF"
       ],
       "patches": [
-        "kguiaddons-ios.patch"
       ]
     },
     {
@@ -168,7 +165,6 @@
       "refEnv": "KDE_REF",
       "defaultRef": "master",
       "patches": [
-        "kirigami-ios.patch"
       ]
     },
     {
@@ -207,7 +203,6 @@
         "-DWITH_BREEZEICONS=ON"
       ],
       "patches": [
-        "kiconthemes-ios.patch"
       ]
     },
     {

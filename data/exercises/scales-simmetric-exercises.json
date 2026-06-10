@@ -6,11 +6,11 @@
       "playMode": "scale",
       "userMessage": "Hear the scale and choose your answer",
       "numberOfSelectedOptions": 1,
-      "_icon": "minuet-scales.svg",
+      "_icon": "minuet-scales-symbolic.svg",
       "children": [
         {
           "name": "Symmetric scales",
-          "and-tags": ["scale", "simmetric"],
+          "and-tags": ["scale", "symmetric"],
           "description": "Practice recognizing symmetric scale sounds such as whole-tone and diminished patterns."
         }
       ]

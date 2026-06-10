@@ -44,14 +44,14 @@ if(NOT MINUET_MOBILE_PLATFORM)
         ${CMAKE_CURRENT_SOURCE_DIR}/icons/48-apps-minuet.svg
         ${CMAKE_CURRENT_SOURCE_DIR}/icons/64-apps-minuet.svg
         ${CMAKE_CURRENT_SOURCE_DIR}/icons/128-apps-minuet.svg
-        ${CMAKE_CURRENT_SOURCE_DIR}/icons/16-actions-minuet-scales.svg
-        ${CMAKE_CURRENT_SOURCE_DIR}/icons/16-actions-minuet-intervals.svg
-        ${CMAKE_CURRENT_SOURCE_DIR}/icons/16-actions-minuet-chords.svg
-        ${CMAKE_CURRENT_SOURCE_DIR}/icons/16-actions-minuet-rhythms.svg
-        ${CMAKE_CURRENT_SOURCE_DIR}/icons/22-actions-minuet-scales.svg
-        ${CMAKE_CURRENT_SOURCE_DIR}/icons/22-actions-minuet-intervals.svg
-        ${CMAKE_CURRENT_SOURCE_DIR}/icons/22-actions-minuet-chords.svg
-        ${CMAKE_CURRENT_SOURCE_DIR}/icons/22-actions-minuet-rhythms.svg
+        ${CMAKE_CURRENT_SOURCE_DIR}/icons/16-actions-minuet-scales-symbolic.svg
+        ${CMAKE_CURRENT_SOURCE_DIR}/icons/16-actions-minuet-intervals-symbolic.svg
+        ${CMAKE_CURRENT_SOURCE_DIR}/icons/16-actions-minuet-chords-symbolic.svg
+        ${CMAKE_CURRENT_SOURCE_DIR}/icons/16-actions-minuet-rhythms-symbolic.svg
+        ${CMAKE_CURRENT_SOURCE_DIR}/icons/22-actions-minuet-scales-symbolic.svg
+        ${CMAKE_CURRENT_SOURCE_DIR}/icons/22-actions-minuet-intervals-symbolic.svg
+        ${CMAKE_CURRENT_SOURCE_DIR}/icons/22-actions-minuet-chords-symbolic.svg
+        ${CMAKE_CURRENT_SOURCE_DIR}/icons/22-actions-minuet-rhythms-symbolic.svg
     )
 
     ecm_add_app_icon(minuet_SRCS ICONS ${minuet_ICONS_PNG})
@@ -154,10 +154,10 @@ qt_add_resources(minuet minuet_assets
         qml/images/keyboard_arrow_left.png
         qml/images/more_vert.png
         icons/64-apps-minuet.png
-        icons/22-actions-minuet-chords.svg
-        icons/22-actions-minuet-intervals.svg
-        icons/22-actions-minuet-rhythms.svg
-        icons/22-actions-minuet-scales.svg
+        icons/22-actions-minuet-chords-symbolic.svg
+        icons/22-actions-minuet-intervals-symbolic.svg
+        icons/22-actions-minuet-rhythms-symbolic.svg
+        icons/22-actions-minuet-scales-symbolic.svg
         qtquickcontrols2.conf
         +android/qtquickcontrols2.conf
         +windows/qtquickcontrols2.conf
@@ -205,10 +205,10 @@ if(ANDROID OR CMAKE_SYSTEM_NAME STREQUAL "iOS")
             arrow-up
             arrow-down
             dialog-close
-            go-home
+            go-home-symbolic
             help-about-symbolic
-            settings-configure
-            view-list-details
+            settings-configure-symbolic
+            view-list-details-symbolic
             open-menu
             application-menu
             application-menu-symbolic
