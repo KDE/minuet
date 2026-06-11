@@ -60,7 +60,9 @@ Kirigami.ApplicationWindow {
     function openHome(): void {
         stopExerciseActivity();
         currentExercise = undefined;
-        currentExerciseSelection = null;
+        currentExerciseSelection = {
+            kind: "home"
+        };
         pageStack.clear();
         pageStack.push(createHomePage());
     }

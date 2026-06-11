@@ -152,6 +152,7 @@ Kirigami.GlobalDrawer {
             id: homeActionItem
 
             action: Kirigami.Action {
+                checked: drawer.currentExerciseSelection?.kind === "home"
                 icon.name: "go-home-symbolic"
                 text: i18n("Home")
 
@@ -181,6 +182,7 @@ Kirigami.GlobalDrawer {
             id: aboutActionItem
 
             action: Kirigami.Action {
+                checked: drawer.currentExerciseSelection?.kind === "about"
                 icon.name: "help-about-symbolic"
                 text: i18n("About")
 
