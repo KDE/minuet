@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-09 00:39+0000\n"
+"POT-Creation-Date: 2026-06-12 00:39+0000\n"
 "PO-Revision-Date: 2026-06-04 13:29+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1973,22 +1973,22 @@ msgstr "Boş yanıt yuvası"
 msgid "Answer %1"
 msgstr "Yanıt %1"
 
-#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:156
+#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:157
 #, kde-format
 msgid "Home"
 msgstr "Ana Sayfa"
 
-#: src/app/qml/Main.qml:131
+#: src/app/qml/Main.qml:133
 #, kde-format
 msgid "Start with a topic, then pick the specific training level."
 msgstr "Bir konu seçin ve sonrasında belirli çalışma düzeyini belirleyin."
 
-#: src/app/qml/Main.qml:133
+#: src/app/qml/Main.qml:135
 #, kde-format
 msgid "Choose an exercise"
 msgstr "Bir alıştırma seçin"
 
-#: src/app/qml/MinuetDrawer.qml:32 src/app/qml/MinuetDrawer.qml:212
+#: src/app/qml/MinuetDrawer.qml:32 src/app/qml/MinuetDrawer.qml:214
 #, kde-format
 msgid "All exercises"
 msgstr "Tüm Alıştırmalar"
@@ -2012,12 +2012,12 @@ msgstr ""
 "Aralıklar, akorlar, ritimler, gamlar ve çok daha fazlası için alıştırmalarla "
 "kulak eğitiminizi geliştirin."
 
-#: src/app/qml/MinuetDrawer.qml:170 src/app/qml/SettingsPage.qml:40
+#: src/app/qml/MinuetDrawer.qml:171 src/app/qml/SettingsPage.qml:40
 #, kde-format
 msgid "Settings"
 msgstr "Ayarlar"
 
-#: src/app/qml/MinuetDrawer.qml:185
+#: src/app/qml/MinuetDrawer.qml:187
 #, kde-format
 msgid "About"
 msgstr "Hakkında"

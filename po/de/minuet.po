@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-09 00:39+0000\n"
+"POT-Creation-Date: 2026-06-12 00:39+0000\n"
 "PO-Revision-Date: 2026-05-25 22:28+0200\n"
 "Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -2128,22 +2128,22 @@ msgstr ""
 msgid "Answer %1"
 msgstr ""
 
-#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:156
+#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:157
 #, kde-format
 msgid "Home"
 msgstr ""
 
-#: src/app/qml/Main.qml:131
+#: src/app/qml/Main.qml:133
 #, kde-format
 msgid "Start with a topic, then pick the specific training level."
 msgstr ""
 
-#: src/app/qml/Main.qml:133
+#: src/app/qml/Main.qml:135
 #, kde-format
 msgid "Choose an exercise"
 msgstr "Wählen Sie eine Übung aus"
 
-#: src/app/qml/MinuetDrawer.qml:32 src/app/qml/MinuetDrawer.qml:212
+#: src/app/qml/MinuetDrawer.qml:32 src/app/qml/MinuetDrawer.qml:214
 #, kde-format
 msgid "All exercises"
 msgstr "Alle Übungen"
@@ -2165,12 +2165,12 @@ msgid ""
 "and more."
 msgstr ""
 
-#: src/app/qml/MinuetDrawer.qml:170 src/app/qml/SettingsPage.qml:40
+#: src/app/qml/MinuetDrawer.qml:171 src/app/qml/SettingsPage.qml:40
 #, kde-format
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: src/app/qml/MinuetDrawer.qml:185
+#: src/app/qml/MinuetDrawer.qml:187
 #, kde-format
 msgid "About"
 msgstr "Über"

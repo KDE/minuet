@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-09 00:39+0000\n"
+"POT-Creation-Date: 2026-06-12 00:39+0000\n"
 "PO-Revision-Date: 2026-06-08 20:24+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -1950,22 +1950,22 @@ msgstr "خانة إجابة فارغة"
 msgid "Answer %1"
 msgstr "الإجابة %1"
 
-#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:156
+#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:157
 #, kde-format
 msgid "Home"
 msgstr "الرئيسة"
 
-#: src/app/qml/Main.qml:131
+#: src/app/qml/Main.qml:133
 #, kde-format
 msgid "Start with a topic, then pick the specific training level."
 msgstr "ابدأ بموضوع، ثم اختر مستوى التدريب المحدد."
 
-#: src/app/qml/Main.qml:133
+#: src/app/qml/Main.qml:135
 #, kde-format
 msgid "Choose an exercise"
 msgstr "اختر تمرينًا"
 
-#: src/app/qml/MinuetDrawer.qml:32 src/app/qml/MinuetDrawer.qml:212
+#: src/app/qml/MinuetDrawer.qml:32 src/app/qml/MinuetDrawer.qml:214
 #, kde-format
 msgid "All exercises"
 msgstr "كل التمارين"
@@ -1988,12 +1988,12 @@ msgid ""
 msgstr ""
 "تدرّب على تدريب الأذن بتمارين للمسافات، الكوردات، الإيقاع، السلالم، والمزيد."
 
-#: src/app/qml/MinuetDrawer.qml:170 src/app/qml/SettingsPage.qml:40
+#: src/app/qml/MinuetDrawer.qml:171 src/app/qml/SettingsPage.qml:40
 #, kde-format
 msgid "Settings"
 msgstr "الإعدادات"
 
-#: src/app/qml/MinuetDrawer.qml:185
+#: src/app/qml/MinuetDrawer.qml:187
 #, kde-format
 msgid "About"
 msgstr "عن"
