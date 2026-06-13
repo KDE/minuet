@@ -144,6 +144,7 @@ find_package(KF6KirigamiAddons REQUIRED)
 ecm_find_qmlmodule(org.kde.kirigami REQUIRED)
 ecm_find_qmlmodule(org.kde.coreaddons REQUIRED)
 ecm_find_qmlmodule(org.kde.kirigamiaddons.formcard REQUIRED)
+ecm_find_qmlmodule(org.kde.kirigamiaddons.onboarding REQUIRED)
 
 if(NOT MINUET_MOBILE_PLATFORM)
     find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS

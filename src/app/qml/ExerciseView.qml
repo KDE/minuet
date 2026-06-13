@@ -8,6 +8,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.onboarding
 
 Item {
     id: exerciseView
@@ -39,6 +40,7 @@ Item {
     readonly property int maximumExercises: Core.settingsController.testExerciseCount
     readonly property real minimumAnswerCardWidth: Kirigami.Units.gridUnit * 10
     readonly property bool musicViewsTabbed: !applicationWindow().wideScreen && exerciseView.height > exerciseView.width
+    property int onboardingCountIn: 0
     readonly property real rhythmAnswerCardTextSize: Math.round(Kirigami.Theme.defaultFont.pointSize * 2.0)
     readonly property real rhythmAnswerCardVerticalOffset: Math.round(rhythmAnswerCardTextSize * 0.22)
     readonly property real sectionPadding: Kirigami.Units.smallSpacing
@@ -57,6 +59,8 @@ Item {
             return Kirigami.Theme.textColor;
         }
     }
+
+    signal onboardingFinalStepShown()
 
     function canShowSubmittedAnswerCorrection(position: int): bool {
         return Core.exerciseSessionController.canShowSubmittedAnswerCorrection(position, exerciseView.currentExercise || {}, exerciseView.selectedOptionCount, Core.exerciseSessionController.selectedExerciseOptions);
@@ -307,33 +311,46 @@ Item {
                         Layout.fillWidth: true
                         spacing: 0
 
-                        Kirigami.Heading {
-                            Layout.fillWidth: true
-                            Layout.maximumHeight: implicitHeight
-                            Layout.topMargin: 2 * Kirigami.Units.largeSpacing
-                            elide: Text.ElideRight
-                            horizontalAlignment: Text.AlignHCenter
-                            level: exerciseView.musicViewsTabbed ? 3 : 2
-                            text: {
-                                if (exerciseView.currentExercise === undefined) {
-                                    return "";
-                                }
-                                if (exerciseView.state === "waitingForAnswer") {
-                                    return Core.exerciseSessionController.answerInstruction(exerciseView.selectedOptionCount);
-                                }
-                                return i18nc("technical term, do you have a musician friend?", exerciseView.currentExercise["userMessage"]);
-                            }
-                        }
-                        Kirigami.Heading {
-                            id: messageText
+                        ColumnLayout {
+                            id: questionMessages
 
                             Layout.fillWidth: true
-                            Layout.maximumHeight: implicitHeight
-                            color: exerciseView.statusMessageColor
-                            elide: Text.ElideRight
-                            horizontalAlignment: Text.AlignHCenter
-                            level: 3
-                            text: exerciseView.exercisePlaying ? i18n("Playing…") : Core.exerciseSessionController.statusText
+                            Layout.topMargin: 2 * Kirigami.Units.largeSpacing
+                            spacing: 0
+
+                            Onboarding.groups: ["melodic", "rhythmic"]
+                            Onboarding.texts: [
+                                i18n("These messages explain the question and show its status."),
+                                i18n("These messages explain the question and show its status.")
+                            ]
+
+                            Kirigami.Heading {
+                                Layout.fillWidth: true
+                                Layout.maximumHeight: implicitHeight
+                                elide: Text.ElideRight
+                                horizontalAlignment: Text.AlignHCenter
+                                level: exerciseView.musicViewsTabbed ? 3 : 2
+                                text: {
+                                    if (exerciseView.currentExercise === undefined) {
+                                        return "";
+                                    }
+                                    if (exerciseView.state === "waitingForAnswer") {
+                                        return Core.exerciseSessionController.answerInstruction(exerciseView.selectedOptionCount);
+                                    }
+                                    return i18nc("technical term, do you have a musician friend?", exerciseView.currentExercise["userMessage"]);
+                                }
+                            }
+                            Kirigami.Heading {
+                                id: messageText
+
+                                Layout.fillWidth: true
+                                Layout.maximumHeight: implicitHeight
+                                color: exerciseView.statusMessageColor
+                                elide: Text.ElideRight
+                                horizontalAlignment: Text.AlignHCenter
+                                level: 3
+                                text: exerciseView.exercisePlaying ? i18n("Playing…") : Core.exerciseSessionController.statusText
+                            }
                         }
                         Item {
                             Layout.alignment: Qt.AlignHCenter
@@ -353,6 +370,12 @@ Item {
                                 Button {
                                     id: playQuestionButton
 
+                                    Onboarding.groups: ["melodic", "rhythmic"]
+                                    Onboarding.texts: [
+                                        i18n("Start a new question or replay the current one."),
+                                        i18n("Start a new question or replay the current one.")
+                                    ]
+
                                     enabled: !animation.running && !exerciseView.exercisePlaying
                                     highlighted: exerciseView.state === "waitingForNewQuestion" || exerciseView.state === "waitingForAnswer"
                                     text: (exerciseView.state === "waitingForNewQuestion") ? i18n("New Question") : i18n("Play Question")
@@ -368,6 +391,12 @@ Item {
                                 Button {
                                     id: giveUpButton
 
+                                    Onboarding.groups: ["melodic", "rhythmic"]
+                                    Onboarding.texts: [
+                                        i18n("Give up to reveal the correct answer."),
+                                        i18n("Give up to reveal the correct answer.")
+                                    ]
+
                                     enabled: exerciseView.state === "waitingForAnswer" && !animation.running && !exerciseView.exercisePlaying
                                     text: i18n("Give Up")
                                     width: actionButtons.buttonWidth
@@ -380,6 +409,12 @@ Item {
                                 }
                                 Button {
                                     id: testButton
+
+                                    Onboarding.groups: ["melodic", "rhythmic"]
+                                    Onboarding.texts: [
+                                        i18n("Start a test to answer several questions in a row."),
+                                        i18n("Start a test to answer several questions in a row.")
+                                    ]
 
                                     enabled: !exerciseView.exercisePlaying
                                     text: Core.exerciseSessionController.isTest ? i18n("Stop Test") : i18n("Start Test")
@@ -417,6 +452,12 @@ Item {
             }
             Item {
                 id: answerFrame
+
+                Onboarding.groups: ["melodic", "rhythmic"]
+                Onboarding.texts: [
+                    i18n("Choose an answer here. Hover, or press and hold, to preview it below."),
+                    i18n("Choose each rhythm part from these available answers.")
+                ]
 
                 Layout.fillHeight: true
                 Layout.fillWidth: true
@@ -481,6 +522,12 @@ Item {
             }
             Item {
                 id: selectedAnswersFrame
+
+                Onboarding.groups: ["melodic", "rhythmic"]
+                Onboarding.texts: [
+                    i18n("Your selected answer appears here."),
+                    i18n("Build your rhythm answer here, one part at a time.")
+                ]
 
                 Layout.bottomMargin: exerciseView.currentExercise !== undefined && exerciseView.currentExercise["playMode"] === "rhythm" ? exerciseView.contentPadding : 0
                 Layout.fillWidth: true
@@ -600,6 +647,16 @@ Item {
                     uniformCellWidths: !tabbed
 
                     Item {
+                        id: pianoViewContainer
+
+                        Onboarding.groups: ["melodic"]
+                        Onboarding.texts: [i18n("The keyboard shows the notes in the question or preview.")]
+                        Onboarding.onAboutToShow: {
+                            if (musicViewsLayout.tabbed) {
+                                musicTabs.currentIndex = 0;
+                            }
+                        }
+
                         Layout.fillWidth: true
                         Layout.preferredHeight: musicPanel.viewHeight
                         Layout.preferredWidth: musicViewsLayout.musicViewWidth
@@ -618,6 +675,17 @@ Item {
                         }
                     }
                     Item {
+                        id: sheetMusicViewContainer
+
+                        Onboarding.groups: ["melodic"]
+                        Onboarding.texts: [i18n("The staff shows the same notes in music notation.")]
+                        Onboarding.onAboutToShow: {
+                            if (musicViewsLayout.tabbed) {
+                                musicTabs.currentIndex = 1;
+                            }
+                            exerciseView.onboardingFinalStepShown();
+                        }
+
                         Layout.fillWidth: true
                         Layout.preferredHeight: musicPanel.viewHeight
                         Layout.preferredWidth: musicViewsLayout.musicViewWidth

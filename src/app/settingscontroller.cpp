@@ -30,9 +30,18 @@ void SettingsController::load()
     m_instrumentGroup = settings.value(u"InstrumentGroup"_s, m_instrumentGroup).toInt();
     m_instrument = std::clamp(settings.value(u"Instrument"_s, m_instrument).toInt(), 0, 127);
     m_rhythmInstrument = std::clamp(settings.value(u"RhythmInstrument"_s, m_rhythmInstrument).toInt(), 35, 81);
+    m_melodicOnboardingPromptShown = settings.value(u"MelodicOnboardingPromptShown"_s, m_melodicOnboardingPromptShown).toBool();
+    m_rhythmicOnboardingPromptShown = settings.value(u"RhythmicOnboardingPromptShown"_s, m_rhythmicOnboardingPromptShown).toBool();
 }
 
 void SettingsController::write(const QString &key, int value)
+{
+    QSettings settings;
+    settings.beginGroup(u"Settings"_s);
+    settings.setValue(key, value);
+}
+
+void SettingsController::write(const QString &key, bool value)
 {
     QSettings settings;
     settings.beginGroup(u"Settings"_s);
@@ -77,6 +86,16 @@ int SettingsController::instrument() const
 int SettingsController::rhythmInstrument() const
 {
     return m_rhythmInstrument;
+}
+
+bool SettingsController::melodicOnboardingPromptShown() const
+{
+    return m_melodicOnboardingPromptShown;
+}
+
+bool SettingsController::rhythmicOnboardingPromptShown() const
+{
+    return m_rhythmicOnboardingPromptShown;
 }
 
 void SettingsController::setRhythmPatternCount(int rhythmPatternCount)
@@ -172,6 +191,28 @@ void SettingsController::setRhythmInstrument(int rhythmInstrument)
     m_rhythmInstrument = rhythmInstrument;
     write(u"RhythmInstrument"_s, m_rhythmInstrument);
     emit rhythmInstrumentChanged(m_rhythmInstrument);
+}
+
+void SettingsController::setMelodicOnboardingPromptShown(bool shown)
+{
+    if (m_melodicOnboardingPromptShown == shown) {
+        return;
+    }
+
+    m_melodicOnboardingPromptShown = shown;
+    write(u"MelodicOnboardingPromptShown"_s, m_melodicOnboardingPromptShown);
+    emit melodicOnboardingPromptShownChanged(m_melodicOnboardingPromptShown);
+}
+
+void SettingsController::setRhythmicOnboardingPromptShown(bool shown)
+{
+    if (m_rhythmicOnboardingPromptShown == shown) {
+        return;
+    }
+
+    m_rhythmicOnboardingPromptShown = shown;
+    write(u"RhythmicOnboardingPromptShown"_s, m_rhythmicOnboardingPromptShown);
+    emit rhythmicOnboardingPromptShownChanged(m_rhythmicOnboardingPromptShown);
 }
 }
 

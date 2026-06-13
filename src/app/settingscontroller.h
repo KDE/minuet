@@ -21,6 +21,10 @@ class SettingsController : public QObject
     Q_PROPERTY(int instrumentGroup READ instrumentGroup WRITE setInstrumentGroup NOTIFY instrumentGroupChanged)
     Q_PROPERTY(int instrument READ instrument WRITE setInstrument NOTIFY instrumentChanged)
     Q_PROPERTY(int rhythmInstrument READ rhythmInstrument WRITE setRhythmInstrument NOTIFY rhythmInstrumentChanged)
+    Q_PROPERTY(
+        bool melodicOnboardingPromptShown READ melodicOnboardingPromptShown WRITE setMelodicOnboardingPromptShown NOTIFY melodicOnboardingPromptShownChanged)
+    Q_PROPERTY(bool rhythmicOnboardingPromptShown READ rhythmicOnboardingPromptShown WRITE setRhythmicOnboardingPromptShown NOTIFY
+                   rhythmicOnboardingPromptShownChanged)
 
 public:
     ~SettingsController() override = default;
@@ -33,6 +37,8 @@ public:
     int instrumentGroup() const;
     int instrument() const;
     int rhythmInstrument() const;
+    bool melodicOnboardingPromptShown() const;
+    bool rhythmicOnboardingPromptShown() const;
 
 public Q_SLOTS:
     void setRhythmPatternCount(int rhythmPatternCount);
@@ -43,6 +49,8 @@ public Q_SLOTS:
     void setInstrumentGroup(int instrumentGroup);
     void setInstrument(int instrument);
     void setRhythmInstrument(int rhythmInstrument);
+    void setMelodicOnboardingPromptShown(bool shown);
+    void setRhythmicOnboardingPromptShown(bool shown);
 
 Q_SIGNALS:
     void rhythmPatternCountChanged(int rhythmPatternCount);
@@ -53,6 +61,8 @@ Q_SIGNALS:
     void instrumentGroupChanged(int instrumentGroup);
     void instrumentChanged(int instrument);
     void rhythmInstrumentChanged(int rhythmInstrument);
+    void melodicOnboardingPromptShownChanged(bool shown);
+    void rhythmicOnboardingPromptShownChanged(bool shown);
 
 private:
     friend class Core;
@@ -61,6 +71,7 @@ private:
 
     void load();
     void write(const QString &key, int value);
+    void write(const QString &key, bool value);
 
     int m_rhythmPatternCount = 4;
     int m_testExerciseCount = 10;
@@ -70,6 +81,8 @@ private:
     int m_instrumentGroup = -1;
     int m_instrument = 0;
     int m_rhythmInstrument = 37;
+    bool m_melodicOnboardingPromptShown = false;
+    bool m_rhythmicOnboardingPromptShown = false;
 };
 }
 

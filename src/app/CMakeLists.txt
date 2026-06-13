@@ -204,9 +204,11 @@ if(ANDROID OR CMAKE_SYSTEM_NAME STREQUAL "iOS")
             ${KIRIGAMI_ADDONS_ICONS}
             arrow-up
             arrow-down
+            data-information
             dialog-close
             go-home-symbolic
             help-about-symbolic
+            help-contents
             settings-configure-symbolic
             view-list-details-symbolic
             open-menu
@@ -216,6 +218,9 @@ if(ANDROID OR CMAKE_SYSTEM_NAME STREQUAL "iOS")
             view-get-hot-new-symbolic
             window-close-symbolic
             dialog-close-symbolic
+            dialog-cancel-symbolic
+            go-next-symbolic
+            go-previous-symbolic
     )
 endif()
 
