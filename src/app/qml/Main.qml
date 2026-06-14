@@ -6,6 +6,7 @@ pragma ComponentBehavior: Bound
 
 import QtQuick
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.onboarding
 
 Kirigami.ApplicationWindow {
     id: window
@@ -15,6 +16,9 @@ Kirigami.ApplicationWindow {
     readonly property var currentPage: pageStack.depth > 0 ? pageStack.get(pageStack.currentIndex) : null
     property int previousPageStackIndex: 0
     property string titleText: i18n("Home")
+
+    Onboarding.blur: 1
+    Onboarding.padding: Kirigami.Units.smallSpacing
 
     function createAboutPage(): Kirigami.Page {
         return aboutPageComponent.createObject(pageStack);

@@ -14,7 +14,6 @@ Kirigami.Page {
     property var currentExercise
     property string currentExerciseIconName: ""
     readonly property bool isRhythmic: currentExercise !== undefined && currentExercise["playMode"] === "rhythm"
-    property bool onboardingReachedLastStep: false
 
     function offerOnboarding(): void {
         if (page.currentExercise === undefined) {
@@ -34,8 +33,6 @@ Kirigami.Page {
         onboardingPromptLoader.active = true;
     }
     function startOnboarding(): void {
-        page.onboardingReachedLastStep = false;
-        Onboarding.padding = Kirigami.Units.smallSpacing;
         Onboarding.start(page.isRhythmic ? "rhythmic" : "melodic");
     }
 
@@ -55,10 +52,7 @@ Kirigami.Page {
     Component.onCompleted: Qt.callLater(page.offerOnboarding)
     Onboarding.onFinished: {
         exerciseView.onboardingCountIn = 0;
-        if (page.onboardingReachedLastStep) {
-            applicationWindow().showPassiveNotification(i18n("Run this guide again any time from the Help icon."), "long");
-        }
-        page.onboardingReachedLastStep = false;
+        applicationWindow().showPassiveNotification(i18n("Run this guide again any time from the Help icon."), "long");
     }
 
     Item {
@@ -74,8 +68,6 @@ Kirigami.Page {
             anchors.fill: parent
             currentExercise: page.currentExercise
             currentExerciseIconName: page.currentExerciseIconName
-
-            onOnboardingFinalStepShown: page.onboardingReachedLastStep = true
         }
         Rectangle {
             id: countInOverlay
@@ -94,7 +86,6 @@ Kirigami.Page {
                 Onboarding.texts: [i18n("Rhythm questions begin with a four-beat count-in.")]
                 Onboarding.onAboutToShow: {
                     exerciseView.onboardingCountIn = 4;
-                    page.onboardingReachedLastStep = true;
                 }
                 Onboarding.onHide: exerciseView.onboardingCountIn = 0
 

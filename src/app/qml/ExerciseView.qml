@@ -60,8 +60,6 @@ Item {
         }
     }
 
-    signal onboardingFinalStepShown()
-
     function canShowSubmittedAnswerCorrection(position: int): bool {
         return Core.exerciseSessionController.canShowSubmittedAnswerCorrection(position, exerciseView.currentExercise || {}, exerciseView.selectedOptionCount, Core.exerciseSessionController.selectedExerciseOptions);
     }
@@ -377,7 +375,6 @@ Item {
                                     ]
 
                                     enabled: !animation.running && !exerciseView.exercisePlaying
-                                    highlighted: exerciseView.state === "waitingForNewQuestion" || exerciseView.state === "waitingForAnswer"
                                     text: (exerciseView.state === "waitingForNewQuestion") ? i18n("New Question") : i18n("Play Question")
                                     width: actionButtons.buttonWidth
 
@@ -438,6 +435,7 @@ Item {
                     Item {
                         Layout.preferredHeight: 1
                         Layout.preferredWidth: exerciseIcon.sideLength
+                        visible: exerciseIcon.visible
                     }
                 }
                 Kirigami.Separator {
@@ -683,7 +681,6 @@ Item {
                             if (musicViewsLayout.tabbed) {
                                 musicTabs.currentIndex = 1;
                             }
-                            exerciseView.onboardingFinalStepShown();
                         }
 
                         Layout.fillWidth: true
