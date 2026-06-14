@@ -50,10 +50,6 @@ Kirigami.Page {
     ]
 
     Component.onCompleted: Qt.callLater(page.offerOnboarding)
-    Onboarding.onFinished: {
-        exerciseView.onboardingCountIn = 0;
-        applicationWindow().showPassiveNotification(i18n("Run this guide again any time from the Help icon."), "long");
-    }
 
     Item {
         id: onboardingSource

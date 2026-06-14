@@ -521,17 +521,18 @@ Item {
             Item {
                 id: selectedAnswersFrame
 
-                Onboarding.groups: ["melodic", "rhythmic"]
-                Onboarding.texts: [
-                    i18n("Your selected answer appears here."),
-                    i18n("Build your rhythm answer here, one part at a time.")
-                ]
-
                 Layout.bottomMargin: exerciseView.currentExercise !== undefined && exerciseView.currentExercise["playMode"] === "rhythm" ? exerciseView.contentPadding : 0
                 Layout.fillWidth: true
                 Layout.leftMargin: exerciseView.contentPadding
                 Layout.preferredHeight: selectedAnswersLayout.implicitHeight
                 Layout.rightMargin: exerciseView.contentPadding
+                Layout.topMargin: exerciseView.contentPadding
+
+                Onboarding.groups: ["melodic", "rhythmic"]
+                Onboarding.texts: [
+                    i18n("Your selected answer appears here."),
+                    i18n("Build your rhythm answer here, one part at a time.")
+                ]
 
                 ColumnLayout {
                     id: selectedAnswersLayout
@@ -543,7 +544,6 @@ Item {
                         id: selectedAnswersHeading
 
                         Layout.fillWidth: true
-                        Layout.topMargin: Kirigami.Units.largeSpacing
 
                         Kirigami.Heading {
                             Layout.fillWidth: true
@@ -628,6 +628,7 @@ Item {
                 Layout.maximumHeight: visible ? viewHeight + (musicTabs.visible ? musicTabs.implicitHeight + spacing : 0) : 0
                 Layout.preferredHeight: visible ? viewHeight + (musicTabs.visible ? musicTabs.implicitHeight + spacing : 0) : 0
                 Layout.rightMargin: exerciseView.contentPadding
+                Layout.topMargin: exerciseView.contentPadding
                 spacing: Kirigami.Units.smallSpacing
                 visible: exerciseView.currentExercise !== undefined && exerciseView.currentExercise["playMode"] !== "rhythm"
 
