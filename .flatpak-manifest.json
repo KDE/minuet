@@ -63,6 +63,17 @@
             ]
         },
         {
+            "name": "kirigami-addons",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://invent.kde.org/libraries/kirigami-addons.git",
+                    "branch": "master"
+                }
+            ]
+        },
+        {
             "name": "minuet",
             "buildsystem": "cmake-ninja",
             "sources": [

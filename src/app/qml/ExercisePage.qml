@@ -35,6 +35,7 @@ Kirigami.Page {
     }
     function startOnboarding(): void {
         page.onboardingReachedLastStep = false;
+        Onboarding.padding = Kirigami.Units.smallSpacing;
         Onboarding.start(page.isRhythmic ? "rhythmic" : "melodic");
     }
 
