@@ -142,6 +142,8 @@ qt_add_qml_module(
     RESOURCES
     qml/SheetMusicView/Bravura.otf
     qml/SheetMusicView/bravura_metadata.json
+    DEPENDENCIES
+    QtQuick.Effects
 )
 
 if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
