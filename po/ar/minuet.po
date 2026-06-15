@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-14 00:39+0000\n"
-"PO-Revision-Date: 2026-06-08 20:24+0400\n"
+"POT-Creation-Date: 2026-06-15 00:39+0000\n"
+"PO-Revision-Date: 2026-06-14 20:19+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -1847,141 +1847,136 @@ msgstr[3] "%2 - %1 عناصر"
 msgstr[4] "%2 - %1 عنصرًا"
 msgstr[5] "%2 - %1 عنصر"
 
-#: src/app/qml/ExercisePage.qml:48
+#: src/app/qml/ExercisePage.qml:46
 #, kde-format
 msgctxt "@action:button"
 msgid "Help"
-msgstr ""
+msgstr "مساعدة"
 
-#: src/app/qml/ExercisePage.qml:58
-#, kde-format
-msgid "Run this guide again any time from the Help icon."
-msgstr ""
-
-#: src/app/qml/ExercisePage.qml:93
+#: src/app/qml/ExercisePage.qml:82
 #, kde-format
 msgid "Rhythm questions begin with a four-beat count-in."
 msgstr ""
 
-#: src/app/qml/ExercisePage.qml:169
+#: src/app/qml/ExercisePage.qml:157
 #, kde-format
 msgid ""
 "This is your first rhythmic exercise. Start a quick guide? You can open it "
 "later from the Help icon."
 msgstr ""
 
-#: src/app/qml/ExercisePage.qml:169
+#: src/app/qml/ExercisePage.qml:157
 #, kde-format
 msgid ""
 "This is your first melodic exercise. Start a quick guide? You can open it "
 "later from the Help icon."
 msgstr ""
 
-#: src/app/qml/ExercisePage.qml:170
+#: src/app/qml/ExercisePage.qml:158
 #, kde-format
 msgid "First Time Here"
-msgstr ""
+msgstr "أول مرة هنا"
 
-#: src/app/qml/ExercisePage.qml:176
+#: src/app/qml/ExercisePage.qml:164
 #, fuzzy, kde-format
 #| msgid "Start Test"
 msgctxt "@action:button"
 msgid "Start Guide"
 msgstr "ابدأ الاختبار"
 
-#: src/app/qml/ExercisePage.qml:185
+#: src/app/qml/ExercisePage.qml:173
 #, kde-format
 msgctxt "@action:button"
 msgid "Not Now"
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:323 src/app/qml/ExerciseView.qml:324
+#: src/app/qml/ExerciseView.qml:321 src/app/qml/ExerciseView.qml:322
 #, kde-format
 msgid "These messages explain the question and show its status."
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:340
+#: src/app/qml/ExerciseView.qml:338
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "userMessage"
 msgstr "رسالة المستخدم"
 
-#: src/app/qml/ExerciseView.qml:352
+#: src/app/qml/ExerciseView.qml:350
 #, kde-format
 msgid "Playing…"
 msgstr "يعزف…"
 
-#: src/app/qml/ExerciseView.qml:375 src/app/qml/ExerciseView.qml:376
+#: src/app/qml/ExerciseView.qml:373 src/app/qml/ExerciseView.qml:374
 #, kde-format
 msgid "Start a new question or replay the current one."
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:381
+#: src/app/qml/ExerciseView.qml:378
 #, kde-format
 msgid "New Question"
 msgstr "سؤال جديد"
 
-#: src/app/qml/ExerciseView.qml:381
+#: src/app/qml/ExerciseView.qml:378
 #, kde-format
 msgid "Play Question"
 msgstr "شغل السؤال"
 
-#: src/app/qml/ExerciseView.qml:396 src/app/qml/ExerciseView.qml:397
+#: src/app/qml/ExerciseView.qml:393 src/app/qml/ExerciseView.qml:394
 #, kde-format
 msgid "Give up to reveal the correct answer."
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:401
+#: src/app/qml/ExerciseView.qml:398
 #, kde-format
 msgid "Give Up"
 msgstr "استسلم"
 
-#: src/app/qml/ExerciseView.qml:415 src/app/qml/ExerciseView.qml:416
+#: src/app/qml/ExerciseView.qml:412 src/app/qml/ExerciseView.qml:413
 #, kde-format
 msgid "Start a test to answer several questions in a row."
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:420
+#: src/app/qml/ExerciseView.qml:417
 #, kde-format
 msgid "Stop Test"
 msgstr "أوقف الاختبار"
 
-#: src/app/qml/ExerciseView.qml:420
+#: src/app/qml/ExerciseView.qml:417
 #, kde-format
 msgid "Start Test"
 msgstr "ابدأ الاختبار"
 
-#: src/app/qml/ExerciseView.qml:458
+#: src/app/qml/ExerciseView.qml:456
 #, kde-format
 msgid "Choose an answer here. Hover, or press and hold, to preview it below."
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:459
+#: src/app/qml/ExerciseView.qml:457
 #, kde-format
 msgid "Choose each rhythm part from these available answers."
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:481
+#: src/app/qml/ExerciseView.qml:479
 #, kde-format
 msgid "Available answers"
 msgstr "الإجابات المتوفرة"
 
-#: src/app/qml/ExerciseView.qml:485
+#: src/app/qml/ExerciseView.qml:483
 #, kde-format
 msgid "Scroll for more"
 msgstr "مرر للمزيد"
 
-#: src/app/qml/ExerciseView.qml:528
+#: src/app/qml/ExerciseView.qml:533
 #, kde-format
 msgid "Your selected answer appears here."
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:529
+#: src/app/qml/ExerciseView.qml:534
 #, kde-format
 msgid "Build your rhythm answer here, one part at a time."
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:553
+#: src/app/qml/ExerciseView.qml:551
 #, kde-format
 msgid "Correct answer"
 msgid_plural "Correct answers"
@@ -1992,7 +1987,7 @@ msgstr[3] "هذه هي الإجابة"
 msgstr[4] "هذه هي الإجابة"
 msgstr[5] "هذه هي الإجابة"
 
-#: src/app/qml/ExerciseView.qml:553
+#: src/app/qml/ExerciseView.qml:551
 #, kde-format
 msgid "Your answer"
 msgid_plural "Your answers"
@@ -2003,62 +1998,67 @@ msgstr[3] "إجاباتك"
 msgstr[4] "إجاباتك"
 msgstr[5] "إجاباتك"
 
-#: src/app/qml/ExerciseView.qml:557
+#: src/app/qml/ExerciseView.qml:555
 #, kde-format
 msgid "Scroll for more |"
 msgstr "مرر للمزيد |"
 
-#: src/app/qml/ExerciseView.qml:562
+#: src/app/qml/ExerciseView.qml:560
 #, kde-format
 msgid "%1 / %2"
 msgstr "%1 / %2"
 
-#: src/app/qml/ExerciseView.qml:566
+#: src/app/qml/ExerciseView.qml:564
 #, kde-format
 msgid "Backspace"
 msgstr "مسافة للخلف"
 
-#: src/app/qml/ExerciseView.qml:653
+#: src/app/qml/ExerciseView.qml:652
 #, kde-format
 msgid "The keyboard shows the notes in the question or preview."
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:681
+#: src/app/qml/ExerciseView.qml:680
 #, kde-format
 msgid "The staff shows the same notes in music notation."
 msgstr ""
 
-#: src/app/qml/ExerciseView.qml:710
+#: src/app/qml/ExerciseView.qml:708
 #, kde-format
 msgid "Keyboard"
 msgstr "لوحة المفاتيح"
 
-#: src/app/qml/ExerciseView.qml:713
+#: src/app/qml/ExerciseView.qml:711
 #, kde-format
 msgid "Staff"
 msgstr "المدرج الموسيقي"
 
-#: src/app/qml/ExerciseView.qml:841
+#: src/app/qml/ExerciseView.qml:839
 #, kde-format
 msgid "Empty answer slot"
 msgstr "خانة إجابة فارغة"
 
-#: src/app/qml/ExerciseView.qml:873
+#: src/app/qml/ExerciseView.qml:871
 #, kde-format
 msgid "Answer %1"
 msgstr "الإجابة %1"
 
-#: src/app/qml/Main.qml:17 src/app/qml/MinuetDrawer.qml:157
+#: src/app/qml/Main.qml:18 src/app/qml/MinuetDrawer.qml:157
 #, kde-format
 msgid "Home"
 msgstr "الرئيسة"
 
-#: src/app/qml/Main.qml:133
+#: src/app/qml/Main.qml:22
+#, kde-format
+msgid "Run this guide again any time from the Help icon."
+msgstr ""
+
+#: src/app/qml/Main.qml:138
 #, kde-format
 msgid "Start with a topic, then pick the specific training level."
 msgstr "ابدأ بموضوع، ثم اختر مستوى التدريب المحدد."
 
-#: src/app/qml/Main.qml:135
+#: src/app/qml/Main.qml:140
 #, kde-format
 msgid "Choose an exercise"
 msgstr "اختر تمرينًا"
