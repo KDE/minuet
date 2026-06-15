@@ -171,7 +171,6 @@ ecm_find_qmlmodule(org.kde.kirigami REQUIRED)
 ecm_find_qmlmodule(org.kde.coreaddons REQUIRED)
 ecm_find_qmlmodule(org.kde.kirigamiaddons.formcard REQUIRED)
 ecm_find_qmlmodule(org.kde.kirigamiaddons.onboarding REQUIRED)
-ecm_find_qmlmodule(QtQuick.Effects REQUIRED)
 
 if(NOT MINUET_MOBILE_PLATFORM)
     find_package(
