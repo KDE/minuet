@@ -10,11 +10,18 @@ if(${CMAKE_VERSION} VERSION_GREATER "3.10.0")
 endif()
 
 # KDE Application Version, managed by release script
-set (RELEASE_SERVICE_VERSION_MAJOR "26")
-set (RELEASE_SERVICE_VERSION_MINOR "07")
-set (RELEASE_SERVICE_VERSION_MICRO "70")
-set (RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_VERSION_MINOR}.${RELEASE_SERVICE_VERSION_MICRO}")
-set (RELEASE_SERVICE_COMPACT_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}${RELEASE_SERVICE_VERSION_MINOR}${RELEASE_SERVICE_VERSION_MICRO}")
+set(RELEASE_SERVICE_VERSION_MAJOR "26")
+set(RELEASE_SERVICE_VERSION_MINOR "07")
+set(RELEASE_SERVICE_VERSION_MICRO "70")
+string(CONCAT RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}."
+              "${RELEASE_SERVICE_VERSION_MINOR}."
+              "${RELEASE_SERVICE_VERSION_MICRO}"
+)
+string(
+    CONCAT RELEASE_SERVICE_COMPACT_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}"
+           "${RELEASE_SERVICE_VERSION_MINOR}"
+           "${RELEASE_SERVICE_VERSION_MICRO}"
+)
 
 project(minuet VERSION ${RELEASE_SERVICE_VERSION})
 
@@ -39,22 +46,24 @@ include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(FeatureSummary)
 
-file(GLOB MINUET_PO_FILES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/po/*/minuet.po")
+file(GLOB MINUET_PO_FILES CONFIGURE_DEPENDS
+     "${CMAKE_CURRENT_SOURCE_DIR}/po/*/minuet.po"
+)
 set(MINUET_PLATFORM_TRANSLATED_LANGUAGES)
 foreach(pofile IN LISTS MINUET_PO_FILES)
     get_filename_component(language_dir "${pofile}" DIRECTORY)
     get_filename_component(language "${language_dir}" NAME)
 
     if(language STREQUAL "ca@valencia")
-        set(platform_language "ca-ES-valencia")
+        set(PLATFORM_LANGUAGE "ca-ES-valencia")
     elseif(language STREQUAL "zh_CN")
-        set(platform_language "zh-CN")
+        set(PLATFORM_LANGUAGE "zh-CN")
     elseif(language STREQUAL "zh_TW")
-        set(platform_language "zh-TW")
+        set(PLATFORM_LANGUAGE "zh-TW")
     else()
-        string(REPLACE "_" "-" platform_language "${language}")
+        string(REPLACE "_" "-" PLATFORM_LANGUAGE "${language}")
     endif()
-    list(APPEND MINUET_PLATFORM_TRANSLATED_LANGUAGES "${platform_language}")
+    list(APPEND MINUET_PLATFORM_TRANSLATED_LANGUAGES "${PLATFORM_LANGUAGE}")
 endforeach()
 
 if(APPLE)
@@ -63,34 +72,48 @@ if(APPLE)
 endif()
 
 if(ANDROID)
-    set(MINUET_ANDROID_PACKAGE_DIR "${CMAKE_CURRENT_BINARY_DIR}/android-package")
+    set(MINUET_ANDROID_PACKAGE_DIR
+        "${CMAKE_CURRENT_BINARY_DIR}/android-package"
+    )
     file(GLOB_RECURSE minuet_android_package_files CONFIGURE_DEPENDS
-        "${CMAKE_CURRENT_SOURCE_DIR}/src/app/android/*"
+         "${CMAKE_CURRENT_SOURCE_DIR}/src/app/android/*"
     )
     file(REMOVE_RECURSE "${MINUET_ANDROID_PACKAGE_DIR}")
     file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/src/app/android/"
-        DESTINATION "${MINUET_ANDROID_PACKAGE_DIR}"
+         DESTINATION "${MINUET_ANDROID_PACKAGE_DIR}"
     )
 
-    set(android_locale_config "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<locale-config xmlns:android=\"http://schemas.android.com/apk/res/android\">\n")
+    set(MINUET_ANDROID_LOCALE_CONFIG
+        "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+    )
+    string(APPEND MINUET_ANDROID_LOCALE_CONFIG "<locale-config xmlns:android="
+           "\"http://schemas.android.com/apk/res/android\">\n"
+    )
     foreach(language IN LISTS MINUET_PLATFORM_TRANSLATED_LANGUAGES)
-        string(APPEND android_locale_config "    <locale android:name=\"${language}\"/>\n")
+        string(APPEND MINUET_ANDROID_LOCALE_CONFIG
+               "    <locale android:name=\"${language}\"/>\n"
+        )
     endforeach()
-    string(APPEND android_locale_config "</locale-config>\n")
+    string(APPEND MINUET_ANDROID_LOCALE_CONFIG "</locale-config>\n")
     file(MAKE_DIRECTORY "${MINUET_ANDROID_PACKAGE_DIR}/res/xml")
-    file(WRITE "${MINUET_ANDROID_PACKAGE_DIR}/res/xml/locales_config.xml" "${android_locale_config}")
+    file(WRITE "${MINUET_ANDROID_PACKAGE_DIR}/res/xml/locales_config.xml"
+         "${MINUET_ANDROID_LOCALE_CONFIG}"
+    )
 endif()
 
-ecm_setup_version(${PROJECT_VERSION} VARIABLE_PREFIX MINUET
-    VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/src/app/minuet_version.h"
+ecm_setup_version(
+    ${PROJECT_VERSION} VARIABLE_PREFIX MINUET VERSION_HEADER
+    "${CMAKE_CURRENT_BINARY_DIR}/src/app/minuet_version.h"
 )
-find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
-    Core
-    Gui
-    Qml
-    Quick
-    QuickControls2
-    Svg
+find_package(
+    Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED
+    COMPONENTS Core
+               Gui
+               Qml
+               Quick
+               QuickControls2
+               QuickEffects
+               Svg
 )
 if(COMMAND qt_policy AND QT_KNOWN_POLICY_QTP0004)
     qt_policy(SET QTP0004 NEW)
@@ -101,67 +124,65 @@ if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
     find_package(PkgConfig REQUIRED)
     pkg_check_modules(FLUIDSYNTH REQUIRED "fluidsynth>=2.5.3")
 
-    find_library(FLUIDSYNTH_STATIC_LIBRARY
+    find_library(
+        FLUIDSYNTH_STATIC_LIBRARY
         NAMES fluidsynth
         PATHS ${FLUIDSYNTH_LIBRARY_DIRS}
-        NO_DEFAULT_PATH
-        REQUIRED
+        NO_DEFAULT_PATH REQUIRED
     )
 
     set(_minuet_fluidsynth_static_libraries ${FLUIDSYNTH_STATIC_LIBRARIES})
     list(REMOVE_ITEM _minuet_fluidsynth_static_libraries fluidsynth)
 
     add_library(FluidSynth::libfluidsynth STATIC IMPORTED)
-    set_target_properties(FluidSynth::libfluidsynth PROPERTIES
-        IMPORTED_LOCATION "${FLUIDSYNTH_STATIC_LIBRARY}"
-        INTERFACE_INCLUDE_DIRECTORIES "${FLUIDSYNTH_INCLUDE_DIRS}"
+    set_target_properties(
+        FluidSynth::libfluidsynth
+        PROPERTIES IMPORTED_LOCATION "${FLUIDSYNTH_STATIC_LIBRARY}"
+                   INTERFACE_INCLUDE_DIRECTORIES "${FLUIDSYNTH_INCLUDE_DIRS}"
     )
-    target_link_libraries(FluidSynth::libfluidsynth INTERFACE
-        ${_minuet_fluidsynth_static_libraries}
+    target_link_libraries(
+        FluidSynth::libfluidsynth
+        INTERFACE ${_minuet_fluidsynth_static_libraries}
     )
-    target_link_options(FluidSynth::libfluidsynth INTERFACE
-        ${FLUIDSYNTH_STATIC_LDFLAGS_OTHER}
+    target_link_options(
+        FluidSynth::libfluidsynth INTERFACE ${FLUIDSYNTH_STATIC_LDFLAGS_OTHER}
     )
 elseif(APPLE OR ANDROID)
     find_package(FluidSynth 2.5.3 CONFIG REQUIRED)
     if(NOT TARGET FluidSynth::libfluidsynth)
-        message(FATAL_ERROR "Minuet requires the FluidSynth::libfluidsynth library target")
+        message(
+            FATAL_ERROR
+                "Minuet requires the FluidSynth::libfluidsynth library target"
+        )
     endif()
 else()
     find_package(PkgConfig REQUIRED)
     pkg_check_modules(FLUIDSYNTH REQUIRED IMPORTED_TARGET "fluidsynth>=2.5.3")
 
     add_library(FluidSynth::libfluidsynth INTERFACE IMPORTED)
-    target_link_libraries(FluidSynth::libfluidsynth INTERFACE PkgConfig::FLUIDSYNTH)
+    target_link_libraries(
+        FluidSynth::libfluidsynth INTERFACE PkgConfig::FLUIDSYNTH
+    )
 endif()
 
-find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
-    CoreAddons
-    Kirigami
-    I18n
-)
+find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS CoreAddons Kirigami I18n)
 find_package(KF6KirigamiAddons REQUIRED)
 ecm_find_qmlmodule(org.kde.kirigami REQUIRED)
 ecm_find_qmlmodule(org.kde.coreaddons REQUIRED)
 ecm_find_qmlmodule(org.kde.kirigamiaddons.formcard REQUIRED)
 ecm_find_qmlmodule(org.kde.kirigamiaddons.onboarding REQUIRED)
+ecm_find_qmlmodule(QtQuick.Effects REQUIRED)
 
 if(NOT MINUET_MOBILE_PLATFORM)
-    find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
-        Crash
-        DocTools
-        IconThemes
-        QQC2DesktopStyle
+    find_package(
+        KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS Crash DocTools IconThemes
+                                                  QQC2DesktopStyle
     )
     ecm_find_qmlmodule(org.kde.desktop REQUIRED)
 else()
-    find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
-        ColorScheme
-    )
+    find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS ColorScheme)
     if(IOS)
-        find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
-            IconThemes
-        )
+        find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS IconThemes)
     endif()
 endif()
 
@@ -173,12 +194,14 @@ ki18n_install(po)
 add_dependencies(minuet pofiles)
 
 if(ANDROID)
-    add_custom_target(minuet_android_translations
+    add_custom_target(
+        minuet_android_translations
         COMMAND ${CMAKE_COMMAND} -E remove_directory
-            "${MINUET_ANDROID_PACKAGE_DIR}/assets/share/locale"
+                "${MINUET_ANDROID_PACKAGE_DIR}/assets/share/locale"
         COMMAND ${CMAKE_COMMAND} -E make_directory
-            "${MINUET_ANDROID_PACKAGE_DIR}/assets/share"
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
+                "${MINUET_ANDROID_PACKAGE_DIR}/assets/share"
+        COMMAND
+            ${CMAKE_COMMAND} -E copy_directory
             "${CMAKE_CURRENT_BINARY_DIR}/locale"
             "${MINUET_ANDROID_PACKAGE_DIR}/assets/share/locale"
         COMMENT "Copying Minuet translations into the Android package"
@@ -190,10 +213,12 @@ endif()
 
 if(NOT MINUET_MOBILE_PLATFORM)
     add_subdirectory(doc)
-    if (KF6DocTools_FOUND)
+    if(KF6DocTools_FOUND)
         kdoctools_install(po)
     endif()
-    install(FILES org.kde.minuet.metainfo.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
+    install(FILES org.kde.minuet.metainfo.xml
+            DESTINATION ${KDE_INSTALL_METAINFODIR}
+    )
 endif()
 
 include(KDEClangFormat)

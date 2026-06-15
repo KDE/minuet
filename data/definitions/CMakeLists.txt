@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: GPL-2.0-or-later
 
-set(minuet_DEFINITIONS
+set(MINUET_DEFINITIONS
     intervals-ascending-melodic-harmonic-definitions.json
     intervals-descending-melodic-definitions.json
     intervals-melodic-definitions.json
@@ -18,4 +18,6 @@ set(minuet_DEFINITIONS
     rhythm-definitions.json
 )
 
-install(FILES ${minuet_DEFINITIONS} DESTINATION ${KDE_INSTALL_DATADIR}/minuet/definitions)
+install(FILES ${MINUET_DEFINITIONS}
+        DESTINATION ${KDE_INSTALL_DATADIR}/minuet/definitions
+)

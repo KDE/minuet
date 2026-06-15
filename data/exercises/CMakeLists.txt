@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: GPL-2.0-or-later
 
-set(minuet_EXERCISES
+set(MINUET_EXERCISES
     intervals-ascending-melodic-exercises.json
     intervals-descending-melodic-exercises.json
     intervals-melodic-exercises.json
@@ -21,4 +21,6 @@ set(minuet_EXERCISES
     rhythm-medium.json
 )
 
-install(FILES ${minuet_EXERCISES} DESTINATION ${KDE_INSTALL_DATADIR}/minuet/exercises)
+install(FILES ${MINUET_EXERCISES}
+        DESTINATION ${KDE_INSTALL_DATADIR}/minuet/exercises
+)
