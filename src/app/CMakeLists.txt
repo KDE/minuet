@@ -214,7 +214,6 @@ target_link_libraries(
             Qt::Qml
             Qt::Quick
             Qt::QuickControls2
-            Qt::QuickEffects
             Qt::Svg
             KF6::CoreAddons
             KF6::I18n
