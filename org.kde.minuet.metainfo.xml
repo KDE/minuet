@@ -45,6 +45,7 @@
   <summary xml:lang="ca-valencia">Programari d'educació musical</summary>
   <summary xml:lang="es">Software de aprendizaje musical</summary>
   <summary xml:lang="he">תוכנה לחינוך מוזיקלי</summary>
+  <summary xml:lang="it">Programma di educazione musicale</summary>
   <summary xml:lang="ka">მუსიკის სწავლის პროგრამა</summary>
   <summary xml:lang="nl">Software voor muziekonderwijs</summary>
   <summary xml:lang="pt-BR">Software para ensino de música</summary>
@@ -63,6 +64,7 @@
     <p xml:lang="ca-valencia">Minuet és una aplicació per a l'educació musical. Disposa d'un conjunt d'exercicis d'entrenament de l'oïda referits a intervals, acords, escales i altres.</p>
     <p xml:lang="es">Minuet es una aplicación para el aprendizaje musical. Contiene un conjunto de ejercicios de entrenamiento auditivo que contemplan el uso de intervalos, acordes y escalas, entre otras cosas.</p>
     <p xml:lang="he">מינואט הוא יישום לחינוך מוזיקלי. הוא מציע סדרה של תרגילי אימון שמיעה בנושאי הפרשים, אקורדים, סולמות ועוד.</p>
+    <p xml:lang="it">Minuet è un'applicazione per l'educazione musicale. Fornisce un insieme di esercizi per allenare l'orecchio relativi a intervalli, accordi, scale e altro.</p>
     <p xml:lang="ka">Minuet მუსიკის შესასწავლი აპლიკაციაა. მის ფუნქციებში შედის ყურის ვარჯიშის ნაკრები ინტერვალების, აკორდებისა და ა.შ. შესახებ.</p>
     <p xml:lang="nl">Minuet is een toepassing voor muziekonderwijs. Het biedt een set mogelijkheden voor trainingsoefeningen voor het gehoor betreffende intervallen, akkoorden, toonladders en meer.</p>
     <p xml:lang="pt-BR">Minuet é um software para educação musical. Ele oferece um conjunto de exercícios para treinamento de ouvido, incluindo intervalos, acordes, escalas e mais.</p>
@@ -94,6 +96,7 @@
       <caption xml:lang="es">Selección de ejercicios de aprendizaje musical</caption>
       <caption xml:lang="fr">Sélectionnez des exercices d'entraînement à la musique</caption>
       <caption xml:lang="he">בחירת תרגולי אימון מוזיקלי</caption>
+      <caption xml:lang="it">Scegli esercizi di allenamento musicale</caption>
       <caption xml:lang="ka">აირჩიეთ მუსიკალური სავარჯიშოები</caption>
       <caption xml:lang="nl">Kies oefeningen voor muziektrainingen</caption>
       <caption xml:lang="pt-BR">Escolha exercícios de treinamento musical</caption>
@@ -111,6 +114,7 @@
       <caption xml:lang="es">Práctica de reconocimiento de acordes</caption>
       <caption xml:lang="fr">S'exercer à reconnaître les accords</caption>
       <caption xml:lang="he">תרגול זיהוי אקורדים</caption>
+      <caption xml:lang="it">Esercitati a riconoscere gli accordi</caption>
       <caption xml:lang="ka">აკორდების ამოცნობაში ვარჯიში</caption>
       <caption xml:lang="nl">Oefen herkennen van akkoorden</caption>
       <caption xml:lang="pt-BR">Pratique o reconhecimento de acordes</caption>
@@ -128,6 +132,7 @@
       <caption xml:lang="es">Mejora del reconocimiento del ritmo</caption>
       <caption xml:lang="fr">Améliorer la reconnaissance du rythme</caption>
       <caption xml:lang="he">שיפור זיהוי קצב</caption>
+      <caption xml:lang="it">Migliora il riconoscimento del ritmo</caption>
       <caption xml:lang="ka">რიტმის ამოცნობის გაუმჯობესება</caption>
       <caption xml:lang="nl">Verbeter herkenning van ritme</caption>
       <caption xml:lang="pt-BR">Melhore o reconhecimento do ritmo</caption>
@@ -145,6 +150,7 @@
       <caption xml:lang="es">Entrenamiento del oído en el móvil</caption>
       <caption xml:lang="fr">Entraînez votre oreille sur mobile</caption>
       <caption xml:lang="he">אימון האוזן שלך במכשירים ניידים</caption>
+      <caption xml:lang="it">Allena il tuo orecchio sui dispositivi mobili</caption>
       <caption xml:lang="ka">ავარჯიშეთ ყური მობილურზე</caption>
       <caption xml:lang="nl">Oefen uw gehoor op de mobiel</caption>
       <caption xml:lang="pt-BR">Treine seu ouvido no celular</caption>
