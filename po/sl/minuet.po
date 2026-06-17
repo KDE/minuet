@@ -2,7 +2,7 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2019, 2022, 2023, 2024, 2026 Matjaž Jeran <matjaz.jeran@amis.net>
+# SPDX-FileCopyrightText: 2019, 2022-2024, 2026 Matjaž Jeran <matjaz.jeran@amis.net>
 # With special thanks to maestro Tomaž Kmetič
 # With special thanks to Višnja Kajgana
 msgid ""
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-15 00:39+0000\n"
-"PO-Revision-Date: 2026-06-07 22:55+0200\n"
+"PO-Revision-Date: 2026-06-16 06:55+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Lokalize 26.04.2\n"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -855,11 +855,9 @@ msgid "Minor Fourteenth"
 msgstr "Molova 14"
 
 #, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor - inversions"
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor inversions"
-msgstr "Mol - obrati"
+msgstr "Molovi obrati"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1732,10 +1730,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Thirds"
 msgstr "Terce"
 
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Triad inversions"
-msgstr ""
+msgstr "Inverzije triad"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1944,12 +1942,12 @@ msgstr[3] "%2 - %1 elementi"
 #, kde-format
 msgctxt "@action:button"
 msgid "Help"
-msgstr ""
+msgstr "Pomoč"
 
 #: src/app/qml/ExercisePage.qml:82
-#, kde-format
+#, fuzzy, kde-format
 msgid "Rhythm questions begin with a four-beat count-in."
-msgstr ""
+msgstr "Vprašanja o ritmu se začnejo s štirimi dobami uvoda."
 
 #: src/app/qml/ExercisePage.qml:157
 #, kde-format
@@ -1957,6 +1955,8 @@ msgid ""
 "This is your first rhythmic exercise. Start a quick guide? You can open it "
 "later from the Help icon."
 msgstr ""
+"To je vaša prva ritmična vaja. Jo želite začeti s hitrim vodnikom? Odprete "
+"ga lahko pozneje z ikono Pomoč."
 
 #: src/app/qml/ExercisePage.qml:157
 #, kde-format
@@ -1964,29 +1964,30 @@ msgid ""
 "This is your first melodic exercise. Start a quick guide? You can open it "
 "later from the Help icon."
 msgstr ""
+"To je vaša prva melodična vaja. Jo želite začeti s hitrim vodnikom? Odprete "
+"ga lahko pozneje z ikono Pomoč."
 
 #: src/app/qml/ExercisePage.qml:158
 #, kde-format
 msgid "First Time Here"
-msgstr ""
+msgstr "Prvič tukaj"
 
 #: src/app/qml/ExercisePage.qml:164
-#, fuzzy, kde-format
-#| msgid "Start Test"
+#, kde-format
 msgctxt "@action:button"
 msgid "Start Guide"
-msgstr "Začnite test"
+msgstr "Vodnik za začetek"
 
 #: src/app/qml/ExercisePage.qml:173
 #, kde-format
 msgctxt "@action:button"
 msgid "Not Now"
-msgstr ""
+msgstr "Ne zdaj"
 
 #: src/app/qml/ExerciseView.qml:321 src/app/qml/ExerciseView.qml:322
 #, kde-format
 msgid "These messages explain the question and show its status."
-msgstr ""
+msgstr "Ta sporočila pojasnjujejo vprašanje in prikazujejo njegov status."
 
 #: src/app/qml/ExerciseView.qml:338
 #, kde-format
@@ -2002,7 +2003,7 @@ msgstr "Predvajanje…"
 #: src/app/qml/ExerciseView.qml:373 src/app/qml/ExerciseView.qml:374
 #, kde-format
 msgid "Start a new question or replay the current one."
-msgstr ""
+msgstr "Začni novo vprašanje ali ponovi trenutno."
 
 #: src/app/qml/ExerciseView.qml:378
 #, kde-format
@@ -2017,37 +2018,39 @@ msgstr "Odigraj vprašanje"
 #: src/app/qml/ExerciseView.qml:393 src/app/qml/ExerciseView.qml:394
 #, kde-format
 msgid "Give up to reveal the correct answer."
-msgstr ""
+msgstr "Predate se, da razkrijete pravilen odgovor."
 
 #: src/app/qml/ExerciseView.qml:398
 #, kde-format
 msgid "Give Up"
-msgstr "Se predate"
+msgstr "Predate se"
 
 #: src/app/qml/ExerciseView.qml:412 src/app/qml/ExerciseView.qml:413
 #, kde-format
 msgid "Start a test to answer several questions in a row."
-msgstr ""
+msgstr "Začni test, za odgovor na več zaporednih vprašanj."
 
 #: src/app/qml/ExerciseView.qml:417
 #, kde-format
 msgid "Stop Test"
-msgstr "Zaustavite test"
+msgstr "Zaustavi test"
 
 #: src/app/qml/ExerciseView.qml:417
 #, kde-format
 msgid "Start Test"
-msgstr "Začnite test"
+msgstr "Začni test"
 
 #: src/app/qml/ExerciseView.qml:456
 #, kde-format
 msgid "Choose an answer here. Hover, or press and hold, to preview it below."
 msgstr ""
+"Tukaj izberite odgovor. Premaknite miško nad ali pritisnite in pridržite za "
+"predogled spodaj."
 
 #: src/app/qml/ExerciseView.qml:457
 #, kde-format
 msgid "Choose each rhythm part from these available answers."
-msgstr ""
+msgstr "Izberite vsak ritmični del izmed teh razpoložljivih odgovorov."
 
 #: src/app/qml/ExerciseView.qml:479
 #, kde-format
@@ -2062,12 +2065,12 @@ msgstr "Pomaknite se za več informacij"
 #: src/app/qml/ExerciseView.qml:533
 #, kde-format
 msgid "Your selected answer appears here."
-msgstr ""
+msgstr "Vaš izbrani odgovor se prikaže tukaj."
 
 #: src/app/qml/ExerciseView.qml:534
 #, kde-format
 msgid "Build your rhythm answer here, one part at a time."
-msgstr ""
+msgstr "Tukaj sestavite svoj ritemski odgovor, del za delom."
 
 #: src/app/qml/ExerciseView.qml:551
 #, kde-format
@@ -2105,12 +2108,12 @@ msgstr "Backspace"
 #: src/app/qml/ExerciseView.qml:652
 #, kde-format
 msgid "The keyboard shows the notes in the question or preview."
-msgstr ""
+msgstr "Klaviatura prikazuje note v vprašanju ali predogledu."
 
 #: src/app/qml/ExerciseView.qml:680
 #, kde-format
 msgid "The staff shows the same notes in music notation."
-msgstr ""
+msgstr "Osebje prikazuje iste note v glasbeni notaciji."
 
 #: src/app/qml/ExerciseView.qml:708
 #, kde-format
@@ -2140,7 +2143,7 @@ msgstr "Domov"
 #: src/app/qml/Main.qml:22
 #, kde-format
 msgid "Run this guide again any time from the Help icon."
-msgstr ""
+msgstr "Ta vodnik lahko kadar koli znova zaženete z ikono Pomoč."
 
 #: src/app/qml/Main.qml:138
 #, kde-format
