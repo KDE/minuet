@@ -2,7 +2,9 @@
 #
 # SPDX-License-Identifier: GPL-2.0-or-later
 
-set(MINUETINTERFACES_LIB_SRCS iplugin.cpp isoundcontroller.cpp)
+set(MINUETINTERFACES_LIB_SRCS iplugin.cpp imicrophoneinputcontroller.cpp
+                              isoundcontroller.cpp
+)
 
 if(MINUET_MOBILE_PLATFORM)
     add_library(minuetinterfaces STATIC ${MINUETINTERFACES_LIB_SRCS})
@@ -41,7 +43,7 @@ if(NOT MINUET_MOBILE_PLATFORM)
     )
 
     install(
-        FILES iplugin.h isoundcontroller.h
+        FILES iplugin.h imicrophoneinputcontroller.h isoundcontroller.h
         DESTINATION ${KDE_INSTALL_INCLUDEDIR}/minuet/interfaces
         COMPONENT Devel
     )

@@ -18,8 +18,12 @@ FormCard.FormCardPage {
     readonly property var instrumentsForGroupModel: Core.instrumentCatalogController.melodicInstrumentsForGroup(instrumentsModel, selectedMelodicGroup)
     readonly property string instrumentsJson: Core.soundController ? Core.soundController.instrumentsJson || "[]" : "[]"
     readonly property var instrumentsModel: Core.instrumentCatalogController.melodicInstruments(instrumentsJson)
+    readonly property var microphoneOnsetMethods: ["complex", "hfc", "energy", "specflux", "phase", "specdiff", "kl", "mkl"]
+    readonly property var microphonePitchMethods: ["yinfft", "yin", "yinfast", "mcomb", "schmitt", "specacf", "fcomb"]
     readonly property string rhythmInstrumentsJson: Core.soundController ? Core.soundController.rhythmInstrumentsJson || "[]" : "[]"
     readonly property var rhythmInstrumentsModel: Core.instrumentCatalogController.rhythmInstruments(rhythmInstrumentsJson)
+    readonly property var scoringModes: [i18n("Pitch primary"), i18n("Pitch + timing")]
+    readonly property var voiceClasses: [i18n("Soprano"), i18n("Alto"), i18n("Tenor"), i18n("Bass")]
     property int selectedMelodicGroup: -1
 
     function syncSelectionFromController(): void {
@@ -35,6 +39,53 @@ FormCard.FormCardPage {
         groupSelector.currentIndex = Core.instrumentCatalogController.melodicGroupIndex(groupsModel, root.selectedMelodicGroup);
         melodicInstrumentSelector.currentIndex = Core.instrumentCatalogController.melodicInstrumentIndex(instrumentsForGroupModel, Core.settingsController.instrument);
         rhythmInstrumentSelector.currentIndex = Core.instrumentCatalogController.rhythmInstrumentIndex(rhythmInstrumentsModel, Core.settingsController.rhythmInstrument);
+    }
+
+    component SettingsSlider: RowLayout {
+        id: sliderRow
+
+        property int decimals: 0
+        property real from: 0
+        property string label: ""
+        property real stepSize: 1
+        property string suffix: ""
+        property real to: 100
+        property real value: 0
+        signal moved(real value)
+
+        function formattedValue(): string {
+            const numericValue = decimals === 0 ? Math.round(slider.value).toString() : slider.value.toFixed(decimals);
+            return suffix.length > 0 ? i18n("%1 %2", numericValue, suffix) : numericValue;
+        }
+
+        Layout.fillWidth: true
+
+        QQC2.Label {
+            Layout.preferredWidth: Kirigami.Units.gridUnit * 10
+            elide: Text.ElideRight
+            text: sliderRow.label
+        }
+        QQC2.Slider {
+            id: slider
+
+            Layout.fillWidth: true
+            from: sliderRow.from
+            snapMode: sliderRow.stepSize > 0 ? QQC2.Slider.SnapAlways : QQC2.Slider.NoSnap
+            stepSize: sliderRow.stepSize
+            to: sliderRow.to
+            value: sliderRow.value
+
+            onMoved: {
+                const adjustedValue = sliderRow.decimals === 0 ? Math.round(value) : Number(value.toFixed(sliderRow.decimals));
+                sliderRow.moved(adjustedValue);
+            }
+        }
+        QQC2.Label {
+            Layout.minimumWidth: Kirigami.Units.gridUnit * 4
+            color: Kirigami.Theme.disabledTextColor
+            horizontalAlignment: Text.AlignRight
+            text: sliderRow.formattedValue()
+        }
     }
 
     title: i18n("Settings")
@@ -81,36 +132,31 @@ FormCard.FormCardPage {
             background: null
             enabled: Core.soundController !== null
 
-            contentItem: ColumnLayout {
-                Layout.fillWidth: true
-                spacing: Kirigami.Units.smallSpacing
+            contentItem: SettingsSlider {
+                from: 0
+                label: i18n("Volume")
+                suffix: "%"
+                to: 200
+                value: Core.settingsController.volume
 
-                RowLayout {
-                    Layout.fillWidth: true
-
-                    QQC2.Label {
-                        Layout.fillWidth: true
-                        elide: Text.ElideRight
-                        text: i18n("Volume")
-                    }
-                    QQC2.Label {
-                        color: Kirigami.Theme.disabledTextColor
-                        text: i18n("%1%", Math.round(volumeSlider.value))
-                    }
+                onMoved: function (value) {
+                    Core.settingsController.volume = value;
                 }
-                QQC2.Slider {
-                    id: volumeSlider
+            }
+        }
+        FormCard.AbstractFormDelegate {
+            background: null
+            enabled: Core.soundController !== null
 
-                    Layout.fillWidth: true
-                    from: 0
-                    snapMode: QQC2.Slider.SnapAlways
-                    stepSize: 1
-                    to: 200
-                    value: Core.settingsController.volume
+            contentItem: SettingsSlider {
+                from: 30
+                label: i18n("Exercise speed")
+                suffix: i18n("bpm")
+                to: 240
+                value: Core.settingsController.exerciseSpeed
 
-                    onMoved: {
-                        Core.settingsController.volume = Math.round(value);
-                    }
+                onMoved: function (value) {
+                    Core.settingsController.exerciseSpeed = value;
                 }
             }
         }
@@ -191,20 +237,260 @@ FormCard.FormCardPage {
         FormCard.AbstractFormDelegate {
             background: null
 
-            contentItem: RowLayout {
-                Layout.fillWidth: true
+            contentItem: SettingsSlider {
+                from: 4
+                label: i18n("Number of rhythm patterns")
+                to: 16
+                value: Core.settingsController.rhythmPatternCount
 
-                QQC2.Label {
-                    Layout.fillWidth: true
-                    elide: Text.ElideRight
-                    text: i18n("Number of rhythm patterns")
+                onMoved: function (value) {
+                    Core.settingsController.rhythmPatternCount = value;
                 }
-                QQC2.SpinBox {
-                    from: 4
-                    to: 16
-                    value: Core.settingsController.rhythmPatternCount
+            }
+        }
+    }
+    FormCard.FormHeader {
+        title: i18n("Clapping Exercises")
+    }
+    FormCard.FormCard {
+        FormCard.AbstractFormDelegate {
+            background: null
 
-                    onValueModified: Core.settingsController.rhythmPatternCount = value
+            contentItem: ColumnLayout {
+                Layout.fillWidth: true
+                spacing: Kirigami.Units.smallSpacing
+
+                RowLayout {
+                    Layout.fillWidth: true
+
+                    QQC2.Label {
+                        Layout.preferredWidth: Kirigami.Units.gridUnit * 10
+                        elide: Text.ElideRight
+                        text: i18n("Onset method")
+                    }
+                    QQC2.ComboBox {
+                        Layout.fillWidth: true
+                        currentIndex: Core.settingsController.clappingOnsetMethod
+                        model: root.microphoneOnsetMethods
+
+                        onActivated: Core.settingsController.clappingOnsetMethod = currentIndex
+                    }
+                }
+                SettingsSlider {
+                    from: 5
+                    label: i18n("Timing tolerance")
+                    suffix: "%"
+                    to: 100
+                    value: Core.settingsController.clappingCorrectnessTolerancePercent
+
+                    onMoved: function (value) {
+                        Core.settingsController.clappingCorrectnessTolerancePercent = value;
+                    }
+                }
+                SettingsSlider {
+                    decimals: 2
+                    from: 0.01
+                    label: i18n("Onset threshold")
+                    stepSize: 0.01
+                    to: 1.0
+                    value: Core.settingsController.clappingOnsetThreshold
+
+                    onMoved: function (value) {
+                        Core.settingsController.clappingOnsetThreshold = value;
+                    }
+                }
+                SettingsSlider {
+                    decimals: 3
+                    from: 0
+                    label: i18n("Input gate")
+                    stepSize: 0.001
+                    to: 0.25
+                    value: Core.settingsController.clappingInputGateLevel
+
+                    onMoved: function (value) {
+                        Core.settingsController.clappingInputGateLevel = value;
+                    }
+                }
+                SettingsSlider {
+                    decimals: 3
+                    from: 0
+                    label: i18n("Minimum onset strength")
+                    stepSize: 0.001
+                    to: 1
+                    value: Core.settingsController.clappingMinimumOnsetStrength
+
+                    onMoved: function (value) {
+                        Core.settingsController.clappingMinimumOnsetStrength = value;
+                    }
+                }
+                SettingsSlider {
+                    from: -90
+                    label: i18n("Aubio silence")
+                    suffix: i18n("dB")
+                    to: -20
+                    value: Core.settingsController.clappingPitchSilenceDb
+
+                    onMoved: function (value) {
+                        Core.settingsController.clappingPitchSilenceDb = value;
+                    }
+                }
+            }
+        }
+    }
+    FormCard.FormHeader {
+        title: i18n("Singing Exercises")
+    }
+    FormCard.FormCard {
+        FormCard.AbstractFormDelegate {
+            background: null
+
+            contentItem: ColumnLayout {
+                Layout.fillWidth: true
+                spacing: Kirigami.Units.smallSpacing
+
+                RowLayout {
+                    Layout.fillWidth: true
+
+                    QQC2.Label {
+                        Layout.preferredWidth: Kirigami.Units.gridUnit * 10
+                        elide: Text.ElideRight
+                        text: i18n("Voice class")
+                    }
+                    QQC2.ComboBox {
+                        Layout.fillWidth: true
+                        currentIndex: Core.settingsController.singingVoiceClass
+                        model: root.voiceClasses
+
+                        onActivated: Core.settingsController.singingVoiceClass = currentIndex
+                    }
+                }
+                RowLayout {
+                    Layout.fillWidth: true
+
+                    QQC2.Label {
+                        Layout.preferredWidth: Kirigami.Units.gridUnit * 10
+                        elide: Text.ElideRight
+                        text: i18n("Pitch method")
+                    }
+                    QQC2.ComboBox {
+                        Layout.fillWidth: true
+                        currentIndex: Core.settingsController.singingPitchMethod
+                        model: root.microphonePitchMethods
+
+                        onActivated: Core.settingsController.singingPitchMethod = currentIndex
+                    }
+                }
+                RowLayout {
+                    Layout.fillWidth: true
+
+                    QQC2.Label {
+                        Layout.preferredWidth: Kirigami.Units.gridUnit * 10
+                        elide: Text.ElideRight
+                        text: i18n("Onset method")
+                    }
+                    QQC2.ComboBox {
+                        Layout.fillWidth: true
+                        currentIndex: Core.settingsController.singingOnsetMethod
+                        model: root.microphoneOnsetMethods
+
+                        onActivated: Core.settingsController.singingOnsetMethod = currentIndex
+                    }
+                }
+                SettingsSlider {
+                    from: 10
+                    label: i18n("Pitch tolerance")
+                    suffix: i18n("cents")
+                    to: 100
+                    value: Core.settingsController.singingPitchToleranceCents
+
+                    onMoved: function (value) {
+                        Core.settingsController.singingPitchToleranceCents = value;
+                    }
+                }
+                RowLayout {
+                    Layout.fillWidth: true
+
+                    QQC2.Label {
+                        Layout.preferredWidth: Kirigami.Units.gridUnit * 10
+                        elide: Text.ElideRight
+                        text: i18n("Scoring mode")
+                    }
+                    QQC2.ComboBox {
+                        Layout.fillWidth: true
+                        currentIndex: Core.settingsController.singingScoringMode
+                        model: root.scoringModes
+
+                        onActivated: Core.settingsController.singingScoringMode = currentIndex
+                    }
+                }
+                SettingsSlider {
+                    decimals: 2
+                    from: 0
+                    label: i18n("Pitch confidence")
+                    stepSize: 0.01
+                    to: 0.95
+                    value: Core.settingsController.singingMinimumPitchConfidence
+
+                    onMoved: function (value) {
+                        Core.settingsController.singingMinimumPitchConfidence = value;
+                    }
+                }
+                SettingsSlider {
+                    from: 1
+                    label: i18n("Stable pitch frames")
+                    to: 10
+                    value: Core.settingsController.singingRequiredStablePitchFrames
+
+                    onMoved: function (value) {
+                        Core.settingsController.singingRequiredStablePitchFrames = value;
+                    }
+                }
+                SettingsSlider {
+                    decimals: 3
+                    from: 0
+                    label: i18n("Input gate")
+                    stepSize: 0.001
+                    to: 0.25
+                    value: Core.settingsController.singingInputGateLevel
+
+                    onMoved: function (value) {
+                        Core.settingsController.singingInputGateLevel = value;
+                    }
+                }
+                SettingsSlider {
+                    from: -90
+                    label: i18n("Aubio silence")
+                    suffix: i18n("dB")
+                    to: -20
+                    value: Core.settingsController.singingPitchSilenceDb
+
+                    onMoved: function (value) {
+                        Core.settingsController.singingPitchSilenceDb = value;
+                    }
+                }
+                SettingsSlider {
+                    decimals: 2
+                    from: 0.01
+                    label: i18n("Onset threshold")
+                    stepSize: 0.01
+                    to: 1
+                    value: Core.settingsController.singingOnsetThreshold
+
+                    onMoved: function (value) {
+                        Core.settingsController.singingOnsetThreshold = value;
+                    }
+                }
+                SettingsSlider {
+                    decimals: 3
+                    from: 0
+                    label: i18n("Minimum onset strength")
+                    stepSize: 0.001
+                    to: 1
+                    value: Core.settingsController.singingMinimumOnsetStrength
+
+                    onMoved: function (value) {
+                        Core.settingsController.singingMinimumOnsetStrength = value;
+                    }
                 }
             }
         }
@@ -216,20 +502,14 @@ FormCard.FormCardPage {
         FormCard.AbstractFormDelegate {
             background: null
 
-            contentItem: RowLayout {
-                Layout.fillWidth: true
+            contentItem: SettingsSlider {
+                from: 5
+                label: i18n("Number of exercises")
+                to: 20
+                value: Core.settingsController.testExerciseCount
 
-                QQC2.Label {
-                    Layout.fillWidth: true
-                    elide: Text.ElideRight
-                    text: i18n("Number of exercises")
-                }
-                QQC2.SpinBox {
-                    from: 5
-                    to: 20
-                    value: Core.settingsController.testExerciseCount
-
-                    onValueModified: Core.settingsController.testExerciseCount = value
+                onMoved: function (value) {
+                    Core.settingsController.testExerciseCount = value;
                 }
             }
         }

@@ -73,6 +73,7 @@ FluidSynthSoundController::FluidSynthSoundController(QObject *parent)
     , m_synthSeqID(0)
     , m_callbackSeqID(0)
     , m_countInNextValue(0)
+    , m_countInOnly(false)
     , m_countInVisible(false)
     , m_song(nullptr)
 {
@@ -156,6 +157,16 @@ void FluidSynthSoundController::setTempo(quint8 tempo)
     emit tempoChanged(m_tempo);
 }
 
+void FluidSynthSoundController::setRhythmCountInBeats(int beats)
+{
+    beats = std::clamp(beats, 1, 32);
+    if (m_rhythmCountInBeats == beats) {
+        return;
+    }
+    m_rhythmCountInBeats = beats;
+    emit rhythmCountInBeatsChanged(m_rhythmCountInBeats);
+}
+
 void FluidSynthSoundController::setInstrument(int instrument)
 {
     if (instrument < 0 || instrument > 127) {
@@ -179,6 +190,7 @@ void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedEx
 {
     hideCountIn();
     clearSong();
+    m_countInOnly = false;
     if (m_tempo == 0) {
         qWarning() << "Cannot prepare exercise options with zero tempo.";
         return;
@@ -188,7 +200,7 @@ void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedEx
     m_song.reset(song);
 
     if (m_playMode == u"rhythm"_s) {
-        for (int i = 0; i < 4; ++i) {
+        for (int i = 0; i < m_rhythmCountInBeats; ++i) {
             appendEvent(RhythmChannel, RhythmCountInKey, 127, 1000 * (60.0 / m_tempo));
         }
     }
@@ -200,7 +212,7 @@ void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedEx
         if (m_playMode != u"rhythm"_s) {
             const unsigned int noteDuration = ((m_playMode == u"scale"_s) ? 1000 : 4000) * (60.0 / m_tempo);
             appendEvent(MelodicChannel, chosenRootNote, 127, noteDuration);
-            const QStringList additionalNotes = sequence.split(' ');
+            const QStringList additionalNotes = sequence.split(' ', Qt::SkipEmptyParts);
             for (const QString &additionalNote : additionalNotes) {
                 appendEvent(MelodicChannel, chosenRootNote + additionalNote.toInt(), 127, noteDuration);
             }
@@ -243,6 +255,31 @@ void FluidSynthSoundController::prepareFromMidiFile(const QString &fileName)
     Q_UNUSED(fileName)
 }
 
+void FluidSynthSoundController::playCountIn(int beats)
+{
+    beats = std::clamp(beats, 1, 32);
+    if (m_tempo == 0) {
+        qWarning() << "Cannot play count-in with zero tempo.";
+        return;
+    }
+
+    stop();
+    clearSong();
+    m_countInOnly = true;
+    m_rhythmCountInBeats = beats;
+    auto *song = new QList<fluid_event_t *>;
+    m_song.reset(song);
+    for (int i = 0; i < beats; ++i) {
+        appendEvent(RhythmChannel, RhythmCountInKey, 127, 1000 * (60.0 / m_tempo));
+    }
+
+    fluid_event_t *event = new_fluid_event();
+    fluid_event_set_source(event, -1);
+    fluid_event_all_notes_off(event, RhythmChannel);
+    m_song->append(event);
+    play();
+}
+
 void FluidSynthSoundController::play()
 {
     if (!m_song.data()) {
@@ -250,7 +287,8 @@ void FluidSynthSoundController::play()
     }
 
     if (m_state != State::PlayingState) {
-        m_countInNextValue = m_playMode == u"rhythm"_s ? 1 : 0;
+        const bool usesRhythmicTiming = m_playMode == u"rhythm"_s || m_countInOnly;
+        m_countInNextValue = usesRhythmicTiming ? 1 : 0;
         m_countInVisible = false;
         unsigned int now = fluid_sequencer_get_tick(m_sequencer);
         unsigned int chordDuration = 0;
@@ -271,7 +309,7 @@ void FluidSynthSoundController::play()
                                     event,
                                     now + ((m_playMode == u"chord"_s && fluid_event_get_type(event) == FLUID_SEQ_ALLNOTESOFF) ? chordDuration : 0),
                                     1);
-            now += (m_playMode == u"rhythm"_s) ? fluid_event_get_duration(event) : (m_playMode == u"scale"_s) ? 1000 * (60.0 / m_tempo) : 0;
+            now += usesRhythmicTiming ? fluid_event_get_duration(event) : (m_playMode == u"scale"_s) ? 1000 * (60.0 / m_tempo) : 0;
         }
         setState(State::PlayingState);
     }
@@ -593,8 +631,8 @@ void FluidSynthSoundController::sequencerCallback(unsigned int time, fluid_event
     case FLUID_SEQ_NOTE: {
         const int channel = fluid_event_get_channel(event);
         const short key = fluid_event_get_key(event);
-        if (soundController->m_playMode == u"rhythm"_s && channel == RhythmChannel) {
-            if (key == RhythmCountInKey && soundController->m_countInNextValue < 5) {
+        if ((soundController->m_playMode == u"rhythm"_s || soundController->m_countInOnly) && channel == RhythmChannel) {
+            if (key == RhythmCountInKey && soundController->m_countInNextValue <= soundController->m_rhythmCountInBeats) {
                 soundController->m_countInVisible = true;
                 emit soundController->countInChanged(soundController->m_countInNextValue);
                 ++soundController->m_countInNextValue;

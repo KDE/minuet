@@ -1,0 +1,23 @@
+{
+  "exercises": [
+    {
+      "name": "Clapping",
+      "playMode": "rhythm",
+      "inputMode": "clapping",
+      "userMessage": "Clap the rhythm you see",
+      "_icon": "minuet-clap-symbolic.svg",
+      "children": [
+        {
+          "name": "Easy",
+          "and-tags": ["rhythm", "easy"],
+          "description": "Practice clapping basic rhythm figures with microphone feedback."
+        },
+        {
+          "name": "Medium",
+          "and-tags": ["rhythm", "medium"],
+          "description": "Practice clapping longer rhythm figures with microphone feedback."
+        }
+      ]
+    }
+  ]
+}

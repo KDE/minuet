@@ -46,10 +46,14 @@ if(NOT MINUET_MOBILE_PLATFORM)
         ${_minuet_icon_dir}/16-actions-minuet-intervals-symbolic.svg
         ${_minuet_icon_dir}/16-actions-minuet-chords-symbolic.svg
         ${_minuet_icon_dir}/16-actions-minuet-rhythms-symbolic.svg
+        ${_minuet_icon_dir}/16-actions-minuet-clap-symbolic.svg
+        ${_minuet_icon_dir}/16-actions-minuet-sing-symbolic.svg
         ${_minuet_icon_dir}/22-actions-minuet-scales-symbolic.svg
         ${_minuet_icon_dir}/22-actions-minuet-intervals-symbolic.svg
         ${_minuet_icon_dir}/22-actions-minuet-chords-symbolic.svg
         ${_minuet_icon_dir}/22-actions-minuet-rhythms-symbolic.svg
+        ${_minuet_icon_dir}/22-actions-minuet-clap-symbolic.svg
+        ${_minuet_icon_dir}/22-actions-minuet-sing-symbolic.svg
     )
 
     ecm_add_app_icon(MINUET_SRCS ICONS ${MINUET_ICONS_PNG})
@@ -82,14 +86,17 @@ if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
 
     set_target_properties(
         minuet
-        PROPERTIES MACOSX_BUNDLE TRUE
-                   MACOSX_BUNDLE_GUI_IDENTIFIER org.kde.minuet
-                   MACOSX_BUNDLE_BUNDLE_NAME Minuet
-                   MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-                   MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION}
-                   QT_IOS_LAUNCH_SCREEN ${IOS_LAUNCH_SCREEN}
-                   XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_APPICON_NAME AppIcon
-                   XCODE_ATTRIBUTE_CURRENT_PROJECT_VERSION ${PROJECT_VERSION}
+        PROPERTIES
+            MACOSX_BUNDLE TRUE
+            MACOSX_BUNDLE_GUI_IDENTIFIER org.kde.minuet
+            MACOSX_BUNDLE_BUNDLE_NAME Minuet
+            MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+            MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION}
+            QT_IOS_LAUNCH_SCREEN ${IOS_LAUNCH_SCREEN}
+            XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_APPICON_NAME AppIcon
+            XCODE_ATTRIBUTE_CURRENT_PROJECT_VERSION ${PROJECT_VERSION}
+            XCODE_ATTRIBUTE_INFOPLIST_KEY_NSMicrophoneUsageDescription
+            "Minuet uses the microphone for clapping and singing exercises."
     )
 endif()
 
@@ -130,7 +137,11 @@ qt_add_qml_module(
     qml/ActionListItem.qml
     qml/ExerciseMenuPage.qml
     qml/ExercisePage.qml
+    qml/AccuracyMeter.qml
+    qml/ExerciseClappingView.qml
+    qml/ExerciseSingingView.qml
     qml/ExerciseView.qml
+    qml/GraphicalMeter.qml
     qml/MinuetDrawer.qml
     qml/SettingsPage.qml
     qml/PianoView/BlackKey.qml
@@ -174,9 +185,11 @@ qt_add_resources(
     qml/images/more_vert.png
     icons/64-apps-minuet.png
     icons/22-actions-minuet-chords-symbolic.svg
+    icons/22-actions-minuet-clap-symbolic.svg
     icons/22-actions-minuet-intervals-symbolic.svg
     icons/22-actions-minuet-rhythms-symbolic.svg
     icons/22-actions-minuet-scales-symbolic.svg
+    icons/22-actions-minuet-sing-symbolic.svg
     qtquickcontrols2.conf
     +android/qtquickcontrols2.conf
     +windows/qtquickcontrols2.conf
@@ -214,6 +227,7 @@ target_link_libraries(
             Qt::Qml
             Qt::Quick
             Qt::QuickControls2
+            Qt::Multimedia
             Qt::Svg
             KF6::CoreAddons
             KF6::I18n
@@ -268,6 +282,7 @@ endif()
 if(MINUET_MOBILE_PLATFORM)
     target_link_libraries(
         minuet PRIVATE KF6::ColorScheme Minuet::FluidSynthSoundController
+                       Minuet::AubioMicrophoneInputController
     )
 endif()
 

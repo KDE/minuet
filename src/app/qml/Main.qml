@@ -84,6 +84,9 @@ Kirigami.ApplicationWindow {
         if (Core.soundController !== null) {
             Core.soundController.stop();
         }
+        if (Core.microphoneInputController !== null) {
+            Core.microphoneInputController.stop();
+        }
         if (Core.exerciseSessionController.isTest) {
             Core.exerciseSessionController.stopTest();
         }

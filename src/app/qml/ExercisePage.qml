@@ -14,6 +14,7 @@ Kirigami.Page {
     property var currentExercise
     property string currentExerciseIconName: ""
     readonly property bool isRhythmic: currentExercise !== undefined && currentExercise["playMode"] === "rhythm"
+    readonly property string inputMode: currentExercise !== undefined && currentExercise["inputMode"] !== undefined ? currentExercise["inputMode"] : "manual"
 
     function offerOnboarding(): void {
         if (page.currentExercise === undefined) {
@@ -33,7 +34,7 @@ Kirigami.Page {
         onboardingPromptLoader.active = true;
     }
     function startOnboarding(): void {
-        Onboarding.start(page.isRhythmic ? "rhythmic" : "melodic");
+        Onboarding.start(page.inputMode === "clapping" ? "clapping" : page.inputMode === "singing" ? "singing" : page.isRhythmic ? "rhythmic" : "melodic");
     }
 
     Kirigami.Theme.colorSet: Kirigami.Theme.View
@@ -55,35 +56,83 @@ Kirigami.Page {
         id: onboardingSource
 
         Onboarding.isSource: page === applicationWindow().currentPage
-        Onboarding.sourceGroups: page.isRhythmic ? ["rhythmic"] : ["melodic"]
+        Onboarding.sourceGroups: page.inputMode === "clapping" ? ["clapping"] : page.inputMode === "singing" ? ["singing"] : page.isRhythmic ? ["rhythmic"] : ["melodic"]
         anchors.fill: parent
 
-        ExerciseView {
-            id: exerciseView
+        Loader {
+            id: exerciseLoader
 
             anchors.fill: parent
-            currentExercise: page.currentExercise
-            currentExerciseIconName: page.currentExerciseIconName
+            sourceComponent: {
+                if (page.inputMode === "clapping") {
+                    return clappingExerciseComponent;
+                }
+                if (page.inputMode === "singing") {
+                    return singingExerciseComponent;
+                }
+                return manualExerciseComponent;
+            }
+
+            onLoaded: {
+                if (status === Loader.Ready) {
+                    item.currentExercise = page.currentExercise;
+                    item.currentExerciseIconName = page.currentExerciseIconName;
+                }
+            }
+        }
+        Component {
+            id: manualExerciseComponent
+
+            ExerciseView {
+            }
+        }
+        Component {
+            id: clappingExerciseComponent
+
+            ExerciseClappingView {
+            }
+        }
+        Component {
+            id: singingExerciseComponent
+
+            ExerciseSingingView {
+            }
         }
         Rectangle {
             id: countInOverlay
 
-            readonly property int displayedCount: Math.max(exerciseView.countIn, exerciseView.onboardingCountIn)
+            readonly property int displayedCount: Math.max(exerciseLoader.status === Loader.Ready && exerciseLoader.item.countIn !== undefined ? exerciseLoader.item.countIn : 0, exerciseLoader.status === Loader.Ready && exerciseLoader.item.onboardingCountIn !== undefined ? exerciseLoader.item.onboardingCountIn : 0)
 
             anchors.fill: parent
             color: Qt.rgba(0, 0, 0, 0.28)
-            visible: displayedCount > 0 && page.isRhythmic
+            visible: displayedCount > 0
             z: Onboarding.active ? 0 : 10
+
+            onDisplayedCountChanged: {
+                if (displayedCount > 0) {
+                    countInPulse.restart();
+                }
+            }
 
             Rectangle {
                 id: countInBubble
 
-                Onboarding.groups: ["rhythmic"]
-                Onboarding.texts: [i18n("Rhythm questions begin with a four-beat count-in.")]
+                Onboarding.groups: ["rhythmic", "clapping", "singing"]
+                Onboarding.texts: [
+                    i18n("Rhythm questions begin with a count-in."),
+                    i18n("Clapping exercises count to the number of rhythm patterns before recording, then repeat that count while you clap."),
+                    i18n("Singing exercises count in before the first note; then sing one displayed note on each count.")
+                ]
                 Onboarding.onAboutToShow: {
-                    exerciseView.onboardingCountIn = 4;
+                    if (exerciseLoader.status === Loader.Ready && exerciseLoader.item.onboardingCountIn !== undefined) {
+                        exerciseLoader.item.onboardingCountIn = 4;
+                    }
                 }
-                Onboarding.onHide: exerciseView.onboardingCountIn = 0
+                Onboarding.onHide: {
+                    if (exerciseLoader.status === Loader.Ready && exerciseLoader.item.onboardingCountIn !== undefined) {
+                        exerciseLoader.item.onboardingCountIn = 0;
+                    }
+                }
 
                 anchors.centerIn: parent
                 color: Kirigami.Theme.backgroundColor
@@ -131,6 +180,9 @@ Kirigami.Page {
         }
         Connections {
             function onCountInChanged(count: int): void {
+                if (page.inputMode !== "manual") {
+                    return;
+                }
                 if (count > 0) {
                     countInPulse.restart();
                 } else {
@@ -154,7 +206,7 @@ Kirigami.Page {
                 property bool startRequested: false
 
                 dialogType: Kirigami.PromptDialog.Information
-                subtitle: page.isRhythmic ? i18n("This is your first rhythmic exercise. Start a quick guide? You can open it later from the Help icon.") : i18n("This is your first melodic exercise. Start a quick guide? You can open it later from the Help icon.")
+                subtitle: page.inputMode === "clapping" ? i18n("This is your first clapping exercise. Start a quick guide? You can open it later from the Help icon.") : page.inputMode === "singing" ? i18n("This is your first singing exercise. Start a quick guide? You can open it later from the Help icon.") : page.isRhythmic ? i18n("This is your first rhythmic exercise. Start a quick guide? You can open it later from the Help icon.") : i18n("This is your first melodic exercise. Start a quick guide? You can open it later from the Help icon.")
                 title: i18n("First Time Here")
                 standardButtons: Kirigami.Dialog.NoButton
 

@@ -34,7 +34,7 @@ set(QT_MIN_VERSION "6.6.2")
 set(KF_MIN_VERSION "6.7.0")
 
 find_package(ECM ${KF_MIN_VERSION} CONFIG REQUIRED)
-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
 include(GenerateExportHeader)
 include(ECMFindQmlModule)
@@ -113,6 +113,7 @@ find_package(
                Quick
                QuickControls2
                QuickEffects
+               Multimedia
                Svg
 )
 if(COMMAND qt_policy AND QT_KNOWN_POLICY_QTP0004)
@@ -166,6 +167,7 @@ else()
 endif()
 
 find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS CoreAddons Kirigami I18n)
+find_package(Aubio REQUIRED)
 find_package(KF6KirigamiAddons REQUIRED)
 ecm_find_qmlmodule(org.kde.kirigami REQUIRED)
 ecm_find_qmlmodule(org.kde.coreaddons REQUIRED)

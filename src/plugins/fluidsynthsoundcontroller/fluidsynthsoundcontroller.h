@@ -31,11 +31,13 @@ public Q_SLOTS:
     void setPitch(qint8 pitch) override;
     void setVolume(quint8 volume) override;
     void setTempo(quint8 tempo) override;
+    void setRhythmCountInBeats(int beats) override;
     void setInstrument(int instrument) override;
     void setRhythmInstrument(int rhythmInstrument) override;
 
     void prepareFromExerciseOptions(QJsonArray selectedExerciseOptions) override;
     void prepareFromMidiFile(const QString &fileName) override;
+    void playCountIn(int beats) override;
 
     void play() override;
     void pause() override;
@@ -67,6 +69,7 @@ private:
     static unsigned int m_initialTime;
     QHash<int, int> m_instrumentSoundFontIds;
     int m_countInNextValue;
+    bool m_countInOnly;
     bool m_countInVisible;
 
     QScopedPointer<QList<fluid_event_t *>> m_song;

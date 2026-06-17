@@ -56,6 +56,11 @@ ISoundController *Core::soundController()
     return m_soundController;
 }
 
+IMicrophoneInputController *Core::microphoneInputController()
+{
+    return m_microphoneInputController;
+}
+
 SettingsController *Core::settingsController()
 {
     return m_settingsController;
@@ -94,16 +99,27 @@ void Core::setSoundController(ISoundController *soundController)
         if (m_soundController) {
             m_soundController->setVolume(m_settingsController->volume());
             m_soundController->setPitch(m_settingsController->pitch());
-            m_soundController->setTempo(m_settingsController->tempo());
+            m_soundController->setTempo(m_settingsController->exerciseSpeed());
+            m_soundController->setRhythmCountInBeats(m_settingsController->rhythmPatternCount());
             m_soundController->setInstrument(m_settingsController->instrument());
             m_soundController->setRhythmInstrument(m_settingsController->rhythmInstrument());
         }
     }
 }
 
+void Core::setMicrophoneInputController(IMicrophoneInputController *microphoneInputController)
+{
+    if (m_microphoneInputController == microphoneInputController) {
+        return;
+    }
+    m_microphoneInputController = microphoneInputController;
+    emit microphoneInputControllerChanged(m_microphoneInputController);
+}
+
 Core::Core(QObject *parent)
     : QObject(parent)
     , m_soundController(nullptr)
+    , m_microphoneInputController(nullptr)
 {
     Q_ASSERT(m_self == nullptr);
     m_self = this;
@@ -119,9 +135,14 @@ Core::Core(QObject *parent)
             m_soundController->setPitch(pitch);
         }
     });
-    connect(m_settingsController, &SettingsController::tempoChanged, this, [this](int tempo) {
+    connect(m_settingsController, &SettingsController::exerciseSpeedChanged, this, [this](int tempo) {
         if (m_soundController) {
             m_soundController->setTempo(tempo);
+        }
+    });
+    connect(m_settingsController, &SettingsController::rhythmPatternCountChanged, this, [this](int count) {
+        if (m_soundController) {
+            m_soundController->setRhythmCountInBeats(count);
         }
     });
     connect(m_settingsController, &SettingsController::instrumentChanged, this, [this](int instrument) {

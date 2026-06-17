@@ -1,0 +1,8 @@
+{
+    "KPlugin": {
+        "Description": "Aubio microphone input controller for Minuet exercises",
+        "Id": "aubiomicrophoneinputcontroller",
+        "License": "GPL-2.0-or-later",
+        "Name": "Aubio Microphone Input Controller"
+    }
+}

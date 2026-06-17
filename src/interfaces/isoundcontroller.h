@@ -28,6 +28,7 @@ class MINUETINTERFACES_EXPORT ISoundController : public IPlugin
     Q_PROPERTY(qint8 pitch MEMBER m_pitch WRITE setPitch NOTIFY pitchChanged)
     Q_PROPERTY(quint8 volume MEMBER m_volume WRITE setVolume NOTIFY volumeChanged)
     Q_PROPERTY(quint8 tempo MEMBER m_tempo WRITE setTempo NOTIFY tempoChanged)
+    Q_PROPERTY(int rhythmCountInBeats READ rhythmCountInBeats WRITE setRhythmCountInBeats NOTIFY rhythmCountInBeatsChanged)
     Q_PROPERTY(int instrument READ instrument WRITE setInstrument NOTIFY instrumentChanged)
     Q_PROPERTY(int rhythmInstrument READ rhythmInstrument WRITE setRhythmInstrument NOTIFY rhythmInstrumentChanged)
 
@@ -52,6 +53,7 @@ public:
     QString playbackLabel() const;
     int instrument() const;
     int rhythmInstrument() const;
+    int rhythmCountInBeats() const;
     QVariantList instrumentGroups() const;
     QVariantList instruments() const;
     QVariantList rhythmInstruments() const;
@@ -63,11 +65,13 @@ public Q_SLOTS:
     virtual void setPitch(qint8 pitch) = 0;
     virtual void setVolume(quint8 volume) = 0;
     virtual void setTempo(quint8 tempo) = 0;
+    virtual void setRhythmCountInBeats(int beats) = 0;
     virtual void setInstrument(int instrument) = 0;
     virtual void setRhythmInstrument(int rhythmInstrument) = 0;
 
     virtual void prepareFromExerciseOptions(QJsonArray selectedExerciseOptions) = 0;
     virtual void prepareFromMidiFile(const QString &fileName) = 0;
+    virtual void playCountIn(int beats) = 0;
 
     virtual void play() = 0;
     virtual void pause() = 0;
@@ -79,6 +83,7 @@ Q_SIGNALS:
     void pitchChanged(qint8 newPitch);
     void volumeChanged(quint8 newVolume);
     void tempoChanged(quint8 newTempo);
+    void rhythmCountInBeatsChanged(int beats);
     void instrumentChanged(int newInstrument);
     void rhythmInstrumentChanged(int newRhythmInstrument);
     void stateChanged(Minuet::ISoundController::State newState);
@@ -102,6 +107,7 @@ protected:
     qint8 m_pitch;
     quint8 m_volume;
     quint8 m_tempo;
+    int m_rhythmCountInBeats;
     int m_instrument;
     int m_rhythmInstrument;
     QString m_playbackLabel;
