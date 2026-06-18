@@ -6,7 +6,7 @@
       "children": [
         {
           "name": "Intervals",
-          "_icon": "minuet-intervals-symbolic.svg",
+          "_icon": "minuet-sing-symbolic.svg",
           "children": [
             {
               "name": "Ascending melodic intervals",
@@ -162,7 +162,7 @@
               "root": "29..69",
               "playMode": "scale",
               "numberOfSelectedOptions": 1,
-              "_icon": "minuet-intervals-symbolic.svg",
+              "_icon": "minuet-sing-symbolic.svg",
               "inputMode": "singing",
               "singingExerciseKind": "interval",
               "userMessage": "Sing the interval after the first note"
@@ -321,7 +321,7 @@
               "root": "29..93",
               "playMode": "scale",
               "numberOfSelectedOptions": 1,
-              "_icon": "minuet-intervals-symbolic.svg",
+              "_icon": "minuet-sing-symbolic.svg",
               "inputMode": "singing",
               "singingExerciseKind": "interval",
               "userMessage": "Sing the interval after the first note"
@@ -484,7 +484,7 @@
               "root": "29..69",
               "playMode": "scale",
               "numberOfSelectedOptions": 1,
-              "_icon": "minuet-intervals-symbolic.svg",
+              "_icon": "minuet-sing-symbolic.svg",
               "inputMode": "singing",
               "singingExerciseKind": "interval",
               "userMessage": "Sing the interval after the first note"
@@ -643,7 +643,7 @@
               "root": "29..69",
               "playMode": "chord",
               "numberOfSelectedOptions": 1,
-              "_icon": "minuet-intervals-symbolic.svg",
+              "_icon": "minuet-sing-symbolic.svg",
               "inputMode": "singing",
               "singingExerciseKind": "interval",
               "userMessage": "Sing the interval after the first note"
@@ -652,7 +652,7 @@
         },
         {
           "name": "Scales",
-          "_icon": "minuet-scales-symbolic.svg",
+          "_icon": "minuet-sing-symbolic.svg",
           "children": [
             {
               "name": "Major scale and its modes",
@@ -665,7 +665,7 @@
               "root": "29..81",
               "playMode": "scale",
               "numberOfSelectedOptions": 1,
-              "_icon": "minuet-scales-symbolic.svg",
+              "_icon": "minuet-sing-symbolic.svg",
               "inputMode": "singing",
               "singingExerciseKind": "scale",
               "userMessage": "Sing the scale after the first note"
@@ -681,7 +681,7 @@
               "root": "29..81",
               "playMode": "scale",
               "numberOfSelectedOptions": 1,
-              "_icon": "minuet-scales-symbolic.svg",
+              "_icon": "minuet-sing-symbolic.svg",
               "inputMode": "singing",
               "singingExerciseKind": "scale",
               "userMessage": "Sing the scale after the first note"
@@ -697,7 +697,7 @@
               "root": "29..81",
               "playMode": "scale",
               "numberOfSelectedOptions": 1,
-              "_icon": "minuet-scales-symbolic.svg",
+              "_icon": "minuet-sing-symbolic.svg",
               "inputMode": "singing",
               "singingExerciseKind": "scale",
               "userMessage": "Sing the scale after the first note"
@@ -713,7 +713,7 @@
               "root": "29..83",
               "playMode": "scale",
               "numberOfSelectedOptions": 1,
-              "_icon": "minuet-scales-symbolic.svg",
+              "_icon": "minuet-sing-symbolic.svg",
               "inputMode": "singing",
               "singingExerciseKind": "scale",
               "userMessage": "Sing the scale after the first note"
@@ -728,7 +728,7 @@
               "root": "29..81",
               "playMode": "scale",
               "numberOfSelectedOptions": 1,
-              "_icon": "minuet-scales-symbolic.svg",
+              "_icon": "minuet-sing-symbolic.svg",
               "inputMode": "singing",
               "singingExerciseKind": "scale",
               "userMessage": "Sing the scale after the first note"
@@ -743,7 +743,7 @@
               "root": "29..81",
               "playMode": "scale",
               "numberOfSelectedOptions": 1,
-              "_icon": "minuet-scales-symbolic.svg",
+              "_icon": "minuet-sing-symbolic.svg",
               "inputMode": "singing",
               "singingExerciseKind": "scale",
               "userMessage": "Sing the scale after the first note"

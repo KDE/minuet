@@ -8,16 +8,16 @@ import org.kde.kirigami as Kirigami
 Item {
     id: root
 
-    property string meterKind: "pitch"
-    property real value: 0
     property real accuracy: 0
-    property string valueText: ""
-    property string readoutText: valueText.length > 0 ? valueText : (meterKind === "pitch" ? i18n("No pitch") : i18n("No onset"))
-    readonly property string topLabel: meterKind === "pitch" ? i18n("TUNE") : i18n("TEMPO")
-    readonly property string leftLabel: meterKind === "pitch" ? i18n("FLAT") : i18n("LATE")
-    readonly property string rightLabel: meterKind === "pitch" ? i18n("SHARP") : i18n("ADVANCED")
-    readonly property real needleAngle: Math.max(-1, Math.min(1, value)) * 52
     readonly property color glowColor: accuracy >= 0.75 ? Kirigami.Theme.positiveTextColor : accuracy > 0 ? Kirigami.Theme.neutralTextColor : Kirigami.Theme.disabledTextColor
+    readonly property string leftLabel: meterKind === "pitch" ? i18n("FLAT") : i18n("LATE")
+    property string meterKind: "pitch"
+    readonly property real needleAngle: Math.max(-1, Math.min(1, value)) * 52
+    property string readoutText: valueText.length > 0 ? valueText : (meterKind === "pitch" ? i18n("No pitch") : i18n("No onset"))
+    readonly property string rightLabel: meterKind === "pitch" ? i18n("SHARP") : i18n("ADVANCED")
+    readonly property string topLabel: meterKind === "pitch" ? i18n("TUNE") : i18n("TEMPO")
+    property real value: 0
+    property string valueText: ""
 
     Accessible.ignored: true
     implicitHeight: Kirigami.Units.gridUnit * 8
@@ -45,27 +45,29 @@ Item {
             width: parent.width * 0.82
 
             Rectangle {
-                anchors {
-                    bottom: parent.bottom
-                    horizontalCenter: parent.horizontalCenter
-                }
                 color: "#4b2316"
                 height: parent.height * 0.32
                 radius: parent.width * 0.05
                 width: parent.width * 0.92
+
+                anchors {
+                    bottom: parent.bottom
+                    horizontalCenter: parent.horizontalCenter
+                }
             }
             Rectangle {
+                color: "#ffef92"
+                height: parent.height * 0.44
+                radius: height / 2
+                width: parent.width * 0.74
+
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                     top: parent.top
                     topMargin: parent.height * 0.08
                 }
-                color: "#ffef92"
-                height: parent.height * 0.44
-                radius: height / 2
-                width: parent.width * 0.74
             }
-/*
+            /*
             Repeater {
                 model: 25
 
@@ -121,53 +123,56 @@ Item {
             }
 */
             Text {
-                anchors {
-                    horizontalCenter: parent.horizontalCenter
-                    top: parent.top
-                    topMargin: parent.height * 0.20
-                }
                 color: "#4d2114"
                 font.bold: true
                 font.pixelSize: Math.max(8, parent.width * 0.105)
                 horizontalAlignment: Text.AlignHCenter
                 text: root.topLabel
+
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                    top: parent.top
+                    topMargin: parent.height * 0.20
+                }
             }
             Text {
+                color: "#4d2114"
+                font.bold: true
+                font.pixelSize: Math.max(7, parent.width * 0.085)
+                text: root.leftLabel
+
                 anchors {
                     left: parent.left
                     leftMargin: parent.width * 0.18
                     verticalCenter: parent.verticalCenter
                     verticalCenterOffset: parent.height * 0.08
                 }
+            }
+            Text {
                 color: "#4d2114"
                 font.bold: true
                 font.pixelSize: Math.max(7, parent.width * 0.085)
-                text: root.leftLabel
-            }
-            Text {
+                horizontalAlignment: Text.AlignRight
+                text: root.rightLabel
+
                 anchors {
                     right: parent.right
                     rightMargin: parent.width * 0.15
                     verticalCenter: parent.verticalCenter
                     verticalCenterOffset: parent.height * 0.08
                 }
-                color: "#4d2114"
-                font.bold: true
-                font.pixelSize: Math.max(7, parent.width * 0.085)
-                horizontalAlignment: Text.AlignRight
-                text: root.rightLabel
             }
             Item {
                 id: needlePivot
+
+                height: 1
+                width: 1
 
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                     verticalCenter: parent.verticalCenter
                     verticalCenterOffset: parent.height * 0.09
                 }
-                height: 1
-                width: 1
-
                 Item {
                     id: needleArm
 
@@ -212,11 +217,6 @@ Item {
                 }
             }
             Rectangle {
-                anchors {
-                    bottom: parent.bottom
-                    bottomMargin: parent.height * 0.05
-                    horizontalCenter: parent.horizontalCenter
-                }
                 border.color: "#ffd95c"
                 border.width: Math.max(1, width * 0.035)
                 color: "#3c1b12"
@@ -224,6 +224,11 @@ Item {
                 radius: width / 2
                 width: parent.width * 0.38
 
+                anchors {
+                    bottom: parent.bottom
+                    bottomMargin: parent.height * 0.05
+                    horizontalCenter: parent.horizontalCenter
+                }
                 Text {
                     anchors.centerIn: parent
                     color: "#f7dd59"

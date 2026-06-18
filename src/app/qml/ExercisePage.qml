@@ -13,14 +13,24 @@ Kirigami.Page {
 
     property var currentExercise
     property string currentExerciseIconName: ""
-    readonly property bool isRhythmic: currentExercise !== undefined && currentExercise["playMode"] === "rhythm"
     readonly property string inputMode: currentExercise !== undefined && currentExercise["inputMode"] !== undefined ? currentExercise["inputMode"] : "manual"
+    readonly property bool isRhythmic: currentExercise !== undefined && currentExercise["playMode"] === "rhythm"
 
     function offerOnboarding(): void {
         if (page.currentExercise === undefined) {
             return;
         }
-        if (page.isRhythmic) {
+        if (page.inputMode === "clapping") {
+            if (Core.settingsController.clappingOnboardingPromptShown) {
+                return;
+            }
+            Core.settingsController.clappingOnboardingPromptShown = true;
+        } else if (page.inputMode === "singing") {
+            if (Core.settingsController.singingOnboardingPromptShown) {
+                return;
+            }
+            Core.settingsController.singingOnboardingPromptShown = true;
+        } else if (page.isRhythmic) {
             if (Core.settingsController.rhythmicOnboardingPromptShown) {
                 return;
             }
@@ -114,15 +124,15 @@ Kirigami.Page {
                 }
             }
 
-            Rectangle {
-                id: countInBubble
+            Item {
+                id: countInMarkTarget
 
                 Onboarding.groups: ["rhythmic", "clapping", "singing"]
-                Onboarding.texts: [
-                    i18n("Rhythm questions begin with a count-in."),
-                    i18n("Clapping exercises count to the number of rhythm patterns before recording, then repeat that count while you clap."),
-                    i18n("Singing exercises count in before the first note; then sing one displayed note on each count.")
-                ]
+                Onboarding.texts: [i18n("Rhythm questions begin with a count-in."), i18n("Clapping exercises count to the number of rhythm patterns before recording, then repeat that count while you clap."), i18n("Singing exercises count in before the first note; then sing one displayed note on each count.")]
+                anchors.centerIn: parent
+                height: width
+                width: Kirigami.Units.gridUnit * 10
+
                 Onboarding.onAboutToShow: {
                     if (exerciseLoader.status === Loader.Ready && exerciseLoader.item.onboardingCountIn !== undefined) {
                         exerciseLoader.item.onboardingCountIn = 4;
@@ -134,22 +144,24 @@ Kirigami.Page {
                     }
                 }
 
-                anchors.centerIn: parent
-                color: Kirigami.Theme.backgroundColor
-                height: width
-                opacity: 0.92
-                radius: width / 2
-                width: Kirigami.Units.gridUnit * 10
+                Rectangle {
+                    id: countInBubble
 
-                border {
-                    color: Kirigami.Theme.highlightColor
-                    width: 3
+                    anchors.fill: parent
+                    color: Kirigami.Theme.backgroundColor
+                    opacity: 0.92
+                    radius: width / 2
+
+                    border {
+                        color: Kirigami.Theme.highlightColor
+                        width: 3
+                    }
                 }
             }
             Kirigami.Heading {
                 id: countInNumber
 
-                anchors.centerIn: countInBubble
+                anchors.centerIn: countInMarkTarget
                 color: Kirigami.Theme.highlightColor
                 font.pointSize: Kirigami.Units.gridUnit * 3.5
                 horizontalAlignment: Text.AlignHCenter
@@ -199,6 +211,7 @@ Kirigami.Page {
         id: onboardingPromptLoader
 
         active: false
+
         sourceComponent: Component {
             Kirigami.PromptDialog {
                 id: onboardingPrompt
@@ -206,9 +219,9 @@ Kirigami.Page {
                 property bool startRequested: false
 
                 dialogType: Kirigami.PromptDialog.Information
+                standardButtons: Kirigami.Dialog.NoButton
                 subtitle: page.inputMode === "clapping" ? i18n("This is your first clapping exercise. Start a quick guide? You can open it later from the Help icon.") : page.inputMode === "singing" ? i18n("This is your first singing exercise. Start a quick guide? You can open it later from the Help icon.") : page.isRhythmic ? i18n("This is your first rhythmic exercise. Start a quick guide? You can open it later from the Help icon.") : i18n("This is your first melodic exercise. Start a quick guide? You can open it later from the Help icon.")
                 title: i18n("First Time Here")
-                standardButtons: Kirigami.Dialog.NoButton
 
                 customFooterActions: [
                     Kirigami.Action {

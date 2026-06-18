@@ -25,6 +25,8 @@ class SettingsController : public QObject
     Q_PROPERTY(int clappingCorrectnessTolerancePercent READ clappingCorrectnessTolerancePercent WRITE setClappingCorrectnessTolerancePercent NOTIFY
                    clappingCorrectnessTolerancePercentChanged)
     Q_PROPERTY(int singingPitchToleranceCents READ singingPitchToleranceCents WRITE setSingingPitchToleranceCents NOTIFY singingPitchToleranceCentsChanged)
+    Q_PROPERTY(bool singingDisregardOctaveDifference READ singingDisregardOctaveDifference WRITE setSingingDisregardOctaveDifference NOTIFY
+                   singingDisregardOctaveDifferenceChanged)
     Q_PROPERTY(int singingScoringMode READ singingScoringMode WRITE setSingingScoringMode NOTIFY singingScoringModeChanged)
     Q_PROPERTY(int singingVoiceClass READ singingVoiceClass WRITE setSingingVoiceClass NOTIFY singingVoiceClassChanged)
     Q_PROPERTY(int singingPitchMethod READ singingPitchMethod WRITE setSingingPitchMethod NOTIFY singingPitchMethodChanged)
@@ -53,6 +55,10 @@ class SettingsController : public QObject
         bool melodicOnboardingPromptShown READ melodicOnboardingPromptShown WRITE setMelodicOnboardingPromptShown NOTIFY melodicOnboardingPromptShownChanged)
     Q_PROPERTY(bool rhythmicOnboardingPromptShown READ rhythmicOnboardingPromptShown WRITE setRhythmicOnboardingPromptShown NOTIFY
                    rhythmicOnboardingPromptShownChanged)
+    Q_PROPERTY(bool clappingOnboardingPromptShown READ clappingOnboardingPromptShown WRITE setClappingOnboardingPromptShown NOTIFY
+                   clappingOnboardingPromptShownChanged)
+    Q_PROPERTY(
+        bool singingOnboardingPromptShown READ singingOnboardingPromptShown WRITE setSingingOnboardingPromptShown NOTIFY singingOnboardingPromptShownChanged)
 
 public:
     ~SettingsController() override = default;
@@ -68,6 +74,7 @@ public:
     int rhythmInstrument() const;
     int clappingCorrectnessTolerancePercent() const;
     int singingPitchToleranceCents() const;
+    bool singingDisregardOctaveDifference() const;
     int singingScoringMode() const;
     int singingVoiceClass() const;
     int singingPitchMethod() const;
@@ -88,6 +95,8 @@ public:
     int clappingRequiredStablePitchFrames() const;
     bool melodicOnboardingPromptShown() const;
     bool rhythmicOnboardingPromptShown() const;
+    bool clappingOnboardingPromptShown() const;
+    bool singingOnboardingPromptShown() const;
 
 public Q_SLOTS:
     void setRhythmPatternCount(int rhythmPatternCount);
@@ -101,6 +110,7 @@ public Q_SLOTS:
     void setRhythmInstrument(int rhythmInstrument);
     void setClappingCorrectnessTolerancePercent(int tolerance);
     void setSingingPitchToleranceCents(int cents);
+    void setSingingDisregardOctaveDifference(bool disregard);
     void setSingingScoringMode(int mode);
     void setSingingVoiceClass(int voiceClass);
     void setSingingPitchMethod(int method);
@@ -121,6 +131,8 @@ public Q_SLOTS:
     void setClappingRequiredStablePitchFrames(int frames);
     void setMelodicOnboardingPromptShown(bool shown);
     void setRhythmicOnboardingPromptShown(bool shown);
+    void setClappingOnboardingPromptShown(bool shown);
+    void setSingingOnboardingPromptShown(bool shown);
 
 Q_SIGNALS:
     void rhythmPatternCountChanged(int rhythmPatternCount);
@@ -134,6 +146,7 @@ Q_SIGNALS:
     void rhythmInstrumentChanged(int rhythmInstrument);
     void clappingCorrectnessTolerancePercentChanged(int tolerance);
     void singingPitchToleranceCentsChanged(int cents);
+    void singingDisregardOctaveDifferenceChanged(bool disregard);
     void singingScoringModeChanged(int mode);
     void singingVoiceClassChanged(int voiceClass);
     void singingPitchMethodChanged(int method);
@@ -154,6 +167,8 @@ Q_SIGNALS:
     void clappingRequiredStablePitchFramesChanged(int frames);
     void melodicOnboardingPromptShownChanged(bool shown);
     void rhythmicOnboardingPromptShownChanged(bool shown);
+    void clappingOnboardingPromptShownChanged(bool shown);
+    void singingOnboardingPromptShownChanged(bool shown);
 
 private:
     friend class Core;
@@ -176,6 +191,7 @@ private:
     int m_rhythmInstrument = 37;
     int m_clappingCorrectnessTolerancePercent = 25;
     int m_singingPitchToleranceCents = 50;
+    bool m_singingDisregardOctaveDifference = true;
     int m_singingScoringMode = 0;
     int m_singingVoiceClass = 2;
     int m_singingPitchMethod = 1;
@@ -196,6 +212,8 @@ private:
     int m_clappingRequiredStablePitchFrames = 2;
     bool m_melodicOnboardingPromptShown = false;
     bool m_rhythmicOnboardingPromptShown = false;
+    bool m_clappingOnboardingPromptShown = false;
+    bool m_singingOnboardingPromptShown = false;
 };
 }
 

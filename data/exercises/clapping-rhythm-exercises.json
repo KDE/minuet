@@ -9,11 +9,13 @@
       "children": [
         {
           "name": "Easy",
+          "_icon": "minuet-clap-symbolic.svg",
           "and-tags": ["rhythm", "easy"],
           "description": "Practice clapping basic rhythm figures with microphone feedback."
         },
         {
           "name": "Medium",
+          "_icon": "minuet-clap-symbolic.svg",
           "and-tags": ["rhythm", "medium"],
           "description": "Practice clapping longer rhythm figures with microphone feedback."
         }

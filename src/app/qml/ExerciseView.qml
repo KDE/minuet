@@ -148,6 +148,38 @@ Item {
         generateNewQuestion();
         Core.soundController.play();
     }
+    function noteName(midi: int): string {
+        const names = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+        return names[((midi % 12) + 12) % 12] + (Math.floor(midi / 12) - 1);
+    }
+    function questionPitchMessage(): string {
+        const selected = Core.exerciseSessionController.selectedExerciseOptions;
+        if (exerciseView.currentExercise === undefined || selected.length === 0 || exerciseView.currentExercise["playMode"] === "rhythm") {
+            return "";
+        }
+
+        const option = selected[0];
+        const sequence = option.sequence.split(" ").filter(part => part.length > 0).map(part => Core.exerciseSessionController.chosenRootNote + parseInt(part));
+        if (sequence.length === 0) {
+            return "";
+        }
+
+        const tags = option.tags || [];
+        const userMessage = exerciseView.currentExercise["userMessage"] || "";
+        const userMessageLower = userMessage.toLowerCase();
+        const scaleQuestion = tags.indexOf("scale") >= 0 || userMessageLower.indexOf("scale") >= 0;
+        const intervalQuestion = tags.indexOf("interval") >= 0 || userMessageLower.indexOf("interval") >= 0;
+        if (!scaleQuestion && !intervalQuestion) {
+            return "";
+        }
+
+        const base = noteName(Core.exerciseSessionController.chosenRootNote);
+        const exerciseName = i18nc("technical term, do you have a musician friend?", option.name);
+        if (scaleQuestion) {
+            return i18n("%1 - Base: %2 - Targets: %3", exerciseName, base, sequence.map(note => noteName(note)).join(", "));
+        }
+        return i18n("%1 - Base: %2 - Target: %3", exerciseName, base, noteName(sequence[0]));
+    }
     function removeLastUserAnswer(): void {
         if (exerciseView.canEditUserAnswers && Core.exerciseSessionController.removeLastUserAnswer()) {
             showUserAnswers();
@@ -314,13 +346,9 @@ Item {
 
                             Layout.fillWidth: true
                             Layout.topMargin: 2 * Kirigami.Units.largeSpacing
-                            spacing: 0
-
                             Onboarding.groups: ["melodic", "rhythmic"]
-                            Onboarding.texts: [
-                                i18n("These messages explain the question and show its status."),
-                                i18n("These messages explain the question and show its status.")
-                            ]
+                            Onboarding.texts: [i18n("These messages explain the question and show its status."), i18n("These messages explain the question and show its status.")]
+                            spacing: 0
 
                             Kirigami.Heading {
                                 Layout.fillWidth: true
@@ -347,7 +375,10 @@ Item {
                                 elide: Text.ElideRight
                                 horizontalAlignment: Text.AlignHCenter
                                 level: 3
-                                text: exerciseView.exercisePlaying ? i18n("Playing…") : Core.exerciseSessionController.statusText
+                                text: {
+                                    const pitchMessage = exerciseView.questionPitchMessage();
+                                    return exerciseView.exercisePlaying ? i18n("Playing…") : pitchMessage.length > 0 ? pitchMessage : Core.exerciseSessionController.statusText;
+                                }
                             }
                         }
                         Item {
@@ -369,11 +400,7 @@ Item {
                                     id: playQuestionButton
 
                                     Onboarding.groups: ["melodic", "rhythmic"]
-                                    Onboarding.texts: [
-                                        i18n("Start a new question or replay the current one."),
-                                        i18n("Start a new question or replay the current one.")
-                                    ]
-
+                                    Onboarding.texts: [i18n("Start a new question or replay the current one."), i18n("Start a new question or replay the current one.")]
                                     enabled: !animation.running && !exerciseView.exercisePlaying
                                     text: (exerciseView.state === "waitingForNewQuestion") ? i18n("New Question") : i18n("Play Question")
                                     width: actionButtons.buttonWidth
@@ -389,11 +416,7 @@ Item {
                                     id: giveUpButton
 
                                     Onboarding.groups: ["melodic", "rhythmic"]
-                                    Onboarding.texts: [
-                                        i18n("Give up to reveal the correct answer."),
-                                        i18n("Give up to reveal the correct answer.")
-                                    ]
-
+                                    Onboarding.texts: [i18n("Give up to reveal the correct answer."), i18n("Give up to reveal the correct answer.")]
                                     enabled: exerciseView.state === "waitingForAnswer" && !animation.running && !exerciseView.exercisePlaying
                                     text: i18n("Give Up")
                                     width: actionButtons.buttonWidth
@@ -408,11 +431,7 @@ Item {
                                     id: testButton
 
                                     Onboarding.groups: ["melodic", "rhythmic"]
-                                    Onboarding.texts: [
-                                        i18n("Start a test to answer several questions in a row."),
-                                        i18n("Start a test to answer several questions in a row.")
-                                    ]
-
+                                    Onboarding.texts: [i18n("Start a test to answer several questions in a row."), i18n("Start a test to answer several questions in a row.")]
                                     enabled: !exerciseView.exercisePlaying
                                     text: Core.exerciseSessionController.isTest ? i18n("Stop Test") : i18n("Start Test")
                                     width: actionButtons.buttonWidth
@@ -451,18 +470,14 @@ Item {
             Item {
                 id: answerFrame
 
-                Onboarding.groups: ["melodic", "rhythmic"]
-                Onboarding.texts: [
-                    i18n("Choose an answer here. Hover, or press and hold, to preview it below."),
-                    i18n("Choose each rhythm part from these available answers.")
-                ]
-
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 Layout.leftMargin: exerciseView.contentPadding
                 Layout.minimumHeight: availableAnswersHeading.implicitHeight + Kirigami.Units.smallSpacing + exerciseView.answerCellHeight + exerciseView.sectionPadding * 2
                 Layout.rightMargin: exerciseView.contentPadding
                 Layout.topMargin: exerciseView.contentPadding
+                Onboarding.groups: ["melodic", "rhythmic"]
+                Onboarding.texts: [i18n("Choose an answer here. Hover, or press and hold, to preview it below."), i18n("Choose each rhythm part from these available answers.")]
 
                 ColumnLayout {
                     anchors.fill: parent
@@ -527,12 +542,8 @@ Item {
                 Layout.preferredHeight: selectedAnswersLayout.implicitHeight
                 Layout.rightMargin: exerciseView.contentPadding
                 Layout.topMargin: exerciseView.contentPadding
-
                 Onboarding.groups: ["melodic", "rhythmic"]
-                Onboarding.texts: [
-                    i18n("Your selected answer appears here."),
-                    i18n("Build your rhythm answer here, one part at a time.")
-                ]
+                Onboarding.texts: [i18n("Your selected answer appears here."), i18n("Build your rhythm answer here, one part at a time.")]
 
                 ColumnLayout {
                     id: selectedAnswersLayout
@@ -648,18 +659,18 @@ Item {
                     Item {
                         id: pianoViewContainer
 
+                        Layout.fillWidth: true
+                        Layout.preferredHeight: musicPanel.viewHeight
+                        Layout.preferredWidth: musicViewsLayout.musicViewWidth
                         Onboarding.groups: ["melodic"]
                         Onboarding.texts: [i18n("The keyboard shows the notes in the question or preview.")]
+                        visible: !musicViewsLayout.tabbed || musicTabs.currentIndex === 0
+
                         Onboarding.onAboutToShow: {
                             if (musicViewsLayout.tabbed) {
                                 musicTabs.currentIndex = 0;
                             }
                         }
-
-                        Layout.fillWidth: true
-                        Layout.preferredHeight: musicPanel.viewHeight
-                        Layout.preferredWidth: musicViewsLayout.musicViewWidth
-                        visible: !musicViewsLayout.tabbed || musicTabs.currentIndex === 0
 
                         PianoView {
                             id: pianoView
@@ -676,19 +687,19 @@ Item {
                     Item {
                         id: sheetMusicViewContainer
 
+                        Layout.fillWidth: true
+                        Layout.preferredHeight: musicPanel.viewHeight
+                        Layout.preferredWidth: musicViewsLayout.musicViewWidth
                         Onboarding.groups: ["melodic"]
                         Onboarding.texts: [i18n("The staff shows the same notes in music notation.")]
+                        clip: true
+                        visible: !musicViewsLayout.tabbed || musicTabs.currentIndex === 1
+
                         Onboarding.onAboutToShow: {
                             if (musicViewsLayout.tabbed) {
                                 musicTabs.currentIndex = 1;
                             }
                         }
-
-                        Layout.fillWidth: true
-                        Layout.preferredHeight: musicPanel.viewHeight
-                        Layout.preferredWidth: musicViewsLayout.musicViewWidth
-                        clip: true
-                        visible: !musicViewsLayout.tabbed || musicTabs.currentIndex === 1
 
                         SheetMusicView {
                             id: sheetMusicView

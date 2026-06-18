@@ -580,8 +580,11 @@ void AubioMicrophoneInputController::appendSamplesFromBytes(const QByteArray &by
 
 void AubioMicrophoneInputController::processPendingSamples()
 {
-    while (m_pendingSamples.size() >= m_hopSize) {
+    while (m_running && m_input && m_pitch && m_onset && m_pendingSamples.size() >= m_hopSize) {
         processHop();
+    }
+    if (!m_running || !m_input || !m_pitch || !m_onset) {
+        m_pendingSamples.clear();
     }
 }
 

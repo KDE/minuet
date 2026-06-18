@@ -17,10 +17,6 @@ Kirigami.ApplicationWindow {
     property int previousPageStackIndex: 0
     property string titleText: i18n("Home")
 
-    Onboarding.blur: 1
-    Onboarding.padding: Kirigami.Units.smallSpacing
-    Onboarding.onFinished: window.showPassiveNotification(i18n("Run this guide again any time from the Help icon."), "long")
-
     function createAboutPage(): Kirigami.Page {
         return aboutPageComponent.createObject(pageStack);
     }
@@ -92,6 +88,8 @@ Kirigami.ApplicationWindow {
         }
     }
 
+    Onboarding.blur: 1
+    Onboarding.padding: Kirigami.Units.smallSpacing
     height: Screen.height
     title: currentPage?.title ?? titleText
     visibility: Window.Maximized
@@ -111,6 +109,7 @@ Kirigami.ApplicationWindow {
     }
 
     Component.onCompleted: pageStack.push(createHomePage())
+    Onboarding.onFinished: window.showPassiveNotification(i18n("Run this guide again any time from the Help icon."), "long")
 
     pageStack {
         columnView.columnResizeMode: Kirigami.ColumnView.SingleColumn

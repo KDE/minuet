@@ -33,6 +33,7 @@ void SettingsController::load()
     m_rhythmInstrument = std::clamp(settings.value(u"RhythmInstrument"_s, m_rhythmInstrument).toInt(), 35, 81);
     m_clappingCorrectnessTolerancePercent = std::clamp(settings.value(u"ClappingCorrectnessTolerancePercent"_s, m_clappingCorrectnessTolerancePercent).toInt(), 5, 100);
     m_singingPitchToleranceCents = std::clamp(settings.value(u"SingingPitchToleranceCents"_s, m_singingPitchToleranceCents).toInt(), 10, 100);
+    m_singingDisregardOctaveDifference = settings.value(u"SingingDisregardOctaveDifference"_s, m_singingDisregardOctaveDifference).toBool();
     m_singingScoringMode = std::clamp(settings.value(u"SingingScoringMode"_s, m_singingScoringMode).toInt(), 0, 1);
     m_singingVoiceClass = std::clamp(settings.value(u"SingingVoiceClass"_s, m_singingVoiceClass).toInt(), 0, 3);
     m_singingPitchMethod = std::clamp(settings.value(u"SingingPitchMethod"_s, m_singingPitchMethod).toInt(), 0, 6);
@@ -53,6 +54,8 @@ void SettingsController::load()
     m_clappingRequiredStablePitchFrames = std::clamp(settings.value(u"ClappingRequiredStablePitchFrames"_s, m_clappingRequiredStablePitchFrames).toInt(), 1, 10);
     m_melodicOnboardingPromptShown = settings.value(u"MelodicOnboardingPromptShown"_s, m_melodicOnboardingPromptShown).toBool();
     m_rhythmicOnboardingPromptShown = settings.value(u"RhythmicOnboardingPromptShown"_s, m_rhythmicOnboardingPromptShown).toBool();
+    m_clappingOnboardingPromptShown = settings.value(u"ClappingOnboardingPromptShown"_s, m_clappingOnboardingPromptShown).toBool();
+    m_singingOnboardingPromptShown = settings.value(u"SingingOnboardingPromptShown"_s, m_singingOnboardingPromptShown).toBool();
 }
 
 void SettingsController::write(const QString &key, int value)
@@ -129,6 +132,11 @@ int SettingsController::clappingCorrectnessTolerancePercent() const
 int SettingsController::singingPitchToleranceCents() const
 {
     return m_singingPitchToleranceCents;
+}
+
+bool SettingsController::singingDisregardOctaveDifference() const
+{
+    return m_singingDisregardOctaveDifference;
 }
 
 int SettingsController::singingScoringMode() const
@@ -229,6 +237,16 @@ bool SettingsController::melodicOnboardingPromptShown() const
 bool SettingsController::rhythmicOnboardingPromptShown() const
 {
     return m_rhythmicOnboardingPromptShown;
+}
+
+bool SettingsController::clappingOnboardingPromptShown() const
+{
+    return m_clappingOnboardingPromptShown;
+}
+
+bool SettingsController::singingOnboardingPromptShown() const
+{
+    return m_singingOnboardingPromptShown;
 }
 
 void SettingsController::setRhythmPatternCount(int rhythmPatternCount)
@@ -366,6 +384,16 @@ void SettingsController::setSingingPitchToleranceCents(int cents)
     emit singingPitchToleranceCentsChanged(m_singingPitchToleranceCents);
 }
 
+void SettingsController::setSingingDisregardOctaveDifference(bool disregard)
+{
+    if (m_singingDisregardOctaveDifference == disregard) {
+        return;
+    }
+    m_singingDisregardOctaveDifference = disregard;
+    write(u"SingingDisregardOctaveDifference"_s, m_singingDisregardOctaveDifference);
+    emit singingDisregardOctaveDifferenceChanged(m_singingDisregardOctaveDifference);
+}
+
 void SettingsController::setSingingScoringMode(int mode)
 {
     mode = std::clamp(mode, 0, 1);
@@ -472,6 +500,28 @@ void SettingsController::setRhythmicOnboardingPromptShown(bool shown)
     m_rhythmicOnboardingPromptShown = shown;
     write(u"RhythmicOnboardingPromptShown"_s, m_rhythmicOnboardingPromptShown);
     emit rhythmicOnboardingPromptShownChanged(m_rhythmicOnboardingPromptShown);
+}
+
+void SettingsController::setClappingOnboardingPromptShown(bool shown)
+{
+    if (m_clappingOnboardingPromptShown == shown) {
+        return;
+    }
+
+    m_clappingOnboardingPromptShown = shown;
+    write(u"ClappingOnboardingPromptShown"_s, m_clappingOnboardingPromptShown);
+    emit clappingOnboardingPromptShownChanged(m_clappingOnboardingPromptShown);
+}
+
+void SettingsController::setSingingOnboardingPromptShown(bool shown)
+{
+    if (m_singingOnboardingPromptShown == shown) {
+        return;
+    }
+
+    m_singingOnboardingPromptShown = shown;
+    write(u"SingingOnboardingPromptShown"_s, m_singingOnboardingPromptShown);
+    emit singingOnboardingPromptShownChanged(m_singingOnboardingPromptShown);
 }
 }
 

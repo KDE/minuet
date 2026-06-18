@@ -23,8 +23,8 @@ FormCard.FormCardPage {
     readonly property string rhythmInstrumentsJson: Core.soundController ? Core.soundController.rhythmInstrumentsJson || "[]" : "[]"
     readonly property var rhythmInstrumentsModel: Core.instrumentCatalogController.rhythmInstruments(rhythmInstrumentsJson)
     readonly property var scoringModes: [i18n("Pitch primary"), i18n("Pitch + timing")]
-    readonly property var voiceClasses: [i18n("Soprano"), i18n("Alto"), i18n("Tenor"), i18n("Bass")]
     property int selectedMelodicGroup: -1
+    readonly property var voiceClasses: [i18n("Soprano"), i18n("Alto"), i18n("Tenor"), i18n("Bass")]
 
     function syncSelectionFromController(): void {
         if (!Core.soundController) {
@@ -39,53 +39,6 @@ FormCard.FormCardPage {
         groupSelector.currentIndex = Core.instrumentCatalogController.melodicGroupIndex(groupsModel, root.selectedMelodicGroup);
         melodicInstrumentSelector.currentIndex = Core.instrumentCatalogController.melodicInstrumentIndex(instrumentsForGroupModel, Core.settingsController.instrument);
         rhythmInstrumentSelector.currentIndex = Core.instrumentCatalogController.rhythmInstrumentIndex(rhythmInstrumentsModel, Core.settingsController.rhythmInstrument);
-    }
-
-    component SettingsSlider: RowLayout {
-        id: sliderRow
-
-        property int decimals: 0
-        property real from: 0
-        property string label: ""
-        property real stepSize: 1
-        property string suffix: ""
-        property real to: 100
-        property real value: 0
-        signal moved(real value)
-
-        function formattedValue(): string {
-            const numericValue = decimals === 0 ? Math.round(slider.value).toString() : slider.value.toFixed(decimals);
-            return suffix.length > 0 ? i18n("%1 %2", numericValue, suffix) : numericValue;
-        }
-
-        Layout.fillWidth: true
-
-        QQC2.Label {
-            Layout.preferredWidth: Kirigami.Units.gridUnit * 10
-            elide: Text.ElideRight
-            text: sliderRow.label
-        }
-        QQC2.Slider {
-            id: slider
-
-            Layout.fillWidth: true
-            from: sliderRow.from
-            snapMode: sliderRow.stepSize > 0 ? QQC2.Slider.SnapAlways : QQC2.Slider.NoSnap
-            stepSize: sliderRow.stepSize
-            to: sliderRow.to
-            value: sliderRow.value
-
-            onMoved: {
-                const adjustedValue = sliderRow.decimals === 0 ? Math.round(value) : Number(value.toFixed(sliderRow.decimals));
-                sliderRow.moved(adjustedValue);
-            }
-        }
-        QQC2.Label {
-            Layout.minimumWidth: Kirigami.Units.gridUnit * 4
-            color: Kirigami.Theme.disabledTextColor
-            horizontalAlignment: Text.AlignRight
-            text: sliderRow.formattedValue()
-        }
     }
 
     title: i18n("Settings")
@@ -407,6 +360,13 @@ FormCard.FormCardPage {
                         Core.settingsController.singingPitchToleranceCents = value;
                     }
                 }
+                QQC2.CheckBox {
+                    Layout.fillWidth: true
+                    checked: Core.settingsController.singingDisregardOctaveDifference
+                    text: i18n("Disregard octave difference")
+
+                    onToggled: Core.settingsController.singingDisregardOctaveDifference = checked
+                }
                 RowLayout {
                     Layout.fillWidth: true
 
@@ -512,6 +472,54 @@ FormCard.FormCardPage {
                     Core.settingsController.testExerciseCount = value;
                 }
             }
+        }
+    }
+
+    component SettingsSlider: RowLayout {
+        id: sliderRow
+
+        property int decimals: 0
+        property real from: 0
+        property string label: ""
+        property real stepSize: 1
+        property string suffix: ""
+        property real to: 100
+        property real value: 0
+
+        signal moved(real value)
+
+        function formattedValue(): string {
+            const numericValue = decimals === 0 ? Math.round(slider.value).toString() : slider.value.toFixed(decimals);
+            return suffix.length > 0 ? i18n("%1 %2", numericValue, suffix) : numericValue;
+        }
+
+        Layout.fillWidth: true
+
+        QQC2.Label {
+            Layout.preferredWidth: Kirigami.Units.gridUnit * 10
+            elide: Text.ElideRight
+            text: sliderRow.label
+        }
+        QQC2.Slider {
+            id: slider
+
+            Layout.fillWidth: true
+            from: sliderRow.from
+            snapMode: QQC2.Slider.NoSnap
+            stepSize: 0
+            to: sliderRow.to
+            value: sliderRow.value
+
+            onMoved: {
+                const adjustedValue = sliderRow.decimals === 0 ? Math.round(value) : Number(value.toFixed(sliderRow.decimals));
+                sliderRow.moved(adjustedValue);
+            }
+        }
+        QQC2.Label {
+            Layout.minimumWidth: Kirigami.Units.gridUnit * 4
+            color: Kirigami.Theme.disabledTextColor
+            horizontalAlignment: Text.AlignRight
+            text: sliderRow.formattedValue()
         }
     }
 }

@@ -322,21 +322,32 @@ void FluidSynthSoundController::pause()
 void FluidSynthSoundController::stop()
 {
     hideCountIn();
+    if (m_sequencer) {
+        fluid_sequencer_remove_events(m_sequencer, -1, m_synthSeqID, -1);
+        fluid_sequencer_remove_events(m_sequencer, -1, m_callbackSeqID, -1);
+    }
+
     if (m_state != State::StoppedState) {
         fluid_event_t *event = new_fluid_event();
         fluid_event_set_source(event, -1);
         fluid_event_all_notes_off(event, MelodicChannel);
         fluid_event_set_dest(event, m_synthSeqID);
-        fluid_sequencer_send_now(m_sequencer, event);
+        if (m_sequencer) {
+            fluid_sequencer_send_now(m_sequencer, event);
+        }
         delete_fluid_event(event);
         event = new_fluid_event();
         fluid_event_set_source(event, -1);
         fluid_event_all_notes_off(event, RhythmChannel);
         fluid_event_set_dest(event, m_synthSeqID);
-        fluid_sequencer_send_now(m_sequencer, event);
+        if (m_sequencer) {
+            fluid_sequencer_send_now(m_sequencer, event);
+        }
         delete_fluid_event(event);
-        resetEngine();
     }
+    m_initialTime = 0;
+    setPlaybackLabel(u"00:00.00"_s);
+    setState(State::StoppedState);
 }
 
 void FluidSynthSoundController::reset()

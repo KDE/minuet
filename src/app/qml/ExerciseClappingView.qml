@@ -13,25 +13,40 @@ import org.kde.kirigamiaddons.onboarding
 Item {
     id: root
 
-    property int countIn: 0
-    property var currentExercise
-    property string currentExerciseIconName: ""
-    property int onboardingCountIn: 0
-    readonly property var microphone: Core.microphoneInputController
-    readonly property int selectedOptionCount: Core.settingsController.rhythmPatternCount
     readonly property real beatMs: 60000 / Core.settingsController.exerciseSpeed
     readonly property real contentPadding: Kirigami.Units.largeSpacing * 2
+    property int countIn: 0
+    property bool countInStarted: false
+    property string countPhase: "idle"
+    property var currentExercise
+    property string currentExerciseIconName: ""
+    readonly property var displayedFigureStates: root.figureStates.length > 0 ? root.figureStates : root.onboardingPreviewActive ? [
+        {
+            "state": "pending",
+            "onsets": [],
+            "endMs": root.beatMs,
+            "name": "\uE1F0",
+            "meterValue": 0,
+            "meterAccuracy": 0,
+            "meterText": i18n("Ready")
+        }
+    ] : []
+    property var expectedOnsets: []
+    property var figureStates: []
+    property real listeningStartSeconds: -1
+    property var matchedOnsets: []
+    readonly property int maximumExercises: Core.settingsController.testExerciseCount
+    readonly property var microphone: Core.microphoneInputController
+    property int onboardingCountIn: 0
+    property bool onboardingPreviewActive: false
     readonly property real rhythmAnswerCardTextSize: Math.round(Kirigami.Theme.defaultFont.pointSize * 2.0)
     readonly property real rhythmAnswerCardVerticalOffset: Math.round(rhythmAnswerCardTextSize * 0.22)
     readonly property real rhythmCardWidth: Kirigami.Units.gridUnit * 8
-    readonly property real toleranceMs: Math.min(180, beatMs * Core.settingsController.clappingCorrectnessTolerancePercent / 100)
-    property var expectedOnsets: []
-    property var figureStates: []
-    property var matchedOnsets: []
     property int score: -1
-    property real listeningStartSeconds: -1
+    readonly property int selectedOptionCount: Core.settingsController.rhythmPatternCount
+    property int testScoreTotal: 0
+    readonly property real toleranceMs: Math.min(180, beatMs * Core.settingsController.clappingCorrectnessTolerancePercent / 100)
     property string viewState: "idle"
-    property string countPhase: "idle"
 
     function applyMicrophoneSettings(): void {
         if (!root.microphone) {
@@ -48,6 +63,29 @@ Item {
         root.microphone.requiredStablePitchFrames = Core.settingsController.clappingRequiredStablePitchFrames;
         root.microphone.targetBpm = Core.settingsController.exerciseSpeed;
     }
+    function beginMicrophoneCapture(): void {
+        if (!root.microphone) {
+            return;
+        }
+        root.microphone.stop();
+        root.microphone.start();
+    }
+    function cardColor(index: int): color {
+        return internal.colors[index % internal.colors.length];
+    }
+    function clearCurrentRun(): void {
+        progressTimer.stop();
+        finishTimer.stop();
+        if (root.microphone) {
+            root.microphone.stop();
+        }
+        if (Core.soundController) {
+            Core.soundController.stop();
+        }
+        root.countIn = 0;
+        root.countPhase = "idle";
+        root.countInStarted = false;
+    }
     function durationForToken(token: string): real {
         let note = token;
         let dotted = 1.0;
@@ -61,12 +99,40 @@ Item {
         }
         return dotted * root.beatMs * 4 / denominator;
     }
-    function beginMicrophoneCapture(): void {
-        if (!root.microphone) {
+    function finishExercise(): void {
+        if (root.viewState !== "listening") {
             return;
         }
-        root.microphone.stop();
-        root.microphone.start();
+        progressTimer.stop();
+        finishTimer.stop();
+        root.countIn = 0;
+        root.countPhase = "idle";
+        root.countInStarted = false;
+        if (Core.soundController) {
+            Core.soundController.stop();
+        }
+        if (root.microphone) {
+            root.microphone.stop();
+        }
+        refreshFigureStates(totalDurationMs() + root.toleranceMs + 1);
+        const matched = root.expectedOnsets.filter(onset => onset.matched).length;
+        root.score = root.expectedOnsets.length > 0 ? Math.round(matched * 100 / root.expectedOnsets.length) : 0;
+        root.viewState = "finished";
+        finishScoredQuestion();
+    }
+    function finishScoredQuestion(): void {
+        if (!Core.exerciseSessionController.isTest) {
+            return;
+        }
+
+        root.testScoreTotal += Math.max(0, root.score);
+        if (Core.exerciseSessionController.currentExercise >= root.maximumExercises) {
+            root.score = Math.round(root.testScoreTotal / root.maximumExercises);
+            root.testScoreTotal = 0;
+            Core.exerciseSessionController.resetTest();
+        } else {
+            testNextQuestionTimer.restart();
+        }
     }
     function generateQuestion(): void {
         Core.exerciseSessionController.beginQuestion(Core.settingsController.testExerciseCount);
@@ -105,67 +171,14 @@ Item {
         root.viewState = "ready";
         Core.exerciseSessionController.finishQuestionGeneration();
     }
-    function startExercise(): void {
-        if (root.currentExercise === undefined || root.viewState === "counting" || root.viewState === "listening") {
+    function giveUpQuestion(): void {
+        if (root.viewState !== "ready") {
             return;
         }
-        if (root.expectedOnsets.length === 0) {
-            generateQuestion();
-        }
-        applyMicrophoneSettings();
-        beginMicrophoneCapture();
-        root.countPhase = "preparation";
-        root.countIn = 1;
-        root.viewState = "counting";
-        if (Core.soundController) {
-            Core.soundController.playCountIn(root.selectedOptionCount);
-        }
-        countTimer.restart();
-    }
-    function startListening(): void {
-        root.countPhase = "input";
-        root.countIn = 1;
-        root.listeningStartSeconds = root.microphone ? root.microphone.analysisTimeSeconds : 0;
-        root.viewState = "listening";
-        if (Core.soundController) {
-            Core.soundController.playCountIn(root.selectedOptionCount);
-        }
-        progressTimer.restart();
-        listeningBeatTimer.restart();
-        finishTimer.interval = totalDurationMs() + root.toleranceMs + root.beatMs;
-        finishTimer.restart();
-    }
-    function timingMeterValue(errorMs: real): real {
-        return -Math.max(-1, Math.min(1, errorMs / root.toleranceMs));
-    }
-    function timingMeterText(errorMs: real): string {
-        if (Math.abs(errorMs) < 1) {
-            return i18n("On time");
-        }
-        return i18n("%1 ms").arg(Math.round(errorMs));
-    }
-    function totalDurationMs(): real {
-        if (root.figureStates.length === 0) {
-            return 0;
-        }
-        return root.figureStates[root.figureStates.length - 1].endMs;
-    }
-    function refreshFigureStates(elapsedMs: real): void {
-        let states = root.figureStates.slice();
-        for (let i = 0; i < states.length; ++i) {
-            const allMatched = states[i].onsets.every(index => root.expectedOnsets[index].matched);
-            if (allMatched) {
-                states[i].state = "correct";
-            } else if (elapsedMs > states[i].endMs + root.toleranceMs) {
-                states[i].state = "wrong";
-                if (states[i].meterText === i18n("Ready")) {
-                    states[i].meterText = i18n("Missed");
-                    states[i].meterAccuracy = 0;
-                    states[i].meterValue = 0;
-                }
-            }
-        }
-        root.figureStates = states;
+        refreshFigureStates(totalDurationMs() + root.toleranceMs + 1);
+        root.score = 0;
+        root.viewState = "finished";
+        finishScoredQuestion();
     }
     function handleOnset(seconds: real): void {
         if (root.viewState !== "listening") {
@@ -199,32 +212,61 @@ Item {
             root.figureStates = states;
         }
         refreshFigureStates(elapsedMs);
-        if (root.expectedOnsets.every(onset => onset.matched)) {
-            finishExercise();
-        }
     }
-    function finishExercise(): void {
-        if (root.viewState !== "listening") {
+    function refreshFigureStates(elapsedMs: real): void {
+        let states = root.figureStates.slice();
+        for (let i = 0; i < states.length; ++i) {
+            const allMatched = states[i].onsets.every(index => root.expectedOnsets[index].matched);
+            if (allMatched) {
+                states[i].state = "correct";
+            } else if (elapsedMs > states[i].endMs + root.toleranceMs) {
+                states[i].state = "wrong";
+                if (states[i].meterText === i18n("Ready")) {
+                    states[i].meterText = i18n("Missed");
+                    states[i].meterAccuracy = 0;
+                    states[i].meterValue = 0;
+                }
+            }
+        }
+        root.figureStates = states;
+    }
+    function startExercise(): void {
+        if (root.currentExercise === undefined || root.viewState === "counting" || root.viewState === "listening") {
             return;
         }
-        progressTimer.stop();
-        listeningBeatTimer.stop();
-        finishTimer.stop();
+        if (root.expectedOnsets.length === 0) {
+            generateQuestion();
+        }
+        applyMicrophoneSettings();
+        root.countPhase = "preparation";
+        root.countInStarted = false;
         root.countIn = 0;
-        root.countPhase = "idle";
+        root.viewState = "counting";
         if (Core.soundController) {
-            Core.soundController.stop();
+            Core.soundController.playCountIn(root.selectedOptionCount);
         }
-        if (root.microphone) {
-            root.microphone.stop();
-        }
-        refreshFigureStates(totalDurationMs() + root.toleranceMs + 1);
-        const matched = root.expectedOnsets.filter(onset => onset.matched).length;
-        root.score = root.expectedOnsets.length > 0 ? Math.round(matched * 100 / root.expectedOnsets.length) : 0;
-        root.viewState = "finished";
     }
-    function cardColor(index: int): color {
-        return internal.colors[index % internal.colors.length];
+    function startListening(): void {
+        if (root.microphone && !root.microphone.running) {
+            beginMicrophoneCapture();
+        }
+        root.countPhase = "input";
+        root.countInStarted = false;
+        root.countIn = 0;
+        root.listeningStartSeconds = root.microphone ? root.microphone.analysisTimeSeconds : 0;
+        root.viewState = "listening";
+        if (Core.soundController) {
+            Core.soundController.playCountIn(root.selectedOptionCount);
+        }
+        progressTimer.restart();
+        finishTimer.interval = totalDurationMs() + root.toleranceMs + root.beatMs;
+        finishTimer.restart();
+    }
+    function startTest(): void {
+        Core.exerciseSessionController.startTest();
+        root.testScoreTotal = 0;
+        generateQuestion();
+        startExercise();
     }
     function stateBorderColor(state: string): color {
         if (state === "correct") {
@@ -235,25 +277,38 @@ Item {
         }
         return Kirigami.Theme.textColor;
     }
+    function stopTest(): void {
+        testNextQuestionTimer.stop();
+        clearCurrentRun();
+        root.testScoreTotal = 0;
+        Core.exerciseSessionController.stopTest();
+        root.viewState = root.expectedOnsets.length > 0 ? "ready" : "idle";
+    }
+    function timingMeterText(errorMs: real): string {
+        if (Math.abs(errorMs) < 1) {
+            return i18n("On time");
+        }
+        return i18n("%1 ms").arg(Math.round(errorMs));
+    }
+    function timingMeterValue(errorMs: real): real {
+        return -Math.max(-1, Math.min(1, errorMs / root.toleranceMs));
+    }
+    function totalDurationMs(): real {
+        if (root.figureStates.length === 0) {
+            return 0;
+        }
+        return root.figureStates[root.figureStates.length - 1].endMs;
+    }
 
     visible: root.currentExercise !== undefined
 
     onCurrentExerciseChanged: {
-        countTimer.stop();
-        progressTimer.stop();
-        listeningBeatTimer.stop();
-        finishTimer.stop();
-        if (root.microphone) {
-            root.microphone.stop();
-        }
-        if (Core.soundController) {
-            Core.soundController.stop();
-        }
+        testNextQuestionTimer.stop();
+        clearCurrentRun();
         root.expectedOnsets = [];
         root.figureStates = [];
         root.score = -1;
-        root.countIn = 0;
-        root.countPhase = "idle";
+        root.testScoreTotal = 0;
         root.viewState = "idle";
         if (root.currentExercise !== undefined) {
             Core.exerciseSessionController.resetForExercise();
@@ -270,22 +325,6 @@ Item {
 
         property var colors: ["#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9", "#bc80bd", "#ccebc5", "#ffed6f", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"]
     }
-
-    Timer {
-        id: countTimer
-
-        interval: root.beatMs
-        repeat: true
-
-        onTriggered: {
-            if (root.countIn >= root.selectedOptionCount) {
-                stop();
-                root.startListening();
-            } else {
-                ++root.countIn;
-            }
-        }
-    }
     Timer {
         id: progressTimer
 
@@ -299,28 +338,19 @@ Item {
         }
     }
     Timer {
-        id: listeningBeatTimer
-
-        interval: root.beatMs
-        repeat: true
-
-        onTriggered: {
-            if (root.countIn >= root.selectedOptionCount) {
-                stop();
-                root.countIn = 0;
-                if (root.viewState === "listening" && !finishTimer.running) {
-                    finishTimer.interval = root.toleranceMs + root.beatMs;
-                    finishTimer.restart();
-                }
-            } else {
-                ++root.countIn;
-            }
-        }
-    }
-    Timer {
         id: finishTimer
 
         onTriggered: root.finishExercise()
+    }
+    Timer {
+        id: testNextQuestionTimer
+
+        interval: root.beatMs
+
+        onTriggered: {
+            root.generateQuestion();
+            root.startExercise();
+        }
     }
     Connections {
         function onOnsetDetected(seconds: real, strength: real): void {
@@ -329,7 +359,28 @@ Item {
 
         target: root.microphone
     }
+    Connections {
+        function onCountInChanged(count: int): void {
+            if (root.currentExercise === undefined) {
+                return;
+            }
+            if (root.countPhase === "preparation") {
+                root.countIn = count;
+                if (count > 0) {
+                    root.countInStarted = true;
+                }
+                if (count >= root.selectedOptionCount) {
+                    root.beginMicrophoneCapture();
+                } else if (count === 0 && root.countInStarted) {
+                    root.startListening();
+                }
+            } else if (root.countPhase === "input") {
+                root.countIn = count;
+            }
+        }
 
+        target: Core.soundController
+    }
     ColumnLayout {
         anchors.fill: parent
         spacing: 0
@@ -354,10 +405,9 @@ Item {
                 }
                 ColumnLayout {
                     Layout.fillWidth: true
-                    spacing: 0
-
                     Onboarding.groups: ["clapping"]
                     Onboarding.texts: [i18n("Start a question, listen to the count, then clap each rhythm figure in time.")]
+                    spacing: 0
 
                     Kirigami.Heading {
                         Layout.fillWidth: true
@@ -371,16 +421,23 @@ Item {
                         color: Kirigami.Theme.disabledTextColor
                         elide: Text.ElideRight
                         horizontalAlignment: Text.AlignHCenter
-                        text: root.viewState === "listening" ? i18n("Listening...") : root.microphone ? root.microphone.status : i18n("No microphone input plugin available")
+                        text: root.viewState === "listening" ? i18n("Listening...") : Core.exerciseSessionController.isTest && Core.exerciseSessionController.statusText.length > 0 ? Core.exerciseSessionController.statusText : root.microphone ? root.microphone.status : i18n("No microphone input plugin available")
                     }
                     RowLayout {
+                        id: actionButtons
+
+                        readonly property real buttonWidth: Math.max(startQuestionButton.implicitWidth, giveUpButton.implicitWidth, testButton.implicitWidth)
+
                         Layout.alignment: Qt.AlignHCenter
                         Layout.topMargin: Kirigami.Units.smallSpacing
                         spacing: Kirigami.Units.smallSpacing
 
                         QQC2.Button {
+                            id: startQuestionButton
+
+                            Layout.preferredWidth: actionButtons.buttonWidth
                             enabled: root.microphone !== null && root.viewState !== "counting" && root.viewState !== "listening"
-                            text: root.expectedOnsets.length === 0 ? i18n("New Question") : i18n("Start")
+                            text: root.expectedOnsets.length === 0 || root.viewState === "finished" ? i18n("New Question") : i18n("Start")
 
                             onClicked: {
                                 if (root.expectedOnsets.length === 0 || root.viewState === "finished") {
@@ -390,10 +447,28 @@ Item {
                             }
                         }
                         QQC2.Button {
-                            enabled: root.viewState !== "counting" && root.viewState !== "listening"
-                            text: i18n("New Question")
+                            id: giveUpButton
 
-                            onClicked: root.generateQuestion()
+                            Layout.preferredWidth: actionButtons.buttonWidth
+                            enabled: root.expectedOnsets.length > 0 && root.viewState === "ready"
+                            text: i18n("Give Up")
+
+                            onClicked: root.giveUpQuestion()
+                        }
+                        QQC2.Button {
+                            id: testButton
+
+                            Layout.preferredWidth: actionButtons.buttonWidth
+                            enabled: root.microphone !== null && root.viewState !== "counting" && root.viewState !== "listening"
+                            text: Core.exerciseSessionController.isTest ? i18n("Stop Test") : i18n("Start Test")
+
+                            onClicked: {
+                                if (Core.exerciseSessionController.isTest) {
+                                    root.stopTest();
+                                } else {
+                                    root.startTest();
+                                }
+                            }
                         }
                     }
                 }
@@ -428,34 +503,32 @@ Item {
                         readonly property int maximumColumns: Math.max(1, Math.floor((parent.width + columnSpacing) / (root.rhythmCardWidth + columnSpacing)))
 
                         Onboarding.groups: ["clapping"]
-                        Onboarding.texts: [
-                            i18n("Each colored card is one rhythm figure. Green borders mark figures clapped correctly; red borders mark missed figures."),
-                            i18n("The tempo meter below each figure points left for late claps and right for advanced claps.")
-                        ]
-
+                        Onboarding.texts: [i18n("Each colored card is one rhythm figure. Green borders mark figures clapped correctly; red borders mark missed figures."), i18n("The tempo meter below each figure points left for late claps and right for advanced claps.")]
                         anchors.centerIn: parent
-                        columns: Math.max(1, Math.min(root.figureStates.length, maximumColumns))
                         columnSpacing: Kirigami.Units.smallSpacing
+                        columns: Math.max(1, Math.min(root.displayedFigureStates.length, maximumColumns))
                         rowSpacing: Kirigami.Units.smallSpacing
                         width: Math.min(parent.width, columns * root.rhythmCardWidth + Math.max(0, columns - 1) * columnSpacing)
 
+                        Onboarding.onAboutToShow: root.onboardingPreviewActive = true
+                        Onboarding.onHide: root.onboardingPreviewActive = false
+
                         Repeater {
-                            model: root.figureStates
+                            model: root.displayedFigureStates
 
                             delegate: Rectangle {
                                 required property int index
                                 required property var modelData
 
-                                color: root.cardColor(index)
                                 Layout.preferredHeight: rhythmColumn.implicitHeight + Kirigami.Units.largeSpacing * 2
                                 Layout.preferredWidth: root.rhythmCardWidth
+                                color: root.cardColor(index)
                                 radius: Kirigami.Units.cornerRadius
 
                                 border {
                                     color: root.stateBorderColor(modelData.state)
                                     width: modelData.state === "pending" ? 1 : 2
                                 }
-
                                 Column {
                                     id: rhythmColumn
 
@@ -484,12 +557,12 @@ Item {
                                     GraphicalMeter {
                                         id: timingMeter
 
+                                        accuracy: modelData.meterAccuracy
                                         anchors.horizontalCenter: parent.horizontalCenter
                                         height: Kirigami.Units.gridUnit * 5.8
                                         meterKind: "onset"
-                                        value: modelData.meterValue
-                                        accuracy: modelData.meterAccuracy
                                         readoutText: modelData.meterText
+                                        value: modelData.meterValue
                                         width: height
                                     }
                                 }

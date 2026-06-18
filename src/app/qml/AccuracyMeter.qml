@@ -14,8 +14,8 @@ ColumnLayout {
 
     property color accentColor: Kirigami.Theme.highlightColor
     property string label: ""
-    property string valueText: ""
     property real value: 0
+    property string valueText: ""
 
     spacing: Kirigami.Units.smallSpacing
 
@@ -39,14 +39,15 @@ ColumnLayout {
         radius: Kirigami.Units.cornerRadius
 
         Rectangle {
+            color: root.accentColor
+            radius: parent.radius
+            width: parent.width * Math.max(0, Math.min(1, root.value))
+
             anchors {
                 bottom: parent.bottom
                 left: parent.left
                 top: parent.top
             }
-            color: root.accentColor
-            radius: parent.radius
-            width: parent.width * Math.max(0, Math.min(1, root.value))
         }
     }
 }
