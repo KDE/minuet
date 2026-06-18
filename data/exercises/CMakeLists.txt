@@ -17,8 +17,6 @@ set(MINUET_EXERCISES
     scales-pentatonic-major-and-its-modes-exercises.json
     scales-simmetric-exercises.json
     scales-bebop-exercises.json
-    singing-exercises.json
-    clapping-rhythm-exercises.json
     rhythm-easy.json
     rhythm-medium.json
 )

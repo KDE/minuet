@@ -3,243 +3,93 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 import QtQuick
+import QtQuick.Controls as QQC2
 import org.kde.kirigami as Kirigami
 
 Item {
     id: root
 
-    property real accuracy: 0
-    readonly property color glowColor: accuracy >= 0.75 ? Kirigami.Theme.positiveTextColor : accuracy > 0 ? Kirigami.Theme.neutralTextColor : Kirigami.Theme.disabledTextColor
-    readonly property string leftLabel: meterKind === "pitch" ? i18n("FLAT") : i18n("LATE")
+    readonly property real assetAspectRatio: 1448 / 1086
+    readonly property real clampedValue: Math.max(-1, Math.min(1, value))
+    readonly property string defaultReadoutText: meterKind === "pitch" ? i18n("No pitch") : i18n("No onset")
+    readonly property string displayText: readoutText.length > 0 ? readoutText : defaultReadoutText
+    readonly property real faceHeight: Math.max(1, faceWidth / assetAspectRatio)
+    readonly property real faceWidth: Math.max(1, Math.min(width, Math.max(1, height - deviationLabel.implicitHeight - spacing) * assetAspectRatio))
+    readonly property string meterBackgroundSource: meterKind === "pitch" ? "qrc:/icons/pitch-meter-background.png" : "qrc:/icons/tempo-meter-background.png"
     property string meterKind: "pitch"
-    readonly property real needleAngle: Math.max(-1, Math.min(1, value)) * 52
-    property string readoutText: valueText.length > 0 ? valueText : (meterKind === "pitch" ? i18n("No pitch") : i18n("No onset"))
-    readonly property string rightLabel: meterKind === "pitch" ? i18n("SHARP") : i18n("ADVANCED")
-    readonly property string topLabel: meterKind === "pitch" ? i18n("TUNE") : i18n("TEMPO")
+    readonly property real maximumNeedleAngle: meterKind === "pitch" ? 52 : 58
+    readonly property real needleAngle: clampedValue * maximumNeedleAngle
+    readonly property real needleFacePivotY: meterKind === "pitch" ? 0.617 : 0.765
+    readonly property real needleLocalPivotY: meterKind === "pitch" ? 0.812 : 0.765
+    readonly property real needleScale: 0.53//meterKind === "pitch" ? 0.53 : 0.80
+    readonly property string needleSource: "qrc:/icons/meter-needle.png"
+    property real accuracy: 0
+    property string readoutText: valueText.length > 0 ? valueText : defaultReadoutText
+    readonly property real spacing: Kirigami.Units.smallSpacing
     property real value: 0
     property string valueText: ""
 
     Accessible.ignored: true
-    implicitHeight: Kirigami.Units.gridUnit * 8
+    implicitHeight: Math.max(1, width > 0 ? width : implicitWidth) / assetAspectRatio + deviationLabel.implicitHeight + spacing
     implicitWidth: Kirigami.Units.gridUnit * 8
 
-    Rectangle {
-        anchors.fill: parent
-        color: "#442414"
-        radius: width / 2
+    Item {
+        id: meterFace
 
-        Rectangle {
-            anchors.centerIn: parent
-            color: "#6c3b23"
-            height: parent.height * 0.92
-            radius: width / 2
-            width: parent.width * 0.92
+        height: root.faceHeight
+        width: root.faceWidth
+
+        anchors {
+            horizontalCenter: parent.horizontalCenter
+            top: parent.top
         }
-        Rectangle {
-            anchors.centerIn: parent
-            border.color: "#ffd95c"
-            border.width: Math.max(2, width * 0.035)
-            color: "#d99219"
-            height: parent.height * 0.82
-            radius: width / 2
-            width: parent.width * 0.82
 
-            Rectangle {
-                color: "#4b2316"
-                height: parent.height * 0.32
-                radius: parent.width * 0.05
-                width: parent.width * 0.92
+        Image {
+            anchors.fill: parent
+            asynchronous: true
+            fillMode: Image.Stretch
+            source: root.meterBackgroundSource
+            sourceSize.height: 1086
+            sourceSize.width: 1448
+            smooth: true
+            mipmap: true
+        }
+        Image {
+            id: needleImage
 
-                anchors {
-                    bottom: parent.bottom
-                    horizontalCenter: parent.horizontalCenter
-                }
-            }
-            Rectangle {
-                color: "#ffef92"
-                height: parent.height * 0.44
-                radius: height / 2
-                width: parent.width * 0.74
+            asynchronous: true
+            fillMode: Image.Stretch
+            height: parent.height * root.needleScale
+            source: root.needleSource
+            sourceSize.height: 1086
+            sourceSize.width: 1448
+            width: parent.width * root.needleScale
+            x: parent.width * 0.5 - width * 0.5
+            y: parent.height * root.needleFacePivotY - height * root.needleLocalPivotY
+            smooth: true
+            mipmap: true
+            antialiasing: true
 
-                anchors {
-                    horizontalCenter: parent.horizontalCenter
-                    top: parent.top
-                    topMargin: parent.height * 0.08
-                }
-            }
-            /*
-            Repeater {
-                model: 25
-
-                delegate: Rectangle {
-                    required property int index
-
-                    readonly property real tickAngle: -52 + index * (104 / 24)
-                    readonly property bool majorTick: index % 4 === 0
-
-                    antialiasing: true
-                    color: "#5b2b17"
-                    height: majorTick ? parent.height * 0.085 : parent.height * 0.052
-                    radius: width / 2
-                    transform: [
-                        Translate {
-                            x: parent.width * 0.50 - width / 2
-                            y: parent.height * 0.50 - parent.height * 0.31
-                        },
-                        Rotation {
-                            angle: tickAngle
-                            origin.x: parent.width * 0.50
-                            origin.y: parent.height * 0.50
-                        }
-                    ]
-                    width: majorTick ? Math.max(2, parent.width * 0.015) : Math.max(1, parent.width * 0.01)
-                }
-            }
-            Repeater {
-                model: 5
-
-                delegate: Rectangle {
-                    required property int index
-
-                    readonly property real markAngle: -38 + index * 19
-
-                    antialiasing: true
-                    color: "#a56413"
-                    height: parent.height * 0.018
-                    radius: height / 2
-                    transform: [
-                        Translate {
-                            x: parent.width * 0.50 - width / 2
-                            y: parent.height * 0.50 - parent.height * 0.20
-                        },
-                        Rotation {
-                            angle: markAngle
-                            origin.x: parent.width * 0.50
-                            origin.y: parent.height * 0.50
-                        }
-                    ]
-                    width: parent.width * 0.20
-                }
-            }
-*/
-            Text {
-                color: "#4d2114"
-                font.bold: true
-                font.pixelSize: Math.max(8, parent.width * 0.105)
-                horizontalAlignment: Text.AlignHCenter
-                text: root.topLabel
-
-                anchors {
-                    horizontalCenter: parent.horizontalCenter
-                    top: parent.top
-                    topMargin: parent.height * 0.20
-                }
-            }
-            Text {
-                color: "#4d2114"
-                font.bold: true
-                font.pixelSize: Math.max(7, parent.width * 0.085)
-                text: root.leftLabel
-
-                anchors {
-                    left: parent.left
-                    leftMargin: parent.width * 0.18
-                    verticalCenter: parent.verticalCenter
-                    verticalCenterOffset: parent.height * 0.08
-                }
-            }
-            Text {
-                color: "#4d2114"
-                font.bold: true
-                font.pixelSize: Math.max(7, parent.width * 0.085)
-                horizontalAlignment: Text.AlignRight
-                text: root.rightLabel
-
-                anchors {
-                    right: parent.right
-                    rightMargin: parent.width * 0.15
-                    verticalCenter: parent.verticalCenter
-                    verticalCenterOffset: parent.height * 0.08
-                }
-            }
-            Item {
-                id: needlePivot
-
-                height: 1
-                width: 1
-
-                anchors {
-                    horizontalCenter: parent.horizontalCenter
-                    verticalCenter: parent.verticalCenter
-                    verticalCenterOffset: parent.height * 0.09
-                }
-                Item {
-                    id: needleArm
-
-                    height: parent.parent.height * 0.39
-                    rotation: root.needleAngle
-                    transformOrigin: Item.Bottom
-                    width: Math.max(3, parent.parent.width * 0.025)
-                    x: -width / 2
-                    y: -height
-
-                    Rectangle {
-                        anchors.fill: parent
-                        antialiasing: true
-                        color: "#f7f7f7"
-                        radius: width / 2
-                    }
-                    Rectangle {
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        color: root.glowColor
-                        height: parent.height
-                        opacity: 0.28
-                        radius: width / 2
-                        width: parent.width * 0.42
-                    }
-                }
-            }
-            Rectangle {
-                anchors.centerIn: needlePivot
-                border.color: "#f4f0e8"
-                border.width: Math.max(1, width * 0.09)
-                color: "#c8c5bd"
-                height: parent.width * 0.16
-                radius: width / 2
-                width: height
-
-                Rectangle {
-                    anchors.centerIn: parent
-                    color: "#7d6d62"
-                    height: parent.height * 0.38
-                    radius: width / 2
-                    width: height
-                }
-            }
-            Rectangle {
-                border.color: "#ffd95c"
-                border.width: Math.max(1, width * 0.035)
-                color: "#3c1b12"
-                height: parent.height * 0.25
-                radius: width / 2
-                width: parent.width * 0.38
-
-                anchors {
-                    bottom: parent.bottom
-                    bottomMargin: parent.height * 0.05
-                    horizontalCenter: parent.horizontalCenter
-                }
-                Text {
-                    anchors.centerIn: parent
-                    color: "#f7dd59"
-                    elide: Text.ElideRight
-                    font.bold: true
-                    font.pixelSize: Math.max(7, parent.width * 0.18)
-                    horizontalAlignment: Text.AlignHCenter
-                    text: root.readoutText
-                    width: parent.width * 0.82
-                }
+            transform: Rotation {
+                angle: root.needleAngle
+                origin.x: needleImage.width * 0.5
+                origin.y: needleImage.height * root.needleLocalPivotY
             }
         }
+    }
+    QQC2.Label {
+        id: deviationLabel
+
+        anchors {
+            horizontalCenter: parent.horizontalCenter
+            top: meterFace.bottom
+            topMargin: root.spacing
+        }
+        color: root.displayText === root.defaultReadoutText ? Kirigami.Theme.disabledTextColor : Kirigami.Theme.textColor
+        elide: Text.ElideRight
+        font.bold: root.displayText !== root.defaultReadoutText
+        horizontalAlignment: Text.AlignHCenter
+        text: root.displayText
+        width: root.width
     }
 }

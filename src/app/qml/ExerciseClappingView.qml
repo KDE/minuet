@@ -37,11 +37,12 @@ Item {
     property var matchedOnsets: []
     readonly property int maximumExercises: Core.settingsController.testExerciseCount
     readonly property var microphone: Core.microphoneInputController
+    readonly property bool compactMode: !applicationWindow().wideScreen || Kirigami.Settings.isMobile
     property int onboardingCountIn: 0
     property bool onboardingPreviewActive: false
     readonly property real rhythmAnswerCardTextSize: Math.round(Kirigami.Theme.defaultFont.pointSize * 2.0)
     readonly property real rhythmAnswerCardVerticalOffset: Math.round(rhythmAnswerCardTextSize * 0.22)
-    readonly property real rhythmCardWidth: Kirigami.Units.gridUnit * 8
+    readonly property real rhythmCardWidth: Kirigami.Units.gridUnit * 11
     property int score: -1
     readonly property int selectedOptionCount: Core.settingsController.rhythmPatternCount
     property int testScoreTotal: 0
@@ -69,9 +70,6 @@ Item {
         }
         root.microphone.stop();
         root.microphone.start();
-    }
-    function cardColor(index: int): color {
-        return internal.colors[index % internal.colors.length];
     }
     function clearCurrentRun(): void {
         progressTimer.stop();
@@ -170,15 +168,6 @@ Item {
         root.score = -1;
         root.viewState = "ready";
         Core.exerciseSessionController.finishQuestionGeneration();
-    }
-    function giveUpQuestion(): void {
-        if (root.viewState !== "ready") {
-            return;
-        }
-        refreshFigureStates(totalDurationMs() + root.toleranceMs + 1);
-        root.score = 0;
-        root.viewState = "finished";
-        finishScoredQuestion();
     }
     function handleOnset(seconds: real): void {
         if (root.viewState !== "listening") {
@@ -320,11 +309,6 @@ Item {
 
         source: "SheetMusicView/Bravura.otf"
     }
-    QtObject {
-        id: internal
-
-        property var colors: ["#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9", "#bc80bd", "#ccebc5", "#ffed6f", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"]
-    }
     Timer {
         id: progressTimer
 
@@ -401,7 +385,7 @@ Item {
                     Layout.preferredHeight: Kirigami.Units.iconSizes.medium
                     Layout.preferredWidth: Kirigami.Units.iconSizes.medium
                     source: root.currentExerciseIconName
-                    visible: root.currentExerciseIconName.length > 0
+                    visible: root.currentExerciseIconName.length > 0 && !root.compactMode
                 }
                 ColumnLayout {
                     Layout.fillWidth: true
@@ -426,7 +410,7 @@ Item {
                     RowLayout {
                         id: actionButtons
 
-                        readonly property real buttonWidth: Math.max(startQuestionButton.implicitWidth, giveUpButton.implicitWidth, testButton.implicitWidth)
+                        readonly property real buttonWidth: Math.max(startQuestionButton.implicitWidth, testButton.implicitWidth)
 
                         Layout.alignment: Qt.AlignHCenter
                         Layout.topMargin: Kirigami.Units.smallSpacing
@@ -445,15 +429,6 @@ Item {
                                 }
                                 root.startExercise();
                             }
-                        }
-                        QQC2.Button {
-                            id: giveUpButton
-
-                            Layout.preferredWidth: actionButtons.buttonWidth
-                            enabled: root.expectedOnsets.length > 0 && root.viewState === "ready"
-                            text: i18n("Give Up")
-
-                            onClicked: root.giveUpQuestion()
                         }
                         QQC2.Button {
                             id: testButton
@@ -522,7 +497,7 @@ Item {
 
                                 Layout.preferredHeight: rhythmColumn.implicitHeight + Kirigami.Units.largeSpacing * 2
                                 Layout.preferredWidth: root.rhythmCardWidth
-                                color: root.cardColor(index)
+                                color: Kirigami.Theme.backgroundColor
                                 radius: Kirigami.Units.cornerRadius
 
                                 border {
@@ -543,7 +518,7 @@ Item {
                                             id: rhythmText
 
                                             anchors.horizontalCenter: parent.horizontalCenter
-                                            color: "#202124"
+                                            color: Kirigami.Theme.textColor
                                             font.family: bravura.name
                                             font.pixelSize: root.rhythmAnswerCardTextSize
                                             height: implicitHeight
@@ -559,11 +534,11 @@ Item {
 
                                         accuracy: modelData.meterAccuracy
                                         anchors.horizontalCenter: parent.horizontalCenter
-                                        height: Kirigami.Units.gridUnit * 5.8
+                                        height: implicitHeight
                                         meterKind: "onset"
                                         readoutText: modelData.meterText
                                         value: modelData.meterValue
-                                        width: height
+                                        width: Math.min(Kirigami.Units.gridUnit * 8, parent.parent.width - Kirigami.Units.largeSpacing * 2)
                                     }
                                 }
                             }

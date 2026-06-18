@@ -39,7 +39,9 @@ Item {
     property real listeningStartSeconds: -1
     readonly property int maximumExercises: Core.settingsController.testExerciseCount
     readonly property var microphone: Core.microphoneInputController
-    readonly property real noteCardWidth: scaleExercise ? Kirigami.Units.gridUnit * 12 : Kirigami.Units.gridUnit * 7
+    readonly property bool compactMode: !applicationWindow().wideScreen || Kirigami.Settings.isMobile
+    readonly property bool musicViewsTabbed: !applicationWindow().wideScreen && root.height > root.width
+    readonly property real noteCardWidth: scaleExercise ? Kirigami.Units.gridUnit * 19 : Kirigami.Units.gridUnit * 11
     property int onboardingCountIn: 0
     property bool onboardingPreviewActive: false
     property var onsetHits: []
@@ -184,16 +186,9 @@ Item {
         root.onsetMeterValue = 0;
         root.pitchMeterText = i18n("No pitch");
         root.onsetMeterText = i18n("No onset");
+        showReferenceNotes();
         root.viewState = "ready";
         Core.exerciseSessionController.finishQuestionGeneration();
-    }
-    function giveUpQuestion(): void {
-        if (root.viewState !== "ready") {
-            return;
-        }
-        root.score = 0;
-        root.viewState = "finished";
-        finishScoredQuestion();
     }
     function handleOnset(seconds: real): void {
         if (root.viewState !== "listening" || !root.scaleExercise) {
@@ -291,6 +286,31 @@ Item {
             return i18n("%1 - Base: %2 - Targets: %3", translatedExerciseName, base, root.targetNotes.map(note => noteName(note)).join(", "));
         }
         return i18n("%1 - Base: %2 - Target: %3", translatedExerciseName, base, noteName(root.targetNotes[0]));
+    }
+    function referenceNotes(): var {
+        if (root.rootNote <= 0 || root.targetNotes.length === 0) {
+            return [];
+        }
+        return [root.rootNote].concat(root.targetNotes);
+    }
+    function showReferenceNotes(): void {
+        if (pianoView === null || sheetMusicView === null) {
+            return;
+        }
+
+        const notes = referenceNotes();
+        pianoView.clearAllMarks();
+        sheetMusicView.clearAllMarks();
+        if (notes.length === 0) {
+            return;
+        }
+
+        pianoView.noteMark(0, root.rootNote, 0, "white");
+        for (let i = 0; i < root.targetNotes.length; ++i) {
+            pianoView.noteMark(0, root.targetNotes[i], 0, root.cardColor(i));
+        }
+        pianoView.scrollToMarkedKeys();
+        sheetMusicView.model = notes;
     }
     function startExercise(): void {
         if (root.currentExercise === undefined || root.viewState === "counting" || root.viewState === "listening") {
@@ -391,8 +411,11 @@ Item {
         root.testScoreTotal = 0;
         root.exerciseName = "";
         root.viewState = "idle";
+        pianoView.clearAllMarks();
+        sheetMusicView.clearAllMarks();
         if (root.currentExercise !== undefined) {
             Core.exerciseSessionController.resetForExercise();
+            Qt.callLater(root.generateQuestion);
         }
     }
 
@@ -475,7 +498,7 @@ Item {
                     Layout.preferredHeight: Kirigami.Units.iconSizes.medium
                     Layout.preferredWidth: Kirigami.Units.iconSizes.medium
                     source: root.currentExerciseIconName
-                    visible: root.currentExerciseIconName.length > 0
+                    visible: root.currentExerciseIconName.length > 0 && !root.compactMode
                 }
                 ColumnLayout {
                     Layout.fillWidth: true
@@ -500,7 +523,7 @@ Item {
                     RowLayout {
                         id: actionButtons
 
-                        readonly property real buttonWidth: Math.max(startQuestionButton.implicitWidth, giveUpButton.implicitWidth, testButton.implicitWidth)
+                        readonly property real buttonWidth: Math.max(startQuestionButton.implicitWidth, testButton.implicitWidth)
 
                         Layout.alignment: Qt.AlignHCenter
                         Layout.topMargin: Kirigami.Units.smallSpacing
@@ -519,15 +542,6 @@ Item {
                                 }
                                 root.startExercise();
                             }
-                        }
-                        QQC2.Button {
-                            id: giveUpButton
-
-                            Layout.preferredWidth: actionButtons.buttonWidth
-                            enabled: root.targetNotes.length > 0 && root.viewState === "ready"
-                            text: i18n("Give Up")
-
-                            onClicked: root.giveUpQuestion()
                         }
                         QQC2.Button {
                             id: testButton
@@ -596,7 +610,7 @@ Item {
 
                                 Layout.preferredHeight: noteColumn.implicitHeight + Kirigami.Units.largeSpacing * 2
                                 Layout.preferredWidth: root.noteCardWidth
-                                color: root.cardColor(index)
+                                color: Kirigami.Theme.backgroundColor
                                 radius: Kirigami.Units.cornerRadius
 
                                 border {
@@ -611,34 +625,38 @@ Item {
 
                                     QQC2.Label {
                                         anchors.horizontalCenter: parent.horizontalCenter
-                                        color: "#202124"
+                                        color: Kirigami.Theme.textColor
                                         font.bold: true
                                         horizontalAlignment: Text.AlignHCenter
                                         text: root.noteName(modelData.midi)
                                         width: parent.parent.width - Kirigami.Units.largeSpacing * 2
                                     }
                                     Row {
+                                        id: metersRow
+
+                                        readonly property real meterWidth: Math.min(Kirigami.Units.gridUnit * 8, root.scaleExercise ? (noteColumn.parent.width - Kirigami.Units.largeSpacing * 2 - spacing) / 2 : noteColumn.parent.width - Kirigami.Units.largeSpacing * 2)
+
                                         anchors.horizontalCenter: parent.horizontalCenter
                                         spacing: Kirigami.Units.smallSpacing
 
                                         GraphicalMeter {
                                             accuracy: modelData.pitchAccuracy
                                             anchors.verticalCenter: parent.verticalCenter
-                                            height: Kirigami.Units.gridUnit * 5.8
+                                            height: implicitHeight
                                             meterKind: "pitch"
                                             readoutText: modelData.pitchText
                                             value: modelData.pitchValue
-                                            width: height
+                                            width: metersRow.meterWidth
                                         }
                                         GraphicalMeter {
                                             accuracy: modelData.onsetAccuracy
                                             anchors.verticalCenter: parent.verticalCenter
-                                            height: visible ? Kirigami.Units.gridUnit * 5.8 : 0
+                                            height: visible ? implicitHeight : 0
                                             meterKind: "onset"
                                             readoutText: modelData.onsetText
                                             value: modelData.onsetValue
                                             visible: root.scaleExercise
-                                            width: height
+                                            width: metersRow.meterWidth
                                         }
                                     }
                                 }
@@ -676,6 +694,80 @@ Item {
                         }
                         Qt.callLater(root.microphone.calibrateNoiseFloor);
                     }
+                }
+            }
+        }
+        ColumnLayout {
+            id: musicPanel
+
+            readonly property real viewHeight: Math.max(sheetMusicView.implicitHeight, pianoView.implicitHeight)
+
+            Layout.bottomMargin: root.contentPadding
+            Layout.fillWidth: true
+            Layout.leftMargin: root.contentPadding
+            Layout.maximumHeight: viewHeight + (musicTabs.visible ? musicTabs.implicitHeight + spacing : 0)
+            Layout.preferredHeight: viewHeight + (musicTabs.visible ? musicTabs.implicitHeight + spacing : 0)
+            Layout.rightMargin: root.contentPadding
+            spacing: Kirigami.Units.smallSpacing
+
+            GridLayout {
+                id: musicViewsLayout
+
+                readonly property real musicViewWidth: tabbed ? width : (width - columnSpacing) / 2
+                readonly property bool tabbed: root.musicViewsTabbed
+
+                Layout.fillWidth: true
+                Layout.preferredHeight: musicPanel.viewHeight
+                columnSpacing: Kirigami.Units.largeSpacing * 2
+                columns: tabbed ? 1 : 2
+                rowSpacing: Kirigami.Units.largeSpacing
+                uniformCellWidths: !tabbed
+
+                Item {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: musicPanel.viewHeight
+                    Layout.preferredWidth: musicViewsLayout.musicViewWidth
+                    visible: !musicViewsLayout.tabbed || musicTabs.currentIndex === 0
+
+                    PianoView {
+                        id: pianoView
+
+                        height: Math.min(sheetMusicView.staffGroupHeight, parent.height)
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                            verticalCenter: parent.verticalCenter
+                        }
+                    }
+                }
+                Item {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: musicPanel.viewHeight
+                    Layout.preferredWidth: musicViewsLayout.musicViewWidth
+                    clip: true
+                    visible: !musicViewsLayout.tabbed || musicTabs.currentIndex === 1
+
+                    SheetMusicView {
+                        id: sheetMusicView
+
+                        anchors.fill: parent
+                        spaced: true
+                    }
+                }
+            }
+            QQC2.TabBar {
+                id: musicTabs
+
+                Layout.fillWidth: true
+                position: QQC2.TabBar.Footer
+                visible: root.musicViewsTabbed
+
+                QQC2.TabButton {
+                    text: i18n("Keyboard")
+                }
+                QQC2.TabButton {
+                    text: i18n("Staff")
                 }
             }
         }
