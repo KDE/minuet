@@ -19,7 +19,7 @@ Item {
     property string meterKind: "pitch"
     readonly property real maximumNeedleAngle: meterKind === "pitch" ? 52 : 58
     readonly property real needleAngle: clampedValue * maximumNeedleAngle
-    readonly property real needleFacePivotY: meterKind === "pitch" ? 0.617 : 0.765
+    readonly property real needleFacePivotY: 0.617//meterKind === "pitch" ? 0.617 : 0.765
     readonly property real needleLocalPivotY: meterKind === "pitch" ? 0.812 : 0.765
     readonly property real needleScale: 0.53//meterKind === "pitch" ? 0.53 : 0.80
     readonly property string needleSource: "qrc:/icons/meter-needle.png"

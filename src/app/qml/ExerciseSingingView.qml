@@ -579,6 +579,9 @@ Item {
                 contentHeight: Math.max(height, noteGrid.implicitHeight)
                 contentWidth: width
 
+                Onboarding.groups: ["singing"]
+		Onboarding.texts: [i18n("Sing the note cards in order. The current card is highlighted; borders show correctness after detection."), i18n("Pitch meters point left for flat notes and right for sharp notes. Scale exercises also show a tempo meter for each note.")]
+
                 Item {
                     id: noteCenter
 
@@ -590,8 +593,6 @@ Item {
 
                         readonly property int maximumColumns: Math.max(1, Math.floor((parent.width + columnSpacing) / (root.noteCardWidth + columnSpacing)))
 
-                        Onboarding.groups: ["singing"]
-                        Onboarding.texts: [i18n("Sing the note cards in order. The current card is highlighted; borders show correctness after detection."), i18n("Pitch meters point left for flat notes and right for sharp notes. Scale exercises also show a tempo meter for each note.")]
                         anchors.centerIn: parent
                         columnSpacing: Kirigami.Units.smallSpacing
                         columns: Math.max(1, Math.min(root.displayedTargetStates.length, maximumColumns))
