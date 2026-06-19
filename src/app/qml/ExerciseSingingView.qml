@@ -14,6 +14,7 @@ Item {
     id: root
 
     readonly property real beatMs: 60000 / Core.settingsController.exerciseSpeed
+    readonly property bool compactMode: !applicationWindow().wideScreen || Kirigami.Settings.isMobile
     readonly property real contentPadding: Kirigami.Units.largeSpacing * 2
     property int countIn: 0
     property bool countInStarted: false
@@ -39,7 +40,6 @@ Item {
     property real listeningStartSeconds: -1
     readonly property int maximumExercises: Core.settingsController.testExerciseCount
     readonly property var microphone: Core.microphoneInputController
-    readonly property bool compactMode: !applicationWindow().wideScreen || Kirigami.Settings.isMobile
     readonly property bool musicViewsTabbed: !applicationWindow().wideScreen && root.height > root.width
     readonly property real noteCardWidth: scaleExercise ? Kirigami.Units.gridUnit * 19 : Kirigami.Units.gridUnit * 11
     property int onboardingCountIn: 0
@@ -573,14 +573,13 @@ Item {
             Flickable {
                 id: noteViewport
 
+                Onboarding.groups: ["singing"]
+                Onboarding.texts: [i18n("Sing the note cards in order. The current card is highlighted; borders show correctness after detection."), i18n("Pitch meters point left for flat notes and right for sharp notes. Scale exercises also show a tempo meter for each note.")]
                 anchors.fill: parent
                 boundsBehavior: Flickable.StopAtBounds
                 clip: true
                 contentHeight: Math.max(height, noteGrid.implicitHeight)
                 contentWidth: width
-
-                Onboarding.groups: ["singing"]
-		Onboarding.texts: [i18n("Sing the note cards in order. The current card is highlighted; borders show correctness after detection."), i18n("Pitch meters point left for flat notes and right for sharp notes. Scale exercises also show a tempo meter for each note.")]
 
                 Item {
                     id: noteCenter

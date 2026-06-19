@@ -206,7 +206,9 @@ if(MINUET_MOBILE_PLATFORM)
     file(GLOB minuet_EXERCISE_FILES CONFIGURE_DEPENDS
          ${CMAKE_SOURCE_DIR}/data/exercises/*.json
     )
-    list(FILTER minuet_EXERCISE_FILES EXCLUDE REGEX ".*/(singing-exercises|clapping-rhythm-exercises)\\.json$")
+    list(FILTER minuet_EXERCISE_FILES EXCLUDE REGEX
+         ".*/(singing-exercises|clapping-rhythm-exercises)\\.json$"
+    )
     string(CONCAT _minuet_soundfont
                   "${CMAKE_SOURCE_DIR}/src/plugins/fluidsynthsoundcontroller/"
                   "GeneralUser-v1.47.sf2"

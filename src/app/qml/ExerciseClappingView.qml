@@ -14,6 +14,7 @@ Item {
     id: root
 
     readonly property real beatMs: 60000 / Core.settingsController.exerciseSpeed
+    readonly property bool compactMode: !applicationWindow().wideScreen || Kirigami.Settings.isMobile
     readonly property real contentPadding: Kirigami.Units.largeSpacing * 2
     property int countIn: 0
     property bool countInStarted: false
@@ -37,7 +38,6 @@ Item {
     property var matchedOnsets: []
     readonly property int maximumExercises: Core.settingsController.testExerciseCount
     readonly property var microphone: Core.microphoneInputController
-    readonly property bool compactMode: !applicationWindow().wideScreen || Kirigami.Settings.isMobile
     property int onboardingCountIn: 0
     property bool onboardingPreviewActive: false
     readonly property real rhythmAnswerCardTextSize: Math.round(Kirigami.Theme.defaultFont.pointSize * 2.0)
