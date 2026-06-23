@@ -90,7 +90,7 @@ msgstr "大十三度上行"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending melodic intervals"
-msgstr ""
+msgstr "上行旋律音程"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -240,7 +240,7 @@ msgstr "比波普小调"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Bebop scales"
-msgstr ""
+msgstr "比波普音阶"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -315,7 +315,7 @@ msgstr "大十三度下行"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending melodic intervals"
-msgstr ""
+msgstr "下行旋律音程"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -405,7 +405,7 @@ msgstr "减三和弦"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished and augmented chords"
-msgstr ""
+msgstr "减三和弦与增三和弦"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -415,7 +415,7 @@ msgstr "各种减和弦"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished, first inversion"
-msgstr ""
+msgstr "减三和弦 - 第一转位"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -425,7 +425,7 @@ msgstr "减音阶（半-全）"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished inversions"
-msgstr ""
+msgstr "减三和弦及其转位"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -465,7 +465,7 @@ msgstr "属七和弦"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh, first inversion"
-msgstr ""
+msgstr "属七和弦 - 第一转位"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -475,17 +475,17 @@ msgstr "属七减五和弦"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh inversions"
-msgstr ""
+msgstr "属七和弦及其转位"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh, second inversion"
-msgstr ""
+msgstr "属七和弦 - 第二转位"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh, third inversion"
-msgstr ""
+msgstr "属七和弦 - 第三转位"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -515,12 +515,12 @@ msgstr "拓展和弦"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Fourths and fifths"
-msgstr ""
+msgstr "四度和五度"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Fourths, fifths, and octave"
-msgstr ""
+msgstr "四度、五度和八度"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -530,7 +530,7 @@ msgstr "半减七和弦"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Harmonic intervals"
-msgstr ""
+msgstr "和声音程"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -540,7 +540,7 @@ msgstr "和声大调"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Harmonic major scale and its modes"
-msgstr ""
+msgstr "和声大调音阶及其调式"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -550,27 +550,27 @@ msgstr "和声小调"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Harmonic minor scale and its modes"
-msgstr ""
+msgstr "和声小调音阶及其调式"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the chord and choose your answer"
-msgstr ""
+msgstr "聆听和弦，选出您的答案"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the interval and choose your answer"
-msgstr ""
+msgstr "聆听音程，选出您的答案"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the rhythm and choose your answers"
-msgstr ""
+msgstr "聆听节奏，选出您的答案"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the scale and choose your answer"
-msgstr ""
+msgstr "聆听音阶，选出您的答案"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -615,7 +615,7 @@ msgstr "洛克里亚bb7"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Lots of chords"
-msgstr ""
+msgstr "各种各样的和弦"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -655,7 +655,7 @@ msgstr "大十一和弦"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major, first inversion"
-msgstr ""
+msgstr "大三和弦 - 第一转位"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -665,7 +665,7 @@ msgstr "大十四度"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major inversions"
-msgstr ""
+msgstr "大三和弦的转位"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -685,7 +685,7 @@ msgstr "宫"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major scale and its modes"
-msgstr ""
+msgstr "大调音阶及其调式"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -695,7 +695,7 @@ msgstr "大二度"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major, second inversion"
-msgstr ""
+msgstr "大三和弦 - 第二转位"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -710,7 +710,7 @@ msgstr "大七度"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh, first inversion"
-msgstr ""
+msgstr "大七和弦 - 第一转位"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -720,17 +720,17 @@ msgstr "大七减五和弦"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh inversions"
-msgstr ""
+msgstr "大七和弦及其转位"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh, second inversion"
-msgstr ""
+msgstr "大七和弦 - 第二转位"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh, third inversion"
-msgstr ""
+msgstr "大七和弦 - 第三转位"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -770,7 +770,7 @@ msgstr "中等"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Melodic intervals"
-msgstr ""
+msgstr "旋律音程"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -795,7 +795,7 @@ msgstr "小十一和弦"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor, first inversion"
-msgstr ""
+msgstr "小三和弦 - 第一转位"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -805,7 +805,7 @@ msgstr "小十四度"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor inversions"
-msgstr ""
+msgstr "小三和弦及其转位"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -835,7 +835,7 @@ msgstr "小二度"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor, second inversion"
-msgstr ""
+msgstr "小三和弦 - 第二转位"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -850,22 +850,22 @@ msgstr "小七度"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh, first inversion"
-msgstr ""
+msgstr "小七和弦 - 第一转位"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh inversions"
-msgstr ""
+msgstr "小七和弦及其转位"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh, second inversion"
-msgstr ""
+msgstr "小七和弦 - 第二转位"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh, third inversion"
-msgstr ""
+msgstr "小七和弦 - 第三转位"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -910,7 +910,7 @@ msgstr "八度+三全音"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Pentatonic major scale and its modes"
-msgstr ""
+msgstr "五声调式"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -960,12 +960,12 @@ msgstr "弗里几亚属调式"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice distinguishing diminished and augmented triads by ear."
-msgstr ""
+msgstr "练耳：分辨减三和弦与增三和弦。"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice distinguishing minor and major triads by ear."
-msgstr ""
+msgstr "练耳：分辨小三和弦与大三和弦。"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -978,62 +978,62 @@ msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying ascending melodic compound intervals from a second "
 "through a fifteenth by ear."
-msgstr ""
+msgstr "练耳：辨别上行音程（二度~十五度）。"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic fourths and fifths by ear."
-msgstr ""
+msgstr "练耳：辨别上行音程（四度和五度）。"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying ascending melodic fourths, fifths, and octaves by ear."
-msgstr ""
+msgstr "练耳：辨别上行音程（四度、五度和八度）。"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying ascending melodic intervals from a second through an "
 "octave by ear."
-msgstr ""
+msgstr "练耳：辨别上行音程（二度~八度）。"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying ascending melodic intervals from a second through a "
 "tenth by ear."
-msgstr ""
+msgstr "练耳：辨别上行音程（二度~十度）。"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic ninths by ear."
-msgstr ""
+msgstr "练耳：辨别上行音程（九度）。"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic seconds and thirds by ear."
-msgstr ""
+msgstr "练耳：辨别上行音程（二度和三度）。"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic seconds by ear."
-msgstr ""
+msgstr "练耳：辨别上行音程。"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic sevenths and ninths by ear."
-msgstr ""
+msgstr "练耳：辨别上行音程（七度和九度）。"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic sevenths by ear."
-msgstr ""
+msgstr "练耳：辨别上行音程（七度）。"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying ascending melodic sixths and sevenths by ear."
-msgstr ""
+msgstr "练耳：辨别上行音程（六度和七度）。"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
