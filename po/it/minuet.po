@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-15 00:39+0000\n"
-"PO-Revision-Date: 2026-06-04 14:13+0200\n"
+"PO-Revision-Date: 2026-06-15 09:52+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 26.04.1\n"
+"X-Generator: Lokalize 26.04.2\n"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1926,12 +1926,13 @@ msgstr[1] "%2 - %1 elementi"
 #, kde-format
 msgctxt "@action:button"
 msgid "Help"
-msgstr ""
+msgstr "Aiuto"
 
 #: src/app/qml/ExercisePage.qml:82
 #, kde-format
 msgid "Rhythm questions begin with a four-beat count-in."
 msgstr ""
+"Le domande sul ritmo iniziano con un conteggio iniziale di quattro tempi."
 
 #: src/app/qml/ExercisePage.qml:157
 #, kde-format
@@ -1939,6 +1940,8 @@ msgid ""
 "This is your first rhythmic exercise. Start a quick guide? You can open it "
 "later from the Help icon."
 msgstr ""
+"Questo è il tuo primo esercizio ritmico. Vuoi iniziare una guida rapida? "
+"Puoi aprirla in seguito dall'icona Aiuto."
 
 #: src/app/qml/ExercisePage.qml:157
 #, kde-format
@@ -1946,29 +1949,30 @@ msgid ""
 "This is your first melodic exercise. Start a quick guide? You can open it "
 "later from the Help icon."
 msgstr ""
+"Questo è il tuo primo esercizio melodico. Vuoi iniziare una guida rapida? "
+"Puoi aprirla più tardi dall'icona Aiuto."
 
 #: src/app/qml/ExercisePage.qml:158
 #, kde-format
 msgid "First Time Here"
-msgstr ""
+msgstr "Prima volta qui"
 
 #: src/app/qml/ExercisePage.qml:164
-#, fuzzy, kde-format
-#| msgid "Start Test"
+#, kde-format
 msgctxt "@action:button"
 msgid "Start Guide"
-msgstr "Avvia il test"
+msgstr "Avvia la guida"
 
 #: src/app/qml/ExercisePage.qml:173
 #, kde-format
 msgctxt "@action:button"
 msgid "Not Now"
-msgstr ""
+msgstr "Non ora"
 
 #: src/app/qml/ExerciseView.qml:321 src/app/qml/ExerciseView.qml:322
 #, kde-format
 msgid "These messages explain the question and show its status."
-msgstr ""
+msgstr "Questi messaggi spiegano la domanda e ne indicano lo stato."
 
 #: src/app/qml/ExerciseView.qml:338
 #, kde-format
@@ -1984,7 +1988,7 @@ msgstr "Riproduzione…"
 #: src/app/qml/ExerciseView.qml:373 src/app/qml/ExerciseView.qml:374
 #, kde-format
 msgid "Start a new question or replay the current one."
-msgstr ""
+msgstr "Avvia una nuova domanda o riproduci quella attuale."
 
 #: src/app/qml/ExerciseView.qml:378
 #, kde-format
@@ -1999,7 +2003,7 @@ msgstr "Ascolta la domanda"
 #: src/app/qml/ExerciseView.qml:393 src/app/qml/ExerciseView.qml:394
 #, kde-format
 msgid "Give up to reveal the correct answer."
-msgstr ""
+msgstr "Rinuncia a rivelare la risposta corretta."
 
 #: src/app/qml/ExerciseView.qml:398
 #, kde-format
@@ -2009,7 +2013,7 @@ msgstr "Rinuncia"
 #: src/app/qml/ExerciseView.qml:412 src/app/qml/ExerciseView.qml:413
 #, kde-format
 msgid "Start a test to answer several questions in a row."
-msgstr ""
+msgstr "Avvia un test in cui devi rispondere a diverse domande di seguito."
 
 #: src/app/qml/ExerciseView.qml:417
 #, kde-format
@@ -2025,11 +2029,13 @@ msgstr "Avvia il test"
 #, kde-format
 msgid "Choose an answer here. Hover, or press and hold, to preview it below."
 msgstr ""
+"Seleziona una risposta qui. Passa il mouse sopra la risposta oppure tieni "
+"premuto per visualizzarne l'anteprima qui sotto."
 
 #: src/app/qml/ExerciseView.qml:457
 #, kde-format
 msgid "Choose each rhythm part from these available answers."
-msgstr ""
+msgstr "Scegli ciascuna parte ritmica tra le risposte disponibili."
 
 #: src/app/qml/ExerciseView.qml:479
 #, kde-format
@@ -2044,12 +2050,12 @@ msgstr "Scorri per altro"
 #: src/app/qml/ExerciseView.qml:533
 #, kde-format
 msgid "Your selected answer appears here."
-msgstr ""
+msgstr "La risposta che hai selezionato appare qui."
 
 #: src/app/qml/ExerciseView.qml:534
 #, kde-format
 msgid "Build your rhythm answer here, one part at a time."
-msgstr ""
+msgstr "Costruisci qui la tua risposta ritmica, una parte alla volta."
 
 #: src/app/qml/ExerciseView.qml:551
 #, kde-format
@@ -2083,12 +2089,12 @@ msgstr "Backspace"
 #: src/app/qml/ExerciseView.qml:652
 #, kde-format
 msgid "The keyboard shows the notes in the question or preview."
-msgstr ""
+msgstr "La tastiera mostra le note nella domanda o nell'anteprima."
 
 #: src/app/qml/ExerciseView.qml:680
 #, kde-format
 msgid "The staff shows the same notes in music notation."
-msgstr ""
+msgstr "Il pentagramma mostra le stesse note in notazione musicale."
 
 #: src/app/qml/ExerciseView.qml:708
 #, kde-format
@@ -2119,6 +2125,7 @@ msgstr "Home"
 #, kde-format
 msgid "Run this guide again any time from the Help icon."
 msgstr ""
+"Esegui nuovamente questa guida in qualsiasi momento tramite l'icona Aiuto."
 
 #: src/app/qml/Main.qml:138
 #, kde-format
