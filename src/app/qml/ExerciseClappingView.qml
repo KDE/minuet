@@ -14,9 +14,13 @@ Item {
     id: root
 
     readonly property real beatMs: 60000 / Core.settingsController.exerciseSpeed
+    readonly property real cardHorizontalPadding: Kirigami.Units.largeSpacing * 2
     readonly property bool compactMode: !applicationWindow().wideScreen || Kirigami.Settings.isMobile
     readonly property real contentPadding: Kirigami.Units.largeSpacing * 2
     property int countIn: 0
+    readonly property real countInOverlaySize: Math.max(Kirigami.Units.gridUnit * 3, headerLayout.height)
+    readonly property real countInOverlayX: Math.max(0, width - Kirigami.Units.largeSpacing - root.countInOverlaySize)
+    readonly property real countInOverlayY: headerLayout.y
     property bool countInStarted: false
     property string countPhase: "idle"
     property var currentExercise
@@ -25,6 +29,7 @@ Item {
         {
             "state": "pending",
             "onsets": [],
+            "startMs": 0,
             "endMs": root.beatMs,
             "name": "\uE1F0",
             "meterValue": 0,
@@ -42,7 +47,7 @@ Item {
     property bool onboardingPreviewActive: false
     readonly property real rhythmAnswerCardTextSize: Math.round(Kirigami.Theme.defaultFont.pointSize * 2.0)
     readonly property real rhythmAnswerCardVerticalOffset: Math.round(rhythmAnswerCardTextSize * 0.22)
-    readonly property real rhythmCardWidth: Kirigami.Units.gridUnit * 11
+    readonly property real rhythmCardWidth: Math.ceil(Math.max(Kirigami.Units.gridUnit * 4, onsetMeterProbe.implicitWidth) + root.cardHorizontalPadding)
     property int score: -1
     readonly property int selectedOptionCount: Core.settingsController.rhythmPatternCount
     property int testScoreTotal: 0
@@ -97,6 +102,40 @@ Item {
         }
         return dotted * root.beatMs * 4 / denominator;
     }
+    function expectedIntervalMatches(expectedIndex: int, elapsedMs: real): bool {
+        if (expectedIndex <= 0) {
+            return true;
+        }
+
+        const previous = root.expectedOnsets[expectedIndex - 1];
+        if (!previous.matched || previous.matchedTimeMs < 0) {
+            return true;
+        }
+
+        const expectedInterval = root.expectedOnsets[expectedIndex].timeMs - previous.timeMs;
+        const actualInterval = elapsedMs - previous.matchedTimeMs;
+        return Math.abs(actualInterval - expectedInterval) <= root.toleranceMs;
+    }
+    function figureIndexForElapsed(elapsedMs: real): int {
+        if (elapsedMs < -root.toleranceMs || elapsedMs > totalDurationMs() + root.toleranceMs) {
+            return -1;
+        }
+        for (let i = 0; i < root.figureStates.length; ++i) {
+            if (elapsedMs >= root.figureStates[i].startMs && elapsedMs < root.figureStates[i].endMs) {
+                return i;
+            }
+        }
+        let closestIndex = -1;
+        let closestDistance = Number.MAX_VALUE;
+        for (let i = 0; i < root.figureStates.length; ++i) {
+            const distance = Math.min(Math.abs(elapsedMs - root.figureStates[i].startMs), Math.abs(elapsedMs - root.figureStates[i].endMs));
+            if (distance <= root.toleranceMs && distance < closestDistance) {
+                closestDistance = distance;
+                closestIndex = i;
+            }
+        }
+        return closestIndex;
+    }
     function finishExercise(): void {
         if (root.viewState !== "listening") {
             return;
@@ -112,9 +151,9 @@ Item {
         if (root.microphone) {
             root.microphone.stop();
         }
-        refreshFigureStates(totalDurationMs() + root.toleranceMs + 1);
-        const matched = root.expectedOnsets.filter(onset => onset.matched).length;
-        root.score = root.expectedOnsets.length > 0 ? Math.round(matched * 100 / root.expectedOnsets.length) : 0;
+        const finalStates = refreshFigureStates(totalDurationMs() + root.toleranceMs + 1);
+        const correct = finalStates.filter(state => state.state === "correct").length;
+        root.score = finalStates.length > 0 ? Math.round(correct * 100 / finalStates.length) : 0;
         root.viewState = "finished";
         finishScoredQuestion();
     }
@@ -148,14 +187,17 @@ Item {
                 onsetList.push({
                     "figure": figureIndex,
                     "timeMs": cursor,
-                    "matched": false
+                    "matched": false,
+                    "matchedTimeMs": -1
                 });
                 cursor += durationForToken(part);
             }
             states.push({
                 "state": "pending",
                 "onsets": figureOnsets,
+                "startMs": figureStart,
                 "endMs": cursor,
+                "extraInputCount": 0,
                 "name": selected[figureIndex].name,
                 "meterValue": 0,
                 "meterAccuracy": 0,
@@ -186,25 +228,34 @@ Item {
                 bestIndex = i;
             }
         }
-        if (bestIndex >= 0 && bestError <= root.toleranceMs) {
+        const matchedExpected = bestIndex >= 0 && bestError <= root.toleranceMs && expectedIntervalMatches(bestIndex, elapsedMs);
+        if (matchedExpected) {
             let onsets = root.expectedOnsets.slice();
             onsets[bestIndex].matched = true;
+            onsets[bestIndex].matchedTimeMs = elapsedMs;
             root.expectedOnsets = onsets;
         }
-        if (bestIndex >= 0) {
-            let states = root.figureStates.slice();
-            const figureIndex = root.expectedOnsets[bestIndex].figure;
-            const signedError = elapsedMs - root.expectedOnsets[bestIndex].timeMs;
+        let states = root.figureStates.slice();
+        const figureIndex = matchedExpected ? root.expectedOnsets[bestIndex].figure : figureIndexForElapsed(elapsedMs);
+        if (figureIndex >= 0) {
+            const signedError = matchedExpected ? elapsedMs - root.expectedOnsets[bestIndex].timeMs : elapsedMs - root.figureStates[figureIndex].startMs;
             states[figureIndex].meterValue = timingMeterValue(signedError);
             states[figureIndex].meterAccuracy = Math.max(0, 1 - Math.abs(signedError) / root.toleranceMs);
             states[figureIndex].meterText = timingMeterText(signedError);
+            if (!matchedExpected) {
+                states[figureIndex].extraInputCount += 1;
+                states[figureIndex].state = "wrong";
+            }
             root.figureStates = states;
         }
         refreshFigureStates(elapsedMs);
     }
-    function refreshFigureStates(elapsedMs: real): void {
+    function refreshFigureStates(elapsedMs: real): var {
         let states = root.figureStates.slice();
         for (let i = 0; i < states.length; ++i) {
+            if (states[i].state === "wrong") {
+                continue;
+            }
             const allMatched = states[i].onsets.every(index => root.expectedOnsets[index].matched);
             if (allMatched) {
                 states[i].state = "correct";
@@ -218,6 +269,7 @@ Item {
             }
         }
         root.figureStates = states;
+        return states;
     }
     function startExercise(): void {
         if (root.currentExercise === undefined || root.viewState === "counting" || root.viewState === "listening") {
@@ -309,6 +361,12 @@ Item {
 
         source: "SheetMusicView/Bravura.otf"
     }
+    GraphicalMeter {
+        id: onsetMeterProbe
+
+        meterKind: "onset"
+        visible: false
+    }
     Timer {
         id: progressTimer
 
@@ -316,8 +374,8 @@ Item {
         repeat: true
 
         onTriggered: {
-            if (root.microphone && root.microphone.lastOnsetSeconds >= 0) {
-                root.refreshFigureStates((root.microphone.lastOnsetSeconds - root.listeningStartSeconds) * 1000);
+            if (root.viewState === "listening" && root.microphone) {
+                root.refreshFigureStates(Math.max(0, (root.microphone.analysisTimeSeconds - root.listeningStartSeconds) * 1000));
             }
         }
     }
@@ -382,12 +440,18 @@ Item {
                 spacing: Kirigami.Units.largeSpacing
 
                 Kirigami.Icon {
-                    Layout.preferredHeight: Kirigami.Units.iconSizes.medium
-                    Layout.preferredWidth: Kirigami.Units.iconSizes.medium
+                    id: exerciseIcon
+
+                    readonly property real sideLength: visible ? headerCenter.implicitHeight : 0
+
+                    Layout.preferredHeight: exerciseIcon.sideLength * 0.75
+                    Layout.preferredWidth: exerciseIcon.sideLength
                     source: root.currentExerciseIconName
                     visible: root.currentExerciseIconName.length > 0 && !root.compactMode
                 }
                 ColumnLayout {
+                    id: headerCenter
+
                     Layout.fillWidth: true
                     Onboarding.groups: ["clapping"]
                     Onboarding.texts: [i18n("Start a question, listen to the count, then clap each rhythm figure in time.")]
@@ -447,6 +511,11 @@ Item {
                         }
                     }
                 }
+                Item {
+                    Layout.preferredHeight: 1
+                    Layout.preferredWidth: exerciseIcon.sideLength
+                    visible: exerciseIcon.visible
+                }
             }
         }
         QQC2.Frame {
@@ -463,27 +532,30 @@ Item {
                 anchors.fill: parent
                 boundsBehavior: Flickable.StopAtBounds
                 clip: true
-                contentHeight: Math.max(height, rhythmGrid.implicitHeight)
-                contentWidth: width
+                contentHeight: Math.max(height, rhythmRow.implicitHeight)
+                contentWidth: Math.max(width, rhythmRow.implicitWidth)
+                flickableDirection: Flickable.HorizontalFlick
+
+                QQC2.ScrollBar.horizontal: QQC2.ScrollBar {
+                    policy: QQC2.ScrollBar.AsNeeded
+                }
 
                 Item {
-                    id: rhythmCenter
+                    id: rhythmContent
 
-                    height: Math.max(rhythmViewport.height, rhythmGrid.implicitHeight)
-                    width: rhythmViewport.width
+                    readonly property real centeredInset: Math.max(0, (rhythmViewport.width - rhythmRow.implicitWidth) / 2)
 
-                    GridLayout {
-                        id: rhythmGrid
+                    height: Math.max(rhythmViewport.height, rhythmRow.implicitHeight)
+                    width: rhythmViewport.contentWidth
 
-                        readonly property int maximumColumns: Math.max(1, Math.floor((parent.width + columnSpacing) / (root.rhythmCardWidth + columnSpacing)))
+                    Row {
+                        id: rhythmRow
 
                         Onboarding.groups: ["clapping"]
-                        Onboarding.texts: [i18n("Each colored card is one rhythm figure. Green borders mark figures clapped correctly; red borders mark missed figures."), i18n("The tempo meter below each figure points left for late claps and right for advanced claps.")]
-                        anchors.centerIn: parent
-                        columnSpacing: Kirigami.Units.smallSpacing
-                        columns: Math.max(1, Math.min(root.displayedFigureStates.length, maximumColumns))
-                        rowSpacing: Kirigami.Units.smallSpacing
-                        width: Math.min(parent.width, columns * root.rhythmCardWidth + Math.max(0, columns - 1) * columnSpacing)
+                        Onboarding.texts: [i18n("Each colored card is one rhythm figure. Green borders mark figures clapped correctly; red borders mark missed figures."), i18n("The onset meter below each figure lights below the center for advanced claps and above the center for late claps.")]
+                        anchors.verticalCenter: parent.verticalCenter
+                        spacing: Kirigami.Units.smallSpacing
+                        x: rhythmContent.centeredInset
 
                         Onboarding.onAboutToShow: root.onboardingPreviewActive = true
                         Onboarding.onHide: root.onboardingPreviewActive = false
@@ -495,10 +567,10 @@ Item {
                                 required property int index
                                 required property var modelData
 
-                                Layout.preferredHeight: rhythmColumn.implicitHeight + Kirigami.Units.largeSpacing * 2
-                                Layout.preferredWidth: root.rhythmCardWidth
                                 color: Kirigami.Theme.backgroundColor
+                                height: rhythmColumn.implicitHeight + Kirigami.Units.largeSpacing * 2
                                 radius: Kirigami.Units.cornerRadius
+                                width: root.rhythmCardWidth
 
                                 border {
                                     color: root.stateBorderColor(modelData.state)
@@ -509,10 +581,11 @@ Item {
 
                                     anchors.centerIn: parent
                                     spacing: Kirigami.Units.smallSpacing
+                                    width: parent.width - root.cardHorizontalPadding
 
                                     Item {
                                         height: Kirigami.Units.gridUnit * 4
-                                        width: parent.parent.width - Kirigami.Units.largeSpacing * 2
+                                        width: parent.width
 
                                         Text {
                                             id: rhythmText
@@ -538,7 +611,7 @@ Item {
                                         meterKind: "onset"
                                         readoutText: modelData.meterText
                                         value: modelData.meterValue
-                                        width: Math.min(Kirigami.Units.gridUnit * 8, parent.parent.width - Kirigami.Units.largeSpacing * 2)
+                                        width: implicitWidth
                                     }
                                 }
                             }

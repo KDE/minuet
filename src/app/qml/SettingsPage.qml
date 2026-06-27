@@ -353,7 +353,7 @@ FormCard.FormCardPage {
                     from: 10
                     label: i18n("Pitch tolerance")
                     suffix: i18n("cents")
-                    to: 100
+                    to: 49
                     value: Core.settingsController.singingPitchToleranceCents
 
                     onMoved: function (value) {

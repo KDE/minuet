@@ -34,6 +34,9 @@ Item {
     readonly property bool compactMode: !applicationWindow().wideScreen || Kirigami.Settings.isMobile
     readonly property real contentPadding: Kirigami.Units.largeSpacing * 2
     property alias countIn: internal.countIn
+    readonly property real countInOverlaySize: Math.max(Kirigami.Units.gridUnit * 3, headerLayout.height)
+    readonly property real countInOverlayX: Math.max(0, width - Kirigami.Units.largeSpacing - exerciseView.countInOverlaySize)
+    readonly property real countInOverlayY: headerLayout.y
     property var currentExercise
     property string currentExerciseIconName: ""
     readonly property bool exercisePlaying: Core.soundController !== null && Core.soundController.state === ISoundController.PlayingState

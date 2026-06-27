@@ -190,7 +190,7 @@ private:
     int m_instrument = 0;
     int m_rhythmInstrument = 37;
     int m_clappingCorrectnessTolerancePercent = 25;
-    int m_singingPitchToleranceCents = 50;
+    int m_singingPitchToleranceCents = 49;
     bool m_singingDisregardOctaveDifference = true;
     int m_singingScoringMode = 0;
     int m_singingVoiceClass = 2;

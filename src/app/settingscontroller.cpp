@@ -32,7 +32,7 @@ void SettingsController::load()
     m_instrument = std::clamp(settings.value(u"Instrument"_s, m_instrument).toInt(), 0, 127);
     m_rhythmInstrument = std::clamp(settings.value(u"RhythmInstrument"_s, m_rhythmInstrument).toInt(), 35, 81);
     m_clappingCorrectnessTolerancePercent = std::clamp(settings.value(u"ClappingCorrectnessTolerancePercent"_s, m_clappingCorrectnessTolerancePercent).toInt(), 5, 100);
-    m_singingPitchToleranceCents = std::clamp(settings.value(u"SingingPitchToleranceCents"_s, m_singingPitchToleranceCents).toInt(), 10, 100);
+    m_singingPitchToleranceCents = std::clamp(settings.value(u"SingingPitchToleranceCents"_s, m_singingPitchToleranceCents).toInt(), 10, 49);
     m_singingDisregardOctaveDifference = settings.value(u"SingingDisregardOctaveDifference"_s, m_singingDisregardOctaveDifference).toBool();
     m_singingScoringMode = std::clamp(settings.value(u"SingingScoringMode"_s, m_singingScoringMode).toInt(), 0, 1);
     m_singingVoiceClass = std::clamp(settings.value(u"SingingVoiceClass"_s, m_singingVoiceClass).toInt(), 0, 3);
@@ -375,7 +375,7 @@ void SettingsController::setClappingCorrectnessTolerancePercent(int tolerance)
 
 void SettingsController::setSingingPitchToleranceCents(int cents)
 {
-    cents = std::clamp(cents, 10, 100);
+    cents = std::clamp(cents, 10, 49);
     if (m_singingPitchToleranceCents == cents) {
         return;
     }

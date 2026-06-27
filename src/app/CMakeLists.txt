@@ -191,9 +191,6 @@ qt_add_resources(
     icons/22-actions-minuet-rhythms-symbolic.svg
     icons/22-actions-minuet-scales-symbolic.svg
     icons/22-actions-minuet-sing-symbolic.svg
-    icons/pitch-meter-background.png
-    icons/tempo-meter-background.png
-    icons/meter-needle.png
     qtquickcontrols2.conf
     +android/qtquickcontrols2.conf
     +windows/qtquickcontrols2.conf
@@ -205,9 +202,6 @@ if(MINUET_MOBILE_PLATFORM)
     )
     file(GLOB minuet_EXERCISE_FILES CONFIGURE_DEPENDS
          ${CMAKE_SOURCE_DIR}/data/exercises/*.json
-    )
-    list(FILTER minuet_EXERCISE_FILES EXCLUDE REGEX
-         ".*/(singing-exercises|clapping-rhythm-exercises)\\.json$"
     )
     string(CONCAT _minuet_soundfont
                   "${CMAKE_SOURCE_DIR}/src/plugins/fluidsynthsoundcontroller/"
