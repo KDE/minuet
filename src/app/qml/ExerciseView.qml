@@ -324,6 +324,7 @@ Item {
                     anchors {
                         bottom: headerSeparator.top
                         left: parent.left
+                        margins: Kirigami.Units.largeSpacing
                         right: parent.right
                         top: parent.top
                     }
@@ -348,7 +349,6 @@ Item {
                             id: questionMessages
 
                             Layout.fillWidth: true
-                            Layout.topMargin: 2 * Kirigami.Units.largeSpacing
                             Onboarding.groups: ["melodic", "rhythmic"]
                             Onboarding.texts: [i18n("These messages explain the question and show its status."), i18n("These messages explain the question and show its status.")]
                             spacing: 0
@@ -358,7 +358,7 @@ Item {
                                 Layout.maximumHeight: implicitHeight
                                 elide: Text.ElideRight
                                 horizontalAlignment: Text.AlignHCenter
-                                level: exerciseView.musicViewsTabbed ? 3 : 2
+                                level: 3
                                 text: {
                                     if (exerciseView.currentExercise === undefined) {
                                         return "";

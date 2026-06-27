@@ -461,14 +461,15 @@ Item {
                         Layout.fillWidth: true
                         elide: Text.ElideRight
                         horizontalAlignment: Text.AlignHCenter
-                        level: 2
+                        level: 3
                         text: root.score >= 0 ? i18n("Score: %1%", root.score) : i18n("Clap the rhythm")
                     }
-                    QQC2.Label {
+                    Kirigami.Heading {
                         Layout.fillWidth: true
                         color: Kirigami.Theme.disabledTextColor
                         elide: Text.ElideRight
                         horizontalAlignment: Text.AlignHCenter
+                        level: 3
                         text: root.viewState === "listening" ? i18n("Listening...") : Core.exerciseSessionController.isTest && Core.exerciseSessionController.statusText.length > 0 ? Core.exerciseSessionController.statusText : root.microphone ? root.microphone.status : i18n("No microphone input plugin available")
                     }
                     RowLayout {
@@ -515,6 +516,15 @@ Item {
                     Layout.preferredHeight: 1
                     Layout.preferredWidth: exerciseIcon.sideLength
                     visible: exerciseIcon.visible
+                }
+            }
+            Kirigami.Separator {
+                id: headerSeparator
+
+                anchors {
+                    bottom: parent.bottom
+                    left: parent.left
+                    right: parent.right
                 }
             }
         }

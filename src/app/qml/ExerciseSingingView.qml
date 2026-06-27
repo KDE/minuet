@@ -680,14 +680,15 @@ Item {
                         Layout.fillWidth: true
                         elide: Text.ElideRight
                         horizontalAlignment: Text.AlignHCenter
-                        level: 2
+                        level: 3
                         text: root.score >= 0 ? i18n("Score: %1%", root.score) : root.scaleExercise ? i18n("Sing the scale") : i18n("Sing the interval")
                     }
-                    QQC2.Label {
+                    Kirigami.Heading {
                         Layout.fillWidth: true
                         color: Kirigami.Theme.disabledTextColor
                         elide: Text.ElideRight
                         horizontalAlignment: Text.AlignHCenter
+                        level: 3
                         text: root.questionPitchMessage()
                     }
                     RowLayout {
@@ -734,6 +735,15 @@ Item {
                     Layout.preferredHeight: 1
                     Layout.preferredWidth: exerciseIcon.sideLength
                     visible: exerciseIcon.visible
+                }
+            }
+            Kirigami.Separator {
+                id: headerSeparator
+
+                anchors {
+                    bottom: parent.bottom
+                    left: parent.left
+                    right: parent.right
                 }
             }
         }
