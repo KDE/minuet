@@ -86,4 +86,3 @@ repos:
         entry: qmllint
         language: system
         files: ^src/app/qml/.*\.qml$
-        stages: [manual]

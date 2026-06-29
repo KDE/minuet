@@ -6,6 +6,7 @@
 #define MINUET_CORE_H
 
 #include <interfaces/isoundcontroller.h>
+#include <interfaces/imicrophoneinputcontroller.h>
 
 #include <QObject>
 #include <qqmlregistration.h>
@@ -37,6 +38,7 @@ class Core : public QObject
     QML_ELEMENT
     QML_SINGLETON
     Q_PROPERTY(Minuet::ISoundController *soundController READ soundController NOTIFY soundControllerChanged)
+    Q_PROPERTY(Minuet::IMicrophoneInputController *microphoneInputController READ microphoneInputController NOTIFY microphoneInputControllerChanged)
     Q_PROPERTY(Minuet::SettingsController *settingsController READ settingsController CONSTANT)
     Q_PROPERTY(Minuet::SheetMusicController *sheetMusicController READ sheetMusicController CONSTANT)
     Q_PROPERTY(Minuet::ExerciseCatalogController *exerciseCatalogController READ exerciseCatalogController CONSTANT)
@@ -52,6 +54,7 @@ public:
     static Core *self();
 
     ISoundController *soundController();
+    IMicrophoneInputController *microphoneInputController();
     SettingsController *settingsController();
     SheetMusicController *sheetMusicController();
     ExerciseCatalogController *exerciseCatalogController();
@@ -60,9 +63,11 @@ public:
     ExerciseSessionController *exerciseSessionController();
 
     void setSoundController(ISoundController *soundController);
+    void setMicrophoneInputController(IMicrophoneInputController *microphoneInputController);
 
 Q_SIGNALS:
     void soundControllerChanged(Minuet::ISoundController *newSoundController);
+    void microphoneInputControllerChanged(Minuet::IMicrophoneInputController *newMicrophoneInputController);
 
 private:
     explicit Core(QObject *parent = nullptr);
@@ -70,6 +75,7 @@ private:
     static Core *m_self;
 
     ISoundController *m_soundController;
+    IMicrophoneInputController *m_microphoneInputController;
     SettingsController *m_settingsController;
     SheetMusicController *m_sheetMusicController;
     ExerciseCatalogController *m_exerciseCatalogController;

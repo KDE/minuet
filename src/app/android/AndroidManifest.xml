@@ -5,6 +5,7 @@
           android:versionCode="${versionCode}"
           android:installLocation="auto">
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <!-- %%INSERT_PERMISSIONS -->
     <!-- %%INSERT_FEATURES -->
 

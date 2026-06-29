@@ -13,13 +13,32 @@ Kirigami.Page {
 
     property var currentExercise
     property string currentExerciseIconName: ""
+    readonly property string inputMode: currentExercise !== undefined && currentExercise["inputMode"] !== undefined ? currentExercise["inputMode"] : "manual"
     readonly property bool isRhythmic: currentExercise !== undefined && currentExercise["playMode"] === "rhythm"
 
+    function exerciseItemValue(propertyName: string, fallback: var): var {
+        if (exerciseLoader.status !== Loader.Ready) {
+            return fallback;
+        }
+
+        const value = exerciseLoader.item[propertyName];
+        return value === undefined ? fallback : value;
+    }
     function offerOnboarding(): void {
         if (page.currentExercise === undefined) {
             return;
         }
-        if (page.isRhythmic) {
+        if (page.inputMode === "clapping") {
+            if (Core.settingsController.clappingOnboardingPromptShown) {
+                return;
+            }
+            Core.settingsController.clappingOnboardingPromptShown = true;
+        } else if (page.inputMode === "singing") {
+            if (Core.settingsController.singingOnboardingPromptShown) {
+                return;
+            }
+            Core.settingsController.singingOnboardingPromptShown = true;
+        } else if (page.isRhythmic) {
             if (Core.settingsController.rhythmicOnboardingPromptShown) {
                 return;
             }
@@ -33,7 +52,7 @@ Kirigami.Page {
         onboardingPromptLoader.active = true;
     }
     function startOnboarding(): void {
-        Onboarding.start(page.isRhythmic ? "rhythmic" : "melodic");
+        Onboarding.start(page.inputMode === "clapping" ? "clapping" : page.inputMode === "singing" ? "singing" : page.isRhythmic ? "rhythmic" : "melodic");
     }
 
     Kirigami.Theme.colorSet: Kirigami.Theme.View
@@ -55,98 +74,96 @@ Kirigami.Page {
         id: onboardingSource
 
         Onboarding.isSource: page === applicationWindow().currentPage
-        Onboarding.sourceGroups: page.isRhythmic ? ["rhythmic"] : ["melodic"]
+        Onboarding.sourceGroups: page.inputMode === "clapping" ? ["clapping"] : page.inputMode === "singing" ? ["singing"] : page.isRhythmic ? ["rhythmic"] : ["melodic"]
         anchors.fill: parent
 
-        ExerciseView {
-            id: exerciseView
+        Loader {
+            id: exerciseLoader
 
             anchors.fill: parent
-            currentExercise: page.currentExercise
-            currentExerciseIconName: page.currentExerciseIconName
+            sourceComponent: {
+                if (page.inputMode === "clapping") {
+                    return clappingExerciseComponent;
+                }
+                if (page.inputMode === "singing") {
+                    return singingExerciseComponent;
+                }
+                return manualExerciseComponent;
+            }
+
+            onLoaded: {
+                if (status === Loader.Ready) {
+                    item.currentExercise = page.currentExercise;
+                    item.currentExerciseIconName = page.currentExerciseIconName;
+                }
+            }
+        }
+        Component {
+            id: manualExerciseComponent
+
+            ExerciseView {
+            }
+        }
+        Component {
+            id: clappingExerciseComponent
+
+            ExerciseClappingView {
+            }
+        }
+        Component {
+            id: singingExerciseComponent
+
+            ExerciseSingingView {
+            }
         }
         Rectangle {
             id: countInOverlay
 
-            readonly property int displayedCount: Math.max(exerciseView.countIn, exerciseView.onboardingCountIn)
+            readonly property int displayedCount: Math.max(page.exerciseItemValue("countIn", 0), page.exerciseItemValue("onboardingCountIn", 0))
+            readonly property real preferredSize: page.exerciseItemValue("countInOverlaySize", Kirigami.Units.gridUnit * 5)
 
-            anchors.fill: parent
-            color: Qt.rgba(0, 0, 0, 0.28)
-            visible: displayedCount > 0 && page.isRhythmic
-            z: Onboarding.active ? 0 : 10
+            Accessible.name: i18n("Count: %1", Math.max(1, displayedCount))
+            Accessible.role: Accessible.StaticText
+            Onboarding.groups: ["rhythmic", "clapping", "singing"]
+            Onboarding.texts: [i18n("Rhythm questions begin with a count-in."), i18n("Clapping exercises count to the number of rhythm patterns before recording, then repeat that count while you clap."), i18n("Singing exercises count in before the first note; then sing one displayed note on each count.")]
+            border.color: Kirigami.Theme.highlightColor
+            border.width: 2
+            color: Kirigami.Theme.backgroundColor
+            height: preferredSize
+            radius: Math.min(width, height) / 2
+            visible: displayedCount > 0 || Onboarding.active
+            width: preferredSize
+            x: page.exerciseItemValue("countInOverlayX", Math.max(0, parent.width - width - Kirigami.Units.largeSpacing))
+            y: page.exerciseItemValue("countInOverlayY", Kirigami.Units.largeSpacing)
+            z: 10
 
-            Rectangle {
-                id: countInBubble
-
-                Onboarding.groups: ["rhythmic"]
-                Onboarding.texts: [i18n("Rhythm questions begin with a four-beat count-in.")]
-                Onboarding.onAboutToShow: {
-                    exerciseView.onboardingCountIn = 4;
-                }
-                Onboarding.onHide: exerciseView.onboardingCountIn = 0
-
-                anchors.centerIn: parent
-                color: Kirigami.Theme.backgroundColor
-                height: width
-                opacity: 0.92
-                radius: width / 2
-                width: Kirigami.Units.gridUnit * 10
-
-                border {
-                    color: Kirigami.Theme.highlightColor
-                    width: 3
+            Onboarding.onAboutToShow: {
+                if (exerciseLoader.status === Loader.Ready && exerciseLoader.item["onboardingCountIn"] !== undefined) {
+                    exerciseLoader.item["onboardingCountIn"] = 4;
                 }
             }
-            Kirigami.Heading {
-                id: countInNumber
+            Onboarding.onHide: {
+                if (exerciseLoader.status === Loader.Ready && exerciseLoader.item["onboardingCountIn"] !== undefined) {
+                    exerciseLoader.item["onboardingCountIn"] = 0;
+                }
+            }
 
-                anchors.centerIn: countInBubble
+            Kirigami.Heading {
+                anchors.centerIn: parent
                 color: Kirigami.Theme.highlightColor
-                font.pointSize: Kirigami.Units.gridUnit * 3.5
+                font.pixelSize: Math.round(countInOverlay.height * 0.46)
                 horizontalAlignment: Text.AlignHCenter
                 level: 1
-                text: countInOverlay.displayedCount.toString()
+                text: Math.max(1, countInOverlay.displayedCount).toString()
                 verticalAlignment: Text.AlignVCenter
             }
-        }
-        ParallelAnimation {
-            id: countInPulse
-
-            NumberAnimation {
-                duration: 180
-                easing.type: Easing.OutBack
-                from: 0.65
-                property: "scale"
-                target: countInNumber
-                to: 1.0
-            }
-            NumberAnimation {
-                duration: 180
-                easing.type: Easing.OutCubic
-                from: 0.85
-                property: "scale"
-                target: countInBubble
-                to: 1.0
-            }
-        }
-        Connections {
-            function onCountInChanged(count: int): void {
-                if (count > 0) {
-                    countInPulse.restart();
-                } else {
-                    countInPulse.stop();
-                    countInNumber.scale = 1;
-                    countInBubble.scale = 1;
-                }
-            }
-
-            target: Core.soundController
         }
     }
     Loader {
         id: onboardingPromptLoader
 
         active: false
+
         sourceComponent: Component {
             Kirigami.PromptDialog {
                 id: onboardingPrompt
@@ -154,9 +171,9 @@ Kirigami.Page {
                 property bool startRequested: false
 
                 dialogType: Kirigami.PromptDialog.Information
-                subtitle: page.isRhythmic ? i18n("This is your first rhythmic exercise. Start a quick guide? You can open it later from the Help icon.") : i18n("This is your first melodic exercise. Start a quick guide? You can open it later from the Help icon.")
-                title: i18n("First Time Here")
                 standardButtons: Kirigami.Dialog.NoButton
+                subtitle: page.inputMode === "clapping" ? i18n("This is your first clapping exercise. Start a quick guide? You can open it later from the Help icon.") : page.inputMode === "singing" ? i18n("This is your first singing exercise. Start a quick guide? You can open it later from the Help icon.") : page.isRhythmic ? i18n("This is your first rhythmic exercise. Start a quick guide? You can open it later from the Help icon.") : i18n("This is your first melodic exercise. Start a quick guide? You can open it later from the Help icon.")
+                title: i18n("First Time Here")
 
                 customFooterActions: [
                     Kirigami.Action {

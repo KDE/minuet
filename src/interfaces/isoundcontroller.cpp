@@ -17,6 +17,7 @@ ISoundController::ISoundController(QObject *parent)
     m_pitch = 0;
     m_volume = 100;
     m_tempo = 60;
+    m_rhythmCountInBeats = 4;
     m_instrument = 0;
     m_rhythmInstrument = 37;
     setPlaybackLabel(u"00:00.00"_s);
@@ -41,6 +42,11 @@ int ISoundController::instrument() const
 int ISoundController::rhythmInstrument() const
 {
     return m_rhythmInstrument;
+}
+
+int ISoundController::rhythmCountInBeats() const
+{
+    return m_rhythmCountInBeats;
 }
 
 QVariantList ISoundController::instrumentGroups() const

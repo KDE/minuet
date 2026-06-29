@@ -176,7 +176,6 @@
         "-DWITH_ICON_GENERATION=OFF"
       ],
       "patches": [
-        "breeze-icons-ios.patch"
       ],
       "hostBuildTargets": [
         "generate-symbolic-dark",
@@ -211,7 +210,6 @@
       "refEnv": "KIRIGAMI_ADDONS_REF",
       "defaultRef": "master",
       "patches": [
-        "kirigami-addons-ios.patch"
       ]
     },
     {

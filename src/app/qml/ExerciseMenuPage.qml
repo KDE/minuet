@@ -17,7 +17,25 @@ Kirigami.ScrollablePage {
     property string inheritedIconName: ""
     property string pathText: title
 
+    function exerciseOptionHasTag(exercise: var, tag: string): bool {
+        const options = exercise.options || [];
+        for (const option of options) {
+            const tags = option.tags || [];
+            if (tags.indexOf(tag) >= 0) {
+                return true;
+            }
+        }
+        return false;
+    }
     function openExercise(exercise: var, iconName: string): void {
+        const practiceMode = practiceModeForExercise(exercise);
+        if (practiceMode.length > 0) {
+            openPracticeModePage(exercise, iconName, practiceMode);
+            return;
+        }
+        openExercisePage(exercise, iconName);
+    }
+    function openExercisePage(exercise: var, iconName: string): void {
         const exerciseTitle = i18nc("technical term, do you have a musician friend?", exercise.name);
         applicationWindow().currentExercise = exercise;
         const exercisePage = exercisePageComponent.createObject(applicationWindow().pageStack, {
@@ -26,6 +44,35 @@ Kirigami.ScrollablePage {
             currentExerciseIconName: iconName
         });
         applicationWindow().pageStack.push(exercisePage);
+    }
+    function openPracticeModePage(exercise: var, iconName: string, practiceMode: string): void {
+        const exerciseTitle = i18nc("technical term, do you have a musician friend?", exercise.name);
+        applicationWindow().currentExercise = undefined;
+        const practicePage = practiceModePageComponent.createObject(applicationWindow().pageStack, {
+            title: exerciseTitle,
+            currentExercise: exercise,
+            currentExerciseIconName: iconName,
+            practiceMode: practiceMode
+        });
+        practicePage.practiceSelected.connect(function (selectedExercise, selectedIconName) {
+            page.openExercisePage(selectedExercise, selectedIconName);
+        });
+        applicationWindow().pageStack.push(practicePage);
+    }
+    function practiceModeForExercise(exercise: var): string {
+        if (exercise.playMode === "rhythm") {
+            return "rhythm";
+        }
+        if (exercise.playMode !== "scale") {
+            return "";
+        }
+        if (exerciseOptionHasTag(exercise, "interval")) {
+            return "interval";
+        }
+        if (exerciseOptionHasTag(exercise, "scale")) {
+            return "scale";
+        }
+        return "";
     }
 
     Kirigami.Theme.colorSet: Kirigami.Theme.Window
@@ -36,6 +83,12 @@ Kirigami.ScrollablePage {
         id: exercisePageComponent
 
         ExercisePage {
+        }
+    }
+    Component {
+        id: practiceModePageComponent
+
+        PracticeModePage {
         }
     }
     Kirigami.CardsListView {

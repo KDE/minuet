@@ -403,11 +403,12 @@ void ExerciseSessionController::randomlySelectExerciseOptions(int selectedOption
         emit selectedExerciseOptionsChanged(m_selectedExerciseOptions);
     };
 
-    int minNote = INT_MAX;
-    int maxNote = INT_MIN;
     auto *generator = QRandomGenerator::global();
     const QJsonObject activeExerciseObject = QJsonObject::fromVariantMap(m_activeExercise);
     const QString playMode = activeExerciseObject[u"playMode"_s].toString();
+    const bool isRhythm = playMode == u"rhythm"_s;
+    const int targetPitchMin = activeExerciseObject[u"targetPitchMin"_s].isDouble() ? activeExerciseObject[u"targetPitchMin"_s].toInt() : 21;
+    const int targetPitchMax = activeExerciseObject[u"targetPitchMax"_s].isDouble() ? activeExerciseObject[u"targetPitchMax"_s].toInt() : 108;
     const int numberOfSelectedOptions = selectedOptionCount > 0 ? selectedOptionCount : activeExerciseObject[u"numberOfSelectedOptions"_s].toInt();
     if (numberOfSelectedOptions <= 0) {
         failSelection(u"Current exercise has no selected options count."_s);
@@ -419,42 +420,52 @@ void ExerciseSessionController::randomlySelectExerciseOptions(int selectedOption
         failSelection(u"Current exercise has no options."_s);
         return;
     }
-    if (playMode != u"rhythm"_s && numberOfSelectedOptions > exerciseOptions.size()) {
+    if (!isRhythm && numberOfSelectedOptions > exerciseOptions.size()) {
         failSelection(u"Current exercise selects more options than it provides."_s);
         return;
     }
 
-    QJsonArray remainingExerciseOptions = exerciseOptions;
-    for (int i = 0; i < numberOfSelectedOptions; ++i) {
-        const QJsonArray &selectableExerciseOptions = playMode == u"rhythm"_s ? exerciseOptions : remainingExerciseOptions;
-        const int chosenExerciseOption = static_cast<int>(generator->bounded(selectableExerciseOptions.size()));
-        if (!selectableExerciseOptions[chosenExerciseOption].isObject()) {
-            failSelection(u"Current exercise option is not an object."_s);
+    int exerciseMinRoot = 0;
+    int exerciseMaxRoot = 0;
+    if (!isRhythm) {
+        const QStringList exerciseRoots = activeExerciseObject[u"root"_s].toString().split(u".."_s);
+        if (exerciseRoots.size() != 2) {
+            failSelection(u"Current exercise has an invalid root range."_s);
             return;
         }
 
-        const QJsonObject optionObject = selectableExerciseOptions[chosenExerciseOption].toObject();
-        if (playMode != u"rhythm"_s) {
-            remainingExerciseOptions.removeAt(chosenExerciseOption);
+        bool minRootOk = false;
+        bool maxRootOk = false;
+        exerciseMinRoot = exerciseRoots.first().toInt(&minRootOk);
+        exerciseMaxRoot = exerciseRoots.last().toInt(&maxRootOk);
+        if (!minRootOk || !maxRootOk || exerciseMaxRoot <= exerciseMinRoot) {
+            failSelection(u"Current exercise has an invalid root range."_s);
+            return;
         }
+    }
+
+    auto optionNoteRange = [isRhythm, &failSelection](const QJsonObject &optionObject, int &minNote, int &maxNote) {
+        minNote = INT_MAX;
+        maxNote = INT_MIN;
+
         const QString sequence = optionObject[u"sequence"_s].toString();
         const QStringList additionalNotes = sequence.split(QLatin1Char(' '), Qt::SkipEmptyParts);
         if (additionalNotes.isEmpty()) {
             failSelection(u"Current exercise option has an empty sequence."_s);
-            return;
+            return false;
         }
 
         for (const QString &additionalNote : additionalNotes) {
             QString noteText = additionalNote;
-            if (playMode == u"rhythm"_s && noteText.endsWith(QLatin1Char('.'))) {
+            if (isRhythm && noteText.endsWith(QLatin1Char('.'))) {
                 noteText.chop(1);
             }
 
             bool ok = false;
             const int note = noteText.toInt(&ok);
-            if (!ok || (playMode == u"rhythm"_s && note <= 0)) {
+            if (!ok || (isRhythm && note <= 0)) {
                 failSelection(u"Current exercise option has an invalid sequence."_s);
-                return;
+                return false;
             }
             if (note > maxNote) {
                 maxNote = note;
@@ -463,27 +474,65 @@ void ExerciseSessionController::randomlySelectExerciseOptions(int selectedOption
                 minNote = note;
             }
         }
-        if (playMode != u"rhythm"_s) {
-            const QStringList exerciseRoots = activeExerciseObject[u"root"_s].toString().split(u".."_s);
-            if (exerciseRoots.size() != 2) {
-                failSelection(u"Current exercise has an invalid root range."_s);
+        return true;
+    };
+
+    auto rootRangeForOption = [&](const QJsonObject &optionObject, int &minAllowedRoot, int &maxAllowedRoot) {
+        int minNote = 0;
+        int maxNote = 0;
+        if (!optionNoteRange(optionObject, minNote, maxNote)) {
+            return false;
+        }
+        if (isRhythm) {
+            minAllowedRoot = 0;
+            maxAllowedRoot = 0;
+            return true;
+        }
+
+        minAllowedRoot = (std::max)((std::max)(exerciseMinRoot, targetPitchMin), targetPitchMin - minNote);
+        maxAllowedRoot = (std::min)((std::min)(exerciseMaxRoot - 1, targetPitchMax), targetPitchMax - maxNote);
+        return maxAllowedRoot >= minAllowedRoot;
+    };
+
+    QJsonArray remainingExerciseOptions = exerciseOptions;
+    for (int i = 0; i < numberOfSelectedOptions; ++i) {
+        const QJsonArray &candidateExerciseOptions = isRhythm ? exerciseOptions : remainingExerciseOptions;
+        QJsonArray selectableExerciseOptions;
+        for (const QJsonValue &candidateExerciseOption : candidateExerciseOptions) {
+            if (!candidateExerciseOption.isObject()) {
+                failSelection(u"Current exercise option is not an object."_s);
                 return;
             }
-
-            bool minRootOk = false;
-            bool maxRootOk = false;
-            const int exerciseMinRoot = exerciseRoots.first().toInt(&minRootOk);
-            const int exerciseMaxRoot = exerciseRoots.last().toInt(&maxRootOk);
-            if (!minRootOk || !maxRootOk || exerciseMaxRoot <= exerciseMinRoot) {
-                failSelection(u"Current exercise has an invalid root range."_s);
-                return;
+            int minAllowedRoot = 0;
+            int maxAllowedRoot = 0;
+            if (rootRangeForOption(candidateExerciseOption.toObject(), minAllowedRoot, maxAllowedRoot)) {
+                selectableExerciseOptions.append(candidateExerciseOption);
             }
+        }
+        if (selectableExerciseOptions.isEmpty()) {
+            failSelection(u"Current exercise has no options that fit the selected pitch range."_s);
+            return;
+        }
 
-            const int minAllowedRoot = (std::max)(exerciseMinRoot, 21 - minNote);
-            const int maxAllowedRoot = (std::min)(exerciseMaxRoot - 1, 108 - maxNote);
-            if (maxAllowedRoot < minAllowedRoot) {
-                failSelection(u"Current exercise root range cannot fit the sequence."_s);
-                return;
+        const int chosenExerciseOption = static_cast<int>(generator->bounded(selectableExerciseOptions.size()));
+        if (!selectableExerciseOptions[chosenExerciseOption].isObject()) {
+            failSelection(u"Current exercise option is not an object."_s);
+            return;
+        }
+
+        const QJsonObject optionObject = selectableExerciseOptions[chosenExerciseOption].toObject();
+        int minAllowedRoot = 0;
+        int maxAllowedRoot = 0;
+        if (!rootRangeForOption(optionObject, minAllowedRoot, maxAllowedRoot)) {
+            failSelection(u"Current exercise root range cannot fit the sequence."_s);
+            return;
+        }
+        if (!isRhythm) {
+            for (qsizetype optionIndex = 0; optionIndex < remainingExerciseOptions.size(); ++optionIndex) {
+                if (remainingExerciseOptions[optionIndex].toObject() == optionObject) {
+                    remainingExerciseOptions.removeAt(optionIndex);
+                    break;
+                }
             }
             m_chosenRootNote = minAllowedRoot + generator->bounded(maxAllowedRoot - minAllowedRoot + 1);
         }

@@ -5,6 +5,7 @@
 #ifndef MINUET_INTERFACEQMLTYPES_H
 #define MINUET_INTERFACEQMLTYPES_H
 
+#include <interfaces/imicrophoneinputcontroller.h>
 #include <interfaces/isoundcontroller.h>
 
 #include <qqmlregistration.h>
@@ -18,6 +19,13 @@ struct ISoundControllerForeign {
     QML_FOREIGN(Minuet::ISoundController)
     QML_NAMED_ELEMENT(ISoundController)
     QML_UNCREATABLE("ISoundController is provided by Core")
+};
+
+struct IMicrophoneInputControllerForeign {
+    Q_GADGET
+    QML_FOREIGN(Minuet::IMicrophoneInputController)
+    QML_NAMED_ELEMENT(IMicrophoneInputController)
+    QML_UNCREATABLE("IMicrophoneInputController is provided by Core")
 };
 }
 }

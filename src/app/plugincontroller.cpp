@@ -7,10 +7,12 @@
 #include "core.h"
 
 #if defined(Q_OS_ANDROID) || defined(Q_OS_IOS)
+#include "../plugins/aubiomicrophoneinputcontroller/aubiomicrophoneinputcontroller.h"
 #include "../plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.h"
 #endif
 
 #include <interfaces/iplugin.h>
+#include <interfaces/imicrophoneinputcontroller.h>
 #include <interfaces/isoundcontroller.h>
 
 #if !defined(Q_OS_ANDROID) && !defined(Q_OS_IOS)
@@ -48,6 +50,7 @@ bool PluginController::initialize(Core *core)
     m_errorString.clear();
 #if !defined(Q_OS_ANDROID) && !defined(Q_OS_IOS)
     ISoundController *soundController = nullptr;
+    IMicrophoneInputController *microphoneInputController = nullptr;
     for (const KPluginMetaData &pluginMetaData : std::as_const(m_plugins)) {
         if (m_loadedPlugins.value(pluginMetaData)) {
             continue;
@@ -60,6 +63,10 @@ bool PluginController::initialize(Core *core)
             if (!core->soundController() && (soundController = qobject_cast<ISoundController *>(plugin))) {
                 qInfo() << "Setting soundcontroller to" << soundController->metaObject()->className();
                 core->setSoundController(soundController);
+            }
+            if (!core->microphoneInputController() && (microphoneInputController = qobject_cast<IMicrophoneInputController *>(plugin))) {
+                qInfo() << "Setting microphoneinputcontroller to" << microphoneInputController->metaObject()->className();
+                core->setMicrophoneInputController(microphoneInputController);
             }
         } else {
             qWarning() << "Could not load plugin" << pluginMetaData.fileName() << loader.errorString();
@@ -74,6 +81,11 @@ bool PluginController::initialize(Core *core)
     if (!core->soundController() && (soundController = new FluidSynthSoundController(core))) {
         qInfo() << "Setting soundcontroller to" << soundController->metaObject()->className();
         core->setSoundController(soundController);
+    }
+    IMicrophoneInputController *microphoneInputController = nullptr;
+    if (!core->microphoneInputController() && (microphoneInputController = new AubioMicrophoneInputController(core))) {
+        qInfo() << "Setting microphoneinputcontroller to" << microphoneInputController->metaObject()->className();
+        core->setMicrophoneInputController(microphoneInputController);
     }
 #endif
     return true;
