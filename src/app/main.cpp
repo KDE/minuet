@@ -173,6 +173,11 @@ int main(int argc, char *argv[])
                            {},
                            u"https://github.com/FluidSynth/fluidsynth"_s,
                            KAboutLicense::LGPL_V2_1);
+    aboutData.addComponent(i18nc("@info:credit", "Aubio"),
+                           i18nc("@info:credit", "A library for audio and music analysis. © 2003-2015 Paul Brossier."),
+                           {},
+                           u"https://github.com/aubio/aubio"_s,
+                           KAboutLicense::GPL_V3);
     aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
 
 #if defined(Q_OS_ANDROID)
