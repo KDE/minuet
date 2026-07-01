@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-30 00:39+0000\n"
-"PO-Revision-Date: 2026-06-15 00:26+0100\n"
+"PO-Revision-Date: 2026-06-30 22:44+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1927,13 +1927,14 @@ msgstr ""
 #, kde-format
 msgctxt "@info:credit"
 msgid "Aubio"
-msgstr ""
+msgstr "Aubio"
 
 #: src/app/main.cpp:177
 #, kde-format
 msgctxt "@info:credit"
 msgid "A library for audio and music analysis. © 2003-2015 Paul Brossier."
 msgstr ""
+"Biblioteca para análisis de sonido y música. © 2003-2015 Paul Brossier."
 
 #: src/app/main.cpp:181
 #, kde-format
@@ -1952,47 +1953,48 @@ msgstr "ecuadra@eloihr.net"
 #: src/app/qml/ExerciseClappingView.qml:264
 #, kde-format
 msgid "Ready"
-msgstr ""
+msgstr "Preparado"
 
 #: src/app/qml/ExerciseClappingView.qml:265
 #: src/app/qml/ExerciseSingingView.qml:403
 #, kde-format
 msgid "Missed"
-msgstr ""
+msgstr "Fallo"
 
 #: src/app/qml/ExerciseClappingView.qml:330
 #, kde-format
 msgid "On time"
-msgstr ""
+msgstr "A tiempo"
 
 #: src/app/qml/ExerciseClappingView.qml:332
 #: src/app/qml/ExerciseSingingView.qml:265 src/app/qml/GraphicalMeter.qml:23
 #, kde-format
 msgid "%1 ms"
-msgstr ""
+msgstr "%1 ms"
 
 #: src/app/qml/ExerciseClappingView.qml:457
 #, kde-format
 msgid ""
 "Start a question, listen to the count, then clap each rhythm figure in time."
 msgstr ""
+"Empiece una pregunta, escuche la cuenta y luego dé una palmada con cada "
+"figura rítmica al compás."
 
 #: src/app/qml/ExerciseClappingView.qml:465
 #, kde-format
 msgid "Clap the rhythm"
-msgstr ""
+msgstr "Dé palmadas a ritmo"
 
 #: src/app/qml/ExerciseClappingView.qml:473
 #, kde-format
 msgid "Listening..."
-msgstr ""
+msgstr "Escuchando…"
 
 #: src/app/qml/ExerciseClappingView.qml:473
 #: src/app/qml/ExerciseSingingView.qml:378
-#, fuzzy, kde-format
-#| msgid "No melodic instruments available"
+#, kde-format
 msgid "No microphone input plugin available"
-msgstr "No hay instrumentos melódicos disponibles"
+msgstr "No hay ningún complemento de entrada de micrófono disponible"
 
 #: src/app/qml/ExerciseClappingView.qml:489
 #: src/app/qml/ExerciseSingingView.qml:708 src/app/qml/ExerciseView.qml:408
@@ -2002,10 +2004,9 @@ msgstr "Nueva pregunta"
 
 #: src/app/qml/ExerciseClappingView.qml:489
 #: src/app/qml/ExerciseSingingView.qml:708
-#, fuzzy, kde-format
-#| msgid "Start Test"
+#, kde-format
 msgid "Start"
-msgstr "Iniciar el test"
+msgstr "Iniciar"
 
 #: src/app/qml/ExerciseClappingView.qml:503
 #: src/app/qml/ExerciseSingingView.qml:722 src/app/qml/ExerciseView.qml:439
@@ -2025,6 +2026,9 @@ msgid ""
 "Each colored card is one rhythm figure. Green borders mark figures clapped "
 "correctly; red borders mark missed figures."
 msgstr ""
+"Cada tarjeta de color representa una figura rítmica. Los bordes verdes "
+"indican las figuras cuyas palmadas han sido correctas; los bordes rojos "
+"indican las figuras que se han fallado."
 
 #: src/app/qml/ExerciseClappingView.qml:565
 #, kde-format
@@ -2037,33 +2041,31 @@ msgstr ""
 #: src/app/qml/ExerciseSingingView.qml:883
 #, kde-format
 msgid "Input level"
-msgstr ""
+msgstr "Nivel de entrada"
 
 #: src/app/qml/ExerciseClappingView.qml:648
 #: src/app/qml/ExerciseSingingView.qml:885
 #, kde-format
 msgid "Open"
-msgstr ""
+msgstr "Abierto"
 
 #: src/app/qml/ExerciseClappingView.qml:648
 #: src/app/qml/ExerciseSingingView.qml:885
-#, fuzzy, kde-format
-#| msgctxt "General MIDI percussion instrument"
-#| msgid "Closed Hi-hat"
+#, kde-format
 msgid "Closed"
-msgstr "Charles cerrado"
+msgstr "Cerrado"
 
 #: src/app/qml/ExerciseClappingView.qml:652
 #: src/app/qml/ExerciseSingingView.qml:889
 #, kde-format
 msgid "Calibrating..."
-msgstr ""
+msgstr "Calibrando…"
 
 #: src/app/qml/ExerciseClappingView.qml:652
 #: src/app/qml/ExerciseSingingView.qml:889
 #, kde-format
 msgid "Calibrate Silence"
-msgstr ""
+msgstr "Calibrando silencio"
 
 #: src/app/qml/ExerciseMenuPage.qml:80
 #, kde-format
@@ -2081,13 +2083,12 @@ msgstr "Ayuda"
 #: src/app/qml/ExercisePage.qml:125
 #, kde-format
 msgid "Count: %1"
-msgstr ""
+msgstr "Cuenta: %1"
 
 #: src/app/qml/ExercisePage.qml:128
-#, fuzzy, kde-format
-#| msgid "Rhythm questions begin with a four-beat count-in."
+#, kde-format
 msgid "Rhythm questions begin with a count-in."
-msgstr "Las preguntas de ritmo empiezan con una entrada de cuatro tiempos."
+msgstr "Las preguntas de ritmo empiezan con una cuenta."
 
 #: src/app/qml/ExercisePage.qml:128
 #, kde-format
@@ -2095,6 +2096,8 @@ msgid ""
 "Clapping exercises count to the number of rhythm patterns before recording, "
 "then repeat that count while you clap."
 msgstr ""
+"Los ejercicios de palmadas consisten en contar hasta el número de patrones "
+"rítmicos antes de grabar, y luego repetir ese conteo mientras da palmadas."
 
 #: src/app/qml/ExercisePage.qml:128
 #, kde-format
@@ -2102,29 +2105,25 @@ msgid ""
 "Singing exercises count in before the first note; then sing one displayed "
 "note on each count."
 msgstr ""
+"Los ejercicios de canto comienzan con una cuenta antes de la primera nota; "
+"luego, cante la nota mostrada en cada cuenta."
 
 #: src/app/qml/ExercisePage.qml:175
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is your first melodic exercise. Start a quick guide? You can open it "
-#| "later from the Help icon."
+#, kde-format
 msgid ""
 "This is your first clapping exercise. Start a quick guide? You can open it "
 "later from the Help icon."
 msgstr ""
-"Este es el primer ejercicio melódico. ¿Quiere empezar con una guía rápida? "
-"Puede abrirla más tarde desde el icono Ayuda."
+"Este es el primer ejercicio de palmadas. ¿Quiere empezar con una guía "
+"rápida? Puede abrirla más tarde desde el icono Ayuda."
 
 #: src/app/qml/ExercisePage.qml:175
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is your first melodic exercise. Start a quick guide? You can open it "
-#| "later from the Help icon."
+#, kde-format
 msgid ""
 "This is your first singing exercise. Start a quick guide? You can open it "
 "later from the Help icon."
 msgstr ""
-"Este es el primer ejercicio melódico. ¿Quiere empezar con una guía rápida? "
+"Este es el primer ejercicio de canto. ¿Quiere empezar con una guía rápida? "
 "Puede abrirla más tarde desde el icono Ayuda."
 
 #: src/app/qml/ExercisePage.qml:175
@@ -2200,6 +2199,8 @@ msgid ""
 "Start a question, listen to the count-in and first note, then sing the "
 "displayed interval or scale notes."
 msgstr ""
+"Empiece una pregunta, escuche la cuenta y la primera nota, y luego cante el "
+"intervalo o las notas de la escala que se muestran."
 
 #: src/app/qml/ExerciseSingingView.qml:676
 #, kde-format
@@ -2218,14 +2219,12 @@ msgstr ""
 #: src/app/qml/ExerciseSingingView.qml:684
 #, kde-format
 msgid "Sing the scale"
-msgstr ""
+msgstr "Cante la escala"
 
 #: src/app/qml/ExerciseSingingView.qml:684
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Ascending melodic intervals"
+#, kde-format
 msgid "Sing the interval"
-msgstr "Intervalos melódicos ascendentes"
+msgstr "Cante el intervalo"
 
 #: src/app/qml/ExerciseSingingView.qml:762
 #, kde-format
@@ -2453,19 +2452,17 @@ msgstr ""
 #: src/app/qml/PracticeModePage.qml:54
 #, kde-format
 msgid "Hear and identify"
-msgstr ""
+msgstr "Oír e identificar"
 
 #: src/app/qml/PracticeModePage.qml:62
-#, fuzzy, kde-format
-#| msgctxt "General MIDI percussion instrument"
-#| msgid "Hand Clap"
+#, kde-format
 msgid "Read and clap"
-msgstr "Palmada"
+msgstr "Leer y dar palmadas"
 
 #: src/app/qml/PracticeModePage.qml:62
 #, kde-format
 msgid "Read and sing"
-msgstr ""
+msgstr "Leer y cantar"
 
 #: src/app/qml/SettingsPage.qml:25
 #, kde-format
@@ -2480,22 +2477,20 @@ msgstr ""
 #: src/app/qml/SettingsPage.qml:27
 #, kde-format
 msgid "Soprano"
-msgstr ""
+msgstr "Soprano"
 
 #: src/app/qml/SettingsPage.qml:27
 #, kde-format
 msgid "Alto"
-msgstr ""
+msgstr "Alto"
 
 #: src/app/qml/SettingsPage.qml:27
 #, kde-format
 msgid "Tenor"
-msgstr ""
+msgstr "Tenor"
 
 #: src/app/qml/SettingsPage.qml:27
-#, fuzzy, kde-format
-#| msgctxt "General MIDI instrument group"
-#| msgid "Bass"
+#, kde-format
 msgid "Bass"
 msgstr "Bajo"
 
@@ -2510,15 +2505,14 @@ msgid "Volume"
 msgstr "Volumen"
 
 #: src/app/qml/SettingsPage.qml:106
-#, fuzzy, kde-format
-#| msgid "Rhythm Exercises"
+#, kde-format
 msgid "Exercise speed"
-msgstr "Ejercicios de ritmo"
+msgstr "Velocidad del ejercicio"
 
 #: src/app/qml/SettingsPage.qml:107
 #, kde-format
 msgid "bpm"
-msgstr ""
+msgstr "bpm"
 
 #: src/app/qml/SettingsPage.qml:118
 #, kde-format
@@ -2562,8 +2556,7 @@ msgstr "Instrumento:"
 #: src/app/qml/SettingsPage.qml:168
 #, kde-format
 msgid "Used for rhythm figures. The count-in keeps its own sound."
-msgstr ""
-"Se usan para figuras rítmicas. La cuenta atrás conserva su propio sonido."
+msgstr "Se usan para figuras rítmicas. La cuenta conserva su propio sonido."
 
 #: src/app/qml/SettingsPage.qml:169
 #, kde-format
@@ -2586,10 +2579,9 @@ msgid "Number of rhythm patterns"
 msgstr "Número de patrones de ritmo"
 
 #: src/app/qml/SettingsPage.qml:206
-#, fuzzy, kde-format
-#| msgid "Melodic Exercises"
+#, kde-format
 msgid "Clapping Exercises"
-msgstr "Ejercicios melódicos"
+msgstr "Ejercicios de palmadas"
 
 #: src/app/qml/SettingsPage.qml:222 src/app/qml/SettingsPage.qml:342
 #, kde-format
@@ -2624,13 +2616,12 @@ msgstr ""
 #: src/app/qml/SettingsPage.qml:282 src/app/qml/SettingsPage.qml:423
 #, kde-format
 msgid "dB"
-msgstr ""
+msgstr "dB"
 
 #: src/app/qml/SettingsPage.qml:294
-#, fuzzy, kde-format
-#| msgid "Melodic Exercises"
+#, kde-format
 msgid "Singing Exercises"
-msgstr "Ejercicios melódicos"
+msgstr "Ejercicios de canto"
 
 #: src/app/qml/SettingsPage.qml:310
 #, kde-format
@@ -2685,7 +2676,7 @@ msgstr "Número de ejercicios"
 #: src/app/qml/SettingsPage.qml:493
 #, kde-format
 msgid "%1 %2"
-msgstr ""
+msgstr "%1 %2"
 
 #: src/app/uicontroller.cpp:57
 #, kde-format
@@ -3081,6 +3072,3 @@ msgstr "Efectos de sonido"
 msgctxt "General MIDI instrument group"
 msgid "Other"
 msgstr "Otros"
-
-#~ msgid "%1%"
-#~ msgstr "%1 %"

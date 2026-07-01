@@ -1834,7 +1834,7 @@ msgstr "vit@pelcak.org"
 #: src/app/qml/ExerciseClappingView.qml:264
 #, kde-format
 msgid "Ready"
-msgstr ""
+msgstr "Připraven"
 
 #: src/app/qml/ExerciseClappingView.qml:265
 #: src/app/qml/ExerciseSingingView.qml:403
@@ -1851,7 +1851,7 @@ msgstr ""
 #: src/app/qml/ExerciseSingingView.qml:265 src/app/qml/GraphicalMeter.qml:23
 #, kde-format
 msgid "%1 ms"
-msgstr ""
+msgstr "%1 ms"
 
 #: src/app/qml/ExerciseClappingView.qml:457
 #, kde-format
@@ -1883,10 +1883,9 @@ msgstr "Nová otázka"
 
 #: src/app/qml/ExerciseClappingView.qml:489
 #: src/app/qml/ExerciseSingingView.qml:708
-#, fuzzy, kde-format
-#| msgid "Start Test"
+#, kde-format
 msgid "Start"
-msgstr "Spustit test"
+msgstr "Spustit"
 
 #: src/app/qml/ExerciseClappingView.qml:503
 #: src/app/qml/ExerciseSingingView.qml:722 src/app/qml/ExerciseView.qml:439
@@ -1924,19 +1923,19 @@ msgstr ""
 #: src/app/qml/ExerciseSingingView.qml:885
 #, kde-format
 msgid "Open"
-msgstr ""
+msgstr "Otevřít"
 
 #: src/app/qml/ExerciseClappingView.qml:648
 #: src/app/qml/ExerciseSingingView.qml:885
 #, kde-format
 msgid "Closed"
-msgstr ""
+msgstr "Uzavřeno"
 
 #: src/app/qml/ExerciseClappingView.qml:652
 #: src/app/qml/ExerciseSingingView.qml:889
 #, kde-format
 msgid "Calibrating..."
-msgstr ""
+msgstr "Kalibruji..."
 
 #: src/app/qml/ExerciseClappingView.qml:652
 #: src/app/qml/ExerciseSingingView.qml:889
@@ -2358,7 +2357,7 @@ msgstr ""
 #: src/app/qml/SettingsPage.qml:27
 #, kde-format
 msgid "Bass"
-msgstr ""
+msgstr "Basy"
 
 #: src/app/qml/SettingsPage.qml:81
 #, kde-format
@@ -2480,7 +2479,7 @@ msgstr ""
 #: src/app/qml/SettingsPage.qml:282 src/app/qml/SettingsPage.qml:423
 #, kde-format
 msgid "dB"
-msgstr ""
+msgstr "dB"
 
 #: src/app/qml/SettingsPage.qml:294
 #, kde-format
@@ -2540,7 +2539,7 @@ msgstr ""
 #: src/app/qml/SettingsPage.qml:493
 #, kde-format
 msgid "%1 %2"
-msgstr ""
+msgstr "%1 %2"
 
 #: src/app/uicontroller.cpp:57
 #, kde-format

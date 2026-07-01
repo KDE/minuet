@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-30 00:39+0000\n"
-"PO-Revision-Date: 2026-06-14 15:48+0300\n"
+"PO-Revision-Date: 2026-06-30 13:13+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -1877,13 +1877,14 @@ msgstr ""
 #, kde-format
 msgctxt "@info:credit"
 msgid "Aubio"
-msgstr ""
+msgstr "Aubio"
 
 #: src/app/main.cpp:177
 #, kde-format
 msgctxt "@info:credit"
 msgid "A library for audio and music analysis. © 2003-2015 Paul Brossier."
 msgstr ""
+"Бібліотека для аналізу звукових даних та музики. © Paul Brossier, 2003-2015."
 
 #: src/app/main.cpp:181
 #, kde-format
@@ -1900,26 +1901,26 @@ msgstr "yurchor@ukr.net"
 #: src/app/qml/ExerciseClappingView.qml:37
 #: src/app/qml/ExerciseClappingView.qml:204
 #: src/app/qml/ExerciseClappingView.qml:264
-#, kde-format
+#, fuzzy, kde-format
 msgid "Ready"
-msgstr ""
+msgstr "Готово"
 
 #: src/app/qml/ExerciseClappingView.qml:265
 #: src/app/qml/ExerciseSingingView.qml:403
-#, kde-format
+#, fuzzy, kde-format
 msgid "Missed"
-msgstr ""
+msgstr "Пропущено"
 
 #: src/app/qml/ExerciseClappingView.qml:330
 #, kde-format
 msgid "On time"
-msgstr ""
+msgstr "Вчасно"
 
 #: src/app/qml/ExerciseClappingView.qml:332
 #: src/app/qml/ExerciseSingingView.qml:265 src/app/qml/GraphicalMeter.qml:23
 #, kde-format
 msgid "%1 ms"
-msgstr ""
+msgstr "%1 мс"
 
 #: src/app/qml/ExerciseClappingView.qml:457
 #, kde-format
@@ -1935,9 +1936,9 @@ msgid "Clap the rhythm"
 msgstr "ритм"
 
 #: src/app/qml/ExerciseClappingView.qml:473
-#, kde-format
+#, fuzzy, kde-format
 msgid "Listening..."
-msgstr ""
+msgstr "Розпізнавання на слух"
 
 #: src/app/qml/ExerciseClappingView.qml:473
 #: src/app/qml/ExerciseSingingView.qml:378
@@ -1957,7 +1958,7 @@ msgstr "Нове питання"
 #, fuzzy, kde-format
 #| msgid "Start Test"
 msgid "Start"
-msgstr "Почати вправу"
+msgstr "Початок"
 
 #: src/app/qml/ExerciseClappingView.qml:503
 #: src/app/qml/ExerciseSingingView.qml:722 src/app/qml/ExerciseView.qml:439
@@ -1987,15 +1988,15 @@ msgstr ""
 
 #: src/app/qml/ExerciseClappingView.qml:646
 #: src/app/qml/ExerciseSingingView.qml:883
-#, kde-format
+#, fuzzy, kde-format
 msgid "Input level"
-msgstr ""
+msgstr "Рівень введення"
 
 #: src/app/qml/ExerciseClappingView.qml:648
 #: src/app/qml/ExerciseSingingView.qml:885
-#, kde-format
+#, fuzzy, kde-format
 msgid "Open"
-msgstr ""
+msgstr "Відкрити"
 
 #: src/app/qml/ExerciseClappingView.qml:648
 #: src/app/qml/ExerciseSingingView.qml:885
@@ -2003,13 +2004,13 @@ msgstr ""
 #| msgctxt "General MIDI percussion instrument"
 #| msgid "Closed Hi-hat"
 msgid "Closed"
-msgstr "Закритий хет"
+msgstr "Закрито"
 
 #: src/app/qml/ExerciseClappingView.qml:652
 #: src/app/qml/ExerciseSingingView.qml:889
 #, kde-format
 msgid "Calibrating..."
-msgstr ""
+msgstr "Калібруємо…"
 
 #: src/app/qml/ExerciseClappingView.qml:652
 #: src/app/qml/ExerciseSingingView.qml:889
@@ -2033,9 +2034,9 @@ msgid "Help"
 msgstr "Довідка"
 
 #: src/app/qml/ExercisePage.qml:125
-#, kde-format
+#, fuzzy, kde-format
 msgid "Count: %1"
-msgstr ""
+msgstr "Кількість"
 
 #: src/app/qml/ExercisePage.qml:128
 #, fuzzy, kde-format
@@ -2134,9 +2135,9 @@ msgid "No onset"
 msgstr ""
 
 #: src/app/qml/ExerciseSingingView.qml:293 src/app/qml/GraphicalMeter.qml:23
-#, kde-format
+#, fuzzy, kde-format
 msgid "%1 cents"
-msgstr ""
+msgstr "центи"
 
 #: src/app/qml/ExerciseSingingView.qml:384 src/app/qml/ExerciseView.qml:182
 #, kde-format
@@ -2476,9 +2477,9 @@ msgid "Exercise speed"
 msgstr "Вправи на ритм"
 
 #: src/app/qml/SettingsPage.qml:107
-#, kde-format
+#, fuzzy, kde-format
 msgid "bpm"
-msgstr ""
+msgstr "такт/хв"
 
 #: src/app/qml/SettingsPage.qml:118
 #, kde-format
@@ -2585,7 +2586,7 @@ msgstr ""
 #: src/app/qml/SettingsPage.qml:282 src/app/qml/SettingsPage.qml:423
 #, kde-format
 msgid "dB"
-msgstr ""
+msgstr "дБ"
 
 #: src/app/qml/SettingsPage.qml:294
 #, fuzzy, kde-format
@@ -2612,7 +2613,7 @@ msgstr ""
 #: src/app/qml/SettingsPage.qml:355
 #, kde-format
 msgid "cents"
-msgstr ""
+msgstr "центи"
 
 #: src/app/qml/SettingsPage.qml:366
 #, kde-format
