@@ -1,8 +1,22 @@
 {
     "KPlugin": {
         "Description": "Aubio microphone input controller for Minuet exercises",
+        "Description[ar]": "وحدة تحكم إدخال الميكروفون أوبيو لتمارين مينويت",
+        "Description[ca@valencia]": "Controlador d'entrada de micròfon Aubio per als exercicis de Minuet",
+        "Description[ca]": "Controlador d'entrada de micròfon Aubio per als exercicis del Minuet",
+        "Description[es]": "Controlador de entrada de micrófono Aubio para ejercicios de Minuet",
+        "Description[nl]": "Aubio-microfoon invoercontroller voor Minuet oefeningen",
+        "Description[pt_BR]": "Controlador de entrada de microfone Aubio para exercícios do Minuet",
+        "Description[uk]": "Контролер вхідних даних мікрофона Aubio для вправ Minuet",
         "Id": "aubiomicrophoneinputcontroller",
         "License": "GPL-2.0-or-later",
-        "Name": "Aubio Microphone Input Controller"
+        "Name": "Aubio Microphone Input Controller",
+        "Name[ar]": "وحدة تحكم إدخال الميكروفون أوبيو",
+        "Name[ca@valencia]": "Controlador d'entrada de micròfon Aubio",
+        "Name[ca]": "Controlador d'entrada de micròfon Aubio",
+        "Name[es]": "Controlador de entrada de micrófono Aubio",
+        "Name[nl]": "Aubio-microfoon invoercontroller",
+        "Name[pt_BR]": "Controlador de entrada de microfone Aubio",
+        "Name[uk]": "Контролер вхідних даних мікрофона Aubio"
     }
 }
