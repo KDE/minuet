@@ -116,6 +116,12 @@ find_package(
                Multimedia
                Svg
 )
+if(APPLE AND NOT (CMAKE_SYSTEM_NAME STREQUAL "iOS"))
+    find_package(
+        Qt6Core ${QT_MIN_VERSION} CONFIG REQUIRED
+        COMPONENTS QDarwinMicrophonePermissionPlugin
+    )
+endif()
 if(COMMAND qt_policy AND QT_KNOWN_POLICY_QTP0004)
     qt_policy(SET QTP0004 NEW)
 endif()

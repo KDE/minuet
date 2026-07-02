@@ -8,7 +8,6 @@
         "Description[nl]": "Aubio-microfoon invoercontroller voor Minuet oefeningen",
         "Description[pt_BR]": "Controlador de entrada de microfone Aubio para exercícios do Minuet",
         "Description[uk]": "Контролер вхідних даних мікрофона Aubio для вправ Minuet",
-        "Id": "aubiomicrophoneinputcontroller",
         "License": "GPL-2.0-or-later",
         "Name": "Aubio Microphone Input Controller",
         "Name[ar]": "وحدة تحكم إدخال الميكروفون أوبيو",

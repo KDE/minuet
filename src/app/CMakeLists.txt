@@ -56,7 +56,9 @@ if(NOT MINUET_MOBILE_PLATFORM)
         ${_minuet_icon_dir}/22-actions-minuet-sing-symbolic.svg
     )
 
-    ecm_add_app_icon(MINUET_SRCS ICONS ${MINUET_ICONS_PNG})
+    if(NOT APPLE)
+        ecm_add_app_icon(MINUET_SRCS ICONS ${MINUET_ICONS_PNG})
+    endif()
     ecm_install_icons(
         ICONS
         ${MINUET_ICONS_PNG}
@@ -74,6 +76,25 @@ else()
     add_executable(minuet)
 endif()
 
+if(APPLE)
+    set_target_properties(
+        minuet
+        PROPERTIES MACOSX_BUNDLE TRUE
+                   MACOSX_BUNDLE_GUI_IDENTIFIER org.kde.minuet
+                   MACOSX_BUNDLE_BUNDLE_NAME Minuet
+                   MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+                   MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION}
+    )
+endif()
+
+if(APPLE AND NOT (CMAKE_SYSTEM_NAME STREQUAL "iOS"))
+    set_target_properties(
+        minuet
+        PROPERTIES MACOSX_BUNDLE_INFO_PLIST
+                   "${CMAKE_CURRENT_SOURCE_DIR}/ios/MacOSXBundleInfo.plist.in"
+    )
+endif()
+
 if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
     set(IOS_ASSETS ${CMAKE_CURRENT_SOURCE_DIR}/ios/Assets.xcassets)
     set(IOS_LAUNCH_SCREEN
@@ -87,11 +108,6 @@ if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
     set_target_properties(
         minuet
         PROPERTIES
-            MACOSX_BUNDLE TRUE
-            MACOSX_BUNDLE_GUI_IDENTIFIER org.kde.minuet
-            MACOSX_BUNDLE_BUNDLE_NAME Minuet
-            MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-            MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION}
             QT_IOS_LAUNCH_SCREEN ${IOS_LAUNCH_SCREEN}
             XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_APPICON_NAME AppIcon
             XCODE_ATTRIBUTE_CURRENT_PROJECT_VERSION ${PROJECT_VERSION}
@@ -294,6 +310,20 @@ endif()
 
 if(APPLE AND NOT (CMAKE_SYSTEM_NAME STREQUAL "iOS"))
     target_link_libraries(minuet PRIVATE KF6::IconThemes)
+    if(TARGET Qt6::QDarwinMicrophonePermissionPlugin)
+        set_target_properties(
+            minuet
+            PROPERTIES
+                _qt_has_QDarwinMicrophonePermissionPlugin_usage_description
+                TRUE
+        )
+        qt6_import_plugins(
+            minuet INCLUDE Qt6::QDarwinMicrophonePermissionPlugin
+        )
+        target_link_libraries(
+            minuet PRIVATE Qt6::QDarwinMicrophonePermissionPlugin
+        )
+    endif()
 endif()
 
 if(NOT MINUET_MOBILE_PLATFORM)

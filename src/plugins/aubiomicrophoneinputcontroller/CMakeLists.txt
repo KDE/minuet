@@ -27,7 +27,20 @@ target_link_libraries(
     Minuet::Interfaces Aubio::aubio
 )
 
-if(NOT MINUET_MOBILE_PLATFORM)
+if(MINUET_MOBILE_PLATFORM)
+
+elseif(APPLE)
+    set(MINUET_BUNDLE_PLUGIN_INSTALL_DIR "minuet.app/Contents/PlugIns/minuet")
+    if(KDE_INSTALL_BUNDLEDIR)
+        set(MINUET_BUNDLE_PLUGIN_INSTALL_DIR
+            "${KDE_INSTALL_BUNDLEDIR}/minuet.app/Contents/PlugIns/minuet"
+        )
+    endif()
+
+    install(TARGETS minuetaubiomicrophoneinputcontroller
+            DESTINATION "${MINUET_BUNDLE_PLUGIN_INSTALL_DIR}"
+    )
+else()
     install(TARGETS minuetaubiomicrophoneinputcontroller
             DESTINATION ${KDE_INSTALL_PLUGINDIR}/minuet/
     )

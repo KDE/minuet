@@ -71,6 +71,7 @@ Q_SIGNALS:
 
 private:
     explicit Core(QObject *parent = nullptr);
+    void shutdownControllers();
 
     static Core *m_self;
 

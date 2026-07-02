@@ -432,7 +432,7 @@ bool AubioMicrophoneInputController::ensureMicrophonePermission()
     case Qt::PermissionStatus::Granted:
         return true;
     case Qt::PermissionStatus::Denied:
-        setStatus(QStringLiteral("Microphone permission denied. Enable microphone access for Minuet in Windows privacy settings."));
+        setStatus(QStringLiteral("Microphone permission denied. Enable microphone access for Minuet in system privacy settings."));
         qWarning() << "Microphone permission denied";
         return false;
     case Qt::PermissionStatus::Undetermined:
@@ -451,7 +451,7 @@ bool AubioMicrophoneInputController::ensureMicrophonePermission()
                 return;
             }
 
-            setStatus(QStringLiteral("Microphone permission denied. Enable microphone access for Minuet in Windows privacy settings."));
+            setStatus(QStringLiteral("Microphone permission denied. Enable microphone access for Minuet in system privacy settings."));
             qWarning() << "Microphone permission denied";
         });
         return false;

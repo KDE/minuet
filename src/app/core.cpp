@@ -4,6 +4,7 @@
 
 #include "core.h"
 
+#include <QCoreApplication>
 #include <QQmlEngine>
 
 #include "exercisecatalogcontroller.h"
@@ -21,6 +22,7 @@ Core *Core::m_self = nullptr;
 
 Core::~Core()
 {
+    shutdownControllers();
     m_self = nullptr;
 }
 
@@ -116,6 +118,22 @@ void Core::setMicrophoneInputController(IMicrophoneInputController *microphoneIn
     emit microphoneInputControllerChanged(m_microphoneInputController);
 }
 
+void Core::shutdownControllers()
+{
+    IMicrophoneInputController *microphoneInputController = m_microphoneInputController;
+    ISoundController *soundController = m_soundController;
+
+    setMicrophoneInputController(nullptr);
+    setSoundController(nullptr);
+
+    if (microphoneInputController) {
+        microphoneInputController->stop();
+    }
+    if (soundController) {
+        soundController->stop();
+    }
+}
+
 Core::Core(QObject *parent)
     : QObject(parent)
     , m_soundController(nullptr)
@@ -123,6 +141,10 @@ Core::Core(QObject *parent)
 {
     Q_ASSERT(m_self == nullptr);
     m_self = this;
+
+    if (QCoreApplication *application = QCoreApplication::instance()) {
+        connect(application, &QCoreApplication::aboutToQuit, this, &Core::shutdownControllers);
+    }
 
     m_settingsController = new SettingsController(this);
     connect(m_settingsController, &SettingsController::volumeChanged, this, [this](int volume) {
