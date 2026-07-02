@@ -20,7 +20,9 @@ class QIODevice;
 class AubioMicrophoneInputController : public Minuet::IMicrophoneInputController
 {
     Q_OBJECT
+#if !defined(Q_OS_ANDROID) && !defined(Q_OS_IOS)
     Q_PLUGIN_METADATA(IID "org.kde.minuet.IPlugin" FILE "aubiomicrophoneinputcontroller.json")
+#endif
     Q_INTERFACES(Minuet::IPlugin)
     Q_INTERFACES(Minuet::IMicrophoneInputController)
 
