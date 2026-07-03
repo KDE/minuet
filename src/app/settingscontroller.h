@@ -98,6 +98,8 @@ public:
     bool clappingOnboardingPromptShown() const;
     bool singingOnboardingPromptShown() const;
 
+    Q_INVOKABLE void resetAdvancedSettingsToDefaults();
+
 public Q_SLOTS:
     void setRhythmPatternCount(int rhythmPatternCount);
     void setTestExerciseCount(int testExerciseCount);
@@ -180,6 +182,25 @@ private:
     void write(const QString &key, double value);
     void write(const QString &key, bool value);
 
+    static constexpr bool DefaultSingingDisregardOctaveDifference = true;
+    static constexpr int DefaultSingingScoringMode = 0;
+    static constexpr int DefaultSingingPitchMethod = 1;
+    static constexpr int DefaultSingingOnsetMethod = 1;
+    static constexpr double DefaultSingingMinimumPitchConfidence = 0.05;
+    static constexpr double DefaultSingingPitchSilenceDb = -65.0;
+    static constexpr double DefaultSingingOnsetThreshold = 0.14;
+    static constexpr double DefaultSingingInputGateLevel = 0.006;
+    static constexpr double DefaultSingingMinimumOnsetStrength = 0.006;
+    static constexpr int DefaultSingingRequiredStablePitchFrames = 2;
+    static constexpr int DefaultClappingPitchMethod = 0;
+    static constexpr int DefaultClappingOnsetMethod = 0;
+    static constexpr double DefaultClappingMinimumPitchConfidence = 0.70;
+    static constexpr double DefaultClappingPitchSilenceDb = -45.0;
+    static constexpr double DefaultClappingOnsetThreshold = 0.32;
+    static constexpr double DefaultClappingInputGateLevel = 0.025;
+    static constexpr double DefaultClappingMinimumOnsetStrength = 0.040;
+    static constexpr int DefaultClappingRequiredStablePitchFrames = 2;
+
     int m_rhythmPatternCount = 4;
     int m_testExerciseCount = 10;
     int m_volume = 100;
@@ -191,25 +212,25 @@ private:
     int m_rhythmInstrument = 37;
     int m_clappingCorrectnessTolerancePercent = 25;
     int m_singingPitchToleranceCents = 49;
-    bool m_singingDisregardOctaveDifference = true;
-    int m_singingScoringMode = 0;
+    bool m_singingDisregardOctaveDifference = DefaultSingingDisregardOctaveDifference;
+    int m_singingScoringMode = DefaultSingingScoringMode;
     int m_singingVoiceClass = 2;
-    int m_singingPitchMethod = 1;
-    int m_singingOnsetMethod = 1;
-    double m_singingMinimumPitchConfidence = 0.05;
-    double m_singingPitchSilenceDb = -65.0;
-    double m_singingOnsetThreshold = 0.14;
-    double m_singingInputGateLevel = 0.006;
-    double m_singingMinimumOnsetStrength = 0.006;
-    int m_singingRequiredStablePitchFrames = 2;
-    int m_clappingPitchMethod = 0;
-    int m_clappingOnsetMethod = 0;
-    double m_clappingMinimumPitchConfidence = 0.70;
-    double m_clappingPitchSilenceDb = -45.0;
-    double m_clappingOnsetThreshold = 0.32;
-    double m_clappingInputGateLevel = 0.025;
-    double m_clappingMinimumOnsetStrength = 0.040;
-    int m_clappingRequiredStablePitchFrames = 2;
+    int m_singingPitchMethod = DefaultSingingPitchMethod;
+    int m_singingOnsetMethod = DefaultSingingOnsetMethod;
+    double m_singingMinimumPitchConfidence = DefaultSingingMinimumPitchConfidence;
+    double m_singingPitchSilenceDb = DefaultSingingPitchSilenceDb;
+    double m_singingOnsetThreshold = DefaultSingingOnsetThreshold;
+    double m_singingInputGateLevel = DefaultSingingInputGateLevel;
+    double m_singingMinimumOnsetStrength = DefaultSingingMinimumOnsetStrength;
+    int m_singingRequiredStablePitchFrames = DefaultSingingRequiredStablePitchFrames;
+    int m_clappingPitchMethod = DefaultClappingPitchMethod;
+    int m_clappingOnsetMethod = DefaultClappingOnsetMethod;
+    double m_clappingMinimumPitchConfidence = DefaultClappingMinimumPitchConfidence;
+    double m_clappingPitchSilenceDb = DefaultClappingPitchSilenceDb;
+    double m_clappingOnsetThreshold = DefaultClappingOnsetThreshold;
+    double m_clappingInputGateLevel = DefaultClappingInputGateLevel;
+    double m_clappingMinimumOnsetStrength = DefaultClappingMinimumOnsetStrength;
+    int m_clappingRequiredStablePitchFrames = DefaultClappingRequiredStablePitchFrames;
     bool m_melodicOnboardingPromptShown = false;
     bool m_rhythmicOnboardingPromptShown = false;
     bool m_clappingOnboardingPromptShown = false;

@@ -249,6 +249,28 @@ bool SettingsController::singingOnboardingPromptShown() const
     return m_singingOnboardingPromptShown;
 }
 
+void SettingsController::resetAdvancedSettingsToDefaults()
+{
+    setSingingDisregardOctaveDifference(DefaultSingingDisregardOctaveDifference);
+    setSingingScoringMode(DefaultSingingScoringMode);
+    setSingingPitchMethod(DefaultSingingPitchMethod);
+    setSingingOnsetMethod(DefaultSingingOnsetMethod);
+    setSingingMinimumPitchConfidence(DefaultSingingMinimumPitchConfidence);
+    setSingingPitchSilenceDb(DefaultSingingPitchSilenceDb);
+    setSingingOnsetThreshold(DefaultSingingOnsetThreshold);
+    setSingingInputGateLevel(DefaultSingingInputGateLevel);
+    setSingingMinimumOnsetStrength(DefaultSingingMinimumOnsetStrength);
+    setSingingRequiredStablePitchFrames(DefaultSingingRequiredStablePitchFrames);
+    setClappingPitchMethod(DefaultClappingPitchMethod);
+    setClappingOnsetMethod(DefaultClappingOnsetMethod);
+    setClappingMinimumPitchConfidence(DefaultClappingMinimumPitchConfidence);
+    setClappingPitchSilenceDb(DefaultClappingPitchSilenceDb);
+    setClappingOnsetThreshold(DefaultClappingOnsetThreshold);
+    setClappingInputGateLevel(DefaultClappingInputGateLevel);
+    setClappingMinimumOnsetStrength(DefaultClappingMinimumOnsetStrength);
+    setClappingRequiredStablePitchFrames(DefaultClappingRequiredStablePitchFrames);
+}
+
 void SettingsController::setRhythmPatternCount(int rhythmPatternCount)
 {
     rhythmPatternCount = std::clamp(rhythmPatternCount, 4, 16);
