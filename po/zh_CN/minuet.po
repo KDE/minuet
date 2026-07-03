@@ -1879,10 +1879,9 @@ msgstr "新的题目"
 
 #: src/app/qml/ExerciseClappingView.qml:489
 #: src/app/qml/ExerciseSingingView.qml:708
-#, fuzzy, kde-format
-#| msgid "Start Test"
+#, kde-format
 msgid "Start"
-msgstr "开始测验"
+msgstr ""
 
 #: src/app/qml/ExerciseClappingView.qml:503
 #: src/app/qml/ExerciseSingingView.qml:722 src/app/qml/ExerciseView.qml:439
@@ -2080,11 +2079,9 @@ msgid "Sing the scale"
 msgstr ""
 
 #: src/app/qml/ExerciseSingingView.qml:684
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Ascending melodic intervals"
+#, kde-format
 msgid "Sing the interval"
-msgstr "上行旋律音程"
+msgstr ""
 
 #: src/app/qml/ExerciseSingingView.qml:762
 #, kde-format

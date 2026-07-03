@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-30 00:39+0000\n"
-"PO-Revision-Date: 2026-06-06 06:50+0300\n"
+"PO-Revision-Date: 2026-07-02 08:25+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -2361,7 +2361,7 @@ msgstr ""
 #: src/app/qml/PracticeModePage.qml:54
 #, kde-format
 msgid "Hear and identify"
-msgstr ""
+msgstr "לשמוע ולזהות"
 
 #: src/app/qml/PracticeModePage.qml:62
 #, fuzzy, kde-format
@@ -2373,7 +2373,7 @@ msgstr "מחיאת כף"
 #: src/app/qml/PracticeModePage.qml:62
 #, kde-format
 msgid "Read and sing"
-msgstr ""
+msgstr "לקרוא ולשיר"
 
 #: src/app/qml/SettingsPage.qml:25
 #, kde-format
@@ -2388,17 +2388,17 @@ msgstr ""
 #: src/app/qml/SettingsPage.qml:27
 #, kde-format
 msgid "Soprano"
-msgstr ""
+msgstr "סופרנו"
 
 #: src/app/qml/SettingsPage.qml:27
 #, kde-format
 msgid "Alto"
-msgstr ""
+msgstr "אלטו"
 
 #: src/app/qml/SettingsPage.qml:27
 #, kde-format
 msgid "Tenor"
-msgstr ""
+msgstr "טנור"
 
 #: src/app/qml/SettingsPage.qml:27
 #, fuzzy, kde-format
@@ -2514,7 +2514,7 @@ msgstr ""
 #: src/app/qml/SettingsPage.qml:258 src/app/qml/SettingsPage.qml:411
 #, kde-format
 msgid "Input gate"
-msgstr ""
+msgstr "שער קלט"
 
 #: src/app/qml/SettingsPage.qml:270 src/app/qml/SettingsPage.qml:446
 #, kde-format
