@@ -21,19 +21,20 @@
 </authorgroup>
 
 <copyright>
-<year>2016</year>
+<year>2026</year>
 <holder>&Sandro.Andrade;</holder>
 </copyright>
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2021-10-19</date>
+<date>2026-07-03</date>
 
-<releaseinfo>0.4 (KDE Gear 21.08)</releaseinfo>
+<releaseinfo>Current development version</releaseinfo>
 
 <abstract>
 <para>
-&minuet; is an application for music education. It features a set of ear training exercises
-regarding intervals, chords, and scales.
+&minuet; is KDE's music education app for ear training, rhythm practice, and guided singing.
+It groups exercises by topic, lets you switch between listening and performance-based practice,
+and exposes sound and microphone settings for different instruments and rooms.
 </para>
 </abstract>
 
@@ -45,6 +46,9 @@ regarding intervals, chords, and scales.
 <keyword>intervals</keyword>
 <keyword>chords</keyword>
 <keyword>scales</keyword>
+<keyword>rhythm</keyword>
+<keyword>microphone</keyword>
+<keyword>practice</keyword>
 <keyword>Minuet</keyword>
 </keywordset>
 
@@ -54,108 +58,330 @@ regarding intervals, chords, and scales.
 <title>Introduction</title>
 
 <para>
-Welcome to &minuet;: the software for music education. &minuet; aims at supporting
-students and teachers in many aspects of music education, such as ear
-training, first-sight reading, solfa, scales, rhythm, harmony, and improvisation. &minuet;
-makes extensive use of &MIDI; capabilities to provide a full-fledged set of features
-regarding volume, tempo, and pitch changes, which makes &minuet; a valuable tool for both
-novice and experienced musicians.
+Welcome to &minuet;: the software for music education. It is built around short exercises that let
+you listen, respond, and test your progress without leaving the app.
 </para>
 <para>
-&minuet; features a rich set of ear training's exercises and new ones can be <link linkend="creating-exercises">
-seamlessly added</link> in order to extend its functionalities and adapt it to several
-music education contexts.
+The app currently covers melodic ear training, rhythm recognition, clapping exercises, and singing
+exercises. The same exercise can often be practiced in more than one way, which is why the
+interface first asks whether you want to hear and identify, read and clap, or read and sing.
 </para>
 
 <screenshot>
-  <screeninfo>&minuet; main window</screeninfo>
+  <screeninfo>&minuet; home screen</screeninfo>
   <mediaobject>
-    <imageobject><imagedata fileref="minuet-screenshot.png" format="PNG" /></imageobject>
-    <textobject><phrase>&minuet;'s ear training chord exercises</phrase></textobject>
+    <imageobject><imagedata fileref="minuet-home.png" format="PNG" /></imageobject>
+    <textobject><phrase>The &minuet; home screen</phrase></textobject>
   </mediaobject>
 </screenshot>
+
+<para>
+The home page is intentionally minimal. Use the navigation drawer to move to the settings page,
+the about page, or a category of exercises.
+</para>
 </chapter>
 
 <chapter id="using-minuet">
 <title>Using &minuet;</title>
 
 <para>
-In the next two sections - <link linkend="starting-minuet">Starting &minuet;</link> and <link linkend="minuet-exercises">&minuet; Exercises</link> - we will provide you the required steps to get &minuet; up and running.
+The normal flow is simple: start &minuet;, choose an exercise, pick a practice mode, then work
+through a question or a test run.
 </para>
 
 <sect1 id="starting-minuet">
 <title>Starting &minuet;</title>
 
-<para>You can start &minuet; from the application launcher. Open the global menu by clicking on the application launcher icon on the system tray at the bottom left of your screen. This will raise a menu. Move your cursor up the menu to the <menuchoice><guimenu>Applications</guimenu> <guisubmenu>Education</guisubmenu> <guisubmenu>Miscellaneous</guisubmenu> <guimenuitem>&minuet; (Music Education Software)</guimenuitem></menuchoice> menu item from the global menu or with <keycombo action="simul">&Alt;<keycap>F2</keycap></keycombo> and entering <command>minuet</command> into the input field.
+<para>
+Start &minuet; from the application launcher or from a terminal by running
+<command>minuet</command>. When the app opens, the home page shows a single prompt:
+<guilabel>Choose an exercise</guilabel>.
 </para>
 </sect1>
 
-<sect1 id="minuet-exercises">
-<title>&minuet; Exercises and Workflow</title>
+<sect1 id="browse-exercises">
+<title>Browse and choose exercises</title>
 
 <para>
-&minuet;'s user interface entails three major components:
+The exercise browser groups topics by subject. Use the drawer or the category list to reach
+chords, intervals, rhythm, or scales. The browser updates itself from the installed exercise
+specification files, so the visible hierarchy reflects the exercises that are currently available.
 </para>
 
 <screenshot>
-  <screeninfo>&minuet; main window</screeninfo>
+  <screeninfo>&minuet; exercise browser</screeninfo>
   <mediaobject>
-    <imageobject><imagedata fileref="minuet-ui-components.png" format="PNG" /></imageobject>
-    <textobject><phrase>&minuet;'s UI components</phrase></textobject>
+    <imageobject><imagedata fileref="minuet-exercise-list.png" format="PNG" /></imageobject>
+    <textobject><phrase>The exercise browser in &minuet;</phrase></textobject>
   </mediaobject>
 </screenshot>
 
-<variablelist>
+<para>
+Each exercise entry has a title and a short description. Some categories lead directly to an
+exercise, while others expand into subcategories. The list is not fixed in code: new exercise files
+are merged into the hierarchy automatically when &minuet; starts.
+</para>
 
-<varlistentry>
-<term><guilabel>Navigation Menu</guilabel></term>
-<listitem><para>Allows for navigating in &minuet;'s exercise categories and selecting a particular exercise. The Navigation Menu is dynamically created based upon exercises specification files as described in <link linkend="creating-exercises">Creating Exercises</link>. &minuet;'s exercises are grouped according to classes such as intervals, scales, and chords.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guilabel>Keyboard View</guilabel></term>
-<listitem><para>Exhibits &MIDI; <parameter>note on</parameter> events being sequenced by a &MIDI; file or by an exercise execution.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guilabel>Exercise View</guilabel></term>
-<listitem><para>Presents, for a given exercise, buttons for controlling exercise presentation and a set of exercise's possible answers. An exercise run begins by clicking the <guibutton>Start Quest</guibutton> button. A randomly selected interval/chord/scale is played by &minuet; and then the student is expected to pick up an answer among the ones shown in the answer's grid. &minuet; always present - as a white small circle in Keyboard View - the first note of selected interval/scale or the root note of selected chord. By hovering a possible answer, &minuet; highlights its corresponding visual representation in Keyboard View. The remaining notes of the hovered answer are presented as small circles whose colors are the same of hovered answer's button. The student can hear the exercise again by clicking the <guibutton>Play Question</guibutton> button, click the chosen answer button, or get the right answer by clicking the <guibutton>Give Up</guibutton> button. A new run of the same exercise can be started by pressing <guibutton>Stop Quest</guibutton> button and pressing again the <guibutton>New Question</guibutton> button.</para></listitem>
-</varlistentry>
-
-</variablelist>
 </sect1>
+
+<sect1 id="practice-modes">
+<title>Practice modes</title>
+
+<para>
+When you open an exercise, &minuet; asks how you want to practice it.
+</para>
+
+<screenshot>
+  <screeninfo>&minuet; practice mode chooser</screeninfo>
+  <mediaobject>
+    <imageobject><imagedata fileref="minuet-practice-mode.png" format="PNG" /></imageobject>
+    <textobject><phrase>The practice mode chooser in &minuet;</phrase></textobject>
+  </mediaobject>
+</screenshot>
+
+<para>
+There are two broad practice paths:
+</para>
+
+<itemizedlist>
+<listitem>
+<para>
+<guilabel>Hear and identify</guilabel> plays the exercise and asks you to choose the answer from the
+available options. This is the main flow for melodic ear training.
+</para>
+</listitem>
+<listitem>
+<para>
+<guilabel>Read and clap</guilabel> is shown for rhythm exercises. <guilabel>Read and sing</guilabel>
+is shown for melodic exercises that accept vocal input, such as intervals and scales.
+</para>
+</listitem>
+</itemizedlist>
+
+<para>
+The practice choice changes the input mode, not the underlying exercise category. That means you
+can use the same exercise data for listening, clapping, or singing work depending on the topic.
+</para>
+</sect1>
+
+<sect1 id="melodic-workflow">
+<title>Melodic ear training</title>
+
+<para>
+Melodic exercises follow the classic Minuet flow: the app plays a question, shows answer choices,
+and lets you replay the prompt if you need to hear it again. This manual mode is used for
+intervals, scales, and chords when you choose <guilabel>Hear and identify</guilabel>.
+</para>
+
+<screenshot>
+  <screeninfo>&minuet; chord exercise in manual mode</screeninfo>
+  <mediaobject>
+    <imageobject><imagedata fileref="minuet-chords-manual.png" format="PNG" /></imageobject>
+    <textobject><phrase>A chord exercise in manual mode in &minuet;</phrase></textobject>
+  </mediaobject>
+</screenshot>
+
+<para>
+The exercise page gives you the controls you need for a single question or a longer test run:
+</para>
+
+<itemizedlist>
+<listitem><para><guibutton>New Question</guibutton> starts another question.</para></listitem>
+<listitem><para><guibutton>Play Question</guibutton> repeats the current prompt.</para></listitem>
+<listitem><para><guibutton>Give Up</guibutton> reveals the answer.</para></listitem>
+<listitem><para><guibutton>Start Test</guibutton> begins a scored sequence of questions.</para></listitem>
+<listitem><para><guibutton>Stop Test</guibutton> ends the test run.</para></listitem>
+</itemizedlist>
+
+<para>
+In melodic exercises, the answer buttons and the keyboard or staff view stay aligned, so you can
+see how each candidate maps to the notes being played.
+</para>
+
+<para>
+Chord exercises use the same manual workflow, but the prompt is played as a chord instead of a
+melodic sequence. &minuet; plays the chord, shows the root note on the keyboard and staff, and asks
+you to choose one chord quality from the available answers. The chord catalog includes triads,
+inversions, suspended chords, seventh chords, ninth chords, eleventh chords, and mixed chord sets
+such as <guilabel>Lots of chords</guilabel>.
+</para>
+
+<para>
+Use <guibutton>Play Question</guibutton> to hear the chord again before answering. In test mode,
+&minuet; scores the sequence using the configured number of exercises from the settings page.
+</para>
+</sect1>
+
+<sect1 id="rhythm-workflow">
+<title>Rhythm and clapping</title>
+
+<para>
+Rhythm exercises focus on timing rather than pitch. In the clapping mode, &minuet; listens to your
+microphone input and compares the onsets to the target pattern.
+</para>
+
+<screenshot>
+  <screeninfo>&minuet; clapping exercise</screeninfo>
+  <mediaobject>
+    <imageobject><imagedata fileref="minuet-clapping.png" format="PNG" /></imageobject>
+    <textobject><phrase>A rhythm clapping exercise in &minuet;</phrase></textobject>
+  </mediaobject>
+</screenshot>
+
+<para>
+The clapping view shows the rhythm pattern cards, an input level meter, and a
+<guibutton>Calibrate Silence</guibutton> action. The count-in happens before recording starts, so
+you can settle into the tempo before the exercise listens for claps.
+</para>
+
+<para>
+Use the rhythm practice to work on:
+</para>
+
+<itemizedlist>
+<listitem><para>recognizing simple rhythm figures by ear;</para></listitem>
+<listitem><para>matching your claps to the beat;</para></listitem>
+<listitem><para>staying inside the configured timing tolerance.</para></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="singing-workflow">
+<title>Singing exercises</title>
+
+<para>
+Singing exercises use the microphone to compare what you sing with the target pitch content. The
+same practice screen is used for both interval and scale work, but the target and feedback change
+with the chosen exercise.
+</para>
+
+<para>
+For interval exercises, &minuet; plays the root note and asks you to sing the requested interval
+relative to it. For scale exercises, the app presents a scale or mode and expects you to sing the
+notes in sequence while staying on pitch and on beat.
+</para>
+
+<screenshot>
+  <screeninfo>&minuet; singing interval exercise</screeninfo>
+  <mediaobject>
+    <imageobject><imagedata fileref="minuet-singing-interval.png" format="PNG" /></imageobject>
+    <textobject><phrase>A singing interval exercise in &minuet;</phrase></textobject>
+  </mediaobject>
+</screenshot>
+
+<screenshot>
+  <screeninfo>&minuet; singing scale exercise</screeninfo>
+  <mediaobject>
+    <imageobject><imagedata fileref="minuet-singing-scale.png" format="PNG" /></imageobject>
+    <textobject><phrase>A singing scale exercise in &minuet;</phrase></textobject>
+  </mediaobject>
+</screenshot>
+
+<para>
+The singing view shows the note targets, pitch and onset feedback, a live input meter, and a
+<guibutton>Calibrate Silence</guibutton> action. &minuet; also counts in before the first note, so
+you can start on the correct beat. The scale view extends the same feedback to longer sequences,
+which makes it useful for practicing melodic memory in addition to pitch matching.
+</para>
+
+<para>
+Singing exercises are influenced by several settings:
+</para>
+
+<itemizedlist>
+<listitem><para><guilabel>Voice class</guilabel> selects the expected vocal range.</para></listitem>
+<listitem><para><guilabel>Pitch tolerance</guilabel> controls how far from the target pitch a sung note may be.</para></listitem>
+<listitem><para><guilabel>Timing tolerance</guilabel> controls how much rhythmic drift is accepted for claps.</para></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="settings">
+<title>Settings</title>
+
+<para>
+The settings page is split into four sections: <guilabel>Practice</guilabel>,
+<guilabel>Sound</guilabel>, <guilabel>Microphone</guilabel>, and <guilabel>Advanced</guilabel>.
+The first three sections keep the beginner controls visible. The advanced section stays collapsed
+until you open it.
+</para>
+
+<screenshot>
+  <screeninfo>&minuet; basic settings</screeninfo>
+  <mediaobject>
+    <imageobject><imagedata fileref="minuet-settings-basic.png" format="PNG" /></imageobject>
+    <textobject><phrase>The basic settings page in &minuet;</phrase></textobject>
+  </mediaobject>
+</screenshot>
+
+<para>
+The visible settings cover the controls most users need day to day:
+</para>
+
+<itemizedlist>
+<listitem><para><guilabel>Exercise speed</guilabel> sets the tempo in beats per minute.</para></listitem>
+<listitem><para><guilabel>Number of rhythm patterns</guilabel> controls the size of rhythm practice sets.</para></listitem>
+<listitem><para><guilabel>Number of exercises</guilabel> sets the length of a test run.</para></listitem>
+<listitem><para><guilabel>Volume</guilabel> adjusts playback loudness.</para></listitem>
+<listitem><para><guilabel>Instrument</guilabel> selects the melodic sound used for ear training.</para></listitem>
+<listitem><para><guilabel>Voice class</guilabel> selects the target singing range.</para></listitem>
+</itemizedlist>
+
+<para>
+The microphone section also includes short helper descriptions for the tolerance and calibration
+controls. Those descriptions explain when to tighten the tolerance and when to recalibrate silence.
+</para>
+
+<screenshot>
+  <screeninfo>&minuet; advanced settings</screeninfo>
+  <mediaobject>
+    <imageobject><imagedata fileref="minuet-settings-advanced.png" format="PNG" /></imageobject>
+    <textobject><phrase>The advanced settings section in &minuet;</phrase></textobject>
+  </mediaobject>
+</screenshot>
+
+<para>
+Advanced settings expose detection algorithms and thresholds for difficult microphones or noisy
+rooms. Use them when the default detection behavior is not enough. The section is collapsed by
+default and includes a <guibutton>Reset to Defaults</guibutton> button so you can restore the
+factory values after experimenting.
+</para>
+
+<para>
+The advanced section includes separate groups for clapping detection and singing detection.
+Typical controls include onset method, onset threshold, input gate, minimum onset strength,
+silence level, pitch method, scoring mode, pitch confidence, and stable pitch frames.
+</para>
 </chapter>
 
 <chapter id="creating-exercises">
 <title>Creating new &minuet;'s exercises</title>
 
 <para>
-&minuet;'s exercises are defined in exercise specification files, written in &JSON; format:
+&minuet;'s exercises are defined in &JSON; specification files. The app loads all available files
+at startup and merges them into the visible exercise tree.
 </para>
+
 <para>
 <programlisting>
 {
   "exercises": [
     {
       "name": "Intervals",
-      "root": "21..104",
+      "root": "29..69",
       "playMode": "scale",
+      "userMessage": "Hear the interval and choose your answer",
+      "numberOfSelectedOptions": 1,
+      "_icon": "minuet-intervals-symbolic.svg",
       "children": [
         {
-          "name": "Ascending Melodic Intervals",
+          "name": "Ascending melodic intervals",
+          "and-tags": ["interval", "ascending"],
           "children": [
             {
               "name": "Seconds",
-              "options": [
-                {
-                  "name": "Minor Second",
-                  "sequenceFromRoot": "1"
-                },
-                {
-                  "name": "Major Second",
-                  "sequenceFromRoot": "2"
-                }
-              ]
+              "or-tags": ["2"],
+              "description": "Practice identifying ascending melodic seconds by ear."
             }
           ]
         }
@@ -165,36 +391,36 @@ In the next two sections - <link linkend="starting-minuet">Starting &minuet;</li
 }
 </programlisting>
 </para>
+
 <para>
-&minuet;'s exercise specification files contain one top-level &JSON; object featuring the <parameter>exercises</parameter>
-array. Such an array defines a hierarchical structure of exercises, grouped by categories. Every category/exercise has a
-name. Category &JSON; objects contain a property named <parameter>children</parameter>, which describes the
-subcategories/exercises entailed by such a category. Exercise &JSON; objects contain a property named <parameter>
-options</parameter>, which defines the possible answers for such an exercise. In each exercise run, &minuet; randomly
-selects one answer among the possible ones and the student is expected to click the answer's button which corresponds to the
-selected answer.
+The top-level object contains an <parameter>exercises</parameter> array. Each item in that array is
+either a category or an exercise leaf. Categories use <parameter>children</parameter> to define the
+next level of the tree.
 </para>
+
 <para>
-Any (sub)category may define a <parameter>root</parameter> parameter to specify the range from which the initial interval/chord/scale's
-note will be randomly chosen for all exercises in this category. Such range corresponds to standards &MIDI; note numbers and follows
-the format <parameter>&lt;min-value&gt;..&lt;max-value&gt;</parameter>. The example presented above uses all keyboard range as possible
-root notes (21..104). The <parameter>playMode</parameter> parameter indicates
-how possible answers should be played: as a <parameter>scale</parameter> (one note after the other) or as a <parameter>chord</parameter> (all
-notes ringing out simultaneously).
+Useful fields include:
 </para>
+
+<itemizedlist>
+<listitem><para><parameter>name</parameter> gives every node its visible label.</para></listitem>
+<listitem><para><parameter>root</parameter> limits the note range used to generate the prompt.</para></listitem>
+<listitem><para><parameter>playMode</parameter> selects scale, chord, or rhythm playback.</para></listitem>
+<listitem><para><parameter>userMessage</parameter> customizes the instruction shown to the user.</para></listitem>
+<listitem><para><parameter>numberOfSelectedOptions</parameter> controls how many answers may be correct.</para></listitem>
+<listitem><para><parameter>_icon</parameter> sets the icon shown in the drawer and exercise browser.</para></listitem>
+<listitem><para><parameter>and-tags</parameter> and <parameter>or-tags</parameter> help group and filter related nodes.</para></listitem>
+<listitem><para><parameter>description</parameter> gives the browser a short explanation for the node.</para></listitem>
+<listitem><para><parameter>options</parameter> describes answer choices for a leaf exercise.</para></listitem>
+<listitem><para><parameter>sequenceFromRoot</parameter> defines the note offsets for melodic answers.</para></listitem>
+<listitem><para><parameter>template</parameter> is used by rhythm exercises to render notation.</para></listitem>
+</itemizedlist>
+
 <para>
-Each exercise's option defines a name and the sequence of notes which should be played from the root note randomly selected in
-each exercise run. Such sequence of notes is defined as relative distances from the root note, describing the interval
-each note forms in conjunction with the root note. For example, for a major scale, the sequence of notes is <quote>2 4 5 7 9 11 12</quote>,
-which respectively denotes the <quote>whole whole half whole whole whole half</quote> major scale structure. The <parameter>sequenceFromRoot</parameter> parameter may contain any notes in length. Also, &minuet;'s core ensures that only answers
-whose all notes lies within keyboard range are randomly selected.
-</para>
-<para>
-To provide a better infrastructure for organizing a large set of exercise specification files, &minuet;'s core supports the use
-of several specification files, which are automatically merged to compose the final exercise hierarchy presented in the
-Navigation Menu. Exercises are correctly merged as long as different specification files use the same (sub)category name
-when defining exercises. For now, &minuet;'s provides no &GUI; for creating exercise specifications so that you must manually create such &JSON; files. &minuet;'s exercise specification files may be installed system-wide or locally in the <filename class="directory">minuet/exercises/</filename>
-folder located in <userinput><command>qtpaths</command> <option>--paths GenericDataLocation</option></userinput>
+The app merges files that share the same category names, so separate specification files can
+contribute to one visible hierarchy. Install them system-wide or place them in
+<filename class="directory">minuet/exercises/</filename> under the generic data location returned by
+<userinput><command>qtpaths</command> <option>--paths GenericDataLocation</option></userinput>.
 </para>
 
 </chapter>
@@ -211,7 +437,7 @@ Program copyright 2016 &Sandro.Andrade; &Sandro.Andrade.mail;
 </para>
 
 <para>
-Documentation Copyright &copy; 2016 &Sandro.Andrade; &Sandro.Andrade.mail;
+Documentation Copyright &copy; 2026 &Sandro.Andrade; &Sandro.Andrade.mail;
 </para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
