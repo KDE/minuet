@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-30 00:39+0000\n"
+"POT-Creation-Date: 2026-07-04 00:39+0000\n"
 "PO-Revision-Date: 2026-07-02 08:25+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -2337,7 +2337,7 @@ msgstr ""
 "אפשר לתרגל את אימון השמיעה עם תרגילים לחיזוק היכולות לזיהוי מרווחים, "
 "אקורדים, מקצבים, סולמות ועוד."
 
-#: src/app/qml/MinuetDrawer.qml:171 src/app/qml/SettingsPage.qml:44
+#: src/app/qml/MinuetDrawer.qml:171 src/app/qml/SettingsPage.qml:48
 #, kde-format
 msgid "Settings"
 msgstr "הגדרות"
@@ -2375,219 +2375,266 @@ msgstr "מחיאת כף"
 msgid "Read and sing"
 msgstr "לקרוא ולשיר"
 
-#: src/app/qml/SettingsPage.qml:25
+#: src/app/qml/SettingsPage.qml:18
+#, kde-format
+msgid "Hide advanced settings"
+msgstr ""
+
+#: src/app/qml/SettingsPage.qml:27
 #, kde-format
 msgid "Pitch primary"
 msgstr ""
 
-#: src/app/qml/SettingsPage.qml:25
+#: src/app/qml/SettingsPage.qml:27
 #, kde-format
 msgid "Pitch + timing"
 msgstr ""
 
-#: src/app/qml/SettingsPage.qml:27
+#: src/app/qml/SettingsPage.qml:30
+#, kde-format
+msgid "Show advanced settings"
+msgstr ""
+
+#: src/app/qml/SettingsPage.qml:31
 #, kde-format
 msgid "Soprano"
 msgstr "סופרנו"
 
-#: src/app/qml/SettingsPage.qml:27
+#: src/app/qml/SettingsPage.qml:31
 #, kde-format
 msgid "Alto"
 msgstr "אלטו"
 
-#: src/app/qml/SettingsPage.qml:27
+#: src/app/qml/SettingsPage.qml:31
 #, kde-format
 msgid "Tenor"
 msgstr "טנור"
 
-#: src/app/qml/SettingsPage.qml:27
+#: src/app/qml/SettingsPage.qml:31
 #, fuzzy, kde-format
 #| msgctxt "General MIDI instrument group"
 #| msgid "Bass"
 msgid "Bass"
 msgstr "בס"
 
-#: src/app/qml/SettingsPage.qml:81
+#: src/app/qml/SettingsPage.qml:85
 #, kde-format
-msgid "Player"
-msgstr "נגן"
+msgid "Practice"
+msgstr ""
 
-#: src/app/qml/SettingsPage.qml:90
-#, kde-format
-msgid "Volume"
-msgstr "עוצמת שמע"
-
-#: src/app/qml/SettingsPage.qml:106
+#: src/app/qml/SettingsPage.qml:94
 #, fuzzy, kde-format
 #| msgid "Rhythm Exercises"
 msgid "Exercise speed"
 msgstr "תרגולי קצב"
 
-#: src/app/qml/SettingsPage.qml:107
+#: src/app/qml/SettingsPage.qml:95
 #, kde-format
 msgid "bpm"
 msgstr ""
 
-#: src/app/qml/SettingsPage.qml:118
+#: src/app/qml/SettingsPage.qml:109
 #, kde-format
-msgid "SoundFont"
+msgid "Number of rhythm patterns"
+msgstr "מספר תבניות המקצב"
+
+#: src/app/qml/SettingsPage.qml:123
+#, kde-format
+msgid "Number of exercises"
+msgstr "מספר התרגולים:"
+
+#: src/app/qml/SettingsPage.qml:134
+#, fuzzy, kde-format
+#| msgid "SoundFont"
+msgid "Sound"
 msgstr "גופן_צליל"
 
-#: src/app/qml/SettingsPage.qml:122
+#: src/app/qml/SettingsPage.qml:143
+#, kde-format
+msgid "Volume"
+msgstr "עוצמת שמע"
+
+#: src/app/qml/SettingsPage.qml:154
 #, kde-format
 msgid ""
 "The active sound controller did not report any General MIDI bank 0 "
 "instruments."
 msgstr "בקר המוזיקה הפעיל לא דיווח על כלי MIDI כלליים בבנק 0."
 
-#: src/app/qml/SettingsPage.qml:124
+#: src/app/qml/SettingsPage.qml:156
 #, kde-format
 msgid "No melodic instruments available"
 msgstr "אין כלים מלודיים זמינים"
 
-#: src/app/qml/SettingsPage.qml:128
+#: src/app/qml/SettingsPage.qml:160
 #, kde-format
 msgid "Used for scales, intervals, and chords."
 msgstr "משמש לסולמות, מרווחים ואקורדים."
 
-#: src/app/qml/SettingsPage.qml:129
+#: src/app/qml/SettingsPage.qml:161
 #, kde-format
 msgid "Melodic Exercises"
 msgstr "תרגולים מלודיים"
 
-#: src/app/qml/SettingsPage.qml:136
+#: src/app/qml/SettingsPage.qml:168
 #, kde-format
 msgid "Instrument group:"
 msgstr "קבוצת כלים:"
 
-#: src/app/qml/SettingsPage.qml:154
+#: src/app/qml/SettingsPage.qml:186
 #, kde-format
 msgid "Instrument:"
 msgstr "כלי:"
 
-#: src/app/qml/SettingsPage.qml:168
+#: src/app/qml/SettingsPage.qml:200
 #, kde-format
 msgid "Used for rhythm figures. The count-in keeps its own sound."
 msgstr "משמש ללימוד תבניות מקצב. לספירה המקדימה (הכנה) יש צליל משלה."
 
-#: src/app/qml/SettingsPage.qml:169
+#: src/app/qml/SettingsPage.qml:201
 #, kde-format
 msgid "Rhythmic Exercises"
 msgstr "תרגולים מקצביים"
 
-#: src/app/qml/SettingsPage.qml:176
+#: src/app/qml/SettingsPage.qml:208
 #, kde-format
 msgid "Percussion sound:"
 msgstr "צליל הקשה:"
 
-#: src/app/qml/SettingsPage.qml:187
+#: src/app/qml/SettingsPage.qml:219
 #, kde-format
-msgid "Rhythm Exercises"
-msgstr "תרגולי קצב"
-
-#: src/app/qml/SettingsPage.qml:195
-#, kde-format
-msgid "Number of rhythm patterns"
-msgstr "מספר תבניות המקצב"
-
-#: src/app/qml/SettingsPage.qml:206
-#, fuzzy, kde-format
-#| msgid "Melodic Exercises"
-msgid "Clapping Exercises"
-msgstr "תרגולים מלודיים"
-
-#: src/app/qml/SettingsPage.qml:222 src/app/qml/SettingsPage.qml:342
-#, kde-format
-msgid "Onset method"
+msgid "Microphone"
 msgstr ""
 
-#: src/app/qml/SettingsPage.qml:234
-#, kde-format
-msgid "Timing tolerance"
-msgstr ""
-
-#: src/app/qml/SettingsPage.qml:246 src/app/qml/SettingsPage.qml:434
-#, kde-format
-msgid "Onset threshold"
-msgstr ""
-
-#: src/app/qml/SettingsPage.qml:258 src/app/qml/SettingsPage.qml:411
-#, kde-format
-msgid "Input gate"
-msgstr "שער קלט"
-
-#: src/app/qml/SettingsPage.qml:270 src/app/qml/SettingsPage.qml:446
-#, kde-format
-msgid "Minimum onset strength"
-msgstr ""
-
-#: src/app/qml/SettingsPage.qml:281 src/app/qml/SettingsPage.qml:422
-#, kde-format
-msgid "Aubio silence"
-msgstr ""
-
-#: src/app/qml/SettingsPage.qml:282 src/app/qml/SettingsPage.qml:423
-#, kde-format
-msgid "dB"
-msgstr ""
-
-#: src/app/qml/SettingsPage.qml:294
-#, fuzzy, kde-format
-#| msgid "Melodic Exercises"
-msgid "Singing Exercises"
-msgstr "תרגולים מלודיים"
-
-#: src/app/qml/SettingsPage.qml:310
+#: src/app/qml/SettingsPage.qml:227
 #, kde-format
 msgid "Voice class"
 msgstr ""
 
-#: src/app/qml/SettingsPage.qml:326
+#: src/app/qml/SettingsPage.qml:239
 #, kde-format
-msgid "Pitch method"
+msgid ""
+"Larger values accept claps farther from the beat; smaller values require "
+"tighter timing."
 msgstr ""
 
-#: src/app/qml/SettingsPage.qml:354
+#: src/app/qml/SettingsPage.qml:241
+#, kde-format
+msgid "Timing tolerance"
+msgstr ""
+
+#: src/app/qml/SettingsPage.qml:255
+#, kde-format
+msgid ""
+"Larger values accept notes farther from the target pitch; smaller values "
+"require more accurate singing."
+msgstr ""
+
+#: src/app/qml/SettingsPage.qml:257
 #, kde-format
 msgid "Pitch tolerance"
 msgstr ""
 
-#: src/app/qml/SettingsPage.qml:355
+#: src/app/qml/SettingsPage.qml:258
 #, kde-format
 msgid "cents"
 msgstr ""
 
-#: src/app/qml/SettingsPage.qml:366
+#: src/app/qml/SettingsPage.qml:268
 #, kde-format
-msgid "Disregard octave difference"
+msgid ""
+"Keep the room quiet while calibrating silence. Recalibrate when the "
+"microphone or room noise changes."
 msgstr ""
 
-#: src/app/qml/SettingsPage.qml:376
+#: src/app/qml/SettingsPage.qml:269
+#, kde-format
+msgid "Calibration"
+msgstr ""
+
+#: src/app/qml/SettingsPage.qml:273
+#, kde-format
+msgid "Advanced"
+msgstr ""
+
+#: src/app/qml/SettingsPage.qml:313
+#, kde-format
+msgid "Algorithms and detection thresholds for difficult microphones or rooms."
+msgstr ""
+
+#: src/app/qml/SettingsPage.qml:338
+#, fuzzy, kde-format
+#| msgid "Melodic Exercises"
+msgid "Clapping detection"
+msgstr "תרגולים מלודיים"
+
+#: src/app/qml/SettingsPage.qml:342 src/app/qml/SettingsPage.qml:410
+#, kde-format
+msgid "Onset method"
+msgstr ""
+
+#: src/app/qml/SettingsPage.qml:352 src/app/qml/SettingsPage.qml:481
+#, kde-format
+msgid "Onset threshold"
+msgstr ""
+
+#: src/app/qml/SettingsPage.qml:364 src/app/qml/SettingsPage.qml:458
+#, kde-format
+msgid "Input gate"
+msgstr "שער קלט"
+
+#: src/app/qml/SettingsPage.qml:376 src/app/qml/SettingsPage.qml:493
+#, kde-format
+msgid "Minimum onset strength"
+msgstr ""
+
+#: src/app/qml/SettingsPage.qml:387 src/app/qml/SettingsPage.qml:469
+#, kde-format
+msgid "Aubio silence"
+msgstr ""
+
+#: src/app/qml/SettingsPage.qml:388 src/app/qml/SettingsPage.qml:470
+#, kde-format
+msgid "dB"
+msgstr ""
+
+#: src/app/qml/SettingsPage.qml:397
+#, fuzzy, kde-format
+#| msgid "Melodic Exercises"
+msgid "Singing detection"
+msgstr "תרגולים מלודיים"
+
+#: src/app/qml/SettingsPage.qml:401
+#, kde-format
+msgid "Pitch method"
+msgstr ""
+
+#: src/app/qml/SettingsPage.qml:419
 #, kde-format
 msgid "Scoring mode"
 msgstr ""
 
-#: src/app/qml/SettingsPage.qml:389
+#: src/app/qml/SettingsPage.qml:429
+#, kde-format
+msgid "Disregard octave difference"
+msgstr ""
+
+#: src/app/qml/SettingsPage.qml:436
 #, kde-format
 msgid "Pitch confidence"
 msgstr ""
 
-#: src/app/qml/SettingsPage.qml:400
+#: src/app/qml/SettingsPage.qml:447
 #, kde-format
 msgid "Stable pitch frames"
 msgstr ""
 
-#: src/app/qml/SettingsPage.qml:459
+#: src/app/qml/SettingsPage.qml:505
 #, kde-format
-msgid "Tests"
-msgstr "בדיקות"
+msgid "Reset to Defaults"
+msgstr ""
 
-#: src/app/qml/SettingsPage.qml:467
-#, kde-format
-msgid "Number of exercises"
-msgstr "מספר התרגולים:"
-
-#: src/app/qml/SettingsPage.qml:493
+#: src/app/qml/SettingsPage.qml:578
 #, kde-format
 msgid "%1 %2"
 msgstr ""
@@ -2986,6 +3033,15 @@ msgstr "אפקטים קוליים"
 msgctxt "General MIDI instrument group"
 msgid "Other"
 msgstr "אחר"
+
+#~ msgid "Player"
+#~ msgstr "נגן"
+
+#~ msgid "Rhythm Exercises"
+#~ msgstr "תרגולי קצב"
+
+#~ msgid "Tests"
+#~ msgstr "בדיקות"
 
 #~ msgid "%1%"
 #~ msgstr "%1%"
