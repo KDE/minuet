@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-04 00:39+0000\n"
-"PO-Revision-Date: 2026-07-01 18:58+0300\n"
+"PO-Revision-Date: 2026-07-04 09:50+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -2433,7 +2433,7 @@ msgstr "Читання і спів"
 #: src/app/qml/SettingsPage.qml:18
 #, kde-format
 msgid "Hide advanced settings"
-msgstr ""
+msgstr "Приховати додаткові параметри"
 
 #: src/app/qml/SettingsPage.qml:27
 #, kde-format
@@ -2448,7 +2448,7 @@ msgstr "Тон + час"
 #: src/app/qml/SettingsPage.qml:30
 #, kde-format
 msgid "Show advanced settings"
-msgstr ""
+msgstr "Показати додаткові параметри"
 
 #: src/app/qml/SettingsPage.qml:31
 #, kde-format
@@ -2473,7 +2473,7 @@ msgstr "Баси"
 #: src/app/qml/SettingsPage.qml:85
 #, kde-format
 msgid "Practice"
-msgstr ""
+msgstr "Вправа"
 
 #: src/app/qml/SettingsPage.qml:94
 #, kde-format
@@ -2496,10 +2496,9 @@ msgid "Number of exercises"
 msgstr "Кількість вправ"
 
 #: src/app/qml/SettingsPage.qml:134
-#, fuzzy, kde-format
-#| msgid "SoundFont"
+#, kde-format
 msgid "Sound"
-msgstr "SoundFont"
+msgstr "Звук"
 
 #: src/app/qml/SettingsPage.qml:143
 #, kde-format
@@ -2559,7 +2558,7 @@ msgstr "Звук ударних:"
 #: src/app/qml/SettingsPage.qml:219
 #, kde-format
 msgid "Microphone"
-msgstr ""
+msgstr "Мікрофон"
 
 #: src/app/qml/SettingsPage.qml:227
 #, kde-format
@@ -2572,6 +2571,8 @@ msgid ""
 "Larger values accept claps farther from the beat; smaller values require "
 "tighter timing."
 msgstr ""
+"Більші значення призводять до реєстрації плескань далі від ритму; менші "
+"значення вимагають точнішого збігу за часом."
 
 #: src/app/qml/SettingsPage.qml:241
 #, kde-format
@@ -2584,6 +2585,8 @@ msgid ""
 "Larger values accept notes farther from the target pitch; smaller values "
 "require more accurate singing."
 msgstr ""
+"Більші значення призводять до прийняття нот далі від цільової тональності; "
+"менші значення вимагають точнішої відповідності співу."
 
 #: src/app/qml/SettingsPage.qml:257
 #, kde-format
@@ -2601,28 +2604,30 @@ msgid ""
 "Keep the room quiet while calibrating silence. Recalibrate when the "
 "microphone or room noise changes."
 msgstr ""
+"Під час калібрування режиму тиші слідкуйте за тишею в кімнаті. Виконайте "
+"повторне калібрування, якщо рівень шуму мікрофона або у кімнаті."
 
 #: src/app/qml/SettingsPage.qml:269
-#, fuzzy, kde-format
-#| msgid "Calibrating..."
+#, kde-format
 msgid "Calibration"
-msgstr "Калібруємо…"
+msgstr "Калібрування"
 
 #: src/app/qml/SettingsPage.qml:273
 #, kde-format
 msgid "Advanced"
-msgstr ""
+msgstr "Додатково"
 
 #: src/app/qml/SettingsPage.qml:313
 #, kde-format
 msgid "Algorithms and detection thresholds for difficult microphones or rooms."
 msgstr ""
+"Алгоритми і порогові значення реєстрації для складних випадків мікрофонів "
+"або приміщень."
 
 #: src/app/qml/SettingsPage.qml:338
-#, fuzzy, kde-format
-#| msgid "Clapping Exercises"
+#, kde-format
 msgid "Clapping detection"
-msgstr "Вправи на плескання"
+msgstr "Виявлення плескання"
 
 #: src/app/qml/SettingsPage.qml:342 src/app/qml/SettingsPage.qml:410
 #, kde-format
@@ -2655,10 +2660,9 @@ msgid "dB"
 msgstr "дБ"
 
 #: src/app/qml/SettingsPage.qml:397
-#, fuzzy, kde-format
-#| msgid "Singing Exercises"
+#, kde-format
 msgid "Singing detection"
-msgstr "Вправи на спів"
+msgstr "Виявлення співу"
 
 #: src/app/qml/SettingsPage.qml:401
 #, kde-format
@@ -2688,7 +2692,7 @@ msgstr "Стабільні кадри тону"
 #: src/app/qml/SettingsPage.qml:505
 #, kde-format
 msgid "Reset to Defaults"
-msgstr ""
+msgstr "Повернути типові значення"
 
 #: src/app/qml/SettingsPage.qml:578
 #, kde-format

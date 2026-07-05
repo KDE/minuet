@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-04 00:39+0000\n"
-"PO-Revision-Date: 2026-07-01 15:35+0200\n"
+"PO-Revision-Date: 2026-07-04 07:28+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -2416,7 +2416,7 @@ msgstr "წაკითხვა და სიღერა"
 #: src/app/qml/SettingsPage.qml:18
 #, kde-format
 msgid "Hide advanced settings"
-msgstr ""
+msgstr "დამატებითი პარამეტრების დამალვა"
 
 #: src/app/qml/SettingsPage.qml:27
 #, kde-format
@@ -2431,7 +2431,7 @@ msgstr "ტონი + დრო"
 #: src/app/qml/SettingsPage.qml:30
 #, kde-format
 msgid "Show advanced settings"
-msgstr ""
+msgstr "დამატებითი პარამეტრების ჩვენება"
 
 #: src/app/qml/SettingsPage.qml:31
 #, kde-format
@@ -2456,7 +2456,7 @@ msgstr "ბასი"
 #: src/app/qml/SettingsPage.qml:85
 #, kde-format
 msgid "Practice"
-msgstr ""
+msgstr "ვარჯიში"
 
 #: src/app/qml/SettingsPage.qml:94
 #, kde-format
@@ -2479,10 +2479,9 @@ msgid "Number of exercises"
 msgstr "სავარჯიშოების რაოდენობა"
 
 #: src/app/qml/SettingsPage.qml:134
-#, fuzzy, kde-format
-#| msgid "SoundFont"
+#, kde-format
 msgid "Sound"
-msgstr "ხმის ფონტი"
+msgstr "ხმა"
 
 #: src/app/qml/SettingsPage.qml:143
 #, kde-format
@@ -2540,7 +2539,7 @@ msgstr "პერკუსიის ხმა:"
 #: src/app/qml/SettingsPage.qml:219
 #, kde-format
 msgid "Microphone"
-msgstr ""
+msgstr "მიკროფონი"
 
 #: src/app/qml/SettingsPage.qml:227
 #, kde-format
@@ -2553,6 +2552,8 @@ msgid ""
 "Larger values accept claps farther from the beat; smaller values require "
 "tighter timing."
 msgstr ""
+"დიდი მნიშვნელობები იღებენ რიტმიდან დაშორებულ ტაშს. რაც მცირეა მნიშვნელობა, "
+"ის მით ზუსტ ათვლას მოითხოვს."
 
 #: src/app/qml/SettingsPage.qml:241
 #, kde-format
@@ -2565,6 +2566,8 @@ msgid ""
 "Larger values accept notes farther from the target pitch; smaller values "
 "require more accurate singing."
 msgstr ""
+"რაც მაღალია მნიშვნელობა, მისაღებია სამიზნე ტონისგან უფრო დაშორებული ნოტებიც. "
+"რაც მცირეა მნიშვნელობა, მით უფრო ზუსტი უნდა იყოს სიმღერა."
 
 #: src/app/qml/SettingsPage.qml:257
 #, kde-format
@@ -2582,28 +2585,28 @@ msgid ""
 "Keep the room quiet while calibrating silence. Recalibrate when the "
 "microphone or room noise changes."
 msgstr ""
+"იქონიეთ ოთახი ჩუმად, სანამ მიმდინარეობს სიჩუმის კალიბრაცია. როცა შეიცვლება "
+"მიკროფონი ან ოთახის ხმაური, დაგჭირდებათ რეკალიბრაცია."
 
 #: src/app/qml/SettingsPage.qml:269
-#, fuzzy, kde-format
-#| msgid "Calibrating..."
+#, kde-format
 msgid "Calibration"
-msgstr "კალიბრაცია..."
+msgstr "კალიბრაცია"
 
 #: src/app/qml/SettingsPage.qml:273
 #, kde-format
 msgid "Advanced"
-msgstr ""
+msgstr "დამატებით"
 
 #: src/app/qml/SettingsPage.qml:313
 #, kde-format
 msgid "Algorithms and detection thresholds for difficult microphones or rooms."
-msgstr ""
+msgstr "ალგორითმები და დადგენის ზღვრები რთული მიკროფონებისა და ოთახებისთვის."
 
 #: src/app/qml/SettingsPage.qml:338
-#, fuzzy, kde-format
-#| msgid "Clapping Exercises"
+#, kde-format
 msgid "Clapping detection"
-msgstr "ტაშის სავარჯიშოები"
+msgstr "ტაშის დადგენა"
 
 #: src/app/qml/SettingsPage.qml:342 src/app/qml/SettingsPage.qml:410
 #, kde-format
@@ -2636,10 +2639,9 @@ msgid "dB"
 msgstr "დბ"
 
 #: src/app/qml/SettingsPage.qml:397
-#, fuzzy, kde-format
-#| msgid "Singing Exercises"
+#, kde-format
 msgid "Singing detection"
-msgstr "სიმღერის სავარჯიშოები"
+msgstr "სიმღერის დადგენა"
 
 #: src/app/qml/SettingsPage.qml:401
 #, kde-format
@@ -2669,7 +2671,7 @@ msgstr "სტაბილური ტონის კადრები"
 #: src/app/qml/SettingsPage.qml:505
 #, kde-format
 msgid "Reset to Defaults"
-msgstr ""
+msgstr "ნაგულისხმევზე ჩამოყრა"
 
 #: src/app/qml/SettingsPage.qml:578
 #, kde-format

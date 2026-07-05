@@ -27,7 +27,7 @@
 
 <copyright>
 <year
->2016</year>
+>2026</year>
 <holder
 >&Sandro.Andrade;</holder>
 </copyright>
@@ -35,14 +35,14 @@
 >&FDLNotice;</legalnotice>
 
 <date
->19 d'octubre de 2021</date>
+>3 de juliol de 2026</date>
 
 <releaseinfo
->0.4 (KDE Gear 21.08)</releaseinfo>
+>Versió actual de desenvolupament</releaseinfo>
 
 <abstract>
 <para
->El &minuet; és una aplicació per a l'educació musical. Disposa d'un conjunt d'exercicis d'entrenament de l'oïda referits a intervals, acords, escales i altres. </para>
+>El &minuet; és l'aplicació d'educació musical de KDE per a l'entrenament de l'oïda, la pràctica del ritme i el cant guiat. Agrupa exercicis per tema, permet canviar entre exercicis d'escolta i interpretació, i exposa la configuració de so i micròfon per a instruments i sales diferents. </para>
 </abstract>
 
 <keywordset>
@@ -61,6 +61,12 @@
 <keyword
 >escales</keyword>
 <keyword
+>ritme</keyword>
+<keyword
+>micròfon</keyword>
+<keyword
+>exercici</keyword>
+<keyword
 >Minuet</keyword>
 </keywordset>
 
@@ -71,24 +77,25 @@
 >Introducció</title>
 
 <para
->Us donem la benvinguda al &minuet;: el programari per a educació musical. L'objectiu del &minuet; és ajudar als estudiants i professors en molts aspectes de l'educació musical, com l'entrenament de l'oïda, la lectura a primera vista, el solfeig, les escales, el ritme, l'harmonia i la improvisació. El &minuet; fa un ampli ús de les capacitats &MIDI; per a proporcionar un conjunt complet de característiques relatives al canvi de volum, tempo i to, el qual fa del &minuet; una valuosa eina per als músics principiants i experimentats. </para>
+>Us donem la benvinguda al &minuet;: el programari d'educació musical. Està construït sobre exercicis curts que permeten escoltar, respondre i posar a prova el vostre progrés sense sortir de l'aplicació. </para>
 <para
->El &minuet; ofereix un ric conjunt d'exercicis d'entrenament de l'oïda i se n'hi poden <link linkend="creating-exercises"
->afegir de nous de forma transparent</link
-> amb la finalitat d'estendre les seves funcionalitats i adaptar-lo a diversos contextos de l'educació musical. </para>
+>L'aplicació actualment cobreix l'entrenament melòdic de l'oïda, el reconeixement del ritme, exercicis de picar de mans i exercicis de cant. El mateix exercici sovint es pot practicar de més d'una manera, per això la interfície primer pregunta si voleu escoltar i identificar, llegir i picar de mans, o llegir i cantar. </para>
 
 <screenshot>
   <screeninfo
->La finestra principal del &minuet;</screeninfo>
+>La pantalla d'inici del &minuet;</screeninfo>
   <mediaobject>
     <imageobject
-><imagedata fileref="minuet-screenshot.png" format="PNG"/></imageobject>
+><imagedata fileref="minuet-home.png" format="PNG"/></imageobject>
     <textobject
 ><phrase
->Exercicis d'acords d'entrenament de l'oïda amb el &minuet;</phrase
+>La pantalla d'inici del &minuet;</phrase
 ></textobject>
   </mediaobject>
 </screenshot>
+
+<para
+>La pàgina d'inici és intencionadament mínima. Utilitzeu el calaix de navegació per a moure's a la pàgina de configuració, la pàgina quant o a una categoria d'exercicis. </para>
 </chapter>
 
 <chapter id="using-minuet">
@@ -96,107 +103,366 @@
 >Ús del &minuet;</title>
 
 <para
->En les següents dues seccions: <link linkend="starting-minuet"
->Començar amb el &minuet;</link
-> i <link linkend="minuet-exercises"
->Exercicis amb el &minuet;</link
-> farem els passos necessaris per a posar el &minuet; en funcionament. </para>
+>El flux normal és senzill: inicieu el &minuet;, trieu un exercici, trieu un mode d'exercici i, a continuació, treballeu mitjançant una pregunta o d'una prova. </para>
 
 <sect1 id="starting-minuet">
 <title
 >Començar amb el &minuet;</title>
 
 <para
->Podeu iniciar el &minuet; des del llançador d'aplicacions. Obriu el menú global fent clic sobre la icona del llançador d'aplicacions a la safata del sistema a la part inferior esquerra de la pantalla. Això elevarà un menú. Moveu el cursor fins a l'element de menú <menuchoice
-><guimenu
->Aplicacions</guimenu
-> <guisubmenu
->Educació</guisubmenu
-> <guisubmenu
->Miscel·lània</guisubmenu
-> <guimenuitem
->&minuet; (Programari d'educació musical)</guimenuitem
-></menuchoice
-> o amb <keycombo action="simul"
->&Alt;<keycap
->F2</keycap
-></keycombo
-> i introduint <command
+>Inicieu el &minuet; des del llançador d'aplicacions o des d'un terminal executant <command
 >minuet</command
-> dins del camp d'entrada. </para>
+>. Quan s'obri l'aplicació, la pàgina d'inici mostra una petició única: <guilabel
+>Trieu un exercici</guilabel
+>. </para>
 </sect1>
 
-<sect1 id="minuet-exercises">
+<sect1 id="browse-exercises">
 <title
->Exercicis i flux de treball amb el &minuet;</title>
+>Navegueu i trieu exercicis</title>
 
 <para
->La interfície d'usuari del &minuet; implica tres components principals: </para>
+>El navegador d'exercicis agrupa temes per assumpte. Utilitzeu el calaix o la llista de categories per arribar a acords, intervals, ritme o escales. El navegador s'actualitza des dels fitxers d'especificació d'exercicis instal·lats, de manera que la jerarquia visible reflecteix els exercicis que estan disponibles actualment. </para>
 
 <screenshot>
   <screeninfo
->La finestra principal del &minuet;</screeninfo>
+>Navegador d'exercicis del &minuet;</screeninfo>
   <mediaobject>
     <imageobject
-><imagedata fileref="minuet-ui-components.png" format="PNG"/></imageobject>
+><imagedata fileref="minuet-exercise-list.png" format="PNG"/></imageobject>
     <textobject
 ><phrase
->Components de la IU del &minuet;</phrase
+>El navegador d'exercicis del &minuet;</phrase
 ></textobject>
   </mediaobject>
 </screenshot>
 
-<variablelist>
+<para
+>Cada entrada d'exercici té un títol i una descripció breu. Algunes categories porten directament a un exercici, mentre que altres s'expandeixen en subcategories. La llista no es fixa en el codi: els fitxers d'exercicis nous es fusionen automàticament a la jerarquia quan s'inicia el &minuet;. </para>
 
-<varlistentry>
-<term
-><guilabel
->Menú de navegació</guilabel
-></term>
-<listitem
-><para
->Permet navegar per les categories d'exercicis del &minuet; i la selecció d'un exercici en particular. El menú de navegació s'ha creat de forma dinàmica basant-se en els fitxers d'especificació dels exercicis tal com es descriu a <link linkend="creating-exercises"
->Crear els exercicis</link
->. Els exercicis del &minuet; estan agrupats segons les classes, com ara intervals, escales i acords.</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Vista del teclat</guilabel
-></term>
-<listitem
-><para
->Mostra els esdeveniments de la <parameter
->nota activa</parameter
-> del &MIDI; seqüenciats a partir d'un fitxer &MIDI; o de l'execució d'un exercici.</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Vista de l'exercici</guilabel
-></term>
-<listitem
-><para
->Presenta, per a un exercici determinat, els botons per a controlar la presentació de l'exercici i un conjunt de possibles respostes a l'exercici. Un exercici comença fent clic al botó <guibutton
->Pregunta nova</guibutton
->. Se selecciona un interval/acord/escala aleatòriament que serà reproduït pel &minuet; i després s'espera que l'estudiant triï una resposta entre les que es mostren a la graella de resposta. El &minuet; sempre presenta -com un petit cercle blanc a la vista del teclat- la primera nota de l'interval/escala seleccionada o la nota base de l'acord seleccionat. En passar per sobre d'una possible resposta, el &minuet; ressaltarà la seva representació visual corresponent a la vista del teclat. Les notes restants de la resposta ressaltada es presentaran com a petits cercles, on els colors seran els mateixos que el del botó de resposta ressaltat. L'estudiant pot escoltar de nou l'exercici fent clic al botó <guibutton
->Reprodueix la pregunta</guibutton
->, feu clic al botó de la resposta escollida, o abasteu la resposta correcta fent clic al botó <guibutton
->Renuncio</guibutton
->. Pot començar una execució nova del mateix exercici prement el botó <guibutton
->Atura l'exercici</guibutton
-> i prement <guibutton
->Pregunta nova</guibutton
-> una altra vegada.</para
-></listitem>
-</varlistentry>
-
-</variablelist>
 </sect1>
+
+<sect1 id="practice-modes">
+<title
+>Modes d'exercici</title>
+
+<para
+>Quan obriu un exercici, el &minuet; demana com voleu practicar-lo. </para>
+
+<screenshot>
+  <screeninfo
+>Selector del mode d'exercici del &minuet;</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-practice-mode.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>El selector de mode d'exercici al &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Hi ha dos grans camins de pràctica: </para>
+
+<itemizedlist>
+<listitem>
+<para
+><guilabel
+>Escoltar i identificar</guilabel
+> reprodueix l'exercici i us demana que trieu la resposta d'entre les opcions disponibles. Aquest és el flux principal per a l'entrenament de l'oïda melòdica. </para>
+</listitem>
+<listitem>
+<para
+><guilabel
+>Llegir i picar de mans</guilabel
+> es mostra per a exercicis de ritme. <guilabel
+>Llegir i cantar</guilabel
+> es mostra per a exercicis melòdics que accepten l'entrada vocal, com ara intervals i escales. </para>
+</listitem>
+</itemizedlist>
+
+<para
+>L'elecció de la pràctica canvia el mode d'entrada, no la categoria d'exercici subjacent. Això vol dir que podeu utilitzar les mateixes dades de treball d'exercicis per escoltar, picar de mans o cantar depenent del tema. </para>
+</sect1>
+
+<sect1 id="melodic-workflow">
+<title
+>Entrenament melòdic de l'oïda</title>
+
+<para
+>Els exercicis melòdics segueixen el flux clàssic del Minuet: l'aplicació reprodueix una pregunta, mostra les opcions de resposta i permet reproduir la petició si cal tornar a escoltar-la. Aquest mode manual s'utilitza per a intervals, escales i acords quan trieu <guilabel
+>Escoltar i identificar</guilabel
+>. </para>
+
+<screenshot>
+  <screeninfo
+>Exercici d'acords del &minuet; en el mode manual</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-chords-manual.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>Un exercici d'acords del &minuet; en el mode manual &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>La pàgina d'exercicis proporciona els controls que necessiteu per a una pregunta individual o una prova més llarga: </para>
+
+<itemizedlist>
+<listitem
+><para
+><guibutton
+>Pregunta nova</guibutton
+> comença una altra pregunta.</para
+></listitem>
+<listitem
+><para
+><guibutton
+>Reprodueix la pregunta</guibutton
+> repeteix la petició actual.</para
+></listitem>
+<listitem
+><para
+><guibutton
+>Renuncieu</guibutton
+> revela la resposta.</para
+></listitem>
+<listitem
+><para
+><guibutton
+>Inicia la prova</guibutton
+> comença una seqüència de preguntes puntuades.</para
+></listitem>
+<listitem
+><para
+><guibutton
+>Atura la prova</guibutton
+> acaba la prova.</para
+></listitem>
+</itemizedlist>
+
+<para
+>En els exercicis melòdics, els botons de resposta i la vista del teclat o del pentagrama es mantenen alineats, de manera que podeu veure com cada candidat assigna les notes que es reprodueixen. </para>
+
+<para
+>Els exercicis d'acord utilitzen el mateix flux de treball manual, però la petició es reprodueix com un acord en lloc d'una seqüència melòdica. El &minuet; reprodueix l'acord, mostra la nota fonamental al teclat i al pentagrama, i us demana que trieu una qualitat d'acord d'entre les respostes disponibles. El catàleg d'acords inclou tríades, inversions, acords suspesos, acords de sèptima, acords de novena, acords d'onzena i conjunts d'acords mixtos com <guilabel
+>Sèries d'acords</guilabel
+>. </para>
+
+<para
+>Utilitzeu <guibutton
+>Reprodueix la pregunta</guibutton
+> per escoltar l'acord de nou abans de respondre. En el mode de prova, el &minuet; puntua la seqüència utilitzant el nombre configurat d'exercicis a la pàgina de configuració. </para>
+</sect1>
+
+<sect1 id="rhythm-workflow">
+<title
+>Ritme i picar de mans</title>
+
+<para
+>Els exercicis de ritme se centren en el temps en lloc del to. En el mode de picar de mans, el &minuet; escolta l'entrada del micròfon i compara els inicis amb el patró objectiu. </para>
+
+<screenshot>
+  <screeninfo
+>Exercici de picar de mans del &minuet;</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-clapping.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>Un exercici de picar de mans amb ritme al &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>La vista de picar de mans mostra les targetes de patrons de ritmes, un mesurador de nivell d'entrada i una acció <guibutton
+>Calibra el silenci</guibutton
+>. El comptador passa abans d'iniciar l'enregistrament, de manera que podeu ajustar-vos al tempo abans que l'exercici escolti el picar de mans. </para>
+
+<para
+>Utilitzeu la pràctica del ritme per treballar: </para>
+
+<itemizedlist>
+<listitem
+><para
+>el reconeixement de les figures de ritme individuals per l'oïda;</para
+></listitem>
+<listitem
+><para
+>l'aparellament de picar de mans al ritme;</para
+></listitem>
+<listitem
+><para
+>el mantenir-se dins de la tolerància de temps configurada.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="singing-workflow">
+<title
+>Exercicis de cant</title>
+
+<para
+>Els exercicis de cant utilitzen el micròfon per comparar el que canteu amb el contingut del to objectiu. La mateixa pantalla de pràctica s'utilitza tant per als treballs d'interval com d'escala, però l'objectiu i la retroalimentació canvien amb l'exercici escollit. </para>
+
+<para
+>Per als exercicis d'interval, el &minuet; reprodueix la nota fonamental i demana que canteu l'interval sol·licitat en relació amb ella. Per als exercicis d'escala, l'aplicació presenta una escala o mode i espera que canteu les notes en seqüència mentre manteniu el to i el ritme. </para>
+
+<screenshot>
+  <screeninfo
+>Exercici d'interval de cant del &minuet;</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-singing-interval.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>Un exercici d'interval de cant al &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<screenshot>
+  <screeninfo
+>Exercicis d'escala cantant del &minuet;</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-singing-scale.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>Un exercici d'escala de cant al &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>La vista de cant mostra els objectius de notes, la retroalimentació del to i l'inici, un comptador d'entrada en directe i una acció <guibutton
+>Calibra el silenci</guibutton
+>. El &minuet; també compta abans de la primera nota, de manera que podreu començar amb el ritme correcte. La vista d'escala estén la mateixa retroalimentació a seqüències més llargues, el que fa que sigui útil per a la pràctica de memòria melòdica, a més de la coincidència de tons. </para>
+
+<para
+>Els exercicis de cant estan influenciats per diversos paràmetres: </para>
+
+<itemizedlist>
+<listitem
+><para
+>La <guilabel
+>Classe de veu</guilabel
+> selecciona l'interval vocal esperat.</para
+></listitem>
+<listitem
+><para
+>La <guilabel
+>Tolerància del to</guilabel
+> controla fins a quin punt pot estar lluny del to objectiu una nota cantada.</para
+></listitem>
+<listitem
+><para
+>La <guilabel
+>Tolerància de temps</guilabel
+> controla la quantitat de deriva rítmica que s'accepta en picar de mans.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="settings">
+<title
+>Configuració</title>
+
+<para
+>La pàgina de configuració es divideix en quatre seccions: <guilabel
+>Pràctica</guilabel
+>, <guilabel
+>So</guilabel
+>, <guilabel
+>Micròfon</guilabel
+> i <guilabel
+>Avançat</guilabel
+>. Les tres primeres seccions mantenen visibles els controls de principiants. La secció avançada es manté reduïda fins que l'obriu. </para>
+
+<screenshot>
+  <screeninfo
+>Configuració bàsica del &minuet;</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-settings-basic.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>La pàgina de configuració bàsica al &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>La configuració visible cobreix els controls que la majoria d'usuaris necessiten en el dia a dia: </para>
+
+<itemizedlist>
+<listitem
+><para
+>La <guilabel
+>Velocitat de l'exercici</guilabel
+> estableix el tempo en pulsacions per minut.</para
+></listitem>
+<listitem
+><para
+>El <guilabel
+>Nombre de patrons de ritme</guilabel
+> controla la mida dels conjunts d'exercicis de ritme.</para
+></listitem>
+<listitem
+><para
+>El <guilabel
+>Nombre d'exercicis</guilabel
+> estableix la durada d'una prova.</para
+></listitem>
+<listitem
+><para
+>El <guilabel
+>Volum</guilabel
+> ajusta la sonoritat de la reproducció.</para
+></listitem>
+<listitem
+><para
+>L'<guilabel
+>Instrument</guilabel
+> selecciona el so melòdic utilitzat a l'entrenament de l'oïda.</para
+></listitem>
+<listitem
+><para
+>La <guilabel
+>Classe de veu</guilabel
+> selecciona l'interval objectiu de cant.</para
+></listitem>
+</itemizedlist>
+
+<para
+>La secció de micròfon també inclou descripcions curtes d'ajuda per als controls de tolerància i calibratge. Aquestes descripcions expliquen quan enfortir la tolerància i quan recalibrar el silenci. </para>
+
+<screenshot>
+  <screeninfo
+>Configuració avançada del &minuet;</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-settings-advanced.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>La secció de configuració avançada al &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>La configuració avançada exposa algorismes de detecció i llindars per a micròfons difícils o sales sorolloses. Utilitzeu-los quan el comportament de detecció predeterminat no sigui suficient. La secció està reduïda de manera predeterminada i inclou un botó <guibutton
+>Restaura els valors predeterminats</guibutton
+> perquè pugueu restaurar els valors de fàbrica després d'experimentar. </para>
+
+<para
+>La secció avançada inclou grups separats per a la detecció de picar de mans i la detecció del cant. Els controls típics inclouen el mètode d'inici, el llindar d'inici, la porta d'entrada, la intensitat mínima d'inici, el nivell de silenci, el mètode de to, el mode de puntuació, la confiança del to i els marcs de to estables. </para>
 </chapter>
 
 <chapter id="creating-exercises">
@@ -204,31 +470,28 @@
 >Crear exercicis nous del &minuet;</title>
 
 <para
->Els exercicis del &minuet; es defineixen en fitxers d'especificació dels exercicis, escrits en el format &JSON;: </para>
+>Els exercicis del &minuet; es defineixen en fitxers d'especificació &JSON;. L'aplicació carrega tots els fitxers disponibles a l'inici i els fusiona a l'arbre d'exercicis visibles. </para>
+
 <para>
 <programlisting
 >{
   "exercises": [
     {
       "name": "Intervals",
-      "root": "21..104",
+      "root": "29..69",
       "playMode": "scale",
+      "userMessage": "Escolteu l'interval i trieu la resposta",
+      "numberOfSelectedOptions": 1,
+      "_icon": "minuet-intervals-symbolic.svg",
       "children": [
         {
-          "name": "Ascending Melodic Intervals",
+          "name": "Intervals melòdics ascendents",
+          "and-tags": ["interval", "ascending"],
           "children": [
             {
-              "name": "Seconds",
-              "options": [
-                {
-                  "name": "Minor Second",
-                  "sequenceFromRoot": "1"
-                },
-                {
-                  "name": "Major Second",
-                  "sequenceFromRoot": "2"
-                }
-              ]
+              "name": "Segons",
+              "or-tags": ["2"],
+              "description": "Practica la identificació dels segons melòdics ascendents per l'oïda."
             }
           ]
         }
@@ -238,34 +501,92 @@
 }
 </programlisting>
 </para>
+
 <para
->Els fitxers d'especificació dels exercicis del &minuet; contenen un objecte &JSON; de nivell superior que ofereix la matriu dels <parameter
->exercicis</parameter
->. Aquesta matriu defineix una estructura jeràrquica per als exercicis, agrupats per categories. Cada categoria/exercici té un nom. Els objectes &JSON; de la categoria contenen una propietat anomenada <parameter
+>L'objecte de nivell superior conté una matriu <parameter
+>exercises</parameter
+> matriu. Cada element d'aquesta matriu és una categoria o una fulla d'exercici. Les categories utilitzen <parameter
 >children</parameter
-> (filla), que descriu les subcategories/exercicis que conté aquesta categoria. Els objectes &JSON; de l'exercici contenen una propietat anomenada <parameter
->options</parameter
-> (opcions), la qual defineix les possibles respostes per a aquest exercici. En cada execució dels exercicis, el &minuet; selecciona aleatòriament una resposta entre totes les possibles, i s'espera que l'alumne faci clic al botó de la resposta que correspongui amb la resposta seleccionada. </para>
+> per definir el nivell següent de l'arbre. </para>
+
 <para
->Qualsevol sub/categoria pot definir un paràmetre <parameter
+>Els camps útils inclouen: </para>
+
+<itemizedlist>
+<listitem
+><para
+>El <parameter
+>name</parameter
+> dona a cada node la seva etiqueta visible.</para
+></listitem>
+<listitem
+><para
+><parameter
 >root</parameter
-> (base) que defineix l'interval des del qual la nota inicial de l'interval/acord/escala serà escollit aleatòriament per a tots els exercicis en aquesta categoria. Aquest interval es correspon amb els estàndards números de nota &MIDI; i segueix el format <parameter
->&lt;valor_mín&gt;..&lt;valor_màx&gt;</parameter
->. L'exemple presentat anteriorment utilitza tot l'interval del teclat com a possibles notes base (21..104). El paràmetre <parameter
+> limita l'interval de notes utilitzat per generar la petició.</para
+></listitem>
+<listitem
+><para
+><parameter
 >playMode</parameter
-> indica com s'han de reproduir les possibles respostes: com una <parameter
->scale</parameter
-> (-escala- una nota després de l'altra) o com una <parameter
->chord</parameter
-> (-acord- totes les notes sonant simultàniament). </para>
-<para
->Cada opció de l'exercici defineix un nom i la seqüència de notes que s'han de reproduir a partir de la nota base seleccionada aleatòriament en cada exercici executat. Aquesta seqüència de notes es defineix com a distàncies relatives a partir de la nota base, descrivint l'interval que cada nota forma en conjunció amb la nota base. Per exemple, per a una escala major, la seqüència de notes és «2 4 5 7 9 11 12», la qual denota respectivament una estructura de l'escala major «completa completa mitja completa completa completa mitja». El paràmetre <parameter
+> selecciona l'escala, l'acord o la reproducció del ritme.</para
+></listitem>
+<listitem
+><para
+><parameter
+>userMessage</parameter
+> personalitza la instrucció que es mostra a l'usuari.</para
+></listitem>
+<listitem
+><para
+><parameter
+>numberOfSelectedOptions</parameter
+> controla quantes respostes poden ser correctes.</para
+></listitem>
+<listitem
+><para
+><parameter
+>_icona</parameter
+> estableix la icona que es mostra al calaix i al navegador d'exercicis.</para
+></listitem>
+<listitem
+><para
+><parameter
+>and-tags</parameter
+> i <parameter
+>or-tags</parameter
+> ajuden a agrupar i filtrar els nodes relacionats.</para
+></listitem>
+<listitem
+><para
+><parameter
+>description</parameter
+> dona al navegador una explicació breu del node.</para
+></listitem>
+<listitem
+><para
+><parameter
+>options</parameter
+> descriu les opcions de resposta per a un exercici de fulla.</para
+></listitem>
+<listitem
+><para
+><parameter
 >sequenceFromRoot</parameter
-> pot contenir qualsevol nombre de notes en longitud. També, el nucli del &minuet; garanteix que només les respostes en què totes les notes es troben dins de l'interval del teclat són seleccionades aleatòriament. </para>
+> defineix els desplaçaments de la nota per a les respostes melòdiques.</para
+></listitem>
+<listitem
+><para
+><parameter
+>template</parameter
+> s'utilitza per exercicis de ritme per renderitzar la notació.</para
+></listitem>
+</itemizedlist>
+
 <para
->Per a proporcionar una millor infraestructura per a l'organització d'un gran conjunt de fitxers d'especificació dels exercicis, el nucli del &minuet; utilitza diversos fitxers d'especificació, els quals es fusionen de forma automàtica per a compondre la jerarquia final de l'exercici presentada al menú de navegació. Els exercicis es fusionen correctament, ja que els diferents fitxers d'especificació utilitzen el mateix nom de la sub/categoria en la definició dels exercicis. Per ara, el &minuet; no proporciona cap &IGU; per a la creació d'especificacions dels exercicis, de manera que haureu de crear manualment aquests fitxers &JSON;. Els fitxers d'especificació dels exercicis del &minuet; es poden instal·lar a tot el sistema o localment a la carpeta <filename class="directory"
+>L'aplicació fusiona fitxers que comparteixen els mateixos noms de categoria, de manera que fitxers d'especificació separats poden contribuir a una jerarquia visible. Instal·leu-los a tot el sistema o situeu-los a <filename class="directory"
 >minuet/exercises/</filename
-> ubicat a <userinput
+> dins la ubicació de dades genèriques retornada per <userinput
 ><command
 >qtpaths</command
 > <option
@@ -286,7 +607,7 @@
 >Copyright del programa 2016 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
 
 <para
->Copyright de la documentació &copy; 2016 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
+>Copyright de la documentació &copy; 2026 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
 
 <para
 >Traductor de la documentació: &credits.Antoni.Bella;</para

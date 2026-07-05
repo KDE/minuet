@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-04 00:39+0000\n"
-"PO-Revision-Date: 2026-06-30 12:52+0200\n"
+"PO-Revision-Date: 2026-07-04 16:33+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -2447,7 +2447,7 @@ msgstr "Llegir i cantar"
 #: src/app/qml/SettingsPage.qml:18
 #, kde-format
 msgid "Hide advanced settings"
-msgstr ""
+msgstr "Oculta la configuració avançada"
 
 #: src/app/qml/SettingsPage.qml:27
 #, kde-format
@@ -2462,7 +2462,7 @@ msgstr "To + temps"
 #: src/app/qml/SettingsPage.qml:30
 #, kde-format
 msgid "Show advanced settings"
-msgstr ""
+msgstr "Mostra la configuració avançada"
 
 #: src/app/qml/SettingsPage.qml:31
 #, kde-format
@@ -2487,7 +2487,7 @@ msgstr "Baix"
 #: src/app/qml/SettingsPage.qml:85
 #, kde-format
 msgid "Practice"
-msgstr ""
+msgstr "Exercici"
 
 #: src/app/qml/SettingsPage.qml:94
 #, kde-format
@@ -2510,10 +2510,9 @@ msgid "Number of exercises"
 msgstr "Nombre d'exercicis"
 
 #: src/app/qml/SettingsPage.qml:134
-#, fuzzy, kde-format
-#| msgid "SoundFont"
+#, kde-format
 msgid "Sound"
-msgstr "Font de so"
+msgstr "So"
 
 #: src/app/qml/SettingsPage.qml:143
 #, kde-format
@@ -2574,7 +2573,7 @@ msgstr "So de percussió:"
 #: src/app/qml/SettingsPage.qml:219
 #, kde-format
 msgid "Microphone"
-msgstr ""
+msgstr "Micròfon"
 
 #: src/app/qml/SettingsPage.qml:227
 #, kde-format
@@ -2587,6 +2586,8 @@ msgid ""
 "Larger values accept claps farther from the beat; smaller values require "
 "tighter timing."
 msgstr ""
+"Els valors més grans accepten picar de mans més lluny del ritme; els valors "
+"més petits requereixen un temps més ajustat."
 
 #: src/app/qml/SettingsPage.qml:241
 #, kde-format
@@ -2599,6 +2600,8 @@ msgid ""
 "Larger values accept notes farther from the target pitch; smaller values "
 "require more accurate singing."
 msgstr ""
+"Els valors més grans accepten notes més allunyades del to objectiu; els "
+"valors més petits requereixen un cant més precís."
 
 #: src/app/qml/SettingsPage.qml:257
 #, kde-format
@@ -2616,28 +2619,28 @@ msgid ""
 "Keep the room quiet while calibrating silence. Recalibrate when the "
 "microphone or room noise changes."
 msgstr ""
+"Mantingueu l'habitació tranquil·la mentre calibreu el silenci. Recalibreu "
+"quan canviï el micròfon o el soroll de la sala."
 
 #: src/app/qml/SettingsPage.qml:269
-#, fuzzy, kde-format
-#| msgid "Calibrating..."
+#, kde-format
 msgid "Calibration"
-msgstr "S'està calibrant..."
+msgstr "Calibratge"
 
 #: src/app/qml/SettingsPage.qml:273
 #, kde-format
 msgid "Advanced"
-msgstr ""
+msgstr "Avançat"
 
 #: src/app/qml/SettingsPage.qml:313
 #, kde-format
 msgid "Algorithms and detection thresholds for difficult microphones or rooms."
-msgstr ""
+msgstr "Algorismes i llindars de detecció per a micròfons o sales difícils."
 
 #: src/app/qml/SettingsPage.qml:338
-#, fuzzy, kde-format
-#| msgid "Clapping Exercises"
+#, kde-format
 msgid "Clapping detection"
-msgstr "Exercicis de picar de mans"
+msgstr "Detecció de picar de mans"
 
 #: src/app/qml/SettingsPage.qml:342 src/app/qml/SettingsPage.qml:410
 #, kde-format
@@ -2670,10 +2673,9 @@ msgid "dB"
 msgstr "dB"
 
 #: src/app/qml/SettingsPage.qml:397
-#, fuzzy, kde-format
-#| msgid "Singing Exercises"
+#, kde-format
 msgid "Singing detection"
-msgstr "Exercicis de cant"
+msgstr "Detecció de cant"
 
 #: src/app/qml/SettingsPage.qml:401
 #, kde-format
@@ -2703,7 +2705,7 @@ msgstr "Marcs de to estables"
 #: src/app/qml/SettingsPage.qml:505
 #, kde-format
 msgid "Reset to Defaults"
-msgstr ""
+msgstr "Restaura els valors predeterminats"
 
 #: src/app/qml/SettingsPage.qml:578
 #, kde-format

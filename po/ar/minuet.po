@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-04 00:39+0000\n"
-"PO-Revision-Date: 2026-06-30 22:22+0400\n"
+"PO-Revision-Date: 2026-07-04 21:45+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -2381,7 +2381,7 @@ msgstr "اقرأ وغَنِّ"
 #: src/app/qml/SettingsPage.qml:18
 #, kde-format
 msgid "Hide advanced settings"
-msgstr ""
+msgstr "اخفِ الإعدادات المتقدمة"
 
 #: src/app/qml/SettingsPage.qml:27
 #, kde-format
@@ -2396,7 +2396,7 @@ msgstr "الطبقة + التوقيت"
 #: src/app/qml/SettingsPage.qml:30
 #, kde-format
 msgid "Show advanced settings"
-msgstr ""
+msgstr "أظهر الإعدادات المتقدّمة"
 
 #: src/app/qml/SettingsPage.qml:31
 #, kde-format
@@ -2421,7 +2421,7 @@ msgstr "باس"
 #: src/app/qml/SettingsPage.qml:85
 #, kde-format
 msgid "Practice"
-msgstr ""
+msgstr "التدريب"
 
 #: src/app/qml/SettingsPage.qml:94
 #, kde-format
@@ -2444,10 +2444,9 @@ msgid "Number of exercises"
 msgstr "عدد التمارين"
 
 #: src/app/qml/SettingsPage.qml:134
-#, fuzzy, kde-format
-#| msgid "SoundFont"
+#, kde-format
 msgid "Sound"
-msgstr "ساوند-فونت"
+msgstr "الصوت"
 
 #: src/app/qml/SettingsPage.qml:143
 #, kde-format
@@ -2504,7 +2503,7 @@ msgstr "صوت الإيقاع:"
 #: src/app/qml/SettingsPage.qml:219
 #, kde-format
 msgid "Microphone"
-msgstr ""
+msgstr "الميكروفون"
 
 #: src/app/qml/SettingsPage.qml:227
 #, kde-format
@@ -2517,6 +2516,8 @@ msgid ""
 "Larger values accept claps farther from the beat; smaller values require "
 "tighter timing."
 msgstr ""
+"القيم الأكبر تقبل التصفيق على مسافة أبعد من الإيقاع؛ أما القيم الأصغر فتتطلب "
+"توقيتًا أكثر دقة."
 
 #: src/app/qml/SettingsPage.qml:241
 #, kde-format
@@ -2529,6 +2530,8 @@ msgid ""
 "Larger values accept notes farther from the target pitch; smaller values "
 "require more accurate singing."
 msgstr ""
+"القيم الأكبر تقبل نغمات أبعد عن النغمة المستهدفة؛ أما القيم الأصغر فتتطلب "
+"غناءً أكثر دقة."
 
 #: src/app/qml/SettingsPage.qml:257
 #, kde-format
@@ -2546,28 +2549,28 @@ msgid ""
 "Keep the room quiet while calibrating silence. Recalibrate when the "
 "microphone or room noise changes."
 msgstr ""
+"حافظ على هدوء الغرفة أثناء معايرة مستوى الصمت. أعد المعايرة عند تغيرصوت "
+"الميكروفون أو ضوضاء الغرفة."
 
 #: src/app/qml/SettingsPage.qml:269
-#, fuzzy, kde-format
-#| msgid "Calibrating..."
+#, kde-format
 msgid "Calibration"
-msgstr "جارٍ المعايرة..."
+msgstr "معايرة"
 
 #: src/app/qml/SettingsPage.qml:273
 #, kde-format
 msgid "Advanced"
-msgstr ""
+msgstr "متقدّم"
 
 #: src/app/qml/SettingsPage.qml:313
 #, kde-format
 msgid "Algorithms and detection thresholds for difficult microphones or rooms."
-msgstr ""
+msgstr "خوارزميات وعتبات الكشف للميكروفونات أو الغرف الصعبة."
 
 #: src/app/qml/SettingsPage.qml:338
-#, fuzzy, kde-format
-#| msgid "Clapping Exercises"
+#, kde-format
 msgid "Clapping detection"
-msgstr "تمارين التصفيق"
+msgstr "اكتشاف التصفيق"
 
 #: src/app/qml/SettingsPage.qml:342 src/app/qml/SettingsPage.qml:410
 #, kde-format
@@ -2600,10 +2603,9 @@ msgid "dB"
 msgstr "ديسيبل"
 
 #: src/app/qml/SettingsPage.qml:397
-#, fuzzy, kde-format
-#| msgid "Singing Exercises"
+#, kde-format
 msgid "Singing detection"
-msgstr "تمارين الغناء"
+msgstr "اكتشاف الغناء"
 
 #: src/app/qml/SettingsPage.qml:401
 #, kde-format
@@ -2633,7 +2635,7 @@ msgstr "أطر طبقة الصوت المستقرة"
 #: src/app/qml/SettingsPage.qml:505
 #, kde-format
 msgid "Reset to Defaults"
-msgstr ""
+msgstr "صفّر إلى المبدئيّات"
 
 #: src/app/qml/SettingsPage.qml:578
 #, kde-format

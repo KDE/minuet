@@ -2332,7 +2332,7 @@ msgstr ""
 #: src/app/qml/SettingsPage.qml:18
 #, kde-format
 msgid "Hide advanced settings"
-msgstr ""
+msgstr "Skrýt pokročilá nastavení"
 
 #: src/app/qml/SettingsPage.qml:27
 #, kde-format
@@ -2372,7 +2372,7 @@ msgstr "Basy"
 #: src/app/qml/SettingsPage.qml:85
 #, kde-format
 msgid "Practice"
-msgstr ""
+msgstr "Procvičování"
 
 #: src/app/qml/SettingsPage.qml:94
 #, kde-format
@@ -2397,7 +2397,7 @@ msgstr ""
 #: src/app/qml/SettingsPage.qml:134
 #, kde-format
 msgid "Sound"
-msgstr ""
+msgstr "Zvuk"
 
 #: src/app/qml/SettingsPage.qml:143
 #, kde-format
@@ -2454,7 +2454,7 @@ msgstr ""
 #: src/app/qml/SettingsPage.qml:219
 #, kde-format
 msgid "Microphone"
-msgstr ""
+msgstr "Mikrofon"
 
 #: src/app/qml/SettingsPage.qml:227
 #, kde-format
@@ -2498,15 +2498,14 @@ msgid ""
 msgstr ""
 
 #: src/app/qml/SettingsPage.qml:269
-#, fuzzy, kde-format
-#| msgid "Calibrating..."
+#, kde-format
 msgid "Calibration"
-msgstr "Kalibruji..."
+msgstr "Kalibrace"
 
 #: src/app/qml/SettingsPage.qml:273
 #, kde-format
 msgid "Advanced"
-msgstr ""
+msgstr "Pokročilé"
 
 #: src/app/qml/SettingsPage.qml:313
 #, kde-format
@@ -2581,7 +2580,7 @@ msgstr ""
 #: src/app/qml/SettingsPage.qml:505
 #, kde-format
 msgid "Reset to Defaults"
-msgstr ""
+msgstr "Obnovit výchozí hodnoty"
 
 #: src/app/qml/SettingsPage.qml:578
 #, kde-format
