@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-04 00:39+0000\n"
-"PO-Revision-Date: 2026-07-05 00:07+0100\n"
+"PO-Revision-Date: 2026-07-06 01:02+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -2036,6 +2036,9 @@ msgid ""
 "The onset meter below each figure lights below the center for advanced claps "
 "and above the center for late claps."
 msgstr ""
+"El indicador de inicio que aparece debajo de cada figura se ilumina por "
+"debajo del centro para las palmadas anticipadas y por encima del centro para "
+"las palmadas tardías."
 
 #: src/app/qml/ExerciseClappingView.qml:646
 #: src/app/qml/ExerciseSingingView.qml:883
@@ -2167,7 +2170,7 @@ msgstr "Ahora no"
 #: src/app/qml/ExerciseSingingView.qml:244 src/app/qml/GraphicalMeter.qml:17
 #, kde-format
 msgid "No pitch"
-msgstr ""
+msgstr "No hay tono"
 
 #: src/app/qml/ExerciseSingingView.qml:45
 #: src/app/qml/ExerciseSingingView.qml:59
@@ -2245,6 +2248,9 @@ msgid ""
 "Pitch meters light below the center for flat notes and above the center for "
 "sharp notes. Scale exercises also show an onset meter for each note."
 msgstr ""
+"Los medidores de tono se iluminan por debajo del centro para las notas "
+"bemoles y por encima del centro para las notas sostenidas. Los ejercicios de "
+"escalas también muestran un medidor de inicio para cada nota."
 
 #: src/app/qml/ExerciseSingingView.qml:968 src/app/qml/ExerciseView.qml:722
 #, kde-format
@@ -2387,7 +2393,7 @@ msgstr "Desviación del tono: %1"
 #: src/app/qml/GraphicalMeter.qml:52
 #, kde-format
 msgid "Onset deviation: %1"
-msgstr ""
+msgstr "Desviación de inicio: %1"
 
 #: src/app/qml/Main.qml:18 src/app/qml/MinuetDrawer.qml:157
 #, kde-format
@@ -2630,7 +2636,7 @@ msgstr ""
 #: src/app/qml/SettingsPage.qml:257
 #, kde-format
 msgid "Pitch tolerance"
-msgstr ""
+msgstr "Tolerancia de tono"
 
 #: src/app/qml/SettingsPage.qml:258
 #, kde-format
@@ -2669,12 +2675,12 @@ msgstr "Detección de palmadas"
 #: src/app/qml/SettingsPage.qml:342 src/app/qml/SettingsPage.qml:410
 #, kde-format
 msgid "Onset method"
-msgstr ""
+msgstr "Método de inicio"
 
 #: src/app/qml/SettingsPage.qml:352 src/app/qml/SettingsPage.qml:481
 #, kde-format
 msgid "Onset threshold"
-msgstr ""
+msgstr "Umbral de inicio"
 
 #: src/app/qml/SettingsPage.qml:364 src/app/qml/SettingsPage.qml:458
 #, kde-format
@@ -2684,7 +2690,7 @@ msgstr "Puerta de entrada"
 #: src/app/qml/SettingsPage.qml:376 src/app/qml/SettingsPage.qml:493
 #, kde-format
 msgid "Minimum onset strength"
-msgstr ""
+msgstr "Fuerza mínima de inicio"
 
 #: src/app/qml/SettingsPage.qml:387 src/app/qml/SettingsPage.qml:469
 #, kde-format
@@ -2704,22 +2710,22 @@ msgstr "Detección de canto"
 #: src/app/qml/SettingsPage.qml:401
 #, kde-format
 msgid "Pitch method"
-msgstr ""
+msgstr "Método de tono"
 
 #: src/app/qml/SettingsPage.qml:419
 #, kde-format
 msgid "Scoring mode"
-msgstr ""
+msgstr "Modo de puntuación"
 
 #: src/app/qml/SettingsPage.qml:429
 #, kde-format
 msgid "Disregard octave difference"
-msgstr ""
+msgstr "Ignorar la diferencia de octava"
 
 #: src/app/qml/SettingsPage.qml:436
 #, kde-format
 msgid "Pitch confidence"
-msgstr ""
+msgstr "Confianza del tono"
 
 #: src/app/qml/SettingsPage.qml:447
 #, kde-format
