@@ -51,6 +51,7 @@
   <summary xml:lang="pt-BR">Software para ensino de música</summary>
   <summary xml:lang="sk">Hudobný vzdelávací softvér</summary>
   <summary xml:lang="sl">Programje za glasbeno izobraževanje</summary>
+  <summary xml:lang="sv">Programvara för musikutbildning</summary>
   <summary xml:lang="tr">Müzik eğitimi yazılımı</summary>
   <summary xml:lang="uk">Програмне забезпечення для навчання музики</summary>
   <developer id="org.kde">
@@ -70,6 +71,7 @@
     <p xml:lang="pt-BR">Minuet é um software para educação musical. Ele oferece um conjunto de exercícios para treinamento de ouvido, incluindo intervalos, acordes, escalas e mais.</p>
     <p xml:lang="sk">Minuet je aplikácia na výučbu hudby. Obsahuje sadu sluchových cvičení na intervaly, akordy, hudobné stupnice a ďalšie.</p>
     <p xml:lang="sl">Minuet je aplikacija za glasbeno izobraževanje. Vsebuje nabor vadb za posluh glede intervalov, akordov, lestvic in še več.</p>
+    <p xml:lang="sv">Minuet är ett program för musikutbildning. Det innehåller ett antal gehörsövningar avseende tonhöjd, ackord, skalor med mera.</p>
     <p xml:lang="tr">Minuet, müzik eğitimi için bir uygulamadır. Aralıklar, akorlar, gamlar ve daha fazlasıyla ilgili bir dizi kulak eğitimi alıştırması içerir.</p>
     <p xml:lang="uk">Minuet — програма для навчання музиці. У ній передбачено набір вправ для розвитку слуху, зокрема вивчення інтервалів, акордів, гами тощо.</p>
   </description>
@@ -102,6 +104,7 @@
       <caption xml:lang="pt-BR">Escolha exercícios de treinamento musical</caption>
       <caption xml:lang="sk">Vyberte si hudobné cvičenia</caption>
       <caption xml:lang="sl">Izberite glasbene vaje</caption>
+      <caption xml:lang="sv">Välj musikövningar</caption>
       <caption xml:lang="tr">Müzik eğitimi alıştırmaları seçin</caption>
       <caption xml:lang="uk">Вибір музичних вправ</caption>
       <image>https://cdn.kde.org/screenshots/minuet/minuet-home.png</image>
@@ -120,6 +123,7 @@
       <caption xml:lang="pt-BR">Pratique o reconhecimento de acordes</caption>
       <caption xml:lang="sk">Precvičujte si rozpoznávanie akordov</caption>
       <caption xml:lang="sl">Vadite prepoznavanje akordov</caption>
+      <caption xml:lang="sv">Öva på att känna igen ackord</caption>
       <caption xml:lang="tr">Akor tanıma pratiği yapın</caption>
       <caption xml:lang="uk">Вправа на розпізнавання акордів</caption>
       <image>https://cdn.kde.org/screenshots/minuet/minuet-chords.png</image>
@@ -138,6 +142,7 @@
       <caption xml:lang="pt-BR">Melhore o reconhecimento do ritmo</caption>
       <caption xml:lang="sk">Zlepšite si rozpoznávanie rytmu</caption>
       <caption xml:lang="sl">Izboljšajte prepoznavanje ritma</caption>
+      <caption xml:lang="sv">Förbättra rytmigenkänning</caption>
       <caption xml:lang="tr">Ritim tanımayı iyileştirin</caption>
       <caption xml:lang="uk">Удосконалення розпізнавання ритму</caption>
       <image>https://cdn.kde.org/screenshots/minuet/minuet-rhythms.png</image>
@@ -156,6 +161,7 @@
       <caption xml:lang="pt-BR">Treine seu ouvido no celular</caption>
       <caption xml:lang="sk">Trénujte si sluch na mobile</caption>
       <caption xml:lang="sl">Vadite svoj posluh na mobilni napravi</caption>
+      <caption xml:lang="sv">Träna ditt gehör på mobilen</caption>
       <caption xml:lang="tr">Dışarıda olsanız bile kulak alıştırmaları yapın</caption>
       <caption xml:lang="uk">Тренування слуху на мобільному</caption>
       <image>https://cdn.kde.org/screenshots/minuet/minuet-mobile.png</image>
