@@ -37,6 +37,9 @@ public:
     Preset preset() const override;
     void setPreset(Preset preset) override;
 
+    AnalysisMode analysisMode() const override;
+    void setAnalysisMode(AnalysisMode mode) override;
+
     VoiceClass voiceClass() const override;
     void setVoiceClass(VoiceClass voiceClass) override;
 
@@ -46,8 +49,17 @@ public:
     OnsetMethod onsetMethod() const override;
     void setOnsetMethod(OnsetMethod onsetMethod) override;
 
+    int expectedMidiNote() const override;
+    void setExpectedMidiNote(int midiNote) override;
+
+    bool disregardOctaveDifference() const override;
+    void setDisregardOctaveDifference(bool disregard) override;
+
     double targetBpm() const override;
     void setTargetBpm(double targetBpm) override;
+
+    double minimumExpectedOnsetIntervalMs() const override;
+    void setMinimumExpectedOnsetIntervalMs(double intervalMs) override;
 
     double minimumPitchConfidence() const override;
     void setMinimumPitchConfidence(double confidence) override;
@@ -95,6 +107,7 @@ public:
 
     Q_INVOKABLE void start() override;
     Q_INVOKABLE void stop() override;
+    Q_INVOKABLE void resetInputAnalysisState() override;
     Q_INVOKABLE void calibrateNoiseFloor() override;
     Q_INVOKABLE QString presetName(int preset) const override;
     Q_INVOKABLE QString voiceClassName(int voiceClass) const override;
@@ -120,6 +133,7 @@ private:
 
     void setStatus(const QString &status);
     void resetRuntimeState();
+    void resetDetectionState();
     bool ensureMicrophonePermission();
     bool configureAudioInput();
     bool recreateAubioObjects();
@@ -133,9 +147,16 @@ private:
     void applyPitchResult(double timeSeconds, double frequencyHz, double confidence);
     void applyUnvoicedResult(const QString &reason = QString());
     bool acceptStablePitchCandidate(double frequencyHz);
+    double scoreConstrainedFrequency(double frequencyHz) const;
+    double smoothedAcceptedFrequency(double frequencyHz);
     void resetPitchCandidate();
+    void rememberOnsetDescriptor(double strength);
+    double adaptiveMinimumOnsetStrength() const;
     void updateNoiseCalibration(double sumSquares, int sampleCount);
+    void applyCalibratedDetectorThresholds(double noiseFloor);
+    void updateInputDevices();
     void registerOnset(double onsetSeconds, double strength);
+    void updateDetectedTempo(double onsetSeconds);
     void resetIfRunning();
     void applyPreset(Preset preset, bool restartIfRunning);
     void maybePrintDebug(double timeSeconds, double frequencyHz, double confidence);
@@ -151,17 +172,24 @@ private:
     QString voiceClassForFrequency(double frequencyHz) const;
     QString classifyPitch(double frequencyHz, double cents, double confidence) const;
     QString classifyRhythm(double timingErrorMs) const;
+    bool pitchDetectorEnabled() const;
+    bool onsetDetectorEnabled() const;
+    QString analysisModeName(AnalysisMode mode) const;
 
     bool m_running = false;
     QString m_status;
     bool m_microphonePermissionRequestPending = false;
 
     Preset m_preset = Singing;
+    AnalysisMode m_analysisMode = SingingPitchOnly;
     VoiceClass m_voiceClass = Tenor;
     PitchMethod m_pitchMethod = YinFft;
     OnsetMethod m_onsetMethod = Hfc;
+    int m_expectedMidiNote = -1;
+    bool m_disregardOctaveDifference = true;
 
     double m_targetBpm = 90.0;
+    double m_minimumExpectedOnsetIntervalMs = 0.0;
     double m_minimumPitchConfidence = 0.12;
     double m_pitchSilenceDb = -55.0;
     double m_onsetThreshold = 0.16;
@@ -169,6 +197,7 @@ private:
     double m_noiseFloorLevel = 0.0;
     double m_minimumOnsetStrength = 0.01;
     int m_requiredStablePitchFrames = 4;
+    double m_calibratedOnsetStrengthFloor = 0.0;
 
     bool m_noiseCalibrationActive = false;
     double m_noiseCalibrationSumSquares = 0.0;
@@ -177,6 +206,8 @@ private:
     double m_candidateFrequencyHz = 0.0;
     int m_candidateMidiNote = -1;
     int m_stablePitchFrameCount = 0;
+    std::deque<double> m_recentAcceptedFrequencies;
+    std::deque<double> m_recentOnsetDescriptorValues;
 
     QString m_inputDeviceDescription;
     double m_audioLevel = 0.0;
@@ -198,6 +229,7 @@ private:
     double m_detectedBpm = 0.0;
     double m_lastTimingErrorMs = 0.0;
     QString m_rhythmStatus = QStringLiteral("No onset detected yet");
+    std::deque<double> m_recentOnsetSeconds;
 
     QAudioFormat m_audioFormat;
     std::unique_ptr<QAudioSource> m_audioSource;
@@ -210,6 +242,7 @@ private:
     uint_t m_hopSize = 512;
     quint64 m_processedSamples = 0;
     quint64 m_lastDebugSample = 0;
+    double m_onsetTimeOffsetSeconds = 0.0;
 
     PitchPtr m_pitch;
     OnsetPtr m_onset;

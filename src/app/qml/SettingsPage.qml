@@ -414,23 +414,7 @@ FormCard.FormCardPage {
                     Core.settingsController.singingOnsetMethod = currentIndex;
                 }
             }
-            SettingsComboBox {
-                currentIndex: Core.settingsController.singingScoringMode
-                label: i18n("Scoring mode")
-                model: root.scoringModes
-
-                onActivated: function (currentValue, currentIndex) {
-                    Core.settingsController.singingScoringMode = currentIndex;
-                }
-            }
-            QQC2.CheckBox {
-                Layout.fillWidth: true
-                checked: Core.settingsController.singingDisregardOctaveDifference
-                text: i18n("Disregard octave difference")
-
-                onToggled: Core.settingsController.singingDisregardOctaveDifference = checked
-            }
-            SettingsSlider {
+            AdvancedSettingsSlider {
                 decimals: 2
                 from: 0
                 label: i18n("Pitch confidence")
@@ -442,40 +426,7 @@ FormCard.FormCardPage {
                     Core.settingsController.singingMinimumPitchConfidence = value;
                 }
             }
-            SettingsSlider {
-                from: 1
-                label: i18n("Stable pitch frames")
-                to: 10
-                value: Core.settingsController.singingRequiredStablePitchFrames
-
-                onMoved: function (value) {
-                    Core.settingsController.singingRequiredStablePitchFrames = value;
-                }
-            }
-            SettingsSlider {
-                decimals: 3
-                from: 0
-                label: i18n("Input gate")
-                stepSize: 0.001
-                to: 0.25
-                value: Core.settingsController.singingInputGateLevel
-
-                onMoved: function (value) {
-                    Core.settingsController.singingInputGateLevel = value;
-                }
-            }
-            SettingsSlider {
-                from: -90
-                label: i18n("Aubio silence")
-                suffix: i18n("dB")
-                to: -20
-                value: Core.settingsController.singingPitchSilenceDb
-
-                onMoved: function (value) {
-                    Core.settingsController.singingPitchSilenceDb = value;
-                }
-            }
-            SettingsSlider {
+            AdvancedSettingsSlider {
                 decimals: 2
                 from: 0.01
                 label: i18n("Onset threshold")
@@ -490,6 +441,18 @@ FormCard.FormCardPage {
             SettingsSlider {
                 decimals: 3
                 from: 0
+                label: i18n("Input gate")
+                stepSize: 0.001
+                to: 0.25
+                value: Core.settingsController.singingInputGateLevel
+
+                onMoved: function (value) {
+                    Core.settingsController.singingInputGateLevel = value;
+                }
+            }
+            AdvancedSettingsSlider {
+                decimals: 3
+                from: 0
                 label: i18n("Minimum onset strength")
                 stepSize: 0.001
                 to: 1
@@ -498,6 +461,34 @@ FormCard.FormCardPage {
                 onMoved: function (value) {
                     Core.settingsController.singingMinimumOnsetStrength = value;
                 }
+            }
+            AdvancedSettingsSlider {
+                from: 1
+                label: i18n("Stable pitch frames")
+                to: 10
+                value: Core.settingsController.singingRequiredStablePitchFrames
+
+                onMoved: function (value) {
+                    Core.settingsController.singingRequiredStablePitchFrames = value;
+                }
+            }
+            AdvancedSettingsComboBox {
+                currentIndex: Core.settingsController.singingScoringMode
+                label: i18n("Scoring mode")
+                model: root.scoringModes
+
+                onActivated: function (currentValue, currentIndex) {
+                    Core.settingsController.singingScoringMode = currentIndex;
+                }
+            }
+            QQC2.CheckBox {
+                Layout.bottomMargin: root.formDelegateHorizontalPadding
+                Layout.fillWidth: true
+                Layout.topMargin: root.formDelegateHorizontalPadding
+                checked: Core.settingsController.singingDisregardOctaveDifference
+                text: i18n("Disregard octave difference")
+
+                onToggled: Core.settingsController.singingDisregardOctaveDifference = checked
             }
             QQC2.Button {
                 Layout.alignment: Qt.AlignRight
