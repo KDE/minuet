@@ -457,15 +457,6 @@ FormCard.FormCardPage {
                     Core.settingsController.singingOnsetMethod = currentIndex;
                 }
             }
-            AdvancedSettingsComboBox {
-                currentIndex: Core.settingsController.singingScoringMode
-                label: i18n("Scoring mode")
-                model: root.scoringModes
-
-                onActivated: function (currentValue, currentIndex) {
-                    Core.settingsController.singingScoringMode = currentIndex;
-                }
-            }
             AdvancedSettingsSlider {
                 decimals: 2
                 from: 0
@@ -476,28 +467,6 @@ FormCard.FormCardPage {
 
                 onMoved: function (value) {
                     Core.settingsController.singingMinimumPitchConfidence = value;
-                }
-            }
-            AdvancedSettingsSlider {
-                from: 1
-                label: i18n("Stable pitch frames")
-                to: 10
-                value: Core.settingsController.singingRequiredStablePitchFrames
-
-                onMoved: function (value) {
-                    Core.settingsController.singingRequiredStablePitchFrames = value;
-                }
-            }
-            AdvancedSettingsSlider {
-                decimals: 3
-                from: 0
-                label: i18n("Input gate")
-                stepSize: 0.001
-                to: 0.25
-                value: Core.settingsController.singingInputGateLevel
-
-                onMoved: function (value) {
-                    Core.settingsController.singingInputGateLevel = value;
                 }
             }
             AdvancedSettingsSlider {
@@ -515,6 +484,18 @@ FormCard.FormCardPage {
             AdvancedSettingsSlider {
                 decimals: 3
                 from: 0
+                label: i18n("Input gate")
+                stepSize: 0.001
+                to: 0.25
+                value: Core.settingsController.singingInputGateLevel
+
+                onMoved: function (value) {
+                    Core.settingsController.singingInputGateLevel = value;
+                }
+            }
+            AdvancedSettingsSlider {
+                decimals: 3
+                from: 0
                 label: i18n("Minimum onset strength")
                 stepSize: 0.001
                 to: 1
@@ -522,6 +503,25 @@ FormCard.FormCardPage {
 
                 onMoved: function (value) {
                     Core.settingsController.singingMinimumOnsetStrength = value;
+                }
+            }
+            AdvancedSettingsSlider {
+                from: 1
+                label: i18n("Stable pitch frames")
+                to: 10
+                value: Core.settingsController.singingRequiredStablePitchFrames
+
+                onMoved: function (value) {
+                    Core.settingsController.singingRequiredStablePitchFrames = value;
+                }
+            }
+            AdvancedSettingsComboBox {
+                currentIndex: Core.settingsController.singingScoringMode
+                label: i18n("Scoring mode")
+                model: root.scoringModes
+
+                onActivated: function (currentValue, currentIndex) {
+                    Core.settingsController.singingScoringMode = currentIndex;
                 }
             }
             QQC2.CheckBox {

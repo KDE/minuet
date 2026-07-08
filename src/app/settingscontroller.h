@@ -182,18 +182,18 @@ private:
     static constexpr bool DefaultSingingDisregardOctaveDifference = true;
     static constexpr int DefaultSingingScoringMode = 0;
     static constexpr int DefaultSingingPitchMethod = 1;
-    static constexpr int DefaultSingingOnsetMethod = 1;
+    static constexpr int DefaultSingingOnsetMethod = 0;
     static constexpr double DefaultSingingMinimumPitchConfidence = 0.05;
     static constexpr double DefaultSingingOnsetThreshold = 0.14;
     static constexpr double DefaultSingingInputGateLevel = 0.006;
     static constexpr double DefaultSingingMinimumOnsetStrength = 0.006;
     static constexpr int DefaultSingingRequiredStablePitchFrames = 2;
     static constexpr int DefaultClappingPitchMethod = 0;
-    static constexpr int DefaultClappingOnsetMethod = 0;
+    static constexpr int DefaultClappingOnsetMethod = 1;
     static constexpr double DefaultClappingMinimumPitchConfidence = 0.70;
-    static constexpr double DefaultClappingOnsetThreshold = 0.32;
-    static constexpr double DefaultClappingInputGateLevel = 0.025;
-    static constexpr double DefaultClappingMinimumOnsetStrength = 0.040;
+    static constexpr double DefaultClappingOnsetThreshold = 0.50;
+    static constexpr double DefaultClappingInputGateLevel = 0.0;
+    static constexpr double DefaultClappingMinimumOnsetStrength = 0.020;
     static constexpr int DefaultClappingRequiredStablePitchFrames = 2;
 
     int m_rhythmPatternCount = 4;

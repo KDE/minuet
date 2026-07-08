@@ -39,13 +39,15 @@ Item {
     ] : []
     property var expectedOnsets: []
     property var figureStates: []
+    property bool inputTimingArmed: false
+    property bool inputTimingStarted: false
     property real listeningStartSeconds: -1
-    property var matchedOnsets: []
     readonly property int maximumExercises: Core.settingsController.testExerciseCount
     readonly property var microphone: Core.microphoneInputController
     readonly property bool microphoneReady: root.microphone !== null && root.microphone.inputDeviceAvailable
     property int onboardingCountIn: 0
     property bool onboardingPreviewActive: false
+    property var performedOnsets: []
     readonly property real rhythmAnswerCardTextSize: Math.round(Kirigami.Theme.defaultFont.pointSize * 2.0)
     readonly property real rhythmAnswerCardVerticalOffset: Math.round(rhythmAnswerCardTextSize * 0.22)
     readonly property real rhythmCardWidth: Math.ceil(Math.max(Kirigami.Units.gridUnit * 4, onsetMeterProbe.implicitWidth) + root.cardHorizontalPadding)
@@ -55,19 +57,110 @@ Item {
     readonly property real toleranceMs: Math.min(180, beatMs * Core.settingsController.clappingCorrectnessTolerancePercent / 100)
     property string viewState: "idle"
 
+    function alignPerformedOnsets(): var {
+        const expected = root.expectedOnsets;
+        const performed = root.performedOnsets;
+        const missingCost = 2.0;
+        const extraCost = 2.0;
+        let dp = [];
+
+        for (let i = 0; i <= expected.length; ++i) {
+            dp[i] = [];
+            for (let j = 0; j <= performed.length; ++j) {
+                dp[i][j] = {
+                    "cost": Number.MAX_VALUE,
+                    "operation": ""
+                };
+            }
+        }
+
+        dp[0][0] = {
+            "cost": 0,
+            "operation": ""
+        };
+        for (let i = 1; i <= expected.length; ++i) {
+            dp[i][0] = {
+                "cost": i * missingCost,
+                "operation": "missing"
+            };
+        }
+        for (let j = 1; j <= performed.length; ++j) {
+            dp[0][j] = {
+                "cost": j * extraCost,
+                "operation": "extra"
+            };
+        }
+
+        for (let i = 1; i <= expected.length; ++i) {
+            for (let j = 1; j <= performed.length; ++j) {
+                let best = {
+                    "cost": dp[i - 1][j].cost + missingCost,
+                    "operation": "missing"
+                };
+                const extra = dp[i][j - 1].cost + extraCost;
+                if (extra < best.cost) {
+                    best = {
+                        "cost": extra,
+                        "operation": "extra"
+                    };
+                }
+
+                const error = Math.abs(expected[i - 1].timeMs - performed[j - 1]);
+                if (error <= root.toleranceMs) {
+                    const match = dp[i - 1][j - 1].cost + error / root.toleranceMs;
+                    if (match <= best.cost) {
+                        best = {
+                            "cost": match,
+                            "operation": "match"
+                        };
+                    }
+                }
+                dp[i][j] = best;
+            }
+        }
+
+        let expectedMatches = [];
+        let performedMatches = [];
+        for (let i = 0; i < expected.length; ++i) {
+            expectedMatches.push(-1);
+        }
+        for (let j = 0; j < performed.length; ++j) {
+            performedMatches.push(-1);
+        }
+
+        let i = expected.length;
+        let j = performed.length;
+        while (i > 0 || j > 0) {
+            const operation = dp[i][j].operation;
+            if (operation === "match") {
+                expectedMatches[i - 1] = j - 1;
+                performedMatches[j - 1] = i - 1;
+                --i;
+                --j;
+            } else if (operation === "missing") {
+                --i;
+            } else {
+                --j;
+            }
+        }
+
+        return {
+            "expectedMatches": expectedMatches,
+            "performedMatches": performedMatches
+        };
+    }
     function applyMicrophoneSettings(): void {
         if (!root.microphone) {
             return;
         }
+        root.microphone.analysisMode = IMicrophoneInputController.ClappingOnsetOnly;
         root.microphone.preset = IMicrophoneInputController.Clapping;
-        root.microphone.pitchMethod = Core.settingsController.clappingPitchMethod;
         root.microphone.onsetMethod = Core.settingsController.clappingOnsetMethod;
-        root.microphone.minimumPitchConfidence = Core.settingsController.clappingMinimumPitchConfidence;
         root.microphone.onsetThreshold = Core.settingsController.clappingOnsetThreshold;
         root.microphone.inputGateLevel = Core.settingsController.clappingInputGateLevel;
         root.microphone.minimumOnsetStrength = Core.settingsController.clappingMinimumOnsetStrength;
-        root.microphone.requiredStablePitchFrames = Core.settingsController.clappingRequiredStablePitchFrames;
         root.microphone.targetBpm = Core.settingsController.exerciseSpeed;
+        root.microphone.minimumExpectedOnsetIntervalMs = root.minimumExpectedOnsetIntervalMs();
     }
     function beginMicrophoneCapture(): void {
         if (!root.microphone) {
@@ -88,6 +181,10 @@ Item {
         root.countIn = 0;
         root.countPhase = "idle";
         root.countInStarted = false;
+        root.inputTimingArmed = false;
+        root.inputTimingStarted = false;
+        root.listeningStartSeconds = -1;
+        root.performedOnsets = [];
     }
     function durationForToken(token: string): real {
         let note = token;
@@ -101,20 +198,6 @@ Item {
             return 0;
         }
         return dotted * root.beatMs * 4 / denominator;
-    }
-    function expectedIntervalMatches(expectedIndex: int, elapsedMs: real): bool {
-        if (expectedIndex <= 0) {
-            return true;
-        }
-
-        const previous = root.expectedOnsets[expectedIndex - 1];
-        if (!previous.matched || previous.matchedTimeMs < 0) {
-            return true;
-        }
-
-        const expectedInterval = root.expectedOnsets[expectedIndex].timeMs - previous.timeMs;
-        const actualInterval = elapsedMs - previous.matchedTimeMs;
-        return Math.abs(actualInterval - expectedInterval) <= root.toleranceMs;
     }
     function figureIndexForElapsed(elapsedMs: real): int {
         if (elapsedMs < -root.toleranceMs || elapsedMs > totalDurationMs() + root.toleranceMs) {
@@ -186,9 +269,7 @@ Item {
                 figureOnsets.push(onsetList.length);
                 onsetList.push({
                     "figure": figureIndex,
-                    "timeMs": cursor,
-                    "matched": false,
-                    "matchedTimeMs": -1
+                    "timeMs": cursor
                 });
                 cursor += durationForToken(part);
             }
@@ -206,7 +287,7 @@ Item {
         }
         root.expectedOnsets = onsetList;
         root.figureStates = states;
-        root.matchedOnsets = [];
+        root.performedOnsets = [];
         root.score = -1;
         root.viewState = "ready";
         Core.exerciseSessionController.finishQuestionGeneration();
@@ -215,57 +296,127 @@ Item {
         if (root.viewState !== "listening") {
             return;
         }
+        if (!root.inputTimingStarted || root.listeningStartSeconds < 0) {
+            return;
+        }
         const elapsedMs = (seconds - root.listeningStartSeconds) * 1000;
-        let bestIndex = -1;
-        let bestError = Number.MAX_VALUE;
-        for (let i = 0; i < root.expectedOnsets.length; ++i) {
-            if (root.expectedOnsets[i].matched) {
-                continue;
-            }
-            const error = Math.abs(root.expectedOnsets[i].timeMs - elapsedMs);
-            if (error < bestError) {
-                bestError = error;
-                bestIndex = i;
-            }
+        if (elapsedMs < -root.toleranceMs || elapsedMs > totalDurationMs() + root.toleranceMs) {
+            return;
         }
-        const matchedExpected = bestIndex >= 0 && bestError <= root.toleranceMs && expectedIntervalMatches(bestIndex, elapsedMs);
-        if (matchedExpected) {
-            let onsets = root.expectedOnsets.slice();
-            onsets[bestIndex].matched = true;
-            onsets[bestIndex].matchedTimeMs = elapsedMs;
-            root.expectedOnsets = onsets;
-        }
-        let states = root.figureStates.slice();
-        const figureIndex = matchedExpected ? root.expectedOnsets[bestIndex].figure : figureIndexForElapsed(elapsedMs);
-        if (figureIndex >= 0) {
-            const signedError = matchedExpected ? elapsedMs - root.expectedOnsets[bestIndex].timeMs : elapsedMs - root.figureStates[figureIndex].startMs;
-            states[figureIndex].meterValue = timingMeterValue(signedError);
-            states[figureIndex].meterAccuracy = Math.max(0, 1 - Math.abs(signedError) / root.toleranceMs);
-            states[figureIndex].meterText = timingMeterText(signedError);
-            if (!matchedExpected) {
-                states[figureIndex].extraInputCount += 1;
-                states[figureIndex].state = "wrong";
-            }
-            root.figureStates = states;
-        }
+        let performed = root.performedOnsets.slice();
+        performed.push(elapsedMs);
+        performed.sort(function (a, b) {
+            return a - b;
+        });
+        root.performedOnsets = performed;
         refreshFigureStates(elapsedMs);
     }
+    function minimumExpectedOnsetIntervalMs(): real {
+        if (root.expectedOnsets.length < 2) {
+            return root.beatMs;
+        }
+        let minimumInterval = Number.MAX_VALUE;
+        for (let i = 1; i < root.expectedOnsets.length; ++i) {
+            const interval = root.expectedOnsets[i].timeMs - root.expectedOnsets[i - 1].timeMs;
+            if (interval > 0 && interval < minimumInterval) {
+                minimumInterval = interval;
+            }
+        }
+        return minimumInterval < Number.MAX_VALUE ? minimumInterval : root.beatMs;
+    }
+    function nearestExpectedErrorForFigure(figureIndex: int, elapsedMs: real): real {
+        const figure = root.figureStates[figureIndex];
+        if (!figure || figure.onsets.length === 0) {
+            return elapsedMs - (figure ? figure.startMs : 0);
+        }
+
+        let bestError = elapsedMs - root.expectedOnsets[figure.onsets[0]].timeMs;
+        for (const onsetIndex of figure.onsets) {
+            const error = elapsedMs - root.expectedOnsets[onsetIndex].timeMs;
+            if (Math.abs(error) < Math.abs(bestError)) {
+                bestError = error;
+            }
+        }
+        return bestError;
+    }
     function refreshFigureStates(elapsedMs: real): var {
-        let states = root.figureStates.slice();
+        const alignment = root.alignPerformedOnsets();
+        let states = root.figureStates.map(function (state) {
+            return {
+                "state": "pending",
+                "onsets": state.onsets,
+                "startMs": state.startMs,
+                "endMs": state.endMs,
+                "extraInputCount": 0,
+                "name": state.name,
+                "meterValue": 0,
+                "meterAccuracy": 0,
+                "meterText": i18n("Ready")
+            };
+        });
+        let worstErrors = [];
+        for (let i = 0; i < states.length; ++i) {
+            worstErrors.push(null);
+        }
+
+        for (let expectedIndex = 0; expectedIndex < alignment.expectedMatches.length; ++expectedIndex) {
+            const performedIndex = alignment.expectedMatches[expectedIndex];
+            if (performedIndex < 0) {
+                continue;
+            }
+            const figureIndex = root.expectedOnsets[expectedIndex].figure;
+            const error = root.performedOnsets[performedIndex] - root.expectedOnsets[expectedIndex].timeMs;
+            if (worstErrors[figureIndex] === null || Math.abs(error) > Math.abs(worstErrors[figureIndex])) {
+                worstErrors[figureIndex] = error;
+            }
+        }
+
+        for (let performedIndex = 0; performedIndex < alignment.performedMatches.length; ++performedIndex) {
+            if (alignment.performedMatches[performedIndex] >= 0) {
+                continue;
+            }
+            const figureIndex = root.figureIndexForElapsed(root.performedOnsets[performedIndex]);
+            if (figureIndex < 0) {
+                continue;
+            }
+            states[figureIndex].extraInputCount += 1;
+            states[figureIndex].state = "wrong";
+            const error = root.nearestExpectedErrorForFigure(figureIndex, root.performedOnsets[performedIndex]);
+            states[figureIndex].meterValue = timingMeterValue(error);
+            states[figureIndex].meterAccuracy = Math.max(0, 1 - Math.abs(error) / root.toleranceMs);
+            states[figureIndex].meterText = timingMeterText(error);
+        }
+
         for (let i = 0; i < states.length; ++i) {
             if (states[i].state === "wrong") {
                 continue;
             }
-            const allMatched = states[i].onsets.every(index => root.expectedOnsets[index].matched);
-            if (allMatched) {
-                states[i].state = "correct";
-            } else if (elapsedMs > states[i].endMs + root.toleranceMs) {
+            let allMatched = true;
+            let missed = false;
+            for (const onsetIndex of states[i].onsets) {
+                if (alignment.expectedMatches[onsetIndex] >= 0) {
+                    continue;
+                }
+                allMatched = false;
+                if (elapsedMs > root.expectedOnsets[onsetIndex].timeMs + root.toleranceMs) {
+                    missed = true;
+                }
+            }
+
+            if (worstErrors[i] !== null) {
+                states[i].meterValue = timingMeterValue(worstErrors[i]);
+                states[i].meterAccuracy = Math.max(0, 1 - Math.abs(worstErrors[i]) / root.toleranceMs);
+                states[i].meterText = timingMeterText(worstErrors[i]);
+            }
+            if (missed || (elapsedMs > states[i].endMs + root.toleranceMs && !allMatched)) {
                 states[i].state = "wrong";
-                if (states[i].meterText === i18n("Ready")) {
+                if (worstErrors[i] === null) {
                     states[i].meterText = i18n("Missed");
                     states[i].meterAccuracy = 0;
                     states[i].meterValue = 0;
                 }
+            } else if (allMatched && elapsedMs > states[i].endMs + root.toleranceMs) {
+                states[i].state = "correct";
             }
         }
         root.figureStates = states;
@@ -279,6 +430,7 @@ Item {
             generateQuestion();
         }
         applyMicrophoneSettings();
+        root.performedOnsets = [];
         root.countPhase = "preparation";
         root.countInStarted = false;
         root.countIn = 0;
@@ -287,6 +439,19 @@ Item {
             Core.soundController.playCountIn(4);
         }
     }
+    function startInputTiming(): void {
+        if (!root.inputTimingArmed || root.inputTimingStarted) {
+            return;
+        }
+        if (root.microphone) {
+            root.microphone.resetInputAnalysisState();
+        }
+        root.listeningStartSeconds = root.microphone ? root.microphone.analysisTimeSeconds : 0;
+        root.inputTimingStarted = true;
+        root.inputTimingArmed = false;
+        progressTimer.restart();
+        finishTimer.restart();
+    }
     function startListening(): void {
         if (root.microphone && !root.microphone.running) {
             beginMicrophoneCapture();
@@ -294,14 +459,17 @@ Item {
         root.countPhase = "input";
         root.countInStarted = false;
         root.countIn = 0;
-        root.listeningStartSeconds = root.microphone ? root.microphone.analysisTimeSeconds : 0;
+        root.inputTimingArmed = true;
+        root.inputTimingStarted = false;
+        root.listeningStartSeconds = -1;
+        root.performedOnsets = [];
         root.viewState = "listening";
+        finishTimer.interval = totalDurationMs() + root.toleranceMs + root.beatMs;
         if (Core.soundController) {
             Core.soundController.playSilentCountIn(root.selectedOptionCount);
+        } else {
+            root.startInputTiming();
         }
-        progressTimer.restart();
-        finishTimer.interval = totalDurationMs() + root.toleranceMs + root.beatMs;
-        finishTimer.restart();
     }
     function startTest(): void {
         Core.exerciseSessionController.startTest();
@@ -348,6 +516,7 @@ Item {
         clearCurrentRun();
         root.expectedOnsets = [];
         root.figureStates = [];
+        root.performedOnsets = [];
         root.score = -1;
         root.testScoreTotal = 0;
         root.viewState = "idle";
@@ -374,7 +543,7 @@ Item {
         repeat: true
 
         onTriggered: {
-            if (root.viewState === "listening" && root.microphone) {
+            if (root.viewState === "listening" && root.microphone && root.inputTimingStarted && root.listeningStartSeconds >= 0) {
                 root.refreshFigureStates(Math.max(0, (root.microphone.analysisTimeSeconds - root.listeningStartSeconds) * 1000));
             }
         }
@@ -418,6 +587,9 @@ Item {
                 }
             } else if (root.countPhase === "input") {
                 root.countIn = count;
+                if (count === 1) {
+                    root.startInputTiming();
+                }
             }
         }
 

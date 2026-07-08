@@ -76,6 +76,7 @@ Item {
         if (!root.microphone) {
             return;
         }
+        root.microphone.analysisMode = root.scaleExercise ? IMicrophoneInputController.SingingPitchAndOnset : IMicrophoneInputController.SingingPitchOnly;
         root.microphone.preset = IMicrophoneInputController.Singing;
         root.microphone.voiceClass = Core.settingsController.singingVoiceClass;
         root.microphone.pitchMethod = Core.settingsController.singingPitchMethod;
@@ -86,6 +87,8 @@ Item {
         root.microphone.minimumOnsetStrength = Core.settingsController.singingMinimumOnsetStrength;
         root.microphone.requiredStablePitchFrames = Core.settingsController.singingRequiredStablePitchFrames;
         root.microphone.targetBpm = Core.settingsController.exerciseSpeed;
+        root.microphone.disregardOctaveDifference = Core.settingsController.singingDisregardOctaveDifference;
+        root.syncExpectedPitchConstraint();
     }
     function beginMicrophoneCapture(): void {
         if (!root.microphone) {
@@ -97,6 +100,9 @@ Item {
     function beginScaleInputTiming(): void {
         if (!root.scaleExercise || root.listeningStartSeconds >= 0) {
             return;
+        }
+        if (root.microphone) {
+            root.microphone.resetInputAnalysisState();
         }
         root.listeningStartSeconds = root.microphone ? root.microphone.analysisTimeSeconds : 0;
         progressTimer.restart();
@@ -175,7 +181,7 @@ Item {
         if (Core.soundController) {
             Core.soundController.stop();
         }
-        const finalElapsedMs = root.scaleExercise ? Math.max(0, root.targetNotes.length - 1) * root.beatMs + Math.max(root.timingToleranceMs, root.pitchCorrectHoldSeconds * 1000) : root.targetNotes.length * root.beatMs + root.beatMs;
+        const finalElapsedMs = root.scaleExercise ? scaleFinalElapsedMs() : root.targetNotes.length * root.beatMs + root.beatMs;
         const finalStates = refreshTargetStates(finalElapsedMs);
         let correct = 0;
         for (const state of finalStates) {
@@ -247,6 +253,7 @@ Item {
         root.onsetMeterValue = 0;
         root.pitchMeterText = i18n("No pitch");
         root.onsetMeterText = i18n("No onset");
+        root.syncExpectedPitchConstraint();
         showReferenceNotes();
         root.viewState = "ready";
         Core.exerciseSessionController.finishQuestionGeneration();
@@ -356,7 +363,7 @@ Item {
         if (index < root.targetNotes.length - 1) {
             return (index + 1) * root.beatMs;
         }
-        return Math.max(0, root.targetNotes.length - 1) * root.beatMs + Math.max(root.timingToleranceMs, root.pitchCorrectHoldSeconds * 1000);
+        return scaleFinalElapsedMs();
     }
     function pitchToleranceCents(): real {
         return Math.max(1, Core.settingsController.singingPitchToleranceCents);
@@ -418,6 +425,9 @@ Item {
         root.targetStates = states;
         return states;
     }
+    function scaleFinalElapsedMs(): real {
+        return root.targetNotes.length * root.beatMs + Math.max(root.timingToleranceMs, root.pitchCorrectHoldSeconds * 1000);
+    }
     function showReferenceNotes(): void {
         if (pianoView === null || sheetMusicView === null) {
             return;
@@ -460,6 +470,7 @@ Item {
         }
         root.currentTargetIndex = 0;
         root.inputTargetIndex = 0;
+        root.syncExpectedPitchConstraint();
         root.countIn = 0;
         root.countPhase = "input";
         root.countInStarted = false;
@@ -467,9 +478,12 @@ Item {
         if (root.scaleExercise) {
             root.listeningStartSeconds = -1;
         } else {
+            if (root.microphone) {
+                root.microphone.resetInputAnalysisState();
+            }
             root.listeningStartSeconds = root.microphone ? root.microphone.analysisTimeSeconds : 0;
         }
-        finishTimer.interval = root.scaleExercise ? Math.max(0, root.targetNotes.length - 1) * root.beatMs + Math.max(root.timingToleranceMs, root.pitchCorrectHoldSeconds * 1000) : root.targetNotes.length * root.beatMs + root.beatMs;
+        finishTimer.interval = root.scaleExercise ? scaleFinalElapsedMs() : root.targetNotes.length * root.beatMs + root.beatMs;
         if (Core.soundController && root.scaleExercise) {
             Core.soundController.playSilentCountIn(root.targetNotes.length);
         } else if (root.scaleExercise) {
@@ -504,6 +518,14 @@ Item {
         root.testScoreTotal = 0;
         Core.exerciseSessionController.stopTest();
         root.viewState = root.targetNotes.length > 0 ? "ready" : "idle";
+    }
+    function syncExpectedPitchConstraint(): void {
+        if (!root.microphone || root.targetNotes.length === 0) {
+            return;
+        }
+        const index = Math.max(0, Math.min(root.targetNotes.length - 1, root.displayedTargetIndex));
+        root.microphone.expectedMidiNote = root.targetNotes[index];
+        root.microphone.disregardOctaveDifference = Core.settingsController.singingDisregardOctaveDifference;
     }
     function timingMeterValue(errorMs: real): real {
         return -Math.max(-1, Math.min(1, errorMs / root.timingToleranceMs));
@@ -641,6 +663,7 @@ Item {
                     root.countInStarted = true;
                     root.inputTargetIndex = Math.max(0, Math.min(root.targetNotes.length - 1, count - 1));
                     root.currentTargetIndex = root.inputTargetIndex;
+                    root.syncExpectedPitchConstraint();
                     root.beginScaleInputTiming();
                     root.countIn = count;
                     root.centerCurrentTargetCard();
