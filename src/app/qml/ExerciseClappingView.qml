@@ -18,9 +18,12 @@ Item {
     readonly property bool compactMode: !applicationWindow().wideScreen || Kirigami.Settings.isMobile
     readonly property real contentPadding: Kirigami.Units.largeSpacing * 2
     property int countIn: 0
-    readonly property real countInOverlaySize: Math.max(Kirigami.Units.gridUnit * 3, headerLayout.height)
-    readonly property real countInOverlayX: Math.max(0, width - Kirigami.Units.largeSpacing - root.countInOverlaySize)
-    readonly property real countInOverlayY: headerLayout.y
+    property int countInOverlayAnchorIndex: -1
+    readonly property real countInOverlayGap: Kirigami.Units.smallSpacing
+    readonly property bool countInOverlayInitial: root.countPhase === "preparation"
+    readonly property real countInOverlaySize: Math.ceil(onsetMeterProbe.implicitWidth)
+    readonly property real countInOverlayX: root.countInOverlayTargetX()
+    readonly property real countInOverlayY: root.countInOverlayTargetY()
     property bool countInStarted: false
     property string countPhase: "idle"
     property var currentExercise
@@ -76,6 +79,16 @@ Item {
         root.microphone.stop();
         root.microphone.start();
     }
+    function clampCountInOverlayX(value: real): real {
+        const margin = Kirigami.Units.smallSpacing;
+        const maximum = Math.max(margin, root.width - root.countInOverlaySize - margin);
+        return Math.max(margin, Math.min(maximum, isFinite(value) ? value : margin));
+    }
+    function clampCountInOverlayY(value: real): real {
+        const margin = Kirigami.Units.smallSpacing;
+        const maximum = Math.max(margin, root.height - root.countInOverlaySize - margin);
+        return Math.max(margin, Math.min(maximum, isFinite(value) ? value : margin));
+    }
     function clearCurrentRun(): void {
         progressTimer.stop();
         finishTimer.stop();
@@ -86,8 +99,20 @@ Item {
             Core.soundController.stop();
         }
         root.countIn = 0;
+        root.countInOverlayAnchorIndex = -1;
         root.countPhase = "idle";
         root.countInStarted = false;
+    }
+    function countInOverlayTargetX(): real {
+        if (root.countPhase !== "input") {
+            return root.clampCountInOverlayX(root.rhythmRowCenterX() - root.countInOverlaySize / 2);
+        }
+        const cardIndex = Math.max(0, Math.min(root.displayedFigureStates.length - 1, root.countInOverlayAnchorIndex));
+        return root.clampCountInOverlayX(root.rhythmCardCenterX(cardIndex) - root.countInOverlaySize / 2);
+    }
+    function countInOverlayTargetY(): real {
+        const cardY = rhythmFrame.y + rhythmViewport.y + rhythmRow.y;
+        return root.clampCountInOverlayY(cardY - root.countInOverlaySize - root.countInOverlayGap);
     }
     function durationForToken(token: string): real {
         let note = token;
@@ -143,6 +168,7 @@ Item {
         progressTimer.stop();
         finishTimer.stop();
         root.countIn = 0;
+        root.countInOverlayAnchorIndex = -1;
         root.countPhase = "idle";
         root.countInStarted = false;
         if (Core.soundController) {
@@ -250,6 +276,38 @@ Item {
         }
         refreshFigureStates(elapsedMs);
     }
+    function mapRhythmRowX(localX: real): real {
+        const geometryDependency = rhythmFrame.x + rhythmViewport.x + rhythmViewport.contentX + rhythmContent.x + rhythmRow.x + rhythmRow.implicitWidth;
+        return rhythmRow.mapToItem(root, localX + geometryDependency * 0, 0).x;
+    }
+    function minimumExpectedOnsetIntervalMs(): real {
+        if (root.expectedOnsets.length < 2) {
+            return root.beatMs;
+        }
+        let minimumInterval = Number.MAX_VALUE;
+        for (let i = 1; i < root.expectedOnsets.length; ++i) {
+            const interval = root.expectedOnsets[i].timeMs - root.expectedOnsets[i - 1].timeMs;
+            if (interval > 0 && interval < minimumInterval) {
+                minimumInterval = interval;
+            }
+        }
+        return minimumInterval < Number.MAX_VALUE ? minimumInterval : root.beatMs;
+    }
+    function nearestExpectedErrorForFigure(figureIndex: int, elapsedMs: real): real {
+        const figure = root.figureStates[figureIndex];
+        if (!figure || figure.onsets.length === 0) {
+            return elapsedMs - (figure ? figure.startMs : 0);
+        }
+
+        let bestError = elapsedMs - root.expectedOnsets[figure.onsets[0]].timeMs;
+        for (const onsetIndex of figure.onsets) {
+            const error = elapsedMs - root.expectedOnsets[onsetIndex].timeMs;
+            if (Math.abs(error) < Math.abs(bestError)) {
+                bestError = error;
+            }
+        }
+        return bestError;
+    }
     function refreshFigureStates(elapsedMs: real): var {
         let states = root.figureStates.slice();
         for (let i = 0; i < states.length; ++i) {
@@ -271,6 +329,15 @@ Item {
         root.figureStates = states;
         return states;
     }
+    function rhythmCardCenterX(index: int): real {
+        return root.mapRhythmRowX(index * (root.rhythmCardWidth + rhythmRow.spacing) + root.rhythmCardWidth / 2);
+    }
+    function rhythmRowCenterX(): real {
+        if (root.displayedFigureStates.length <= 0) {
+            return rhythmFrame.x + rhythmViewport.x + rhythmViewport.width / 2;
+        }
+        return root.mapRhythmRowX(rhythmRow.implicitWidth / 2);
+    }
     function startExercise(): void {
         if (root.currentExercise === undefined || root.viewState === "counting" || root.viewState === "listening") {
             return;
@@ -282,6 +349,7 @@ Item {
         root.countPhase = "preparation";
         root.countInStarted = false;
         root.countIn = 0;
+        root.countInOverlayAnchorIndex = -1;
         root.viewState = "counting";
         if (Core.soundController) {
             Core.soundController.playCountIn(root.selectedOptionCount);
@@ -294,7 +362,11 @@ Item {
         root.countPhase = "input";
         root.countInStarted = false;
         root.countIn = 0;
-        root.listeningStartSeconds = root.microphone ? root.microphone.analysisTimeSeconds : 0;
+        root.countInOverlayAnchorIndex = 0;
+        root.inputTimingArmed = true;
+        root.inputTimingStarted = false;
+        root.listeningStartSeconds = -1;
+        root.performedOnsets = [];
         root.viewState = "listening";
         if (Core.soundController) {
             Core.soundController.playCountIn(root.selectedOptionCount);
@@ -417,6 +489,9 @@ Item {
                     root.startListening();
                 }
             } else if (root.countPhase === "input") {
+                if (count > 0) {
+                    root.countInOverlayAnchorIndex = Math.max(0, Math.min(root.displayedFigureStates.length - 1, count - 1));
+                }
                 root.countIn = count;
             }
         }
@@ -454,7 +529,7 @@ Item {
 
                     Layout.fillWidth: true
                     Onboarding.groups: ["clapping"]
-                    Onboarding.texts: [i18n("Start a question, listen to the count, then clap each rhythm figure in time.")]
+                    Onboarding.texts: [i18n("The header shows the exercise status and score while you prepare, listen, clap, and review the result.")]
                     spacing: 0
 
                     Kirigami.Heading {
@@ -479,6 +554,8 @@ Item {
 
                         Layout.alignment: Qt.AlignHCenter
                         Layout.topMargin: Kirigami.Units.smallSpacing
+                        Onboarding.groups: ["clapping"]
+                        Onboarding.texts: [i18n("Start a single clapping question or begin a test with several questions in a row.")]
                         spacing: Kirigami.Units.smallSpacing
 
                         QQC2.Button {
@@ -529,6 +606,8 @@ Item {
             }
         }
         QQC2.Frame {
+            id: rhythmFrame
+
             Layout.bottomMargin: root.contentPadding
             Layout.fillHeight: true
             Layout.fillWidth: true
@@ -542,7 +621,7 @@ Item {
                 anchors.fill: parent
                 boundsBehavior: Flickable.StopAtBounds
                 clip: true
-                contentHeight: Math.max(height, rhythmRow.implicitHeight)
+                contentHeight: Math.max(height, rhythmRow.implicitHeight + root.countInOverlaySize + root.countInOverlayGap * 2)
                 contentWidth: Math.max(width, rhythmRow.implicitWidth)
                 flickableDirection: Flickable.HorizontalFlick
 
@@ -554,8 +633,9 @@ Item {
                     id: rhythmContent
 
                     readonly property real centeredInset: Math.max(0, (rhythmViewport.width - rhythmRow.implicitWidth) / 2)
+                    readonly property real countInTopInset: root.countInOverlaySize + root.countInOverlayGap
 
-                    height: Math.max(rhythmViewport.height, rhythmRow.implicitHeight)
+                    height: rhythmViewport.contentHeight
                     width: rhythmViewport.contentWidth
 
                     Row {
@@ -563,14 +643,16 @@ Item {
 
                         Onboarding.groups: ["clapping"]
                         Onboarding.texts: [i18n("Each colored card is one rhythm figure. Green borders mark figures clapped correctly; red borders mark missed figures."), i18n("The onset meter below each figure lights below the center for advanced claps and above the center for late claps.")]
-                        anchors.verticalCenter: parent.verticalCenter
                         spacing: Kirigami.Units.smallSpacing
                         x: rhythmContent.centeredInset
+                        y: Math.max(rhythmContent.countInTopInset, Math.round((rhythmContent.height - rhythmRow.implicitHeight) / 2))
 
                         Onboarding.onAboutToShow: root.onboardingPreviewActive = true
                         Onboarding.onHide: root.onboardingPreviewActive = false
 
                         Repeater {
+                            id: rhythmRepeater
+
                             model: root.displayedFigureStates
 
                             delegate: Rectangle {
@@ -642,13 +724,17 @@ Item {
 
                 AccuracyMeter {
                     Layout.fillWidth: true
+                    Onboarding.groups: ["clapping"]
+                    Onboarding.texts: [i18n("The input level shows microphone activity while you clap. Open means the signal is above the current gate.")]
                     accentColor: root.microphone && root.microphone.inputGateOpen ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.disabledTextColor
                     label: i18n("Input level")
                     value: root.microphone ? Math.min(1, root.microphone.audioLevel * 12) : 0
                     valueText: root.microphone && root.microphone.inputGateOpen ? i18n("Open") : i18n("Closed")
                 }
                 QQC2.Button {
-                    enabled: root.microphone !== null
+                    Onboarding.groups: ["clapping"]
+                    Onboarding.texts: [i18n("Calibrate silence in a quiet room before clapping so background noise is not counted as input.")]
+                    enabled: root.microphoneReady
                     text: root.microphone && root.microphone.noiseCalibrationActive ? i18n("Calibrating...") : i18n("Calibrate Silence")
 
                     onClicked: {

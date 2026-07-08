@@ -603,6 +603,7 @@ void AubioMicrophoneInputController::appendSamplesFromBytes(const QByteArray &by
                 sample = readUnaligned<float>(sampleData);
                 break;
             case QAudioFormat::Unknown:
+            case QAudioFormat::NSampleFormats:
                 break;
             }
             mono += sample;
