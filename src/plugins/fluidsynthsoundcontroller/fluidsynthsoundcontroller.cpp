@@ -74,6 +74,7 @@ FluidSynthSoundController::FluidSynthSoundController(QObject *parent)
     , m_callbackSeqID(0)
     , m_countInNextValue(0)
     , m_countInOnly(false)
+    , m_countInAudible(true)
     , m_countInVisible(false)
     , m_song(nullptr)
 {
@@ -257,6 +258,16 @@ void FluidSynthSoundController::prepareFromMidiFile(const QString &fileName)
 
 void FluidSynthSoundController::playCountIn(int beats)
 {
+    playCountIn(beats, true);
+}
+
+void FluidSynthSoundController::playSilentCountIn(int beats)
+{
+    playCountIn(beats, false);
+}
+
+void FluidSynthSoundController::playCountIn(int beats, bool audible)
+{
     beats = std::clamp(beats, 1, 32);
     if (m_tempo == 0) {
         qWarning() << "Cannot play count-in with zero tempo.";
@@ -266,6 +277,7 @@ void FluidSynthSoundController::playCountIn(int beats)
     stop();
     clearSong();
     m_countInOnly = true;
+    m_countInAudible = audible;
     m_rhythmCountInBeats = beats;
     auto *song = new QList<fluid_event_t *>;
     m_song.reset(song);
@@ -300,7 +312,9 @@ void FluidSynthSoundController::play()
             }
         }
         for (fluid_event_t *event : std::as_const(*m_song.data())) {
-            if (fluid_event_get_type(event) != FLUID_SEQ_ALLNOTESOFF || m_playMode != u"chord"_s) {
+            const bool silentCountInNote = m_countInOnly && !m_countInAudible && fluid_event_get_type(event) == FLUID_SEQ_NOTE
+                && fluid_event_get_channel(event) == RhythmChannel && fluid_event_get_key(event) == RhythmCountInKey;
+            if (!silentCountInNote && (fluid_event_get_type(event) != FLUID_SEQ_ALLNOTESOFF || m_playMode != u"chord"_s)) {
                 fluid_event_set_dest(event, m_synthSeqID);
                 fluid_sequencer_send_at(m_sequencer, event, now, 1);
             }

@@ -5,9 +5,11 @@
 #include <interfaces/imicrophoneinputcontroller.h>
 
 #include <QAudioFormat>
+#include <QMediaDevices>
 #include <QPointer>
 #include <QString>
 #include <QTimer>
+#include <QVariantList>
 
 #include <aubio/aubio.h>
 
@@ -85,6 +87,10 @@ public:
     int stablePitchFrameCount() const override;
 
     QString inputDeviceDescription() const override;
+    QVariantList inputDevices() const override;
+    bool inputDeviceAvailable() const override;
+    QString inputDeviceId() const override;
+    void setInputDeviceId(const QString &deviceId) override;
     double audioLevel() const override;
     double peakLevel() const override;
     quint64 bytesRead() const override;
@@ -153,7 +159,6 @@ private:
     void rememberOnsetDescriptor(double strength);
     double adaptiveMinimumOnsetStrength() const;
     void updateNoiseCalibration(double sumSquares, int sampleCount);
-    void applyCalibratedDetectorThresholds(double noiseFloor);
     void updateInputDevices();
     void registerOnset(double onsetSeconds, double strength);
     void updateDetectedTempo(double onsetSeconds);
@@ -210,6 +215,8 @@ private:
     std::deque<double> m_recentOnsetDescriptorValues;
 
     QString m_inputDeviceDescription;
+    QVariantList m_inputDevices;
+    QString m_inputDeviceId;
     double m_audioLevel = 0.0;
     double m_peakLevel = 0.0;
     quint64 m_bytesRead = 0;
@@ -232,6 +239,7 @@ private:
     std::deque<double> m_recentOnsetSeconds;
 
     QAudioFormat m_audioFormat;
+    QMediaDevices m_mediaDevices;
     std::unique_ptr<QAudioSource> m_audioSource;
     QPointer<QIODevice> m_audioDevice;
     QTimer m_pollTimer;

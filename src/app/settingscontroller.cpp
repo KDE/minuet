@@ -31,6 +31,7 @@ void SettingsController::load()
     m_instrumentGroup = settings.value(u"InstrumentGroup"_s, m_instrumentGroup).toInt();
     m_instrument = std::clamp(settings.value(u"Instrument"_s, m_instrument).toInt(), 0, 127);
     m_rhythmInstrument = std::clamp(settings.value(u"RhythmInstrument"_s, m_rhythmInstrument).toInt(), 35, 81);
+    m_microphoneInputDeviceId = settings.value(u"MicrophoneInputDeviceId"_s, m_microphoneInputDeviceId).toString();
     m_clappingCorrectnessTolerancePercent = std::clamp(settings.value(u"ClappingCorrectnessTolerancePercent"_s, m_clappingCorrectnessTolerancePercent).toInt(), 5, 100);
     m_singingPitchToleranceCents = std::clamp(settings.value(u"SingingPitchToleranceCents"_s, m_singingPitchToleranceCents).toInt(), 10, 49);
     m_singingDisregardOctaveDifference = settings.value(u"SingingDisregardOctaveDifference"_s, m_singingDisregardOctaveDifference).toBool();
@@ -39,7 +40,6 @@ void SettingsController::load()
     m_singingPitchMethod = std::clamp(settings.value(u"SingingPitchMethod"_s, m_singingPitchMethod).toInt(), 0, 6);
     m_singingOnsetMethod = std::clamp(settings.value(u"SingingOnsetMethod"_s, m_singingOnsetMethod).toInt(), 0, 7);
     m_singingMinimumPitchConfidence = std::clamp(settings.value(u"SingingMinimumPitchConfidence"_s, m_singingMinimumPitchConfidence).toDouble(), 0.0, 0.95);
-    m_singingPitchSilenceDb = std::clamp(settings.value(u"SingingPitchSilenceDb"_s, m_singingPitchSilenceDb).toDouble(), -120.0, -10.0);
     m_singingOnsetThreshold = std::clamp(settings.value(u"SingingOnsetThreshold"_s, m_singingOnsetThreshold).toDouble(), 0.01, 1.0);
     m_singingInputGateLevel = std::clamp(settings.value(u"SingingInputGateLevel"_s, m_singingInputGateLevel).toDouble(), 0.0, 0.25);
     m_singingMinimumOnsetStrength = std::clamp(settings.value(u"SingingMinimumOnsetStrength"_s, m_singingMinimumOnsetStrength).toDouble(), 0.0, 1.0);
@@ -47,7 +47,6 @@ void SettingsController::load()
     m_clappingPitchMethod = std::clamp(settings.value(u"ClappingPitchMethod"_s, m_clappingPitchMethod).toInt(), 0, 6);
     m_clappingOnsetMethod = std::clamp(settings.value(u"ClappingOnsetMethod"_s, m_clappingOnsetMethod).toInt(), 0, 7);
     m_clappingMinimumPitchConfidence = std::clamp(settings.value(u"ClappingMinimumPitchConfidence"_s, m_clappingMinimumPitchConfidence).toDouble(), 0.0, 0.95);
-    m_clappingPitchSilenceDb = std::clamp(settings.value(u"ClappingPitchSilenceDb"_s, m_clappingPitchSilenceDb).toDouble(), -120.0, -10.0);
     m_clappingOnsetThreshold = std::clamp(settings.value(u"ClappingOnsetThreshold"_s, m_clappingOnsetThreshold).toDouble(), 0.01, 1.0);
     m_clappingInputGateLevel = std::clamp(settings.value(u"ClappingInputGateLevel"_s, m_clappingInputGateLevel).toDouble(), 0.0, 0.25);
     m_clappingMinimumOnsetStrength = std::clamp(settings.value(u"ClappingMinimumOnsetStrength"_s, m_clappingMinimumOnsetStrength).toDouble(), 0.0, 1.0);
@@ -73,6 +72,13 @@ void SettingsController::write(const QString &key, double value)
 }
 
 void SettingsController::write(const QString &key, bool value)
+{
+    QSettings settings;
+    settings.beginGroup(u"Settings"_s);
+    settings.setValue(key, value);
+}
+
+void SettingsController::write(const QString &key, const QString &value)
 {
     QSettings settings;
     settings.beginGroup(u"Settings"_s);
@@ -124,6 +130,11 @@ int SettingsController::rhythmInstrument() const
     return m_rhythmInstrument;
 }
 
+QString SettingsController::microphoneInputDeviceId() const
+{
+    return m_microphoneInputDeviceId;
+}
+
 int SettingsController::clappingCorrectnessTolerancePercent() const
 {
     return m_clappingCorrectnessTolerancePercent;
@@ -164,11 +175,6 @@ double SettingsController::singingMinimumPitchConfidence() const
     return m_singingMinimumPitchConfidence;
 }
 
-double SettingsController::singingPitchSilenceDb() const
-{
-    return m_singingPitchSilenceDb;
-}
-
 double SettingsController::singingOnsetThreshold() const
 {
     return m_singingOnsetThreshold;
@@ -202,11 +208,6 @@ int SettingsController::clappingOnsetMethod() const
 double SettingsController::clappingMinimumPitchConfidence() const
 {
     return m_clappingMinimumPitchConfidence;
-}
-
-double SettingsController::clappingPitchSilenceDb() const
-{
-    return m_clappingPitchSilenceDb;
 }
 
 double SettingsController::clappingOnsetThreshold() const
@@ -256,7 +257,6 @@ void SettingsController::resetAdvancedSettingsToDefaults()
     setSingingPitchMethod(DefaultSingingPitchMethod);
     setSingingOnsetMethod(DefaultSingingOnsetMethod);
     setSingingMinimumPitchConfidence(DefaultSingingMinimumPitchConfidence);
-    setSingingPitchSilenceDb(DefaultSingingPitchSilenceDb);
     setSingingOnsetThreshold(DefaultSingingOnsetThreshold);
     setSingingInputGateLevel(DefaultSingingInputGateLevel);
     setSingingMinimumOnsetStrength(DefaultSingingMinimumOnsetStrength);
@@ -264,7 +264,6 @@ void SettingsController::resetAdvancedSettingsToDefaults()
     setClappingPitchMethod(DefaultClappingPitchMethod);
     setClappingOnsetMethod(DefaultClappingOnsetMethod);
     setClappingMinimumPitchConfidence(DefaultClappingMinimumPitchConfidence);
-    setClappingPitchSilenceDb(DefaultClappingPitchSilenceDb);
     setClappingOnsetThreshold(DefaultClappingOnsetThreshold);
     setClappingInputGateLevel(DefaultClappingInputGateLevel);
     setClappingMinimumOnsetStrength(DefaultClappingMinimumOnsetStrength);
@@ -384,6 +383,17 @@ void SettingsController::setRhythmInstrument(int rhythmInstrument)
     emit rhythmInstrumentChanged(m_rhythmInstrument);
 }
 
+void SettingsController::setMicrophoneInputDeviceId(const QString &deviceId)
+{
+    if (m_microphoneInputDeviceId == deviceId) {
+        return;
+    }
+
+    m_microphoneInputDeviceId = deviceId;
+    write(u"MicrophoneInputDeviceId"_s, m_microphoneInputDeviceId);
+    emit microphoneInputDeviceIdChanged(m_microphoneInputDeviceId);
+}
+
 void SettingsController::setClappingCorrectnessTolerancePercent(int tolerance)
 {
     tolerance = std::clamp(tolerance, 5, 100);
@@ -460,7 +470,6 @@ MINUET_SET_DOUBLE_SETTING(setSingingMinimumPitchConfidence,
                           singingMinimumPitchConfidenceChanged,
                           0.0,
                           0.95)
-MINUET_SET_DOUBLE_SETTING(setSingingPitchSilenceDb, m_singingPitchSilenceDb, u"SingingPitchSilenceDb"_s, singingPitchSilenceDbChanged, -120.0, -10.0)
 MINUET_SET_DOUBLE_SETTING(setSingingOnsetThreshold, m_singingOnsetThreshold, u"SingingOnsetThreshold"_s, singingOnsetThresholdChanged, 0.01, 1.0)
 MINUET_SET_DOUBLE_SETTING(setSingingInputGateLevel, m_singingInputGateLevel, u"SingingInputGateLevel"_s, singingInputGateLevelChanged, 0.0, 0.25)
 MINUET_SET_DOUBLE_SETTING(setSingingMinimumOnsetStrength,
@@ -483,7 +492,6 @@ MINUET_SET_DOUBLE_SETTING(setClappingMinimumPitchConfidence,
                           clappingMinimumPitchConfidenceChanged,
                           0.0,
                           0.95)
-MINUET_SET_DOUBLE_SETTING(setClappingPitchSilenceDb, m_clappingPitchSilenceDb, u"ClappingPitchSilenceDb"_s, clappingPitchSilenceDbChanged, -120.0, -10.0)
 MINUET_SET_DOUBLE_SETTING(setClappingOnsetThreshold, m_clappingOnsetThreshold, u"ClappingOnsetThreshold"_s, clappingOnsetThresholdChanged, 0.01, 1.0)
 MINUET_SET_DOUBLE_SETTING(setClappingInputGateLevel, m_clappingInputGateLevel, u"ClappingInputGateLevel"_s, clappingInputGateLevelChanged, 0.0, 0.25)
 MINUET_SET_DOUBLE_SETTING(setClappingMinimumOnsetStrength,

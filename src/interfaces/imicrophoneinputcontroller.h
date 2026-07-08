@@ -9,6 +9,7 @@
 
 #include <interfaces/minuetinterfacesexport.h>
 
+#include <QVariantList>
 #include <qqmlregistration.h>
 
 namespace Minuet
@@ -46,6 +47,9 @@ class MINUETINTERFACES_EXPORT IMicrophoneInputController : public IPlugin
     Q_PROPERTY(int stablePitchFrameCount READ stablePitchFrameCount NOTIFY pitchChanged)
 
     Q_PROPERTY(QString inputDeviceDescription READ inputDeviceDescription NOTIFY inputDeviceDescriptionChanged)
+    Q_PROPERTY(QVariantList inputDevices READ inputDevices NOTIFY inputDevicesChanged)
+    Q_PROPERTY(bool inputDeviceAvailable READ inputDeviceAvailable NOTIFY inputDeviceAvailableChanged)
+    Q_PROPERTY(QString inputDeviceId READ inputDeviceId WRITE setInputDeviceId NOTIFY inputDeviceIdChanged)
     Q_PROPERTY(double audioLevel READ audioLevel NOTIFY audioLevelChanged)
     Q_PROPERTY(double peakLevel READ peakLevel NOTIFY audioLevelChanged)
     Q_PROPERTY(quint64 bytesRead READ bytesRead NOTIFY audioStatsChanged)
@@ -135,6 +139,9 @@ public:
     virtual int requiredStablePitchFrames() const = 0;
     virtual int stablePitchFrameCount() const = 0;
     virtual QString inputDeviceDescription() const = 0;
+    virtual QVariantList inputDevices() const = 0;
+    virtual bool inputDeviceAvailable() const = 0;
+    virtual QString inputDeviceId() const = 0;
     virtual double audioLevel() const = 0;
     virtual double peakLevel() const = 0;
     virtual quint64 bytesRead() const = 0;
@@ -168,6 +175,7 @@ public Q_SLOTS:
     virtual void setInputGateLevel(double inputGateLevel) = 0;
     virtual void setMinimumOnsetStrength(double strength) = 0;
     virtual void setRequiredStablePitchFrames(int frames) = 0;
+    virtual void setInputDeviceId(const QString &deviceId) = 0;
     virtual void start() = 0;
     virtual void stop() = 0;
     virtual void resetInputAnalysisState() = 0;
@@ -199,6 +207,9 @@ Q_SIGNALS:
     void minimumOnsetStrengthChanged();
     void requiredStablePitchFramesChanged();
     void inputDeviceDescriptionChanged();
+    void inputDevicesChanged();
+    void inputDeviceAvailableChanged();
+    void inputDeviceIdChanged();
     void audioLevelChanged();
     void audioStatsChanged();
     void pitchChanged();

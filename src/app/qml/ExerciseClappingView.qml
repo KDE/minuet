@@ -47,6 +47,7 @@ Item {
     property real listeningStartSeconds: -1
     readonly property int maximumExercises: Core.settingsController.testExerciseCount
     readonly property var microphone: Core.microphoneInputController
+    readonly property bool microphoneReady: root.microphone !== null && root.microphone.inputDeviceAvailable
     property int onboardingCountIn: 0
     property bool onboardingPreviewActive: false
     property var performedOnsets: []
@@ -158,6 +159,7 @@ Item {
         root.microphone.analysisMode = IMicrophoneInputController.ClappingOnsetOnly;
         root.microphone.preset = IMicrophoneInputController.Clapping;
         root.microphone.onsetMethod = Core.settingsController.clappingOnsetMethod;
+        root.microphone.minimumPitchConfidence = Core.settingsController.clappingMinimumPitchConfidence;
         root.microphone.onsetThreshold = Core.settingsController.clappingOnsetThreshold;
         root.microphone.inputGateLevel = Core.settingsController.clappingInputGateLevel;
         root.microphone.minimumOnsetStrength = Core.settingsController.clappingMinimumOnsetStrength;
@@ -471,7 +473,7 @@ Item {
         root.countInOverlayAnchorIndex = -1;
         root.viewState = "counting";
         if (Core.soundController) {
-            Core.soundController.playCountIn(root.selectedOptionCount);
+            Core.soundController.playCountIn(4);
         }
     }
     function startInputTiming(): void {
@@ -499,6 +501,10 @@ Item {
         root.listeningStartSeconds = -1;
         root.performedOnsets = [];
         root.viewState = "listening";
+        if (Core.soundController) {
+            Core.soundController.playSilentCountIn(root.selectedOptionCount);
+        }
+        progressTimer.restart();
         finishTimer.interval = totalDurationMs() + root.toleranceMs + root.beatMs;
         if (Core.soundController) {
             Core.soundController.playSilentCountIn(root.selectedOptionCount);
@@ -615,7 +621,7 @@ Item {
                 if (count > 0) {
                     root.countInStarted = true;
                 }
-                if (count >= root.selectedOptionCount) {
+                if (count >= 4) {
                     root.beginMicrophoneCapture();
                 } else if (count === 0 && root.countInStarted) {
                     root.startListening();
@@ -680,7 +686,7 @@ Item {
                         elide: Text.ElideRight
                         horizontalAlignment: Text.AlignHCenter
                         level: 3
-                        text: root.viewState === "listening" ? i18n("Listening...") : Core.exerciseSessionController.isTest && Core.exerciseSessionController.statusText.length > 0 ? Core.exerciseSessionController.statusText : root.microphone ? root.microphone.status : i18n("No microphone input plugin available")
+                        text: root.viewState === "listening" ? i18n("Listening...") : Core.exerciseSessionController.isTest && Core.exerciseSessionController.statusText.length > 0 ? Core.exerciseSessionController.statusText : root.microphone ? root.microphone.inputDeviceAvailable ? root.microphone.status : i18n("No microphone input devices found") : i18n("No microphone input plugin available")
                     }
                     RowLayout {
                         id: actionButtons
@@ -697,7 +703,7 @@ Item {
                             id: startQuestionButton
 
                             Layout.preferredWidth: actionButtons.buttonWidth
-                            enabled: root.microphone !== null && root.viewState !== "counting" && root.viewState !== "listening"
+                            enabled: root.microphoneReady && root.viewState !== "counting" && root.viewState !== "listening"
                             text: root.expectedOnsets.length === 0 || root.viewState === "finished" ? i18n("New Question") : i18n("Start")
 
                             onClicked: {
@@ -711,7 +717,7 @@ Item {
                             id: testButton
 
                             Layout.preferredWidth: actionButtons.buttonWidth
-                            enabled: root.microphone !== null && root.viewState !== "counting" && root.viewState !== "listening"
+                            enabled: root.microphoneReady && root.viewState !== "counting" && root.viewState !== "listening"
                             text: Core.exerciseSessionController.isTest ? i18n("Stop Test") : i18n("Start Test")
 
                             onClicked: {
@@ -867,8 +873,6 @@ Item {
                     valueText: root.microphone && root.microphone.inputGateOpen ? i18n("Open") : i18n("Closed")
                 }
                 QQC2.Button {
-                    Onboarding.groups: ["clapping"]
-                    Onboarding.texts: [i18n("Calibrate silence in a quiet room before clapping so background noise is not counted as input.")]
                     enabled: root.microphoneReady
                     text: root.microphone && root.microphone.noiseCalibrationActive ? i18n("Calibrating...") : i18n("Calibrate Silence")
 

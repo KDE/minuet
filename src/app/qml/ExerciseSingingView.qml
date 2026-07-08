@@ -28,6 +28,7 @@ Item {
     property string countPhase: "idle"
     property var currentExercise
     property string currentExerciseIconName: ""
+    readonly property bool currentScaleCardCentered: root.scaleExercise && root.viewState === "listening" && root.countPhase === "input"
     property int currentTargetIndex: 0
     readonly property int displayedTargetIndex: root.currentDisplayTargetIndex()
     readonly property var displayedTargetStates: root.displayedTargetStatesModel()
@@ -38,6 +39,7 @@ Item {
     readonly property real meterSpacing: Kirigami.Units.smallSpacing
     readonly property real meterWidth: Math.ceil(Math.max(pitchMeterProbe.implicitWidth, onsetMeterProbe.implicitWidth))
     readonly property var microphone: Core.microphoneInputController
+    readonly property bool microphoneReady: root.microphone !== null && root.microphone.inputDeviceAvailable
     readonly property bool musicViewsTabbed: !applicationWindow().wideScreen && root.height > root.width
     readonly property real noteCardWidth: Math.ceil((root.scaleExercise ? root.meterWidth * 2 + root.meterSpacing : root.meterWidth) + root.cardHorizontalPadding)
     property int onboardingCountIn: 0
@@ -68,7 +70,6 @@ Item {
         root.microphone.pitchMethod = Core.settingsController.singingPitchMethod;
         root.microphone.onsetMethod = Core.settingsController.singingOnsetMethod;
         root.microphone.minimumPitchConfidence = Core.settingsController.singingMinimumPitchConfidence;
-        root.microphone.pitchSilenceDb = Core.settingsController.singingPitchSilenceDb;
         root.microphone.onsetThreshold = Core.settingsController.singingOnsetThreshold;
         root.microphone.inputGateLevel = Core.settingsController.singingInputGateLevel;
         root.microphone.minimumOnsetStrength = Core.settingsController.singingMinimumOnsetStrength;
@@ -103,10 +104,14 @@ Item {
             return;
         }
 
-        noteViewport.contentX = Math.max(0, (noteViewport.contentWidth - noteViewport.width) / 2);
+        noteViewport.contentX = 0;
     }
     function centerCurrentTargetCard(): void {
         if (!root.scaleExercise || root.displayedTargetStates.length === 0 || noteViewport.width <= 0) {
+            return;
+        }
+        if (!root.currentScaleCardCentered) {
+            root.centerAllTargetCards();
             return;
         }
 
@@ -416,7 +421,6 @@ Item {
         root.countInOverlayAnchorIndex = root.referenceCardExercise ? 0 : -1;
         root.countPhase = "root";
         root.countInStarted = false;
-        root.countIn = 1;
         if (Core.soundController) {
             Core.soundController.prepareFromExerciseOptions([
                 {
@@ -430,7 +434,13 @@ Item {
     }
     function questionPitchMessage(): string {
         if (root.exerciseName.length === 0 || root.targetNotes.length === 0) {
-            return root.microphone ? root.microphone.status : i18n("No microphone input plugin available");
+            if (!root.microphone) {
+                return i18n("No microphone input plugin available");
+            }
+            if (!root.microphone.inputDeviceAvailable) {
+                return i18n("No microphone input devices found");
+            }
+            return root.microphone.status;
         }
 
         const base = noteName(root.rootNote);
@@ -502,6 +512,7 @@ Item {
         if (Core.soundController) {
             Core.soundController.playCountIn(4);
         }
+        root.centerAllTargetCards();
     }
     function startListening(): void {
         if (root.microphone && !root.microphone.running) {
@@ -522,7 +533,7 @@ Item {
             }
             root.listeningStartSeconds = root.microphone ? root.microphone.analysisTimeSeconds : 0;
         }
-        finishTimer.interval = root.scaleExercise ? scaleFinalElapsedMs() : root.targetNotes.length * root.beatMs + root.beatMs;
+        finishTimer.interval = root.scaleExercise ? Math.max(0, root.targetNotes.length - 1) * root.beatMs + Math.max(root.timingToleranceMs, root.pitchCorrectHoldSeconds * 1000) : root.targetNotes.length * root.beatMs + root.beatMs;
         if (Core.soundController && root.scaleExercise) {
             Core.soundController.playSilentCountIn(root.targetNotes.length);
         } else if (root.scaleExercise) {
@@ -716,7 +727,7 @@ Item {
                     root.currentTargetIndex = root.inputTargetIndex;
                     root.syncExpectedPitchConstraint();
                     root.beginScaleInputTiming();
-                    root.countIn = count + 1;
+                    root.countIn = count;
                     root.centerCurrentTargetCard();
                 } else {
                     root.countIn = count;
@@ -790,7 +801,7 @@ Item {
                             id: startQuestionButton
 
                             Layout.preferredWidth: actionButtons.buttonWidth
-                            enabled: root.microphone !== null && root.viewState !== "counting" && root.viewState !== "listening"
+                            enabled: root.microphoneReady && root.viewState !== "counting" && root.viewState !== "listening"
                             text: root.targetNotes.length === 0 || root.viewState === "finished" ? i18n("New Question") : i18n("Start")
 
                             onClicked: {
@@ -804,7 +815,7 @@ Item {
                             id: testButton
 
                             Layout.preferredWidth: actionButtons.buttonWidth
-                            enabled: root.microphone !== null && root.viewState !== "counting" && root.viewState !== "listening"
+                            enabled: root.microphoneReady && root.viewState !== "counting" && root.viewState !== "listening"
                             text: Core.exerciseSessionController.isTest ? i18n("Stop Test") : i18n("Start Test")
 
                             onClicked: {
@@ -851,8 +862,8 @@ Item {
                 anchors.fill: parent
                 boundsBehavior: Flickable.StopAtBounds
                 clip: true
-                contentHeight: Math.max(noteViewport.height, noteRow.implicitHeight + root.countInOverlaySize + root.countInOverlayGap * 2)
-                contentWidth: root.scaleExercise ? Math.max(noteViewport.width, noteRow.implicitWidth + noteContent.scaleSideInset * 2) : noteViewport.width
+                contentHeight: Math.max(noteViewport.height, noteRow.implicitHeight)
+                contentWidth: root.currentScaleCardCentered ? Math.max(noteViewport.width, noteRow.implicitWidth + noteContent.scaleSideInset * 2) : root.scaleExercise ? Math.max(noteViewport.width, noteRow.implicitWidth) : noteViewport.width
                 flickableDirection: Flickable.HorizontalFlick
 
                 QQC2.ScrollBar.horizontal: QQC2.ScrollBar {
@@ -875,8 +886,7 @@ Item {
                         id: noteRow
 
                         spacing: Kirigami.Units.smallSpacing
-                        x: root.scaleExercise ? noteContent.scaleSideInset : noteContent.centeredInset
-                        y: Math.max(noteContent.countInTopInset, Math.round((noteContent.height - noteRow.implicitHeight) / 2))
+                        x: root.currentScaleCardCentered ? noteContent.scaleSideInset : noteContent.centeredInset
 
                         Onboarding.onAboutToShow: root.onboardingPreviewActive = true
                         Onboarding.onHide: root.onboardingPreviewActive = false
@@ -976,8 +986,6 @@ Item {
                     valueText: root.microphone && root.microphone.inputGateOpen ? i18n("Open") : i18n("Closed")
                 }
                 QQC2.Button {
-                    Onboarding.groups: ["singing"]
-                    Onboarding.texts: [i18n("Calibrate silence in a quiet room before singing so room noise does not affect pitch and onset detection.")]
                     enabled: root.microphoneReady
                     text: root.microphone && root.microphone.noiseCalibrationActive ? i18n("Calibrating...") : i18n("Calibrate Silence")
 
