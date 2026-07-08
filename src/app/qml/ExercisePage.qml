@@ -119,16 +119,23 @@ Kirigami.Page {
         Rectangle {
             id: countInOverlay
 
+            readonly property color accentColor: initialCount ? Kirigami.Theme.negativeTextColor : Kirigami.Theme.highlightColor
             readonly property int displayedCount: Math.max(page.exerciseItemValue("countIn", 0), page.exerciseItemValue("onboardingCountIn", 0))
+            readonly property bool initialCount: page.exerciseItemValue("countInOverlayInitial", false)
             readonly property real preferredSize: page.exerciseItemValue("countInOverlaySize", Kirigami.Units.gridUnit * 5)
+
+            function blendColor(from: color, to: color, amount: real): color {
+                const clampedAmount = Math.max(0, Math.min(1, amount));
+                return Qt.rgba(from.r + (to.r - from.r) * clampedAmount, from.g + (to.g - from.g) * clampedAmount, from.b + (to.b - from.b) * clampedAmount, from.a + (to.a - from.a) * clampedAmount);
+            }
 
             Accessible.name: i18n("Count: %1", Math.max(1, displayedCount))
             Accessible.role: Accessible.StaticText
             Onboarding.groups: ["rhythmic", "clapping", "singing"]
-            Onboarding.texts: [i18n("Rhythm questions begin with a count-in."), i18n("Clapping exercises count to the number of rhythm patterns before recording, then repeat that count while you clap."), i18n("Singing exercises count in before the first note; then sing one displayed note on each count.")]
-            border.color: Kirigami.Theme.highlightColor
+            Onboarding.texts: [i18n("Rhythm questions begin with a count-in."), i18n("The count appears over the rhythm card you should clap with the beat."), i18n("The count appears over the note card you should sing with the beat.")]
+            border.color: accentColor
             border.width: 2
-            color: Kirigami.Theme.backgroundColor
+            color: initialCount ? blendColor(Kirigami.Theme.backgroundColor, Kirigami.Theme.negativeTextColor, 0.18) : Kirigami.Theme.backgroundColor
             height: preferredSize
             radius: Math.min(width, height) / 2
             visible: displayedCount > 0 || Onboarding.active
@@ -141,16 +148,22 @@ Kirigami.Page {
                 if (exerciseLoader.status === Loader.Ready && exerciseLoader.item["onboardingCountIn"] !== undefined) {
                     exerciseLoader.item["onboardingCountIn"] = 4;
                 }
+                if (exerciseLoader.status === Loader.Ready && exerciseLoader.item["onboardingPreviewActive"] !== undefined) {
+                    exerciseLoader.item["onboardingPreviewActive"] = true;
+                }
             }
             Onboarding.onHide: {
                 if (exerciseLoader.status === Loader.Ready && exerciseLoader.item["onboardingCountIn"] !== undefined) {
                     exerciseLoader.item["onboardingCountIn"] = 0;
                 }
+                if (exerciseLoader.status === Loader.Ready && exerciseLoader.item["onboardingPreviewActive"] !== undefined) {
+                    exerciseLoader.item["onboardingPreviewActive"] = false;
+                }
             }
 
             Kirigami.Heading {
                 anchors.centerIn: parent
-                color: Kirigami.Theme.highlightColor
+                color: countInOverlay.accentColor
                 font.pixelSize: Math.round(countInOverlay.height * 0.46)
                 horizontalAlignment: Text.AlignHCenter
                 level: 1

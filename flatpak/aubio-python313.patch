@@ -1,0 +1,46 @@
+diff --git a/waflib/Context.py b/waflib/Context.py
+index 2c8810f..0f7a54d 100644
+--- a/waflib/Context.py
++++ b/waflib/Context.py
+@@ -2,7 +2,7 @@
+ # encoding: utf-8
+ # WARNING! Do not edit! https://waf.io/book/index.html#_obtaining_the_waf_file
+ 
+-import os,re,imp,sys
++import os,re,sys,types
+ from waflib import Utils,Errors,Logs
+ import waflib.Node
+ HEXVERSION=0x2000e00
+@@ -344,7 +344,7 @@ def load_module(path,encoding=None):
+ 	try:
+ 		return cache_modules[path]
+ 	except KeyError:
+ 		pass
+-	module=imp.new_module(WSCRIPT_FILE)
++	module=types.ModuleType(WSCRIPT_FILE)
+ 	try:
+ 		code=Utils.readf(path,m='rU',encoding=encoding)
+ 	except EnvironmentError:
+diff --git a/waflib/Tools/python.py b/waflib/Tools/python.py
+index 86053a7..8e39a7c 100644
+--- a/waflib/Tools/python.py
++++ b/waflib/Tools/python.py
+@@ -399,7 +399,7 @@ def configure(conf):
+ 	v.PYC=getattr(Options.options,'pyc',1)
+ 	v.PYO=getattr(Options.options,'pyo',1)
+ 	try:
+-		v.PYTAG=conf.cmd_and_log(conf.env.PYTHON+['-c',"import imp;print(imp.get_tag())"]).strip()
++		v.PYTAG=conf.cmd_and_log(conf.env.PYTHON+['-c',"import sysconfig;print(sysconfig.get_config_var('SOABI') or '')"]).strip()
+ 	except Errors.WafError:
+ 		pass
+ def options(opt):
+diff --git a/waflib/Utils.py b/waflib/Utils.py
+index 7b2c8ac..74a9ec8 100644
+--- a/waflib/Utils.py
++++ b/waflib/Utils.py
+@@ -141,6 +141,7 @@ is_win32=os.sep=='\\'or sys.platform=='win32'or os.name=='nt'
+ def readf(fname,m='r',encoding='latin-1'):
++	m=m.replace('U','')
+ 	if sys.hexversion>0x3000000 and not'b'in m:
+ 		m+='b'
+ 		with open(fname,m)as f:

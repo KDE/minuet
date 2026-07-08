@@ -18,43 +18,30 @@ Item {
     readonly property bool compactMode: !applicationWindow().wideScreen || Kirigami.Settings.isMobile
     readonly property real contentPadding: Kirigami.Units.largeSpacing * 2
     property int countIn: 0
-    readonly property real countInOverlaySize: Math.max(Kirigami.Units.gridUnit * 3, headerLayout.height)
-    readonly property real countInOverlayX: Math.max(0, width - Kirigami.Units.largeSpacing - root.countInOverlaySize)
-    readonly property real countInOverlayY: headerLayout.y
+    property int countInOverlayAnchorIndex: -1
+    readonly property real countInOverlayGap: Kirigami.Units.smallSpacing
+    readonly property bool countInOverlayInitial: root.countPhase === "preparation"
+    readonly property real countInOverlaySize: root.meterWidth
+    readonly property real countInOverlayX: root.countInOverlayTargetX()
+    readonly property real countInOverlayY: root.countInOverlayTargetY()
     property bool countInStarted: false
     property string countPhase: "idle"
     property var currentExercise
     property string currentExerciseIconName: ""
     readonly property bool currentScaleCardCentered: root.scaleExercise && root.viewState === "listening" && root.countPhase === "input"
     property int currentTargetIndex: 0
-    readonly property int displayedTargetIndex: root.scaleExercise && root.viewState === "listening" && root.countPhase === "input" ? root.inputTargetIndex : root.currentTargetIndex
-    readonly property var displayedTargetStates: root.targetStates.length > 0 ? root.targetStates : root.onboardingPreviewActive ? [
-        {
-            "midi": root.rootNote > 0 ? root.rootNote : 60,
-            "pitchCorrect": false,
-            "pitchWrong": false,
-            "timingCorrect": !root.scaleExercise,
-            "timingWrong": false,
-            "heard": false,
-            "pitchCorrectSinceSeconds": -1,
-            "pitchWrongSinceSeconds": -1,
-            "pitchValue": 0,
-            "pitchAccuracy": 0,
-            "pitchText": i18n("No pitch"),
-            "onsetValue": 0,
-            "onsetAccuracy": 0,
-            "onsetText": i18n("No onset")
-        }
-    ] : []
+    readonly property int displayedTargetIndex: root.currentDisplayTargetIndex()
+    readonly property var displayedTargetStates: root.displayedTargetStatesModel()
     property string exerciseName: ""
     property int inputTargetIndex: 0
     property real listeningStartSeconds: -1
     readonly property int maximumExercises: Core.settingsController.testExerciseCount
     readonly property real meterSpacing: Kirigami.Units.smallSpacing
+    readonly property real meterWidth: Math.ceil(Math.max(pitchMeterProbe.implicitWidth, onsetMeterProbe.implicitWidth))
     readonly property var microphone: Core.microphoneInputController
     readonly property bool microphoneReady: root.microphone !== null && root.microphone.inputDeviceAvailable
     readonly property bool musicViewsTabbed: !applicationWindow().wideScreen && root.height > root.width
-    readonly property real noteCardWidth: Math.ceil((root.scaleExercise ? pitchMeterProbe.implicitWidth + onsetMeterProbe.implicitWidth + root.meterSpacing : pitchMeterProbe.implicitWidth) + root.cardHorizontalPadding)
+    readonly property real noteCardWidth: Math.ceil((root.scaleExercise ? root.meterWidth * 2 + root.meterSpacing : root.meterWidth) + root.cardHorizontalPadding)
     property int onboardingCountIn: 0
     property bool onboardingPreviewActive: false
     property var onsetHits: []
@@ -63,6 +50,7 @@ Item {
     readonly property real pitchCorrectHoldSeconds: Math.min(0.18, Math.max(0.10, root.beatMs * 0.0002))
     property string pitchMeterText: i18n("No pitch")
     property real pitchMeterValue: 0
+    readonly property bool referenceCardExercise: currentExercise !== undefined && (currentExercise["singingExerciseKind"] === "interval" || currentExercise["singingExerciseKind"] === "scale")
     property int rootNote: 0
     readonly property bool scaleExercise: currentExercise !== undefined && currentExercise["singingExerciseKind"] === "scale"
     property int score: -1
@@ -116,7 +104,7 @@ Item {
             return;
         }
 
-        noteViewport.contentX = 0;
+        noteViewport.contentX = Math.max(0, (noteViewport.contentWidth - noteViewport.width) / 2);
     }
     function centerCurrentTargetCard(): void {
         if (!root.scaleExercise || root.displayedTargetStates.length === 0 || noteViewport.width <= 0) {
@@ -127,13 +115,18 @@ Item {
             return;
         }
 
-        const currentCard = noteRepeater.itemAt(root.displayedTargetIndex);
-        if (!currentCard) {
-            return;
-        }
-
-        const cardCenter = noteRow.x + currentCard.x + currentCard.width / 2;
+        const cardCenter = noteRow.x + root.displayedTargetIndex * (root.noteCardWidth + noteRow.spacing) + root.noteCardWidth / 2;
         noteViewport.contentX = Math.max(0, Math.min(noteViewport.contentWidth - noteViewport.width, cardCenter - noteViewport.width / 2));
+    }
+    function clampCountInOverlayX(value: real): real {
+        const margin = Kirigami.Units.smallSpacing;
+        const maximum = Math.max(margin, root.width - root.countInOverlaySize - margin);
+        return Math.max(margin, Math.min(maximum, isFinite(value) ? value : margin));
+    }
+    function clampCountInOverlayY(value: real): real {
+        const margin = Kirigami.Units.smallSpacing;
+        const maximum = Math.max(margin, root.height - root.countInOverlaySize - margin);
+        return Math.max(margin, Math.min(maximum, isFinite(value) ? value : margin));
     }
     function clearCurrentRun(): void {
         listenDelay.stop();
@@ -146,9 +139,67 @@ Item {
             Core.soundController.stop();
         }
         root.countIn = 0;
+        root.countInOverlayAnchorIndex = -1;
         root.countPhase = "idle";
         root.countInStarted = false;
         root.inputTargetIndex = 0;
+    }
+    function countInOverlayTargetX(): real {
+        if (root.countPhase !== "input" && !(root.referenceCardExercise && root.countPhase === "root")) {
+            return root.clampCountInOverlayX(root.noteRowCenterX() - root.countInOverlaySize / 2);
+        }
+
+        const lastIndex = Math.max(0, root.displayedTargetStates.length - 1);
+        const cardIndex = Math.max(0, Math.min(lastIndex, root.countInOverlayAnchorIndex));
+        return root.clampCountInOverlayX(root.noteCardCenterX(cardIndex) - root.countInOverlaySize / 2);
+    }
+    function countInOverlayTargetY(): real {
+        const cardY = noteFrame.y + noteViewport.y + noteRow.y;
+        return root.clampCountInOverlayY(cardY - root.countInOverlaySize - root.countInOverlayGap);
+    }
+    function currentDisplayTargetIndex(): int {
+        if (root.referenceCardExercise && root.countPhase === "root") {
+            return 0;
+        }
+        return root.displayIndexForTarget(root.scaleExercise && root.viewState === "listening" && root.countPhase === "input" ? root.inputTargetIndex : root.currentTargetIndex);
+    }
+    function defaultTargetState(midi: int): var {
+        return {
+            "midi": midi,
+            "reference": false,
+            "pitchCorrect": false,
+            "pitchWrong": false,
+            "timingCorrect": !root.scaleExercise,
+            "timingWrong": false,
+            "heard": false,
+            "pitchCorrectSinceSeconds": -1,
+            "pitchWrongSinceSeconds": -1,
+            "pitchValue": 0,
+            "pitchAccuracy": 0,
+            "pitchText": i18n("No pitch"),
+            "onsetValue": 0,
+            "onsetAccuracy": 0,
+            "onsetText": i18n("No onset")
+        };
+    }
+    function displayIndexForTarget(targetIndex: int): int {
+        if (!root.referenceCardExercise) {
+            return targetIndex;
+        }
+        return Math.max(0, targetIndex + 1);
+    }
+    function displayedTargetStatesModel(): var {
+        const states = root.targetStates.length > 0 ? root.targetStates : root.onboardingPreviewActive ? [root.defaultTargetState(root.rootNote > 0 ? root.rootNote : 60)] : [];
+        if (!root.referenceCardExercise || states.length === 0) {
+            return states;
+        }
+
+        const referenceState = root.defaultTargetState(root.rootNote > 0 ? root.rootNote : states[0].midi);
+        referenceState.reference = true;
+        referenceState.timingCorrect = true;
+        referenceState.pitchText = i18n("Played");
+        referenceState.onsetText = "";
+        return [referenceState].concat(states);
     }
     function evaluationIndexForElapsed(elapsedMs: real): int {
         if (root.scaleExercise && root.countPhase === "input") {
@@ -191,6 +242,7 @@ Item {
         }
         root.score = root.targetStates.length > 0 ? Math.round(correct * 100 / root.targetStates.length) : 0;
         root.countIn = 0;
+        root.countInOverlayAnchorIndex = -1;
         root.countPhase = "idle";
         root.countInStarted = false;
         root.viewState = "finished";
@@ -226,24 +278,7 @@ Item {
         // interval note is expected from the singer. For scale exercises, every
         // note in the generated sequence is expected from the singer.
         root.targetNotes = option.sequence.split(" ").filter(part => part.length > 0).map(part => root.rootNote + parseInt(part));
-        root.targetStates = root.targetNotes.map(function (note) {
-            return {
-                "midi": note,
-                "pitchCorrect": false,
-                "pitchWrong": false,
-                "timingCorrect": !root.scaleExercise,
-                "timingWrong": false,
-                "heard": false,
-                "pitchCorrectSinceSeconds": -1,
-                "pitchWrongSinceSeconds": -1,
-                "pitchValue": 0,
-                "pitchAccuracy": 0,
-                "pitchText": i18n("No pitch"),
-                "onsetValue": 0,
-                "onsetAccuracy": 0,
-                "onsetText": i18n("No onset")
-            };
-        });
+        root.targetStates = root.targetNotes.map(note => root.defaultTargetState(note));
         root.onsetHits = root.targetNotes.map(function () {
             return false;
         });
@@ -336,13 +371,26 @@ Item {
     function isIntervalExercise(): bool {
         return root.currentExercise !== undefined && root.currentExercise["singingExerciseKind"] === "interval";
     }
+    function mapNoteRowX(localX: real): real {
+        const geometryDependency = noteFrame.x + noteViewport.x + noteViewport.contentX + noteContent.x + noteRow.x + noteRow.implicitWidth;
+        return noteRow.mapToItem(root, localX + geometryDependency * 0, 0).x;
+    }
     function normalizedPitchMeterValue(pitchError: real): real {
         const pitchTolerance = Math.max(1, Core.settingsController.singingPitchToleranceCents);
         return Math.max(-1, Math.min(1, pitchError / pitchTolerance));
     }
+    function noteCardCenterX(index: int): real {
+        return root.mapNoteRowX(index * (root.noteCardWidth + noteRow.spacing) + root.noteCardWidth / 2);
+    }
     function noteName(midi: int): string {
         const names = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
         return names[((midi % 12) + 12) % 12] + (Math.floor(midi / 12) - 1);
+    }
+    function noteRowCenterX(): real {
+        if (root.displayedTargetStates.length <= 0) {
+            return noteFrame.x + noteViewport.x + noteViewport.width / 2;
+        }
+        return root.mapNoteRowX(noteRow.implicitWidth / 2);
     }
     function pitchErrorCents(midiNote: int, cents: real, expected: int): real {
         const rawError = (midiNote - expected) * 100 + cents;
@@ -369,7 +417,8 @@ Item {
         return Math.max(1, Core.settingsController.singingPitchToleranceCents);
     }
     function playRootAndListen(): void {
-        root.countIn = 0;
+        root.countIn = root.referenceCardExercise ? 1 : 0;
+        root.countInOverlayAnchorIndex = root.referenceCardExercise ? 0 : -1;
         root.countPhase = "root";
         root.countInStarted = false;
         if (Core.soundController) {
@@ -458,6 +507,7 @@ Item {
         root.countIn = 0;
         root.countPhase = "preparation";
         root.countInStarted = false;
+        root.countInOverlayAnchorIndex = -1;
         root.viewState = "counting";
         if (Core.soundController) {
             Core.soundController.playCountIn(4);
@@ -470,8 +520,9 @@ Item {
         }
         root.currentTargetIndex = 0;
         root.inputTargetIndex = 0;
+        root.countInOverlayAnchorIndex = root.referenceCardExercise ? 1 : 0;
         root.syncExpectedPitchConstraint();
-        root.countIn = 0;
+        root.countIn = root.isIntervalExercise() ? 2 : 0;
         root.countPhase = "input";
         root.countInStarted = false;
         root.viewState = "listening";
@@ -501,6 +552,12 @@ Item {
         startExercise();
     }
     function stateBorderColor(state: var, index: int): color {
+        if (state.reference) {
+            if (index === root.displayedTargetIndex && (root.countPhase === "root" || root.viewState === "listening")) {
+                return Kirigami.Theme.highlightColor;
+            }
+            return Kirigami.Theme.textColor;
+        }
         if (state.pitchCorrect && (Core.settingsController.singingScoringMode === 0 || state.timingCorrect)) {
             return Kirigami.Theme.positiveTextColor;
         }
@@ -511,6 +568,12 @@ Item {
             return Kirigami.Theme.highlightColor;
         }
         return Kirigami.Theme.textColor;
+    }
+    function stateBorderWidth(state: var, index: int): int {
+        if (state.reference) {
+            return index === root.displayedTargetIndex && (root.countPhase === "root" || root.viewState === "listening") ? 2 : 1;
+        }
+        return (index === root.displayedTargetIndex && root.viewState === "listening") || root.viewState === "finished" || state.pitchCorrect ? 2 : 1;
     }
     function stopTest(): void {
         testNextQuestionTimer.stop();
@@ -523,7 +586,7 @@ Item {
         if (!root.microphone || root.targetNotes.length === 0) {
             return;
         }
-        const index = Math.max(0, Math.min(root.targetNotes.length - 1, root.displayedTargetIndex));
+        const index = Math.max(0, Math.min(root.targetNotes.length - 1, root.scaleExercise && root.countPhase === "input" ? root.inputTargetIndex : root.currentTargetIndex));
         root.microphone.expectedMidiNote = root.targetNotes[index];
         root.microphone.disregardOctaveDifference = Core.settingsController.singingDisregardOctaveDifference;
     }
@@ -663,9 +726,10 @@ Item {
                     root.countInStarted = true;
                     root.inputTargetIndex = Math.max(0, Math.min(root.targetNotes.length - 1, count - 1));
                     root.currentTargetIndex = root.inputTargetIndex;
+                    root.countInOverlayAnchorIndex = root.inputTargetIndex + 1;
                     root.syncExpectedPitchConstraint();
                     root.beginScaleInputTiming();
-                    root.countIn = count;
+                    root.countIn = count + 1;
                     root.centerCurrentTargetCard();
                 } else {
                     root.countIn = count;
@@ -706,7 +770,7 @@ Item {
 
                     Layout.fillWidth: true
                     Onboarding.groups: ["singing"]
-                    Onboarding.texts: [i18n("Start a question, listen to the count-in and first note, then sing the displayed interval or scale notes."), i18n("For interval exercises, Minuet plays the first note and you sing the next note shown as the target."), i18n("For scale exercises, Minuet plays the first note and you sing the remaining target notes in order.")]
+                    Onboarding.texts: [i18n("The header shows the exercise status, score, and current target information while you sing.")]
                     spacing: 0
 
                     Kirigami.Heading {
@@ -731,6 +795,8 @@ Item {
 
                         Layout.alignment: Qt.AlignHCenter
                         Layout.topMargin: Kirigami.Units.smallSpacing
+                        Onboarding.groups: ["singing"]
+                        Onboarding.texts: [i18n("Start a single singing question or begin a test with several questions in a row.")]
                         spacing: Kirigami.Units.smallSpacing
 
                         QQC2.Button {
@@ -781,6 +847,8 @@ Item {
             }
         }
         QQC2.Frame {
+            id: noteFrame
+
             Layout.bottomMargin: root.contentPadding
             Layout.fillHeight: true
             Layout.fillWidth: true
@@ -796,8 +864,8 @@ Item {
                 anchors.fill: parent
                 boundsBehavior: Flickable.StopAtBounds
                 clip: true
-                contentHeight: Math.max(noteViewport.height, noteRow.implicitHeight)
-                contentWidth: root.currentScaleCardCentered ? Math.max(noteViewport.width, noteRow.implicitWidth + noteContent.scaleSideInset * 2) : root.scaleExercise ? Math.max(noteViewport.width, noteRow.implicitWidth) : noteViewport.width
+                contentHeight: Math.max(noteViewport.height, noteRow.implicitHeight + root.countInOverlaySize + root.countInOverlayGap * 2)
+                contentWidth: root.scaleExercise ? Math.max(noteViewport.width, noteRow.implicitWidth + noteContent.scaleSideInset * 2) : noteViewport.width
                 flickableDirection: Flickable.HorizontalFlick
 
                 QQC2.ScrollBar.horizontal: QQC2.ScrollBar {
@@ -810,17 +878,18 @@ Item {
                     id: noteContent
 
                     readonly property real centeredInset: Math.max(0, (noteViewport.width - noteRow.implicitWidth) / 2)
+                    readonly property real countInTopInset: root.countInOverlaySize + root.countInOverlayGap
                     readonly property real scaleSideInset: Math.max(0, (noteViewport.width - root.noteCardWidth) / 2)
 
-                    height: Math.max(noteViewport.height, noteRow.implicitHeight)
+                    height: noteViewport.contentHeight
                     width: noteViewport.contentWidth
 
                     Row {
                         id: noteRow
 
-                        anchors.verticalCenter: parent.verticalCenter
                         spacing: Kirigami.Units.smallSpacing
-                        x: root.currentScaleCardCentered ? noteContent.scaleSideInset : noteContent.centeredInset
+                        x: root.scaleExercise ? noteContent.scaleSideInset : noteContent.centeredInset
+                        y: Math.max(noteContent.countInTopInset, Math.round((noteContent.height - noteRow.implicitHeight) / 2))
 
                         Onboarding.onAboutToShow: root.onboardingPreviewActive = true
                         Onboarding.onHide: root.onboardingPreviewActive = false
@@ -843,7 +912,7 @@ Item {
 
                                 border {
                                     color: root.stateBorderColor(noteCard.modelData, noteCard.index)
-                                    width: noteCard.index === root.displayedTargetIndex && root.viewState === "listening" || root.viewState === "finished" || noteCard.modelData.pitchCorrect ? 2 : 1
+                                    width: root.stateBorderWidth(noteCard.modelData, noteCard.index)
                                 }
                                 Column {
                                     id: noteColumn
@@ -878,7 +947,7 @@ Item {
                                             meterKind: "pitch"
                                             readoutText: noteCard.modelData.pitchText
                                             value: noteCard.modelData.pitchValue
-                                            width: pitchMeter.implicitWidth
+                                            width: root.meterWidth
                                         }
                                         GraphicalMeter {
                                             id: onsetMeter
@@ -889,8 +958,8 @@ Item {
                                             meterKind: "onset"
                                             readoutText: noteCard.modelData.onsetText
                                             value: noteCard.modelData.onsetValue
-                                            visible: root.scaleExercise
-                                            width: onsetMeter.visible ? onsetMeter.implicitWidth : 0
+                                            visible: root.scaleExercise && !noteCard.modelData.reference
+                                            width: onsetMeter.visible ? root.meterWidth : 0
                                         }
                                     }
                                 }
@@ -912,12 +981,16 @@ Item {
 
                 AccuracyMeter {
                     Layout.fillWidth: true
+                    Onboarding.groups: ["singing"]
+                    Onboarding.texts: [i18n("The input level shows microphone activity while you sing. Open means the signal is above the current gate.")]
                     accentColor: root.microphone && root.microphone.inputGateOpen ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.disabledTextColor
                     label: i18n("Input level")
                     value: root.microphone ? Math.min(1, root.microphone.audioLevel * 12) : 0
                     valueText: root.microphone && root.microphone.inputGateOpen ? i18n("Open") : i18n("Closed")
                 }
                 QQC2.Button {
+                    Onboarding.groups: ["singing"]
+                    Onboarding.texts: [i18n("Calibrate silence in a quiet room before singing so room noise does not affect pitch and onset detection.")]
                     enabled: root.microphoneReady
                     text: root.microphone && root.microphone.noiseCalibrationActive ? i18n("Calibrating...") : i18n("Calibrate Silence")
 
@@ -958,9 +1031,13 @@ Item {
                 uniformCellWidths: !tabbed
 
                 Item {
+                    id: keyboardPanel
+
                     Layout.fillWidth: true
                     Layout.preferredHeight: musicPanel.viewHeight
                     Layout.preferredWidth: musicViewsLayout.musicViewWidth
+                    Onboarding.groups: ["singing"]
+                    Onboarding.texts: [i18n("The keyboard highlights the reference note and target notes for the singing question.")]
                     visible: !musicViewsLayout.tabbed || musicTabs.currentIndex === 0
 
                     PianoView {
@@ -976,9 +1053,13 @@ Item {
                     }
                 }
                 Item {
+                    id: staffPanel
+
                     Layout.fillWidth: true
                     Layout.preferredHeight: musicPanel.viewHeight
                     Layout.preferredWidth: musicViewsLayout.musicViewWidth
+                    Onboarding.groups: ["singing"]
+                    Onboarding.texts: [i18n("The staff shows the same singing notes in music notation.")]
                     clip: true
                     visible: !musicViewsLayout.tabbed || musicTabs.currentIndex === 1
 
@@ -994,6 +1075,8 @@ Item {
                 id: musicTabs
 
                 Layout.fillWidth: true
+                Onboarding.groups: ["singing"]
+                Onboarding.texts: [i18n("On narrow screens, switch between the keyboard and staff views with these tabs.")]
                 position: QQC2.TabBar.Footer
                 visible: root.musicViewsTabbed
 

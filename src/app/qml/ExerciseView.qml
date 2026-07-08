@@ -34,6 +34,7 @@ Item {
     readonly property bool compactMode: !applicationWindow().wideScreen || Kirigami.Settings.isMobile
     readonly property real contentPadding: Kirigami.Units.largeSpacing * 2
     property alias countIn: internal.countIn
+    readonly property bool countInOverlayInitial: internal.countIn > 0
     readonly property real countInOverlaySize: Math.max(Kirigami.Units.gridUnit * 3, headerLayout.height)
     readonly property real countInOverlayX: Math.max(0, width - Kirigami.Units.largeSpacing - exerciseView.countInOverlaySize)
     readonly property real countInOverlayY: headerLayout.y
@@ -385,11 +386,15 @@ Item {
                             }
                         }
                         Item {
+                            id: actionButtonPanel
+
                             Layout.alignment: Qt.AlignHCenter
                             Layout.bottomMargin: 2 * Kirigami.Units.largeSpacing
                             Layout.fillWidth: true
                             Layout.preferredHeight: actionButtons.implicitHeight
                             Layout.topMargin: Kirigami.Units.smallSpacing
+                            Onboarding.groups: ["melodic", "rhythmic"]
+                            Onboarding.texts: [i18n("Start a new question, replay it, reveal the answer, or begin a test."), i18n("Start a rhythm question, replay it, reveal the answer, or begin a test.")]
 
                             Row {
                                 id: actionButtons
@@ -402,8 +407,6 @@ Item {
                                 Button {
                                     id: playQuestionButton
 
-                                    Onboarding.groups: ["melodic", "rhythmic"]
-                                    Onboarding.texts: [i18n("Start a new question or replay the current one."), i18n("Start a new question or replay the current one.")]
                                     enabled: !animation.running && !exerciseView.exercisePlaying
                                     text: (exerciseView.state === "waitingForNewQuestion") ? i18n("New Question") : i18n("Play Question")
                                     width: actionButtons.buttonWidth
@@ -418,8 +421,6 @@ Item {
                                 Button {
                                     id: giveUpButton
 
-                                    Onboarding.groups: ["melodic", "rhythmic"]
-                                    Onboarding.texts: [i18n("Give up to reveal the correct answer."), i18n("Give up to reveal the correct answer.")]
                                     enabled: exerciseView.state === "waitingForAnswer" && !animation.running && !exerciseView.exercisePlaying
                                     text: i18n("Give Up")
                                     width: actionButtons.buttonWidth
@@ -433,8 +434,6 @@ Item {
                                 Button {
                                     id: testButton
 
-                                    Onboarding.groups: ["melodic", "rhythmic"]
-                                    Onboarding.texts: [i18n("Start a test to answer several questions in a row."), i18n("Start a test to answer several questions in a row.")]
                                     enabled: !exerciseView.exercisePlaying
                                     text: Core.exerciseSessionController.isTest ? i18n("Stop Test") : i18n("Start Test")
                                     width: actionButtons.buttonWidth
