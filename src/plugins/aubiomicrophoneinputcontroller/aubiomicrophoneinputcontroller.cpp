@@ -12,6 +12,7 @@
 #include <QMediaDevices>
 #include <QPermissions>
 #include <QStringList>
+#include <QVariantMap>
 
 #include <algorithm>
 #include <cmath>
@@ -42,6 +43,8 @@ AubioMicrophoneInputController::AubioMicrophoneInputController(QObject *parent)
 {
     m_pollTimer.setInterval(20);
     connect(&m_pollTimer, &QTimer::timeout, this, &AubioMicrophoneInputController::readAudioData);
+    connect(&m_mediaDevices, &QMediaDevices::audioInputsChanged, this, &AubioMicrophoneInputController::updateInputDevices);
+    updateInputDevices();
     setStatus(QStringLiteral("Ready. Press Start and sing, speak, clap, or tap near the microphone."));
 }
 
@@ -74,6 +77,9 @@ double AubioMicrophoneInputController::minimumOnsetStrength() const { return m_m
 int AubioMicrophoneInputController::requiredStablePitchFrames() const { return m_requiredStablePitchFrames; }
 int AubioMicrophoneInputController::stablePitchFrameCount() const { return m_stablePitchFrameCount; }
 QString AubioMicrophoneInputController::inputDeviceDescription() const { return m_inputDeviceDescription; }
+QVariantList AubioMicrophoneInputController::inputDevices() const { return m_inputDevices; }
+bool AubioMicrophoneInputController::inputDeviceAvailable() const { return !m_inputDevices.isEmpty(); }
+QString AubioMicrophoneInputController::inputDeviceId() const { return m_inputDeviceId; }
 double AubioMicrophoneInputController::audioLevel() const { return m_audioLevel; }
 double AubioMicrophoneInputController::peakLevel() const { return m_peakLevel; }
 quint64 AubioMicrophoneInputController::bytesRead() const { return m_bytesRead; }
@@ -212,6 +218,17 @@ void AubioMicrophoneInputController::setRequiredStablePitchFrames(int frames)
     resetPitchCandidate();
     Q_EMIT requiredStablePitchFramesChanged();
     Q_EMIT pitchChanged();
+}
+
+void AubioMicrophoneInputController::setInputDeviceId(const QString &deviceId)
+{
+    if (m_inputDeviceId == deviceId) {
+        return;
+    }
+
+    m_inputDeviceId = deviceId;
+    Q_EMIT inputDeviceIdChanged();
+    resetIfRunning();
 }
 
 void AubioMicrophoneInputController::start()
@@ -465,9 +482,27 @@ bool AubioMicrophoneInputController::ensureMicrophonePermission()
 
 bool AubioMicrophoneInputController::configureAudioInput()
 {
-    const QAudioDevice inputDevice = QMediaDevices::defaultAudioInput();
+    updateInputDevices();
+
+    QAudioDevice inputDevice;
+    const QList<QAudioDevice> devices = QMediaDevices::audioInputs();
+    const QByteArray selectedDeviceId = m_inputDeviceId.toUtf8();
+    if (!selectedDeviceId.isEmpty()) {
+        for (const QAudioDevice &device : devices) {
+            if (device.id() == selectedDeviceId) {
+                inputDevice = device;
+                break;
+            }
+        }
+    }
     if (inputDevice.isNull()) {
-        setStatus(QStringLiteral("No default audio input device found."));
+        inputDevice = QMediaDevices::defaultAudioInput();
+    }
+    if (inputDevice.isNull() && !devices.isEmpty()) {
+        inputDevice = devices.constFirst();
+    }
+    if (inputDevice.isNull()) {
+        setStatus(QStringLiteral("No audio input device found."));
         return false;
     }
 
@@ -500,6 +535,37 @@ bool AubioMicrophoneInputController::configureAudioInput()
             << "bytesPerSample" << m_audioFormat.bytesPerSample();
 
     return true;
+}
+
+void AubioMicrophoneInputController::updateInputDevices()
+{
+    const bool wasAvailable = inputDeviceAvailable();
+    QVariantList inputDevices;
+    const QList<QAudioDevice> devices = QMediaDevices::audioInputs();
+    const QByteArray defaultDeviceId = QMediaDevices::defaultAudioInput().id();
+
+    for (const QAudioDevice &device : devices) {
+        QVariantMap deviceData;
+        deviceData.insert(QStringLiteral("id"), QString::fromUtf8(device.id()));
+        deviceData.insert(QStringLiteral("description"), device.description());
+        deviceData.insert(QStringLiteral("displayName"), device.description());
+        deviceData.insert(QStringLiteral("isDefault"), device.id() == defaultDeviceId);
+        inputDevices.push_back(deviceData);
+    }
+
+    if (m_inputDevices != inputDevices) {
+        m_inputDevices = inputDevices;
+        Q_EMIT inputDevicesChanged();
+    }
+
+    const bool available = inputDeviceAvailable();
+    if (wasAvailable != available) {
+        Q_EMIT inputDeviceAvailableChanged();
+    }
+
+    if (m_running) {
+        resetIfRunning();
+    }
 }
 
 bool AubioMicrophoneInputController::recreateAubioObjects()

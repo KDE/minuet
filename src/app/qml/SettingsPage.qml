@@ -14,12 +14,14 @@ FormCard.FormCardPage {
     id: root
 
     property bool advancedExpanded: false
+    readonly property real formDelegateHorizontalPadding: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing
     readonly property var groupsModel: Core.instrumentCatalogController.instrumentGroups(instrumentGroupsJson)
     readonly property string hideAdvancedSettingsText: i18n("Hide advanced settings")
     readonly property string instrumentGroupsJson: Core.soundController ? Core.soundController.instrumentGroupsJson || "[]" : "[]"
     readonly property var instrumentsForGroupModel: Core.instrumentCatalogController.melodicInstrumentsForGroup(instrumentsModel, selectedMelodicGroup)
     readonly property string instrumentsJson: Core.soundController ? Core.soundController.instrumentsJson || "[]" : "[]"
     readonly property var instrumentsModel: Core.instrumentCatalogController.melodicInstruments(instrumentsJson)
+    readonly property var microphoneInputDevicesModel: Core.microphoneInputController ? Core.microphoneInputController.inputDevices : []
     readonly property var microphoneOnsetMethods: ["complex", "hfc", "energy", "specflux", "phase", "specdiff", "kl", "mkl"]
     readonly property var microphonePitchMethods: ["yinfft", "yin", "yinfast", "mcomb", "schmitt", "specacf", "fcomb"]
     readonly property string rhythmInstrumentsJson: Core.soundController ? Core.soundController.rhythmInstrumentsJson || "[]" : "[]"
@@ -30,6 +32,18 @@ FormCard.FormCardPage {
     readonly property string showAdvancedSettingsText: i18n("Show advanced settings")
     readonly property var voiceClasses: [i18n("Soprano"), i18n("Alto"), i18n("Tenor"), i18n("Bass")]
 
+    function microphoneInputDeviceIndex(deviceId: string): int {
+        let defaultIndex = -1;
+        for (let i = 0; i < root.microphoneInputDevicesModel.length; ++i) {
+            if (root.microphoneInputDevicesModel[i].id === deviceId) {
+                return i;
+            }
+            if (root.microphoneInputDevicesModel[i].isDefault) {
+                defaultIndex = i;
+            }
+        }
+        return defaultIndex >= 0 ? defaultIndex : root.microphoneInputDevicesModel.length > 0 ? 0 : -1;
+    }
     function syncSelectionFromController(): void {
         if (!Core.soundController) {
             root.selectedMelodicGroup = -1;
@@ -161,36 +175,46 @@ FormCard.FormCardPage {
             text: i18n("Melodic Exercises")
             visible: groupsModel.length > 0
         }
-        FormCard.FormComboBoxDelegate {
-            id: groupSelector
-
-            model: groupsModel
-            text: i18n("Instrument group:")
-            textRole: "name"
-            valueRole: "id"
+        FormCard.AbstractFormDelegate {
+            background: null
             visible: groupsModel.length > 0
 
-            onActivated: {
-                root.selectedMelodicGroup = currentValue;
-                Core.settingsController.instrumentGroup = currentValue;
-                melodicInstrumentSelector.currentIndex = instrumentsForGroupModel.length > 0 ? 0 : -1;
-                if (melodicInstrumentSelector.currentIndex >= 0) {
-                    Core.settingsController.instrument = instrumentsForGroupModel[melodicInstrumentSelector.currentIndex].program;
+            contentItem: SettingsComboBox {
+                id: groupSelector
+
+                currentIndex: Core.instrumentCatalogController.melodicGroupIndex(groupsModel, root.selectedMelodicGroup)
+                label: i18n("Instrument group:")
+                model: groupsModel
+                textRole: "name"
+                valueRole: "id"
+
+                onActivated: function (currentValue, currentIndex) {
+                    root.selectedMelodicGroup = currentValue;
+                    Core.settingsController.instrumentGroup = currentValue;
+                    melodicInstrumentSelector.currentIndex = instrumentsForGroupModel.length > 0 ? 0 : -1;
+                    if (melodicInstrumentSelector.currentIndex >= 0) {
+                        Core.settingsController.instrument = instrumentsForGroupModel[melodicInstrumentSelector.currentIndex].program;
+                    }
                 }
             }
         }
-        FormCard.FormComboBoxDelegate {
-            id: melodicInstrumentSelector
-
-            model: instrumentsForGroupModel
-            text: i18n("Instrument:")
-            textRole: "displayName"
-            valueRole: "program"
+        FormCard.AbstractFormDelegate {
+            background: null
             visible: groupsModel.length > 0
 
-            onActivated: {
-                Core.settingsController.instrumentGroup = root.selectedMelodicGroup;
-                Core.settingsController.instrument = currentValue;
+            contentItem: SettingsComboBox {
+                id: melodicInstrumentSelector
+
+                currentIndex: Core.instrumentCatalogController.melodicInstrumentIndex(instrumentsForGroupModel, Core.settingsController.instrument)
+                label: i18n("Instrument:")
+                model: instrumentsForGroupModel
+                textRole: "displayName"
+                valueRole: "program"
+
+                onActivated: function (currentValue, currentIndex) {
+                    Core.settingsController.instrumentGroup = root.selectedMelodicGroup;
+                    Core.settingsController.instrument = currentValue;
+                }
             }
         }
         FormCard.FormDelegateSeparator {
@@ -201,17 +225,22 @@ FormCard.FormCardPage {
             text: i18n("Rhythmic Exercises")
             visible: rhythmInstrumentsModel.length > 0
         }
-        FormCard.FormComboBoxDelegate {
-            id: rhythmInstrumentSelector
-
-            model: rhythmInstrumentsModel
-            text: i18n("Percussion sound:")
-            textRole: "displayName"
-            valueRole: "key"
+        FormCard.AbstractFormDelegate {
+            background: null
             visible: rhythmInstrumentsModel.length > 0
 
-            onActivated: {
-                Core.settingsController.rhythmInstrument = currentValue;
+            contentItem: SettingsComboBox {
+                id: rhythmInstrumentSelector
+
+                currentIndex: Core.instrumentCatalogController.rhythmInstrumentIndex(rhythmInstrumentsModel, Core.settingsController.rhythmInstrument)
+                label: i18n("Percussion sound:")
+                model: rhythmInstrumentsModel
+                textRole: "displayName"
+                valueRole: "key"
+
+                onActivated: function (currentValue, currentIndex) {
+                    Core.settingsController.rhythmInstrument = currentValue;
+                }
             }
         }
     }
@@ -219,6 +248,22 @@ FormCard.FormCardPage {
         title: i18n("Microphone")
     }
     FormCard.FormCard {
+        FormCard.AbstractFormDelegate {
+            background: null
+            visible: root.microphoneInputDevicesModel.length > 1
+
+            contentItem: SettingsComboBox {
+                currentIndex: root.microphoneInputDeviceIndex(Core.settingsController.microphoneInputDeviceId)
+                label: i18n("Input device")
+                model: root.microphoneInputDevicesModel
+                textRole: "displayName"
+                valueRole: "id"
+
+                onActivated: function (currentValue, currentIndex) {
+                    Core.settingsController.microphoneInputDeviceId = currentValue;
+                }
+            }
+        }
         FormCard.AbstractFormDelegate {
             background: null
 
@@ -332,12 +377,14 @@ FormCard.FormCardPage {
         id: advancedSettingsComponent
 
         ColumnLayout {
+            spacing: 0
             width: advancedLoader.width
 
-            SettingsSectionLabel {
+            AdvancedSettingsSection {
+                description: i18n("Used for rhythm clapping exercises.")
                 text: i18n("Clapping detection")
             }
-            SettingsComboBox {
+            AdvancedSettingsComboBox {
                 currentIndex: Core.settingsController.clappingOnsetMethod
                 label: i18n("Onset method")
                 model: root.microphoneOnsetMethods
@@ -346,7 +393,7 @@ FormCard.FormCardPage {
                     Core.settingsController.clappingOnsetMethod = currentIndex;
                 }
             }
-            SettingsSlider {
+            AdvancedSettingsSlider {
                 decimals: 2
                 from: 0.01
                 label: i18n("Onset threshold")
@@ -358,7 +405,7 @@ FormCard.FormCardPage {
                     Core.settingsController.clappingOnsetThreshold = value;
                 }
             }
-            SettingsSlider {
+            AdvancedSettingsSlider {
                 decimals: 3
                 from: 0
                 label: i18n("Input gate")
@@ -370,7 +417,7 @@ FormCard.FormCardPage {
                     Core.settingsController.clappingInputGateLevel = value;
                 }
             }
-            SettingsSlider {
+            AdvancedSettingsSlider {
                 decimals: 3
                 from: 0
                 label: i18n("Minimum onset strength")
@@ -382,21 +429,17 @@ FormCard.FormCardPage {
                     Core.settingsController.clappingMinimumOnsetStrength = value;
                 }
             }
-            SettingsSlider {
-                from: -90
-                label: i18n("Aubio silence")
-                suffix: i18n("dB")
-                to: -20
-                value: Core.settingsController.clappingPitchSilenceDb
-
-                onMoved: function (value) {
-                    Core.settingsController.clappingPitchSilenceDb = value;
-                }
+            FormCard.FormDelegateSeparator {
+                Layout.bottomMargin: root.formDelegateHorizontalPadding
+                Layout.leftMargin: 0
+                Layout.rightMargin: 0
+                Layout.topMargin: root.formDelegateHorizontalPadding
             }
-            SettingsSectionLabel {
+            AdvancedSettingsSection {
+                description: i18n("Used for pitch and timing analysis in singing exercises.")
                 text: i18n("Singing detection")
             }
-            SettingsComboBox {
+            AdvancedSettingsComboBox {
                 currentIndex: Core.settingsController.singingPitchMethod
                 label: i18n("Pitch method")
                 model: root.microphonePitchMethods
@@ -405,7 +448,7 @@ FormCard.FormCardPage {
                     Core.settingsController.singingPitchMethod = currentIndex;
                 }
             }
-            SettingsComboBox {
+            AdvancedSettingsComboBox {
                 currentIndex: Core.settingsController.singingOnsetMethod
                 label: i18n("Onset method")
                 model: root.microphoneOnsetMethods
@@ -414,7 +457,7 @@ FormCard.FormCardPage {
                     Core.settingsController.singingOnsetMethod = currentIndex;
                 }
             }
-            SettingsComboBox {
+            AdvancedSettingsComboBox {
                 currentIndex: Core.settingsController.singingScoringMode
                 label: i18n("Scoring mode")
                 model: root.scoringModes
@@ -423,14 +466,7 @@ FormCard.FormCardPage {
                     Core.settingsController.singingScoringMode = currentIndex;
                 }
             }
-            QQC2.CheckBox {
-                Layout.fillWidth: true
-                checked: Core.settingsController.singingDisregardOctaveDifference
-                text: i18n("Disregard octave difference")
-
-                onToggled: Core.settingsController.singingDisregardOctaveDifference = checked
-            }
-            SettingsSlider {
+            AdvancedSettingsSlider {
                 decimals: 2
                 from: 0
                 label: i18n("Pitch confidence")
@@ -442,7 +478,7 @@ FormCard.FormCardPage {
                     Core.settingsController.singingMinimumPitchConfidence = value;
                 }
             }
-            SettingsSlider {
+            AdvancedSettingsSlider {
                 from: 1
                 label: i18n("Stable pitch frames")
                 to: 10
@@ -452,7 +488,7 @@ FormCard.FormCardPage {
                     Core.settingsController.singingRequiredStablePitchFrames = value;
                 }
             }
-            SettingsSlider {
+            AdvancedSettingsSlider {
                 decimals: 3
                 from: 0
                 label: i18n("Input gate")
@@ -464,18 +500,7 @@ FormCard.FormCardPage {
                     Core.settingsController.singingInputGateLevel = value;
                 }
             }
-            SettingsSlider {
-                from: -90
-                label: i18n("Aubio silence")
-                suffix: i18n("dB")
-                to: -20
-                value: Core.settingsController.singingPitchSilenceDb
-
-                onMoved: function (value) {
-                    Core.settingsController.singingPitchSilenceDb = value;
-                }
-            }
-            SettingsSlider {
+            AdvancedSettingsSlider {
                 decimals: 2
                 from: 0.01
                 label: i18n("Onset threshold")
@@ -487,7 +512,7 @@ FormCard.FormCardPage {
                     Core.settingsController.singingOnsetThreshold = value;
                 }
             }
-            SettingsSlider {
+            AdvancedSettingsSlider {
                 decimals: 3
                 from: 0
                 label: i18n("Minimum onset strength")
@@ -499,8 +524,18 @@ FormCard.FormCardPage {
                     Core.settingsController.singingMinimumOnsetStrength = value;
                 }
             }
+            QQC2.CheckBox {
+                Layout.bottomMargin: root.formDelegateHorizontalPadding
+                Layout.fillWidth: true
+                Layout.topMargin: root.formDelegateHorizontalPadding
+                checked: Core.settingsController.singingDisregardOctaveDifference
+                text: i18n("Disregard octave difference")
+
+                onToggled: Core.settingsController.singingDisregardOctaveDifference = checked
+            }
             QQC2.Button {
                 Layout.alignment: Qt.AlignRight
+                Layout.topMargin: root.formDelegateHorizontalPadding
                 icon.name: "edit-reset-symbolic"
                 text: i18n("Reset to Defaults")
 
@@ -509,6 +544,23 @@ FormCard.FormCardPage {
         }
     }
 
+    component AdvancedSettingsComboBox: SettingsComboBox {
+        Layout.bottomMargin: root.formDelegateHorizontalPadding
+        Layout.topMargin: root.formDelegateHorizontalPadding
+    }
+    component AdvancedSettingsSection: FormCard.FormTextDelegate {
+        Layout.fillWidth: true
+        bottomPadding: Kirigami.Units.smallSpacing
+        descriptionItem.horizontalAlignment: Text.AlignLeft
+        leftPadding: 0
+        rightPadding: 0
+        textItem.horizontalAlignment: Text.AlignLeft
+        topPadding: Kirigami.Units.smallSpacing
+    }
+    component AdvancedSettingsSlider: SettingsSlider {
+        Layout.bottomMargin: root.formDelegateHorizontalPadding
+        Layout.topMargin: root.formDelegateHorizontalPadding
+    }
     component SettingsComboBox: ColumnLayout {
         id: comboRow
 
@@ -553,12 +605,6 @@ FormCard.FormCardPage {
             wrapMode: Text.WordWrap
         }
     }
-    component SettingsSectionLabel: QQC2.Label {
-        Layout.fillWidth: true
-        Layout.topMargin: Kirigami.Units.smallSpacing
-        color: Kirigami.Theme.disabledTextColor
-        font.bold: true
-    }
     component SettingsSlider: ColumnLayout {
         id: sliderRow
 
@@ -595,7 +641,7 @@ FormCard.FormCardPage {
                 Layout.fillWidth: true
                 from: sliderRow.from
                 snapMode: QQC2.Slider.NoSnap
-                stepSize: sliderRow.stepSize
+                stepSize: 0
                 to: sliderRow.to
                 value: sliderRow.value
 

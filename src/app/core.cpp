@@ -116,6 +116,9 @@ void Core::setMicrophoneInputController(IMicrophoneInputController *microphoneIn
     }
     m_microphoneInputController = microphoneInputController;
     emit microphoneInputControllerChanged(m_microphoneInputController);
+    if (m_microphoneInputController) {
+        m_microphoneInputController->setInputDeviceId(m_settingsController->microphoneInputDeviceId());
+    }
 }
 
 void Core::shutdownControllers()
@@ -175,6 +178,11 @@ Core::Core(QObject *parent)
     connect(m_settingsController, &SettingsController::rhythmInstrumentChanged, this, [this](int rhythmInstrument) {
         if (m_soundController) {
             m_soundController->setRhythmInstrument(rhythmInstrument);
+        }
+    });
+    connect(m_settingsController, &SettingsController::microphoneInputDeviceIdChanged, this, [this](const QString &deviceId) {
+        if (m_microphoneInputController) {
+            m_microphoneInputController->setInputDeviceId(deviceId);
         }
     });
 

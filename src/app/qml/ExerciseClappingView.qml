@@ -43,6 +43,7 @@ Item {
     property var matchedOnsets: []
     readonly property int maximumExercises: Core.settingsController.testExerciseCount
     readonly property var microphone: Core.microphoneInputController
+    readonly property bool microphoneReady: root.microphone !== null && root.microphone.inputDeviceAvailable
     property int onboardingCountIn: 0
     property bool onboardingPreviewActive: false
     readonly property real rhythmAnswerCardTextSize: Math.round(Kirigami.Theme.defaultFont.pointSize * 2.0)
@@ -62,7 +63,6 @@ Item {
         root.microphone.pitchMethod = Core.settingsController.clappingPitchMethod;
         root.microphone.onsetMethod = Core.settingsController.clappingOnsetMethod;
         root.microphone.minimumPitchConfidence = Core.settingsController.clappingMinimumPitchConfidence;
-        root.microphone.pitchSilenceDb = Core.settingsController.clappingPitchSilenceDb;
         root.microphone.onsetThreshold = Core.settingsController.clappingOnsetThreshold;
         root.microphone.inputGateLevel = Core.settingsController.clappingInputGateLevel;
         root.microphone.minimumOnsetStrength = Core.settingsController.clappingMinimumOnsetStrength;
@@ -284,7 +284,7 @@ Item {
         root.countIn = 0;
         root.viewState = "counting";
         if (Core.soundController) {
-            Core.soundController.playCountIn(root.selectedOptionCount);
+            Core.soundController.playCountIn(4);
         }
     }
     function startListening(): void {
@@ -297,7 +297,7 @@ Item {
         root.listeningStartSeconds = root.microphone ? root.microphone.analysisTimeSeconds : 0;
         root.viewState = "listening";
         if (Core.soundController) {
-            Core.soundController.playCountIn(root.selectedOptionCount);
+            Core.soundController.playSilentCountIn(root.selectedOptionCount);
         }
         progressTimer.restart();
         finishTimer.interval = totalDurationMs() + root.toleranceMs + root.beatMs;
@@ -411,7 +411,7 @@ Item {
                 if (count > 0) {
                     root.countInStarted = true;
                 }
-                if (count >= root.selectedOptionCount) {
+                if (count >= 4) {
                     root.beginMicrophoneCapture();
                 } else if (count === 0 && root.countInStarted) {
                     root.startListening();
@@ -470,7 +470,7 @@ Item {
                         elide: Text.ElideRight
                         horizontalAlignment: Text.AlignHCenter
                         level: 3
-                        text: root.viewState === "listening" ? i18n("Listening...") : Core.exerciseSessionController.isTest && Core.exerciseSessionController.statusText.length > 0 ? Core.exerciseSessionController.statusText : root.microphone ? root.microphone.status : i18n("No microphone input plugin available")
+                        text: root.viewState === "listening" ? i18n("Listening...") : Core.exerciseSessionController.isTest && Core.exerciseSessionController.statusText.length > 0 ? Core.exerciseSessionController.statusText : root.microphone ? root.microphone.inputDeviceAvailable ? root.microphone.status : i18n("No microphone input devices found") : i18n("No microphone input plugin available")
                     }
                     RowLayout {
                         id: actionButtons
@@ -485,7 +485,7 @@ Item {
                             id: startQuestionButton
 
                             Layout.preferredWidth: actionButtons.buttonWidth
-                            enabled: root.microphone !== null && root.viewState !== "counting" && root.viewState !== "listening"
+                            enabled: root.microphoneReady && root.viewState !== "counting" && root.viewState !== "listening"
                             text: root.expectedOnsets.length === 0 || root.viewState === "finished" ? i18n("New Question") : i18n("Start")
 
                             onClicked: {
@@ -499,7 +499,7 @@ Item {
                             id: testButton
 
                             Layout.preferredWidth: actionButtons.buttonWidth
-                            enabled: root.microphone !== null && root.viewState !== "counting" && root.viewState !== "listening"
+                            enabled: root.microphoneReady && root.viewState !== "counting" && root.viewState !== "listening"
                             text: Core.exerciseSessionController.isTest ? i18n("Stop Test") : i18n("Start Test")
 
                             onClicked: {
@@ -648,7 +648,7 @@ Item {
                     valueText: root.microphone && root.microphone.inputGateOpen ? i18n("Open") : i18n("Closed")
                 }
                 QQC2.Button {
-                    enabled: root.microphone !== null
+                    enabled: root.microphoneReady
                     text: root.microphone && root.microphone.noiseCalibrationActive ? i18n("Calibrating...") : i18n("Calibrate Silence")
 
                     onClicked: {

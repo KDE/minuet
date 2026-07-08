@@ -72,6 +72,7 @@ public Q_SLOTS:
     virtual void prepareFromExerciseOptions(QJsonArray selectedExerciseOptions) = 0;
     virtual void prepareFromMidiFile(const QString &fileName) = 0;
     virtual void playCountIn(int beats) = 0;
+    virtual void playSilentCountIn(int beats) = 0;
 
     virtual void play() = 0;
     virtual void pause() = 0;

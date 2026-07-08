@@ -40,6 +40,7 @@ public Q_SLOTS:
     void prepareFromExerciseOptions(QJsonArray selectedExerciseOptions) override;
     void prepareFromMidiFile(const QString &fileName) override;
     void playCountIn(int beats) override;
+    void playSilentCountIn(int beats) override;
 
     void play() override;
     void pause() override;
@@ -48,6 +49,7 @@ public Q_SLOTS:
 
 private:
     void appendEvent(int channel, short key, short velocity, unsigned int duration);
+    void playCountIn(int beats, bool audible);
     static void sequencerCallback(unsigned int time, fluid_event_t *event, fluid_sequencer_t *seq, void *data);
     void populateInstruments();
     void populateRhythmInstruments();
@@ -72,6 +74,7 @@ private:
     QHash<int, int> m_instrumentSoundFontIds;
     int m_countInNextValue;
     bool m_countInOnly;
+    bool m_countInAudible;
     bool m_countInVisible;
 
     QScopedPointer<QList<fluid_event_t *>> m_song;

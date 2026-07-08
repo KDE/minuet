@@ -22,6 +22,7 @@ class SettingsController : public QObject
     Q_PROPERTY(int instrumentGroup READ instrumentGroup WRITE setInstrumentGroup NOTIFY instrumentGroupChanged)
     Q_PROPERTY(int instrument READ instrument WRITE setInstrument NOTIFY instrumentChanged)
     Q_PROPERTY(int rhythmInstrument READ rhythmInstrument WRITE setRhythmInstrument NOTIFY rhythmInstrumentChanged)
+    Q_PROPERTY(QString microphoneInputDeviceId READ microphoneInputDeviceId WRITE setMicrophoneInputDeviceId NOTIFY microphoneInputDeviceIdChanged)
     Q_PROPERTY(int clappingCorrectnessTolerancePercent READ clappingCorrectnessTolerancePercent WRITE setClappingCorrectnessTolerancePercent NOTIFY
                    clappingCorrectnessTolerancePercentChanged)
     Q_PROPERTY(int singingPitchToleranceCents READ singingPitchToleranceCents WRITE setSingingPitchToleranceCents NOTIFY singingPitchToleranceCentsChanged)
@@ -33,7 +34,6 @@ class SettingsController : public QObject
     Q_PROPERTY(int singingOnsetMethod READ singingOnsetMethod WRITE setSingingOnsetMethod NOTIFY singingOnsetMethodChanged)
     Q_PROPERTY(double singingMinimumPitchConfidence READ singingMinimumPitchConfidence WRITE setSingingMinimumPitchConfidence NOTIFY
                    singingMinimumPitchConfidenceChanged)
-    Q_PROPERTY(double singingPitchSilenceDb READ singingPitchSilenceDb WRITE setSingingPitchSilenceDb NOTIFY singingPitchSilenceDbChanged)
     Q_PROPERTY(double singingOnsetThreshold READ singingOnsetThreshold WRITE setSingingOnsetThreshold NOTIFY singingOnsetThresholdChanged)
     Q_PROPERTY(double singingInputGateLevel READ singingInputGateLevel WRITE setSingingInputGateLevel NOTIFY singingInputGateLevelChanged)
     Q_PROPERTY(double singingMinimumOnsetStrength READ singingMinimumOnsetStrength WRITE setSingingMinimumOnsetStrength NOTIFY
@@ -44,7 +44,6 @@ class SettingsController : public QObject
     Q_PROPERTY(int clappingOnsetMethod READ clappingOnsetMethod WRITE setClappingOnsetMethod NOTIFY clappingOnsetMethodChanged)
     Q_PROPERTY(double clappingMinimumPitchConfidence READ clappingMinimumPitchConfidence WRITE setClappingMinimumPitchConfidence NOTIFY
                    clappingMinimumPitchConfidenceChanged)
-    Q_PROPERTY(double clappingPitchSilenceDb READ clappingPitchSilenceDb WRITE setClappingPitchSilenceDb NOTIFY clappingPitchSilenceDbChanged)
     Q_PROPERTY(double clappingOnsetThreshold READ clappingOnsetThreshold WRITE setClappingOnsetThreshold NOTIFY clappingOnsetThresholdChanged)
     Q_PROPERTY(double clappingInputGateLevel READ clappingInputGateLevel WRITE setClappingInputGateLevel NOTIFY clappingInputGateLevelChanged)
     Q_PROPERTY(double clappingMinimumOnsetStrength READ clappingMinimumOnsetStrength WRITE setClappingMinimumOnsetStrength NOTIFY
@@ -72,6 +71,7 @@ public:
     int instrumentGroup() const;
     int instrument() const;
     int rhythmInstrument() const;
+    QString microphoneInputDeviceId() const;
     int clappingCorrectnessTolerancePercent() const;
     int singingPitchToleranceCents() const;
     bool singingDisregardOctaveDifference() const;
@@ -80,7 +80,6 @@ public:
     int singingPitchMethod() const;
     int singingOnsetMethod() const;
     double singingMinimumPitchConfidence() const;
-    double singingPitchSilenceDb() const;
     double singingOnsetThreshold() const;
     double singingInputGateLevel() const;
     double singingMinimumOnsetStrength() const;
@@ -88,7 +87,6 @@ public:
     int clappingPitchMethod() const;
     int clappingOnsetMethod() const;
     double clappingMinimumPitchConfidence() const;
-    double clappingPitchSilenceDb() const;
     double clappingOnsetThreshold() const;
     double clappingInputGateLevel() const;
     double clappingMinimumOnsetStrength() const;
@@ -110,6 +108,7 @@ public Q_SLOTS:
     void setInstrumentGroup(int instrumentGroup);
     void setInstrument(int instrument);
     void setRhythmInstrument(int rhythmInstrument);
+    void setMicrophoneInputDeviceId(const QString &deviceId);
     void setClappingCorrectnessTolerancePercent(int tolerance);
     void setSingingPitchToleranceCents(int cents);
     void setSingingDisregardOctaveDifference(bool disregard);
@@ -118,7 +117,6 @@ public Q_SLOTS:
     void setSingingPitchMethod(int method);
     void setSingingOnsetMethod(int method);
     void setSingingMinimumPitchConfidence(double confidence);
-    void setSingingPitchSilenceDb(double silenceDb);
     void setSingingOnsetThreshold(double threshold);
     void setSingingInputGateLevel(double inputGateLevel);
     void setSingingMinimumOnsetStrength(double strength);
@@ -126,7 +124,6 @@ public Q_SLOTS:
     void setClappingPitchMethod(int method);
     void setClappingOnsetMethod(int method);
     void setClappingMinimumPitchConfidence(double confidence);
-    void setClappingPitchSilenceDb(double silenceDb);
     void setClappingOnsetThreshold(double threshold);
     void setClappingInputGateLevel(double inputGateLevel);
     void setClappingMinimumOnsetStrength(double strength);
@@ -146,6 +143,7 @@ Q_SIGNALS:
     void instrumentGroupChanged(int instrumentGroup);
     void instrumentChanged(int instrument);
     void rhythmInstrumentChanged(int rhythmInstrument);
+    void microphoneInputDeviceIdChanged(const QString &deviceId);
     void clappingCorrectnessTolerancePercentChanged(int tolerance);
     void singingPitchToleranceCentsChanged(int cents);
     void singingDisregardOctaveDifferenceChanged(bool disregard);
@@ -154,7 +152,6 @@ Q_SIGNALS:
     void singingPitchMethodChanged(int method);
     void singingOnsetMethodChanged(int method);
     void singingMinimumPitchConfidenceChanged(double confidence);
-    void singingPitchSilenceDbChanged(double silenceDb);
     void singingOnsetThresholdChanged(double threshold);
     void singingInputGateLevelChanged(double inputGateLevel);
     void singingMinimumOnsetStrengthChanged(double strength);
@@ -162,7 +159,6 @@ Q_SIGNALS:
     void clappingPitchMethodChanged(int method);
     void clappingOnsetMethodChanged(int method);
     void clappingMinimumPitchConfidenceChanged(double confidence);
-    void clappingPitchSilenceDbChanged(double silenceDb);
     void clappingOnsetThresholdChanged(double threshold);
     void clappingInputGateLevelChanged(double inputGateLevel);
     void clappingMinimumOnsetStrengthChanged(double strength);
@@ -181,13 +177,13 @@ private:
     void write(const QString &key, int value);
     void write(const QString &key, double value);
     void write(const QString &key, bool value);
+    void write(const QString &key, const QString &value);
 
     static constexpr bool DefaultSingingDisregardOctaveDifference = true;
     static constexpr int DefaultSingingScoringMode = 0;
     static constexpr int DefaultSingingPitchMethod = 1;
     static constexpr int DefaultSingingOnsetMethod = 1;
     static constexpr double DefaultSingingMinimumPitchConfidence = 0.05;
-    static constexpr double DefaultSingingPitchSilenceDb = -65.0;
     static constexpr double DefaultSingingOnsetThreshold = 0.14;
     static constexpr double DefaultSingingInputGateLevel = 0.006;
     static constexpr double DefaultSingingMinimumOnsetStrength = 0.006;
@@ -195,7 +191,6 @@ private:
     static constexpr int DefaultClappingPitchMethod = 0;
     static constexpr int DefaultClappingOnsetMethod = 0;
     static constexpr double DefaultClappingMinimumPitchConfidence = 0.70;
-    static constexpr double DefaultClappingPitchSilenceDb = -45.0;
     static constexpr double DefaultClappingOnsetThreshold = 0.32;
     static constexpr double DefaultClappingInputGateLevel = 0.025;
     static constexpr double DefaultClappingMinimumOnsetStrength = 0.040;
@@ -210,6 +205,7 @@ private:
     int m_instrumentGroup = -1;
     int m_instrument = 0;
     int m_rhythmInstrument = 37;
+    QString m_microphoneInputDeviceId;
     int m_clappingCorrectnessTolerancePercent = 25;
     int m_singingPitchToleranceCents = 49;
     bool m_singingDisregardOctaveDifference = DefaultSingingDisregardOctaveDifference;
@@ -218,7 +214,6 @@ private:
     int m_singingPitchMethod = DefaultSingingPitchMethod;
     int m_singingOnsetMethod = DefaultSingingOnsetMethod;
     double m_singingMinimumPitchConfidence = DefaultSingingMinimumPitchConfidence;
-    double m_singingPitchSilenceDb = DefaultSingingPitchSilenceDb;
     double m_singingOnsetThreshold = DefaultSingingOnsetThreshold;
     double m_singingInputGateLevel = DefaultSingingInputGateLevel;
     double m_singingMinimumOnsetStrength = DefaultSingingMinimumOnsetStrength;
@@ -226,7 +221,6 @@ private:
     int m_clappingPitchMethod = DefaultClappingPitchMethod;
     int m_clappingOnsetMethod = DefaultClappingOnsetMethod;
     double m_clappingMinimumPitchConfidence = DefaultClappingMinimumPitchConfidence;
-    double m_clappingPitchSilenceDb = DefaultClappingPitchSilenceDb;
     double m_clappingOnsetThreshold = DefaultClappingOnsetThreshold;
     double m_clappingInputGateLevel = DefaultClappingInputGateLevel;
     double m_clappingMinimumOnsetStrength = DefaultClappingMinimumOnsetStrength;

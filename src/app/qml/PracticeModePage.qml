@@ -14,6 +14,8 @@ Kirigami.Page {
 
     property var currentExercise
     property string currentExerciseIconName: ""
+    readonly property var microphone: Core.microphoneInputController
+    readonly property bool microphoneInputAvailable: page.microphone !== null && page.microphone.inputDeviceAvailable
     property string practiceMode: ""
 
     signal practiceSelected(var exercise, string iconName)
@@ -57,9 +59,12 @@ Kirigami.Page {
             }
         }
         ActionListItem {
+            Layout.fillWidth: true
+
             action: Kirigami.Action {
+                enabled: page.microphoneInputAvailable
                 icon.name: page.practiceMode === "rhythm" ? "qrc:/icons/22-actions-minuet-clap-symbolic.svg" : "qrc:/icons/22-actions-minuet-sing-symbolic.svg"
-                text: page.practiceMode === "rhythm" ? i18n("Read and clap") : i18n("Read and sing")
+                text: (page.practiceMode === "rhythm" ? i18n("Read and clap") : i18n("Read and sing")) + (page.microphone !== null && !page.microphone.inputDeviceAvailable ? " " + i18n("(no microphone input devices found)") : "")
 
                 onTriggered: {
                     if (page.practiceMode === "rhythm") {
