@@ -74,6 +74,26 @@
             ]
         },
         {
+            "name": "aubio",
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 waf configure --prefix=/app --libdir=/app/lib --disable-docs --disable-tests --disable-examples --disable-jack --disable-sndfile --disable-avcodec --disable-samplerate",
+                "python3 waf build",
+                "python3 waf install"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://files.pythonhosted.org/packages/source/a/aubio/aubio-0.4.9.tar.gz",
+                    "sha256": "df1244f6c4cf5bea382c8c2d35aa43bc31f4cf631fe325ae3992c219546a4202"
+                },
+                {
+                    "type": "patch",
+                    "path": "flatpak/aubio-python313.patch"
+                }
+            ]
+        },
+        {
             "name": "minuet",
             "buildsystem": "cmake-ninja",
             "sources": [
