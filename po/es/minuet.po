@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-04 00:39+0000\n"
-"PO-Revision-Date: 2026-07-06 01:02+0100\n"
+"PO-Revision-Date: 2026-07-08 21:52+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -2179,12 +2179,12 @@ msgstr "No hay tono"
 #: src/app/qml/ExerciseSingingView.qml:402 src/app/qml/GraphicalMeter.qml:17
 #, kde-format
 msgid "No onset"
-msgstr ""
+msgstr "Sin inicio"
 
 #: src/app/qml/ExerciseSingingView.qml:293 src/app/qml/GraphicalMeter.qml:23
 #, kde-format
 msgid "%1 cents"
-msgstr ""
+msgstr "%1 centésimas"
 
 #: src/app/qml/ExerciseSingingView.qml:384 src/app/qml/ExerciseView.qml:182
 #, kde-format
@@ -2641,7 +2641,7 @@ msgstr "Tolerancia de tono"
 #: src/app/qml/SettingsPage.qml:258
 #, kde-format
 msgid "cents"
-msgstr ""
+msgstr "centésimas"
 
 #: src/app/qml/SettingsPage.qml:268
 #, kde-format
@@ -2730,7 +2730,7 @@ msgstr "Confianza del tono"
 #: src/app/qml/SettingsPage.qml:447
 #, kde-format
 msgid "Stable pitch frames"
-msgstr ""
+msgstr "Marcos de tono estables"
 
 #: src/app/qml/SettingsPage.qml:505
 #, kde-format
