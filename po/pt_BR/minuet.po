@@ -8,13 +8,14 @@
 # Camila Moura <camila.moura@kde.org>, 2017.
 # SPDX-FileCopyrightText: 2025-2026 Marcus Gama <marcus.gama@gmail.com>
 # SPDX-FileCopyrightText: 2026 Guilherme Marçal Silva <guimarcalsilva@gmail.com>
+# SPDX-FileCopyrightText: 2026 Geraldo Simiao <geraldosimiao@fedoraproject.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-04 00:39+0000\n"
-"PO-Revision-Date: 2026-07-04 07:55-0300\n"
-"Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
+"PO-Revision-Date: 2026-07-09 15:51-0300\n"
+"Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -2245,7 +2246,7 @@ msgstr "Teclado"
 #: src/app/qml/ExerciseSingingView.qml:971 src/app/qml/ExerciseView.qml:725
 #, kde-format
 msgid "Staff"
-msgstr "Supervisor"
+msgstr "Pauta musical"
 
 #: src/app/qml/ExerciseView.qml:353
 #, kde-format
