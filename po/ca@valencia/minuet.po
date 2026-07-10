@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-09 00:39+0000\n"
-"PO-Revision-Date: 2026-07-04 16:33+0200\n"
+"PO-Revision-Date: 2026-07-09 09:04+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1948,6 +1948,8 @@ msgid ""
 "The header shows the exercise status and score while you prepare, listen, "
 "clap, and review the result."
 msgstr ""
+"La capçalera mostra l'estat de l'exercici i la puntuació mentre prepareu, "
+"escolteu, piqueu de mans i reviseu el resultat."
 
 #: src/app/qml/ExerciseClappingView.qml:681
 #, kde-format
@@ -1961,10 +1963,9 @@ msgstr "Escoltant…"
 
 #: src/app/qml/ExerciseClappingView.qml:689
 #: src/app/qml/ExerciseSingingView.qml:441
-#, fuzzy, kde-format
-#| msgid "No microphone input plugin available"
+#, kde-format
 msgid "No microphone input devices found"
-msgstr "No hi ha cap connector disponible d'entrada de micròfon"
+msgstr "No s'ha cap trobat cap dispositiu d'entrada de micròfon"
 
 #: src/app/qml/ExerciseClappingView.qml:689
 #: src/app/qml/ExerciseSingingView.qml:438
@@ -1973,12 +1974,13 @@ msgid "No microphone input plugin available"
 msgstr "No hi ha cap connector disponible d'entrada de micròfon"
 
 #: src/app/qml/ExerciseClappingView.qml:699
-#, fuzzy, kde-format
-#| msgid "Start a test to answer several questions in a row."
+#, kde-format
 msgid ""
 "Start a single clapping question or begin a test with several questions in a "
 "row."
-msgstr "Inicia una prova per respondre a preguntes diverses una rere l'altra."
+msgstr ""
+"Inicia una pregunta individual de picar de mans o comença una prova amb "
+"diverses preguntes seguides."
 
 #: src/app/qml/ExerciseClappingView.qml:707
 #: src/app/qml/ExerciseSingingView.qml:807 src/app/qml/ExerciseView.qml:411
@@ -2030,6 +2032,8 @@ msgid ""
 "The input level shows microphone activity while you clap. Open means the "
 "signal is above the current gate."
 msgstr ""
+"El nivell d'entrada mostra l'activitat del micròfon mentre piqueu de mans. "
+"Obert significa que el senyal està per damunt de la porta actual."
 
 #: src/app/qml/ExerciseClappingView.qml:871
 #: src/app/qml/ExerciseSingingView.qml:987
@@ -2055,6 +2059,8 @@ msgid ""
 "Calibrate silence in a quiet room before clapping so background noise is not "
 "counted as input."
 msgstr ""
+"Calibra el silenci en una habitació tranquil·la abans de picar de mans de "
+"manera que el soroll de fons no es compta com a entrada."
 
 #: src/app/qml/ExerciseClappingView.qml:879
 #: src/app/qml/ExerciseSingingView.qml:995
@@ -2095,11 +2101,15 @@ msgstr "Les preguntes del ritme comencen amb un comptador."
 #, kde-format
 msgid "The count appears over the rhythm card you should clap with the beat."
 msgstr ""
+"El comptador apareix sobre la targeta de ritme que cal picar de mans amb el "
+"ritme."
 
 #: src/app/qml/ExercisePage.qml:135
 #, kde-format
 msgid "The count appears over the note card you should sing with the beat."
 msgstr ""
+"El comptador apareix sobre la targeta de nota que cal cantar de mans amb el "
+"ritme."
 
 #: src/app/qml/ExercisePage.qml:188
 #, kde-format
@@ -2172,7 +2182,7 @@ msgstr "Sense to"
 #: src/app/qml/ExerciseSingingView.qml:200
 #, kde-format
 msgid "Played"
-msgstr ""
+msgstr "Reproduït"
 
 #: src/app/qml/ExerciseSingingView.qml:339 src/app/qml/GraphicalMeter.qml:23
 #, kde-format
@@ -2195,6 +2205,8 @@ msgid ""
 "The header shows the exercise status, score, and current target information "
 "while you sing."
 msgstr ""
+"La capçalera mostra l'estat de l'exercici, la puntuació i la informació de "
+"l'objectiu actual mentre canteu."
 
 #: src/app/qml/ExerciseSingingView.qml:781
 #, kde-format
@@ -2207,12 +2219,13 @@ msgid "Sing the interval"
 msgstr "Canteu l'interval"
 
 #: src/app/qml/ExerciseSingingView.qml:799
-#, fuzzy, kde-format
-#| msgid "Start a test to answer several questions in a row."
+#, kde-format
 msgid ""
 "Start a single singing question or begin a test with several questions in a "
 "row."
-msgstr "Inicia una prova per respondre a preguntes diverses una rere l'altra."
+msgstr ""
+"Inicia una pregunta individual de cant o comença una prova amb diverses "
+"preguntes seguides."
 
 #: src/app/qml/ExerciseSingingView.qml:863
 #, kde-format
@@ -2239,6 +2252,8 @@ msgid ""
 "The input level shows microphone activity while you sing. Open means the "
 "signal is above the current gate."
 msgstr ""
+"El nivell d'entrada mostra l'activitat del micròfon mentre canteu. Obert "
+"significa que el senyal està per damunt de la porta actual."
 
 #: src/app/qml/ExerciseSingingView.qml:993
 #, kde-format
@@ -2246,6 +2261,8 @@ msgid ""
 "Calibrate silence in a quiet room before singing so room noise does not "
 "affect pitch and onset detection."
 msgstr ""
+"Calibra el silenci en una habitació tranquil·la abans de picar de cantar de "
+"manera que el soroll de l'habitació no es compta com a entrada."
 
 #: src/app/qml/ExerciseSingingView.qml:1040
 #, kde-format
@@ -2253,12 +2270,13 @@ msgid ""
 "The keyboard highlights the reference note and target notes for the singing "
 "question."
 msgstr ""
+"El teclat ressalta la nota de referència i les notes objectives per a la "
+"pregunta de cant."
 
 #: src/app/qml/ExerciseSingingView.qml:1062
-#, fuzzy, kde-format
-#| msgid "The staff shows the same notes in music notation."
+#, kde-format
 msgid "The staff shows the same singing notes in music notation."
-msgstr "El pentagrama mostra les mateixes notes en notació musical."
+msgstr "El pentagrama mostra les mateixes notes de cant en notació musical."
 
 #: src/app/qml/ExerciseSingingView.qml:1079
 #, kde-format
@@ -2266,6 +2284,8 @@ msgid ""
 "On narrow screens, switch between the keyboard and staff views with these "
 "tabs."
 msgstr ""
+"En pantalles estretes, canvieu entre les vistes de teclat i de pentagrama "
+"amb estes pestanyes."
 
 #: src/app/qml/ExerciseSingingView.qml:1084 src/app/qml/ExerciseView.qml:721
 #, kde-format
@@ -2294,16 +2314,17 @@ msgid "Playing…"
 msgstr "En reproducció…"
 
 #: src/app/qml/ExerciseView.qml:397
-#, fuzzy, kde-format
-#| msgid "Start a new question or replay the current one."
+#, kde-format
 msgid "Start a new question, replay it, reveal the answer, or begin a test."
-msgstr "Inicia una pregunta nova o torna a reproduir l'actual."
+msgstr ""
+"Inicia una pregunta nova, la repetix, revela la resposta o comença una prova."
 
 #: src/app/qml/ExerciseView.qml:397
-#, fuzzy, kde-format
-#| msgid "Start a new question or replay the current one."
+#, kde-format
 msgid "Start a rhythm question, replay it, reveal the answer, or begin a test."
-msgstr "Inicia una pregunta nova o torna a reproduir l'actual."
+msgstr ""
+"Inicia una pregunta de ritme, la repetix, revela la resposta o comença una "
+"prova."
 
 #: src/app/qml/ExerciseView.qml:411
 #, kde-format
@@ -2487,10 +2508,9 @@ msgid "Read and sing"
 msgstr "Llegir i cantar"
 
 #: src/app/qml/PracticeModePage.qml:67
-#, fuzzy, kde-format
-#| msgid "No microphone input plugin available"
+#, kde-format
 msgid "(no microphone input devices found)"
-msgstr "No hi ha cap connector disponible d'entrada de micròfon"
+msgstr "(no s'ha cap trobat cap dispositiu d'entrada de micròfon)"
 
 #: src/app/qml/SettingsPage.qml:19
 #, kde-format
@@ -2624,10 +2644,9 @@ msgid "Microphone"
 msgstr "Micròfon"
 
 #: src/app/qml/SettingsPage.qml:257
-#, fuzzy, kde-format
-#| msgid "Input level"
+#, kde-format
 msgid "Input device"
-msgstr "Nivell d'entrada"
+msgstr "Dispositiu d'entrada"
 
 #: src/app/qml/SettingsPage.qml:272
 #, kde-format
@@ -2694,7 +2713,7 @@ msgstr "Algorismes i llindars de detecció per a micròfons o sales difícils."
 #: src/app/qml/SettingsPage.qml:384
 #, kde-format
 msgid "Used for rhythm clapping exercises."
-msgstr ""
+msgstr "S'utilitza als exercicis de ritme de picar de mans."
 
 #: src/app/qml/SettingsPage.qml:385
 #, kde-format
@@ -2724,7 +2743,7 @@ msgstr "Intensitat mínima d'inici"
 #: src/app/qml/SettingsPage.qml:439
 #, kde-format
 msgid "Used for pitch and timing analysis in singing exercises."
-msgstr ""
+msgstr "S'utilitza per a l'anàlisi de to i temps en exercicis de cant."
 
 #: src/app/qml/SettingsPage.qml:440
 #, kde-format
@@ -3160,54 +3179,3 @@ msgstr "Efectes de so"
 msgctxt "General MIDI instrument group"
 msgid "Other"
 msgstr "Altres"
-
-#~ msgid ""
-#~ "Start a question, listen to the count, then clap each rhythm figure in "
-#~ "time."
-#~ msgstr ""
-#~ "Inicieu una pregunta, escolteu el comptador, després piqueu de mans a "
-#~ "cada figura de ritme a temps."
-
-#~ msgid ""
-#~ "Clapping exercises count to the number of rhythm patterns before "
-#~ "recording, then repeat that count while you clap."
-#~ msgstr ""
-#~ "Els exercicis de picar de mans compten al número de patrons de ritme "
-#~ "abans de gravar, després repetixen el compte mentre piqueu de mans."
-
-#~ msgid ""
-#~ "Singing exercises count in before the first note; then sing one displayed "
-#~ "note on each count."
-#~ msgstr ""
-#~ "Els exercicis de cant compten abans de la primera nota; després canteu "
-#~ "una nota mostrada en cada compte."
-
-#~ msgid ""
-#~ "Start a question, listen to the count-in and first note, then sing the "
-#~ "displayed interval or scale notes."
-#~ msgstr ""
-#~ "Inicieu una pregunta, escolteu el comptador i la primera nota, i després "
-#~ "canteu l'interval mostrat o les notes d'escala."
-
-#~ msgid ""
-#~ "For interval exercises, Minuet plays the first note and you sing the next "
-#~ "note shown as the target."
-#~ msgstr ""
-#~ "Per als exercicis d'interval, Minuet reproduïx la primera nota i canteu "
-#~ "la nota següent que es mostre com a objectiu."
-
-#~ msgid ""
-#~ "For scale exercises, Minuet plays the first note and you sing the "
-#~ "remaining target notes in order."
-#~ msgstr ""
-#~ "Per als exercicis d'escala, Minuet reproduïx la primera nota i canteu les "
-#~ "notes romanents en ordre."
-
-#~ msgid "Give up to reveal the correct answer."
-#~ msgstr "Renuncieu per a veure la resposta correcta."
-
-#~ msgid "Aubio silence"
-#~ msgstr "Silenci d'Aubio"
-
-#~ msgid "dB"
-#~ msgstr "dB"

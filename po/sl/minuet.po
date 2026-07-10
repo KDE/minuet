@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-09 00:39+0000\n"
-"PO-Revision-Date: 2026-07-05 08:59+0200\n"
+"PO-Revision-Date: 2026-07-09 07:15+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -577,12 +577,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Harmonic Minor"
 msgstr "Harmonični mol"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Harmonic Minor Scale and its Modes"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Harmonic minor scale and its modes"
-msgstr "Harmonične molove lestvice in načini"
+msgstr "Harmonične molove lestvice in njihovi načini"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1034,14 +1032,14 @@ msgid ""
 msgstr ""
 "Vadite razlikovanje suspendiranih akordov od durovske in molovske harmonije."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying ascending melodic compound intervals from a second "
 "through a fifteenth by ear."
 msgstr ""
 "Vadite prepoznavanje naraščajočih melodičnih sestavljenih intervalov od "
-"sekunde do petnajstine po posluhu."
+"sekunde do petnajste po posluhu."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1135,14 +1133,14 @@ msgid ""
 msgstr ""
 "Vadite prepoznavanje lastnosti akordov, ko so note preurejene v inverziji."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying descending melodic compound intervals from a second "
 "through a fifteenth by ear."
 msgstr ""
 "Vadite prepoznavanje padajočih melodičnih sestavljenih intervalov od sekunde "
-"do petnajstine po posluhu."
+"do petnajste po posluhu."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1225,14 +1223,14 @@ msgid "Practice identifying descending melodic tritones and sevenths by ear."
 msgstr ""
 "Vadite prepoznavanje padajočih melodičnih tritonov in septim po posluhu."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying harmonic compound intervals from a second through a "
 "fifteenth by ear."
 msgstr ""
 "Vadite prepoznavanje harmoničnih sestavljenih intervalov od sekunde do "
-"petnajstine po posluhu."
+"petnajste po posluhu."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1309,14 +1307,14 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Practice identifying harmonic tritones and sevenths by ear."
 msgstr "Vadite prepoznavanje harmoničnih tritonov in septim po posluhu."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice identifying melodic compound intervals from a second through a "
 "fifteenth by ear."
 msgstr ""
 "Vadite prepoznavanje melodičnih sestavljenih intervalov od sekunde do "
-"petnajstine po posluhu."
+"petnajste po posluhu."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1982,10 +1980,9 @@ msgstr "Poslušanje..."
 
 #: src/app/qml/ExerciseClappingView.qml:689
 #: src/app/qml/ExerciseSingingView.qml:441
-#, fuzzy, kde-format
-#| msgid "No microphone input plugin available"
+#, kde-format
 msgid "No microphone input devices found"
-msgstr "Vtičnik za mikrofon ni na voljo"
+msgstr "Ni bilo mogoče najti vhodnih naprav za mikrofon"
 
 #: src/app/qml/ExerciseClappingView.qml:689
 #: src/app/qml/ExerciseSingingView.qml:438
@@ -1994,12 +1991,13 @@ msgid "No microphone input plugin available"
 msgstr "Vtičnik za mikrofon ni na voljo"
 
 #: src/app/qml/ExerciseClappingView.qml:699
-#, fuzzy, kde-format
-#| msgid "Start a test to answer several questions in a row."
+#, kde-format
 msgid ""
 "Start a single clapping question or begin a test with several questions in a "
 "row."
-msgstr "Začni test, za odgovor na več zaporednih vprašanj."
+msgstr ""
+"Začni test z enim samim vprašanjem s ploskanjem ali pa začni test z več "
+"vprašanji v vrsti."
 
 #: src/app/qml/ExerciseClappingView.qml:707
 #: src/app/qml/ExerciseSingingView.qml:807 src/app/qml/ExerciseView.qml:411
@@ -2049,6 +2047,8 @@ msgid ""
 "The input level shows microphone activity while you clap. Open means the "
 "signal is above the current gate."
 msgstr ""
+"Vhodna raven prikazuje aktivnost mikrofona med ploskanjem. Odprto pomeni, da "
+"je signal nad trenutno vrednostjo vrat."
 
 #: src/app/qml/ExerciseClappingView.qml:871
 #: src/app/qml/ExerciseSingingView.qml:987
@@ -2074,6 +2074,8 @@ msgid ""
 "Calibrate silence in a quiet room before clapping so background noise is not "
 "counted as input."
 msgstr ""
+"Kalibrirajte tišino v tihem prostoru pred ploskanjem , da se šum v ozadju ne "
+"šteje kot vhodni signal."
 
 #: src/app/qml/ExerciseClappingView.qml:879
 #: src/app/qml/ExerciseSingingView.qml:995
@@ -2116,11 +2118,12 @@ msgstr "Vprašanja o ritmu se začnejo s štetjem."
 #, kde-format
 msgid "The count appears over the rhythm card you should clap with the beat."
 msgstr ""
+"Štetje se prikaže nad ritmično kartico, v kateri morate ploskati v ritmu."
 
 #: src/app/qml/ExercisePage.qml:135
 #, kde-format
 msgid "The count appears over the note card you should sing with the beat."
-msgstr ""
+msgstr "Štetje se prikaže nad notno kartico, ki jo morate peti v ritmu."
 
 #: src/app/qml/ExercisePage.qml:188
 #, kde-format
@@ -2191,10 +2194,9 @@ msgid "No pitch"
 msgstr "Ni višine tona"
 
 #: src/app/qml/ExerciseSingingView.qml:200
-#, fuzzy, kde-format
-#| msgid "Player"
+#, kde-format
 msgid "Played"
-msgstr "Igralec"
+msgstr "Predvajano"
 
 #: src/app/qml/ExerciseSingingView.qml:339 src/app/qml/GraphicalMeter.qml:23
 #, kde-format
@@ -2217,6 +2219,8 @@ msgid ""
 "The header shows the exercise status, score, and current target information "
 "while you sing."
 msgstr ""
+"V glavi so prikazani stanje vadbe, rezultat in trenutni ciljni podatki med "
+"vašim petjem."
 
 #: src/app/qml/ExerciseSingingView.qml:781
 #, kde-format
@@ -2229,12 +2233,13 @@ msgid "Sing the interval"
 msgstr "Zapojte interval"
 
 #: src/app/qml/ExerciseSingingView.qml:799
-#, fuzzy, kde-format
-#| msgid "Start a test to answer several questions in a row."
+#, kde-format
 msgid ""
 "Start a single singing question or begin a test with several questions in a "
 "row."
-msgstr "Začni test, za odgovor na več zaporednih vprašanj."
+msgstr ""
+"Začnite z enim samim vprašanjem o petju ali pa začnite test z več vprašanji "
+"v vrsti."
 
 #: src/app/qml/ExerciseSingingView.qml:863
 #, kde-format
@@ -2260,6 +2265,8 @@ msgid ""
 "The input level shows microphone activity while you sing. Open means the "
 "signal is above the current gate."
 msgstr ""
+"Vhodna raven prikazuje aktivnost mikrofona med petjem. Odprto pomeni, da je "
+"signal nad trenutno vrednostjo vrat."
 
 #: src/app/qml/ExerciseSingingView.qml:993
 #, kde-format
@@ -2267,19 +2274,20 @@ msgid ""
 "Calibrate silence in a quiet room before singing so room noise does not "
 "affect pitch and onset detection."
 msgstr ""
+"Kalibrirajte tišino v tihem prostoru pred petjem, da šum v prostoru ne "
+"vpliva na višino tona in zaznavanje začetka."
 
 #: src/app/qml/ExerciseSingingView.qml:1040
 #, kde-format
 msgid ""
 "The keyboard highlights the reference note and target notes for the singing "
 "question."
-msgstr ""
+msgstr "Klaviatura označi referenčno noto in ciljne note za pevsko vprašanje."
 
 #: src/app/qml/ExerciseSingingView.qml:1062
-#, fuzzy, kde-format
-#| msgid "The staff shows the same notes in music notation."
+#, kde-format
 msgid "The staff shows the same singing notes in music notation."
-msgstr "Osebje prikazuje iste note v glasbeni notaciji."
+msgstr "Osebje prikazuje iste pevske note v glasbeni notaciji."
 
 #: src/app/qml/ExerciseSingingView.qml:1079
 #, kde-format
@@ -2287,6 +2295,8 @@ msgid ""
 "On narrow screens, switch between the keyboard and staff views with these "
 "tabs."
 msgstr ""
+"Na ozkih zaslonih lahko s temi zavihki preklapljate med pogledom tipkovnice "
+"in osebja."
 
 #: src/app/qml/ExerciseSingingView.qml:1084 src/app/qml/ExerciseView.qml:721
 #, kde-format
@@ -2315,16 +2325,17 @@ msgid "Playing…"
 msgstr "Predvajanje…"
 
 #: src/app/qml/ExerciseView.qml:397
-#, fuzzy, kde-format
-#| msgid "Start a new question or replay the current one."
+#, kde-format
 msgid "Start a new question, replay it, reveal the answer, or begin a test."
-msgstr "Začni novo vprašanje ali ponovi trenutno."
+msgstr ""
+"Začni novo vprašanje, ga ponovno predvajaj, razkrij odgovor ali začni test."
 
 #: src/app/qml/ExerciseView.qml:397
-#, fuzzy, kde-format
-#| msgid "Start a new question or replay the current one."
+#, kde-format
 msgid "Start a rhythm question, replay it, reveal the answer, or begin a test."
-msgstr "Začni novo vprašanje ali ponovi trenutno."
+msgstr ""
+"Začni vprašanje o ritmu, ga ponovno predvajaj, razkrij odgovor ali začni "
+"test."
 
 #: src/app/qml/ExerciseView.qml:411
 #, kde-format
@@ -2510,10 +2521,9 @@ msgid "Read and sing"
 msgstr "Berite in pojte"
 
 #: src/app/qml/PracticeModePage.qml:67
-#, fuzzy, kde-format
-#| msgid "No microphone input plugin available"
+#, kde-format
 msgid "(no microphone input devices found)"
-msgstr "Vtičnik za mikrofon ni na voljo"
+msgstr "(ni najdenih vhodnih naprav za mikrofon)"
 
 #: src/app/qml/SettingsPage.qml:19
 #, kde-format
@@ -2521,14 +2531,14 @@ msgid "Hide advanced settings"
 msgstr "Skrij napredne nastavitve"
 
 #: src/app/qml/SettingsPage.qml:29
-#, kde-format
+#, fuzzy, kde-format
 msgid "Pitch primary"
-msgstr ""
+msgstr "Primarna višina tona"
 
 #: src/app/qml/SettingsPage.qml:29
-#, kde-format
+#, fuzzy, kde-format
 msgid "Pitch + timing"
-msgstr ""
+msgstr "Višina tona + čas"
 
 #: src/app/qml/SettingsPage.qml:32
 #, kde-format
@@ -2645,10 +2655,9 @@ msgid "Microphone"
 msgstr "Mikrofon"
 
 #: src/app/qml/SettingsPage.qml:257
-#, fuzzy, kde-format
-#| msgid "Input level"
+#, kde-format
 msgid "Input device"
-msgstr "Raven vhoda"
+msgstr "Vhodna naprava"
 
 #: src/app/qml/SettingsPage.qml:272
 #, kde-format
@@ -2715,7 +2724,7 @@ msgstr "Algoritmi in pragovi zaznavanja za zahtevne mikrofone ali prostore."
 #: src/app/qml/SettingsPage.qml:384
 #, kde-format
 msgid "Used for rhythm clapping exercises."
-msgstr ""
+msgstr "Uporabljeno za vaje ritmičnega ploskanja."
 
 #: src/app/qml/SettingsPage.qml:385
 #, kde-format
@@ -2745,7 +2754,7 @@ msgstr "Minimalna začetna moč"
 #: src/app/qml/SettingsPage.qml:439
 #, kde-format
 msgid "Used for pitch and timing analysis in singing exercises."
-msgstr ""
+msgstr "Uporabljeno za analizo višin tonov in časa pri pevskih vajah."
 
 #: src/app/qml/SettingsPage.qml:440
 #, kde-format

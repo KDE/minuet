@@ -2067,10 +2067,9 @@ msgid "No pitch"
 msgstr ""
 
 #: src/app/qml/ExerciseSingingView.qml:200
-#, fuzzy, kde-format
-#| msgid "Player"
+#, kde-format
 msgid "Played"
-msgstr "Hráč"
+msgstr "Přehráno"
 
 #: src/app/qml/ExerciseSingingView.qml:339 src/app/qml/GraphicalMeter.qml:23
 #, kde-format
@@ -2513,7 +2512,7 @@ msgstr "Mikrofon"
 #: src/app/qml/SettingsPage.qml:257
 #, kde-format
 msgid "Input device"
-msgstr ""
+msgstr "Vstupní zařízení"
 
 #: src/app/qml/SettingsPage.qml:272
 #, kde-format

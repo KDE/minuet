@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-09 00:39+0000\n"
-"PO-Revision-Date: 2026-07-04 19:10+0200\n"
+"PO-Revision-Date: 2026-07-09 11:40+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1968,6 +1968,8 @@ msgid ""
 "The header shows the exercise status and score while you prepare, listen, "
 "clap, and review the result."
 msgstr ""
+"De kopbalk toont de status en score van de oefening terwijl u zich "
+"voorbereidt, luistert, klapt en het resultaat bekijkt."
 
 #: src/app/qml/ExerciseClappingView.qml:681
 #, kde-format
@@ -1981,10 +1983,9 @@ msgstr "Luisteren..."
 
 #: src/app/qml/ExerciseClappingView.qml:689
 #: src/app/qml/ExerciseSingingView.qml:441
-#, fuzzy, kde-format
-#| msgid "No microphone input plugin available"
+#, kde-format
 msgid "No microphone input devices found"
-msgstr "Geen microfooningang-plug-in beschikbaar"
+msgstr "Geen microfooningangsapparaat gevonden"
 
 #: src/app/qml/ExerciseClappingView.qml:689
 #: src/app/qml/ExerciseSingingView.qml:438
@@ -1993,12 +1994,13 @@ msgid "No microphone input plugin available"
 msgstr "Geen microfooningang-plug-in beschikbaar"
 
 #: src/app/qml/ExerciseClappingView.qml:699
-#, fuzzy, kde-format
-#| msgid "Start a test to answer several questions in a row."
+#, kde-format
 msgid ""
 "Start a single clapping question or begin a test with several questions in a "
 "row."
-msgstr "Start een test om meerdere vragen achter elkaar te beantwoorden."
+msgstr ""
+"Start een enkele vraag waarbij wordt geklapt of begin een oefening met "
+"meerdere vragen achter elkaar."
 
 #: src/app/qml/ExerciseClappingView.qml:707
 #: src/app/qml/ExerciseSingingView.qml:807 src/app/qml/ExerciseView.qml:411
@@ -2048,6 +2050,8 @@ msgid ""
 "The input level shows microphone activity while you clap. Open means the "
 "signal is above the current gate."
 msgstr ""
+"Het ingangsniveau toont microfoonactiviteit terwijl u klapt. 'Open' betekent "
+"dat het signaal boven de huidige gate-drempelwaarde ligt."
 
 #: src/app/qml/ExerciseClappingView.qml:871
 #: src/app/qml/ExerciseSingingView.qml:987
@@ -2073,6 +2077,8 @@ msgid ""
 "Calibrate silence in a quiet room before clapping so background noise is not "
 "counted as input."
 msgstr ""
+"Kalibreer de stilte in een rustige ruimte voordat u klapt, zodat "
+"achtergrondgeluid niet als invoer wordt geregistreerd."
 
 #: src/app/qml/ExerciseClappingView.qml:879
 #: src/app/qml/ExerciseSingingView.qml:995
@@ -2113,11 +2119,13 @@ msgstr "Ritmevragen beginnen met een aftelling"
 #, kde-format
 msgid "The count appears over the rhythm card you should clap with the beat."
 msgstr ""
+"De telling verschijnt boven de ritmekaart; u moet op de maat meeklappen."
 
 #: src/app/qml/ExercisePage.qml:135
 #, kde-format
 msgid "The count appears over the note card you should sing with the beat."
 msgstr ""
+"De telling verschijnt boven de kaart met de noot; zing mee met de maat."
 
 #: src/app/qml/ExercisePage.qml:188
 #, kde-format
@@ -2188,10 +2196,9 @@ msgid "No pitch"
 msgstr "Geen toonhoogte"
 
 #: src/app/qml/ExerciseSingingView.qml:200
-#, fuzzy, kde-format
-#| msgid "Player"
+#, kde-format
 msgid "Played"
-msgstr "Speler"
+msgstr "Afgespeeld"
 
 #: src/app/qml/ExerciseSingingView.qml:339 src/app/qml/GraphicalMeter.qml:23
 #, kde-format
@@ -2214,6 +2221,8 @@ msgid ""
 "The header shows the exercise status, score, and current target information "
 "while you sing."
 msgstr ""
+"De kopbalk toont de status van de oefening, de score en informatie over het "
+"huidige doel terwijl u zingt."
 
 #: src/app/qml/ExerciseSingingView.qml:781
 #, kde-format
@@ -2226,12 +2235,13 @@ msgid "Sing the interval"
 msgstr "Zing het interval"
 
 #: src/app/qml/ExerciseSingingView.qml:799
-#, fuzzy, kde-format
-#| msgid "Start a test to answer several questions in a row."
+#, kde-format
 msgid ""
 "Start a single singing question or begin a test with several questions in a "
 "row."
-msgstr "Start een test om meerdere vragen achter elkaar te beantwoorden."
+msgstr ""
+"Start een enkele vraag waarbij wordt gezongen of begin een oefening met "
+"meerdere vragen achter elkaar."
 
 #: src/app/qml/ExerciseSingingView.qml:863
 #, kde-format
@@ -2258,6 +2268,8 @@ msgid ""
 "The input level shows microphone activity while you sing. Open means the "
 "signal is above the current gate."
 msgstr ""
+"Het ingangsniveau toont microfoonactiviteit terwijl u zingt 'Open' betekent "
+"dat het signaal boven de huidige gate-drempelwaarde ligt."
 
 #: src/app/qml/ExerciseSingingView.qml:993
 #, kde-format
@@ -2265,6 +2277,8 @@ msgid ""
 "Calibrate silence in a quiet room before singing so room noise does not "
 "affect pitch and onset detection."
 msgstr ""
+"Kalibreer de stilte in een rustige ruimte voordat u gaat zingen, zodat "
+"omgevingsgeluid de toonhoogte- en aanzetdetectie niet beïnvloedt."
 
 #: src/app/qml/ExerciseSingingView.qml:1040
 #, kde-format
@@ -2272,12 +2286,12 @@ msgid ""
 "The keyboard highlights the reference note and target notes for the singing "
 "question."
 msgstr ""
+"Het klavier markeert de referentienoot en de doelnoten voor de zangvraag."
 
 #: src/app/qml/ExerciseSingingView.qml:1062
-#, fuzzy, kde-format
-#| msgid "The staff shows the same notes in music notation."
+#, kde-format
 msgid "The staff shows the same singing notes in music notation."
-msgstr "De notenbalk toont dezelfde noten als in muzieknotatie."
+msgstr "De notenbalk toont dezelfde zangnoten als in muzieknotatie."
 
 #: src/app/qml/ExerciseSingingView.qml:1079
 #, kde-format
@@ -2285,6 +2299,8 @@ msgid ""
 "On narrow screens, switch between the keyboard and staff views with these "
 "tabs."
 msgstr ""
+"Schakel op smalle schermen tussen de klavier- en notenbalkweergave met deze "
+"tabbladen."
 
 #: src/app/qml/ExerciseSingingView.qml:1084 src/app/qml/ExerciseView.qml:721
 #, kde-format
@@ -2313,16 +2329,18 @@ msgid "Playing…"
 msgstr "Speelt af…"
 
 #: src/app/qml/ExerciseView.qml:397
-#, fuzzy, kde-format
-#| msgid "Start a new question or replay the current one."
+#, kde-format
 msgid "Start a new question, replay it, reveal the answer, or begin a test."
-msgstr "Stel een nieuwe vraag of speel de huidige vraag opnieuw."
+msgstr ""
+"Start een nieuwe vraag, speel deze opnieuw af, toon het antwoord of begin "
+"een test."
 
 #: src/app/qml/ExerciseView.qml:397
-#, fuzzy, kde-format
-#| msgid "Start a new question or replay the current one."
+#, kde-format
 msgid "Start a rhythm question, replay it, reveal the answer, or begin a test."
-msgstr "Stel een nieuwe vraag of speel de huidige vraag opnieuw."
+msgstr ""
+"Start een nieuwe ritmevraag, speel deze opnieuw af, toon het antwoord of "
+"begin een test."
 
 #: src/app/qml/ExerciseView.qml:411
 #, kde-format
@@ -2511,10 +2529,9 @@ msgid "Read and sing"
 msgstr "Lees en zing"
 
 #: src/app/qml/PracticeModePage.qml:67
-#, fuzzy, kde-format
-#| msgid "No microphone input plugin available"
+#, kde-format
 msgid "(no microphone input devices found)"
-msgstr "Geen microfooningang-plug-in beschikbaar"
+msgstr "(geen microfooningangsapparaat gevonden)"
 
 #: src/app/qml/SettingsPage.qml:19
 #, kde-format
@@ -2646,10 +2663,9 @@ msgid "Microphone"
 msgstr "Microfoon"
 
 #: src/app/qml/SettingsPage.qml:257
-#, fuzzy, kde-format
-#| msgid "Input level"
+#, kde-format
 msgid "Input device"
-msgstr "Invoerniveau"
+msgstr "Invoerapparaat"
 
 #: src/app/qml/SettingsPage.qml:272
 #, kde-format
@@ -2716,7 +2732,7 @@ msgstr "Algoritmen en detectiedrempels voor lastige microfoons of ruimtes."
 #: src/app/qml/SettingsPage.qml:384
 #, kde-format
 msgid "Used for rhythm clapping exercises."
-msgstr ""
+msgstr "Gebruikt voor ritmeklapoefeningen."
 
 #: src/app/qml/SettingsPage.qml:385
 #, kde-format
@@ -2746,7 +2762,7 @@ msgstr "Minimale onset sterkte"
 #: src/app/qml/SettingsPage.qml:439
 #, kde-format
 msgid "Used for pitch and timing analysis in singing exercises."
-msgstr ""
+msgstr "Wordt gebruikt voor toonhoogte- en timinganalyse bij zangoefeningen."
 
 #: src/app/qml/SettingsPage.qml:440
 #, kde-format

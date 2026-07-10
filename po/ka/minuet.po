@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-09 00:39+0000\n"
-"PO-Revision-Date: 2026-07-04 07:28+0200\n"
+"PO-Revision-Date: 2026-07-09 06:33+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1920,6 +1920,8 @@ msgid ""
 "The header shows the exercise status and score while you prepare, listen, "
 "clap, and review the result."
 msgstr ""
+"სათაური აჩვენებს ვარჯიშის სტატუსს და ქულებს, სანამ ემზადებით, უსმენთ, უკრავთ "
+"ტაშს და ათვალიერებთ შედეგს."
 
 #: src/app/qml/ExerciseClappingView.qml:681
 #, kde-format
@@ -1933,10 +1935,9 @@ msgstr "ვისმენ..."
 
 #: src/app/qml/ExerciseClappingView.qml:689
 #: src/app/qml/ExerciseSingingView.qml:441
-#, fuzzy, kde-format
-#| msgid "No microphone input plugin available"
+#, kde-format
 msgid "No microphone input devices found"
-msgstr "მიკროფონით შეყვანის დამატება ხელმისაწვდომი არაა"
+msgstr "მიკროფონით შეყვანის მოწყობილობები აღმოჩენილი არაა"
 
 #: src/app/qml/ExerciseClappingView.qml:689
 #: src/app/qml/ExerciseSingingView.qml:438
@@ -1945,12 +1946,13 @@ msgid "No microphone input plugin available"
 msgstr "მიკროფონით შეყვანის დამატება ხელმისაწვდომი არაა"
 
 #: src/app/qml/ExerciseClappingView.qml:699
-#, fuzzy, kde-format
-#| msgid "Start a test to answer several questions in a row."
+#, kde-format
 msgid ""
 "Start a single clapping question or begin a test with several questions in a "
 "row."
-msgstr "დაიწყეთ ტესტი ზედიზედ რამდენიმე კითხვაზე პასუხის გასაცემად."
+msgstr ""
+"ერთი ტაშის კითხვის გაშვება, ან დაწყება ტესტის, რომელიც ზედიზედ რამდენიმე "
+"კითხვას შეიცავს."
 
 #: src/app/qml/ExerciseClappingView.qml:707
 #: src/app/qml/ExerciseSingingView.qml:807 src/app/qml/ExerciseView.qml:411
@@ -2000,6 +2002,8 @@ msgid ""
 "The input level shows microphone activity while you clap. Open means the "
 "signal is above the current gate."
 msgstr ""
+"შეყვანის დონე აჩვენებს მიკროფონის აქტივობას, სანამ თქვენ ტაშს უკრავთ. ღია "
+"ნიშნავს, რომ სიგნალი მიმდინარე არხზე მაღლაა."
 
 #: src/app/qml/ExerciseClappingView.qml:871
 #: src/app/qml/ExerciseSingingView.qml:987
@@ -2025,6 +2029,8 @@ msgid ""
 "Calibrate silence in a quiet room before clapping so background noise is not "
 "counted as input."
 msgstr ""
+"მოახდინეთ სიჩუმის კალიბრაცია ჩუმ ოთახში ტაშის დაკვრამდე, რომ ფონური ხმაური "
+"შეყვანად არ ჩაითვალოს."
 
 #: src/app/qml/ExerciseClappingView.qml:879
 #: src/app/qml/ExerciseSingingView.qml:995
@@ -2065,11 +2071,14 @@ msgstr "კითხვები რიტმის შესახებ იწ
 #, kde-format
 msgid "The count appears over the rhythm card you should clap with the beat."
 msgstr ""
+"ანათვალი გამოჩნდება რიტმის ბარათის ზემოდან, რომლის მიხედვითაც ტაშს უკრავთ."
 
 #: src/app/qml/ExercisePage.qml:135
 #, kde-format
 msgid "The count appears over the note card you should sing with the beat."
 msgstr ""
+"ანათვალი გამოჩნდა ნოტების ბარათის ზემოდან, რომლის რიტმის მიხედვითაც უნდა "
+"იმღეროთ."
 
 #: src/app/qml/ExercisePage.qml:188
 #, kde-format
@@ -2140,10 +2149,9 @@ msgid "No pitch"
 msgstr "ხმის სიმაღლის გარეშე"
 
 #: src/app/qml/ExerciseSingingView.qml:200
-#, fuzzy, kde-format
-#| msgid "Player"
+#, kde-format
 msgid "Played"
-msgstr "დამკვრელი"
+msgstr "დაკრული"
 
 #: src/app/qml/ExerciseSingingView.qml:339 src/app/qml/GraphicalMeter.qml:23
 #, kde-format
@@ -2166,6 +2174,8 @@ msgid ""
 "The header shows the exercise status, score, and current target information "
 "while you sing."
 msgstr ""
+"სათაური აჩვენებს სავარჯიშოს სტატუსს, ქულებს, და მიმდინარე სამიზნის "
+"ინფორმაციას, სანამ თქვენ მღერით."
 
 #: src/app/qml/ExerciseSingingView.qml:781
 #, kde-format
@@ -2178,12 +2188,13 @@ msgid "Sing the interval"
 msgstr "იმღერეთ ეს ინტერვალი"
 
 #: src/app/qml/ExerciseSingingView.qml:799
-#, fuzzy, kde-format
-#| msgid "Start a test to answer several questions in a row."
+#, kde-format
 msgid ""
 "Start a single singing question or begin a test with several questions in a "
 "row."
-msgstr "დაიწყეთ ტესტი ზედიზედ რამდენიმე კითხვაზე პასუხის გასაცემად."
+msgstr ""
+"ერთი სიმღერის კითხვის გაშვება, ან დაწყება ტესტის, რომელიც ზედიზედ რამდენიმე "
+"კითხვას შეიცავს."
 
 #: src/app/qml/ExerciseSingingView.qml:863
 #, kde-format
@@ -2210,6 +2221,8 @@ msgid ""
 "The input level shows microphone activity while you sing. Open means the "
 "signal is above the current gate."
 msgstr ""
+"შეყვანის დონე აჩვენებს მიკროფონის აქტივობას, სანამ თქვენ მღერით. ღია "
+"ნიშნავს, რომ სიგნალი მიმდინარე არხზე მაღლაა."
 
 #: src/app/qml/ExerciseSingingView.qml:993
 #, kde-format
@@ -2217,6 +2230,8 @@ msgid ""
 "Calibrate silence in a quiet room before singing so room noise does not "
 "affect pitch and onset detection."
 msgstr ""
+"სიმღერის დაწყებამდე მოახდინეთ სიჩუმის კალიბრაცია წყნარ ოთახში, რომ ოთახის "
+"ხმაურმა არ იქონიოს გავლენა ტონის და დაწყების დადგენაზე."
 
 #: src/app/qml/ExerciseSingingView.qml:1040
 #, kde-format
@@ -2224,12 +2239,12 @@ msgid ""
 "The keyboard highlights the reference note and target notes for the singing "
 "question."
 msgstr ""
+"კლავიატურა გამოკვეთს მიმართვის ნოტას და სამიზნე ნოტებს სიმღერის კითხვისთვის."
 
 #: src/app/qml/ExerciseSingingView.qml:1062
-#, fuzzy, kde-format
-#| msgid "The staff shows the same notes in music notation."
+#, kde-format
 msgid "The staff shows the same singing notes in music notation."
-msgstr "პერსონალი აჩვენებს იგივე ნოტებს მუსიკალურ ნოტებში."
+msgstr "პერსონალი აჩვენებს იგივე სიმღერის ნოტებს მუსიკალურ ნოტებში."
 
 #: src/app/qml/ExerciseSingingView.qml:1079
 #, kde-format
@@ -2237,6 +2252,7 @@ msgid ""
 "On narrow screens, switch between the keyboard and staff views with these "
 "tabs."
 msgstr ""
+"ვიწრო ეკრანებზე გადართეთ კლავიატურისა და ა.შ. ხედებს შორის ამ ჩანართებით."
 
 #: src/app/qml/ExerciseSingingView.qml:1084 src/app/qml/ExerciseView.qml:721
 #, kde-format
@@ -2265,16 +2281,16 @@ msgid "Playing…"
 msgstr "მიმდინარეობს დაკვრა…"
 
 #: src/app/qml/ExerciseView.qml:397
-#, fuzzy, kde-format
-#| msgid "Start a new question or replay the current one."
+#, kde-format
 msgid "Start a new question, replay it, reveal the answer, or begin a test."
-msgstr "დაიწყეთ ახალი კითხვა, ან გაიმეორეთ მიმდინარე."
+msgstr ""
+"დაიწყეთ ახალი კითხვა, გაიმეორეთ ის, გამოაჩინეთ პასუხი, ან დაიწყეთ ტესტი."
 
 #: src/app/qml/ExerciseView.qml:397
-#, fuzzy, kde-format
-#| msgid "Start a new question or replay the current one."
+#, kde-format
 msgid "Start a rhythm question, replay it, reveal the answer, or begin a test."
-msgstr "დაიწყეთ ახალი კითხვა, ან გაიმეორეთ მიმდინარე."
+msgstr ""
+"დაიწყეთ რიტმის კითხვა, გამეორეთ ის, გამოაჩინეთ პასუხი, ან დაიწყეთ ტესტი."
 
 #: src/app/qml/ExerciseView.qml:411
 #, kde-format
@@ -2457,10 +2473,9 @@ msgid "Read and sing"
 msgstr "წაკითხვა და სიღერა"
 
 #: src/app/qml/PracticeModePage.qml:67
-#, fuzzy, kde-format
-#| msgid "No microphone input plugin available"
+#, kde-format
 msgid "(no microphone input devices found)"
-msgstr "მიკროფონით შეყვანის დამატება ხელმისაწვდომი არაა"
+msgstr "(მიკროფონით შეყვანის მოწყობილობები აღმოჩენილი არაა)"
 
 #: src/app/qml/SettingsPage.qml:19
 #, kde-format
@@ -2591,10 +2606,9 @@ msgid "Microphone"
 msgstr "მიკროფონი"
 
 #: src/app/qml/SettingsPage.qml:257
-#, fuzzy, kde-format
-#| msgid "Input level"
+#, kde-format
 msgid "Input device"
-msgstr "შეყვანის დონე"
+msgstr "შეყვანის მოწყობილობა"
 
 #: src/app/qml/SettingsPage.qml:272
 #, kde-format
@@ -2661,7 +2675,7 @@ msgstr "ალგორითმები და დადგენის ზღ
 #: src/app/qml/SettingsPage.qml:384
 #, kde-format
 msgid "Used for rhythm clapping exercises."
-msgstr ""
+msgstr "გამოიყენება რიტმისთვის ტაშის დაკვრით ვარჯიშისას."
 
 #: src/app/qml/SettingsPage.qml:385
 #, kde-format
@@ -2691,7 +2705,7 @@ msgstr "ბგერის საწყისი წერტილის სი
 #: src/app/qml/SettingsPage.qml:439
 #, kde-format
 msgid "Used for pitch and timing analysis in singing exercises."
-msgstr ""
+msgstr "გამოიყენება ტონისა და დროის ანალიზისთვის სიმღერის სავარჯიშოებში."
 
 #: src/app/qml/SettingsPage.qml:440
 #, kde-format

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-09 00:39+0000\n"
-"PO-Revision-Date: 2026-07-08 20:36+0200\n"
+"PO-Revision-Date: 2026-07-09 09:21+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -1978,7 +1978,7 @@ msgstr[1] ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Help"
-msgstr ""
+msgstr "Hjälp"
 
 #: src/app/qml/ExercisePage.qml:132
 #, kde-format
@@ -1998,7 +1998,7 @@ msgstr ""
 #: src/app/qml/ExercisePage.qml:135
 #, kde-format
 msgid "The count appears over the note card you should sing with the beat."
-msgstr ""
+msgstr "Räkningen som du ska sjunga i takt visas ovanför notbladet."
 
 #: src/app/qml/ExercisePage.qml:188
 #, kde-format
@@ -2031,7 +2031,7 @@ msgstr ""
 #: src/app/qml/ExercisePage.qml:189
 #, kde-format
 msgid "First Time Here"
-msgstr ""
+msgstr "Första gången här"
 
 #: src/app/qml/ExercisePage.qml:194
 #, kde-format
@@ -2043,7 +2043,7 @@ msgstr "Startguide"
 #, kde-format
 msgctxt "@action:button"
 msgid "Not Now"
-msgstr ""
+msgstr "Inte nu"
 
 #: src/app/qml/ExerciseSingingView.qml:48
 #: src/app/qml/ExerciseSingingView.qml:182
@@ -2061,10 +2061,9 @@ msgid "No pitch"
 msgstr ""
 
 #: src/app/qml/ExerciseSingingView.qml:200
-#, fuzzy, kde-format
-#| msgid "Play"
+#, kde-format
 msgid "Played"
-msgstr "Spela"
+msgstr "Spelad"
 
 #: src/app/qml/ExerciseSingingView.qml:339 src/app/qml/GraphicalMeter.qml:23
 #, kde-format
@@ -2074,12 +2073,12 @@ msgstr ""
 #: src/app/qml/ExerciseSingingView.qml:449 src/app/qml/ExerciseView.qml:183
 #, kde-format
 msgid "%1 - Base: %2 - Targets: %3"
-msgstr ""
+msgstr "%1 - Bas: %2 - Mål: %3"
 
 #: src/app/qml/ExerciseSingingView.qml:451 src/app/qml/ExerciseView.qml:185
 #, kde-format
 msgid "%1 - Base: %2 - Target: %3"
-msgstr ""
+msgstr "%1 - Bas: %2 - Mål: %3"
 
 #: src/app/qml/ExerciseSingingView.qml:773
 #, kde-format
@@ -2087,6 +2086,8 @@ msgid ""
 "The header shows the exercise status, score, and current target information "
 "while you sing."
 msgstr ""
+"Rubriken visar övningsstatus, poäng och aktuell målinformation medan du "
+"sjunger."
 
 #: src/app/qml/ExerciseSingingView.qml:781
 #, kde-format
@@ -2104,6 +2105,7 @@ msgid ""
 "Start a single singing question or begin a test with several questions in a "
 "row."
 msgstr ""
+"Börja med en enstaka sångfråga eller börja ett prov med flera frågor i rad."
 
 #: src/app/qml/ExerciseSingingView.qml:863
 #, kde-format
@@ -2111,6 +2113,8 @@ msgid ""
 "Sing the note cards in order. The current card is highlighted; borders show "
 "correctness after detection."
 msgstr ""
+"Sjung notbladen i ordning. Det aktuella bladet är markerat. Kanterna visar "
+"riktighet efter detektering."
 
 #: src/app/qml/ExerciseSingingView.qml:863
 #, kde-format
