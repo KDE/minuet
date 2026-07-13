@@ -203,8 +203,26 @@ Kirigami.GlobalDrawer {
             Layout.fillHeight: true
             Layout.fillWidth: true
             visible: Core.exerciseCatalogController.normalizedText(drawer.currentSearchText) !== "" && drawer.actions.length === 0
+
+            Kirigami.PlaceholderMessage {
+                anchors.centerIn: parent
+                text: i18n("No exercises found")
+                width: Math.max(0, parent.width - Kirigami.Units.largeSpacing * 2)
+            }
         }
     ]
+
+    onCurrentSearchTextChanged: {
+        if (currentSubMenu === null) {
+            return;
+        }
+
+        const wasDrawerOpen = drawerOpen;
+        resetMenu();
+        if (wasDrawerOpen) {
+            drawerOpen = true;
+        }
+    }
 
     Kirigami.Action {
         id: allExercisesAction
