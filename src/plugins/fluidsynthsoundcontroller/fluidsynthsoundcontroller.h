@@ -72,6 +72,7 @@ private:
     short m_callbackSeqID;
     static unsigned int m_initialTime;
     QHash<int, int> m_instrumentSoundFontIds;
+    int m_activeCountInBeats;
     int m_countInNextValue;
     bool m_countInOnly;
     bool m_countInAudible;

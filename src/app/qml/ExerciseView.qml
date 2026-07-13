@@ -34,7 +34,7 @@ Item {
     readonly property bool compactMode: !applicationWindow().wideScreen || Kirigami.Settings.isMobile
     readonly property real contentPadding: Kirigami.Units.largeSpacing * 2
     property alias countIn: internal.countIn
-    readonly property bool countInOverlayInitial: internal.countIn > 0
+    readonly property bool countInOverlayInitial: internal.countIn > 0 || onboardingCountIn > 0
     readonly property real countInOverlaySize: Math.max(Kirigami.Units.gridUnit * 3, headerLayout.height)
     readonly property real countInOverlayX: Math.max(0, width - Kirigami.Units.largeSpacing - exerciseView.countInOverlaySize)
     readonly property real countInOverlayY: headerLayout.y
@@ -45,6 +45,8 @@ Item {
     readonly property real minimumAnswerCardWidth: Kirigami.Units.gridUnit * 10
     readonly property bool musicViewsTabbed: !applicationWindow().wideScreen && exerciseView.height > exerciseView.width
     property int onboardingCountIn: 0
+    property int onboardingInitialMusicTabIndex: -1
+    property bool onboardingMusicTabCaptured: false
     readonly property real rhythmAnswerCardTextSize: Math.round(Kirigami.Theme.defaultFont.pointSize * 2.0)
     readonly property real rhythmAnswerCardVerticalOffset: Math.round(rhythmAnswerCardTextSize * 0.22)
     readonly property real sectionPadding: Kirigami.Units.smallSpacing
@@ -272,6 +274,19 @@ Item {
         }
     ]
 
+    Onboarding.onAboutToStart: {
+        if (!exerciseView.onboardingMusicTabCaptured) {
+            exerciseView.onboardingInitialMusicTabIndex = musicTabs.currentIndex;
+            exerciseView.onboardingMusicTabCaptured = true;
+        }
+    }
+    Onboarding.onFinished: {
+        if (exerciseView.onboardingMusicTabCaptured && exerciseView.onboardingInitialMusicTabIndex >= 0) {
+            musicTabs.currentIndex = exerciseView.onboardingInitialMusicTabIndex;
+        }
+        exerciseView.onboardingInitialMusicTabIndex = -1;
+        exerciseView.onboardingMusicTabCaptured = false;
+    }
     onCurrentExerciseChanged: {
         internal.countIn = 0;
         pianoView.clearAllMarks();
@@ -664,16 +679,25 @@ Item {
                         Layout.fillWidth: true
                         Layout.preferredHeight: musicPanel.viewHeight
                         Layout.preferredWidth: musicViewsLayout.musicViewWidth
-                        Onboarding.groups: ["melodic"]
-                        Onboarding.texts: [i18n("The keyboard shows the notes in the question or preview.")]
                         visible: !musicViewsLayout.tabbed || musicTabs.currentIndex === 0
 
-                        Onboarding.onAboutToShow: {
-                            if (musicViewsLayout.tabbed) {
-                                musicTabs.currentIndex = 0;
+                        Item {
+                            id: pianoViewOnboardingTarget
+
+                            Onboarding.groups: ["melodic"]
+                            Onboarding.texts: [i18n("The keyboard shows the notes in the question or preview.")]
+                            height: musicViewsLayout.tabbed ? musicPanel.height : parent.height
+                            width: musicViewsLayout.tabbed ? musicPanel.width : parent.width
+                            x: musicViewsLayout.tabbed ? -pianoViewContainer.x - musicViewsLayout.x : 0
+                            y: musicViewsLayout.tabbed ? -pianoViewContainer.y - musicViewsLayout.y : 0
+                            z: -1
+
+                            Onboarding.onAboutToShow: {
+                                if (musicViewsLayout.tabbed) {
+                                    musicTabs.currentIndex = 0;
+                                }
                             }
                         }
-
                         PianoView {
                             id: pianoView
 
@@ -692,17 +716,26 @@ Item {
                         Layout.fillWidth: true
                         Layout.preferredHeight: musicPanel.viewHeight
                         Layout.preferredWidth: musicViewsLayout.musicViewWidth
-                        Onboarding.groups: ["melodic"]
-                        Onboarding.texts: [i18n("The staff shows the same notes in music notation.")]
                         clip: true
                         visible: !musicViewsLayout.tabbed || musicTabs.currentIndex === 1
 
-                        Onboarding.onAboutToShow: {
-                            if (musicViewsLayout.tabbed) {
-                                musicTabs.currentIndex = 1;
+                        Item {
+                            id: sheetMusicViewOnboardingTarget
+
+                            Onboarding.groups: ["melodic"]
+                            Onboarding.texts: [i18n("The staff shows the same notes in music notation.")]
+                            height: musicViewsLayout.tabbed ? musicPanel.height : parent.height
+                            width: musicViewsLayout.tabbed ? musicPanel.width : parent.width
+                            x: musicViewsLayout.tabbed ? -sheetMusicViewContainer.x - musicViewsLayout.x : 0
+                            y: musicViewsLayout.tabbed ? -sheetMusicViewContainer.y - musicViewsLayout.y : 0
+                            z: -1
+
+                            Onboarding.onAboutToShow: {
+                                if (musicViewsLayout.tabbed) {
+                                    musicTabs.currentIndex = 1;
+                                }
                             }
                         }
-
                         SheetMusicView {
                             id: sheetMusicView
 

@@ -74,6 +74,7 @@ FluidSynthSoundController::FluidSynthSoundController(QObject *parent)
     , m_unregisteringEvent(nullptr)
     , m_synthSeqID(0)
     , m_callbackSeqID(0)
+    , m_activeCountInBeats(0)
     , m_countInNextValue(0)
     , m_countInOnly(false)
     , m_countInAudible(true)
@@ -203,7 +204,9 @@ void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedEx
     m_song.reset(song);
 
     if (m_playMode == u"rhythm"_s) {
-        for (int i = 0; i < m_rhythmCountInBeats; ++i) {
+        setRhythmCountInBeats(RhythmExerciseCountInBeats);
+        m_activeCountInBeats = RhythmExerciseCountInBeats;
+        for (int i = 0; i < m_activeCountInBeats; ++i) {
             appendEvent(RhythmChannel, RhythmCountInKey, 127, 1000 * (60.0 / m_tempo));
         }
     }
@@ -274,7 +277,7 @@ void FluidSynthSoundController::playCountIn(int beats, bool audible)
     clearSong();
     m_countInOnly = true;
     m_countInAudible = audible;
-    m_rhythmCountInBeats = beats;
+    m_activeCountInBeats = beats;
     auto *song = new QList<fluid_event_t *>;
     m_song.reset(song);
     for (int i = 0; i < beats; ++i) {
@@ -377,6 +380,7 @@ void FluidSynthSoundController::appendEvent(int channel, short key, short veloci
 
 void FluidSynthSoundController::hideCountIn()
 {
+    m_activeCountInBeats = 0;
     m_countInNextValue = 0;
     if (m_countInVisible) {
         m_countInVisible = false;
@@ -653,7 +657,7 @@ void FluidSynthSoundController::sequencerCallback(unsigned int time, fluid_event
         const int channel = fluid_event_get_channel(event);
         const short key = fluid_event_get_key(event);
         if ((soundController->m_playMode == u"rhythm"_s || soundController->m_countInOnly) && channel == RhythmChannel) {
-            if (key == RhythmCountInKey && soundController->m_countInNextValue <= soundController->m_rhythmCountInBeats) {
+            if (key == RhythmCountInKey && soundController->m_countInNextValue <= soundController->m_activeCountInBeats) {
                 soundController->m_countInVisible = true;
                 emit soundController->countInChanged(soundController->m_countInNextValue);
                 ++soundController->m_countInNextValue;

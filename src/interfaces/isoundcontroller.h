@@ -42,6 +42,8 @@ class MINUETINTERFACES_EXPORT ISoundController : public IPlugin
 public:
     ~ISoundController() override = default;
 
+    static constexpr int RhythmExerciseCountInBeats = 4;
+
     enum class State {
         StoppedState,
         PlayingState,

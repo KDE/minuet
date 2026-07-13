@@ -17,7 +17,7 @@ ISoundController::ISoundController(QObject *parent)
     m_pitch = 0;
     m_volume = 100;
     m_tempo = 60;
-    m_rhythmCountInBeats = 4;
+    m_rhythmCountInBeats = RhythmExerciseCountInBeats;
     m_instrument = 0;
     m_rhythmInstrument = 37;
     setPlaybackLabel(u"00:00.00"_s);

@@ -20,7 +20,7 @@ Item {
     property int countIn: 0
     property int countInOverlayAnchorIndex: -1
     readonly property real countInOverlayGap: Kirigami.Units.smallSpacing
-    readonly property bool countInOverlayInitial: root.countPhase === "preparation"
+    readonly property bool countInOverlayInitial: root.countPhase === "preparation" || root.onboardingCountIn > 0
     readonly property real countInOverlaySize: root.meterWidth
     readonly property real countInOverlayX: root.countInOverlayTargetX()
     readonly property real countInOverlayY: root.countInOverlayTargetY()
@@ -44,6 +44,8 @@ Item {
     readonly property bool musicViewsTabbed: !applicationWindow().wideScreen && root.height > root.width
     readonly property real noteCardWidth: Math.ceil((root.scaleExercise ? root.meterWidth * 2 + root.meterSpacing : root.meterWidth) + root.cardHorizontalPadding)
     property int onboardingCountIn: 0
+    property int onboardingInitialMusicTabIndex: -1
+    property bool onboardingMusicTabCaptured: false
     property bool onboardingPreviewActive: false
     readonly property real pitchCorrectHoldSeconds: Math.min(0.18, Math.max(0.10, root.beatMs * 0.0002))
     property string pitchMeterText: i18n("No pitch")
@@ -655,6 +657,19 @@ Item {
 
     visible: root.currentExercise !== undefined
 
+    Onboarding.onAboutToStart: {
+        if (!root.onboardingMusicTabCaptured) {
+            root.onboardingInitialMusicTabIndex = musicTabs.currentIndex;
+            root.onboardingMusicTabCaptured = true;
+        }
+    }
+    Onboarding.onFinished: {
+        if (root.onboardingMusicTabCaptured && root.onboardingInitialMusicTabIndex >= 0) {
+            musicTabs.currentIndex = root.onboardingInitialMusicTabIndex;
+        }
+        root.onboardingInitialMusicTabIndex = -1;
+        root.onboardingMusicTabCaptured = false;
+    }
     onCurrentExerciseChanged: {
         testNextQuestionTimer.stop();
         clearCurrentRun();
@@ -820,24 +835,31 @@ Item {
                     id: headerCenter
 
                     Layout.fillWidth: true
-                    Onboarding.groups: ["singing"]
-                    Onboarding.texts: [i18n("The header shows the exercise status, score, and current target information while you sing.")]
                     spacing: 0
 
-                    Kirigami.Heading {
+                    ColumnLayout {
+                        id: headerText
+
                         Layout.fillWidth: true
-                        elide: Text.ElideRight
-                        horizontalAlignment: Text.AlignHCenter
-                        level: 3
-                        text: root.score >= 0 ? i18n("Score: %1%", root.score) : root.scaleExercise ? i18n("Sing the scale") : i18n("Sing the interval")
-                    }
-                    Kirigami.Heading {
-                        Layout.fillWidth: true
-                        color: Kirigami.Theme.disabledTextColor
-                        elide: Text.ElideRight
-                        horizontalAlignment: Text.AlignHCenter
-                        level: 3
-                        text: root.questionPitchMessage()
+                        Onboarding.groups: ["singing"]
+                        Onboarding.texts: [root.scaleExercise ? i18n("The header identifies the scale and shows the current instruction or score.") : i18n("The header identifies the interval and shows the current instruction or score.")]
+                        spacing: 0
+
+                        Kirigami.Heading {
+                            Layout.fillWidth: true
+                            elide: Text.ElideRight
+                            horizontalAlignment: Text.AlignHCenter
+                            level: 3
+                            text: root.score >= 0 ? i18n("Score: %1%", root.score) : root.scaleExercise ? i18n("Sing the scale") : i18n("Sing the interval")
+                        }
+                        Kirigami.Heading {
+                            Layout.fillWidth: true
+                            color: Kirigami.Theme.disabledTextColor
+                            elide: Text.ElideRight
+                            horizontalAlignment: Text.AlignHCenter
+                            level: 3
+                            text: root.questionPitchMessage()
+                        }
                     }
                     RowLayout {
                         id: actionButtons
@@ -847,7 +869,7 @@ Item {
                         Layout.alignment: Qt.AlignHCenter
                         Layout.topMargin: Kirigami.Units.smallSpacing
                         Onboarding.groups: ["singing"]
-                        Onboarding.texts: [i18n("Start a single singing question or begin a test with several questions in a row.")]
+                        Onboarding.texts: [i18n("Use New Question or Start for one exercise, or Start Test for a scored series.")]
                         spacing: Kirigami.Units.smallSpacing
 
                         QQC2.Button {
@@ -906,12 +928,15 @@ Item {
             Layout.leftMargin: root.contentPadding
             Layout.rightMargin: root.contentPadding
             Layout.topMargin: root.contentPadding
+            Onboarding.groups: ["singing"]
+            Onboarding.texts: [root.scaleExercise ? i18n("This area shows the scale notes in order. Borders report pitch; pitch meters show flat or sharp notes, and timing meters show early or late starts.") : i18n("This area shows the reference and target notes. Sing the target; its border reports accuracy, and its pitch meter shows flat or sharp notes.")]
+
+            Onboarding.onAboutToShow: root.onboardingPreviewActive = true
+            Onboarding.onHide: root.onboardingPreviewActive = false
 
             Flickable {
                 id: noteViewport
 
-                Onboarding.groups: ["singing"]
-                Onboarding.texts: [i18n("Sing the note cards in order. The current card is highlighted; borders show correctness after detection."), i18n("Pitch meters light below the center for flat notes and above the center for sharp notes. Scale exercises also show a timing meter for each note.")]
                 anchors.fill: parent
                 boundsBehavior: Flickable.StopAtBounds
                 clip: true
@@ -941,9 +966,6 @@ Item {
                         spacing: Kirigami.Units.smallSpacing
                         x: root.scaleExercise ? noteContent.scaleSideInset : noteContent.centeredInset
                         y: Math.max(noteContent.countInTopInset, Math.round((noteContent.height - noteRow.implicitHeight) / 2))
-
-                        Onboarding.onAboutToShow: root.onboardingPreviewActive = true
-                        Onboarding.onHide: root.onboardingPreviewActive = false
 
                         Repeater {
                             id: noteRepeater
@@ -1088,10 +1110,25 @@ Item {
                     Layout.fillWidth: true
                     Layout.preferredHeight: musicPanel.viewHeight
                     Layout.preferredWidth: musicViewsLayout.musicViewWidth
-                    Onboarding.groups: ["singing"]
-                    Onboarding.texts: [i18n("The keyboard highlights the reference note and target notes for the singing question.")]
                     visible: !musicViewsLayout.tabbed || musicTabs.currentIndex === 0
 
+                    Item {
+                        id: keyboardOnboardingTarget
+
+                        Onboarding.groups: ["singing"]
+                        Onboarding.texts: [i18n("The keyboard highlights the reference note and target notes for the singing question.")]
+                        height: musicViewsLayout.tabbed ? musicPanel.height : parent.height
+                        width: musicViewsLayout.tabbed ? musicPanel.width : parent.width
+                        x: musicViewsLayout.tabbed ? -keyboardPanel.x - musicViewsLayout.x : 0
+                        y: musicViewsLayout.tabbed ? -keyboardPanel.y - musicViewsLayout.y : 0
+                        z: -1
+
+                        Onboarding.onAboutToShow: {
+                            if (musicViewsLayout.tabbed) {
+                                musicTabs.currentIndex = 0;
+                            }
+                        }
+                    }
                     PianoView {
                         id: pianoView
 
@@ -1110,11 +1147,26 @@ Item {
                     Layout.fillWidth: true
                     Layout.preferredHeight: musicPanel.viewHeight
                     Layout.preferredWidth: musicViewsLayout.musicViewWidth
-                    Onboarding.groups: ["singing"]
-                    Onboarding.texts: [i18n("The staff shows the same singing notes in music notation.")]
                     clip: true
                     visible: !musicViewsLayout.tabbed || musicTabs.currentIndex === 1
 
+                    Item {
+                        id: staffOnboardingTarget
+
+                        Onboarding.groups: ["singing"]
+                        Onboarding.texts: [i18n("The staff shows the same singing notes in music notation.")]
+                        height: musicViewsLayout.tabbed ? musicPanel.height : parent.height
+                        width: musicViewsLayout.tabbed ? musicPanel.width : parent.width
+                        x: musicViewsLayout.tabbed ? -staffPanel.x - musicViewsLayout.x : 0
+                        y: musicViewsLayout.tabbed ? -staffPanel.y - musicViewsLayout.y : 0
+                        z: -1
+
+                        Onboarding.onAboutToShow: {
+                            if (musicViewsLayout.tabbed) {
+                                musicTabs.currentIndex = 1;
+                            }
+                        }
+                    }
                     SheetMusicView {
                         id: sheetMusicView
 
@@ -1127,8 +1179,6 @@ Item {
                 id: musicTabs
 
                 Layout.fillWidth: true
-                Onboarding.groups: ["singing"]
-                Onboarding.texts: [i18n("On narrow screens, switch between the keyboard and staff views with these tabs.")]
                 position: QQC2.TabBar.Footer
                 visible: root.musicViewsTabbed
 

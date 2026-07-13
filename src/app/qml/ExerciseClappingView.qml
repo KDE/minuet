@@ -20,7 +20,7 @@ Item {
     property int countIn: 0
     property int countInOverlayAnchorIndex: -1
     readonly property real countInOverlayGap: Kirigami.Units.smallSpacing
-    readonly property bool countInOverlayInitial: root.countPhase === "preparation"
+    readonly property bool countInOverlayInitial: root.countPhase === "preparation" || root.onboardingCountIn > 0
     readonly property real countInOverlaySize: Math.ceil(onsetMeterProbe.implicitWidth)
     readonly property real countInOverlayX: root.countInOverlayTargetX()
     readonly property real countInOverlayY: root.countInOverlayTargetY()
@@ -739,24 +739,31 @@ Item {
                     id: headerCenter
 
                     Layout.fillWidth: true
-                    Onboarding.groups: ["clapping"]
-                    Onboarding.texts: [i18n("The header shows the exercise status and score while you prepare, listen, clap, and review the result.")]
                     spacing: 0
 
-                    Kirigami.Heading {
+                    ColumnLayout {
+                        id: headerText
+
                         Layout.fillWidth: true
-                        elide: Text.ElideRight
-                        horizontalAlignment: Text.AlignHCenter
-                        level: 3
-                        text: root.score >= 0 ? i18n("Score: %1%", root.score) : i18n("Clap the rhythm")
-                    }
-                    Kirigami.Heading {
-                        Layout.fillWidth: true
-                        color: Kirigami.Theme.disabledTextColor
-                        elide: Text.ElideRight
-                        horizontalAlignment: Text.AlignHCenter
-                        level: 3
-                        text: root.inputErrorMessage.length > 0 ? root.inputErrorMessage : root.viewState === "listening" ? i18n("Listening...") : root.viewState === "analyzing" ? i18n("Analyzing...") : Core.exerciseSessionController.isTest && Core.exerciseSessionController.statusText.length > 0 ? Core.exerciseSessionController.statusText : root.microphone ? root.microphone.inputDeviceAvailable ? root.microphone.status : i18n("No microphone input devices found") : i18n("No microphone input plugin available")
+                        Onboarding.groups: ["clapping"]
+                        Onboarding.texts: [i18n("The header shows the current instruction, microphone status, and score.")]
+                        spacing: 0
+
+                        Kirigami.Heading {
+                            Layout.fillWidth: true
+                            elide: Text.ElideRight
+                            horizontalAlignment: Text.AlignHCenter
+                            level: 3
+                            text: root.score >= 0 ? i18n("Score: %1%", root.score) : i18n("Clap the rhythm")
+                        }
+                        Kirigami.Heading {
+                            Layout.fillWidth: true
+                            color: Kirigami.Theme.disabledTextColor
+                            elide: Text.ElideRight
+                            horizontalAlignment: Text.AlignHCenter
+                            level: 3
+                            text: root.inputErrorMessage.length > 0 ? root.inputErrorMessage : root.viewState === "listening" ? i18n("Listening...") : root.viewState === "analyzing" ? i18n("Analyzing...") : Core.exerciseSessionController.isTest && Core.exerciseSessionController.statusText.length > 0 ? Core.exerciseSessionController.statusText : root.microphone ? root.microphone.inputDeviceAvailable ? root.microphone.status : i18n("No microphone input devices found") : i18n("No microphone input plugin available")
+                        }
                     }
                     RowLayout {
                         id: actionButtons
@@ -766,7 +773,7 @@ Item {
                         Layout.alignment: Qt.AlignHCenter
                         Layout.topMargin: Kirigami.Units.smallSpacing
                         Onboarding.groups: ["clapping"]
-                        Onboarding.texts: [i18n("Start a single clapping question or begin a test with several questions in a row.")]
+                        Onboarding.texts: [i18n("Use New Question or Start for one exercise, or Start Test for a scored series.")]
                         spacing: Kirigami.Units.smallSpacing
 
                         QQC2.Button {
@@ -825,6 +832,11 @@ Item {
             Layout.leftMargin: root.contentPadding
             Layout.rightMargin: root.contentPadding
             Layout.topMargin: root.contentPadding
+            Onboarding.groups: ["clapping"]
+            Onboarding.texts: [i18n("This area shows every rhythm figure. Borders mark correct or missed claps, and timing meters show early or late claps.")]
+
+            Onboarding.onAboutToShow: root.onboardingPreviewActive = true
+            Onboarding.onHide: root.onboardingPreviewActive = false
 
             Flickable {
                 id: rhythmViewport
@@ -852,14 +864,9 @@ Item {
                     Row {
                         id: rhythmRow
 
-                        Onboarding.groups: ["clapping"]
-                        Onboarding.texts: [i18n("Each colored card is one rhythm figure. Green borders mark figures clapped correctly; red borders mark missed figures."), i18n("The onset meter below each figure lights below the center for advanced claps and above the center for late claps.")]
                         spacing: Kirigami.Units.smallSpacing
                         x: rhythmContent.centeredInset
                         y: Math.max(rhythmContent.countInTopInset, Math.round((rhythmContent.height - rhythmRow.implicitHeight) / 2))
-
-                        Onboarding.onAboutToShow: root.onboardingPreviewActive = true
-                        Onboarding.onHide: root.onboardingPreviewActive = false
 
                         Repeater {
                             id: rhythmRepeater
