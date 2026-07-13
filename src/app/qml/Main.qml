@@ -137,7 +137,7 @@ Kirigami.ApplicationWindow {
 
             Kirigami.PlaceholderMessage {
                 anchors.centerIn: parent
-                explanation: i18n("Start with a topic, then pick the specific training level.")
+                explanation: i18n("Start by selecting an exercise topic from the drawer menu.")
                 icon.name: "qrc:/icons/64-apps-minuet.png"
                 text: i18n("Choose an exercise")
                 width: Math.min(parent.width - Kirigami.Units.gridUnit * 2, Kirigami.Units.gridUnit * 28)
