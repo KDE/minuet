@@ -39,11 +39,8 @@ void SettingsController::load()
     m_singingScoringMode = std::clamp(settings.value(u"SingingScoringMode"_s, m_singingScoringMode).toInt(), 0, 1);
     m_singingVoiceClass = std::clamp(settings.value(u"SingingVoiceClass"_s, m_singingVoiceClass).toInt(), 0, 3);
     m_singingPitchMethod = std::clamp(settings.value(u"SingingPitchMethod"_s, m_singingPitchMethod).toInt(), 0, 6);
-    m_singingOnsetMethod = std::clamp(settings.value(u"SingingOnsetMethod"_s, m_singingOnsetMethod).toInt(), 0, 7);
     m_singingMinimumPitchConfidence = std::clamp(settings.value(u"SingingMinimumPitchConfidence"_s, m_singingMinimumPitchConfidence).toDouble(), 0.0, 0.95);
-    m_singingOnsetThreshold = std::clamp(settings.value(u"SingingOnsetThreshold"_s, m_singingOnsetThreshold).toDouble(), 0.01, 1.0);
     m_singingInputGateLevel = std::clamp(settings.value(u"SingingInputGateLevel"_s, m_singingInputGateLevel).toDouble(), 0.0, 0.25);
-    m_singingMinimumOnsetStrength = std::clamp(settings.value(u"SingingMinimumOnsetStrength"_s, m_singingMinimumOnsetStrength).toDouble(), 0.0, 1.0);
     m_singingRequiredStablePitchFrames = std::clamp(settings.value(u"SingingRequiredStablePitchFrames"_s, m_singingRequiredStablePitchFrames).toInt(), 1, 10);
     m_clappingPitchMethod = std::clamp(settings.value(u"ClappingPitchMethod"_s, m_clappingPitchMethod).toInt(), 0, 6);
     m_clappingOnsetMethod = std::clamp(settings.value(u"ClappingOnsetMethod"_s, m_clappingOnsetMethod).toInt(), 0, 7);
@@ -56,6 +53,9 @@ void SettingsController::load()
     m_rhythmicOnboardingPromptShown = settings.value(u"RhythmicOnboardingPromptShown"_s, m_rhythmicOnboardingPromptShown).toBool();
     m_clappingOnboardingPromptShown = settings.value(u"ClappingOnboardingPromptShown"_s, m_clappingOnboardingPromptShown).toBool();
     m_singingOnboardingPromptShown = settings.value(u"SingingOnboardingPromptShown"_s, m_singingOnboardingPromptShown).toBool();
+    settings.remove(u"SingingOnsetMethod"_s);
+    settings.remove(u"SingingOnsetThreshold"_s);
+    settings.remove(u"SingingMinimumOnsetStrength"_s);
 }
 
 void SettingsController::write(const QString &key, int value)
@@ -171,29 +171,14 @@ int SettingsController::singingPitchMethod() const
     return m_singingPitchMethod;
 }
 
-int SettingsController::singingOnsetMethod() const
-{
-    return m_singingOnsetMethod;
-}
-
 double SettingsController::singingMinimumPitchConfidence() const
 {
     return m_singingMinimumPitchConfidence;
 }
 
-double SettingsController::singingOnsetThreshold() const
-{
-    return m_singingOnsetThreshold;
-}
-
 double SettingsController::singingInputGateLevel() const
 {
     return m_singingInputGateLevel;
-}
-
-double SettingsController::singingMinimumOnsetStrength() const
-{
-    return m_singingMinimumOnsetStrength;
 }
 
 int SettingsController::singingRequiredStablePitchFrames() const
@@ -261,11 +246,8 @@ void SettingsController::resetAdvancedSettingsToDefaults()
     setSingingDisregardOctaveDifference(DefaultSingingDisregardOctaveDifference);
     setSingingScoringMode(DefaultSingingScoringMode);
     setSingingPitchMethod(DefaultSingingPitchMethod);
-    setSingingOnsetMethod(DefaultSingingOnsetMethod);
     setSingingMinimumPitchConfidence(DefaultSingingMinimumPitchConfidence);
-    setSingingOnsetThreshold(DefaultSingingOnsetThreshold);
     setSingingInputGateLevel(DefaultSingingInputGateLevel);
-    setSingingMinimumOnsetStrength(DefaultSingingMinimumOnsetStrength);
     setSingingRequiredStablePitchFrames(DefaultSingingRequiredStablePitchFrames);
     setClappingPitchMethod(DefaultClappingPitchMethod);
     setClappingOnsetMethod(DefaultClappingOnsetMethod);
@@ -481,21 +463,13 @@ void SettingsController::setSingingScoringMode(int mode)
 
 MINUET_SET_INT_SETTING(setSingingVoiceClass, m_singingVoiceClass, u"SingingVoiceClass"_s, singingVoiceClassChanged, 0, 3)
 MINUET_SET_INT_SETTING(setSingingPitchMethod, m_singingPitchMethod, u"SingingPitchMethod"_s, singingPitchMethodChanged, 0, 6)
-MINUET_SET_INT_SETTING(setSingingOnsetMethod, m_singingOnsetMethod, u"SingingOnsetMethod"_s, singingOnsetMethodChanged, 0, 7)
 MINUET_SET_DOUBLE_SETTING(setSingingMinimumPitchConfidence,
                           m_singingMinimumPitchConfidence,
                           u"SingingMinimumPitchConfidence"_s,
                           singingMinimumPitchConfidenceChanged,
                           0.0,
                           0.95)
-MINUET_SET_DOUBLE_SETTING(setSingingOnsetThreshold, m_singingOnsetThreshold, u"SingingOnsetThreshold"_s, singingOnsetThresholdChanged, 0.01, 1.0)
 MINUET_SET_DOUBLE_SETTING(setSingingInputGateLevel, m_singingInputGateLevel, u"SingingInputGateLevel"_s, singingInputGateLevelChanged, 0.0, 0.25)
-MINUET_SET_DOUBLE_SETTING(setSingingMinimumOnsetStrength,
-                          m_singingMinimumOnsetStrength,
-                          u"SingingMinimumOnsetStrength"_s,
-                          singingMinimumOnsetStrengthChanged,
-                          0.0,
-                          1.0)
 MINUET_SET_INT_SETTING(setSingingRequiredStablePitchFrames,
                        m_singingRequiredStablePitchFrames,
                        u"SingingRequiredStablePitchFrames"_s,

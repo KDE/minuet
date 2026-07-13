@@ -452,7 +452,7 @@ FormCard.FormCardPage {
                 Layout.topMargin: root.formDelegateHorizontalPadding
             }
             AdvancedSettingsSection {
-                description: i18n("Used for pitch and timing analysis in singing exercises.")
+                description: i18n("Used for pitch analysis and note-entry timing in singing exercises.")
                 text: i18n("Singing detection")
             }
             AdvancedSettingsComboBox {
@@ -462,15 +462,6 @@ FormCard.FormCardPage {
 
                 onActivated: function (currentValue, currentIndex) {
                     Core.settingsController.singingPitchMethod = currentIndex;
-                }
-            }
-            AdvancedSettingsComboBox {
-                currentIndex: Core.settingsController.singingOnsetMethod
-                label: i18n("Onset method")
-                model: root.microphoneOnsetMethods
-
-                onActivated: function (currentValue, currentIndex) {
-                    Core.settingsController.singingOnsetMethod = currentIndex;
                 }
             }
             AdvancedSettingsSlider {
@@ -486,18 +477,6 @@ FormCard.FormCardPage {
                 }
             }
             AdvancedSettingsSlider {
-                decimals: 2
-                from: 0.01
-                label: i18n("Onset threshold")
-                stepSize: 0.01
-                to: 1
-                value: Core.settingsController.singingOnsetThreshold
-
-                onMoved: function (value) {
-                    Core.settingsController.singingOnsetThreshold = value;
-                }
-            }
-            AdvancedSettingsSlider {
                 decimals: 3
                 from: 0
                 label: i18n("Input gate")
@@ -507,18 +486,6 @@ FormCard.FormCardPage {
 
                 onMoved: function (value) {
                     Core.settingsController.singingInputGateLevel = value;
-                }
-            }
-            AdvancedSettingsSlider {
-                decimals: 3
-                from: 0
-                label: i18n("Minimum onset strength")
-                stepSize: 0.001
-                to: 1
-                value: Core.settingsController.singingMinimumOnsetStrength
-
-                onMoved: function (value) {
-                    Core.settingsController.singingMinimumOnsetStrength = value;
                 }
             }
             AdvancedSettingsSlider {

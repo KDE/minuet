@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 
 set(AUBIOMICROPHONEINPUTCONTROLLER_PLUGIN_SRCS
-    aubiomicrophoneinputcontroller.cpp
+    aubioanalysisworker.cpp aubiomicrophoneinputcontroller.cpp
 )
 
 if(MINUET_MOBILE_PLATFORM)
@@ -26,6 +26,17 @@ target_link_libraries(
     minuetaubiomicrophoneinputcontroller Qt::Core Qt::Multimedia
     Minuet::Interfaces Aubio::aubio
 )
+
+if(BUILD_TESTING AND NOT MINUET_MOBILE_PLATFORM)
+    add_executable(
+        aubioanalysisworkertest autotests/aubioanalysisworkertest.cpp
+                                aubioanalysisworker.cpp
+    )
+    target_link_libraries(
+        aubioanalysisworkertest Qt::Core Qt::Multimedia Qt::Test Aubio::aubio
+    )
+    add_test(NAME aubioanalysisworkertest COMMAND aubioanalysisworkertest)
+endif()
 
 if(MINUET_MOBILE_PLATFORM)
 

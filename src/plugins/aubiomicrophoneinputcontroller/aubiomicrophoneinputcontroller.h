@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include "aubioanalysisworker.h"
+
 #include <interfaces/imicrophoneinputcontroller.h>
 
 #include <QAudioFormat>
@@ -9,10 +11,12 @@
 #include <QPointer>
 #include <QString>
 #include <QTimer>
+#include <QThread>
 #include <QVariantList>
 
 #include <aubio/aubio.h>
 
+#include <atomic>
 #include <deque>
 #include <memory>
 
@@ -35,6 +39,8 @@ public:
     bool running() const override;
     QString status() const override;
     double analysisTimeSeconds() const override;
+    double captureTimeSeconds() const override;
+    bool analysisPending() const override;
 
     Preset preset() const override;
     void setPreset(Preset preset) override;
@@ -114,6 +120,7 @@ public:
     Q_INVOKABLE void start() override;
     Q_INVOKABLE void stop() override;
     Q_INVOKABLE void resetInputAnalysisState() override;
+    Q_INVOKABLE void finalizeInputAnalysis() override;
     Q_INVOKABLE void calibrateNoiseFloor() override;
     Q_INVOKABLE QString presetName(int preset) const override;
     Q_INVOKABLE QString voiceClassName(int voiceClass) const override;
@@ -166,6 +173,11 @@ private:
     void resetIfRunning();
     void applyPreset(Preset preset, bool restartIfRunning);
     void maybePrintDebug(double timeSeconds, double frequencyHz, double confidence);
+    AubioAnalysisWorker::Config workerConfig() const;
+    void updateWorkerConfig();
+    void handleWorkerPitch(double seconds, bool voiced, double frequencyHz, double confidence, const QString &reason);
+    void handleWorkerOnset(double onsetSeconds, double strength);
+    void stopAudioCapture();
 
     static QString noteNameForMidi(int midiNote);
     static double frequencyForMidi(int midiNote);
@@ -183,6 +195,7 @@ private:
     QString analysisModeName(AnalysisMode mode) const;
 
     bool m_running = false;
+    bool m_analysisPending = false;
     QString m_status;
     bool m_microphonePermissionRequestPending = false;
 
@@ -221,6 +234,8 @@ private:
     double m_audioLevel = 0.0;
     double m_peakLevel = 0.0;
     quint64 m_bytesRead = 0;
+    quint64 m_capturedSamples = 0;
+    qsizetype m_queuedAnalysisBytes = 0;
 
     double m_frequencyHz = 0.0;
     int m_midiNote = -1;
@@ -260,4 +275,9 @@ private:
     FVecPtr m_onsetOut;
 
     std::deque<float> m_pendingSamples;
+
+    QThread m_analysisThread;
+    AubioAnalysisWorker *m_analysisWorker = nullptr;
+    std::shared_ptr<std::atomic<quint64>> m_activeGeneration;
+    quint64 m_generation = 0;
 };

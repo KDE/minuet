@@ -16,10 +16,11 @@ Item {
     readonly property real clampedValue: Math.max(-1, Math.min(1, root.value))
     readonly property string defaultReadoutText: root.meterKind === "pitch" ? i18n("No pitch") : i18n("No onset")
     readonly property string displayText: root.readoutText.length > 0 ? root.readoutText : root.defaultReadoutText
-    readonly property bool hasReading: root.displayText !== root.defaultReadoutText
+    readonly property bool hasReading: root.displayText !== root.noReadingText
     readonly property real meterHeight: root.segmentCount * root.segmentHeight + Math.max(0, root.segmentCount - 1) * root.segmentSpacing + Kirigami.Units.smallSpacing * 2
     property string meterKind: "pitch"
-    property string readoutText: root.valueText.length > 0 ? root.valueText : root.defaultReadoutText
+    property string noReadingText: root.defaultReadoutText
+    property string readoutText: root.valueText.length > 0 ? root.valueText : root.noReadingText
     property string sampleReadoutText: root.meterKind === "pitch" ? i18n("%1 cents").arg(12345) : i18n("%1 ms").arg(12345)
     readonly property int segmentCount: 17
     readonly property real segmentHeight: Math.max(4, Math.round(Kirigami.Units.gridUnit * 0.34))

@@ -23,6 +23,8 @@ class MINUETINTERFACES_EXPORT IMicrophoneInputController : public IPlugin
     Q_PROPERTY(bool running READ running NOTIFY runningChanged)
     Q_PROPERTY(QString status READ status NOTIFY statusChanged)
     Q_PROPERTY(double analysisTimeSeconds READ analysisTimeSeconds NOTIFY audioStatsChanged)
+    Q_PROPERTY(double captureTimeSeconds READ captureTimeSeconds NOTIFY captureTimeChanged)
+    Q_PROPERTY(bool analysisPending READ analysisPending NOTIFY analysisPendingChanged)
 
     Q_PROPERTY(Preset preset READ preset WRITE setPreset NOTIFY presetChanged)
     Q_PROPERTY(AnalysisMode analysisMode READ analysisMode WRITE setAnalysisMode NOTIFY analysisModeChanged)
@@ -78,8 +80,7 @@ public:
 
     enum AnalysisMode {
         SingingPitchOnly = 0,
-        SingingPitchAndOnset,
-        ClappingOnsetOnly,
+        ClappingOnsetOnly = 2,
     };
     Q_ENUM(AnalysisMode)
 
@@ -119,6 +120,8 @@ public:
     virtual bool running() const = 0;
     virtual QString status() const = 0;
     virtual double analysisTimeSeconds() const = 0;
+    virtual double captureTimeSeconds() const = 0;
+    virtual bool analysisPending() const = 0;
     virtual Preset preset() const = 0;
     virtual AnalysisMode analysisMode() const = 0;
     virtual VoiceClass voiceClass() const = 0;
@@ -179,6 +182,7 @@ public Q_SLOTS:
     virtual void start() = 0;
     virtual void stop() = 0;
     virtual void resetInputAnalysisState() = 0;
+    virtual void finalizeInputAnalysis() = 0;
     virtual void calibrateNoiseFloor() = 0;
 
     virtual QString presetName(int preset) const = 0;
@@ -189,6 +193,8 @@ public Q_SLOTS:
 Q_SIGNALS:
     void runningChanged();
     void statusChanged();
+    void captureTimeChanged();
+    void analysisPendingChanged();
     void presetChanged();
     void analysisModeChanged();
     void voiceClassChanged();
@@ -216,6 +222,8 @@ Q_SIGNALS:
     void rhythmChanged();
     void pitchDetected(double seconds, int midiNote, double cents, double confidence);
     void onsetDetected(double seconds, double strength);
+    void inputAnalysisFinished();
+    void inputAnalysisFailed(const QString &message);
 
 protected:
     explicit IMicrophoneInputController(QObject *parent = nullptr);
