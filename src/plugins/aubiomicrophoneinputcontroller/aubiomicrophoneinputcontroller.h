@@ -159,6 +159,7 @@ private:
     void rememberOnsetDescriptor(double strength);
     double adaptiveMinimumOnsetStrength() const;
     void updateNoiseCalibration(double sumSquares, int sampleCount);
+    void applyCalibratedDetectorThresholds(double noiseFloor);
     void updateInputDevices();
     void registerOnset(double onsetSeconds, double strength);
     void updateDetectedTempo(double onsetSeconds);
