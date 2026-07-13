@@ -228,6 +228,9 @@ Item {
     }
     function durationForToken(token: string): real {
         let note = token;
+        if (note.startsWith("r")) {
+            note = note.slice(1);
+        }
         let dotted = 1.0;
         if (note.endsWith(".")) {
             dotted = 1.5;
@@ -325,11 +328,13 @@ Item {
             let figureOnsets = [];
             const figureStart = cursor;
             for (const part of parts) {
-                figureOnsets.push(onsetList.length);
-                onsetList.push({
-                    "figure": figureIndex,
-                    "timeMs": cursor
-                });
+                if (!isRestToken(part)) {
+                    figureOnsets.push(onsetList.length);
+                    onsetList.push({
+                        "figure": figureIndex,
+                        "timeMs": cursor
+                    });
+                }
                 cursor += durationForToken(part);
             }
             states.push({
@@ -370,6 +375,9 @@ Item {
         });
         root.performedOnsets = performed;
         refreshFigureStates(elapsedMs);
+    }
+    function isRestToken(token: string): bool {
+        return token.startsWith("r");
     }
     function mapRhythmRowX(localX: real): real {
         const geometryDependency = rhythmFrame.x + rhythmViewport.x + rhythmViewport.contentX + rhythmContent.x + rhythmRow.x + rhythmRow.implicitWidth;

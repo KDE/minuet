@@ -1,0 +1,19 @@
+{
+  "exercises": [
+    {
+      "name": "Rhythm",
+      "playMode": "rhythm",
+      "userMessage": "Hear the rhythm and choose your answers",
+      "template": "lilypond-templates/rhythm.ly.tmpl",
+      "_icon": "minuet-rhythms-symbolic.svg",
+      "children": [
+        {
+          "name": "Medium with rests",
+          "and-tags": ["rhythm", "medium-with-rests", "rest-listening"],
+          "clapping-and-tags": ["rhythm", "medium-with-rests"],
+          "description": "Practice varied rhythm patterns that combine notes and rests."
+        }
+      ]
+    }
+  ]
+}

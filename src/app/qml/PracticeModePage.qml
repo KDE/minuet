@@ -26,6 +26,10 @@ Kirigami.Page {
             exercise[key] = page.currentExercise[key];
         }
         exercise.inputMode = inputMode;
+        if (inputMode === "clapping" && exercise.rhythmClappingOptions !== undefined) {
+            exercise.options = exercise.rhythmClappingOptions;
+        }
+        delete exercise.rhythmClappingOptions;
         if (inputMode === "singing") {
             exercise.singingExerciseKind = page.practiceMode;
         }

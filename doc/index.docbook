@@ -220,6 +220,12 @@ Rhythm exercises focus on timing rather than pitch. In the clapping mode, &minue
 microphone input and compares the onsets to the target pattern.
 </para>
 
+<para>
+The <guilabel>Easy with rests</guilabel> and <guilabel>Medium with rests</guilabel> categories add
+silent positions to the corresponding note-only patterns. Listening exercises avoid choices that
+sound identical, while <guilabel>Read and clap</guilabel> includes every mixed note-and-rest pattern.
+</para>
+
 <screenshot>
   <screeninfo>&minuet; clapping exercise</screeninfo>
   <mediaobject>
