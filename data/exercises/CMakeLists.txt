@@ -18,7 +18,9 @@ set(MINUET_EXERCISES
     scales-simmetric-exercises.json
     scales-bebop-exercises.json
     rhythm-easy.json
+    rhythm-easy-rests.json
     rhythm-medium.json
+    rhythm-medium-rests.json
 )
 
 install(FILES ${MINUET_EXERCISES}

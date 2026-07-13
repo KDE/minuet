@@ -4,6 +4,8 @@
 
 #include "exercisesessioncontroller.h"
 
+#include <utils/rhythmtoken.h>
+
 #include <KLocalizedString>
 
 #include <QDebug>
@@ -456,14 +458,24 @@ void ExerciseSessionController::randomlySelectExerciseOptions(int selectedOption
         }
 
         for (const QString &additionalNote : additionalNotes) {
-            QString noteText = additionalNote;
-            if (isRhythm && noteText.endsWith(QLatin1Char('.'))) {
-                noteText.chop(1);
+            if (isRhythm) {
+                const RhythmToken rhythmToken = parseRhythmToken(additionalNote);
+                if (!rhythmToken.valid) {
+                    failSelection(u"Current exercise option has an invalid sequence."_s);
+                    return false;
+                }
+                if (rhythmToken.denominator > maxNote) {
+                    maxNote = rhythmToken.denominator;
+                }
+                if (rhythmToken.denominator < minNote) {
+                    minNote = rhythmToken.denominator;
+                }
+                continue;
             }
 
             bool ok = false;
-            const int note = noteText.toInt(&ok);
-            if (!ok || (isRhythm && note <= 0)) {
+            const int note = additionalNote.toInt(&ok);
+            if (!ok) {
                 failSelection(u"Current exercise option has an invalid sequence."_s);
                 return false;
             }

@@ -4,6 +4,8 @@
 
 #include "fluidsynthsoundcontroller.h"
 
+#include <utils/rhythmtoken.h>
+
 #include <KLocalizedString>
 
 #include <QCoreApplication>
@@ -220,21 +222,15 @@ void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedEx
         } else {
             // appendEvent(9, 80, 127, 1000*(60.0/m_tempo));
             const QStringList additionalNotes = sequence.split(QLatin1Char(' '), Qt::SkipEmptyParts);
-            for (QString additionalNote : additionalNotes) {
-                float dotted = 1;
-                if (additionalNote.endsWith('.')) {
-                    dotted = 1.5;
-                    additionalNote.chop(1);
-                }
-                bool ok = false;
-                const int denominator = additionalNote.toInt(&ok);
-                if (!ok || denominator <= 0) {
+            for (const QString &additionalNote : additionalNotes) {
+                const Minuet::RhythmToken token = Minuet::parseRhythmToken(additionalNote);
+                if (!token.valid) {
                     qWarning() << "Ignoring exercise option with invalid rhythm value:" << additionalNote;
                     clearSong();
                     return;
                 }
-                unsigned int duration = dotted * 1000 * (60.0 / m_tempo) * (4.0 / denominator);
-                appendEvent(RhythmChannel, m_rhythmInstrument, 127, duration);
+                const unsigned int duration = token.quarterNoteBeats() * 1000 * (60.0 / m_tempo);
+                appendEvent(RhythmChannel, m_rhythmInstrument, token.rest ? 0 : 127, duration);
             }
         }
     }

@@ -330,6 +330,15 @@ if(NOT MINUET_MOBILE_PLATFORM)
     target_link_libraries(minuet PRIVATE KF6::Crash)
 endif()
 
+if(BUILD_TESTING AND NOT MINUET_MOBILE_PLATFORM)
+    add_executable(rhythmresttest autotests/rhythmresttest.cpp)
+    target_compile_definitions(
+        rhythmresttest PRIVATE MINUET_SOURCE_DIR="${CMAKE_SOURCE_DIR}"
+    )
+    target_link_libraries(rhythmresttest Qt::Core Qt::Test Minuet::Utils)
+    add_test(NAME rhythmresttest COMMAND rhythmresttest)
+endif()
+
 if(NOT MINUET_MOBILE_PLATFORM)
     install(TARGETS minuet ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
     install(PROGRAMS org.kde.minuet.desktop DESTINATION ${KDE_INSTALL_APPDIR})

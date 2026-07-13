@@ -1,0 +1,194 @@
+{
+  "definitions": [
+    {
+      "tags": ["rhythm", "easy-with-rests", "medium-with-rests", "rest-listening"],
+      "name": "\uE4E6 \uE1D7",
+      "sequence": "r8 8"
+    },
+    {
+      "tags": ["rhythm", "easy-with-rests", "medium-with-rests"],
+      "name": "\uE1D7 \uE4E6",
+      "sequence": "8 r8"
+    },
+    {
+      "tags": ["rhythm", "easy-with-rests", "medium-with-rests", "rest-listening"],
+      "name": "\uE4E6\uE1E7 \uE1D9",
+      "sequence": "r8. 16"
+    },
+    {
+      "tags": ["rhythm", "easy-with-rests", "medium-with-rests"],
+      "name": "\uE1D7\uE1E7 \uE4E7",
+      "sequence": "8. r16"
+    },
+    {
+      "tags": ["rhythm", "easy-with-rests", "medium-with-rests", "rest-listening"],
+      "name": "\uE4E7 \uE1D7\uE1E7",
+      "sequence": "r16 8."
+    },
+    {
+      "tags": ["rhythm", "easy-with-rests", "medium-with-rests"],
+      "name": "\uE1D9 \uE4E6\uE1E7",
+      "sequence": "16 r8."
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests", "rest-listening"],
+      "name": "\uE4E7 \uE1F0\uE1F9\uE1F4\uE1F9\uE1F4",
+      "sequence": "r16 16 16 16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE1D9 \uE4E7 \uE1F0\uE1F9\uE1F4",
+      "sequence": "16 r16 16 16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests", "rest-listening"],
+      "name": "\uE4E7 \uE4E7 \uE1F0\uE1F9\uE1F4",
+      "sequence": "r16 r16 16 16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE1F0\uE1F9\uE1F4 \uE4E7 \uE1D9",
+      "sequence": "16 16 r16 16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests", "rest-listening"],
+      "name": "\uE4E7 \uE1D9 \uE4E7 \uE1D9",
+      "sequence": "r16 16 r16 16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE1D9 \uE4E7 \uE4E7 \uE1D9",
+      "sequence": "16 r16 r16 16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE4E7 \uE4E7 \uE4E7 \uE1D9",
+      "sequence": "r16 r16 r16 16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE1F0\uE1F9\uE1F4\uE1F9\uE1F4 \uE4E7",
+      "sequence": "16 16 16 r16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests", "rest-listening"],
+      "name": "\uE4E7 \uE1F0\uE1F9\uE1F4 \uE4E7",
+      "sequence": "r16 16 16 r16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE1D9 \uE4E7 \uE1D9 \uE4E7",
+      "sequence": "16 r16 16 r16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE4E7 \uE4E7 \uE1D9 \uE4E7",
+      "sequence": "r16 r16 16 r16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE1F0\uE1F9\uE1F4 \uE4E7 \uE4E7",
+      "sequence": "16 16 r16 r16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE4E7 \uE1D9 \uE4E7 \uE4E7",
+      "sequence": "r16 16 r16 r16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE1D9 \uE4E7 \uE4E7 \uE4E7",
+      "sequence": "16 r16 r16 r16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE4E6 \uE1F0\uE1F9\uE1F4",
+      "sequence": "r8 16 16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE1D7 \uE4E7 \uE1D9",
+      "sequence": "8 r16 16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE4E6 \uE4E7 \uE1D9",
+      "sequence": "r8 r16 16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE1D7 \uE1D9 \uE4E7",
+      "sequence": "8 16 r16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE4E6 \uE1D9 \uE4E7",
+      "sequence": "r8 16 r16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE1D7 \uE4E7 \uE4E7",
+      "sequence": "8 r16 r16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE4E7 \uE1D7 \uE1D9",
+      "sequence": "r16 8 16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE1D9 \uE4E6 \uE1D9",
+      "sequence": "16 r8 16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE4E7 \uE4E6 \uE1D9",
+      "sequence": "r16 r8 16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE1D9 \uE1D7 \uE4E7",
+      "sequence": "16 8 r16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE4E7 \uE1D7 \uE4E7",
+      "sequence": "r16 8 r16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE1D9 \uE4E6 \uE4E7",
+      "sequence": "16 r8 r16"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE4E7 \uE1D9 \uE1D7",
+      "sequence": "r16 16 8"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE1D9 \uE4E7 \uE1D7",
+      "sequence": "16 r16 8"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE4E7 \uE4E7 \uE1D7",
+      "sequence": "r16 r16 8"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE1F0\uE1F9\uE1F4 \uE4E6",
+      "sequence": "16 16 r8"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE4E7 \uE1D9 \uE4E6",
+      "sequence": "r16 16 r8"
+    },
+    {
+      "tags": ["rhythm", "medium-with-rests"],
+      "name": "\uE1D9 \uE4E7 \uE4E6",
+      "sequence": "16 r16 r8"
+    }
+  ]
+}

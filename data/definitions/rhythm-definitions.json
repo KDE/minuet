@@ -1,42 +1,42 @@
 {
   "definitions": [
     {
-      "tags": ["rhythm", "easy", "medium"],
+      "tags": ["rhythm", "easy", "medium", "easy-with-rests", "medium-with-rests", "rest-listening"],
       "name": "\uE1F0",
       "sequence": "4"
     },
     {
-      "tags": ["rhythm", "easy", "medium"],
+      "tags": ["rhythm", "easy", "medium", "easy-with-rests", "medium-with-rests", "rest-listening"],
       "name": "\uE1F0\uE1F7\uE1F2",
       "sequence": "8 8"
     },
     {
-      "tags": ["rhythm", "easy", "medium"],
+      "tags": ["rhythm", "easy", "medium", "easy-with-rests", "medium-with-rests", "rest-listening"],
       "name": "\uE1F0\uE1F7\uE1FC\uE1F7\uE1F4",
       "sequence": "8. 16"
     },
     {
-      "tags": ["rhythm", "easy", "medium"],
+      "tags": ["rhythm", "easy", "medium", "easy-with-rests", "medium-with-rests", "rest-listening"],
       "name": "\uE1F0\uE1F9\uE1F2\uE1FC",
       "sequence": "16 8."
     },
     {
-      "tags": ["rhythm", "medium"],
+      "tags": ["rhythm", "medium", "medium-with-rests", "rest-listening"],
       "name": "\uE1F0\uE1F9\uE1F4\uE1F9\uE1F4\uE1F9\uE1F4",
       "sequence": "16 16 16 16"
     },
     {
-      "tags": ["rhythm", "medium"],
+      "tags": ["rhythm", "medium", "medium-with-rests", "rest-listening"],
       "name": "\uE1F0\uE1F7\uE1F2\uE1F9\uE1F4",
       "sequence": "8 16 16"
     },
     {
-      "tags": ["rhythm", "medium"],
+      "tags": ["rhythm", "medium", "medium-with-rests", "rest-listening"],
       "name": "\uE1F0\uE1F9\uE1F2\uE1F7\uE1F4",
       "sequence": "16 8 16"
     },
     {
-      "tags": ["rhythm", "medium"],
+      "tags": ["rhythm", "medium", "medium-with-rests", "rest-listening"],
       "name": "\uE1F0\uE1F9\uE1F4\uE1F7\uE1F2",
       "sequence": "16 16 8"
     }

@@ -16,6 +16,7 @@ set(MINUET_DEFINITIONS
     scales-simmetric-definitions.json
     scales-bebop-definitions.json
     rhythm-definitions.json
+    rhythm-rest-definitions.json
 )
 
 install(FILES ${MINUET_DEFINITIONS}

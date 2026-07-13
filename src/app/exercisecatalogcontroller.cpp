@@ -283,6 +283,13 @@ QJsonArray ExerciseCatalogController::applyDefinitions(QJsonArray exercises, QJs
         if (i1->isObject()) {
             QJsonObject exerciseObject = i1->toObject();
             QJsonArray filteredDefinitions = definitions;
+            QJsonArray clappingDefinitions;
+            if (exerciseObject.value(u"clapping-and-tags"_s).isArray()) {
+                clappingDefinitions = definitions;
+                QJsonObject clappingFilter;
+                clappingFilter.insert(u"and-tags"_s, exerciseObject.take(u"clapping-and-tags"_s));
+                filterDefinitions(clappingDefinitions, clappingFilter, u"and-tags"_s, DefinitionFilteringMode::AndFiltering);
+            }
             const QStringList exerciseObjectKeys = exerciseObject.keys();
             if (exerciseObjectKeys.contains(u"and-tags"_s) && exerciseObject[u"and-tags"_s].isArray()) {
                 filterDefinitions(filteredDefinitions, exerciseObject, u"and-tags"_s, DefinitionFilteringMode::AndFiltering);
@@ -306,6 +313,9 @@ QJsonArray ExerciseCatalogController::applyDefinitions(QJsonArray exercises, QJs
                     }
                 }
                 exerciseObject.insert(u"options"_s, filteredDefinitions);
+                if (!clappingDefinitions.isEmpty()) {
+                    exerciseObject.insert(u"rhythmClappingOptions"_s, clappingDefinitions);
+                }
             }
             exercises[i1 - exercisesBegin] = exerciseObject;
         }
