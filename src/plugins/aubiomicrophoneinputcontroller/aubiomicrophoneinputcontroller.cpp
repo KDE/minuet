@@ -1249,9 +1249,9 @@ void AubioMicrophoneInputController::applyPreset(Preset preset, bool restartIfRu
         m_onsetMethod = Hfc;
         m_minimumPitchConfidence = 0.70;
         m_pitchSilenceDb = -45.0;
-        m_onsetThreshold = 0.50;
+        m_onsetThreshold = 0.30;
         m_inputGateLevel = 0.0;
-        m_minimumOnsetStrength = 0.020;
+        m_minimumOnsetStrength = 0.015;
         m_requiredStablePitchFrames = 2;
         break;
     }

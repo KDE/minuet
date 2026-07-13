@@ -172,6 +172,11 @@ Kirigami.ApplicationWindow {
         target: Core.soundController
         value: (window.currentExercise !== undefined) ? window.currentExercise["playMode"] : ""
     }
+    Binding {
+        property: "tempo"
+        target: Core.soundController
+        value: window.currentExercise?.inputMode === "clapping" ? Core.settingsController.clappingSpeed : Core.settingsController.exerciseSpeed
+    }
     Shortcut {
         sequences: [StandardKey.Quit]
 

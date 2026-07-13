@@ -19,6 +19,7 @@ class SettingsController : public QObject
     Q_PROPERTY(int pitch READ pitch WRITE setPitch NOTIFY pitchChanged)
     Q_PROPERTY(int tempo READ tempo WRITE setTempo NOTIFY tempoChanged)
     Q_PROPERTY(int exerciseSpeed READ exerciseSpeed WRITE setExerciseSpeed NOTIFY exerciseSpeedChanged)
+    Q_PROPERTY(int clappingSpeed READ clappingSpeed WRITE setClappingSpeed NOTIFY clappingSpeedChanged)
     Q_PROPERTY(int instrumentGroup READ instrumentGroup WRITE setInstrumentGroup NOTIFY instrumentGroupChanged)
     Q_PROPERTY(int instrument READ instrument WRITE setInstrument NOTIFY instrumentChanged)
     Q_PROPERTY(int rhythmInstrument READ rhythmInstrument WRITE setRhythmInstrument NOTIFY rhythmInstrumentChanged)
@@ -68,6 +69,7 @@ public:
     int pitch() const;
     int tempo() const;
     int exerciseSpeed() const;
+    int clappingSpeed() const;
     int instrumentGroup() const;
     int instrument() const;
     int rhythmInstrument() const;
@@ -105,6 +107,7 @@ public Q_SLOTS:
     void setPitch(int pitch);
     void setTempo(int tempo);
     void setExerciseSpeed(int exerciseSpeed);
+    void setClappingSpeed(int clappingSpeed);
     void setInstrumentGroup(int instrumentGroup);
     void setInstrument(int instrument);
     void setRhythmInstrument(int rhythmInstrument);
@@ -140,6 +143,7 @@ Q_SIGNALS:
     void pitchChanged(int pitch);
     void tempoChanged(int tempo);
     void exerciseSpeedChanged(int exerciseSpeed);
+    void clappingSpeedChanged(int clappingSpeed);
     void instrumentGroupChanged(int instrumentGroup);
     void instrumentChanged(int instrument);
     void rhythmInstrumentChanged(int rhythmInstrument);
@@ -191,9 +195,9 @@ private:
     static constexpr int DefaultClappingPitchMethod = 0;
     static constexpr int DefaultClappingOnsetMethod = 1;
     static constexpr double DefaultClappingMinimumPitchConfidence = 0.70;
-    static constexpr double DefaultClappingOnsetThreshold = 0.50;
+    static constexpr double DefaultClappingOnsetThreshold = 0.30;
     static constexpr double DefaultClappingInputGateLevel = 0.0;
-    static constexpr double DefaultClappingMinimumOnsetStrength = 0.020;
+    static constexpr double DefaultClappingMinimumOnsetStrength = 0.015;
     static constexpr int DefaultClappingRequiredStablePitchFrames = 2;
 
     int m_rhythmPatternCount = 4;
@@ -202,6 +206,7 @@ private:
     int m_pitch = 0;
     int m_tempo = 60;
     int m_exerciseSpeed = 60;
+    int m_clappingSpeed = 45;
     int m_instrumentGroup = -1;
     int m_instrument = 0;
     int m_rhythmInstrument = 37;

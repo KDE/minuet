@@ -28,6 +28,7 @@ void SettingsController::load()
     m_pitch = std::clamp(settings.value(u"Pitch"_s, m_pitch).toInt(), -12, 12);
     m_tempo = std::clamp(settings.value(u"Tempo"_s, m_tempo).toInt(), 1, 255);
     m_exerciseSpeed = std::clamp(settings.value(u"ExerciseSpeed"_s, m_tempo).toInt(), 30, 240);
+    m_clappingSpeed = std::clamp(settings.value(u"ClappingSpeed"_s, m_clappingSpeed).toInt(), 30, 120);
     m_instrumentGroup = settings.value(u"InstrumentGroup"_s, m_instrumentGroup).toInt();
     m_instrument = std::clamp(settings.value(u"Instrument"_s, m_instrument).toInt(), 0, 127);
     m_rhythmInstrument = std::clamp(settings.value(u"RhythmInstrument"_s, m_rhythmInstrument).toInt(), 35, 81);
@@ -113,6 +114,11 @@ int SettingsController::tempo() const
 int SettingsController::exerciseSpeed() const
 {
     return m_exerciseSpeed;
+}
+
+int SettingsController::clappingSpeed() const
+{
+    return m_clappingSpeed;
 }
 
 int SettingsController::instrumentGroup() const
@@ -346,6 +352,18 @@ void SettingsController::setExerciseSpeed(int exerciseSpeed)
     write(u"Tempo"_s, m_tempo);
     emit exerciseSpeedChanged(m_exerciseSpeed);
     emit tempoChanged(m_tempo);
+}
+
+void SettingsController::setClappingSpeed(int clappingSpeed)
+{
+    clappingSpeed = std::clamp(clappingSpeed, 30, 120);
+    if (m_clappingSpeed == clappingSpeed) {
+        return;
+    }
+
+    m_clappingSpeed = clappingSpeed;
+    write(u"ClappingSpeed"_s, m_clappingSpeed);
+    emit clappingSpeedChanged(m_clappingSpeed);
 }
 
 void SettingsController::setInstrumentGroup(int instrumentGroup)

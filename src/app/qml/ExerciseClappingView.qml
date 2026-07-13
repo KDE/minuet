@@ -13,7 +13,7 @@ import org.kde.kirigamiaddons.onboarding
 Item {
     id: root
 
-    readonly property real beatMs: 60000 / Core.settingsController.exerciseSpeed
+    readonly property real beatMs: 60000 / Core.settingsController.clappingSpeed
     readonly property real cardHorizontalPadding: Kirigami.Units.largeSpacing * 2
     readonly property bool compactMode: !applicationWindow().wideScreen || Kirigami.Settings.isMobile
     readonly property real contentPadding: Kirigami.Units.largeSpacing * 2
@@ -162,7 +162,7 @@ Item {
         root.microphone.onsetThreshold = Core.settingsController.clappingOnsetThreshold;
         root.microphone.inputGateLevel = Core.settingsController.clappingInputGateLevel;
         root.microphone.minimumOnsetStrength = Core.settingsController.clappingMinimumOnsetStrength;
-        root.microphone.targetBpm = Core.settingsController.exerciseSpeed;
+        root.microphone.targetBpm = Core.settingsController.clappingSpeed;
         root.microphone.minimumExpectedOnsetIntervalMs = root.minimumExpectedOnsetIntervalMs();
     }
     function beginMicrophoneCapture(): void {
@@ -260,9 +260,12 @@ Item {
         if (root.microphone) {
             root.microphone.stop();
         }
-        const finalStates = refreshFigureStates(totalDurationMs() + root.toleranceMs + 1);
-        const correct = finalStates.filter(state => state.state === "correct").length;
-        root.score = finalStates.length > 0 ? Math.round(correct * 100 / finalStates.length) : 0;
+        refreshFigureStates(totalDurationMs() + root.toleranceMs + 1);
+        const alignment = alignPerformedOnsets();
+        const matchedOnsets = alignment.expectedMatches.filter(performedIndex => performedIndex >= 0).length;
+        const extraOnsets = alignment.performedMatches.filter(expectedIndex => expectedIndex < 0).length;
+        const scoredOnsets = root.expectedOnsets.length + extraOnsets;
+        root.score = scoredOnsets > 0 ? Math.round(matchedOnsets * 100 / scoredOnsets) : 0;
         root.viewState = "finished";
         finishScoredQuestion();
     }
