@@ -159,7 +159,6 @@ Item {
         root.microphone.analysisMode = IMicrophoneInputController.ClappingOnsetOnly;
         root.microphone.preset = IMicrophoneInputController.Clapping;
         root.microphone.onsetMethod = Core.settingsController.clappingOnsetMethod;
-        root.microphone.minimumPitchConfidence = Core.settingsController.clappingMinimumPitchConfidence;
         root.microphone.onsetThreshold = Core.settingsController.clappingOnsetThreshold;
         root.microphone.inputGateLevel = Core.settingsController.clappingInputGateLevel;
         root.microphone.minimumOnsetStrength = Core.settingsController.clappingMinimumOnsetStrength;
@@ -338,6 +337,10 @@ Item {
         root.performedOnsets = performed;
         refreshFigureStates(elapsedMs);
     }
+    function mapRhythmRowX(localX: real): real {
+        const geometryDependency = rhythmFrame.x + rhythmViewport.x + rhythmViewport.contentX + rhythmContent.x + rhythmRow.x + rhythmRow.implicitWidth;
+        return rhythmRow.mapToItem(root, localX + geometryDependency * 0, 0).x;
+    }
     function minimumExpectedOnsetIntervalMs(): real {
         if (root.expectedOnsets.length < 2) {
             return root.beatMs;
@@ -496,15 +499,12 @@ Item {
         root.countPhase = "input";
         root.countInStarted = false;
         root.countIn = 0;
+        root.countInOverlayAnchorIndex = 0;
         root.inputTimingArmed = true;
         root.inputTimingStarted = false;
         root.listeningStartSeconds = -1;
         root.performedOnsets = [];
         root.viewState = "listening";
-        if (Core.soundController) {
-            Core.soundController.playSilentCountIn(root.selectedOptionCount);
-        }
-        progressTimer.restart();
         finishTimer.interval = totalDurationMs() + root.toleranceMs + root.beatMs;
         if (Core.soundController) {
             Core.soundController.playSilentCountIn(root.selectedOptionCount);
@@ -873,6 +873,8 @@ Item {
                     valueText: root.microphone && root.microphone.inputGateOpen ? i18n("Open") : i18n("Closed")
                 }
                 QQC2.Button {
+                    Onboarding.groups: ["clapping"]
+                    Onboarding.texts: [i18n("Calibrate silence in a quiet room before clapping so background noise is not counted as input.")]
                     enabled: root.microphoneReady
                     text: root.microphone && root.microphone.noiseCalibrationActive ? i18n("Calibrating...") : i18n("Calibrate Silence")
 

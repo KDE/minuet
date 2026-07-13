@@ -191,9 +191,9 @@ private:
     static constexpr int DefaultClappingPitchMethod = 0;
     static constexpr int DefaultClappingOnsetMethod = 1;
     static constexpr double DefaultClappingMinimumPitchConfidence = 0.70;
-    static constexpr double DefaultClappingOnsetThreshold = 0.32;
-    static constexpr double DefaultClappingInputGateLevel = 0.025;
-    static constexpr double DefaultClappingMinimumOnsetStrength = 0.040;
+    static constexpr double DefaultClappingOnsetThreshold = 0.50;
+    static constexpr double DefaultClappingInputGateLevel = 0.0;
+    static constexpr double DefaultClappingMinimumOnsetStrength = 0.020;
     static constexpr int DefaultClappingRequiredStablePitchFrames = 2;
 
     int m_rhythmPatternCount = 4;
