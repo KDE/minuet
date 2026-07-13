@@ -32,13 +32,9 @@ class SettingsController : public QObject
     Q_PROPERTY(int singingScoringMode READ singingScoringMode WRITE setSingingScoringMode NOTIFY singingScoringModeChanged)
     Q_PROPERTY(int singingVoiceClass READ singingVoiceClass WRITE setSingingVoiceClass NOTIFY singingVoiceClassChanged)
     Q_PROPERTY(int singingPitchMethod READ singingPitchMethod WRITE setSingingPitchMethod NOTIFY singingPitchMethodChanged)
-    Q_PROPERTY(int singingOnsetMethod READ singingOnsetMethod WRITE setSingingOnsetMethod NOTIFY singingOnsetMethodChanged)
     Q_PROPERTY(double singingMinimumPitchConfidence READ singingMinimumPitchConfidence WRITE setSingingMinimumPitchConfidence NOTIFY
                    singingMinimumPitchConfidenceChanged)
-    Q_PROPERTY(double singingOnsetThreshold READ singingOnsetThreshold WRITE setSingingOnsetThreshold NOTIFY singingOnsetThresholdChanged)
     Q_PROPERTY(double singingInputGateLevel READ singingInputGateLevel WRITE setSingingInputGateLevel NOTIFY singingInputGateLevelChanged)
-    Q_PROPERTY(double singingMinimumOnsetStrength READ singingMinimumOnsetStrength WRITE setSingingMinimumOnsetStrength NOTIFY
-                   singingMinimumOnsetStrengthChanged)
     Q_PROPERTY(int singingRequiredStablePitchFrames READ singingRequiredStablePitchFrames WRITE setSingingRequiredStablePitchFrames NOTIFY
                    singingRequiredStablePitchFramesChanged)
     Q_PROPERTY(int clappingPitchMethod READ clappingPitchMethod WRITE setClappingPitchMethod NOTIFY clappingPitchMethodChanged)
@@ -80,11 +76,8 @@ public:
     int singingScoringMode() const;
     int singingVoiceClass() const;
     int singingPitchMethod() const;
-    int singingOnsetMethod() const;
     double singingMinimumPitchConfidence() const;
-    double singingOnsetThreshold() const;
     double singingInputGateLevel() const;
-    double singingMinimumOnsetStrength() const;
     int singingRequiredStablePitchFrames() const;
     int clappingPitchMethod() const;
     int clappingOnsetMethod() const;
@@ -118,11 +111,8 @@ public Q_SLOTS:
     void setSingingScoringMode(int mode);
     void setSingingVoiceClass(int voiceClass);
     void setSingingPitchMethod(int method);
-    void setSingingOnsetMethod(int method);
     void setSingingMinimumPitchConfidence(double confidence);
-    void setSingingOnsetThreshold(double threshold);
     void setSingingInputGateLevel(double inputGateLevel);
-    void setSingingMinimumOnsetStrength(double strength);
     void setSingingRequiredStablePitchFrames(int frames);
     void setClappingPitchMethod(int method);
     void setClappingOnsetMethod(int method);
@@ -154,11 +144,8 @@ Q_SIGNALS:
     void singingScoringModeChanged(int mode);
     void singingVoiceClassChanged(int voiceClass);
     void singingPitchMethodChanged(int method);
-    void singingOnsetMethodChanged(int method);
     void singingMinimumPitchConfidenceChanged(double confidence);
-    void singingOnsetThresholdChanged(double threshold);
     void singingInputGateLevelChanged(double inputGateLevel);
-    void singingMinimumOnsetStrengthChanged(double strength);
     void singingRequiredStablePitchFramesChanged(int frames);
     void clappingPitchMethodChanged(int method);
     void clappingOnsetMethodChanged(int method);
@@ -186,11 +173,8 @@ private:
     static constexpr bool DefaultSingingDisregardOctaveDifference = true;
     static constexpr int DefaultSingingScoringMode = 0;
     static constexpr int DefaultSingingPitchMethod = 1;
-    static constexpr int DefaultSingingOnsetMethod = 0;
     static constexpr double DefaultSingingMinimumPitchConfidence = 0.05;
-    static constexpr double DefaultSingingOnsetThreshold = 0.14;
     static constexpr double DefaultSingingInputGateLevel = 0.006;
-    static constexpr double DefaultSingingMinimumOnsetStrength = 0.006;
     static constexpr int DefaultSingingRequiredStablePitchFrames = 2;
     static constexpr int DefaultClappingPitchMethod = 0;
     static constexpr int DefaultClappingOnsetMethod = 1;
@@ -217,11 +201,8 @@ private:
     int m_singingScoringMode = DefaultSingingScoringMode;
     int m_singingVoiceClass = 2;
     int m_singingPitchMethod = DefaultSingingPitchMethod;
-    int m_singingOnsetMethod = DefaultSingingOnsetMethod;
     double m_singingMinimumPitchConfidence = DefaultSingingMinimumPitchConfidence;
-    double m_singingOnsetThreshold = DefaultSingingOnsetThreshold;
     double m_singingInputGateLevel = DefaultSingingInputGateLevel;
-    double m_singingMinimumOnsetStrength = DefaultSingingMinimumOnsetStrength;
     int m_singingRequiredStablePitchFrames = DefaultSingingRequiredStablePitchFrames;
     int m_clappingPitchMethod = DefaultClappingPitchMethod;
     int m_clappingOnsetMethod = DefaultClappingOnsetMethod;

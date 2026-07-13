@@ -57,7 +57,83 @@ double amplitudeToDbFs(double amplitude)
 
 AubioMicrophoneInputController::AubioMicrophoneInputController(QObject *parent)
     : Minuet::IMicrophoneInputController(parent)
+    , m_activeGeneration(std::make_shared<std::atomic<quint64>>(0))
 {
+    m_analysisWorker = new AubioAnalysisWorker(m_activeGeneration);
+    m_analysisWorker->moveToThread(&m_analysisThread);
+    connect(&m_analysisThread, &QThread::finished, m_analysisWorker, &QObject::deleteLater);
+    connect(m_analysisWorker, &AubioAnalysisWorker::initializationFailed, this, [this](quint64 generation, const QString &message) {
+        if (generation != m_generation) {
+            return;
+        }
+        stop();
+        setStatus(message);
+        Q_EMIT inputAnalysisFailed(message);
+    });
+    connect(m_analysisWorker, &AubioAnalysisWorker::chunkProcessed, this, [this](quint64 generation, qsizetype byteCount) {
+        if (generation == m_generation) {
+            m_queuedAnalysisBytes = std::max<qsizetype>(0, m_queuedAnalysisBytes - byteCount);
+        }
+    });
+    connect(m_analysisWorker,
+            &AubioAnalysisWorker::statsUpdated,
+            this,
+            [this](quint64 generation, quint64 processedSamples, double audioLevel, double peakLevel, int stablePitchFrames) {
+                if (generation != m_generation) {
+                    return;
+                }
+                const bool levelChanged = std::abs(m_audioLevel - audioLevel) > 0.002 || std::abs(m_peakLevel - peakLevel) > 0.002;
+                m_processedSamples = processedSamples;
+                m_audioLevel = audioLevel;
+                m_peakLevel = peakLevel;
+                m_stablePitchFrameCount = stablePitchFrames;
+                if (levelChanged) {
+                    Q_EMIT audioLevelChanged();
+                }
+                Q_EMIT audioStatsChanged();
+            });
+    connect(m_analysisWorker,
+            &AubioAnalysisWorker::pitchResult,
+            this,
+            [this](quint64 generation, double seconds, bool voiced, double frequencyHz, double confidence, const QString &reason) {
+                if (generation == m_generation) {
+                    handleWorkerPitch(seconds, voiced, frequencyHz, confidence, reason);
+                }
+            });
+    connect(m_analysisWorker, &AubioAnalysisWorker::onsetResult, this, [this](quint64 generation, double seconds, double strength) {
+        if (generation == m_generation) {
+            handleWorkerOnset(seconds, strength);
+        }
+    });
+    connect(m_analysisWorker, &AubioAnalysisWorker::noiseCalibrationFinished, this, [this](quint64 generation, double noiseFloor) {
+        if (generation != m_generation) {
+            return;
+        }
+        m_noiseFloorLevel = noiseFloor;
+        m_inputGateLevel = std::clamp(noiseFloor * 5.6234132519, 0.003, 0.25);
+        applyCalibratedDetectorThresholds(noiseFloor);
+        m_noiseCalibrationActive = false;
+        Q_EMIT noiseFloorLevelChanged();
+        Q_EMIT inputGateLevelChanged();
+        Q_EMIT audioLevelChanged();
+        Q_EMIT noiseCalibrationActiveChanged();
+        updateWorkerConfig();
+        setStatus(QStringLiteral("Noise calibration done: floor=%1%, input gate=%2% (+15 dB).")
+                      .arg(m_noiseFloorLevel * 100.0, 0, 'f', 2)
+                      .arg(m_inputGateLevel * 100.0, 0, 'f', 2));
+    });
+    connect(m_analysisWorker, &AubioAnalysisWorker::drained, this, [this](quint64 generation) {
+        if (generation != m_generation || !m_analysisPending) {
+            return;
+        }
+        m_analysisPending = false;
+        Q_EMIT analysisPendingChanged();
+        setStatus(QStringLiteral("Analysis complete."));
+        Q_EMIT inputAnalysisFinished();
+    });
+    m_analysisThread.setObjectName(QStringLiteral("Minuet Aubio analysis"));
+    m_analysisThread.start();
+
     m_pollTimer.setInterval(20);
     connect(&m_pollTimer, &QTimer::timeout, this, &AubioMicrophoneInputController::readAudioData);
     connect(&m_mediaDevices, &QMediaDevices::audioInputsChanged, this, &AubioMicrophoneInputController::updateInputDevices);
@@ -68,7 +144,8 @@ AubioMicrophoneInputController::AubioMicrophoneInputController(QObject *parent)
 AubioMicrophoneInputController::~AubioMicrophoneInputController()
 {
     stop();
-    destroyAubioObjects();
+    m_analysisThread.quit();
+    m_analysisThread.wait();
     aubio_cleanup();
 }
 
@@ -78,6 +155,11 @@ double AubioMicrophoneInputController::analysisTimeSeconds() const
 {
     return m_sampleRate > 0 ? static_cast<double>(m_processedSamples) / static_cast<double>(m_sampleRate) : 0.0;
 }
+double AubioMicrophoneInputController::captureTimeSeconds() const
+{
+    return m_sampleRate > 0 ? static_cast<double>(m_capturedSamples) / static_cast<double>(m_sampleRate) : 0.0;
+}
+bool AubioMicrophoneInputController::analysisPending() const { return m_analysisPending; }
 Minuet::IMicrophoneInputController::Preset AubioMicrophoneInputController::preset() const { return m_preset; }
 Minuet::IMicrophoneInputController::AnalysisMode AubioMicrophoneInputController::analysisMode() const { return m_analysisMode; }
 Minuet::IMicrophoneInputController::VoiceClass AubioMicrophoneInputController::voiceClass() const { return m_voiceClass; }
@@ -152,6 +234,7 @@ void AubioMicrophoneInputController::setVoiceClass(VoiceClass voiceClass)
         m_pitchStatus = classifyPitch(m_frequencyHz, m_cents, m_pitchConfidence);
         Q_EMIT pitchChanged();
     }
+    updateWorkerConfig();
 }
 
 void AubioMicrophoneInputController::setPitchMethod(PitchMethod pitchMethod)
@@ -181,10 +264,9 @@ void AubioMicrophoneInputController::setExpectedMidiNote(int midiNote)
         return;
     }
     m_expectedMidiNote = midiNote;
-    resetPitchCandidate();
-    m_recentAcceptedFrequencies.clear();
     Q_EMIT expectedMidiNoteChanged();
     Q_EMIT pitchChanged();
+    updateWorkerConfig();
 }
 
 void AubioMicrophoneInputController::setDisregardOctaveDifference(bool disregard)
@@ -193,10 +275,9 @@ void AubioMicrophoneInputController::setDisregardOctaveDifference(bool disregard
         return;
     }
     m_disregardOctaveDifference = disregard;
-    resetPitchCandidate();
-    m_recentAcceptedFrequencies.clear();
     Q_EMIT disregardOctaveDifferenceChanged();
     Q_EMIT pitchChanged();
+    updateWorkerConfig();
 }
 
 void AubioMicrophoneInputController::setTargetBpm(double targetBpm)
@@ -207,6 +288,7 @@ void AubioMicrophoneInputController::setTargetBpm(double targetBpm)
     }
     m_targetBpm = targetBpm;
     Q_EMIT targetBpmChanged();
+    updateWorkerConfig();
 }
 
 void AubioMicrophoneInputController::setMinimumExpectedOnsetIntervalMs(double intervalMs)
@@ -217,6 +299,7 @@ void AubioMicrophoneInputController::setMinimumExpectedOnsetIntervalMs(double in
     }
     m_minimumExpectedOnsetIntervalMs = intervalMs;
     Q_EMIT minimumExpectedOnsetIntervalMsChanged();
+    updateWorkerConfig();
 }
 
 void AubioMicrophoneInputController::setMinimumPitchConfidence(double confidence)
@@ -227,6 +310,7 @@ void AubioMicrophoneInputController::setMinimumPitchConfidence(double confidence
     }
     m_minimumPitchConfidence = confidence;
     Q_EMIT minimumPitchConfidenceChanged();
+    updateWorkerConfig();
 }
 
 void AubioMicrophoneInputController::setPitchSilenceDb(double silenceDb)
@@ -247,10 +331,8 @@ void AubioMicrophoneInputController::setOnsetThreshold(double threshold)
         return;
     }
     m_onsetThreshold = threshold;
-    if (m_onset) {
-        aubio_onset_set_threshold(m_onset.get(), static_cast<smpl_t>(m_onsetThreshold));
-    }
     Q_EMIT onsetThresholdChanged();
+    updateWorkerConfig();
 }
 
 void AubioMicrophoneInputController::setInputGateLevel(double inputGateLevel)
@@ -262,6 +344,7 @@ void AubioMicrophoneInputController::setInputGateLevel(double inputGateLevel)
     m_inputGateLevel = inputGateLevel;
     Q_EMIT inputGateLevelChanged();
     Q_EMIT audioLevelChanged();
+    updateWorkerConfig();
 }
 
 void AubioMicrophoneInputController::setMinimumOnsetStrength(double strength)
@@ -272,6 +355,7 @@ void AubioMicrophoneInputController::setMinimumOnsetStrength(double strength)
     }
     m_minimumOnsetStrength = strength;
     Q_EMIT minimumOnsetStrengthChanged();
+    updateWorkerConfig();
 }
 
 void AubioMicrophoneInputController::setRequiredStablePitchFrames(int frames)
@@ -281,9 +365,9 @@ void AubioMicrophoneInputController::setRequiredStablePitchFrames(int frames)
         return;
     }
     m_requiredStablePitchFrames = frames;
-    resetPitchCandidate();
     Q_EMIT requiredStablePitchFramesChanged();
     Q_EMIT pitchChanged();
+    updateWorkerConfig();
 }
 
 void AubioMicrophoneInputController::setInputDeviceId(const QString &deviceId)
@@ -312,14 +396,23 @@ void AubioMicrophoneInputController::start()
     if (!configureAudioInput()) {
         return;
     }
-    if (!recreateAubioObjects()) {
-        return;
-    }
+
+    m_generation = m_activeGeneration->fetch_add(1, std::memory_order_relaxed) + 1;
+    const quint64 generation = m_generation;
+    const AubioAnalysisWorker::Config config = workerConfig();
+    const int sampleRate = m_audioFormat.sampleRate();
+    const int channelCount = m_audioFormat.channelCount();
+    const int sampleFormat = static_cast<int>(m_audioFormat.sampleFormat());
+    const int bytesPerSample = m_audioFormat.bytesPerSample();
+    QMetaObject::invokeMethod(m_analysisWorker, [worker = m_analysisWorker, generation, config, sampleRate, channelCount, sampleFormat, bytesPerSample] {
+        worker->initialize(generation, config, sampleRate, channelCount, sampleFormat, bytesPerSample);
+    });
 
     m_audioDevice = m_audioSource->start();
     if (!m_audioDevice) {
         setStatus(QStringLiteral("Failed to start audio input."));
-        destroyAubioObjects();
+        m_generation = m_activeGeneration->fetch_add(1, std::memory_order_relaxed) + 1;
+        m_audioSource.reset();
         return;
     }
 
@@ -373,17 +466,25 @@ void AubioMicrophoneInputController::calibrateNoiseFloor()
     Q_EMIT noiseCalibrationActiveChanged();
     setStatus(QStringLiteral("Calibrating noise floor: keep silent for about one second..."));
     qInfo() << "Noise calibration started";
+    const quint64 generation = m_generation;
+    QMetaObject::invokeMethod(m_analysisWorker, [worker = m_analysisWorker, generation] {
+        worker->startNoiseCalibration(generation);
+    });
 }
 
 void AubioMicrophoneInputController::resetInputAnalysisState()
 {
-    const double resetTimeSeconds = analysisTimeSeconds();
+    const double resetTimeSeconds = captureTimeSeconds();
     resetDetectionState();
-    m_pendingSamples.clear();
-    if (m_onset) {
-        aubio_onset_reset(m_onset.get());
-        m_onsetTimeOffsetSeconds = resetTimeSeconds;
-    }
+    m_generation = m_activeGeneration->fetch_add(1, std::memory_order_relaxed) + 1;
+    m_queuedAnalysisBytes = 0;
+    const quint64 generation = m_generation;
+    const quint64 captureFrame = m_capturedSamples;
+    const AubioAnalysisWorker::Config config = workerConfig();
+    QMetaObject::invokeMethod(m_analysisWorker, [worker = m_analysisWorker, generation, config, captureFrame] {
+        worker->resetAnalysis(generation, captureFrame);
+        worker->updateConfig(generation, config);
+    });
     qInfo().noquote() << QStringLiteral("Input analysis state reset: mode=%1 preset=%2 threshold=%3 minOnsetStrength=%4 onsetTimeOffset=%5s")
         .arg(analysisModeName(m_analysisMode),
              presetName(m_preset))
@@ -394,23 +495,17 @@ void AubioMicrophoneInputController::resetInputAnalysisState()
 
 void AubioMicrophoneInputController::stop()
 {
-    if (!m_running && !m_audioSource) {
+    if (!m_running && !m_audioSource && !m_analysisPending) {
         return;
     }
 
-    m_pollTimer.stop();
-
-    if (m_audioSource) {
-        m_audioSource->stop();
+    m_generation = m_activeGeneration->fetch_add(1, std::memory_order_relaxed) + 1;
+    stopAudioCapture();
+    m_queuedAnalysisBytes = 0;
+    if (m_analysisPending) {
+        m_analysisPending = false;
+        Q_EMIT analysisPendingChanged();
     }
-
-    if (m_audioDevice) {
-        disconnect(m_audioDevice, nullptr, this, nullptr);
-        m_audioDevice.clear();
-    }
-
-    m_audioSource.reset();
-    destroyAubioObjects();
 
     if (m_noiseCalibrationActive) {
         m_noiseCalibrationActive = false;
@@ -425,6 +520,35 @@ void AubioMicrophoneInputController::stop()
         Q_EMIT runningChanged();
     }
     setStatus(QStringLiteral("Stopped."));
+}
+
+void AubioMicrophoneInputController::finalizeInputAnalysis()
+{
+    if (m_analysisPending) {
+        return;
+    }
+    if (!m_running) {
+        Q_EMIT inputAnalysisFinished();
+        return;
+    }
+
+    readAudioData();
+    if (!m_running) {
+        return;
+    }
+    stopAudioCapture();
+    const bool wasRunning = m_running;
+    m_running = false;
+    if (wasRunning) {
+        Q_EMIT runningChanged();
+    }
+    m_analysisPending = true;
+    Q_EMIT analysisPendingChanged();
+    setStatus(QStringLiteral("Analyzing..."));
+    const quint64 generation = m_generation;
+    QMetaObject::invokeMethod(m_analysisWorker, [worker = m_analysisWorker, generation] {
+        worker->drain(generation);
+    });
 }
 
 QString AubioMicrophoneInputController::presetName(int preset) const
@@ -500,8 +624,15 @@ void AubioMicrophoneInputController::resetRuntimeState()
     Q_EMIT noiseCalibrationActiveChanged();
     m_lastDebugSample = 0;
     m_bytesRead = 0;
+    m_capturedSamples = 0;
+    m_queuedAnalysisBytes = 0;
+    if (m_analysisPending) {
+        m_analysisPending = false;
+        Q_EMIT analysisPendingChanged();
+    }
     m_audioLevel = 0.0;
     m_peakLevel = 0.0;
+    Q_EMIT captureTimeChanged();
     Q_EMIT audioLevelChanged();
     Q_EMIT audioStatsChanged();
 }
@@ -741,9 +872,27 @@ void AubioMicrophoneInputController::readAudioData()
     }
 
     m_bytesRead += static_cast<quint64>(bytes.size());
-    appendSamplesFromBytes(bytes);
-    processPendingSamples();
-    Q_EMIT audioStatsChanged();
+    const int bytesPerFrame = m_audioFormat.bytesPerSample() * m_audioFormat.channelCount();
+    if (bytesPerFrame <= 0) {
+        return;
+    }
+    m_capturedSamples += static_cast<quint64>(bytes.size() / bytesPerFrame);
+    Q_EMIT captureTimeChanged();
+
+    const qsizetype maximumQueuedBytes = static_cast<qsizetype>(m_sampleRate) * bytesPerFrame * 2;
+    if (m_queuedAnalysisBytes + bytes.size() > maximumQueuedBytes) {
+        const QString message = QStringLiteral("Audio analysis could not keep up with microphone input.");
+        stop();
+        setStatus(message);
+        Q_EMIT inputAnalysisFailed(message);
+        return;
+    }
+
+    m_queuedAnalysisBytes += bytes.size();
+    const quint64 generation = m_generation;
+    QMetaObject::invokeMethod(m_analysisWorker, [worker = m_analysisWorker, generation, bytes] {
+        worker->processAudio(generation, bytes);
+    });
 }
 
 void AubioMicrophoneInputController::appendSamplesFromBytes(const QByteArray &bytes)
@@ -1295,6 +1444,119 @@ void AubioMicrophoneInputController::applyPreset(Preset preset, bool restartIfRu
     }
 }
 
+AubioAnalysisWorker::Config AubioMicrophoneInputController::workerConfig() const
+{
+    AubioAnalysisWorker::Config config;
+    config.preset = static_cast<int>(m_preset);
+    config.analysisMode = static_cast<int>(m_analysisMode);
+    config.pitchMethod = static_cast<int>(m_pitchMethod);
+    config.onsetMethod = static_cast<int>(m_onsetMethod);
+    config.expectedMidiNote = m_expectedMidiNote;
+    config.disregardOctaveDifference = m_disregardOctaveDifference;
+    config.voiceMinHz = minFrequencyForCurrentVoiceClass();
+    config.voiceMaxHz = maxFrequencyForCurrentVoiceClass();
+    config.targetBpm = m_targetBpm;
+    config.minimumExpectedOnsetIntervalMs = m_minimumExpectedOnsetIntervalMs;
+    config.minimumPitchConfidence = m_minimumPitchConfidence;
+    config.pitchSilenceDb = m_pitchSilenceDb;
+    config.onsetThreshold = m_onsetThreshold;
+    config.inputGateLevel = m_inputGateLevel;
+    config.minimumOnsetStrength = m_minimumOnsetStrength;
+    config.calibratedOnsetStrengthFloor = m_calibratedOnsetStrengthFloor;
+    config.requiredStablePitchFrames = m_requiredStablePitchFrames;
+    return config;
+}
+
+void AubioMicrophoneInputController::updateWorkerConfig()
+{
+    if (!m_running && !m_analysisPending) {
+        return;
+    }
+    const quint64 generation = m_generation;
+    const AubioAnalysisWorker::Config config = workerConfig();
+    QMetaObject::invokeMethod(m_analysisWorker, [worker = m_analysisWorker, generation, config] {
+        worker->updateConfig(generation, config);
+    });
+}
+
+void AubioMicrophoneInputController::handleWorkerPitch(double seconds,
+                                                       bool voiced,
+                                                       double frequencyHz,
+                                                       double confidence,
+                                                       const QString &reason)
+{
+    if (!voiced) {
+        applyUnvoicedResult(reason);
+        return;
+    }
+
+    const double clampedConfidence = clamp01(confidence);
+    const double midi = midiFromFrequency(frequencyHz);
+    const int nearestMidi = static_cast<int>(std::llround(midi));
+    const double nearestHz = frequencyForMidi(nearestMidi);
+    const double cents = 1200.0 * std::log2(frequencyHz / nearestHz);
+    const bool changed = !m_voiced
+        || std::abs(m_frequencyHz - frequencyHz) > 0.5
+        || m_midiNote != nearestMidi
+        || std::abs(m_cents - cents) > 0.5
+        || std::abs(m_pitchConfidence - clampedConfidence) > 0.01;
+
+    m_frequencyHz = frequencyHz;
+    m_midiNote = nearestMidi;
+    m_cents = cents;
+    m_pitchConfidence = clampedConfidence;
+    m_voiced = true;
+    m_detectedVoiceClass = voiceClassForFrequency(frequencyHz);
+    m_pitchStatus = classifyPitch(frequencyHz, cents, clampedConfidence);
+    if (changed) {
+        Q_EMIT pitchChanged();
+    }
+    Q_EMIT pitchDetected(seconds, nearestMidi, cents, clampedConfidence);
+}
+
+void AubioMicrophoneInputController::handleWorkerOnset(double onsetSeconds, double strength)
+{
+    m_previousOnsetSeconds = m_lastOnsetSeconds;
+    m_lastOnsetSeconds = onsetSeconds;
+    ++m_onsetCount;
+
+    const double beatDuration = 60.0 / m_targetBpm;
+    if (m_referenceOnsetSeconds < 0.0) {
+        m_referenceOnsetSeconds = onsetSeconds;
+        m_lastTimingErrorMs = 0.0;
+        m_rhythmStatus = QStringLiteral("First onset: timing reference set");
+    } else {
+        const double relativeTime = onsetSeconds - m_referenceOnsetSeconds;
+        const double nearestBeat = std::round(relativeTime / beatDuration) * beatDuration;
+        m_lastTimingErrorMs = (relativeTime - nearestBeat) * 1000.0;
+        m_rhythmStatus = classifyRhythm(m_lastTimingErrorMs);
+    }
+    updateDetectedTempo(onsetSeconds);
+
+    qInfo().noquote() << QStringLiteral("aubio onset #%1 t=%2s strength=%3 timingError=%4ms bpm=%5")
+        .arg(m_onsetCount)
+        .arg(onsetSeconds, 0, 'f', 3)
+        .arg(strength, 0, 'f', 3)
+        .arg(m_lastTimingErrorMs, 0, 'f', 1)
+        .arg(m_detectedBpm, 0, 'f', 1);
+
+    Q_EMIT rhythmChanged();
+    Q_EMIT onsetDetected(onsetSeconds, strength);
+}
+
+void AubioMicrophoneInputController::stopAudioCapture()
+{
+    m_pollTimer.stop();
+    if (m_audioDevice) {
+        disconnect(m_audioDevice, nullptr, this, nullptr);
+    }
+    if (m_audioSource) {
+        m_audioSource->stop();
+    }
+    m_audioDevice.clear();
+    m_audioSource.reset();
+}
+
 void AubioMicrophoneInputController::maybePrintDebug(double timeSeconds, double frequencyHz, double confidence)
 {
     if (m_processedSamples - m_lastDebugSample < m_sampleRate) {
@@ -1432,19 +1694,18 @@ QString AubioMicrophoneInputController::classifyRhythm(double timingErrorMs) con
 
 bool AubioMicrophoneInputController::pitchDetectorEnabled() const
 {
-    return m_analysisMode == SingingPitchOnly || m_analysisMode == SingingPitchAndOnset;
+    return m_analysisMode == SingingPitchOnly;
 }
 
 bool AubioMicrophoneInputController::onsetDetectorEnabled() const
 {
-    return m_analysisMode == SingingPitchAndOnset || m_analysisMode == ClappingOnsetOnly;
+    return m_analysisMode == ClappingOnsetOnly;
 }
 
 QString AubioMicrophoneInputController::analysisModeName(AnalysisMode mode) const
 {
     switch (mode) {
     case SingingPitchOnly: return QStringLiteral("singing pitch only");
-    case SingingPitchAndOnset: return QStringLiteral("singing pitch and onset");
     case ClappingOnsetOnly: return QStringLiteral("clapping onset only");
     }
     return QStringLiteral("unknown");

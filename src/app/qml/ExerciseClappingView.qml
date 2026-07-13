@@ -42,6 +42,7 @@ Item {
     ] : []
     property var expectedOnsets: []
     property var figureStates: []
+    property string inputErrorMessage: ""
     property bool inputTimingArmed: false
     property bool inputTimingStarted: false
     property real listeningStartSeconds: -1
@@ -184,6 +185,7 @@ Item {
     }
     function clearCurrentRun(): void {
         progressTimer.stop();
+        timelineTimer.stop();
         finishTimer.stop();
         if (root.microphone) {
             root.microphone.stop();
@@ -199,6 +201,19 @@ Item {
         root.inputTimingStarted = false;
         root.listeningStartSeconds = -1;
         root.performedOnsets = [];
+    }
+    function completeExercise(): void {
+        if (root.viewState !== "analyzing") {
+            return;
+        }
+        refreshFigureStates(totalDurationMs() + root.toleranceMs + 1);
+        const alignment = alignPerformedOnsets();
+        const matchedOnsets = alignment.expectedMatches.filter(performedIndex => performedIndex >= 0).length;
+        const extraOnsets = alignment.performedMatches.filter(expectedIndex => expectedIndex < 0).length;
+        const scoredOnsets = root.expectedOnsets.length + extraOnsets;
+        root.score = scoredOnsets > 0 ? Math.round(matchedOnsets * 100 / scoredOnsets) : 0;
+        root.viewState = "finished";
+        finishScoredQuestion();
     }
     function countInOverlayTargetX(): real {
         if (root.countPhase !== "input") {
@@ -223,6 +238,25 @@ Item {
             return 0;
         }
         return dotted * root.beatMs * 4 / denominator;
+    }
+    function failInputAnalysis(message: string): void {
+        if (root.viewState !== "counting" && root.viewState !== "listening" && root.viewState !== "analyzing") {
+            return;
+        }
+        progressTimer.stop();
+        timelineTimer.stop();
+        finishTimer.stop();
+        if (Core.soundController) {
+            Core.soundController.stop();
+        }
+        root.countIn = 0;
+        root.countInOverlayAnchorIndex = -1;
+        root.countPhase = "idle";
+        root.countInStarted = false;
+        root.inputTimingArmed = false;
+        root.inputTimingStarted = false;
+        root.inputErrorMessage = message;
+        root.viewState = "ready";
     }
     function figureIndexForElapsed(elapsedMs: real): int {
         if (elapsedMs < -root.toleranceMs || elapsedMs > totalDurationMs() + root.toleranceMs) {
@@ -249,6 +283,7 @@ Item {
             return;
         }
         progressTimer.stop();
+        timelineTimer.stop();
         finishTimer.stop();
         root.countIn = 0;
         root.countInOverlayAnchorIndex = -1;
@@ -257,17 +292,12 @@ Item {
         if (Core.soundController) {
             Core.soundController.stop();
         }
+        root.viewState = "analyzing";
         if (root.microphone) {
-            root.microphone.stop();
+            root.microphone.finalizeInputAnalysis();
+        } else {
+            root.completeExercise();
         }
-        refreshFigureStates(totalDurationMs() + root.toleranceMs + 1);
-        const alignment = alignPerformedOnsets();
-        const matchedOnsets = alignment.expectedMatches.filter(performedIndex => performedIndex >= 0).length;
-        const extraOnsets = alignment.performedMatches.filter(expectedIndex => expectedIndex < 0).length;
-        const scoredOnsets = root.expectedOnsets.length + extraOnsets;
-        root.score = scoredOnsets > 0 ? Math.round(matchedOnsets * 100 / scoredOnsets) : 0;
-        root.viewState = "finished";
-        finishScoredQuestion();
     }
     function finishScoredQuestion(): void {
         if (!Core.exerciseSessionController.isTest) {
@@ -322,13 +352,14 @@ Item {
         Core.exerciseSessionController.finishQuestionGeneration();
     }
     function handleOnset(seconds: real): void {
-        if (root.viewState !== "listening") {
+        if (root.viewState !== "listening" && root.viewState !== "analyzing") {
             return;
         }
         if (!root.inputTimingStarted || root.listeningStartSeconds < 0) {
             return;
         }
         const elapsedMs = (seconds - root.listeningStartSeconds) * 1000;
+        root.updateInputTimeline(elapsedMs);
         if (elapsedMs < -root.toleranceMs || elapsedMs > totalDurationMs() + root.toleranceMs) {
             return;
         }
@@ -465,13 +496,14 @@ Item {
         return root.mapRhythmRowX(rhythmRow.implicitWidth / 2);
     }
     function startExercise(): void {
-        if (root.currentExercise === undefined || root.viewState === "counting" || root.viewState === "listening") {
+        if (root.currentExercise === undefined || root.viewState === "counting" || root.viewState === "listening" || root.viewState === "analyzing") {
             return;
         }
         if (root.expectedOnsets.length === 0) {
             generateQuestion();
         }
         applyMicrophoneSettings();
+        root.inputErrorMessage = "";
         root.performedOnsets = [];
         root.countPhase = "preparation";
         root.countInStarted = false;
@@ -489,9 +521,11 @@ Item {
         if (root.microphone) {
             root.microphone.resetInputAnalysisState();
         }
-        root.listeningStartSeconds = root.microphone ? root.microphone.analysisTimeSeconds : 0;
+        root.listeningStartSeconds = root.microphone ? root.microphone.captureTimeSeconds : 0;
         root.inputTimingStarted = true;
         root.inputTimingArmed = false;
+        root.updateInputTimeline(0);
+        timelineTimer.restart();
         progressTimer.restart();
         finishTimer.restart();
     }
@@ -552,6 +586,17 @@ Item {
         }
         return root.figureStates[root.figureStates.length - 1].endMs;
     }
+    function updateInputTimeline(elapsedMs: real): void {
+        if (root.countPhase !== "input" || root.figureStates.length === 0) {
+            return;
+        }
+        let index = root.figureIndexForElapsed(Math.max(0, elapsedMs));
+        if (index < 0) {
+            index = root.figureStates.length - 1;
+        }
+        root.countInOverlayAnchorIndex = index;
+        root.countIn = index + 1;
+    }
 
     visible: root.currentExercise !== undefined
 
@@ -588,7 +633,19 @@ Item {
 
         onTriggered: {
             if (root.viewState === "listening" && root.microphone && root.inputTimingStarted && root.listeningStartSeconds >= 0) {
-                root.refreshFigureStates(Math.max(0, (root.microphone.analysisTimeSeconds - root.listeningStartSeconds) * 1000));
+                root.refreshFigureStates(Math.max(0, (root.microphone.captureTimeSeconds - root.listeningStartSeconds) * 1000));
+            }
+        }
+    }
+    Timer {
+        id: timelineTimer
+
+        interval: 20
+        repeat: true
+
+        onTriggered: {
+            if (root.viewState === "listening" && root.microphone && root.inputTimingStarted && root.listeningStartSeconds >= 0) {
+                root.updateInputTimeline((root.microphone.captureTimeSeconds - root.listeningStartSeconds) * 1000);
             }
         }
     }
@@ -608,6 +665,12 @@ Item {
         }
     }
     Connections {
+        function onInputAnalysisFailed(message: string): void {
+            root.failInputAnalysis(message);
+        }
+        function onInputAnalysisFinished(): void {
+            root.completeExercise();
+        }
         function onOnsetDetected(seconds: real, strength: real): void {
             root.handleOnset(seconds);
         }
@@ -630,10 +693,6 @@ Item {
                     root.startListening();
                 }
             } else if (root.countPhase === "input") {
-                if (count > 0) {
-                    root.countInOverlayAnchorIndex = Math.max(0, Math.min(root.displayedFigureStates.length - 1, count - 1));
-                }
-                root.countIn = count;
                 if (count === 1) {
                     root.startInputTiming();
                 }
@@ -689,7 +748,7 @@ Item {
                         elide: Text.ElideRight
                         horizontalAlignment: Text.AlignHCenter
                         level: 3
-                        text: root.viewState === "listening" ? i18n("Listening...") : Core.exerciseSessionController.isTest && Core.exerciseSessionController.statusText.length > 0 ? Core.exerciseSessionController.statusText : root.microphone ? root.microphone.inputDeviceAvailable ? root.microphone.status : i18n("No microphone input devices found") : i18n("No microphone input plugin available")
+                        text: root.inputErrorMessage.length > 0 ? root.inputErrorMessage : root.viewState === "listening" ? i18n("Listening...") : root.viewState === "analyzing" ? i18n("Analyzing...") : Core.exerciseSessionController.isTest && Core.exerciseSessionController.statusText.length > 0 ? Core.exerciseSessionController.statusText : root.microphone ? root.microphone.inputDeviceAvailable ? root.microphone.status : i18n("No microphone input devices found") : i18n("No microphone input plugin available")
                     }
                     RowLayout {
                         id: actionButtons
@@ -706,7 +765,7 @@ Item {
                             id: startQuestionButton
 
                             Layout.preferredWidth: actionButtons.buttonWidth
-                            enabled: root.microphoneReady && root.viewState !== "counting" && root.viewState !== "listening"
+                            enabled: root.microphoneReady && root.viewState !== "counting" && root.viewState !== "listening" && root.viewState !== "analyzing"
                             text: root.expectedOnsets.length === 0 || root.viewState === "finished" ? i18n("New Question") : i18n("Start")
 
                             onClicked: {
@@ -720,7 +779,7 @@ Item {
                             id: testButton
 
                             Layout.preferredWidth: actionButtons.buttonWidth
-                            enabled: root.microphoneReady && root.viewState !== "counting" && root.viewState !== "listening"
+                            enabled: root.microphoneReady && root.viewState !== "counting" && root.viewState !== "listening" && root.viewState !== "analyzing"
                             text: Core.exerciseSessionController.isTest ? i18n("Stop Test") : i18n("Start Test")
 
                             onClicked: {

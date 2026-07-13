@@ -33,20 +33,18 @@ Item {
     readonly property int displayedTargetIndex: root.currentDisplayTargetIndex()
     readonly property var displayedTargetStates: root.displayedTargetStatesModel()
     property string exerciseName: ""
+    property string inputErrorMessage: ""
     property int inputTargetIndex: 0
     property real listeningStartSeconds: -1
     readonly property int maximumExercises: Core.settingsController.testExerciseCount
     readonly property real meterSpacing: Kirigami.Units.smallSpacing
-    readonly property real meterWidth: Math.ceil(Math.max(pitchMeterProbe.implicitWidth, onsetMeterProbe.implicitWidth))
+    readonly property real meterWidth: Math.ceil(Math.max(pitchMeterProbe.implicitWidth, timingMeterProbe.implicitWidth))
     readonly property var microphone: Core.microphoneInputController
     readonly property bool microphoneReady: root.microphone !== null && root.microphone.inputDeviceAvailable
     readonly property bool musicViewsTabbed: !applicationWindow().wideScreen && root.height > root.width
     readonly property real noteCardWidth: Math.ceil((root.scaleExercise ? root.meterWidth * 2 + root.meterSpacing : root.meterWidth) + root.cardHorizontalPadding)
     property int onboardingCountIn: 0
     property bool onboardingPreviewActive: false
-    property var onsetHits: []
-    property string onsetMeterText: i18n("No onset")
-    property real onsetMeterValue: 0
     readonly property real pitchCorrectHoldSeconds: Math.min(0.18, Math.max(0.10, root.beatMs * 0.0002))
     property string pitchMeterText: i18n("No pitch")
     property real pitchMeterValue: 0
@@ -64,15 +62,12 @@ Item {
         if (!root.microphone) {
             return;
         }
-        root.microphone.analysisMode = root.scaleExercise ? IMicrophoneInputController.SingingPitchAndOnset : IMicrophoneInputController.SingingPitchOnly;
+        root.microphone.analysisMode = IMicrophoneInputController.SingingPitchOnly;
         root.microphone.preset = IMicrophoneInputController.Singing;
         root.microphone.voiceClass = Core.settingsController.singingVoiceClass;
         root.microphone.pitchMethod = Core.settingsController.singingPitchMethod;
-        root.microphone.onsetMethod = Core.settingsController.singingOnsetMethod;
         root.microphone.minimumPitchConfidence = Core.settingsController.singingMinimumPitchConfidence;
-        root.microphone.onsetThreshold = Core.settingsController.singingOnsetThreshold;
         root.microphone.inputGateLevel = Core.settingsController.singingInputGateLevel;
-        root.microphone.minimumOnsetStrength = Core.settingsController.singingMinimumOnsetStrength;
         root.microphone.requiredStablePitchFrames = Core.settingsController.singingRequiredStablePitchFrames;
         root.microphone.targetBpm = Core.settingsController.exerciseSpeed;
         root.microphone.disregardOctaveDifference = Core.settingsController.singingDisregardOctaveDifference;
@@ -89,10 +84,10 @@ Item {
         if (!root.scaleExercise || root.listeningStartSeconds >= 0) {
             return;
         }
-        if (root.microphone) {
-            root.microphone.resetInputAnalysisState();
-        }
-        root.listeningStartSeconds = root.microphone ? root.microphone.analysisTimeSeconds : 0;
+        root.listeningStartSeconds = root.microphone ? root.microphone.captureTimeSeconds : 0;
+        root.updateScaleInputTimeline(0);
+        root.centerCurrentTargetCard();
+        timelineTimer.restart();
         progressTimer.restart();
         finishTimer.restart();
     }
@@ -132,6 +127,7 @@ Item {
         listenDelay.stop();
         finishTimer.stop();
         progressTimer.stop();
+        timelineTimer.stop();
         if (root.microphone) {
             root.microphone.stop();
         }
@@ -143,6 +139,23 @@ Item {
         root.countPhase = "idle";
         root.countInStarted = false;
         root.inputTargetIndex = 0;
+    }
+    function completeExercise(): void {
+        if (root.viewState !== "analyzing") {
+            return;
+        }
+        const finalElapsedMs = root.scaleExercise ? scaleFinalElapsedMs() : root.targetNotes.length * root.beatMs + root.beatMs;
+        const finalStates = refreshTargetStates(finalElapsedMs);
+        let correct = 0;
+        for (const state of finalStates) {
+            if (state.pitchCorrect && (Core.settingsController.singingScoringMode === 0 || state.timingCorrect)) {
+                ++correct;
+            }
+        }
+        root.score = root.targetStates.length > 0 ? Math.round(correct * 100 / root.targetStates.length) : 0;
+        root.viewState = "finished";
+        Qt.callLater(root.centerAllTargetCards);
+        finishScoredQuestion();
     }
     function countInOverlayTargetX(): real {
         if (root.countPhase !== "input" && !(root.referenceCardExercise && root.countPhase === "root")) {
@@ -171,15 +184,16 @@ Item {
             "pitchWrong": false,
             "timingCorrect": !root.scaleExercise,
             "timingWrong": false,
+            "timingEntrySeconds": -1,
             "heard": false,
             "pitchCorrectSinceSeconds": -1,
             "pitchWrongSinceSeconds": -1,
             "pitchValue": 0,
             "pitchAccuracy": 0,
             "pitchText": i18n("No pitch"),
-            "onsetValue": 0,
-            "onsetAccuracy": 0,
-            "onsetText": i18n("No onset")
+            "timingValue": 0,
+            "timingAccuracy": 0,
+            "timingText": i18n("No timing")
         };
     }
     function displayIndexForTarget(targetIndex: int): int {
@@ -198,13 +212,10 @@ Item {
         referenceState.reference = true;
         referenceState.timingCorrect = true;
         referenceState.pitchText = i18n("Played");
-        referenceState.onsetText = "";
+        referenceState.timingText = "";
         return [referenceState].concat(states);
     }
     function evaluationIndexForElapsed(elapsedMs: real): int {
-        if (root.scaleExercise && root.countPhase === "input") {
-            return root.inputTargetIndex;
-        }
         return expectedIndexForElapsed(elapsedMs);
     }
     function exerciseConstrainedToVoiceClass(): var {
@@ -220,34 +231,44 @@ Item {
     function expectedIndexForElapsed(elapsedMs: real): int {
         return Math.max(0, Math.min(root.targetNotes.length - 1, Math.floor(elapsedMs / root.beatMs)));
     }
+    function failInputAnalysis(message: string): void {
+        if (root.viewState !== "counting" && root.viewState !== "listening" && root.viewState !== "analyzing") {
+            return;
+        }
+        listenDelay.stop();
+        finishTimer.stop();
+        progressTimer.stop();
+        timelineTimer.stop();
+        if (Core.soundController) {
+            Core.soundController.stop();
+        }
+        root.countIn = 0;
+        root.countInOverlayAnchorIndex = -1;
+        root.countPhase = "idle";
+        root.countInStarted = false;
+        root.inputErrorMessage = message;
+        root.viewState = "ready";
+    }
     function finishExercise(): void {
         if (root.viewState !== "listening") {
             return;
         }
         finishTimer.stop();
         progressTimer.stop();
-        if (root.microphone) {
-            root.microphone.stop();
-        }
+        timelineTimer.stop();
         if (Core.soundController) {
             Core.soundController.stop();
         }
-        const finalElapsedMs = root.scaleExercise ? scaleFinalElapsedMs() : root.targetNotes.length * root.beatMs + root.beatMs;
-        const finalStates = refreshTargetStates(finalElapsedMs);
-        let correct = 0;
-        for (const state of finalStates) {
-            if (state.pitchCorrect && (Core.settingsController.singingScoringMode === 0 || state.timingCorrect)) {
-                ++correct;
-            }
-        }
-        root.score = root.targetStates.length > 0 ? Math.round(correct * 100 / root.targetStates.length) : 0;
         root.countIn = 0;
         root.countInOverlayAnchorIndex = -1;
         root.countPhase = "idle";
         root.countInStarted = false;
-        root.viewState = "finished";
-        Qt.callLater(root.centerAllTargetCards);
-        finishScoredQuestion();
+        root.viewState = "analyzing";
+        if (root.microphone) {
+            root.microphone.finalizeInputAnalysis();
+        } else {
+            root.completeExercise();
+        }
     }
     function finishScoredQuestion(): void {
         if (!Core.exerciseSessionController.isTest) {
@@ -279,53 +300,18 @@ Item {
         // note in the generated sequence is expected from the singer.
         root.targetNotes = option.sequence.split(" ").filter(part => part.length > 0).map(part => root.rootNote + parseInt(part));
         root.targetStates = root.targetNotes.map(note => root.defaultTargetState(note));
-        root.onsetHits = root.targetNotes.map(function () {
-            return false;
-        });
         root.currentTargetIndex = 0;
         root.score = -1;
         root.pitchMeterValue = 0;
-        root.onsetMeterValue = 0;
         root.pitchMeterText = i18n("No pitch");
-        root.onsetMeterText = i18n("No onset");
         root.syncExpectedPitchConstraint();
         showReferenceNotes();
         root.viewState = "ready";
+        Qt.callLater(root.centerAllTargetCards);
         Core.exerciseSessionController.finishQuestionGeneration();
     }
-    function handleOnset(seconds: real): void {
-        if (root.viewState !== "listening" || !root.scaleExercise || root.listeningStartSeconds < 0) {
-            return;
-        }
-        const elapsedMs = Math.max(0, (seconds - root.listeningStartSeconds) * 1000);
-        const roundedIndex = Math.round(elapsedMs / root.beatMs);
-        if (roundedIndex < 0 || elapsedMs > Math.max(0, root.targetNotes.length - 1) * root.beatMs + root.timingToleranceMs) {
-            return;
-        }
-        const nearestIndex = Math.min(root.targetNotes.length - 1, roundedIndex);
-        const errorMs = elapsedMs - nearestIndex * root.beatMs;
-        const slotIndex = Math.max(0, Math.min(root.targetNotes.length - 1, Math.floor(elapsedMs / root.beatMs)));
-        const stateIndex = Math.abs(errorMs) <= root.timingToleranceMs ? nearestIndex : slotIndex;
-
-        root.onsetMeterValue = Math.max(0, 1 - Math.abs(errorMs) / root.timingToleranceMs);
-        root.onsetMeterText = i18n("%1 ms").arg(Math.round(errorMs));
-        let hits = root.onsetHits.slice();
-        let states = root.targetStates.slice();
-        states[stateIndex].onsetValue = timingMeterValue(errorMs);
-        states[stateIndex].onsetAccuracy = root.onsetMeterValue;
-        states[stateIndex].onsetText = root.onsetMeterText;
-        if (Math.abs(errorMs) <= root.timingToleranceMs && !states[nearestIndex].timingCorrect) {
-            hits[nearestIndex] = true;
-            states[nearestIndex].timingCorrect = true;
-        } else {
-            states[stateIndex].timingWrong = true;
-        }
-        root.onsetHits = hits;
-        root.targetStates = states;
-        refreshTargetStates(elapsedMs);
-    }
     function handlePitch(seconds: real, midiNote: int, cents: real, confidence: real): void {
-        if (root.viewState !== "listening" || root.targetNotes.length === 0 || root.listeningStartSeconds < 0) {
+        if ((root.viewState !== "listening" && root.viewState !== "analyzing") || root.targetNotes.length === 0 || root.listeningStartSeconds < 0) {
             return;
         }
         const elapsedMs = Math.max(0, (seconds - root.listeningStartSeconds) * 1000);
@@ -360,10 +346,14 @@ Item {
             }
         }
         if (states[index].pitchCorrectSinceSeconds >= 0 && seconds - states[index].pitchCorrectSinceSeconds >= root.pitchCorrectHoldSeconds) {
+            const becameCorrect = !states[index].pitchCorrect;
             states[index].pitchCorrect = true;
             states[index].pitchWrong = false;
             states[index].heard = true;
             states[index].pitchWrongSinceSeconds = -1;
+            if (becameCorrect) {
+                root.recordPitchEntryTiming(states, index, states[index].pitchCorrectSinceSeconds);
+            }
         }
         root.targetStates = states;
         refreshTargetStates(elapsedMs);
@@ -433,6 +423,12 @@ Item {
         listenDelay.restart();
     }
     function questionPitchMessage(): string {
+        if (root.inputErrorMessage.length > 0) {
+            return root.inputErrorMessage;
+        }
+        if (root.viewState === "analyzing") {
+            return i18n("Analyzing...");
+        }
         if (root.exerciseName.length === 0 || root.targetNotes.length === 0) {
             if (!root.microphone) {
                 return i18n("No microphone input plugin available");
@@ -450,6 +446,19 @@ Item {
         }
         return i18n("%1 - Base: %2 - Target: %3", translatedExerciseName, base, noteName(root.targetNotes[0]));
     }
+    function recordPitchEntryTiming(states: var, index: int, entrySeconds: real): void {
+        if (!root.scaleExercise || states[index].timingEntrySeconds >= 0) {
+            return;
+        }
+        const elapsedMs = Math.max(0, (entrySeconds - root.listeningStartSeconds) * 1000);
+        const errorMs = elapsedMs - index * root.beatMs;
+        states[index].timingEntrySeconds = entrySeconds;
+        states[index].timingValue = timingMeterValue(errorMs);
+        states[index].timingAccuracy = Math.max(0, 1 - Math.abs(errorMs) / root.timingToleranceMs);
+        states[index].timingText = Math.abs(errorMs) < 1 ? i18n("On time") : i18n("%1 ms").arg(Math.round(errorMs));
+        states[index].timingCorrect = Math.abs(errorMs) <= root.timingToleranceMs;
+        states[index].timingWrong = !states[index].timingCorrect;
+    }
     function referenceNotes(): var {
         if (root.rootNote <= 0 || root.targetNotes.length === 0) {
             return [];
@@ -464,10 +473,10 @@ Item {
             }
             if (root.scaleExercise && !states[i].timingCorrect && elapsedMs > i * root.beatMs + root.timingToleranceMs) {
                 states[i].timingWrong = true;
-                if (states[i].onsetText === i18n("No onset")) {
-                    states[i].onsetText = i18n("Missed");
-                    states[i].onsetAccuracy = 0;
-                    states[i].onsetValue = 0;
+                if (states[i].timingEntrySeconds < 0) {
+                    states[i].timingText = i18n("Missed");
+                    states[i].timingAccuracy = 0;
+                    states[i].timingValue = 0;
                 }
             }
         }
@@ -497,13 +506,14 @@ Item {
         sheetMusicView.model = notes;
     }
     function startExercise(): void {
-        if (root.currentExercise === undefined || root.viewState === "counting" || root.viewState === "listening") {
+        if (root.currentExercise === undefined || root.viewState === "counting" || root.viewState === "listening" || root.viewState === "analyzing") {
             return;
         }
         if (root.targetNotes.length === 0) {
             generateQuestion();
         }
         applyMicrophoneSettings();
+        root.inputErrorMessage = "";
         root.countIn = 0;
         root.countPhase = "preparation";
         root.countInStarted = false;
@@ -528,11 +538,14 @@ Item {
         root.viewState = "listening";
         if (root.scaleExercise) {
             root.listeningStartSeconds = -1;
+            if (root.microphone) {
+                root.microphone.resetInputAnalysisState();
+            }
         } else {
             if (root.microphone) {
                 root.microphone.resetInputAnalysisState();
             }
-            root.listeningStartSeconds = root.microphone ? root.microphone.analysisTimeSeconds : 0;
+            root.listeningStartSeconds = root.microphone ? root.microphone.captureTimeSeconds : 0;
         }
         finishTimer.interval = root.scaleExercise ? scaleFinalElapsedMs() : root.targetNotes.length * root.beatMs + root.beatMs;
         if (Core.soundController && root.scaleExercise) {
@@ -541,6 +554,7 @@ Item {
             root.beginScaleInputTiming();
         }
         if (!root.scaleExercise) {
+            timelineTimer.restart();
             progressTimer.restart();
             finishTimer.restart();
         }
@@ -593,6 +607,23 @@ Item {
     function timingMeterValue(errorMs: real): real {
         return -Math.max(-1, Math.min(1, errorMs / root.timingToleranceMs));
     }
+    function updateScaleInputTimeline(elapsedMs: real): void {
+        if (!root.scaleExercise || root.countPhase !== "input" || root.targetNotes.length === 0) {
+            return;
+        }
+        const index = root.expectedIndexForElapsed(Math.max(0, elapsedMs));
+        const indexChanged = root.inputTargetIndex !== index;
+        if (indexChanged) {
+            root.inputTargetIndex = index;
+            root.currentTargetIndex = index;
+            root.syncExpectedPitchConstraint();
+        }
+        root.countInOverlayAnchorIndex = index + 1;
+        root.countIn = index + 2;
+        if (indexChanged) {
+            root.centerCurrentTargetCard();
+        }
+    }
     function voiceClassPitchRange(voiceClass: int): var {
         switch (voiceClass) {
         case IMicrophoneInputController.Soprano:
@@ -640,10 +671,21 @@ Item {
             Qt.callLater(root.generateQuestion);
         }
     }
-    onCurrentTargetIndexChanged: Qt.callLater(root.centerCurrentTargetCard)
-    onDisplayedTargetIndexChanged: Qt.callLater(root.centerCurrentTargetCard)
-    onInputTargetIndexChanged: root.centerCurrentTargetCard()
-    onTargetStatesChanged: root.viewState === "finished" ? Qt.callLater(root.centerAllTargetCards) : Qt.callLater(root.centerCurrentTargetCard)
+    onCurrentTargetIndexChanged: {
+        if (!root.currentScaleCardCentered) {
+            Qt.callLater(root.centerCurrentTargetCard);
+        }
+    }
+    onDisplayedTargetIndexChanged: {
+        if (!root.currentScaleCardCentered) {
+            Qt.callLater(root.centerCurrentTargetCard);
+        }
+    }
+    onTargetStatesChanged: {
+        if (root.viewState === "finished") {
+            Qt.callLater(root.centerAllTargetCards);
+        }
+    }
 
     QtObject {
         id: internal
@@ -657,7 +699,7 @@ Item {
         visible: false
     }
     GraphicalMeter {
-        id: onsetMeterProbe
+        id: timingMeterProbe
 
         meterKind: "onset"
         visible: false
@@ -682,7 +724,19 @@ Item {
 
         onTriggered: {
             if (root.viewState === "listening" && root.microphone && root.listeningStartSeconds >= 0) {
-                root.refreshTargetStates(Math.max(0, (root.microphone.analysisTimeSeconds - root.listeningStartSeconds) * 1000));
+                root.refreshTargetStates(Math.max(0, (root.microphone.captureTimeSeconds - root.listeningStartSeconds) * 1000));
+            }
+        }
+    }
+    Timer {
+        id: timelineTimer
+
+        interval: 20
+        repeat: true
+
+        onTriggered: {
+            if (root.viewState === "listening" && root.microphone && root.listeningStartSeconds >= 0) {
+                root.updateScaleInputTimeline((root.microphone.captureTimeSeconds - root.listeningStartSeconds) * 1000);
             }
         }
     }
@@ -697,8 +751,11 @@ Item {
         }
     }
     Connections {
-        function onOnsetDetected(seconds: real, strength: real): void {
-            root.handleOnset(seconds);
+        function onInputAnalysisFailed(message: string): void {
+            root.failInputAnalysis(message);
+        }
+        function onInputAnalysisFinished(): void {
+            root.completeExercise();
         }
         function onPitchDetected(seconds: real, midiNote: int, cents: real, confidence: real): void {
             root.handlePitch(seconds, midiNote, cents, confidence);
@@ -722,16 +779,10 @@ Item {
                     root.playRootAndListen();
                 }
             } else if (root.countPhase === "input") {
-                if (root.scaleExercise && count > 0) {
+                if (root.scaleExercise && count === 1) {
                     root.countInStarted = true;
-                    root.inputTargetIndex = Math.max(0, Math.min(root.targetNotes.length - 1, count - 1));
-                    root.currentTargetIndex = root.inputTargetIndex;
-                    root.countInOverlayAnchorIndex = root.inputTargetIndex + 1;
-                    root.syncExpectedPitchConstraint();
                     root.beginScaleInputTiming();
-                    root.countIn = count + 1;
-                    root.centerCurrentTargetCard();
-                } else {
+                } else if (!root.scaleExercise) {
                     root.countIn = count;
                 }
             }
@@ -803,7 +854,7 @@ Item {
                             id: startQuestionButton
 
                             Layout.preferredWidth: actionButtons.buttonWidth
-                            enabled: root.microphoneReady && root.viewState !== "counting" && root.viewState !== "listening"
+                            enabled: root.microphoneReady && root.viewState !== "counting" && root.viewState !== "listening" && root.viewState !== "analyzing"
                             text: root.targetNotes.length === 0 || root.viewState === "finished" ? i18n("New Question") : i18n("Start")
 
                             onClicked: {
@@ -817,7 +868,7 @@ Item {
                             id: testButton
 
                             Layout.preferredWidth: actionButtons.buttonWidth
-                            enabled: root.microphoneReady && root.viewState !== "counting" && root.viewState !== "listening"
+                            enabled: root.microphoneReady && root.viewState !== "counting" && root.viewState !== "listening" && root.viewState !== "analyzing"
                             text: Core.exerciseSessionController.isTest ? i18n("Stop Test") : i18n("Start Test")
 
                             onClicked: {
@@ -860,7 +911,7 @@ Item {
                 id: noteViewport
 
                 Onboarding.groups: ["singing"]
-                Onboarding.texts: [i18n("Sing the note cards in order. The current card is highlighted; borders show correctness after detection."), i18n("Pitch meters light below the center for flat notes and above the center for sharp notes. Scale exercises also show an onset meter for each note.")]
+                Onboarding.texts: [i18n("Sing the note cards in order. The current card is highlighted; borders show correctness after detection."), i18n("Pitch meters light below the center for flat notes and above the center for sharp notes. Scale exercises also show a timing meter for each note.")]
                 anchors.fill: parent
                 boundsBehavior: Flickable.StopAtBounds
                 clip: true
@@ -950,16 +1001,17 @@ Item {
                                             width: root.meterWidth
                                         }
                                         GraphicalMeter {
-                                            id: onsetMeter
+                                            id: timingMeter
 
-                                            accuracy: noteCard.modelData.onsetAccuracy
+                                            accuracy: noteCard.modelData.timingAccuracy
                                             anchors.verticalCenter: parent.verticalCenter
-                                            height: onsetMeter.visible ? onsetMeter.implicitHeight : 0
+                                            height: timingMeter.visible ? timingMeter.implicitHeight : 0
                                             meterKind: "onset"
-                                            readoutText: noteCard.modelData.onsetText
-                                            value: noteCard.modelData.onsetValue
+                                            noReadingText: i18n("No timing")
+                                            readoutText: noteCard.modelData.timingText
+                                            value: noteCard.modelData.timingValue
                                             visible: root.scaleExercise && !noteCard.modelData.reference
-                                            width: onsetMeter.visible ? root.meterWidth : 0
+                                            width: timingMeter.visible ? root.meterWidth : 0
                                         }
                                     }
                                 }
@@ -990,7 +1042,7 @@ Item {
                 }
                 QQC2.Button {
                     Onboarding.groups: ["singing"]
-                    Onboarding.texts: [i18n("Calibrate silence in a quiet room before singing so room noise does not affect pitch and onset detection.")]
+                    Onboarding.texts: [i18n("Calibrate silence in a quiet room before singing so room noise does not affect pitch detection.")]
                     enabled: root.microphoneReady
                     text: root.microphone && root.microphone.noiseCalibrationActive ? i18n("Calibrating...") : i18n("Calibrate Silence")
 

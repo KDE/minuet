@@ -116,6 +116,9 @@ find_package(
                Multimedia
                Svg
 )
+if(BUILD_TESTING AND NOT MINUET_MOBILE_PLATFORM)
+    find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Test)
+endif()
 if(APPLE AND NOT (CMAKE_SYSTEM_NAME STREQUAL "iOS"))
     find_package(
         Qt6Core ${QT_MIN_VERSION} CONFIG REQUIRED
