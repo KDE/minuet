@@ -25,6 +25,21 @@ repos:
       - id: trailing-whitespace
         exclude: ^po/|\.patch$
 
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.4.1
+    hooks:
+      - id: codespell
+        exclude: >-
+          (?x)^(
+            po/|
+            src/app/icons/|
+            src/app/android/res/.*\.(png|webp)$|
+            src/app/ios/Assets\.xcassets/.*\.(png|json)$|
+            src/app/qml/SheetMusicView/(Bravura\.otf|bravura_metadata\.json)$|
+            src/plugins/fluidsynthsoundcontroller/GeneralUser-v1\.47\.sf2$|
+            .*\.(ico|png|svgz)$
+          )
+
   - repo: https://github.com/fsfe/reuse-tool
     rev: v6.2.0
     hooks:
