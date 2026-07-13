@@ -117,6 +117,22 @@ FormCard.FormCardPage {
         }
         FormCard.AbstractFormDelegate {
             background: null
+            enabled: Core.soundController !== null
+
+            contentItem: SettingsSlider {
+                from: 30
+                label: i18n("Clapping speed")
+                suffix: i18n("bpm")
+                to: 120
+                value: Core.settingsController.clappingSpeed
+
+                onMoved: function (value) {
+                    Core.settingsController.clappingSpeed = value;
+                }
+            }
+        }
+        FormCard.AbstractFormDelegate {
+            background: null
 
             contentItem: SettingsSlider {
                 from: 4

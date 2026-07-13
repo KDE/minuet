@@ -160,11 +160,6 @@ Core::Core(QObject *parent)
             m_soundController->setPitch(pitch);
         }
     });
-    connect(m_settingsController, &SettingsController::exerciseSpeedChanged, this, [this](int tempo) {
-        if (m_soundController) {
-            m_soundController->setTempo(tempo);
-        }
-    });
     connect(m_settingsController, &SettingsController::rhythmPatternCountChanged, this, [this](int count) {
         if (m_soundController) {
             m_soundController->setRhythmCountInBeats(count);
