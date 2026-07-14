@@ -22,7 +22,7 @@ Item {
     property string noReadingText: root.defaultReadoutText
     property string readoutText: root.valueText.length > 0 ? root.valueText : root.noReadingText
     property string sampleReadoutText: root.meterKind === "pitch" ? i18n("%1 cents").arg(12345) : i18n("%1 ms").arg(12345)
-    readonly property int segmentCount: 17
+    readonly property int segmentCount: 15
     readonly property real segmentHeight: Math.max(4, Math.round(Kirigami.Units.gridUnit * 0.34))
     readonly property real segmentSpacing: Math.max(1, Math.round(Kirigami.Units.smallSpacing / 2))
     readonly property real spacing: Kirigami.Units.smallSpacing

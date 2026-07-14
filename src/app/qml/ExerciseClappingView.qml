@@ -19,7 +19,6 @@ Item {
     readonly property real contentPadding: Kirigami.Units.largeSpacing * 2
     property int countIn: 0
     property int countInOverlayAnchorIndex: -1
-    readonly property real countInOverlayGap: Kirigami.Units.smallSpacing
     readonly property bool countInOverlayInitial: root.countPhase === "preparation" || root.onboardingCountIn > 0
     readonly property real countInOverlaySize: Math.ceil(onsetMeterProbe.implicitWidth)
     readonly property real countInOverlayX: root.countInOverlayTargetX()
@@ -173,6 +172,30 @@ Item {
         root.microphone.stop();
         root.microphone.start();
     }
+    function centerAllFigureCards(): void {
+        if (root.displayedFigureStates.length === 0 || rhythmViewport.width <= 0) {
+            return;
+        }
+
+        rhythmViewport.contentX = rhythmContent.cardsOverflowing ? Math.max(0, (rhythmViewport.contentWidth - rhythmViewport.width) / 2) : 0;
+    }
+    function centerCurrentFigureCard(): void {
+        if (root.displayedFigureStates.length === 0 || rhythmViewport.width <= 0) {
+            return;
+        }
+        if (!rhythmContent.cardsOverflowing) {
+            rhythmViewport.contentX = 0;
+            return;
+        }
+        if (root.viewState !== "listening" || root.countPhase !== "input") {
+            root.centerAllFigureCards();
+            return;
+        }
+
+        const cardIndex = Math.max(0, Math.min(root.displayedFigureStates.length - 1, root.countInOverlayAnchorIndex));
+        const cardCenter = rhythmRow.x + cardIndex * (root.rhythmCardWidth + rhythmRow.spacing) + root.rhythmCardWidth / 2;
+        rhythmViewport.contentX = Math.max(0, Math.min(rhythmViewport.contentWidth - rhythmViewport.width, cardCenter - rhythmViewport.width / 2));
+    }
     function clampCountInOverlayX(value: real): real {
         const margin = Kirigami.Units.smallSpacing;
         const maximum = Math.max(margin, root.width - root.countInOverlaySize - margin);
@@ -213,6 +236,7 @@ Item {
         const scoredOnsets = root.expectedOnsets.length + extraOnsets;
         root.score = scoredOnsets > 0 ? Math.round(matchedOnsets * 100 / scoredOnsets) : 0;
         root.viewState = "finished";
+        Qt.callLater(root.centerAllFigureCards);
         finishScoredQuestion();
     }
     function countInOverlayTargetX(): real {
@@ -224,7 +248,7 @@ Item {
     }
     function countInOverlayTargetY(): real {
         const cardY = rhythmFrame.y + rhythmViewport.y + rhythmRow.y;
-        return root.clampCountInOverlayY(cardY - root.countInOverlaySize - root.countInOverlayGap);
+        return root.clampCountInOverlayY(cardY - root.countInOverlaySize / 2);
     }
     function durationForToken(token: string): real {
         let note = token;
@@ -260,6 +284,7 @@ Item {
         root.inputTimingStarted = false;
         root.inputErrorMessage = message;
         root.viewState = "ready";
+        Qt.callLater(root.centerAllFigureCards);
     }
     function figureIndexForElapsed(elapsedMs: real): int {
         if (elapsedMs < -root.toleranceMs || elapsedMs > totalDurationMs() + root.toleranceMs) {
@@ -354,6 +379,7 @@ Item {
         root.performedOnsets = [];
         root.score = -1;
         root.viewState = "ready";
+        Qt.callLater(root.centerAllFigureCards);
         Core.exerciseSessionController.finishQuestionGeneration();
     }
     function handleOnset(seconds: real): void {
@@ -550,6 +576,7 @@ Item {
         root.listeningStartSeconds = -1;
         root.performedOnsets = [];
         root.viewState = "listening";
+        Qt.callLater(root.centerCurrentFigureCard);
         finishTimer.interval = totalDurationMs() + root.toleranceMs + root.beatMs;
         if (Core.soundController) {
             Core.soundController.playSilentCountIn(root.selectedOptionCount);
@@ -578,6 +605,7 @@ Item {
         root.testScoreTotal = 0;
         Core.exerciseSessionController.stopTest();
         root.viewState = root.expectedOnsets.length > 0 ? "ready" : "idle";
+        Qt.callLater(root.centerAllFigureCards);
     }
     function timingMeterText(errorMs: real): string {
         if (Math.abs(errorMs) < 1) {
@@ -602,8 +630,12 @@ Item {
         if (index < 0) {
             index = root.figureStates.length - 1;
         }
+        const indexChanged = root.countInOverlayAnchorIndex !== index;
         root.countInOverlayAnchorIndex = index;
         root.countIn = index + 1;
+        if (indexChanged) {
+            root.centerCurrentFigureCard();
+        }
     }
 
     visible: root.currentExercise !== undefined
@@ -631,6 +663,12 @@ Item {
         id: onsetMeterProbe
 
         meterKind: "onset"
+        visible: false
+    }
+    QQC2.Button {
+        id: calibrateButtonProbe
+
+        text: i18n("Calibrate Silence")
         visible: false
     }
     Timer {
@@ -844,19 +882,25 @@ Item {
                 anchors.fill: parent
                 boundsBehavior: Flickable.StopAtBounds
                 clip: true
-                contentHeight: Math.max(height, rhythmRow.implicitHeight + root.countInOverlaySize + root.countInOverlayGap * 2)
-                contentWidth: Math.max(width, rhythmRow.implicitWidth)
+                contentHeight: rhythmViewport.height
+                contentWidth: rhythmContent.cardsOverflowing ? rhythmRow.implicitWidth + rhythmContent.sideInset * 2 : rhythmViewport.width
                 flickableDirection: Flickable.HorizontalFlick
 
                 QQC2.ScrollBar.horizontal: QQC2.ScrollBar {
+                    id: rhythmHorizontalScrollBar
+
                     policy: QQC2.ScrollBar.AsNeeded
                 }
+
+                onWidthChanged: Qt.callLater(root.centerCurrentFigureCard)
 
                 Item {
                     id: rhythmContent
 
+                    readonly property bool cardsOverflowing: rhythmRow.implicitWidth > rhythmViewport.width
                     readonly property real centeredInset: Math.max(0, (rhythmViewport.width - rhythmRow.implicitWidth) / 2)
-                    readonly property real countInTopInset: root.countInOverlaySize + root.countInOverlayGap
+                    readonly property real scrollBarHeight: rhythmContent.cardsOverflowing ? rhythmHorizontalScrollBar.height : 0
+                    readonly property real sideInset: Math.max(0, (rhythmViewport.width - root.rhythmCardWidth) / 2)
 
                     height: rhythmViewport.contentHeight
                     width: rhythmViewport.contentWidth
@@ -865,8 +909,8 @@ Item {
                         id: rhythmRow
 
                         spacing: Kirigami.Units.smallSpacing
-                        x: rhythmContent.centeredInset
-                        y: Math.max(rhythmContent.countInTopInset, Math.round((rhythmContent.height - rhythmRow.implicitHeight) / 2))
+                        x: rhythmContent.cardsOverflowing ? rhythmContent.sideInset : rhythmContent.centeredInset
+                        y: Math.round((rhythmContent.height - rhythmContent.scrollBarHeight - rhythmRow.implicitHeight) / 2)
 
                         Repeater {
                             id: rhythmRepeater
@@ -950,6 +994,7 @@ Item {
                     valueText: root.microphone && root.microphone.inputGateOpen ? i18n("Open") : i18n("Closed")
                 }
                 QQC2.Button {
+                    Layout.preferredWidth: calibrateButtonProbe.implicitWidth
                     Onboarding.groups: ["clapping"]
                     Onboarding.texts: [i18n("Calibrate silence in a quiet room before clapping so background noise is not counted as input.")]
                     enabled: root.microphoneReady
