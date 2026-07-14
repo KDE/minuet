@@ -19,7 +19,6 @@ Item {
     readonly property real contentPadding: Kirigami.Units.largeSpacing * 2
     property int countIn: 0
     property int countInOverlayAnchorIndex: -1
-    readonly property real countInOverlayGap: Kirigami.Units.smallSpacing
     readonly property bool countInOverlayInitial: root.countPhase === "preparation" || root.onboardingCountIn > 0
     readonly property real countInOverlaySize: root.meterWidth
     readonly property real countInOverlayX: root.countInOverlayTargetX()
@@ -28,7 +27,7 @@ Item {
     property string countPhase: "idle"
     property var currentExercise
     property string currentExerciseIconName: ""
-    readonly property bool currentScaleCardCentered: root.scaleExercise && root.viewState === "listening" && root.countPhase === "input"
+    readonly property bool currentScaleCardCentered: root.scaleExercise && (root.countPhase === "root" || (root.viewState === "listening" && root.countPhase === "input"))
     property int currentTargetIndex: 0
     readonly property int displayedTargetIndex: root.currentDisplayTargetIndex()
     readonly property var displayedTargetStates: root.displayedTargetStatesModel()
@@ -101,10 +100,14 @@ Item {
             return;
         }
 
-        noteViewport.contentX = Math.max(0, (noteViewport.contentWidth - noteViewport.width) / 2);
+        noteViewport.contentX = noteContent.cardsOverflowing ? Math.max(0, (noteViewport.contentWidth - noteViewport.width) / 2) : 0;
     }
     function centerCurrentTargetCard(): void {
         if (!root.scaleExercise || root.displayedTargetStates.length === 0 || noteViewport.width <= 0) {
+            return;
+        }
+        if (!noteContent.cardsOverflowing) {
+            noteViewport.contentX = 0;
             return;
         }
         if (!root.currentScaleCardCentered) {
@@ -170,7 +173,7 @@ Item {
     }
     function countInOverlayTargetY(): real {
         const cardY = noteFrame.y + noteViewport.y + noteRow.y;
-        return root.clampCountInOverlayY(cardY - root.countInOverlaySize - root.countInOverlayGap);
+        return root.clampCountInOverlayY(cardY - root.countInOverlaySize / 2);
     }
     function currentDisplayTargetIndex(): int {
         if (root.referenceCardExercise && root.countPhase === "root") {
@@ -413,6 +416,7 @@ Item {
         root.countInOverlayAnchorIndex = root.referenceCardExercise ? 0 : -1;
         root.countPhase = "root";
         root.countInStarted = false;
+        Qt.callLater(root.centerCurrentTargetCard);
         if (Core.soundController) {
             Core.soundController.prepareFromExerciseOptions([
                 {
@@ -719,6 +723,12 @@ Item {
         meterKind: "onset"
         visible: false
     }
+    QQC2.Button {
+        id: calibrateButtonProbe
+
+        text: i18n("Calibrate Silence")
+        visible: false
+    }
     Timer {
         id: listenDelay
 
@@ -940,11 +950,13 @@ Item {
                 anchors.fill: parent
                 boundsBehavior: Flickable.StopAtBounds
                 clip: true
-                contentHeight: Math.max(noteViewport.height, noteRow.implicitHeight + root.countInOverlaySize + root.countInOverlayGap * 2)
-                contentWidth: root.scaleExercise ? Math.max(noteViewport.width, noteRow.implicitWidth + noteContent.scaleSideInset * 2) : noteViewport.width
+                contentHeight: noteViewport.height
+                contentWidth: root.scaleExercise && noteContent.cardsOverflowing ? noteRow.implicitWidth + noteContent.sideInset * 2 : noteViewport.width
                 flickableDirection: Flickable.HorizontalFlick
 
                 QQC2.ScrollBar.horizontal: QQC2.ScrollBar {
+                    id: noteHorizontalScrollBar
+
                     policy: QQC2.ScrollBar.AsNeeded
                 }
 
@@ -953,9 +965,10 @@ Item {
                 Item {
                     id: noteContent
 
+                    readonly property bool cardsOverflowing: noteRow.implicitWidth > noteViewport.width
                     readonly property real centeredInset: Math.max(0, (noteViewport.width - noteRow.implicitWidth) / 2)
-                    readonly property real countInTopInset: root.countInOverlaySize + root.countInOverlayGap
-                    readonly property real scaleSideInset: Math.max(0, (noteViewport.width - root.noteCardWidth) / 2)
+                    readonly property real scrollBarHeight: root.scaleExercise && noteContent.cardsOverflowing ? noteHorizontalScrollBar.height : 0
+                    readonly property real sideInset: Math.max(0, (noteViewport.width - root.noteCardWidth) / 2)
 
                     height: noteViewport.contentHeight
                     width: noteViewport.contentWidth
@@ -964,8 +977,8 @@ Item {
                         id: noteRow
 
                         spacing: Kirigami.Units.smallSpacing
-                        x: root.scaleExercise ? noteContent.scaleSideInset : noteContent.centeredInset
-                        y: Math.max(noteContent.countInTopInset, Math.round((noteContent.height - noteRow.implicitHeight) / 2))
+                        x: root.scaleExercise && noteContent.cardsOverflowing ? noteContent.sideInset : noteContent.centeredInset
+                        y: Math.round((noteContent.height - noteContent.scrollBarHeight - noteRow.implicitHeight) / 2)
 
                         Repeater {
                             id: noteRepeater
@@ -1063,6 +1076,7 @@ Item {
                     valueText: root.microphone && root.microphone.inputGateOpen ? i18n("Open") : i18n("Closed")
                 }
                 QQC2.Button {
+                    Layout.preferredWidth: calibrateButtonProbe.implicitWidth
                     Onboarding.groups: ["singing"]
                     Onboarding.texts: [i18n("Calibrate silence in a quiet room before singing so room noise does not affect pitch detection.")]
                     enabled: root.microphoneReady
