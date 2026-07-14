@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-04 00:39+0000\n"
+"POT-Creation-Date: 2026-07-14 02:36+0000\n"
 "PO-Revision-Date: 2026-07-04 20:04+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -509,6 +509,11 @@ msgstr "Kolay"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
+msgid "Easy with rests"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
 msgid "Extended chords"
 msgstr "Genişletilmiş Akorlar"
 
@@ -769,6 +774,11 @@ msgstr "Orta"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
+msgid "Medium with rests"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
 msgid "Melodic intervals"
 msgstr "Melodik Aralıklar"
 
@@ -956,6 +966,11 @@ msgstr "Frigyen b4"
 msgctxt "technical term, do you have a musician friend?"
 msgid "Phrygian Dominant"
 msgstr "Frigyen Dominant"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Practice basic rhythm patterns that combine notes and rests."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1549,6 +1564,11 @@ msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
+msgid "Practice varied rhythm patterns that combine notes and rests."
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
 msgid "Rhythm"
 msgstr "Ritim"
 
@@ -1694,6 +1714,83 @@ msgstr "Triton ve Yedililer"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D7 uE1D9 uE4E7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D7uE1E7 uE4E7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D7 uE4E6"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D7 uE4E7 uE1D9"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D7 uE4E7 uE4E7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D9 uE1D7 uE4E7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D9 uE4E6 uE1D9"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D9 uE4E6uE1E7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D9 uE4E6 uE4E7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D9 uE4E7 uE1D7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D9 uE4E7 uE1D9 uE4E7"
+msgstr ""
+
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D9 uE4E7 uE1F0uE1F9uE1F4"
+msgstr "uE1F0uE1F7uE1F2uE1F9uE1F4"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D9 uE4E7 uE4E6"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D9 uE4E7 uE4E7 uE1D9"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D9 uE4E7 uE4E7 uE4E7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0"
 msgstr "uE1F0"
 
@@ -1731,6 +1828,137 @@ msgstr "uE1F0uE1F9uE1F4uE1F7uE1F2"
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
 msgstr "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
+
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0uE1F9uE1F4uE1F9uE1F4 uE4E7"
+msgstr "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
+
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "uE1F0uE1F9uE1F4uE1F7uE1F2"
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0uE1F9uE1F4 uE4E6"
+msgstr "uE1F0uE1F9uE1F4uE1F7uE1F2"
+
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "uE1F0uE1F9uE1F4uE1F7uE1F2"
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0uE1F9uE1F4 uE4E7 uE1D9"
+msgstr "uE1F0uE1F9uE1F4uE1F7uE1F2"
+
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "uE1F0uE1F9uE1F2uE1F7uE1F4"
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0uE1F9uE1F4 uE4E7 uE4E7"
+msgstr "uE1F0uE1F9uE1F2uE1F7uE1F4"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E6 uE1D7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E6 uE1D9 uE4E7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E6uE1E7 uE1D9"
+msgstr ""
+
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E6 uE1F0uE1F9uE1F4"
+msgstr "uE1F0uE1F7uE1F2uE1F9uE1F4"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E6 uE4E7 uE1D9"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE1D7 uE1D9"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE1D7uE1E7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE1D7 uE4E7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE1D9 uE1D7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE1D9 uE4E6"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE1D9 uE4E7 uE1D9"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE1D9 uE4E7 uE4E7"
+msgstr ""
+
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "uE1F0uE1F9uE1F4uE1F7uE1F2"
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE1F0uE1F9uE1F4uE1F9uE1F4"
+msgstr "uE1F0uE1F9uE1F4uE1F7uE1F2"
+
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE1F0uE1F9uE1F4 uE4E7"
+msgstr "uE1F0uE1F7uE1F2uE1F9uE1F4"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE4E6 uE1D9"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE4E7 uE1D7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE4E7 uE1D9 uE4E7"
+msgstr ""
+
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE4E7 uE1F0uE1F9uE1F4"
+msgstr "uE1F0uE1F7uE1F2uE1F9uE1F4"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE4E7 uE4E7 uE1D9"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1777,45 +2005,45 @@ msgstr "%1, %2 olası yanıt içeriyor."
 msgid "Could not open JSON file \"%1\"."
 msgstr "“%1” JSON dosyası açılamadı."
 
-#: src/app/exercisesessioncontroller.cpp:99
-#: src/app/exercisesessioncontroller.cpp:376
+#: src/app/exercisesessioncontroller.cpp:101
+#: src/app/exercisesessioncontroller.cpp:378
 #, kde-format
 msgid "Select New Question to start"
 msgstr "Başlamak için “Yeni Soru”yu seçin"
 
-#: src/app/exercisesessioncontroller.cpp:236
+#: src/app/exercisesessioncontroller.cpp:238
 #, kde-format
 msgid "Choose 1 answer"
 msgstr "1 yanıt seçin"
 
-#: src/app/exercisesessioncontroller.cpp:236
+#: src/app/exercisesessioncontroller.cpp:238
 #, kde-format
 msgid "Choose %1 answers"
 msgstr "%1 yanıt seçin"
 
-#: src/app/exercisesessioncontroller.cpp:342
+#: src/app/exercisesessioncontroller.cpp:344
 #, kde-format
 msgid "Answer shown"
 msgstr "Gösterilen yanıt"
 
-#: src/app/exercisesessioncontroller.cpp:344
+#: src/app/exercisesessioncontroller.cpp:346
 #, kde-format
 msgid "That's right"
 msgstr "Doğru"
 
-#: src/app/exercisesessioncontroller.cpp:346
+#: src/app/exercisesessioncontroller.cpp:348
 #, kde-format
 msgid "Not quite, try again"
 msgstr "Olmadı, yeniden deneyin"
 
-#: src/app/exercisesessioncontroller.cpp:350
-#: src/app/qml/ExerciseClappingView.qml:465
-#: src/app/qml/ExerciseSingingView.qml:684
+#: src/app/exercisesessioncontroller.cpp:352
+#: src/app/qml/ExerciseClappingView.qml:757
+#: src/app/qml/ExerciseSingingView.qml:853
 #, kde-format
 msgid "Score: %1%"
 msgstr "Skor: %​%1"
 
-#: src/app/exercisesessioncontroller.cpp:570
+#: src/app/exercisesessioncontroller.cpp:582
 #, kde-format
 msgid "Question %1 out of %2"
 msgstr "Soru %1 / %2"
@@ -1885,122 +2113,145 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "emir_sari@icloud.com"
 
-#: src/app/qml/ExerciseClappingView.qml:37
-#: src/app/qml/ExerciseClappingView.qml:204
-#: src/app/qml/ExerciseClappingView.qml:264
+#: src/app/qml/ExerciseClappingView.qml:40
+#: src/app/qml/ExerciseClappingView.qml:349
+#: src/app/qml/ExerciseClappingView.qml:426
 #, kde-format
 msgid "Ready"
 msgstr "Hazır"
 
-#: src/app/qml/ExerciseClappingView.qml:265
-#: src/app/qml/ExerciseSingingView.qml:403
+#: src/app/qml/ExerciseClappingView.qml:486
+#: src/app/qml/ExerciseSingingView.qml:479
 #, kde-format
 msgid "Missed"
 msgstr "Kaçtı"
 
-#: src/app/qml/ExerciseClappingView.qml:330
+#: src/app/qml/ExerciseClappingView.qml:584
+#: src/app/qml/ExerciseSingingView.qml:460
 #, kde-format
 msgid "On time"
 msgstr "Zamanında"
 
-#: src/app/qml/ExerciseClappingView.qml:332
-#: src/app/qml/ExerciseSingingView.qml:265 src/app/qml/GraphicalMeter.qml:23
+#: src/app/qml/ExerciseClappingView.qml:586
+#: src/app/qml/ExerciseSingingView.qml:460 src/app/qml/GraphicalMeter.qml:24
 #, kde-format
 msgid "%1 ms"
 msgstr "%1 ms"
 
-#: src/app/qml/ExerciseClappingView.qml:457
+#: src/app/qml/ExerciseClappingView.qml:749
 #, kde-format
-msgid ""
-"Start a question, listen to the count, then clap each rhythm figure in time."
+msgid "The header shows the current instruction, microphone status, and score."
 msgstr ""
-"Bir soru sorun, geri sayımı dinleyin ve her bir ritim figürüne doğru zamanda "
-"el çırpın."
 
-#: src/app/qml/ExerciseClappingView.qml:465
+#: src/app/qml/ExerciseClappingView.qml:757
 #, kde-format
 msgid "Clap the rhythm"
 msgstr "Ritme el çırpın"
 
-#: src/app/qml/ExerciseClappingView.qml:473
+#: src/app/qml/ExerciseClappingView.qml:765
 #, kde-format
 msgid "Listening..."
 msgstr "Dinleniyor…"
 
-#: src/app/qml/ExerciseClappingView.qml:473
-#: src/app/qml/ExerciseSingingView.qml:378
+#: src/app/qml/ExerciseClappingView.qml:765
+#: src/app/qml/ExerciseSingingView.qml:432
+#, fuzzy, kde-format
+#| msgid "Calibrating..."
+msgid "Analyzing..."
+msgstr "Kalibre ediliyor…"
+
+#: src/app/qml/ExerciseClappingView.qml:765
+#: src/app/qml/ExerciseSingingView.qml:439
+#, fuzzy, kde-format
+#| msgid "No microphone input plugin available"
+msgid "No microphone input devices found"
+msgstr "Kullanılabilir mikrofon giriş eklentisi yok"
+
+#: src/app/qml/ExerciseClappingView.qml:765
+#: src/app/qml/ExerciseSingingView.qml:436
 #, kde-format
 msgid "No microphone input plugin available"
 msgstr "Kullanılabilir mikrofon giriş eklentisi yok"
 
-#: src/app/qml/ExerciseClappingView.qml:489
-#: src/app/qml/ExerciseSingingView.qml:708 src/app/qml/ExerciseView.qml:408
+#: src/app/qml/ExerciseClappingView.qml:776
+#: src/app/qml/ExerciseSingingView.qml:872
+#, kde-format
+msgid ""
+"Use New Question or Start for one exercise, or Start Test for a scored "
+"series."
+msgstr ""
+
+#: src/app/qml/ExerciseClappingView.qml:784
+#: src/app/qml/ExerciseSingingView.qml:880 src/app/qml/ExerciseView.qml:426
 #, kde-format
 msgid "New Question"
 msgstr "Yeni Soru"
 
-#: src/app/qml/ExerciseClappingView.qml:489
-#: src/app/qml/ExerciseSingingView.qml:708
+#: src/app/qml/ExerciseClappingView.qml:784
+#: src/app/qml/ExerciseSingingView.qml:880
 #, kde-format
 msgid "Start"
 msgstr "Başlat"
 
-#: src/app/qml/ExerciseClappingView.qml:503
-#: src/app/qml/ExerciseSingingView.qml:722 src/app/qml/ExerciseView.qml:439
+#: src/app/qml/ExerciseClappingView.qml:798
+#: src/app/qml/ExerciseSingingView.qml:894 src/app/qml/ExerciseView.qml:453
 #, kde-format
 msgid "Stop Test"
 msgstr "Testi Durdur"
 
-#: src/app/qml/ExerciseClappingView.qml:503
-#: src/app/qml/ExerciseSingingView.qml:722 src/app/qml/ExerciseView.qml:439
+#: src/app/qml/ExerciseClappingView.qml:798
+#: src/app/qml/ExerciseSingingView.qml:894 src/app/qml/ExerciseView.qml:453
 #, kde-format
 msgid "Start Test"
 msgstr "Testi Başlat"
 
-#: src/app/qml/ExerciseClappingView.qml:565
+#: src/app/qml/ExerciseClappingView.qml:836
 #, kde-format
 msgid ""
-"Each colored card is one rhythm figure. Green borders mark figures clapped "
-"correctly; red borders mark missed figures."
+"This area shows every rhythm figure. Borders mark correct or missed claps, "
+"and timing meters show early or late claps."
 msgstr ""
-"Her renkli kart bir ritim figürünü temsil eder. Yeşil kenarlıklar doğru "
-"alkışlanan figürleri, kırmızı kenarlıklar ise kaçırılan figürleri işaretler."
 
-#: src/app/qml/ExerciseClappingView.qml:565
+#: src/app/qml/ExerciseClappingView.qml:946
 #, kde-format
 msgid ""
-"The onset meter below each figure lights below the center for advanced claps "
-"and above the center for late claps."
+"The input level shows microphone activity while you clap. Open means the "
+"signal is above the current gate."
 msgstr ""
-"Her bir rakamın altındaki gösterge, alkışların erken başlaması durumunda "
-"merkezden aşağıda, geç başlaması durumunda ise merkezden yukarıda yanar."
 
-#: src/app/qml/ExerciseClappingView.qml:646
-#: src/app/qml/ExerciseSingingView.qml:883
+#: src/app/qml/ExerciseClappingView.qml:948
+#: src/app/qml/ExerciseSingingView.qml:1061
 #, kde-format
 msgid "Input level"
 msgstr "Giriş düzeyi"
 
-#: src/app/qml/ExerciseClappingView.qml:648
-#: src/app/qml/ExerciseSingingView.qml:885
+#: src/app/qml/ExerciseClappingView.qml:950
+#: src/app/qml/ExerciseSingingView.qml:1063
 #, kde-format
 msgid "Open"
 msgstr "Açık"
 
-#: src/app/qml/ExerciseClappingView.qml:648
-#: src/app/qml/ExerciseSingingView.qml:885
+#: src/app/qml/ExerciseClappingView.qml:950
+#: src/app/qml/ExerciseSingingView.qml:1063
 #, kde-format
 msgid "Closed"
 msgstr "Kapalı"
 
-#: src/app/qml/ExerciseClappingView.qml:652
-#: src/app/qml/ExerciseSingingView.qml:889
+#: src/app/qml/ExerciseClappingView.qml:954
+#, kde-format
+msgid ""
+"Calibrate silence in a quiet room before clapping so background noise is not "
+"counted as input."
+msgstr ""
+
+#: src/app/qml/ExerciseClappingView.qml:956
+#: src/app/qml/ExerciseSingingView.qml:1069
 #, kde-format
 msgid "Calibrating..."
 msgstr "Kalibre ediliyor…"
 
-#: src/app/qml/ExerciseClappingView.qml:652
-#: src/app/qml/ExerciseSingingView.qml:889
+#: src/app/qml/ExerciseClappingView.qml:956
+#: src/app/qml/ExerciseSingingView.qml:1069
 #, kde-format
 msgid "Calibrate Silence"
 msgstr "Sessizliği Kalibre Et"
@@ -2018,35 +2269,40 @@ msgctxt "@action:button"
 msgid "Help"
 msgstr "Yardım"
 
-#: src/app/qml/ExercisePage.qml:125
+#: src/app/qml/ExercisePage.qml:93
 #, kde-format
 msgid "Count: %1"
 msgstr "Sayım: %1"
 
-#: src/app/qml/ExercisePage.qml:128
-#, kde-format
-msgid "Rhythm questions begin with a count-in."
-msgstr "Ritim soruları bir sayımla başlar."
-
-#: src/app/qml/ExercisePage.qml:128
+#: src/app/qml/ExercisePage.qml:96
 #, kde-format
 msgid ""
-"Clapping exercises count to the number of rhythm patterns before recording, "
-"then repeat that count while you clap."
+"A four-beat count-in plays before the rhythm. Listen, then recreate the "
+"pattern."
 msgstr ""
-"Alkış alıştırmaları, kaydetmeden önce ritim kalıplarının sayısını sayar, "
-"ardından alkışlarken bu sayımı yineleyin."
 
-#: src/app/qml/ExercisePage.qml:128
+#: src/app/qml/ExercisePage.qml:96
 #, kde-format
 msgid ""
-"Singing exercises count in before the first note; then sing one displayed "
-"note on each count."
+"A four-beat count-in plays before clapping is analyzed. Start clapping when "
+"the count finishes."
 msgstr ""
-"Şarkı söyleme egzersizleri ilk notadan önce sayılır; daha sonra her sayımda "
-"görüntülenen bir notayı söyleyin."
 
-#: src/app/qml/ExercisePage.qml:175
+#: src/app/qml/ExercisePage.qml:96
+#, kde-format
+msgid ""
+"A four-beat count-in plays before the base note. Listen, then sing the scale "
+"notes in order."
+msgstr ""
+
+#: src/app/qml/ExercisePage.qml:96
+#, kde-format
+msgid ""
+"A four-beat count-in plays before the root note. Listen, then sing the "
+"interval note."
+msgstr ""
+
+#: src/app/qml/ExercisePage.qml:188
 #, kde-format
 msgid ""
 "This is your first clapping exercise. Start a quick guide? You can open it "
@@ -2055,7 +2311,7 @@ msgstr ""
 "Bu sizin ilk el çırpma alıştırmanız. Kılavuza mı gereksiniminiz var? Yardım "
 "simgesinden erişebilirsiniz."
 
-#: src/app/qml/ExercisePage.qml:175
+#: src/app/qml/ExercisePage.qml:188
 #, kde-format
 msgid ""
 "This is your first singing exercise. Start a quick guide? You can open it "
@@ -2064,7 +2320,7 @@ msgstr ""
 "Bu sizin ilk şarkı söyleme alıştırmanız. Kılavuza mı gereksiniminiz var? "
 "Yardım simgesinden erişebilirsiniz."
 
-#: src/app/qml/ExercisePage.qml:175
+#: src/app/qml/ExercisePage.qml:188
 #, kde-format
 msgid ""
 "This is your first rhythmic exercise. Start a quick guide? You can open it "
@@ -2073,7 +2329,7 @@ msgstr ""
 "Bu sizin ilk ritim alıştırmanız. Kılavuza mı gereksiniminiz var? Yardım "
 "simgesinden erişebilirsiniz."
 
-#: src/app/qml/ExercisePage.qml:175
+#: src/app/qml/ExercisePage.qml:188
 #, kde-format
 msgid ""
 "This is your first melodic exercise. Start a quick guide? You can open it "
@@ -2082,249 +2338,262 @@ msgstr ""
 "Bu sizin ilk melodi alıştırmanız. Kılavuza mı gereksiniminiz var? Yardım "
 "simgesinden erişebilirsiniz."
 
-#: src/app/qml/ExercisePage.qml:176
+#: src/app/qml/ExercisePage.qml:189
 #, kde-format
 msgid "First Time Here"
 msgstr "İlk Kez Başlıyorum"
 
-#: src/app/qml/ExercisePage.qml:181
+#: src/app/qml/ExercisePage.qml:194
 #, kde-format
 msgctxt "@action:button"
 msgid "Start Guide"
 msgstr "Kılavuzu Başlat"
 
-#: src/app/qml/ExercisePage.qml:190
+#: src/app/qml/ExercisePage.qml:203
 #, kde-format
 msgctxt "@action:button"
 msgid "Not Now"
 msgstr "Şimdi Değil"
 
-#: src/app/qml/ExerciseSingingView.qml:42
-#: src/app/qml/ExerciseSingingView.qml:62
-#: src/app/qml/ExerciseSingingView.qml:231
-#: src/app/qml/ExerciseSingingView.qml:244 src/app/qml/GraphicalMeter.qml:17
+#: src/app/qml/ExerciseSingingView.qml:51
+#: src/app/qml/ExerciseSingingView.qml:195
+#: src/app/qml/ExerciseSingingView.qml:308 src/app/qml/GraphicalMeter.qml:17
 #, kde-format
 msgid "No pitch"
 msgstr "Perde yok"
 
-#: src/app/qml/ExerciseSingingView.qml:45
-#: src/app/qml/ExerciseSingingView.qml:59
-#: src/app/qml/ExerciseSingingView.qml:234
-#: src/app/qml/ExerciseSingingView.qml:245
-#: src/app/qml/ExerciseSingingView.qml:402 src/app/qml/GraphicalMeter.qml:17
-#, kde-format
-msgid "No onset"
-msgstr "Başlangıç yok"
+#: src/app/qml/ExerciseSingingView.qml:198
+#: src/app/qml/ExerciseSingingView.qml:1032
+#, fuzzy, kde-format
+#| msgid "Pitch + timing"
+msgid "No timing"
+msgstr "Perde + zaman"
 
-#: src/app/qml/ExerciseSingingView.qml:293 src/app/qml/GraphicalMeter.qml:23
+#: src/app/qml/ExerciseSingingView.qml:216
+#, fuzzy, kde-format
+#| msgid "Player"
+msgid "Played"
+msgstr "Çalar"
+
+#: src/app/qml/ExerciseSingingView.qml:327 src/app/qml/GraphicalMeter.qml:24
 #, kde-format
 msgid "%1 cents"
 msgstr "%1 sent"
 
-#: src/app/qml/ExerciseSingingView.qml:384 src/app/qml/ExerciseView.qml:182
+#: src/app/qml/ExerciseSingingView.qml:447 src/app/qml/ExerciseView.qml:185
 #, kde-format
 msgid "%1 - Base: %2 - Targets: %3"
 msgstr "%1 — Temel: %2 — Hedef: %3"
 
-#: src/app/qml/ExerciseSingingView.qml:386 src/app/qml/ExerciseView.qml:184
+#: src/app/qml/ExerciseSingingView.qml:449 src/app/qml/ExerciseView.qml:187
 #, kde-format
 msgid "%1 - Base: %2 - Target: %3"
 msgstr "%1 — Temel: %2 — Hedef: %3"
 
-#: src/app/qml/ExerciseSingingView.qml:676
+#: src/app/qml/ExerciseSingingView.qml:845
 #, kde-format
 msgid ""
-"Start a question, listen to the count-in and first note, then sing the "
-"displayed interval or scale notes."
+"The header identifies the scale and shows the current instruction or score."
 msgstr ""
-"Bir soru başlatın, sayımı ve ilk notayı dinleyin, ardından görüntülenen "
-"aralığı veya gam notalarını söyleyin."
 
-#: src/app/qml/ExerciseSingingView.qml:676
+#: src/app/qml/ExerciseSingingView.qml:845
 #, kde-format
 msgid ""
-"For interval exercises, Minuet plays the first note and you sing the next "
-"note shown as the target."
+"The header identifies the interval and shows the current instruction or "
+"score."
 msgstr ""
-"Aralıklı alıştırmalarda Minuet ilk notayı çalar ve siz de hedef olarak "
-"gösterilen bir sonraki notayı söylersiniz."
 
-#: src/app/qml/ExerciseSingingView.qml:676
-#, kde-format
-msgid ""
-"For scale exercises, Minuet plays the first note and you sing the remaining "
-"target notes in order."
-msgstr ""
-"Gam egzersizleri için Minuet ilk notayı çalar ve siz de kalan hedef notaları "
-"sırayla söylersiniz."
-
-#: src/app/qml/ExerciseSingingView.qml:684
+#: src/app/qml/ExerciseSingingView.qml:853
 #, kde-format
 msgid "Sing the scale"
 msgstr "Gamı Söyle"
 
-#: src/app/qml/ExerciseSingingView.qml:684
+#: src/app/qml/ExerciseSingingView.qml:853
 #, kde-format
 msgid "Sing the interval"
 msgstr "Aralığı Söyle"
 
-#: src/app/qml/ExerciseSingingView.qml:762
+#: src/app/qml/ExerciseSingingView.qml:932
 #, kde-format
 msgid ""
-"Sing the note cards in order. The current card is highlighted; borders show "
-"correctness after detection."
+"This area shows the scale notes in order. Borders report pitch; pitch meters "
+"show flat or sharp notes, and timing meters show early or late starts."
 msgstr ""
-"Nota kartlarını sırayla söyleyin. Geçerli kart vurgulanır; sınırlar algılama "
-"sonrasında doğruluk gösterir."
 
-#: src/app/qml/ExerciseSingingView.qml:762
+#: src/app/qml/ExerciseSingingView.qml:932
 #, kde-format
 msgid ""
-"Pitch meters light below the center for flat notes and above the center for "
-"sharp notes. Scale exercises also show an onset meter for each note."
+"This area shows the reference and target notes. Sing the target; its border "
+"reports accuracy, and its pitch meter shows flat or sharp notes."
 msgstr ""
-"Perdeölçerler, bemol notalar için ortanın altında, diyez notalar içinse "
-"ortanın üstünde ışık yakar. Gam egzersizlerinde ayrıca her nota için bir "
-"başlangıçölçer de bulunur."
 
-#: src/app/qml/ExerciseSingingView.qml:968 src/app/qml/ExerciseView.qml:722
+#: src/app/qml/ExerciseSingingView.qml:1059
+#, kde-format
+msgid ""
+"The input level shows microphone activity while you sing. Open means the "
+"signal is above the current gate."
+msgstr ""
+
+#: src/app/qml/ExerciseSingingView.qml:1067
+#, kde-format
+msgid ""
+"Calibrate silence in a quiet room before singing so room noise does not "
+"affect pitch detection."
+msgstr ""
+
+#: src/app/qml/ExerciseSingingView.qml:1119
+#, kde-format
+msgid ""
+"The keyboard highlights the reference note and target notes for the singing "
+"question."
+msgstr ""
+
+#: src/app/qml/ExerciseSingingView.qml:1157
+#, fuzzy, kde-format
+#| msgid "The staff shows the same notes in music notation."
+msgid "The staff shows the same singing notes in music notation."
+msgstr "Dizek, aynı notaları müzik simgeleminde gösterir."
+
+#: src/app/qml/ExerciseSingingView.qml:1186 src/app/qml/ExerciseView.qml:754
 #, kde-format
 msgid "Keyboard"
 msgstr "Klavye (Piyano)"
 
-#: src/app/qml/ExerciseSingingView.qml:971 src/app/qml/ExerciseView.qml:725
+#: src/app/qml/ExerciseSingingView.qml:1189 src/app/qml/ExerciseView.qml:757
 #, kde-format
 msgid "Staff"
 msgstr "Dizek (Porte)"
 
-#: src/app/qml/ExerciseView.qml:353
+#: src/app/qml/ExerciseView.qml:369
 #, kde-format
 msgid "These messages explain the question and show its status."
 msgstr "Bu iletiler soruyu ve onun durumlarını açıklar."
 
-#: src/app/qml/ExerciseView.qml:369
+#: src/app/qml/ExerciseView.qml:385
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "userMessage"
 msgstr "Kullanıcı İletisi"
 
-#: src/app/qml/ExerciseView.qml:383
+#: src/app/qml/ExerciseView.qml:399
 #, kde-format
 msgid "Playing…"
 msgstr "Çalınıyor…"
 
-#: src/app/qml/ExerciseView.qml:406
-#, kde-format
-msgid "Start a new question or replay the current one."
+#: src/app/qml/ExerciseView.qml:412
+#, fuzzy, kde-format
+#| msgid "Start a new question or replay the current one."
+msgid "Start a new question, replay it, reveal the answer, or begin a test."
 msgstr "Yeni bir soru başlatın veya geçerli olanı yeniden çalın."
 
-#: src/app/qml/ExerciseView.qml:408
+#: src/app/qml/ExerciseView.qml:412
+#, fuzzy, kde-format
+#| msgid "Start a new question or replay the current one."
+msgid "Start a rhythm question, replay it, reveal the answer, or begin a test."
+msgstr "Yeni bir soru başlatın veya geçerli olanı yeniden çalın."
+
+#: src/app/qml/ExerciseView.qml:426
 #, kde-format
 msgid "Play Question"
 msgstr "Soruyu Çal"
 
-#: src/app/qml/ExerciseView.qml:422
-#, kde-format
-msgid "Give up to reveal the correct answer."
-msgstr "Doğru yanıtı ortaya çıkarmak için pes edin."
-
-#: src/app/qml/ExerciseView.qml:424
+#: src/app/qml/ExerciseView.qml:440
 #, kde-format
 msgid "Give Up"
 msgstr "Pes Et"
 
-#: src/app/qml/ExerciseView.qml:437
-#, kde-format
-msgid "Start a test to answer several questions in a row."
-msgstr "Birkaç soruyu sırayla yanıtlamak için bir test başlatın."
-
-#: src/app/qml/ExerciseView.qml:483
+#: src/app/qml/ExerciseView.qml:497
 #, kde-format
 msgid "Choose an answer here. Hover, or press and hold, to preview it below."
 msgstr ""
 "Burada bir yanıt seçin. Aşağıda önizlemek için üzerine gelin veya basılı "
 "tutun."
 
-#: src/app/qml/ExerciseView.qml:483
+#: src/app/qml/ExerciseView.qml:497
 #, kde-format
 msgid "Choose each rhythm part from these available answers."
 msgstr "Bu kullanılabilir yanıtlar arasından her bir ritim parçasını seçin."
 
-#: src/app/qml/ExerciseView.qml:497
+#: src/app/qml/ExerciseView.qml:511
 #, kde-format
 msgid "Available answers"
 msgstr "Kullanılabilir yanıtlar"
 
-#: src/app/qml/ExerciseView.qml:501
+#: src/app/qml/ExerciseView.qml:515
 #, kde-format
 msgid "Scroll for more"
 msgstr "Daha fazlası için kaydırın"
 
-#: src/app/qml/ExerciseView.qml:549
+#: src/app/qml/ExerciseView.qml:563
 #, kde-format
 msgid "Your selected answer appears here."
 msgstr "Seçtiğiniz yanıt burada görünür."
 
-#: src/app/qml/ExerciseView.qml:549
+#: src/app/qml/ExerciseView.qml:563
 #, kde-format
 msgid "Build your rhythm answer here, one part at a time."
 msgstr "Ritim yanıtınızı burada parça parça oluşturun."
 
-#: src/app/qml/ExerciseView.qml:565
+#: src/app/qml/ExerciseView.qml:579
 #, kde-format
 msgid "Correct answer"
 msgid_plural "Correct answers"
 msgstr[0] "Doğru yanıt"
 msgstr[1] "Doğru yanıtlar"
 
-#: src/app/qml/ExerciseView.qml:565
+#: src/app/qml/ExerciseView.qml:579
 #, kde-format
 msgid "Your answer"
 msgid_plural "Your answers"
 msgstr[0] "Yanıtınız"
 msgstr[1] "Yanıtlarınız"
 
-#: src/app/qml/ExerciseView.qml:569
+#: src/app/qml/ExerciseView.qml:583
 #, kde-format
 msgid "Scroll for more |"
 msgstr "Daha fazlası için kaydırın |"
 
-#: src/app/qml/ExerciseView.qml:574
+#: src/app/qml/ExerciseView.qml:588
 #, kde-format
 msgid "%1 / %2"
 msgstr "%1 / %2"
 
-#: src/app/qml/ExerciseView.qml:578
+#: src/app/qml/ExerciseView.qml:592
 #, kde-format
 msgid "Backspace"
 msgstr "Geri Sil"
 
-#: src/app/qml/ExerciseView.qml:669
+#: src/app/qml/ExerciseView.qml:688
 #, kde-format
 msgid "The keyboard shows the notes in the question or preview."
 msgstr "Klavye, sorudaki veya önizlemedeki notaları gösterir."
 
-#: src/app/qml/ExerciseView.qml:697
+#: src/app/qml/ExerciseView.qml:726
 #, kde-format
 msgid "The staff shows the same notes in music notation."
 msgstr "Dizek, aynı notaları müzik simgeleminde gösterir."
 
-#: src/app/qml/ExerciseView.qml:853
+#: src/app/qml/ExerciseView.qml:885
 #, kde-format
 msgid "Empty answer slot"
 msgstr "Boş yanıt yuvası"
 
-#: src/app/qml/ExerciseView.qml:885
+#: src/app/qml/ExerciseView.qml:917
 #, kde-format
 msgid "Answer %1"
 msgstr "Yanıt %1"
 
-#: src/app/qml/GraphicalMeter.qml:52
+#: src/app/qml/GraphicalMeter.qml:17
+#, kde-format
+msgid "No onset"
+msgstr "Başlangıç yok"
+
+#: src/app/qml/GraphicalMeter.qml:53
 #, kde-format
 msgid "Pitch deviation: %1"
 msgstr "Perde sapması: %1"
 
-#: src/app/qml/GraphicalMeter.qml:52
+#: src/app/qml/GraphicalMeter.qml:53
 #, kde-format
 msgid "Onset deviation: %1"
 msgstr "Başlangıç sapması: %1"
@@ -2341,15 +2610,15 @@ msgstr "Bu kılavuzu yeniden çalıştırmak için Yardım simgesini kullanın."
 
 #: src/app/qml/Main.qml:140
 #, kde-format
-msgid "Start with a topic, then pick the specific training level."
-msgstr "Bir konu seçin ve sonrasında belirli çalışma düzeyini belirleyin."
+msgid "Start by selecting an exercise topic from the drawer menu."
+msgstr ""
 
 #: src/app/qml/Main.qml:142
 #, kde-format
 msgid "Choose an exercise"
 msgstr "Bir alıştırma seçin"
 
-#: src/app/qml/MinuetDrawer.qml:32 src/app/qml/MinuetDrawer.qml:214
+#: src/app/qml/MinuetDrawer.qml:32 src/app/qml/MinuetDrawer.qml:232
 #, kde-format
 msgid "All exercises"
 msgstr "Tüm Alıştırmalar"
@@ -2373,7 +2642,7 @@ msgstr ""
 "Aralıklar, akorlar, ritimler, gamlar ve çok daha fazlası için alıştırmalarla "
 "kulak eğitiminizi geliştirin."
 
-#: src/app/qml/MinuetDrawer.qml:171 src/app/qml/SettingsPage.qml:48
+#: src/app/qml/MinuetDrawer.qml:171 src/app/qml/SettingsPage.qml:62
 #, kde-format
 msgid "Settings"
 msgstr "Ayarlar"
@@ -2383,165 +2652,189 @@ msgstr "Ayarlar"
 msgid "About"
 msgstr "Hakkında"
 
+#: src/app/qml/MinuetDrawer.qml:209
+#, fuzzy, kde-format
+#| msgid "Number of exercises"
+msgid "No exercises found"
+msgstr "Alıştırma sayısı"
+
 #: src/app/qml/PianoView/PianoView.qml:151
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave %1"
 msgstr "Oktav %1"
 
-#: src/app/qml/PracticeModePage.qml:46
+#: src/app/qml/PracticeModePage.qml:52
 #, kde-format
 msgid "Choose how you would like to practice this exercise:"
 msgstr "Bu alıştırmayı nasıl yapmak istediğinizi seçin:"
 
-#: src/app/qml/PracticeModePage.qml:54
+#: src/app/qml/PracticeModePage.qml:60
 #, kde-format
 msgid "Hear and identify"
 msgstr "Duy ve tanımla"
 
-#: src/app/qml/PracticeModePage.qml:62
+#: src/app/qml/PracticeModePage.qml:71
 #, kde-format
 msgid "Read and clap"
 msgstr "Oku ve el çırp"
 
-#: src/app/qml/PracticeModePage.qml:62
+#: src/app/qml/PracticeModePage.qml:71
 #, kde-format
 msgid "Read and sing"
 msgstr "Oku ve söyle"
 
-#: src/app/qml/SettingsPage.qml:18
+#: src/app/qml/PracticeModePage.qml:71
+#, fuzzy, kde-format
+#| msgid "No microphone input plugin available"
+msgid "(no microphone input devices found)"
+msgstr "Kullanılabilir mikrofon giriş eklentisi yok"
+
+#: src/app/qml/SettingsPage.qml:19
 #, kde-format
 msgid "Hide advanced settings"
 msgstr "Gelişmiş ayarları gizle"
 
-#: src/app/qml/SettingsPage.qml:27
+#: src/app/qml/SettingsPage.qml:29
 #, kde-format
 msgid "Pitch primary"
 msgstr "Ana perde"
 
-#: src/app/qml/SettingsPage.qml:27
+#: src/app/qml/SettingsPage.qml:29
 #, kde-format
 msgid "Pitch + timing"
 msgstr "Perde + zaman"
 
-#: src/app/qml/SettingsPage.qml:30
+#: src/app/qml/SettingsPage.qml:32
 #, kde-format
 msgid "Show advanced settings"
 msgstr "Gelişmiş ayarları göster"
 
-#: src/app/qml/SettingsPage.qml:31
+#: src/app/qml/SettingsPage.qml:33
 #, kde-format
 msgid "Soprano"
 msgstr "Soprano"
 
-#: src/app/qml/SettingsPage.qml:31
+#: src/app/qml/SettingsPage.qml:33
 #, kde-format
 msgid "Alto"
 msgstr "Alto"
 
-#: src/app/qml/SettingsPage.qml:31
+#: src/app/qml/SettingsPage.qml:33
 #, kde-format
 msgid "Tenor"
 msgstr "Tenor"
 
-#: src/app/qml/SettingsPage.qml:31
+#: src/app/qml/SettingsPage.qml:33
 #, kde-format
 msgid "Bass"
 msgstr "Bas"
 
-#: src/app/qml/SettingsPage.qml:85
+#: src/app/qml/SettingsPage.qml:99
 #, kde-format
 msgid "Practice"
 msgstr "Pratik"
 
-#: src/app/qml/SettingsPage.qml:94
+#: src/app/qml/SettingsPage.qml:108
 #, kde-format
 msgid "Exercise speed"
 msgstr "Alıştırma hızı"
 
-#: src/app/qml/SettingsPage.qml:95
+#: src/app/qml/SettingsPage.qml:109 src/app/qml/SettingsPage.qml:125
 #, kde-format
 msgid "bpm"
 msgstr "bpm"
 
-#: src/app/qml/SettingsPage.qml:109
+#: src/app/qml/SettingsPage.qml:124
+#, fuzzy, kde-format
+#| msgid "Clapping detection"
+msgid "Clapping speed"
+msgstr "El çırpma algılaması"
+
+#: src/app/qml/SettingsPage.qml:139
 #, kde-format
 msgid "Number of rhythm patterns"
 msgstr "Ritim kalıpları sayısı"
 
-#: src/app/qml/SettingsPage.qml:123
+#: src/app/qml/SettingsPage.qml:153
 #, kde-format
 msgid "Number of exercises"
 msgstr "Alıştırma sayısı"
 
-#: src/app/qml/SettingsPage.qml:134
+#: src/app/qml/SettingsPage.qml:164
 #, kde-format
 msgid "Sound"
 msgstr "Ses"
 
-#: src/app/qml/SettingsPage.qml:143
+#: src/app/qml/SettingsPage.qml:173
 #, kde-format
 msgid "Volume"
 msgstr "Ses Düzeyi"
 
-#: src/app/qml/SettingsPage.qml:154
+#: src/app/qml/SettingsPage.qml:184
 #, kde-format
 msgid ""
 "The active sound controller did not report any General MIDI bank 0 "
 "instruments."
 msgstr "Etkin ses denetimcisi hiçbir genel MIDI bank 0 çalgısını bulamadı."
 
-#: src/app/qml/SettingsPage.qml:156
+#: src/app/qml/SettingsPage.qml:186
 #, kde-format
 msgid "No melodic instruments available"
 msgstr "Kullanılabilir melodik çalgı yok"
 
-#: src/app/qml/SettingsPage.qml:160
+#: src/app/qml/SettingsPage.qml:190
 #, kde-format
 msgid "Used for scales, intervals, and chords."
 msgstr "Gamlar, aralıklar ve akorlar için kullanılır."
 
-#: src/app/qml/SettingsPage.qml:161
+#: src/app/qml/SettingsPage.qml:191
 #, kde-format
 msgid "Melodic Exercises"
 msgstr "Melodik Alıştırmalar"
 
-#: src/app/qml/SettingsPage.qml:168
+#: src/app/qml/SettingsPage.qml:202
 #, kde-format
 msgid "Instrument group:"
 msgstr "Çalgı grubu:"
 
-#: src/app/qml/SettingsPage.qml:186
+#: src/app/qml/SettingsPage.qml:225
 #, kde-format
 msgid "Instrument:"
 msgstr "Çalgı:"
 
-#: src/app/qml/SettingsPage.qml:200
+#: src/app/qml/SettingsPage.qml:240
 #, kde-format
 msgid "Used for rhythm figures. The count-in keeps its own sound."
 msgstr "Ritim figürleri için kullanılır. Giriş sayımı kendi sesini korur."
 
-#: src/app/qml/SettingsPage.qml:201
+#: src/app/qml/SettingsPage.qml:241
 #, kde-format
 msgid "Rhythmic Exercises"
 msgstr "Ritmik Alıştırmalar"
 
-#: src/app/qml/SettingsPage.qml:208
+#: src/app/qml/SettingsPage.qml:252
 #, kde-format
 msgid "Percussion sound:"
 msgstr "Vurmalı sesi:"
 
-#: src/app/qml/SettingsPage.qml:219
+#: src/app/qml/SettingsPage.qml:264
 #, kde-format
 msgid "Microphone"
 msgstr "Mikrofon"
 
-#: src/app/qml/SettingsPage.qml:227
+#: src/app/qml/SettingsPage.qml:273
+#, fuzzy, kde-format
+#| msgid "Input level"
+msgid "Input device"
+msgstr "Giriş düzeyi"
+
+#: src/app/qml/SettingsPage.qml:288
 #, kde-format
 msgid "Voice class"
 msgstr "Ses sınıfı"
 
-#: src/app/qml/SettingsPage.qml:239
+#: src/app/qml/SettingsPage.qml:300
 #, kde-format
 msgid ""
 "Larger values accept claps farther from the beat; smaller values require "
@@ -2550,12 +2843,12 @@ msgstr ""
 "Daha büyük değerler, vuruştan uzaktaki alkışları kabul eder; daha küçük "
 "değerler daha sıkı zamanlama gerektirir."
 
-#: src/app/qml/SettingsPage.qml:241
+#: src/app/qml/SettingsPage.qml:302
 #, kde-format
 msgid "Timing tolerance"
 msgstr "Zamanlama payı"
 
-#: src/app/qml/SettingsPage.qml:255
+#: src/app/qml/SettingsPage.qml:316
 #, kde-format
 msgid ""
 "Larger values accept notes farther from the target pitch; smaller values "
@@ -2564,17 +2857,17 @@ msgstr ""
 "Daha büyük değerler hedef perdeden daha uzaktaki notaları kabul eder; daha "
 "küçük değerler daha doğru şarkı söylemeyi gerektirir."
 
-#: src/app/qml/SettingsPage.qml:257
+#: src/app/qml/SettingsPage.qml:318
 #, kde-format
 msgid "Pitch tolerance"
 msgstr "Perde toleransı"
 
-#: src/app/qml/SettingsPage.qml:258
+#: src/app/qml/SettingsPage.qml:319
 #, kde-format
 msgid "cents"
 msgstr "sent"
 
-#: src/app/qml/SettingsPage.qml:268
+#: src/app/qml/SettingsPage.qml:329
 #, kde-format
 msgid ""
 "Keep the room quiet while calibrating silence. Recalibrate when the "
@@ -2583,92 +2876,92 @@ msgstr ""
 "Sessizliği kalibre ederken odayı sessiz tutun. Mikrofon veya oda gürültüsü "
 "değiştiğinde yeniden kalibre edin."
 
-#: src/app/qml/SettingsPage.qml:269
+#: src/app/qml/SettingsPage.qml:330
 #, kde-format
 msgid "Calibration"
 msgstr "Kalibrasyon"
 
-#: src/app/qml/SettingsPage.qml:273
+#: src/app/qml/SettingsPage.qml:334
 #, kde-format
 msgid "Advanced"
 msgstr "Gelişmiş"
 
-#: src/app/qml/SettingsPage.qml:313
+#: src/app/qml/SettingsPage.qml:374
 #, kde-format
 msgid "Algorithms and detection thresholds for difficult microphones or rooms."
 msgstr "Zor mikrofonlar veya odalar için algoritmalar ve algılama eşikleri."
 
-#: src/app/qml/SettingsPage.qml:338
+#: src/app/qml/SettingsPage.qml:400
+#, kde-format
+msgid "Used for rhythm clapping exercises."
+msgstr ""
+
+#: src/app/qml/SettingsPage.qml:401
 #, kde-format
 msgid "Clapping detection"
 msgstr "El çırpma algılaması"
 
-#: src/app/qml/SettingsPage.qml:342 src/app/qml/SettingsPage.qml:410
+#: src/app/qml/SettingsPage.qml:405
 #, kde-format
 msgid "Onset method"
 msgstr "Başlangıç yöntemi"
 
-#: src/app/qml/SettingsPage.qml:352 src/app/qml/SettingsPage.qml:481
+#: src/app/qml/SettingsPage.qml:415
 #, kde-format
 msgid "Onset threshold"
 msgstr "Başlangıç eşiği"
 
-#: src/app/qml/SettingsPage.qml:364 src/app/qml/SettingsPage.qml:458
+#: src/app/qml/SettingsPage.qml:427 src/app/qml/SettingsPage.qml:482
 #, kde-format
 msgid "Input gate"
 msgstr "Giriş kapısı"
 
-#: src/app/qml/SettingsPage.qml:376 src/app/qml/SettingsPage.qml:493
+#: src/app/qml/SettingsPage.qml:439
 #, kde-format
 msgid "Minimum onset strength"
 msgstr "En düşük başlangıç gücü"
 
-#: src/app/qml/SettingsPage.qml:387 src/app/qml/SettingsPage.qml:469
+#: src/app/qml/SettingsPage.qml:455
 #, kde-format
-msgid "Aubio silence"
-msgstr "Aubio sessizliği"
+msgid "Used for pitch analysis and note-entry timing in singing exercises."
+msgstr ""
 
-#: src/app/qml/SettingsPage.qml:388 src/app/qml/SettingsPage.qml:470
-#, kde-format
-msgid "dB"
-msgstr "dB"
-
-#: src/app/qml/SettingsPage.qml:397
+#: src/app/qml/SettingsPage.qml:456
 #, kde-format
 msgid "Singing detection"
 msgstr "Şarkı söyleme algılaması"
 
-#: src/app/qml/SettingsPage.qml:401
+#: src/app/qml/SettingsPage.qml:460
 #, kde-format
 msgid "Pitch method"
 msgstr "Perde belirleme yöntemi"
 
-#: src/app/qml/SettingsPage.qml:419
-#, kde-format
-msgid "Scoring mode"
-msgstr "Puanlama kipi"
-
-#: src/app/qml/SettingsPage.qml:429
-#, kde-format
-msgid "Disregard octave difference"
-msgstr "Oktav farkını dikkate alma"
-
-#: src/app/qml/SettingsPage.qml:436
+#: src/app/qml/SettingsPage.qml:470
 #, kde-format
 msgid "Pitch confidence"
 msgstr "Perde güveni"
 
-#: src/app/qml/SettingsPage.qml:447
+#: src/app/qml/SettingsPage.qml:493
 #, kde-format
 msgid "Stable pitch frames"
 msgstr "Kararlı perde çerçeveleri"
 
-#: src/app/qml/SettingsPage.qml:505
+#: src/app/qml/SettingsPage.qml:503
+#, kde-format
+msgid "Scoring mode"
+msgstr "Puanlama kipi"
+
+#: src/app/qml/SettingsPage.qml:515
+#, kde-format
+msgid "Disregard octave difference"
+msgstr "Oktav farkını dikkate alma"
+
+#: src/app/qml/SettingsPage.qml:523
 #, kde-format
 msgid "Reset to Defaults"
 msgstr "Öntanımlılara Sıfırla"
 
-#: src/app/qml/SettingsPage.qml:578
+#: src/app/qml/SettingsPage.qml:607
 #, kde-format
 msgid "%1 %2"
 msgstr "%1 %2"
@@ -2678,398 +2971,485 @@ msgstr "%1 %2"
 msgid "Could not load the main user interface."
 msgstr "Ana kullanıcı arayüzü yüklenemedi."
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:495
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:509
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Acoustic Bass Drum"
 msgstr "Akustik Bas Davul"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:497
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:511
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Bass Drum 1"
 msgstr "Bas Davul 1"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:499
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:513
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Side Stick"
 msgstr "Kasnak (Side Stick)"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:501
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:515
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Acoustic Snare"
 msgstr "Akustik Trampet"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:503
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:517
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hand Clap"
 msgstr "El Çırpma"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:505
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:519
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Electric Snare"
 msgstr "Elektronik Trampet"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:507
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:521
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Floor Tom"
 msgstr "Alt Yer Tomu"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:509
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:523
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Closed Hi-hat"
 msgstr "Kapalı Hi-hat"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:511
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:525
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Floor Tom"
 msgstr "Üst Yer Tomu"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:513
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:527
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Pedal Hi-hat"
 msgstr "Pedallı Hi-hat"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:515
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:529
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Tom"
 msgstr "Alt Tom"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:517
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:531
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Hi-hat"
 msgstr "Açık Hi-hat"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:519
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:533
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low-Mid Tom"
 msgstr "Alt Orta Tom"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:521
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:535
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hi-Mid Tom"
 msgstr "Üst Orta Tom"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:523
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:537
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Crash Cymbal 1"
 msgstr "Crash Zili 1"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:525
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:539
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Tom"
 msgstr "Üst Tom"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:527
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:541
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Ride Cymbal 1"
 msgstr "Ride Zili 1"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:529
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:543
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Chinese Cymbal"
 msgstr "Çin Zili (Chinese Cymbal)"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:531
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:545
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Ride Bell"
 msgstr "Ride Çanı"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:533
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:547
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Tambourine"
 msgstr "Def (Tef)"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:535
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:549
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Splash Cymbal"
 msgstr "Splash Zili"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:537
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:551
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Cowbell"
 msgstr "Cowbell"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:539
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:553
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Crash Cymbal 2"
 msgstr "Crash Zili 2"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:541
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:555
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Vibraslap"
 msgstr "Vibraslap"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:543
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:557
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Ride Cymbal 2"
 msgstr "Ride Zili 2"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:545
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:559
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hi Bongo"
 msgstr "Tiz Bongo"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:547
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:561
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Bongo"
 msgstr "Bas Bongo"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:549
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:563
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Mute Hi Conga"
 msgstr "Kapalı Tiz Conga"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:551
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:565
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Hi Conga"
 msgstr "Açık Tiz Conga"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:553
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:567
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Conga"
 msgstr "Bas Conga"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:555
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:569
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Timbale"
 msgstr "Tiz Timbale"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:557
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:571
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Timbale"
 msgstr "Bas Timbale"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:559
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:573
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Agogo"
 msgstr "Tiz Agogo"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:561
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:575
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Agogo"
 msgstr "Bas Agogo"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:563
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:577
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Cabasa"
 msgstr "Cabasa"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:565
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:579
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Maracas"
 msgstr "Marakas"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:567
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:581
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Short Whistle"
 msgstr "Kısa Düdük"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:569
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:583
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Long Whistle"
 msgstr "Uzun Düdük"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:571
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:585
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Short Guiro"
 msgstr "Kısa Guiro"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:573
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:587
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Long Guiro"
 msgstr "Uzun Guiro"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:575
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:589
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Claves"
 msgstr "Klav (Claves)"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:577
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:591
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hi Wood Block"
 msgstr "Tiz Tahta Blok"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:579
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:593
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Wood Block"
 msgstr "Bas Tahta Blok"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:581
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:595
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Mute Cuica"
 msgstr "Kapalı Cuica"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:583
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:597
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Cuica"
 msgstr "Açık Cuica"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:585
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:599
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Mute Triangle"
 msgstr "Kapatılmış Üçgen"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:587
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:601
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Triangle"
 msgstr "Açık Üçgen"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:589
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:603
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Percussion"
 msgstr "Vurmalılar"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:597
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:611
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Piano"
 msgstr "Piyano"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:599
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:613
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Chromatic Percussion"
 msgstr "Kromatik Vurmalılar"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:601
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:615
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Organ"
 msgstr "Org"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:603
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:617
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Guitar"
 msgstr "Gitar"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:605
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:619
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Bass"
 msgstr "Bas"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:607
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:621
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Strings"
 msgstr "Yaylı Çalgılar"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:609
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:623
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Ensemble"
 msgstr "Ansambl / Topluluk"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:611
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:625
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Brass"
 msgstr "Bakır Üflemeliler"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:613
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:627
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Reed"
 msgstr "Kamışlı Çalgılar"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:615
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:629
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Pipe"
 msgstr "Flütler / Borulu Çalgılar"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:617
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:631
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Synth Lead"
 msgstr "Sentetik Solo (Lead)"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:619
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:633
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Synth Pad"
 msgstr "Sentetik Arka Plan (Pad)"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:621
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:635
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Synth Effects"
 msgstr "Sentetik Efektler"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:623
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:637
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Ethnic"
 msgstr "Etnik Çalgılar"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:625
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:639
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Percussive"
 msgstr "Vurmalılar"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:627
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:641
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Sound Effects"
 msgstr "Ses Efektleri"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:629
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:643
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Other"
 msgstr "Diğer"
 
-#~ msgid "Player"
-#~ msgstr "Çalar"
+#~ msgid ""
+#~ "Start a question, listen to the count, then clap each rhythm figure in "
+#~ "time."
+#~ msgstr ""
+#~ "Bir soru sorun, geri sayımı dinleyin ve her bir ritim figürüne doğru "
+#~ "zamanda el çırpın."
+
+#~ msgid ""
+#~ "Each colored card is one rhythm figure. Green borders mark figures "
+#~ "clapped correctly; red borders mark missed figures."
+#~ msgstr ""
+#~ "Her renkli kart bir ritim figürünü temsil eder. Yeşil kenarlıklar doğru "
+#~ "alkışlanan figürleri, kırmızı kenarlıklar ise kaçırılan figürleri "
+#~ "işaretler."
+
+#~ msgid ""
+#~ "The onset meter below each figure lights below the center for advanced "
+#~ "claps and above the center for late claps."
+#~ msgstr ""
+#~ "Her bir rakamın altındaki gösterge, alkışların erken başlaması durumunda "
+#~ "merkezden aşağıda, geç başlaması durumunda ise merkezden yukarıda yanar."
+
+#~ msgid "Rhythm questions begin with a count-in."
+#~ msgstr "Ritim soruları bir sayımla başlar."
+
+#~ msgid ""
+#~ "Clapping exercises count to the number of rhythm patterns before "
+#~ "recording, then repeat that count while you clap."
+#~ msgstr ""
+#~ "Alkış alıştırmaları, kaydetmeden önce ritim kalıplarının sayısını sayar, "
+#~ "ardından alkışlarken bu sayımı yineleyin."
+
+#~ msgid ""
+#~ "Singing exercises count in before the first note; then sing one displayed "
+#~ "note on each count."
+#~ msgstr ""
+#~ "Şarkı söyleme egzersizleri ilk notadan önce sayılır; daha sonra her "
+#~ "sayımda görüntülenen bir notayı söyleyin."
+
+#~ msgid ""
+#~ "Start a question, listen to the count-in and first note, then sing the "
+#~ "displayed interval or scale notes."
+#~ msgstr ""
+#~ "Bir soru başlatın, sayımı ve ilk notayı dinleyin, ardından görüntülenen "
+#~ "aralığı veya gam notalarını söyleyin."
+
+#~ msgid ""
+#~ "For interval exercises, Minuet plays the first note and you sing the next "
+#~ "note shown as the target."
+#~ msgstr ""
+#~ "Aralıklı alıştırmalarda Minuet ilk notayı çalar ve siz de hedef olarak "
+#~ "gösterilen bir sonraki notayı söylersiniz."
+
+#~ msgid ""
+#~ "For scale exercises, Minuet plays the first note and you sing the "
+#~ "remaining target notes in order."
+#~ msgstr ""
+#~ "Gam egzersizleri için Minuet ilk notayı çalar ve siz de kalan hedef "
+#~ "notaları sırayla söylersiniz."
+
+#~ msgid ""
+#~ "Sing the note cards in order. The current card is highlighted; borders "
+#~ "show correctness after detection."
+#~ msgstr ""
+#~ "Nota kartlarını sırayla söyleyin. Geçerli kart vurgulanır; sınırlar "
+#~ "algılama sonrasında doğruluk gösterir."
+
+#~ msgid ""
+#~ "Pitch meters light below the center for flat notes and above the center "
+#~ "for sharp notes. Scale exercises also show an onset meter for each note."
+#~ msgstr ""
+#~ "Perdeölçerler, bemol notalar için ortanın altında, diyez notalar içinse "
+#~ "ortanın üstünde ışık yakar. Gam egzersizlerinde ayrıca her nota için bir "
+#~ "başlangıçölçer de bulunur."
+
+#~ msgid "Give up to reveal the correct answer."
+#~ msgstr "Doğru yanıtı ortaya çıkarmak için pes edin."
+
+#~ msgid "Start a test to answer several questions in a row."
+#~ msgstr "Birkaç soruyu sırayla yanıtlamak için bir test başlatın."
+
+#~ msgid "Start with a topic, then pick the specific training level."
+#~ msgstr "Bir konu seçin ve sonrasında belirli çalışma düzeyini belirleyin."
+
+#~ msgid "Aubio silence"
+#~ msgstr "Aubio sessizliği"
+
+#~ msgid "dB"
+#~ msgstr "dB"
 
 #~ msgid "Rhythm Exercises"
 #~ msgstr "Ritim Alıştırmaları"
