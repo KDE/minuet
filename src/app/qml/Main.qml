@@ -28,7 +28,6 @@ Kirigami.ApplicationWindow {
     }
     function openAbout(): void {
         stopExerciseActivity();
-        currentExercise = undefined;
         currentExerciseSelection = {
             kind: "about"
         };
@@ -37,7 +36,6 @@ Kirigami.ApplicationWindow {
     }
     function openExerciseFilter(exerciseModel: var, title: string, inheritedIconName: string, selectionKind: string): void {
         stopExerciseActivity();
-        currentExercise = undefined;
         if (selectionKind === "all") {
             currentExerciseSelection = {
                 kind: "all"
@@ -60,7 +58,6 @@ Kirigami.ApplicationWindow {
     }
     function openHome(): void {
         stopExerciseActivity();
-        currentExercise = undefined;
         currentExerciseSelection = {
             kind: "home"
         };
@@ -69,14 +66,18 @@ Kirigami.ApplicationWindow {
     }
     function openSettings(): void {
         stopExerciseActivity();
-        currentExercise = undefined;
         currentExerciseSelection = {
             kind: "settings"
         };
         pageStack.clear();
         pageStack.push(createSettingsPage());
     }
-    function stopExerciseActivity(): void {
+    function stopExerciseActivity(exercisePage: var): void {
+        const page = exercisePage === undefined ? window.currentPage : exercisePage;
+        if (page !== null && page !== undefined && typeof page.stopExerciseActivity === "function") {
+            page.stopExerciseActivity();
+        }
+        window.currentExercise = undefined;
         if (Core.soundController !== null) {
             Core.soundController.stop();
         }
@@ -122,7 +123,7 @@ Kirigami.ApplicationWindow {
     Connections {
         function onCurrentIndexChanged(): void {
             if (pageStack.currentIndex < window.previousPageStackIndex) {
-                window.stopExerciseActivity();
+                window.stopExerciseActivity(pageStack.get(window.previousPageStackIndex));
             }
             window.previousPageStackIndex = pageStack.currentIndex;
         }
