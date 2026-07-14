@@ -207,15 +207,10 @@ Item {
         return Math.max(margin, Math.min(maximum, isFinite(value) ? value : margin));
     }
     function clearCurrentRun(): void {
+        testNextQuestionTimer.stop();
         progressTimer.stop();
         timelineTimer.stop();
         finishTimer.stop();
-        if (root.microphone) {
-            root.microphone.stop();
-        }
-        if (Core.soundController) {
-            Core.soundController.stop();
-        }
         root.countIn = 0;
         root.countInOverlayAnchorIndex = -1;
         root.countPhase = "idle";
@@ -224,6 +219,13 @@ Item {
         root.inputTimingStarted = false;
         root.listeningStartSeconds = -1;
         root.performedOnsets = [];
+        root.viewState = "idle";
+        if (root.microphone) {
+            root.microphone.stop();
+        }
+        if (Core.soundController) {
+            Core.soundController.stop();
+        }
     }
     function completeExercise(): void {
         if (root.viewState !== "analyzing") {
@@ -273,9 +275,6 @@ Item {
         progressTimer.stop();
         timelineTimer.stop();
         finishTimer.stop();
-        if (Core.soundController) {
-            Core.soundController.stop();
-        }
         root.countIn = 0;
         root.countInOverlayAnchorIndex = -1;
         root.countPhase = "idle";
@@ -284,6 +283,9 @@ Item {
         root.inputTimingStarted = false;
         root.inputErrorMessage = message;
         root.viewState = "ready";
+        if (Core.soundController) {
+            Core.soundController.stop();
+        }
         Qt.callLater(root.centerAllFigureCards);
     }
     function figureIndexForElapsed(elapsedMs: real): int {
@@ -313,6 +315,7 @@ Item {
         progressTimer.stop();
         timelineTimer.stop();
         finishTimer.stop();
+        root.viewState = "analyzing";
         root.countIn = 0;
         root.countInOverlayAnchorIndex = -1;
         root.countPhase = "idle";
@@ -320,7 +323,6 @@ Item {
         if (Core.soundController) {
             Core.soundController.stop();
         }
-        root.viewState = "analyzing";
         if (root.microphone) {
             root.microphone.finalizeInputAnalysis();
         } else {
@@ -599,8 +601,11 @@ Item {
         }
         return Kirigami.Theme.textColor;
     }
+    function stopExerciseActivity(): void {
+        clearCurrentRun();
+        root.currentExercise = undefined;
+    }
     function stopTest(): void {
-        testNextQuestionTimer.stop();
         clearCurrentRun();
         root.testScoreTotal = 0;
         Core.exerciseSessionController.stopTest();
@@ -641,7 +646,6 @@ Item {
     visible: root.currentExercise !== undefined
 
     onCurrentExerciseChanged: {
-        testNextQuestionTimer.stop();
         clearCurrentRun();
         root.expectedOnsets = [];
         root.figureStates = [];
@@ -768,6 +772,7 @@ Item {
 
                     readonly property real sideLength: visible ? headerCenter.implicitHeight : 0
 
+                    Layout.alignment: Qt.AlignVCenter
                     Layout.preferredHeight: exerciseIcon.sideLength * 0.75
                     Layout.preferredWidth: exerciseIcon.sideLength
                     source: root.currentExerciseIconName

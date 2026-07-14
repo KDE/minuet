@@ -76,10 +76,14 @@ Item {
         Core.exerciseSessionController.checkAnswers(rightAnswers, expectedAnswers, exerciseView.maximumExercises);
 
         showUserAnswers();
-        if (exerciseView.selectedOptionCount === 1)
+        if (exerciseView.selectedOptionCount === 1) {
             highlightRightAnswer();
-        else
+        } else {
             exerciseView.state = "waitingForNewQuestion";
+            if (Core.exerciseSessionController.isTest) {
+                testFeedbackTimer.restart();
+            }
+        }
     }
     function chooseAnswer(answer: var, index: int): void {
         if (exerciseView.state !== "waitingForAnswer" || animation.running || Core.exerciseSessionController.currentAnswer >= exerciseView.selectedOptionCount) {
@@ -89,6 +93,24 @@ Item {
         if (Core.exerciseSessionController.chooseAnswer(answer, index, exerciseView.selectedOptionCount, internal.colors)) {
             checkAnswers();
         }
+    }
+    function clearCurrentRun(): void {
+        testFeedbackTimer.stop();
+        internal.stoppingActivity = true;
+        if (animation.running) {
+            animation.stop();
+        }
+        if (internal.rightAnswerRectangle !== null) {
+            internal.rightAnswerRectangle.scale = 1;
+        }
+        internal.countIn = 0;
+        internal.hoveredAvailableAnswer = null;
+        internal.rightAnswerRectangle = null;
+        exerciseView.state = "waitingForNewQuestion";
+        if (Core.soundController !== null) {
+            Core.soundController.stop();
+        }
+        internal.stoppingActivity = false;
     }
     function colorForAnswer(answer: var): color {
         return Core.exerciseSessionController.colorForAnswer(answer || {}, exerciseView.availableAnswers, internal.colors);
@@ -154,38 +176,6 @@ Item {
         generateNewQuestion();
         Core.soundController.play();
     }
-    function noteName(midi: int): string {
-        const names = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
-        return names[((midi % 12) + 12) % 12] + (Math.floor(midi / 12) - 1);
-    }
-    function questionPitchMessage(): string {
-        const selected = Core.exerciseSessionController.selectedExerciseOptions;
-        if (exerciseView.currentExercise === undefined || selected.length === 0 || exerciseView.currentExercise["playMode"] === "rhythm") {
-            return "";
-        }
-
-        const option = selected[0];
-        const sequence = option.sequence.split(" ").filter(part => part.length > 0).map(part => Core.exerciseSessionController.chosenRootNote + parseInt(part));
-        if (sequence.length === 0) {
-            return "";
-        }
-
-        const tags = option.tags || [];
-        const userMessage = exerciseView.currentExercise["userMessage"] || "";
-        const userMessageLower = userMessage.toLowerCase();
-        const scaleQuestion = tags.indexOf("scale") >= 0 || userMessageLower.indexOf("scale") >= 0;
-        const intervalQuestion = tags.indexOf("interval") >= 0 || userMessageLower.indexOf("interval") >= 0;
-        if (!scaleQuestion && !intervalQuestion) {
-            return "";
-        }
-
-        const base = noteName(Core.exerciseSessionController.chosenRootNote);
-        const exerciseName = i18nc("technical term, do you have a musician friend?", option.name);
-        if (scaleQuestion) {
-            return i18n("%1 - Base: %2 - Targets: %3", exerciseName, base, sequence.map(note => noteName(note)).join(", "));
-        }
-        return i18n("%1 - Base: %2 - Target: %3", exerciseName, base, noteName(sequence[0]));
-    }
     function removeLastUserAnswer(): void {
         if (exerciseView.canEditUserAnswers && Core.exerciseSessionController.removeLastUserAnswer()) {
             showUserAnswers();
@@ -249,6 +239,10 @@ Item {
     function showUserAnswers(): void {
         showAnswers(Core.exerciseSessionController.userAnswers);
     }
+    function stopExerciseActivity(): void {
+        clearCurrentRun();
+        exerciseView.currentExercise = undefined;
+    }
     function toggleSubmittedAnswerCorrection(position: int): void {
         if (Core.exerciseSessionController.correctedAnswerPosition === position) {
             restoreSubmittedAnswerCorrection(position);
@@ -288,10 +282,9 @@ Item {
         exerciseView.onboardingMusicTabCaptured = false;
     }
     onCurrentExerciseChanged: {
-        internal.countIn = 0;
+        clearCurrentRun();
         pianoView.clearAllMarks();
         sheetMusicView.clearAllMarks();
-        internal.hoveredAvailableAnswer = null;
         if (exerciseView.currentExercise !== undefined) {
             Core.exerciseSessionController.resetForExercise();
             sheetMusicView.spaced = exerciseView.currentExercise["playMode"] !== "chord";
@@ -313,6 +306,7 @@ Item {
         property int countIn: 0
         property Item hoveredAvailableAnswer
         property Item rightAnswerRectangle
+        property bool stoppingActivity: false
     }
     Item {
         id: contentShell
@@ -329,7 +323,7 @@ Item {
                 id: exerciseHeader
 
                 Layout.fillWidth: true
-                Layout.preferredHeight: headerLayout.implicitHeight + headerSeparator.implicitHeight
+                Layout.preferredHeight: headerLayout.implicitHeight + headerSeparator.implicitHeight + Kirigami.Units.largeSpacing * 2
                 color: Kirigami.Theme.alternateBackgroundColor
 
                 RowLayout {
@@ -394,10 +388,7 @@ Item {
                                 elide: Text.ElideRight
                                 horizontalAlignment: Text.AlignHCenter
                                 level: 3
-                                text: {
-                                    const pitchMessage = exerciseView.questionPitchMessage();
-                                    return exerciseView.exercisePlaying ? i18n("Playing…") : pitchMessage.length > 0 ? pitchMessage : Core.exerciseSessionController.statusText;
-                                }
+                                text: exerciseView.exercisePlaying ? i18n("Playing…") : Core.exerciseSessionController.statusText
                             }
                         }
                         Item {
@@ -422,7 +413,7 @@ Item {
                                 Button {
                                     id: playQuestionButton
 
-                                    enabled: !animation.running && !exerciseView.exercisePlaying
+                                    enabled: !animation.running && !testFeedbackTimer.running && !exerciseView.exercisePlaying
                                     text: (exerciseView.state === "waitingForNewQuestion") ? i18n("New Question") : i18n("Play Question")
                                     width: actionButtons.buttonWidth
 
@@ -436,7 +427,7 @@ Item {
                                 Button {
                                     id: giveUpButton
 
-                                    enabled: exerciseView.state === "waitingForAnswer" && !animation.running && !exerciseView.exercisePlaying
+                                    enabled: exerciseView.state === "waitingForAnswer" && !Core.exerciseSessionController.isTest && !animation.running && !exerciseView.exercisePlaying
                                     text: i18n("Give Up")
                                     width: actionButtons.buttonWidth
 
@@ -455,13 +446,14 @@ Item {
 
                                     onClicked: {
                                         if (!Core.exerciseSessionController.isTest) {
+                                            testFeedbackTimer.stop();
                                             Core.exerciseSessionController.startTest();
                                             generateNewQuestion();
                                             if (Core.exerciseSessionController.isTest)
                                                 Core.soundController.play();
                                         } else {
+                                            clearCurrentRun();
                                             Core.exerciseSessionController.stopTest();
-                                            exerciseView.state = "waitingForNewQuestion";
                                         }
                                     }
                                 }
@@ -939,13 +931,26 @@ Item {
 
         onActivated: removeLastUserAnswer()
     }
+    Timer {
+        id: testFeedbackTimer
+
+        interval: 1600
+
+        onTriggered: {
+            if (Core.exerciseSessionController.isTest) {
+                nextTestExercise();
+            }
+        }
+    }
     ParallelAnimation {
         id: animation
 
         loops: 2
 
         onStopped: {
-            finishSingleAnswerFeedback();
+            if (!internal.stoppingActivity) {
+                finishSingleAnswerFeedback();
+            }
         }
 
         SequentialAnimation {

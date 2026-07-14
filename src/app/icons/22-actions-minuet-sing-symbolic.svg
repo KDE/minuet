@@ -5,7 +5,7 @@
         color:#4d4d4d;
       }</style>
  </defs>
- <g class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round">
+ <g class="ColorScheme-Text" style="fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round" transform="translate(0,0.75)">
   <path d="M11 13.5c-1.93 0-3.5-1.57-3.5-3.5V5.5C7.5 3.57 9.07 2 11 2s3.5 1.57 3.5 3.5V10c0 1.93-1.57 3.5-3.5 3.5z"/>
   <path d="M5.5 8.5V10c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V8.5"/>
   <path d="M11 15.5v3"/>

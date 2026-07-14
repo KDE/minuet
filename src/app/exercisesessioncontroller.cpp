@@ -345,7 +345,7 @@ void ExerciseSessionController::checkAnswers(const QVariantList &correctAnswers,
     } else if (m_answersAreRight) {
         setStatusText(i18n("That's right"), PositiveStatus);
     } else {
-        setStatusText(i18n("Not quite, try again"), NegativeStatus);
+        setStatusText(i18n("Not quite"), NegativeStatus);
     }
 
     if (m_currentExercise == maximumExercises) {

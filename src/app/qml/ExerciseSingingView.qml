@@ -129,21 +129,24 @@ Item {
         return Math.max(margin, Math.min(maximum, isFinite(value) ? value : margin));
     }
     function clearCurrentRun(): void {
+        testNextQuestionTimer.stop();
         listenDelay.stop();
         finishTimer.stop();
         progressTimer.stop();
         timelineTimer.stop();
+        root.countIn = 0;
+        root.countInOverlayAnchorIndex = -1;
+        root.countPhase = "idle";
+        root.countInStarted = false;
+        root.inputTargetIndex = 0;
+        root.listeningStartSeconds = -1;
+        root.viewState = "idle";
         if (root.microphone) {
             root.microphone.stop();
         }
         if (Core.soundController) {
             Core.soundController.stop();
         }
-        root.countIn = 0;
-        root.countInOverlayAnchorIndex = -1;
-        root.countPhase = "idle";
-        root.countInStarted = false;
-        root.inputTargetIndex = 0;
     }
     function completeExercise(): void {
         if (root.viewState !== "analyzing") {
@@ -244,15 +247,15 @@ Item {
         finishTimer.stop();
         progressTimer.stop();
         timelineTimer.stop();
-        if (Core.soundController) {
-            Core.soundController.stop();
-        }
         root.countIn = 0;
         root.countInOverlayAnchorIndex = -1;
         root.countPhase = "idle";
         root.countInStarted = false;
         root.inputErrorMessage = message;
         root.viewState = "ready";
+        if (Core.soundController) {
+            Core.soundController.stop();
+        }
     }
     function finishExercise(): void {
         if (root.viewState !== "listening") {
@@ -261,14 +264,14 @@ Item {
         finishTimer.stop();
         progressTimer.stop();
         timelineTimer.stop();
-        if (Core.soundController) {
-            Core.soundController.stop();
-        }
+        root.viewState = "analyzing";
         root.countIn = 0;
         root.countInOverlayAnchorIndex = -1;
         root.countPhase = "idle";
         root.countInStarted = false;
-        root.viewState = "analyzing";
+        if (Core.soundController) {
+            Core.soundController.stop();
+        }
         if (root.microphone) {
             root.microphone.finalizeInputAnalysis();
         } else {
@@ -290,6 +293,9 @@ Item {
         }
     }
     function generateQuestion(): void {
+        if (root.currentExercise === undefined) {
+            return;
+        }
         Core.exerciseSessionController.setActiveExercise(exerciseConstrainedToVoiceClass());
         Core.exerciseSessionController.beginQuestion(Core.settingsController.testExerciseCount);
         Core.exerciseSessionController.randomlySelectExerciseOptions(1);
@@ -432,7 +438,7 @@ Item {
         if (root.inputErrorMessage.length > 0) {
             return root.inputErrorMessage;
         }
-        if (root.viewState === "analyzing") {
+        if (root.viewState === "analyzing" && !Core.exerciseSessionController.isTest) {
             return i18n("Analyzing...");
         }
         if (root.exerciseName.length === 0 || root.targetNotes.length === 0) {
@@ -595,8 +601,11 @@ Item {
         }
         return (index === root.displayedTargetIndex && root.viewState === "listening") || root.viewState === "finished" || state.pitchCorrect ? 2 : 1;
     }
+    function stopExerciseActivity(): void {
+        clearCurrentRun();
+        root.currentExercise = undefined;
+    }
     function stopTest(): void {
-        testNextQuestionTimer.stop();
         clearCurrentRun();
         root.testScoreTotal = 0;
         Core.exerciseSessionController.stopTest();
@@ -610,8 +619,33 @@ Item {
         root.microphone.expectedMidiNote = root.targetNotes[index];
         root.microphone.disregardOctaveDifference = Core.settingsController.singingDisregardOctaveDifference;
     }
+    function testHeaderStatus(): string {
+        if (root.viewState === "counting") {
+            return i18n("Playing…");
+        }
+        if (root.viewState === "listening") {
+            return i18n("Listening...");
+        }
+        if (root.viewState === "analyzing") {
+            return i18n("Analyzing...");
+        }
+        return Core.exerciseSessionController.statusText;
+    }
     function timingMeterValue(errorMs: real): real {
         return -Math.max(-1, Math.min(1, errorMs / root.timingToleranceMs));
+    }
+    function titleMessage(): string {
+        if (root.score >= 0) {
+            return i18n("Score: %1%", root.score);
+        }
+
+        const instruction = root.scaleExercise ? i18n("Sing the scale") : i18n("Sing the interval");
+        if (!Core.exerciseSessionController.isTest) {
+            return instruction;
+        }
+
+        const status = root.testHeaderStatus();
+        return status.length > 0 ? i18n("%1 — %2", instruction, status) : instruction;
     }
     function updateScaleInputTimeline(elapsedMs: real): void {
         if (!root.scaleExercise || root.countPhase !== "input" || root.targetNotes.length === 0) {
@@ -675,7 +709,6 @@ Item {
         root.onboardingMusicTabCaptured = false;
     }
     onCurrentExerciseChanged: {
-        testNextQuestionTimer.stop();
         clearCurrentRun();
         root.targetNotes = [];
         root.targetStates = [];
@@ -836,6 +869,7 @@ Item {
 
                     readonly property real sideLength: visible ? headerCenter.implicitHeight : 0
 
+                    Layout.alignment: Qt.AlignVCenter
                     Layout.preferredHeight: exerciseIcon.sideLength * 0.75
                     Layout.preferredWidth: exerciseIcon.sideLength
                     source: root.currentExerciseIconName
@@ -860,7 +894,7 @@ Item {
                             elide: Text.ElideRight
                             horizontalAlignment: Text.AlignHCenter
                             level: 3
-                            text: root.score >= 0 ? i18n("Score: %1%", root.score) : root.scaleExercise ? i18n("Sing the scale") : i18n("Sing the interval")
+                            text: root.titleMessage()
                         }
                         Kirigami.Heading {
                             Layout.fillWidth: true

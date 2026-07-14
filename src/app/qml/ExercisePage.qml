@@ -54,6 +54,12 @@ Kirigami.Page {
     function startOnboarding(): void {
         Onboarding.start(page.inputMode === "clapping" ? "clapping" : page.inputMode === "singing" ? "singing" : page.isRhythmic ? "rhythmic" : "melodic");
     }
+    function stopExerciseActivity(): void {
+        if (exerciseLoader.status === Loader.Ready && typeof exerciseLoader.item.stopExerciseActivity === "function") {
+            exerciseLoader.item.stopExerciseActivity();
+        }
+        page.currentExercise = undefined;
+    }
 
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     Kirigami.Theme.inherit: false
