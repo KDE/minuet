@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-09 00:39+0000\n"
+"POT-Creation-Date: 2026-07-14 00:39+0000\n"
 "PO-Revision-Date: 2026-07-09 07:15+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -531,6 +531,11 @@ msgstr "Lahko"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
+msgid "Easy with rests"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
 msgid "Extended chords"
 msgstr "Razširjeni akordi"
 
@@ -811,6 +816,11 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Medium"
 msgstr "Srednja"
 
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Medium with rests"
+msgstr ""
+
 #, fuzzy, kde-format
 #| msgctxt "technical term, do you have a musician friend?"
 #| msgid "Melodic Intervals"
@@ -1014,6 +1024,11 @@ msgstr "Frigijska b4"
 msgctxt "technical term, do you have a musician friend?"
 msgid "Phrygian Dominant"
 msgstr "Frigijska dominantna"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "Practice basic rhythm patterns that combine notes and rests."
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1597,6 +1612,11 @@ msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
+msgid "Practice varied rhythm patterns that combine notes and rests."
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
 msgid "Rhythm"
 msgstr "Ritem"
 
@@ -1746,6 +1766,83 @@ msgstr "Tritonus in septime"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D7 uE1D9 uE4E7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D7uE1E7 uE4E7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D7 uE4E6"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D7 uE4E7 uE1D9"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D7 uE4E7 uE4E7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D9 uE1D7 uE4E7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D9 uE4E6 uE1D9"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D9 uE4E6uE1E7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D9 uE4E6 uE4E7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D9 uE4E7 uE1D7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D9 uE4E7 uE1D9 uE4E7"
+msgstr ""
+
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D9 uE4E7 uE1F0uE1F9uE1F4"
+msgstr "uE1F0uE1F7uE1F2uE1F9uE1F4"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D9 uE4E7 uE4E6"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D9 uE4E7 uE4E7 uE1D9"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1D9 uE4E7 uE4E7 uE4E7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0"
 msgstr "uE1F0"
 
@@ -1783,6 +1880,137 @@ msgstr "uE1F0uE1F9uE1F4uE1F7uE1F2"
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
 msgstr "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
+
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0uE1F9uE1F4uE1F9uE1F4 uE4E7"
+msgstr "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
+
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "uE1F0uE1F9uE1F4uE1F7uE1F2"
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0uE1F9uE1F4 uE4E6"
+msgstr "uE1F0uE1F9uE1F4uE1F7uE1F2"
+
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "uE1F0uE1F9uE1F4uE1F7uE1F2"
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0uE1F9uE1F4 uE4E7 uE1D9"
+msgstr "uE1F0uE1F9uE1F4uE1F7uE1F2"
+
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "uE1F0uE1F9uE1F2uE1F7uE1F4"
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE1F0uE1F9uE1F4 uE4E7 uE4E7"
+msgstr "uE1F0uE1F9uE1F2uE1F7uE1F4"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E6 uE1D7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E6 uE1D9 uE4E7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E6uE1E7 uE1D9"
+msgstr ""
+
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E6 uE1F0uE1F9uE1F4"
+msgstr "uE1F0uE1F7uE1F2uE1F9uE1F4"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E6 uE4E7 uE1D9"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE1D7 uE1D9"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE1D7uE1E7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE1D7 uE4E7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE1D9 uE1D7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE1D9 uE4E6"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE1D9 uE4E7 uE1D9"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE1D9 uE4E7 uE4E7"
+msgstr ""
+
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "uE1F0uE1F9uE1F4uE1F7uE1F2"
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE1F0uE1F9uE1F4uE1F9uE1F4"
+msgstr "uE1F0uE1F9uE1F4uE1F7uE1F2"
+
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE1F0uE1F9uE1F4 uE4E7"
+msgstr "uE1F0uE1F7uE1F2uE1F9uE1F4"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE4E6 uE1D9"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE4E7 uE1D7"
+msgstr ""
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE4E7 uE1D9 uE4E7"
+msgstr ""
+
+#, fuzzy, kde-format
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE4E7 uE1F0uE1F9uE1F4"
+msgstr "uE1F0uE1F7uE1F2uE1F9uE1F4"
+
+#, kde-format
+msgctxt "technical term, do you have a musician friend?"
+msgid "uE4E7 uE4E7 uE4E7 uE1D9"
+msgstr ""
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1829,45 +2057,45 @@ msgstr "%1 Vključuje %2 možnih odgovorov."
 msgid "Could not open JSON file \"%1\"."
 msgstr "Ni bilo mogoče odpreti datoteke JSON \"%1\"."
 
-#: src/app/exercisesessioncontroller.cpp:99
-#: src/app/exercisesessioncontroller.cpp:376
+#: src/app/exercisesessioncontroller.cpp:101
+#: src/app/exercisesessioncontroller.cpp:378
 #, kde-format
 msgid "Select New Question to start"
 msgstr "Izberite Novo vprašanje za začetek"
 
-#: src/app/exercisesessioncontroller.cpp:236
+#: src/app/exercisesessioncontroller.cpp:238
 #, kde-format
 msgid "Choose 1 answer"
 msgstr "Izberite 1 odgovor"
 
-#: src/app/exercisesessioncontroller.cpp:236
+#: src/app/exercisesessioncontroller.cpp:238
 #, kde-format
 msgid "Choose %1 answers"
 msgstr "Izberite %1 odgovorov"
 
-#: src/app/exercisesessioncontroller.cpp:342
+#: src/app/exercisesessioncontroller.cpp:344
 #, kde-format
 msgid "Answer shown"
 msgstr "Prikazan odgovor"
 
-#: src/app/exercisesessioncontroller.cpp:344
+#: src/app/exercisesessioncontroller.cpp:346
 #, kde-format
 msgid "That's right"
 msgstr "To je prav"
 
-#: src/app/exercisesessioncontroller.cpp:346
+#: src/app/exercisesessioncontroller.cpp:348
 #, kde-format
 msgid "Not quite, try again"
 msgstr "Ne čisto, poskusite znova"
 
-#: src/app/exercisesessioncontroller.cpp:350
-#: src/app/qml/ExerciseClappingView.qml:681
-#: src/app/qml/ExerciseSingingView.qml:781
+#: src/app/exercisesessioncontroller.cpp:352
+#: src/app/qml/ExerciseClappingView.qml:757
+#: src/app/qml/ExerciseSingingView.qml:853
 #, kde-format
 msgid "Score: %1%"
 msgstr "Rezultat: %1%"
 
-#: src/app/exercisesessioncontroller.cpp:570
+#: src/app/exercisesessioncontroller.cpp:582
 #, kde-format
 msgid "Question %1 out of %2"
 msgstr "Vprašanje %1 od %2"
@@ -1938,110 +2166,104 @@ msgid "Your emails"
 msgstr "matjaz.jeran@amis.net"
 
 #: src/app/qml/ExerciseClappingView.qml:40
-#: src/app/qml/ExerciseClappingView.qml:311
-#: src/app/qml/ExerciseClappingView.qml:384
+#: src/app/qml/ExerciseClappingView.qml:349
+#: src/app/qml/ExerciseClappingView.qml:426
 #, kde-format
 msgid "Ready"
 msgstr "Pripravljen"
 
-#: src/app/qml/ExerciseClappingView.qml:444
-#: src/app/qml/ExerciseSingingView.qml:468
+#: src/app/qml/ExerciseClappingView.qml:486
+#: src/app/qml/ExerciseSingingView.qml:479
 #, kde-format
 msgid "Missed"
 msgstr "Zamujeno"
 
-#: src/app/qml/ExerciseClappingView.qml:539
+#: src/app/qml/ExerciseClappingView.qml:584
+#: src/app/qml/ExerciseSingingView.qml:460
 #, kde-format
 msgid "On time"
 msgstr "Pravočasno"
 
-#: src/app/qml/ExerciseClappingView.qml:541
-#: src/app/qml/ExerciseSingingView.qml:311 src/app/qml/GraphicalMeter.qml:23
+#: src/app/qml/ExerciseClappingView.qml:586
+#: src/app/qml/ExerciseSingingView.qml:460 src/app/qml/GraphicalMeter.qml:24
 #, kde-format
 msgid "%1 ms"
 msgstr "%1 ms"
 
-#: src/app/qml/ExerciseClappingView.qml:673
+#: src/app/qml/ExerciseClappingView.qml:749
 #, kde-format
-msgid ""
-"The header shows the exercise status and score while you prepare, listen, "
-"clap, and review the result."
+msgid "The header shows the current instruction, microphone status, and score."
 msgstr ""
 
-#: src/app/qml/ExerciseClappingView.qml:681
+#: src/app/qml/ExerciseClappingView.qml:757
 #, kde-format
 msgid "Clap the rhythm"
 msgstr "Ploskajte v ritmu"
 
-#: src/app/qml/ExerciseClappingView.qml:689
+#: src/app/qml/ExerciseClappingView.qml:765
 #, kde-format
 msgid "Listening..."
 msgstr "Poslušanje..."
 
-#: src/app/qml/ExerciseClappingView.qml:689
-#: src/app/qml/ExerciseSingingView.qml:441
+#: src/app/qml/ExerciseClappingView.qml:765
+#: src/app/qml/ExerciseSingingView.qml:432
+#, fuzzy, kde-format
+#| msgid "Calibrating..."
+msgid "Analyzing..."
+msgstr "Kalibriranje..."
+
+#: src/app/qml/ExerciseClappingView.qml:765
+#: src/app/qml/ExerciseSingingView.qml:439
 #, kde-format
 msgid "No microphone input devices found"
 msgstr "Ni bilo mogoče najti vhodnih naprav za mikrofon"
 
-#: src/app/qml/ExerciseClappingView.qml:689
-#: src/app/qml/ExerciseSingingView.qml:438
+#: src/app/qml/ExerciseClappingView.qml:765
+#: src/app/qml/ExerciseSingingView.qml:436
 #, kde-format
 msgid "No microphone input plugin available"
 msgstr "Vtičnik za mikrofon ni na voljo"
 
-#: src/app/qml/ExerciseClappingView.qml:699
+#: src/app/qml/ExerciseClappingView.qml:776
+#: src/app/qml/ExerciseSingingView.qml:872
 #, kde-format
 msgid ""
-"Start a single clapping question or begin a test with several questions in a "
-"row."
+"Use New Question or Start for one exercise, or Start Test for a scored "
+"series."
 msgstr ""
-"Začni test z enim samim vprašanjem s ploskanjem ali pa začni test z več "
-"vprašanji v vrsti."
 
-#: src/app/qml/ExerciseClappingView.qml:707
-#: src/app/qml/ExerciseSingingView.qml:807 src/app/qml/ExerciseView.qml:411
+#: src/app/qml/ExerciseClappingView.qml:784
+#: src/app/qml/ExerciseSingingView.qml:880 src/app/qml/ExerciseView.qml:426
 #, kde-format
 msgid "New Question"
 msgstr "Novo vprašanje"
 
-#: src/app/qml/ExerciseClappingView.qml:707
-#: src/app/qml/ExerciseSingingView.qml:807
+#: src/app/qml/ExerciseClappingView.qml:784
+#: src/app/qml/ExerciseSingingView.qml:880
 #, kde-format
 msgid "Start"
 msgstr "Začetek"
 
-#: src/app/qml/ExerciseClappingView.qml:721
-#: src/app/qml/ExerciseSingingView.qml:821 src/app/qml/ExerciseView.qml:438
+#: src/app/qml/ExerciseClappingView.qml:798
+#: src/app/qml/ExerciseSingingView.qml:894 src/app/qml/ExerciseView.qml:453
 #, kde-format
 msgid "Stop Test"
 msgstr "Zaustavi test"
 
-#: src/app/qml/ExerciseClappingView.qml:721
-#: src/app/qml/ExerciseSingingView.qml:821 src/app/qml/ExerciseView.qml:438
+#: src/app/qml/ExerciseClappingView.qml:798
+#: src/app/qml/ExerciseSingingView.qml:894 src/app/qml/ExerciseView.qml:453
 #, kde-format
 msgid "Start Test"
 msgstr "Začni test"
 
-#: src/app/qml/ExerciseClappingView.qml:786
+#: src/app/qml/ExerciseClappingView.qml:836
 #, kde-format
 msgid ""
-"Each colored card is one rhythm figure. Green borders mark figures clapped "
-"correctly; red borders mark missed figures."
+"This area shows every rhythm figure. Borders mark correct or missed claps, "
+"and timing meters show early or late claps."
 msgstr ""
-"Vsaka barvna kartica predstavlja eno ritmično figuro. Zeleni robovi "
-"označujejo pravilno ploskane figure; rdeči robovi označujejo zgrešene figure."
 
-#: src/app/qml/ExerciseClappingView.qml:786
-#, kde-format
-msgid ""
-"The onset meter below each figure lights below the center for advanced claps "
-"and above the center for late claps."
-msgstr ""
-"Nastavljeni merilnik pod vsako figuro zasveti pod sredino za prezgodnja "
-"ploskanja in nad sredino za zapoznela ploskanja."
-
-#: src/app/qml/ExerciseClappingView.qml:869
+#: src/app/qml/ExerciseClappingView.qml:946
 #, kde-format
 msgid ""
 "The input level shows microphone activity while you clap. Open means the "
@@ -2050,25 +2272,25 @@ msgstr ""
 "Vhodna raven prikazuje aktivnost mikrofona med ploskanjem. Odprto pomeni, da "
 "je signal nad trenutno vrednostjo vrat."
 
-#: src/app/qml/ExerciseClappingView.qml:871
-#: src/app/qml/ExerciseSingingView.qml:987
+#: src/app/qml/ExerciseClappingView.qml:948
+#: src/app/qml/ExerciseSingingView.qml:1061
 #, kde-format
 msgid "Input level"
 msgstr "Raven vhoda"
 
-#: src/app/qml/ExerciseClappingView.qml:873
-#: src/app/qml/ExerciseSingingView.qml:989
+#: src/app/qml/ExerciseClappingView.qml:950
+#: src/app/qml/ExerciseSingingView.qml:1063
 #, kde-format
 msgid "Open"
 msgstr "Odpri"
 
-#: src/app/qml/ExerciseClappingView.qml:873
-#: src/app/qml/ExerciseSingingView.qml:989
+#: src/app/qml/ExerciseClappingView.qml:950
+#: src/app/qml/ExerciseSingingView.qml:1063
 #, kde-format
 msgid "Closed"
 msgstr "Zaprto"
 
-#: src/app/qml/ExerciseClappingView.qml:877
+#: src/app/qml/ExerciseClappingView.qml:954
 #, kde-format
 msgid ""
 "Calibrate silence in a quiet room before clapping so background noise is not "
@@ -2077,14 +2299,14 @@ msgstr ""
 "Kalibrirajte tišino v tihem prostoru pred ploskanjem , da se šum v ozadju ne "
 "šteje kot vhodni signal."
 
-#: src/app/qml/ExerciseClappingView.qml:879
-#: src/app/qml/ExerciseSingingView.qml:995
+#: src/app/qml/ExerciseClappingView.qml:956
+#: src/app/qml/ExerciseSingingView.qml:1069
 #, kde-format
 msgid "Calibrating..."
 msgstr "Kalibriranje..."
 
-#: src/app/qml/ExerciseClappingView.qml:879
-#: src/app/qml/ExerciseSingingView.qml:995
+#: src/app/qml/ExerciseClappingView.qml:956
+#: src/app/qml/ExerciseSingingView.qml:1069
 #, kde-format
 msgid "Calibrate Silence"
 msgstr "Kalibriraj tišino"
@@ -2104,26 +2326,38 @@ msgctxt "@action:button"
 msgid "Help"
 msgstr "Pomoč"
 
-#: src/app/qml/ExercisePage.qml:132
+#: src/app/qml/ExercisePage.qml:93
 #, kde-format
 msgid "Count: %1"
 msgstr "Števec: %1"
 
-#: src/app/qml/ExercisePage.qml:135
+#: src/app/qml/ExercisePage.qml:96
 #, kde-format
-msgid "Rhythm questions begin with a count-in."
-msgstr "Vprašanja o ritmu se začnejo s štetjem."
-
-#: src/app/qml/ExercisePage.qml:135
-#, kde-format
-msgid "The count appears over the rhythm card you should clap with the beat."
+msgid ""
+"A four-beat count-in plays before the rhythm. Listen, then recreate the "
+"pattern."
 msgstr ""
-"Štetje se prikaže nad ritmično kartico, v kateri morate ploskati v ritmu."
 
-#: src/app/qml/ExercisePage.qml:135
+#: src/app/qml/ExercisePage.qml:96
 #, kde-format
-msgid "The count appears over the note card you should sing with the beat."
-msgstr "Štetje se prikaže nad notno kartico, ki jo morate peti v ritmu."
+msgid ""
+"A four-beat count-in plays before clapping is analyzed. Start clapping when "
+"the count finishes."
+msgstr ""
+
+#: src/app/qml/ExercisePage.qml:96
+#, kde-format
+msgid ""
+"A four-beat count-in plays before the base note. Listen, then sing the scale "
+"notes in order."
+msgstr ""
+
+#: src/app/qml/ExercisePage.qml:96
+#, kde-format
+msgid ""
+"A four-beat count-in plays before the root note. Listen, then sing the "
+"interval note."
+msgstr ""
 
 #: src/app/qml/ExercisePage.qml:188
 #, kde-format
@@ -2178,88 +2412,77 @@ msgctxt "@action:button"
 msgid "Not Now"
 msgstr "Ne zdaj"
 
-#: src/app/qml/ExerciseSingingView.qml:48
-#: src/app/qml/ExerciseSingingView.qml:182
-#: src/app/qml/ExerciseSingingView.qml:290
-#: src/app/qml/ExerciseSingingView.qml:467 src/app/qml/GraphicalMeter.qml:17
-#, kde-format
-msgid "No onset"
-msgstr "Brez nastopa"
-
 #: src/app/qml/ExerciseSingingView.qml:51
-#: src/app/qml/ExerciseSingingView.qml:179
-#: src/app/qml/ExerciseSingingView.qml:289 src/app/qml/GraphicalMeter.qml:17
+#: src/app/qml/ExerciseSingingView.qml:195
+#: src/app/qml/ExerciseSingingView.qml:308 src/app/qml/GraphicalMeter.qml:17
 #, kde-format
 msgid "No pitch"
 msgstr "Ni višine tona"
 
-#: src/app/qml/ExerciseSingingView.qml:200
+#: src/app/qml/ExerciseSingingView.qml:198
+#: src/app/qml/ExerciseSingingView.qml:1032
+#, fuzzy, kde-format
+msgid "No timing"
+msgstr "Višina tona + čas"
+
+#: src/app/qml/ExerciseSingingView.qml:216
 #, kde-format
 msgid "Played"
 msgstr "Predvajano"
 
-#: src/app/qml/ExerciseSingingView.qml:339 src/app/qml/GraphicalMeter.qml:23
+#: src/app/qml/ExerciseSingingView.qml:327 src/app/qml/GraphicalMeter.qml:24
 #, kde-format
 msgid "%1 cents"
 msgstr "%1 centov"
 
-#: src/app/qml/ExerciseSingingView.qml:449 src/app/qml/ExerciseView.qml:183
+#: src/app/qml/ExerciseSingingView.qml:447 src/app/qml/ExerciseView.qml:185
 #, kde-format
 msgid "%1 - Base: %2 - Targets: %3"
 msgstr "%1 - Osnova: %2 - Cilji: %3"
 
-#: src/app/qml/ExerciseSingingView.qml:451 src/app/qml/ExerciseView.qml:185
+#: src/app/qml/ExerciseSingingView.qml:449 src/app/qml/ExerciseView.qml:187
 #, kde-format
 msgid "%1 - Base: %2 - Target: %3"
 msgstr "%1 - Osnova: %2 - Cilj: %3"
 
-#: src/app/qml/ExerciseSingingView.qml:773
+#: src/app/qml/ExerciseSingingView.qml:845
 #, kde-format
 msgid ""
-"The header shows the exercise status, score, and current target information "
-"while you sing."
+"The header identifies the scale and shows the current instruction or score."
 msgstr ""
-"V glavi so prikazani stanje vadbe, rezultat in trenutni ciljni podatki med "
-"vašim petjem."
 
-#: src/app/qml/ExerciseSingingView.qml:781
+#: src/app/qml/ExerciseSingingView.qml:845
+#, kde-format
+msgid ""
+"The header identifies the interval and shows the current instruction or "
+"score."
+msgstr ""
+
+#: src/app/qml/ExerciseSingingView.qml:853
 #, kde-format
 msgid "Sing the scale"
 msgstr "Zapojte lestvico"
 
-#: src/app/qml/ExerciseSingingView.qml:781
+#: src/app/qml/ExerciseSingingView.qml:853
 #, kde-format
 msgid "Sing the interval"
 msgstr "Zapojte interval"
 
-#: src/app/qml/ExerciseSingingView.qml:799
+#: src/app/qml/ExerciseSingingView.qml:932
 #, kde-format
 msgid ""
-"Start a single singing question or begin a test with several questions in a "
-"row."
+"This area shows the scale notes in order. Borders report pitch; pitch meters "
+"show flat or sharp notes, and timing meters show early or late starts."
 msgstr ""
-"Začnite z enim samim vprašanjem o petju ali pa začnite test z več vprašanji "
-"v vrsti."
 
-#: src/app/qml/ExerciseSingingView.qml:863
+#: src/app/qml/ExerciseSingingView.qml:932
 #, kde-format
 msgid ""
-"Sing the note cards in order. The current card is highlighted; borders show "
-"correctness after detection."
+"This area shows the reference and target notes. Sing the target; its border "
+"reports accuracy, and its pitch meter shows flat or sharp notes."
 msgstr ""
-"Zapojte kartice z notami po vrsti. Trenutna kartica je označena; obrobe "
-"prikazujejo pravilnost po zaznavi."
 
-#: src/app/qml/ExerciseSingingView.qml:863
-#, kde-format
-msgid ""
-"Pitch meters light below the center for flat notes and above the center for "
-"sharp notes. Scale exercises also show an onset meter for each note."
-msgstr ""
-"Merilniki višine tona se pri nizkih tonih prižgejo pod sredino, pri visokih "
-"pa nad sredino. Vaje lestvic prikazujejo tudi merilnik začetka za vsako noto."
-
-#: src/app/qml/ExerciseSingingView.qml:985
+#: src/app/qml/ExerciseSingingView.qml:1059
 #, kde-format
 msgid ""
 "The input level shows microphone activity while you sing. Open means the "
@@ -2268,118 +2491,112 @@ msgstr ""
 "Vhodna raven prikazuje aktivnost mikrofona med petjem. Odprto pomeni, da je "
 "signal nad trenutno vrednostjo vrat."
 
-#: src/app/qml/ExerciseSingingView.qml:993
-#, kde-format
+#: src/app/qml/ExerciseSingingView.qml:1067
+#, fuzzy, kde-format
+#| msgid ""
+#| "Calibrate silence in a quiet room before singing so room noise does not "
+#| "affect pitch and onset detection."
 msgid ""
 "Calibrate silence in a quiet room before singing so room noise does not "
-"affect pitch and onset detection."
+"affect pitch detection."
 msgstr ""
 "Kalibrirajte tišino v tihem prostoru pred petjem, da šum v prostoru ne "
 "vpliva na višino tona in zaznavanje začetka."
 
-#: src/app/qml/ExerciseSingingView.qml:1040
+#: src/app/qml/ExerciseSingingView.qml:1119
 #, kde-format
 msgid ""
 "The keyboard highlights the reference note and target notes for the singing "
 "question."
 msgstr "Klaviatura označi referenčno noto in ciljne note za pevsko vprašanje."
 
-#: src/app/qml/ExerciseSingingView.qml:1062
+#: src/app/qml/ExerciseSingingView.qml:1157
 #, kde-format
 msgid "The staff shows the same singing notes in music notation."
 msgstr "Osebje prikazuje iste pevske note v glasbeni notaciji."
 
-#: src/app/qml/ExerciseSingingView.qml:1079
-#, kde-format
-msgid ""
-"On narrow screens, switch between the keyboard and staff views with these "
-"tabs."
-msgstr ""
-"Na ozkih zaslonih lahko s temi zavihki preklapljate med pogledom tipkovnice "
-"in osebja."
-
-#: src/app/qml/ExerciseSingingView.qml:1084 src/app/qml/ExerciseView.qml:721
+#: src/app/qml/ExerciseSingingView.qml:1186 src/app/qml/ExerciseView.qml:754
 #, kde-format
 msgid "Keyboard"
 msgstr "Tipkovnica"
 
-#: src/app/qml/ExerciseSingingView.qml:1087 src/app/qml/ExerciseView.qml:724
+#: src/app/qml/ExerciseSingingView.qml:1189 src/app/qml/ExerciseView.qml:757
 #, kde-format
 msgid "Staff"
 msgstr "Osebje"
 
-#: src/app/qml/ExerciseView.qml:354
+#: src/app/qml/ExerciseView.qml:369
 #, kde-format
 msgid "These messages explain the question and show its status."
 msgstr "Ta sporočila pojasnjujejo vprašanje in prikazujejo njegov status."
 
-#: src/app/qml/ExerciseView.qml:370
+#: src/app/qml/ExerciseView.qml:385
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "userMessage"
 msgstr "uporabniško sporočilo"
 
-#: src/app/qml/ExerciseView.qml:384
+#: src/app/qml/ExerciseView.qml:399
 #, kde-format
 msgid "Playing…"
 msgstr "Predvajanje…"
 
-#: src/app/qml/ExerciseView.qml:397
+#: src/app/qml/ExerciseView.qml:412
 #, kde-format
 msgid "Start a new question, replay it, reveal the answer, or begin a test."
 msgstr ""
 "Začni novo vprašanje, ga ponovno predvajaj, razkrij odgovor ali začni test."
 
-#: src/app/qml/ExerciseView.qml:397
+#: src/app/qml/ExerciseView.qml:412
 #, kde-format
 msgid "Start a rhythm question, replay it, reveal the answer, or begin a test."
 msgstr ""
 "Začni vprašanje o ritmu, ga ponovno predvajaj, razkrij odgovor ali začni "
 "test."
 
-#: src/app/qml/ExerciseView.qml:411
+#: src/app/qml/ExerciseView.qml:426
 #, kde-format
 msgid "Play Question"
 msgstr "Odigraj vprašanje"
 
-#: src/app/qml/ExerciseView.qml:425
+#: src/app/qml/ExerciseView.qml:440
 #, kde-format
 msgid "Give Up"
 msgstr "Predate se"
 
-#: src/app/qml/ExerciseView.qml:482
+#: src/app/qml/ExerciseView.qml:497
 #, kde-format
 msgid "Choose an answer here. Hover, or press and hold, to preview it below."
 msgstr ""
 "Tukaj izberite odgovor. Premaknite miško nad ali pritisnite in pridržite za "
 "predogled spodaj."
 
-#: src/app/qml/ExerciseView.qml:482
+#: src/app/qml/ExerciseView.qml:497
 #, kde-format
 msgid "Choose each rhythm part from these available answers."
 msgstr "Izberite vsak ritmični del izmed teh razpoložljivih odgovorov."
 
-#: src/app/qml/ExerciseView.qml:496
+#: src/app/qml/ExerciseView.qml:511
 #, kde-format
 msgid "Available answers"
 msgstr "Razpoložljivi odgovori"
 
-#: src/app/qml/ExerciseView.qml:500
+#: src/app/qml/ExerciseView.qml:515
 #, kde-format
 msgid "Scroll for more"
 msgstr "Pomaknite se za več informacij"
 
-#: src/app/qml/ExerciseView.qml:548
+#: src/app/qml/ExerciseView.qml:563
 #, kde-format
 msgid "Your selected answer appears here."
 msgstr "Vaš izbrani odgovor se prikaže tukaj."
 
-#: src/app/qml/ExerciseView.qml:548
+#: src/app/qml/ExerciseView.qml:563
 #, kde-format
 msgid "Build your rhythm answer here, one part at a time."
 msgstr "Tukaj sestavite svoj ritemski odgovor, del za delom."
 
-#: src/app/qml/ExerciseView.qml:564
+#: src/app/qml/ExerciseView.qml:579
 #, kde-format
 msgid "Correct answer"
 msgid_plural "Correct answers"
@@ -2388,7 +2605,7 @@ msgstr[1] "Pravilni odgovor"
 msgstr[2] "Pravilna odgovora"
 msgstr[3] "Pravilni odgovori"
 
-#: src/app/qml/ExerciseView.qml:564
+#: src/app/qml/ExerciseView.qml:579
 #, kde-format
 msgid "Your answer"
 msgid_plural "Your answers"
@@ -2397,47 +2614,52 @@ msgstr[1] "Vaš odgovor"
 msgstr[2] "Vaša odgovora"
 msgstr[3] "Vaši odgovori"
 
-#: src/app/qml/ExerciseView.qml:568
+#: src/app/qml/ExerciseView.qml:583
 #, kde-format
 msgid "Scroll for more |"
 msgstr "Pomaknite se za več informacij |"
 
-#: src/app/qml/ExerciseView.qml:573
+#: src/app/qml/ExerciseView.qml:588
 #, kde-format
 msgid "%1 / %2"
 msgstr "%1 / %2"
 
-#: src/app/qml/ExerciseView.qml:577
+#: src/app/qml/ExerciseView.qml:592
 #, kde-format
 msgid "Backspace"
 msgstr "Backspace"
 
-#: src/app/qml/ExerciseView.qml:668
+#: src/app/qml/ExerciseView.qml:688
 #, kde-format
 msgid "The keyboard shows the notes in the question or preview."
 msgstr "Klaviatura prikazuje note v vprašanju ali predogledu."
 
-#: src/app/qml/ExerciseView.qml:696
+#: src/app/qml/ExerciseView.qml:726
 #, kde-format
 msgid "The staff shows the same notes in music notation."
 msgstr "Osebje prikazuje iste note v glasbeni notaciji."
 
-#: src/app/qml/ExerciseView.qml:852
+#: src/app/qml/ExerciseView.qml:885
 #, kde-format
 msgid "Empty answer slot"
 msgstr "Prazno mesto za odgovore"
 
-#: src/app/qml/ExerciseView.qml:884
+#: src/app/qml/ExerciseView.qml:917
 #, kde-format
 msgid "Answer %1"
 msgstr "Odgovor %1"
 
-#: src/app/qml/GraphicalMeter.qml:52
+#: src/app/qml/GraphicalMeter.qml:17
+#, kde-format
+msgid "No onset"
+msgstr "Brez nastopa"
+
+#: src/app/qml/GraphicalMeter.qml:53
 #, kde-format
 msgid "Pitch deviation: %1"
 msgstr "Deviacija višine tona: %1"
 
-#: src/app/qml/GraphicalMeter.qml:52
+#: src/app/qml/GraphicalMeter.qml:53
 #, kde-format
 msgid "Onset deviation: %1"
 msgstr "Začetna deviacija: %1"
@@ -2454,15 +2676,15 @@ msgstr "Ta vodnik lahko kadar koli znova zaženete z ikono Pomoč."
 
 #: src/app/qml/Main.qml:140
 #, kde-format
-msgid "Start with a topic, then pick the specific training level."
-msgstr "Začnite s temo in nato izberite določeno raven vadbe."
+msgid "Start by selecting an exercise topic from the drawer menu."
+msgstr ""
 
 #: src/app/qml/Main.qml:142
 #, kde-format
 msgid "Choose an exercise"
 msgstr "Izberite vajo"
 
-#: src/app/qml/MinuetDrawer.qml:32 src/app/qml/MinuetDrawer.qml:214
+#: src/app/qml/MinuetDrawer.qml:32 src/app/qml/MinuetDrawer.qml:232
 #, kde-format
 msgid "All exercises"
 msgstr "Vse vaje"
@@ -2494,33 +2716,39 @@ msgstr "Nastavitve"
 msgid "About"
 msgstr "O programu"
 
+#: src/app/qml/MinuetDrawer.qml:209
+#, fuzzy, kde-format
+#| msgid "Number of exercises"
+msgid "No exercises found"
+msgstr "Število vaj"
+
 #: src/app/qml/PianoView/PianoView.qml:151
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Octave %1"
 msgstr "Oktava %1"
 
-#: src/app/qml/PracticeModePage.qml:48
+#: src/app/qml/PracticeModePage.qml:52
 #, kde-format
 msgid "Choose how you would like to practice this exercise:"
 msgstr "Izberite, kako želite izvajati to vajo:"
 
-#: src/app/qml/PracticeModePage.qml:56
+#: src/app/qml/PracticeModePage.qml:60
 #, kde-format
 msgid "Hear and identify"
 msgstr "Poslušajte in prepoznavajte"
 
-#: src/app/qml/PracticeModePage.qml:67
+#: src/app/qml/PracticeModePage.qml:71
 #, kde-format
 msgid "Read and clap"
 msgstr "Berite in ploskajte"
 
-#: src/app/qml/PracticeModePage.qml:67
+#: src/app/qml/PracticeModePage.qml:71
 #, kde-format
 msgid "Read and sing"
 msgstr "Berite in pojte"
 
-#: src/app/qml/PracticeModePage.qml:67
+#: src/app/qml/PracticeModePage.qml:71
 #, kde-format
 msgid "(no microphone input devices found)"
 msgstr "(ni najdenih vhodnih naprav za mikrofon)"
@@ -2575,32 +2803,38 @@ msgstr "Vaja"
 msgid "Exercise speed"
 msgstr "Hitrost vaje"
 
-#: src/app/qml/SettingsPage.qml:109
+#: src/app/qml/SettingsPage.qml:109 src/app/qml/SettingsPage.qml:125
 #, kde-format
 msgid "bpm"
 msgstr "udarcev na minuto"
 
-#: src/app/qml/SettingsPage.qml:123
+#: src/app/qml/SettingsPage.qml:124
+#, fuzzy, kde-format
+#| msgid "Clapping detection"
+msgid "Clapping speed"
+msgstr "Zaznavanje ploskanja"
+
+#: src/app/qml/SettingsPage.qml:139
 #, kde-format
 msgid "Number of rhythm patterns"
 msgstr "Število ritmičnih vzorcev"
 
-#: src/app/qml/SettingsPage.qml:137
+#: src/app/qml/SettingsPage.qml:153
 #, kde-format
 msgid "Number of exercises"
 msgstr "Število vaj"
 
-#: src/app/qml/SettingsPage.qml:148
+#: src/app/qml/SettingsPage.qml:164
 #, kde-format
 msgid "Sound"
 msgstr "Zvok"
 
-#: src/app/qml/SettingsPage.qml:157
+#: src/app/qml/SettingsPage.qml:173
 #, kde-format
 msgid "Volume"
 msgstr "Glasnost"
 
-#: src/app/qml/SettingsPage.qml:168
+#: src/app/qml/SettingsPage.qml:184
 #, kde-format
 msgid ""
 "The active sound controller did not report any General MIDI bank 0 "
@@ -2609,62 +2843,62 @@ msgstr ""
 "Aktivni zvočni krmilnik ni poročal o nobenih instrumentih General MIDI banke "
 "0."
 
-#: src/app/qml/SettingsPage.qml:170
+#: src/app/qml/SettingsPage.qml:186
 #, kde-format
 msgid "No melodic instruments available"
 msgstr "Melodičnih instrumentov ni na voljo"
 
-#: src/app/qml/SettingsPage.qml:174
+#: src/app/qml/SettingsPage.qml:190
 #, kde-format
 msgid "Used for scales, intervals, and chords."
 msgstr "Uporablja se za lestvice, intervale in akorde."
 
-#: src/app/qml/SettingsPage.qml:175
+#: src/app/qml/SettingsPage.qml:191
 #, kde-format
 msgid "Melodic Exercises"
 msgstr "Melodične vaje"
 
-#: src/app/qml/SettingsPage.qml:186
+#: src/app/qml/SettingsPage.qml:202
 #, kde-format
 msgid "Instrument group:"
 msgstr "Skupina instrumentov:"
 
-#: src/app/qml/SettingsPage.qml:209
+#: src/app/qml/SettingsPage.qml:225
 #, kde-format
 msgid "Instrument:"
 msgstr "Instrument:"
 
-#: src/app/qml/SettingsPage.qml:224
+#: src/app/qml/SettingsPage.qml:240
 #, kde-format
 msgid "Used for rhythm figures. The count-in keeps its own sound."
 msgstr "Uporablja se za ritmične figure. Štetje ohranja svoj zvok."
 
-#: src/app/qml/SettingsPage.qml:225
+#: src/app/qml/SettingsPage.qml:241
 #, kde-format
 msgid "Rhythmic Exercises"
 msgstr "Ritmične vaje"
 
-#: src/app/qml/SettingsPage.qml:236
+#: src/app/qml/SettingsPage.qml:252
 #, kde-format
 msgid "Percussion sound:"
 msgstr "Zvok tolkala:"
 
-#: src/app/qml/SettingsPage.qml:248
+#: src/app/qml/SettingsPage.qml:264
 #, kde-format
 msgid "Microphone"
 msgstr "Mikrofon"
 
-#: src/app/qml/SettingsPage.qml:257
+#: src/app/qml/SettingsPage.qml:273
 #, kde-format
 msgid "Input device"
 msgstr "Vhodna naprava"
 
-#: src/app/qml/SettingsPage.qml:272
+#: src/app/qml/SettingsPage.qml:288
 #, kde-format
 msgid "Voice class"
 msgstr "Razred glasu"
 
-#: src/app/qml/SettingsPage.qml:284
+#: src/app/qml/SettingsPage.qml:300
 #, kde-format
 msgid ""
 "Larger values accept claps farther from the beat; smaller values require "
@@ -2673,12 +2907,12 @@ msgstr ""
 "Večje vrednosti sprejemajo ploskanje dlje od ritma; manjše vrednosti "
 "zahtevajo natančnejši čas."
 
-#: src/app/qml/SettingsPage.qml:286
+#: src/app/qml/SettingsPage.qml:302
 #, kde-format
 msgid "Timing tolerance"
 msgstr "Časovna toleranca"
 
-#: src/app/qml/SettingsPage.qml:300
+#: src/app/qml/SettingsPage.qml:316
 #, kde-format
 msgid ""
 "Larger values accept notes farther from the target pitch; smaller values "
@@ -2687,17 +2921,17 @@ msgstr ""
 "Večje vrednosti sprejemajo note dlje od ciljne višine; manjše vrednosti "
 "zahtevajo natančnejše petje."
 
-#: src/app/qml/SettingsPage.qml:302
+#: src/app/qml/SettingsPage.qml:318
 #, kde-format
 msgid "Pitch tolerance"
 msgstr "Toleranca višine tona"
 
-#: src/app/qml/SettingsPage.qml:303
+#: src/app/qml/SettingsPage.qml:319
 #, kde-format
 msgid "cents"
 msgstr "centov"
 
-#: src/app/qml/SettingsPage.qml:313
+#: src/app/qml/SettingsPage.qml:329
 #, kde-format
 msgid ""
 "Keep the room quiet while calibrating silence. Recalibrate when the "
@@ -2706,92 +2940,93 @@ msgstr ""
 "Med kalibracijo tišine naj bo v sobi tiho. Ponovno kalibracijo izvedite, ko "
 "se spremeni šum mikrofona ali prostora."
 
-#: src/app/qml/SettingsPage.qml:314
+#: src/app/qml/SettingsPage.qml:330
 #, kde-format
 msgid "Calibration"
 msgstr "Kalibracija"
 
-#: src/app/qml/SettingsPage.qml:318
+#: src/app/qml/SettingsPage.qml:334
 #, kde-format
 msgid "Advanced"
 msgstr "Napredno"
 
-#: src/app/qml/SettingsPage.qml:358
+#: src/app/qml/SettingsPage.qml:374
 #, kde-format
 msgid "Algorithms and detection thresholds for difficult microphones or rooms."
 msgstr "Algoritmi in pragovi zaznavanja za zahtevne mikrofone ali prostore."
 
-#: src/app/qml/SettingsPage.qml:384
+#: src/app/qml/SettingsPage.qml:400
 #, kde-format
 msgid "Used for rhythm clapping exercises."
 msgstr "Uporabljeno za vaje ritmičnega ploskanja."
 
-#: src/app/qml/SettingsPage.qml:385
+#: src/app/qml/SettingsPage.qml:401
 #, kde-format
 msgid "Clapping detection"
 msgstr "Zaznavanje ploskanja"
 
-#: src/app/qml/SettingsPage.qml:389 src/app/qml/SettingsPage.qml:453
+#: src/app/qml/SettingsPage.qml:405
 #, kde-format
 msgid "Onset method"
 msgstr "Metoda začetka"
 
-#: src/app/qml/SettingsPage.qml:399 src/app/qml/SettingsPage.qml:475
+#: src/app/qml/SettingsPage.qml:415
 #, kde-format
 msgid "Onset threshold"
 msgstr "Prag za začetka"
 
-#: src/app/qml/SettingsPage.qml:411 src/app/qml/SettingsPage.qml:487
+#: src/app/qml/SettingsPage.qml:427 src/app/qml/SettingsPage.qml:482
 #, kde-format
 msgid "Input gate"
 msgstr "Vhodna vrata"
 
-#: src/app/qml/SettingsPage.qml:423 src/app/qml/SettingsPage.qml:499
+#: src/app/qml/SettingsPage.qml:439
 #, kde-format
 msgid "Minimum onset strength"
 msgstr "Minimalna začetna moč"
 
-#: src/app/qml/SettingsPage.qml:439
-#, kde-format
-msgid "Used for pitch and timing analysis in singing exercises."
+#: src/app/qml/SettingsPage.qml:455
+#, fuzzy, kde-format
+#| msgid "Used for pitch and timing analysis in singing exercises."
+msgid "Used for pitch analysis and note-entry timing in singing exercises."
 msgstr "Uporabljeno za analizo višin tonov in časa pri pevskih vajah."
 
-#: src/app/qml/SettingsPage.qml:440
+#: src/app/qml/SettingsPage.qml:456
 #, kde-format
 msgid "Singing detection"
 msgstr "Zaznavanje petja"
 
-#: src/app/qml/SettingsPage.qml:444
+#: src/app/qml/SettingsPage.qml:460
 #, kde-format
 msgid "Pitch method"
 msgstr "Metoda višine tona"
 
-#: src/app/qml/SettingsPage.qml:463
+#: src/app/qml/SettingsPage.qml:470
 #, kde-format
 msgid "Pitch confidence"
 msgstr "Zanesljivost višine tona"
 
-#: src/app/qml/SettingsPage.qml:510
+#: src/app/qml/SettingsPage.qml:493
 #, kde-format
 msgid "Stable pitch frames"
 msgstr "Stabilni okvirji za višino tona"
 
-#: src/app/qml/SettingsPage.qml:520
+#: src/app/qml/SettingsPage.qml:503
 #, kde-format
 msgid "Scoring mode"
 msgstr "Način točkovanja"
 
-#: src/app/qml/SettingsPage.qml:532
+#: src/app/qml/SettingsPage.qml:515
 #, kde-format
 msgid "Disregard octave difference"
 msgstr "Ne upoštevaj oktavske razlike"
 
-#: src/app/qml/SettingsPage.qml:540
+#: src/app/qml/SettingsPage.qml:523
 #, kde-format
 msgid "Reset to Defaults"
 msgstr "Ponastavi na privzete nastavitve"
 
-#: src/app/qml/SettingsPage.qml:624
+#: src/app/qml/SettingsPage.qml:607
 #, kde-format
 msgid "%1 %2"
 msgstr "%1 %2"
@@ -3190,6 +3425,78 @@ msgstr "Zvočni učinki"
 msgctxt "General MIDI instrument group"
 msgid "Other"
 msgstr "Ostalo"
+
+#~ msgid ""
+#~ "Start a single clapping question or begin a test with several questions "
+#~ "in a row."
+#~ msgstr ""
+#~ "Začni test z enim samim vprašanjem s ploskanjem ali pa začni test z več "
+#~ "vprašanji v vrsti."
+
+#~ msgid ""
+#~ "Each colored card is one rhythm figure. Green borders mark figures "
+#~ "clapped correctly; red borders mark missed figures."
+#~ msgstr ""
+#~ "Vsaka barvna kartica predstavlja eno ritmično figuro. Zeleni robovi "
+#~ "označujejo pravilno ploskane figure; rdeči robovi označujejo zgrešene "
+#~ "figure."
+
+#~ msgid ""
+#~ "The onset meter below each figure lights below the center for advanced "
+#~ "claps and above the center for late claps."
+#~ msgstr ""
+#~ "Nastavljeni merilnik pod vsako figuro zasveti pod sredino za prezgodnja "
+#~ "ploskanja in nad sredino za zapoznela ploskanja."
+
+#~ msgid "Rhythm questions begin with a count-in."
+#~ msgstr "Vprašanja o ritmu se začnejo s štetjem."
+
+#~ msgid ""
+#~ "The count appears over the rhythm card you should clap with the beat."
+#~ msgstr ""
+#~ "Štetje se prikaže nad ritmično kartico, v kateri morate ploskati v ritmu."
+
+#~ msgid "The count appears over the note card you should sing with the beat."
+#~ msgstr "Štetje se prikaže nad notno kartico, ki jo morate peti v ritmu."
+
+#~ msgid ""
+#~ "The header shows the exercise status, score, and current target "
+#~ "information while you sing."
+#~ msgstr ""
+#~ "V glavi so prikazani stanje vadbe, rezultat in trenutni ciljni podatki "
+#~ "med vašim petjem."
+
+#~ msgid ""
+#~ "Start a single singing question or begin a test with several questions in "
+#~ "a row."
+#~ msgstr ""
+#~ "Začnite z enim samim vprašanjem o petju ali pa začnite test z več "
+#~ "vprašanji v vrsti."
+
+#~ msgid ""
+#~ "Sing the note cards in order. The current card is highlighted; borders "
+#~ "show correctness after detection."
+#~ msgstr ""
+#~ "Zapojte kartice z notami po vrsti. Trenutna kartica je označena; obrobe "
+#~ "prikazujejo pravilnost po zaznavi."
+
+#~ msgid ""
+#~ "Pitch meters light below the center for flat notes and above the center "
+#~ "for sharp notes. Scale exercises also show an onset meter for each note."
+#~ msgstr ""
+#~ "Merilniki višine tona se pri nizkih tonih prižgejo pod sredino, pri "
+#~ "visokih pa nad sredino. Vaje lestvic prikazujejo tudi merilnik začetka za "
+#~ "vsako noto."
+
+#~ msgid ""
+#~ "On narrow screens, switch between the keyboard and staff views with these "
+#~ "tabs."
+#~ msgstr ""
+#~ "Na ozkih zaslonih lahko s temi zavihki preklapljate med pogledom "
+#~ "tipkovnice in osebja."
+
+#~ msgid "Start with a topic, then pick the specific training level."
+#~ msgstr "Začnite s temo in nato izberite določeno raven vadbe."
 
 #~ msgid ""
 #~ "Start a question, listen to the count, then clap each rhythm figure in "
