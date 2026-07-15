@@ -5,12 +5,13 @@
 # SPDX-FileCopyrightText: 2019, 2022-2024, 2026 Matjaž Jeran <matjaz.jeran@amis.net>
 # With special thanks to maestro Tomaž Kmetič
 # With special thanks to Višnja Kajgana
+# with special thanks to Jernej Štravs
 msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-14 00:39+0000\n"
-"PO-Revision-Date: 2026-07-09 07:15+0200\n"
+"POT-Creation-Date: 2026-07-15 00:40+0000\n"
+"PO-Revision-Date: 2026-07-14 14:07+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Lokalize 26.04.3\n"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -29,7 +30,7 @@ msgstr "Eolska"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All eleventh chords"
-msgstr "Vsi enajsti akordi"
+msgstr "Vsi enajstaki"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -39,12 +40,12 @@ msgstr "Vsi razširjeni akordi"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All ninth chords"
-msgstr "Vsi deveti akordi"
+msgstr "Vsi devetaki"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "All seventh chords"
-msgstr "Vsi sedmi akordi"
+msgstr "Vsi septakordi"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -54,46 +55,44 @@ msgstr "Vsi akordi s tremi notami"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Fourteenth"
-msgstr "Zvečana velika 14"
+msgstr "Naraščajoča velika 14"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Ninth"
-msgstr "Zvečana velika nona"
+msgstr "Naraščajoča velika nona"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Second"
-msgstr "Zvečana velika sekunda"
+msgstr "Naraščajoča velika sekunda"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Seventh"
-msgstr "Zvečana velika septima"
+msgstr "Naraščajoča velika septima"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Sixth"
-msgstr "Zvečana velika seksta"
+msgstr "Naraščajoča velika seksta"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Tenth"
-msgstr "Zvečana velika decima"
+msgstr "Naraščajoča velika decima"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Third"
-msgstr "Zvečana velika terca"
+msgstr "Naraščajoča velika terca"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Major Thirteenth"
-msgstr "Zvečana velika 13"
+msgstr "Naraščajoča velika 13"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Ascending Melodic Intervals"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending melodic intervals"
 msgstr "Naraščajoči melodični intervali"
@@ -101,82 +100,82 @@ msgstr "Naraščajoči melodični intervali"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Fourteenth"
-msgstr "Zvečana molova 14"
+msgstr "Naraščajoča molova kvartdecima"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Ninth"
-msgstr "Zvečana mala nona"
+msgstr "Naraščajoča mala nona"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Second"
-msgstr "Zvečana mala sekunda"
+msgstr "Naraščajoča mala sekunda"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Seventh"
-msgstr "Zvečana mala septima"
+msgstr "Naraščajoča mala septima"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Sixth"
-msgstr "Zvečana mala seksta"
+msgstr "Naraščajoča mala seksta"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Tenth"
-msgstr "Zvečana mala decima"
+msgstr "Naraščajoča mala decima"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Third"
-msgstr "Zvečana mala terca"
+msgstr "Naraščajoča mala terca"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Minor Thirteenth"
-msgstr "Zvečana mala 13"
+msgstr "Naraščajoča mala 13"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Octave + Tritone"
-msgstr "Zvečana oktava in tritonus"
+msgstr "Naraščajoča oktava in tritonus"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Double Octave"
-msgstr "Zvečana čista dvojna oktava"
+msgstr "Naraščajoča čista dvojna oktava"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Eleventh"
-msgstr "Zvečana čista 11 (undecima)"
+msgstr "Naraščajoča čista 11 (undecima)"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Fifth"
-msgstr "Zvečana čista kvinta"
+msgstr "Naraščajoča čista kvinta"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Fourth"
-msgstr "Zvečana čista kvarta"
+msgstr "Naraščajoča čista kvarta"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Octave"
-msgstr "Zvečana čista oktava"
+msgstr "Naraščajoča čista oktava"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Perfect Twelfth"
-msgstr "Zvečana čista duodecima"
+msgstr "Naraščajoča čista duodecima"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Ascending Tritone"
-msgstr "Zvečan tritonus"
+msgstr "Naraščajoča tritonus"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -191,17 +190,17 @@ msgstr "Zvečani akordi"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented Inverse Scale"
-msgstr "Zvečana obrnjena lestvica"
+msgstr "Zvečana inverzna lestvica"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented Scale"
 msgstr "Zvečana lestvica"
 
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Augmented seventh"
-msgstr "Zvečani sedmi"
+msgstr "Zvečani septakord"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -281,46 +280,44 @@ msgstr "Kombinirani"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Fourteenth"
-msgstr "Zmanjšana durova 14"
+msgstr "Padajoča durova kvartdecima"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Ninth"
-msgstr "Zmanjšana velika nona"
+msgstr "Padajoča velika nona"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Second"
-msgstr "Zmanjšana velika sekunda"
+msgstr "Padajoča velika sekunda"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Seventh"
-msgstr "Zmanjšana velika septima"
+msgstr "Padajoča velika septima"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Sixth"
-msgstr "Zmanjšana velika seksta"
+msgstr "Padajoča velika seksta"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Tenth"
-msgstr "Zmanjšana velika decima"
+msgstr "Padajoča velika decima"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Third"
-msgstr "Zmanjšana velika terca"
+msgstr "Padajoča velika terca"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Major Thirteenth"
-msgstr "Zmanjšana durova 13"
+msgstr "Padajoča velika tercdecima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Descending Melodic Intervals"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending melodic intervals"
 msgstr "Padajoči melodični intervali"
@@ -328,91 +325,89 @@ msgstr "Padajoči melodični intervali"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Fourteenth"
-msgstr "Zmanjšana molova 14"
+msgstr "Padajoča mala kvartdecima"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Ninth"
-msgstr "Zmanjšana mala nona"
+msgstr "Padajoča mala nona"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Second"
-msgstr "Zmanjšana mala sekunda"
+msgstr "Padajoča mala sekunda"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Seventh"
-msgstr "Zmanjšana mala septima"
+msgstr "Padajoča mala septima"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Sixth"
-msgstr "Zmanjšana mala seksta"
+msgstr "Padajoča mala seksta"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Tenth"
-msgstr "Zmanjšana mala decima"
+msgstr "Padajoča mala decima"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Third"
-msgstr "Zmanjšana mala terca"
+msgstr "Padajoča mala terca"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Minor Thirteenth"
-msgstr "Zmanjšana mala 13"
+msgstr "Padajoča mala tercdecima"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Octave + Tritone"
-msgstr "Zmanjšana oktava in tritonus"
+msgstr "Padajoča oktava in tritonus"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Double Octave"
-msgstr "Zmanjšana čista dvojna oktava"
+msgstr "Padajoča čista dvojna oktava"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Eleventh"
-msgstr "Zmanjšana čista 11 (undecima)"
+msgstr "Padajoča čista undecima"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Fifth"
-msgstr "Zmanjšana čista kvinta"
+msgstr "Padajoča čista kvinta"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Fourth"
-msgstr "Zmanjšana čista kvarta"
+msgstr "Padajoča čista kvarta"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Octave"
-msgstr "Zmanjšana čista oktava"
+msgstr "Padajoča čista oktava"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Perfect Twelfth"
-msgstr "Zmanjšana čista duodecima"
+msgstr "Padajoča čista duodecima"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Descending Tritone"
-msgstr "Zmanjšan tritonus"
+msgstr "Padajoči tritonus"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished"
 msgstr "Zmanjšani"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Diminished and Augmented Chords"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished and augmented chords"
 msgstr "Zmanjšani in zvečani akordi"
@@ -422,26 +417,22 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished chords"
 msgstr "Zmanjšani akordi"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Diminished - first inversion"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished, first inversion"
-msgstr "Zmanjšana - prva inverzija"
+msgstr "Zmanjšane prve inverzije"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished H-W"
 msgstr "Zmanjšana lestvica cel ton, polton"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Diminished - inversions"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished inversions"
-msgstr "Zmanjšana - inverzije"
+msgstr "Zmanjšane inverzije"
 
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished major seventh"
 msgstr "Zmanjšani durov septakord"
@@ -461,7 +452,7 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant 7#9"
 msgstr "Dominantna 7#9"
 
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant eleventh"
 msgstr "Dominantna 11 (undecima)"
@@ -476,38 +467,30 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh"
 msgstr "Dominantni septakord"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Dominant seventh - first inversion"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh, first inversion"
-msgstr "Dominantna 7 - prva inverzija"
+msgstr "Dominantna 7 prva inverzija"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh flat five"
 msgstr "Dominantna 7 zmanjšana kvinta"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Dominant seventh - inversions"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh inversions"
-msgstr "Dominantna 7 - inverzije"
+msgstr "Dominantna 7 inverzije"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Dominant seventh - second inversion"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh, second inversion"
-msgstr "Dominantna 7 - druga inverzija"
+msgstr "Dominantna 7 druga inverzija"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Dominant seventh - third inversion"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh, third inversion"
-msgstr "Dominantna 7 - tretja inverzija"
+msgstr "Dominantna 7 tretja inverzija"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -532,23 +515,19 @@ msgstr "Lahko"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Easy with rests"
-msgstr ""
+msgstr "Lahko s pavzami"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Extended chords"
 msgstr "Razširjeni akordi"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Fourths and Fifths"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Fourths and fifths"
 msgstr "Kvarte in kvinte"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Fourths, Fifths, and Octave"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Fourths, fifths, and octave"
 msgstr "Kvarte, kvinte in oktave"
@@ -558,21 +537,17 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Half Diminished seventh"
 msgstr "Pol tona zmanjšana septima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Harmonic Intervals"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Harmonic intervals"
-msgstr "Harmonični intervali"
+msgstr "Harmonski intervali"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Harmonic Major"
 msgstr "Harmonični dur"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Harmonic Major Scale and its Modes"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Harmonic major scale and its modes"
 msgstr "Harmonični dur in njegovi modusi"
@@ -687,24 +662,20 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Major eleventh"
 msgstr "Durova undecima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major - first inversion"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major, first inversion"
-msgstr "Durovi - prva inverzija"
+msgstr "Dur prva inverzija"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Fourteenth"
-msgstr "Durova 14"
+msgstr "Velika kvartdecima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major - inversions"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major inversions"
-msgstr "Dur - obrati"
+msgstr "Durove inverzije"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -731,55 +702,45 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Major Second"
 msgstr "Velika sekunda"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major - second inversion"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major, second inversion"
-msgstr "Durova - drugi obrat"
+msgstr "Dur druga inverzija"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh"
-msgstr "Zvečani septakord"
+msgstr "Durov septakord"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Seventh"
 msgstr "Velika septima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major seventh - first inversion"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh, first inversion"
-msgstr "Velika septima - prvi obrat"
+msgstr "Velika septima prva inverzija"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh flat five"
-msgstr "Velika septima znižana kvinta"
+msgstr "Veliki septakord zmanjšana kvinta"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major seventh - inversions"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh inversions"
-msgstr "Velika septima - obrati"
+msgstr "Velika septakord inverzije"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major seventh - second inversion"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh, second inversion"
-msgstr "Velika septima - drugi obrat"
+msgstr "Velika septakord druge inverzije"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Major seventh - third inversion"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh, third inversion"
-msgstr "Velika septakord - tretji obrat"
+msgstr "Velika septakord tretje inverzije"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -804,7 +765,7 @@ msgstr "Velika terca"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major Thirteenth"
-msgstr "Durova 13"
+msgstr "Velika tercdecima"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -819,16 +780,14 @@ msgstr "Srednja"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Medium with rests"
-msgstr ""
+msgstr "Srednje s pavzami"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Melodic Intervals"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Melodic intervals"
 msgstr "Melodični intervali"
 
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor"
 msgstr "Mol"
@@ -846,24 +805,22 @@ msgstr "Molovi akordi"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor eleventh"
-msgstr "Zmanjšana undecima"
+msgstr "Mala undecima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor - first inversion"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor, first inversion"
-msgstr "Molova - prvi obrat"
+msgstr "Mol prvi obrat"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor Fourteenth"
-msgstr "Molova 14"
+msgstr "Mala kvartdecima"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor inversions"
-msgstr "Molovi obrati"
+msgstr "Molove inverzije"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -890,48 +847,40 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Minor Second"
 msgstr "Mala sekunda"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor - second inversion"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor, second inversion"
-msgstr "Mol - drugi obrat"
+msgstr "Mol druge inverzije"
 
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh"
 msgstr "Mala septima"
 
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor Seventh"
 msgstr "Mala septima"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor seventh - first inversion"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh, first inversion"
-msgstr "Mali septakord - prvi obrat"
+msgstr "Molov septakord prva inverzija"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor seventh - inversions"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh inversions"
-msgstr "Mali septakord - obrati"
+msgstr "Molovi septakordi inverzije"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh, second inversion"
 msgstr "Mali septakord- drugi obrat"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Minor seventh - third inversion"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor seventh, third inversion"
-msgstr "Mala septakord - tretji obrat"
+msgstr "Molovi septakordi tretje inverzije"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -951,7 +900,7 @@ msgstr "Mala terca"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Minor Thirteenth"
-msgstr "Mala 13"
+msgstr "Mala tercdecima"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -973,9 +922,7 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Octave + Tritone"
 msgstr "Oktava in tritonus"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Pentatonic Major Scale and its Modes"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Pentatonic major scale and its modes"
 msgstr "Durova pentatonika in njeni modusi"
@@ -988,7 +935,7 @@ msgstr "Čista dvojna oktava"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Perfect Eleventh"
-msgstr "Čista 11 (undecima)"
+msgstr "Čista undecima"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1028,24 +975,23 @@ msgstr "Frigijska dominantna"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice basic rhythm patterns that combine notes and rests."
-msgstr ""
+msgstr "Vadite osnovne ritmične vzorce, ki vsebujejo note in pavze"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice distinguishing diminished and augmented triads by ear."
-msgstr "Vadite razlikovanje zmanjšanih in povečanih trozvokov po posluhu."
+msgstr "Vadite razlikovanje zmanjšanih in zvečanih trozvokov po posluhu."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice distinguishing minor and major triads by ear."
 msgstr "Vadite razlikovanje molovih in durovih trozvokov po posluhu."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice distinguishing suspended chord sounds from major and minor harmony."
-msgstr ""
-"Vadite razlikovanje suspendiranih akordov od durovske in molovske harmonije."
+msgstr "Vadite razlikovanje sus akordov od durovske in molovske harmonije."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1054,7 +1000,7 @@ msgid ""
 "through a fifteenth by ear."
 msgstr ""
 "Vadite prepoznavanje naraščajočih melodičnih sestavljenih intervalov od "
-"sekunde do petnajste po posluhu."
+"sekunde do kvintdecime po posluhu."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1457,18 +1403,19 @@ msgstr "Vadite prepoznavanje svetlih, ojačanih akordnih zvokov po posluhu."
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing chords that include a major seventh by ear."
 msgstr ""
-"Vadite prepoznavanje akordov, ki vključujejo veliko septimo, po posluhu."
+"Vadite prepoznavanje akordov, ki vključujejo durov septakord, po posluhu."
 
 #, fuzzy, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing chords that include a minor seventh by ear."
-msgstr "Vadite prepoznavanje akordov, ki vključujejo malo septimo, po posluhu."
+msgstr ""
+"Vadite prepoznavanje akordov, ki vključujejo molov septakord, po posluhu."
 
 #, fuzzy, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing common seventh chord qualities in root position."
 msgstr ""
-"Vadite prepoznavanje pogostih lastnosti sedmega akorda v korenskem položaju."
+"Vadite prepoznavanje pogostih lastnosti septakorda v korenskem položaju."
 
 #, fuzzy, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1480,7 +1427,7 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing dominant seventh chords in different inversions."
 msgstr "Vadite prepoznavanje dominantnih septakordov v različnih inverzijah."
 
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing eleventh chord colors by ear."
 msgstr "Vadite prepoznavanje barv enajstih akordov po posluhu."
@@ -1560,8 +1507,7 @@ msgstr ""
 #, fuzzy, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing seventh chords with flattened or sharpened fifths."
-msgstr ""
-"Vadite prepoznavanje septakordov s sploščenimi ali izostrenimi kvintami."
+msgstr "Vadite prepoznavanje septakordov z znižanimi ali zvišanimi kvintami."
 
 #, fuzzy, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1594,7 +1540,7 @@ msgid "Practice recognizing the full range of eleventh chord colors by ear."
 msgstr ""
 "Vadite prepoznavanje celotnega obsega barv enajstega akorda po posluhu."
 
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the full range of ninth chord colors by ear."
 msgstr "Vadite prepoznavanje celotnega obsega barv devetega akorda po posluhu."
@@ -1604,16 +1550,16 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the major scale and its diatonic modes."
 msgstr "Vadite prepoznavanje durove lestvice in njenih diatoničnih načinov."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing triads across root position and inversions."
 msgstr ""
-"Vadite prepoznavanje troglasnikov v različnih položajih korena in inverzijah."
+"Vadite prepoznavanje trozvokov različnih položajih korena in inverzijah."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice varied rhythm patterns that combine notes and rests."
-msgstr ""
+msgstr "Vadite različne ritmične vzorce, ki združujejo note in pavze."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1650,19 +1596,15 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Second to 15th"
 msgstr "Sekunda do 15 (dvojne oktave)"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Second to Octave"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Second to octave"
-msgstr "Sekunde do oktave"
+msgstr "Sekunda do oktave"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Second to Tenth"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Second to tenth"
-msgstr "Sekunda do 10 (decime)"
+msgstr "Sekunda do decime"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1744,15 +1686,15 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Thirds"
 msgstr "Terce"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Triad inversions"
-msgstr "Inverzije triad"
+msgstr "Inverzije trozvokov"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Triads"
-msgstr "Kvintakordi"
+msgstr "Trozvoki"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1767,79 +1709,77 @@ msgstr "Tritonus in septime"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D7 uE1D9 uE4E7"
-msgstr ""
+msgstr "uE1D7 uE1D9 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D7uE1E7 uE4E7"
-msgstr ""
+msgstr "uE1D7uE1E7 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D7 uE4E6"
-msgstr ""
+msgstr "uE1D7 uE4E6"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D7 uE4E7 uE1D9"
-msgstr ""
+msgstr "uE1D7 uE4E7 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D7 uE4E7 uE4E7"
-msgstr ""
+msgstr "uE1D7 uE4E7 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE1D7 uE4E7"
-msgstr ""
+msgstr "uE1D7 uE4E7 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E6 uE1D9"
-msgstr ""
+msgstr "uE1D9 uE4E6 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E6uE1E7"
-msgstr ""
+msgstr "uE1D9 uE4E6uE1E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E6 uE4E7"
-msgstr ""
+msgstr "uE1D9 uE4E6 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E7 uE1D7"
-msgstr ""
+msgstr "uE1D9 uE4E7 uE1D7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E7 uE1D9 uE4E7"
-msgstr ""
+msgstr "uE1D9 uE4E7 uE1D9 uE4E7"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E7 uE1F0uE1F9uE1F4"
-msgstr "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgstr "uE1D9 uE4E7 uE1F0uE1F9uE1F4"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E7 uE4E6"
-msgstr ""
+msgstr "uE1D9 uE4E7 uE4E6"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E7 uE4E7 uE1D9"
-msgstr ""
+msgstr "uE1D9 uE4E7 uE4E7 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E7 uE4E7 uE4E7"
-msgstr ""
+msgstr "uE1D9 uE4E7 uE4E7 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1881,136 +1821,120 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
 msgstr "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F4uE1F9uE1F4 uE4E7"
-msgstr "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
+msgstr "uE1F0uE1F9uE1F4uE1F9uE1F4 uE4E7"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F9uE1F4uE1F7uE1F2"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F4 uE4E6"
-msgstr "uE1F0uE1F9uE1F4uE1F7uE1F2"
+msgstr "uE1F0uE1F9uE1F4 uE4E6"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F9uE1F4uE1F7uE1F2"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F4 uE4E7 uE1D9"
-msgstr "uE1F0uE1F9uE1F4uE1F7uE1F2"
+msgstr "uE1F0uE1F9uE1F4 uE4E7 uE1D9"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F9uE1F2uE1F7uE1F4"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F4 uE4E7 uE4E7"
-msgstr "uE1F0uE1F9uE1F2uE1F7uE1F4"
+msgstr "uE1F0uE1F9uE1F4 uE4E7 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E6 uE1D7"
-msgstr ""
+msgstr "uE4E6 uE1D7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E6 uE1D9 uE4E7"
-msgstr ""
+msgstr "uE4E6 uE1D9 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E6uE1E7 uE1D9"
-msgstr ""
+msgstr "uE4E6uE1E7 uE1D9"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E6 uE1F0uE1F9uE1F4"
-msgstr "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgstr "uE4E6 uE1F0uE1F9uE1F4"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E6 uE4E7 uE1D9"
-msgstr ""
+msgstr "uE4E6 uE4E7 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1D7 uE1D9"
-msgstr ""
+msgstr "uE4E7 uE1D7 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1D7uE1E7"
-msgstr ""
+msgstr "uE4E7 uE1D7uE1E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1D7 uE4E7"
-msgstr ""
+msgstr "uE4E7 uE1D7 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1D9 uE1D7"
-msgstr ""
+msgstr "uE4E7 uE1D9 uE1D7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1D9 uE4E6"
-msgstr ""
+msgstr "uE4E7 uE1D9 uE4E6"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1D9 uE4E7 uE1D9"
-msgstr ""
+msgstr "uE4E7 uE1D9 uE4E7 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1D9 uE4E7 uE4E7"
-msgstr ""
+msgstr "uE4E7 uE1D9 uE4E7 uE4E7"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F9uE1F4uE1F7uE1F2"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1F0uE1F9uE1F4uE1F9uE1F4"
-msgstr "uE1F0uE1F9uE1F4uE1F7uE1F2"
+msgstr "uE4E7 uE1F0uE1F9uE1F4uE1F9uE1F4"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1F0uE1F9uE1F4 uE4E7"
-msgstr "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgstr "uE4E7 uE1F0uE1F9uE1F4 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE4E6 uE1D9"
-msgstr ""
+msgstr "uE4E7 uE4E6 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE4E7 uE1D7"
-msgstr ""
+msgstr "uE4E7 uE4E7 uE1D7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE4E7 uE1D9 uE4E7"
-msgstr ""
+msgstr "uE4E7 uE4E7 uE1D9 uE4E7"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE4E7 uE1F0uE1F9uE1F4"
-msgstr "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgstr "uE4E7 uE4E7 uE1F0uE1F9uE1F4"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE4E7 uE4E7 uE1D9"
-msgstr ""
+msgstr "uE4E7 uE4E7 uE4E7 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -2084,13 +2008,14 @@ msgid "That's right"
 msgstr "To je prav"
 
 #: src/app/exercisesessioncontroller.cpp:348
-#, kde-format
-msgid "Not quite, try again"
+#, fuzzy, kde-format
+#| msgid "Not quite, try again"
+msgid "Not quite"
 msgstr "Ne čisto, poskusite znova"
 
 #: src/app/exercisesessioncontroller.cpp:352
-#: src/app/qml/ExerciseClappingView.qml:757
-#: src/app/qml/ExerciseSingingView.qml:853
+#: src/app/qml/ExerciseClappingView.qml:800
+#: src/app/qml/ExerciseSingingView.qml:639
 #, kde-format
 msgid "Score: %1%"
 msgstr "Rezultat: %1%"
@@ -2165,105 +2090,116 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "matjaz.jeran@amis.net"
 
-#: src/app/qml/ExerciseClappingView.qml:40
-#: src/app/qml/ExerciseClappingView.qml:349
-#: src/app/qml/ExerciseClappingView.qml:426
+#: src/app/qml/ExerciseClappingView.qml:39
+#: src/app/qml/ExerciseClappingView.qml:376
+#: src/app/qml/ExerciseClappingView.qml:454
 #, kde-format
 msgid "Ready"
 msgstr "Pripravljen"
 
-#: src/app/qml/ExerciseClappingView.qml:486
-#: src/app/qml/ExerciseSingingView.qml:479
+#: src/app/qml/ExerciseClappingView.qml:514
+#: src/app/qml/ExerciseSingingView.qml:489
 #, kde-format
 msgid "Missed"
 msgstr "Zamujeno"
 
-#: src/app/qml/ExerciseClappingView.qml:584
-#: src/app/qml/ExerciseSingingView.qml:460
+#: src/app/qml/ExerciseClappingView.qml:617
+#: src/app/qml/ExerciseSingingView.qml:470
 #, kde-format
 msgid "On time"
 msgstr "Pravočasno"
 
-#: src/app/qml/ExerciseClappingView.qml:586
-#: src/app/qml/ExerciseSingingView.qml:460 src/app/qml/GraphicalMeter.qml:24
+#: src/app/qml/ExerciseClappingView.qml:619
+#: src/app/qml/ExerciseSingingView.qml:470 src/app/qml/GraphicalMeter.qml:24
 #, kde-format
 msgid "%1 ms"
 msgstr "%1 ms"
 
-#: src/app/qml/ExerciseClappingView.qml:749
+#: src/app/qml/ExerciseClappingView.qml:675
+#: src/app/qml/ExerciseClappingView.qml:1006
+#: src/app/qml/ExerciseSingingView.qml:762
+#: src/app/qml/ExerciseSingingView.qml:1117
+#, kde-format
+msgid "Calibrate Silence"
+msgstr "Kalibriraj tišino"
+
+#: src/app/qml/ExerciseClappingView.qml:792
 #, kde-format
 msgid "The header shows the current instruction, microphone status, and score."
-msgstr ""
+msgstr "Glava prikazuje trenutna navodila, stanje mikrofona in rezultat."
 
-#: src/app/qml/ExerciseClappingView.qml:757
+#: src/app/qml/ExerciseClappingView.qml:800
 #, kde-format
 msgid "Clap the rhythm"
 msgstr "Ploskajte v ritmu"
 
-#: src/app/qml/ExerciseClappingView.qml:765
+#: src/app/qml/ExerciseClappingView.qml:808
+#: src/app/qml/ExerciseSingingView.qml:627
 #, kde-format
 msgid "Listening..."
 msgstr "Poslušanje..."
 
-#: src/app/qml/ExerciseClappingView.qml:765
-#: src/app/qml/ExerciseSingingView.qml:432
-#, fuzzy, kde-format
-#| msgid "Calibrating..."
+#: src/app/qml/ExerciseClappingView.qml:808
+#: src/app/qml/ExerciseSingingView.qml:442
+#: src/app/qml/ExerciseSingingView.qml:630
+#, kde-format
 msgid "Analyzing..."
-msgstr "Kalibriranje..."
+msgstr "Analiziranje..."
 
-#: src/app/qml/ExerciseClappingView.qml:765
-#: src/app/qml/ExerciseSingingView.qml:439
+#: src/app/qml/ExerciseClappingView.qml:808
+#: src/app/qml/ExerciseSingingView.qml:449
 #, kde-format
 msgid "No microphone input devices found"
 msgstr "Ni bilo mogoče najti vhodnih naprav za mikrofon"
 
-#: src/app/qml/ExerciseClappingView.qml:765
-#: src/app/qml/ExerciseSingingView.qml:436
+#: src/app/qml/ExerciseClappingView.qml:808
+#: src/app/qml/ExerciseSingingView.qml:446
 #, kde-format
 msgid "No microphone input plugin available"
 msgstr "Vtičnik za mikrofon ni na voljo"
 
-#: src/app/qml/ExerciseClappingView.qml:776
-#: src/app/qml/ExerciseSingingView.qml:872
+#: src/app/qml/ExerciseClappingView.qml:819
+#: src/app/qml/ExerciseSingingView.qml:916
 #, kde-format
 msgid ""
 "Use New Question or Start for one exercise, or Start Test for a scored "
 "series."
-msgstr ""
+msgstr "Za eno vajo uporabite Novo vprašanje ali Začni test za serijo točk."
 
-#: src/app/qml/ExerciseClappingView.qml:784
-#: src/app/qml/ExerciseSingingView.qml:880 src/app/qml/ExerciseView.qml:426
+#: src/app/qml/ExerciseClappingView.qml:827
+#: src/app/qml/ExerciseSingingView.qml:924 src/app/qml/ExerciseView.qml:417
 #, kde-format
 msgid "New Question"
 msgstr "Novo vprašanje"
 
-#: src/app/qml/ExerciseClappingView.qml:784
-#: src/app/qml/ExerciseSingingView.qml:880
+#: src/app/qml/ExerciseClappingView.qml:827
+#: src/app/qml/ExerciseSingingView.qml:924
 #, kde-format
 msgid "Start"
 msgstr "Začetek"
 
-#: src/app/qml/ExerciseClappingView.qml:798
-#: src/app/qml/ExerciseSingingView.qml:894 src/app/qml/ExerciseView.qml:453
+#: src/app/qml/ExerciseClappingView.qml:841
+#: src/app/qml/ExerciseSingingView.qml:938 src/app/qml/ExerciseView.qml:444
 #, kde-format
 msgid "Stop Test"
 msgstr "Zaustavi test"
 
-#: src/app/qml/ExerciseClappingView.qml:798
-#: src/app/qml/ExerciseSingingView.qml:894 src/app/qml/ExerciseView.qml:453
+#: src/app/qml/ExerciseClappingView.qml:841
+#: src/app/qml/ExerciseSingingView.qml:938 src/app/qml/ExerciseView.qml:444
 #, kde-format
 msgid "Start Test"
 msgstr "Začni test"
 
-#: src/app/qml/ExerciseClappingView.qml:836
+#: src/app/qml/ExerciseClappingView.qml:879
 #, kde-format
 msgid ""
 "This area shows every rhythm figure. Borders mark correct or missed claps, "
 "and timing meters show early or late claps."
 msgstr ""
+"To območje prikazuje vse ritmične figure. Obrobe označujejo pravilne ali "
+"zgrešene ploske, merilniki časa pa prikazujejo zgodnje ali pozne ploske."
 
-#: src/app/qml/ExerciseClappingView.qml:946
+#: src/app/qml/ExerciseClappingView.qml:995
 #, kde-format
 msgid ""
 "The input level shows microphone activity while you clap. Open means the "
@@ -2272,25 +2208,25 @@ msgstr ""
 "Vhodna raven prikazuje aktivnost mikrofona med ploskanjem. Odprto pomeni, da "
 "je signal nad trenutno vrednostjo vrat."
 
-#: src/app/qml/ExerciseClappingView.qml:948
-#: src/app/qml/ExerciseSingingView.qml:1061
+#: src/app/qml/ExerciseClappingView.qml:997
+#: src/app/qml/ExerciseSingingView.qml:1108
 #, kde-format
 msgid "Input level"
 msgstr "Raven vhoda"
 
-#: src/app/qml/ExerciseClappingView.qml:950
-#: src/app/qml/ExerciseSingingView.qml:1063
+#: src/app/qml/ExerciseClappingView.qml:999
+#: src/app/qml/ExerciseSingingView.qml:1110
 #, kde-format
 msgid "Open"
 msgstr "Odpri"
 
-#: src/app/qml/ExerciseClappingView.qml:950
-#: src/app/qml/ExerciseSingingView.qml:1063
+#: src/app/qml/ExerciseClappingView.qml:999
+#: src/app/qml/ExerciseSingingView.qml:1110
 #, kde-format
 msgid "Closed"
 msgstr "Zaprto"
 
-#: src/app/qml/ExerciseClappingView.qml:954
+#: src/app/qml/ExerciseClappingView.qml:1004
 #, kde-format
 msgid ""
 "Calibrate silence in a quiet room before clapping so background noise is not "
@@ -2299,17 +2235,11 @@ msgstr ""
 "Kalibrirajte tišino v tihem prostoru pred ploskanjem , da se šum v ozadju ne "
 "šteje kot vhodni signal."
 
-#: src/app/qml/ExerciseClappingView.qml:956
-#: src/app/qml/ExerciseSingingView.qml:1069
+#: src/app/qml/ExerciseClappingView.qml:1006
+#: src/app/qml/ExerciseSingingView.qml:1117
 #, kde-format
 msgid "Calibrating..."
 msgstr "Kalibriranje..."
-
-#: src/app/qml/ExerciseClappingView.qml:956
-#: src/app/qml/ExerciseSingingView.qml:1069
-#, kde-format
-msgid "Calibrate Silence"
-msgstr "Kalibriraj tišino"
 
 #: src/app/qml/ExerciseMenuPage.qml:80
 #, kde-format
@@ -2320,46 +2250,54 @@ msgstr[1] "%2 - %1 element"
 msgstr[2] "%2 - %1 elementa"
 msgstr[3] "%2 - %1 elementi"
 
-#: src/app/qml/ExercisePage.qml:65
+#: src/app/qml/ExercisePage.qml:71
 #, kde-format
 msgctxt "@action:button"
 msgid "Help"
 msgstr "Pomoč"
 
-#: src/app/qml/ExercisePage.qml:93
+#: src/app/qml/ExercisePage.qml:99
 #, kde-format
 msgid "Count: %1"
 msgstr "Števec: %1"
 
-#: src/app/qml/ExercisePage.qml:96
+#: src/app/qml/ExercisePage.qml:102
 #, kde-format
 msgid ""
 "A four-beat count-in plays before the rhythm. Listen, then recreate the "
 "pattern."
 msgstr ""
+"Štiridobno štetje se predvaja pred ritmom. Poslušajte in nato poustvarite "
+"vzorec."
 
-#: src/app/qml/ExercisePage.qml:96
+#: src/app/qml/ExercisePage.qml:102
 #, kde-format
 msgid ""
 "A four-beat count-in plays before clapping is analyzed. Start clapping when "
 "the count finishes."
 msgstr ""
+"Štiridobno štetje se predvaja pred analizo ploskanja. Začnite ploskati, ko "
+"se štetje konča."
 
-#: src/app/qml/ExercisePage.qml:96
+#: src/app/qml/ExercisePage.qml:102
 #, kde-format
 msgid ""
 "A four-beat count-in plays before the base note. Listen, then sing the scale "
 "notes in order."
 msgstr ""
+"Štiridobno štetje se predvaja pred osnovnim tonom. Poslušajte in nato "
+"zapojte lestvico po vrsti."
 
-#: src/app/qml/ExercisePage.qml:96
+#: src/app/qml/ExercisePage.qml:102
 #, kde-format
 msgid ""
 "A four-beat count-in plays before the root note. Listen, then sing the "
 "interval note."
 msgstr ""
+"Štiridobno štetje se predvaja pred osnovnim tonom. Poslušajte in nato "
+"zapojte intervalno noto."
 
-#: src/app/qml/ExercisePage.qml:188
+#: src/app/qml/ExercisePage.qml:194
 #, kde-format
 msgid ""
 "This is your first clapping exercise. Start a quick guide? You can open it "
@@ -2368,7 +2306,7 @@ msgstr ""
 "To je vaša prva vaja ploskanja. Želite začeti s hitrim vodnikom? Odprete ga "
 "lahko pozneje z ikono Pomoč."
 
-#: src/app/qml/ExercisePage.qml:188
+#: src/app/qml/ExercisePage.qml:194
 #, kde-format
 msgid ""
 "This is your first singing exercise. Start a quick guide? You can open it "
@@ -2377,7 +2315,7 @@ msgstr ""
 "To je vaša prva pevska vaja. Želite začeti s hitrim vodnikom? Odprete ga "
 "lahko pozneje z ikono Pomoč."
 
-#: src/app/qml/ExercisePage.qml:188
+#: src/app/qml/ExercisePage.qml:194
 #, kde-format
 msgid ""
 "This is your first rhythmic exercise. Start a quick guide? You can open it "
@@ -2386,7 +2324,7 @@ msgstr ""
 "To je vaša prva ritmična vaja. Jo želite začeti s hitrim vodnikom? Odprete "
 "ga lahko pozneje z ikono Pomoč."
 
-#: src/app/qml/ExercisePage.qml:188
+#: src/app/qml/ExercisePage.qml:194
 #, kde-format
 msgid ""
 "This is your first melodic exercise. Start a quick guide? You can open it "
@@ -2395,94 +2333,112 @@ msgstr ""
 "To je vaša prva melodična vaja. Jo želite začeti s hitrim vodnikom? Odprete "
 "ga lahko pozneje z ikono Pomoč."
 
-#: src/app/qml/ExercisePage.qml:189
+#: src/app/qml/ExercisePage.qml:195
 #, kde-format
 msgid "First Time Here"
 msgstr "Prvič tukaj"
 
-#: src/app/qml/ExercisePage.qml:194
+#: src/app/qml/ExercisePage.qml:200
 #, kde-format
 msgctxt "@action:button"
 msgid "Start Guide"
 msgstr "Vodnik za začetek"
 
-#: src/app/qml/ExercisePage.qml:203
+#: src/app/qml/ExercisePage.qml:209
 #, kde-format
 msgctxt "@action:button"
 msgid "Not Now"
 msgstr "Ne zdaj"
 
-#: src/app/qml/ExerciseSingingView.qml:51
-#: src/app/qml/ExerciseSingingView.qml:195
-#: src/app/qml/ExerciseSingingView.qml:308 src/app/qml/GraphicalMeter.qml:17
+#: src/app/qml/ExerciseSingingView.qml:50
+#: src/app/qml/ExerciseSingingView.qml:201
+#: src/app/qml/ExerciseSingingView.qml:317 src/app/qml/GraphicalMeter.qml:17
 #, kde-format
 msgid "No pitch"
 msgstr "Ni višine tona"
 
-#: src/app/qml/ExerciseSingingView.qml:198
-#: src/app/qml/ExerciseSingingView.qml:1032
-#, fuzzy, kde-format
+#: src/app/qml/ExerciseSingingView.qml:204
+#: src/app/qml/ExerciseSingingView.qml:1079
+#, kde-format
 msgid "No timing"
-msgstr "Višina tona + čas"
+msgstr "Ni merjenja časa"
 
-#: src/app/qml/ExerciseSingingView.qml:216
+#: src/app/qml/ExerciseSingingView.qml:222
 #, kde-format
 msgid "Played"
 msgstr "Predvajano"
 
-#: src/app/qml/ExerciseSingingView.qml:327 src/app/qml/GraphicalMeter.qml:24
+#: src/app/qml/ExerciseSingingView.qml:336 src/app/qml/GraphicalMeter.qml:24
 #, kde-format
 msgid "%1 cents"
 msgstr "%1 centov"
 
-#: src/app/qml/ExerciseSingingView.qml:447 src/app/qml/ExerciseView.qml:185
+#: src/app/qml/ExerciseSingingView.qml:457
 #, kde-format
 msgid "%1 - Base: %2 - Targets: %3"
 msgstr "%1 - Osnova: %2 - Cilji: %3"
 
-#: src/app/qml/ExerciseSingingView.qml:449 src/app/qml/ExerciseView.qml:187
+#: src/app/qml/ExerciseSingingView.qml:459
 #, kde-format
 msgid "%1 - Base: %2 - Target: %3"
 msgstr "%1 - Osnova: %2 - Cilj: %3"
 
-#: src/app/qml/ExerciseSingingView.qml:845
+#: src/app/qml/ExerciseSingingView.qml:624 src/app/qml/ExerciseView.qml:391
+#, kde-format
+msgid "Playing…"
+msgstr "Predvajanje…"
+
+#: src/app/qml/ExerciseSingingView.qml:642
+#, kde-format
+msgid "Sing the scale"
+msgstr "Zapojte lestvico"
+
+#: src/app/qml/ExerciseSingingView.qml:642
+#, kde-format
+msgid "Sing the interval"
+msgstr "Zapojte interval"
+
+#: src/app/qml/ExerciseSingingView.qml:648
+#, kde-format
+msgid "%1 — %2"
+msgstr ""
+
+#: src/app/qml/ExerciseSingingView.qml:889
 #, kde-format
 msgid ""
 "The header identifies the scale and shows the current instruction or score."
 msgstr ""
+"Glava identificira lestvico in prikazuje trenutno navodilo ali rezultat."
 
-#: src/app/qml/ExerciseSingingView.qml:845
+#: src/app/qml/ExerciseSingingView.qml:889
 #, kde-format
 msgid ""
 "The header identifies the interval and shows the current instruction or "
 "score."
 msgstr ""
+"Glava identificira interval in prikazuje trenutno navodilo ali rezultat."
 
-#: src/app/qml/ExerciseSingingView.qml:853
-#, kde-format
-msgid "Sing the scale"
-msgstr "Zapojte lestvico"
-
-#: src/app/qml/ExerciseSingingView.qml:853
-#, kde-format
-msgid "Sing the interval"
-msgstr "Zapojte interval"
-
-#: src/app/qml/ExerciseSingingView.qml:932
+#: src/app/qml/ExerciseSingingView.qml:976
 #, kde-format
 msgid ""
 "This area shows the scale notes in order. Borders report pitch; pitch meters "
 "show flat or sharp notes, and timing meters show early or late starts."
 msgstr ""
+"To območje prikazuje note lestvice po vrstnem redu. Obrobe prikazujejo "
+"višino tona; merilniki višine tona prikazujejo nizke ali visoke tone, "
+"merilniki časa pa zgodnje ali pozne začetke."
 
-#: src/app/qml/ExerciseSingingView.qml:932
+#: src/app/qml/ExerciseSingingView.qml:976
 #, kde-format
 msgid ""
 "This area shows the reference and target notes. Sing the target; its border "
 "reports accuracy, and its pitch meter shows flat or sharp notes."
 msgstr ""
+"To območje prikazuje referenčne in ciljne note. Zapojte cilj; njegov rob "
+"prikazuje natančnost, merilnik višine tona pa prikazuje nizke ali visoke "
+"note."
 
-#: src/app/qml/ExerciseSingingView.qml:1059
+#: src/app/qml/ExerciseSingingView.qml:1106
 #, kde-format
 msgid ""
 "The input level shows microphone activity while you sing. Open means the "
@@ -2491,112 +2447,104 @@ msgstr ""
 "Vhodna raven prikazuje aktivnost mikrofona med petjem. Odprto pomeni, da je "
 "signal nad trenutno vrednostjo vrat."
 
-#: src/app/qml/ExerciseSingingView.qml:1067
-#, fuzzy, kde-format
-#| msgid ""
-#| "Calibrate silence in a quiet room before singing so room noise does not "
-#| "affect pitch and onset detection."
+#: src/app/qml/ExerciseSingingView.qml:1115
+#, kde-format
 msgid ""
 "Calibrate silence in a quiet room before singing so room noise does not "
 "affect pitch detection."
 msgstr ""
 "Kalibrirajte tišino v tihem prostoru pred petjem, da šum v prostoru ne "
-"vpliva na višino tona in zaznavanje začetka."
+"vpliva na detekcijo višine tona."
 
-#: src/app/qml/ExerciseSingingView.qml:1119
+#: src/app/qml/ExerciseSingingView.qml:1167
 #, kde-format
 msgid ""
 "The keyboard highlights the reference note and target notes for the singing "
 "question."
 msgstr "Klaviatura označi referenčno noto in ciljne note za pevsko vprašanje."
 
-#: src/app/qml/ExerciseSingingView.qml:1157
+#: src/app/qml/ExerciseSingingView.qml:1205
 #, kde-format
 msgid "The staff shows the same singing notes in music notation."
 msgstr "Osebje prikazuje iste pevske note v glasbeni notaciji."
 
-#: src/app/qml/ExerciseSingingView.qml:1186 src/app/qml/ExerciseView.qml:754
+#: src/app/qml/ExerciseSingingView.qml:1234 src/app/qml/ExerciseView.qml:746
 #, kde-format
 msgid "Keyboard"
 msgstr "Tipkovnica"
 
-#: src/app/qml/ExerciseSingingView.qml:1189 src/app/qml/ExerciseView.qml:757
+#: src/app/qml/ExerciseSingingView.qml:1237 src/app/qml/ExerciseView.qml:749
 #, kde-format
 msgid "Staff"
 msgstr "Osebje"
 
-#: src/app/qml/ExerciseView.qml:369
+#: src/app/qml/ExerciseView.qml:363
 #, kde-format
 msgid "These messages explain the question and show its status."
 msgstr "Ta sporočila pojasnjujejo vprašanje in prikazujejo njegov status."
 
-#: src/app/qml/ExerciseView.qml:385
+#: src/app/qml/ExerciseView.qml:379
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "userMessage"
 msgstr "uporabniško sporočilo"
 
-#: src/app/qml/ExerciseView.qml:399
-#, kde-format
-msgid "Playing…"
-msgstr "Predvajanje…"
-
-#: src/app/qml/ExerciseView.qml:412
+#: src/app/qml/ExerciseView.qml:403
 #, kde-format
 msgid "Start a new question, replay it, reveal the answer, or begin a test."
 msgstr ""
 "Začni novo vprašanje, ga ponovno predvajaj, razkrij odgovor ali začni test."
 
-#: src/app/qml/ExerciseView.qml:412
+#: src/app/qml/ExerciseView.qml:403
 #, kde-format
 msgid "Start a rhythm question, replay it, reveal the answer, or begin a test."
 msgstr ""
 "Začni vprašanje o ritmu, ga ponovno predvajaj, razkrij odgovor ali začni "
 "test."
 
-#: src/app/qml/ExerciseView.qml:426
+#: src/app/qml/ExerciseView.qml:417
 #, kde-format
 msgid "Play Question"
 msgstr "Odigraj vprašanje"
 
-#: src/app/qml/ExerciseView.qml:440
+#: src/app/qml/ExerciseView.qml:431
 #, kde-format
 msgid "Give Up"
 msgstr "Predate se"
 
-#: src/app/qml/ExerciseView.qml:497
+#: src/app/qml/ExerciseView.qml:489
 #, kde-format
 msgid "Choose an answer here. Hover, or press and hold, to preview it below."
 msgstr ""
 "Tukaj izberite odgovor. Premaknite miško nad ali pritisnite in pridržite za "
 "predogled spodaj."
 
-#: src/app/qml/ExerciseView.qml:497
+#: src/app/qml/ExerciseView.qml:489
 #, kde-format
 msgid "Choose each rhythm part from these available answers."
 msgstr "Izberite vsak ritmični del izmed teh razpoložljivih odgovorov."
 
-#: src/app/qml/ExerciseView.qml:511
+#: src/app/qml/ExerciseView.qml:503
 #, kde-format
 msgid "Available answers"
 msgstr "Razpoložljivi odgovori"
 
-#: src/app/qml/ExerciseView.qml:515
+#: src/app/qml/ExerciseView.qml:507
 #, kde-format
 msgid "Scroll for more"
 msgstr "Pomaknite se za več informacij"
 
-#: src/app/qml/ExerciseView.qml:563
+#: src/app/qml/ExerciseView.qml:555
 #, kde-format
 msgid "Your selected answer appears here."
 msgstr "Vaš izbrani odgovor se prikaže tukaj."
 
-#: src/app/qml/ExerciseView.qml:563
+#: src/app/qml/ExerciseView.qml:555
 #, kde-format
 msgid "Build your rhythm answer here, one part at a time."
 msgstr "Tukaj sestavite svoj ritemski odgovor, del za delom."
 
-#: src/app/qml/ExerciseView.qml:579
+#: src/app/qml/ExerciseView.qml:571
 #, kde-format
 msgid "Correct answer"
 msgid_plural "Correct answers"
@@ -2605,7 +2553,7 @@ msgstr[1] "Pravilni odgovor"
 msgstr[2] "Pravilna odgovora"
 msgstr[3] "Pravilni odgovori"
 
-#: src/app/qml/ExerciseView.qml:579
+#: src/app/qml/ExerciseView.qml:571
 #, kde-format
 msgid "Your answer"
 msgid_plural "Your answers"
@@ -2614,37 +2562,37 @@ msgstr[1] "Vaš odgovor"
 msgstr[2] "Vaša odgovora"
 msgstr[3] "Vaši odgovori"
 
-#: src/app/qml/ExerciseView.qml:583
+#: src/app/qml/ExerciseView.qml:575
 #, kde-format
 msgid "Scroll for more |"
 msgstr "Pomaknite se za več informacij |"
 
-#: src/app/qml/ExerciseView.qml:588
+#: src/app/qml/ExerciseView.qml:580
 #, kde-format
 msgid "%1 / %2"
 msgstr "%1 / %2"
 
-#: src/app/qml/ExerciseView.qml:592
+#: src/app/qml/ExerciseView.qml:584
 #, kde-format
 msgid "Backspace"
 msgstr "Backspace"
 
-#: src/app/qml/ExerciseView.qml:688
+#: src/app/qml/ExerciseView.qml:680
 #, kde-format
 msgid "The keyboard shows the notes in the question or preview."
 msgstr "Klaviatura prikazuje note v vprašanju ali predogledu."
 
-#: src/app/qml/ExerciseView.qml:726
+#: src/app/qml/ExerciseView.qml:718
 #, kde-format
 msgid "The staff shows the same notes in music notation."
 msgstr "Osebje prikazuje iste note v glasbeni notaciji."
 
-#: src/app/qml/ExerciseView.qml:885
+#: src/app/qml/ExerciseView.qml:877
 #, kde-format
 msgid "Empty answer slot"
 msgstr "Prazno mesto za odgovore"
 
-#: src/app/qml/ExerciseView.qml:917
+#: src/app/qml/ExerciseView.qml:909
 #, kde-format
 msgid "Answer %1"
 msgstr "Odgovor %1"
@@ -2669,17 +2617,17 @@ msgstr "Začetna deviacija: %1"
 msgid "Home"
 msgstr "Domov"
 
-#: src/app/qml/Main.qml:112
+#: src/app/qml/Main.qml:113
 #, kde-format
 msgid "Run this guide again any time from the Help icon."
 msgstr "Ta vodnik lahko kadar koli znova zaženete z ikono Pomoč."
 
-#: src/app/qml/Main.qml:140
+#: src/app/qml/Main.qml:141
 #, kde-format
 msgid "Start by selecting an exercise topic from the drawer menu."
-msgstr ""
+msgstr "Začnete tako, da v meniju predala izberete temo vaje."
 
-#: src/app/qml/Main.qml:142
+#: src/app/qml/Main.qml:143
 #, kde-format
 msgid "Choose an exercise"
 msgstr "Izberite vajo"
@@ -2717,10 +2665,9 @@ msgid "About"
 msgstr "O programu"
 
 #: src/app/qml/MinuetDrawer.qml:209
-#, fuzzy, kde-format
-#| msgid "Number of exercises"
+#, kde-format
 msgid "No exercises found"
-msgstr "Število vaj"
+msgstr "Ni najdenih vaj"
 
 #: src/app/qml/PianoView/PianoView.qml:151
 #, kde-format
@@ -2759,12 +2706,12 @@ msgid "Hide advanced settings"
 msgstr "Skrij napredne nastavitve"
 
 #: src/app/qml/SettingsPage.qml:29
-#, fuzzy, kde-format
+#, kde-format
 msgid "Pitch primary"
 msgstr "Primarna višina tona"
 
 #: src/app/qml/SettingsPage.qml:29
-#, fuzzy, kde-format
+#, kde-format
 msgid "Pitch + timing"
 msgstr "Višina tona + čas"
 
@@ -2809,10 +2756,9 @@ msgid "bpm"
 msgstr "udarcev na minuto"
 
 #: src/app/qml/SettingsPage.qml:124
-#, fuzzy, kde-format
-#| msgid "Clapping detection"
+#, kde-format
 msgid "Clapping speed"
-msgstr "Zaznavanje ploskanja"
+msgstr "Hitrost ploskanja"
 
 #: src/app/qml/SettingsPage.qml:139
 #, kde-format
@@ -2986,10 +2932,11 @@ msgid "Minimum onset strength"
 msgstr "Minimalna začetna moč"
 
 #: src/app/qml/SettingsPage.qml:455
-#, fuzzy, kde-format
-#| msgid "Used for pitch and timing analysis in singing exercises."
+#, kde-format
 msgid "Used for pitch analysis and note-entry timing in singing exercises."
-msgstr "Uporabljeno za analizo višin tonov in časa pri pevskih vajah."
+msgstr ""
+"Uporablja se za analizo višine tona in časovno usklajevanje not pri pevskih "
+"vajah."
 
 #: src/app/qml/SettingsPage.qml:456
 #, kde-format
