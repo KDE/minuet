@@ -4,6 +4,8 @@
 
 #include "core.h"
 
+#include "clappingexercisecontroller.h"
+
 #include <QCoreApplication>
 #include <QQmlEngine>
 
@@ -14,6 +16,7 @@
 #include "plugincontroller.h"
 #include "settingscontroller.h"
 #include "sheetmusiccontroller.h"
+#include "singingexercisecontroller.h"
 #include "uicontroller.h"
 
 namespace Minuet
@@ -23,6 +26,13 @@ Core *Core::m_self = nullptr;
 Core::~Core()
 {
     shutdownControllers();
+
+    // Destroy the QML object tree while all of the controllers it references
+    // are still alive. This also guarantees that Qt Quick's worker threads are
+    // stopped before QGuiApplication starts tearing down its infrastructure.
+    delete m_uiController;
+    m_uiController = nullptr;
+
     m_self = nullptr;
 }
 
@@ -32,9 +42,14 @@ bool Core::initialize()
         return true;
     }
 
-    m_self = new Core;
+    m_self = new Core(QCoreApplication::instance());
 
     return true;
+}
+
+void Core::shutdown()
+{
+    delete m_self;
 }
 
 Core *Core::create(QQmlEngine *qmlEngine, QJSEngine *jsEngine)
@@ -53,44 +68,54 @@ Core *Core::self()
     return m_self;
 }
 
-ISoundController *Core::soundController()
+ISoundController *Core::soundController() const
 {
     return m_soundController;
 }
 
-IMicrophoneInputController *Core::microphoneInputController()
+IMicrophoneInputController *Core::microphoneInputController() const
 {
     return m_microphoneInputController;
 }
 
-SettingsController *Core::settingsController()
+SettingsController *Core::settingsController() const
 {
     return m_settingsController;
 }
 
-SheetMusicController *Core::sheetMusicController()
+SheetMusicController *Core::sheetMusicController() const
 {
     return m_sheetMusicController;
 }
 
-ExerciseCatalogController *Core::exerciseCatalogController()
+ExerciseCatalogController *Core::exerciseCatalogController() const
 {
     return m_exerciseCatalogController;
 }
 
-InstrumentCatalogController *Core::instrumentCatalogController()
+ClappingExerciseController *Core::clappingExerciseController() const
+{
+    return m_clappingExerciseController;
+}
+
+InstrumentCatalogController *Core::instrumentCatalogController() const
 {
     return m_instrumentCatalogController;
 }
 
-PianoKeyboardController *Core::pianoKeyboardController()
+PianoKeyboardController *Core::pianoKeyboardController() const
 {
     return m_pianoKeyboardController;
 }
 
-ExerciseSessionController *Core::exerciseSessionController()
+ExerciseSessionController *Core::exerciseSessionController() const
 {
     return m_exerciseSessionController;
+}
+
+SingingExerciseController *Core::singingExerciseController() const
+{
+    return m_singingExerciseController;
 }
 
 void Core::setSoundController(ISoundController *soundController)
@@ -101,10 +126,10 @@ void Core::setSoundController(ISoundController *soundController)
         if (m_soundController) {
             m_soundController->setVolume(m_settingsController->volume());
             m_soundController->setPitch(m_settingsController->pitch());
-            m_soundController->setTempo(m_settingsController->exerciseSpeed());
             m_soundController->setRhythmCountInBeats(ISoundController::RhythmExerciseCountInBeats);
             m_soundController->setInstrument(m_settingsController->instrument());
             m_soundController->setRhythmInstrument(m_settingsController->rhythmInstrument());
+            applyActiveExerciseAudioConfiguration();
         }
     }
 }
@@ -118,6 +143,19 @@ void Core::setMicrophoneInputController(IMicrophoneInputController *microphoneIn
     emit microphoneInputControllerChanged(m_microphoneInputController);
     if (m_microphoneInputController) {
         m_microphoneInputController->setInputDeviceId(m_settingsController->microphoneInputDeviceId());
+    }
+}
+
+void Core::stopExerciseActivity()
+{
+    if (m_soundController) {
+        m_soundController->stop();
+    }
+    if (m_microphoneInputController) {
+        m_microphoneInputController->stop();
+    }
+    if (m_exerciseSessionController->isTest()) {
+        m_exerciseSessionController->stopTest();
     }
 }
 
@@ -135,6 +173,17 @@ void Core::shutdownControllers()
     if (soundController) {
         soundController->stop();
     }
+}
+
+void Core::applyActiveExerciseAudioConfiguration()
+{
+    if (!m_soundController || !m_settingsController || !m_exerciseSessionController) {
+        return;
+    }
+
+    const QVariantMap activeExercise = m_exerciseSessionController->activeExercise();
+    m_soundController->setTempo(m_settingsController->tempoForExercise(activeExercise));
+    m_soundController->setRhythmCountInSubdivisions(m_settingsController->subdivisionsForExercise(activeExercise));
 }
 
 Core::Core(QObject *parent)
@@ -177,6 +226,8 @@ Core::Core(QObject *parent)
     });
 
     m_sheetMusicController = new SheetMusicController(this);
+    m_clappingExerciseController = new ClappingExerciseController(this);
+    m_singingExerciseController = new SingingExerciseController(this);
     m_exerciseCatalogController = new ExerciseCatalogController(this);
     if (!m_exerciseCatalogController->initialize()) {
         qCritical() << m_exerciseCatalogController->errorString();
@@ -185,6 +236,9 @@ Core::Core(QObject *parent)
     m_instrumentCatalogController = new InstrumentCatalogController(this);
     m_pianoKeyboardController = new PianoKeyboardController(this);
     m_exerciseSessionController = new ExerciseSessionController(this);
+    connect(m_exerciseSessionController, &ExerciseSessionController::activeExerciseChanged, this, &Core::applyActiveExerciseAudioConfiguration);
+    connect(m_settingsController, &SettingsController::exerciseSpeedChanged, this, &Core::applyActiveExerciseAudioConfiguration);
+    connect(m_settingsController, &SettingsController::rhythmTempoChanged, this, &Core::applyActiveExerciseAudioConfiguration);
 
     m_pluginController = new PluginController(this);
     if (!m_pluginController->initialize(this)) {

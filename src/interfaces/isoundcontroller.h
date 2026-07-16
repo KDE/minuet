@@ -29,15 +29,16 @@ class MINUETINTERFACES_EXPORT ISoundController : public IPlugin
     Q_PROPERTY(quint8 volume MEMBER m_volume WRITE setVolume NOTIFY volumeChanged)
     Q_PROPERTY(quint8 tempo MEMBER m_tempo WRITE setTempo NOTIFY tempoChanged)
     Q_PROPERTY(int rhythmCountInBeats READ rhythmCountInBeats WRITE setRhythmCountInBeats NOTIFY rhythmCountInBeatsChanged)
+    Q_PROPERTY(int rhythmCountInSubdivisions READ rhythmCountInSubdivisions WRITE setRhythmCountInSubdivisions NOTIFY rhythmCountInSubdivisionsChanged)
     Q_PROPERTY(int instrument READ instrument WRITE setInstrument NOTIFY instrumentChanged)
     Q_PROPERTY(int rhythmInstrument READ rhythmInstrument WRITE setRhythmInstrument NOTIFY rhythmInstrumentChanged)
 
     // Read-only properties
     Q_PROPERTY(State state READ state NOTIFY stateChanged)
     Q_PROPERTY(QString playbackLabel READ playbackLabel NOTIFY playbackLabelChanged)
-    Q_PROPERTY(QString instrumentGroupsJson READ instrumentGroupsJson NOTIFY instrumentGroupsChanged)
-    Q_PROPERTY(QString instrumentsJson READ instrumentsJson NOTIFY instrumentsChanged)
-    Q_PROPERTY(QString rhythmInstrumentsJson READ rhythmInstrumentsJson NOTIFY rhythmInstrumentsChanged)
+    Q_PROPERTY(QVariantList instrumentGroups READ instrumentGroups NOTIFY instrumentGroupsChanged)
+    Q_PROPERTY(QVariantList instruments READ instruments NOTIFY instrumentsChanged)
+    Q_PROPERTY(QVariantList rhythmInstruments READ rhythmInstruments NOTIFY rhythmInstrumentsChanged)
 
 public:
     ~ISoundController() override = default;
@@ -56,18 +57,17 @@ public:
     int instrument() const;
     int rhythmInstrument() const;
     int rhythmCountInBeats() const;
+    int rhythmCountInSubdivisions() const;
     QVariantList instrumentGroups() const;
     QVariantList instruments() const;
     QVariantList rhythmInstruments() const;
-    QString instrumentGroupsJson() const;
-    QString instrumentsJson() const;
-    QString rhythmInstrumentsJson() const;
 
 public Q_SLOTS:
     virtual void setPitch(qint8 pitch) = 0;
     virtual void setVolume(quint8 volume) = 0;
     virtual void setTempo(quint8 tempo) = 0;
     virtual void setRhythmCountInBeats(int beats) = 0;
+    virtual void setRhythmCountInSubdivisions(int subdivisions) = 0;
     virtual void setInstrument(int instrument) = 0;
     virtual void setRhythmInstrument(int rhythmInstrument) = 0;
 
@@ -87,6 +87,7 @@ Q_SIGNALS:
     void volumeChanged(quint8 newVolume);
     void tempoChanged(quint8 newTempo);
     void rhythmCountInBeatsChanged(int beats);
+    void rhythmCountInSubdivisionsChanged(int subdivisions);
     void instrumentChanged(int newInstrument);
     void rhythmInstrumentChanged(int newRhythmInstrument);
     void stateChanged(Minuet::ISoundController::State newState);
@@ -95,6 +96,7 @@ Q_SIGNALS:
     void instrumentsChanged();
     void rhythmInstrumentsChanged();
     void countInChanged(int count);
+    void countInSubTick();
 
 protected:
     explicit ISoundController(QObject *parent = nullptr);
@@ -111,6 +113,7 @@ protected:
     quint8 m_volume;
     quint8 m_tempo;
     int m_rhythmCountInBeats;
+    int m_rhythmCountInSubdivisions;
     int m_instrument;
     int m_rhythmInstrument;
     QString m_playbackLabel;
@@ -119,9 +122,6 @@ protected:
     QVariantList m_instrumentGroups;
     QVariantList m_instruments;
     QVariantList m_rhythmInstruments;
-    QString m_instrumentGroupsJson;
-    QString m_instrumentsJson;
-    QString m_rhythmInstrumentsJson;
 };
 
 }

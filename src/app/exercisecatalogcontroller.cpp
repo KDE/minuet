@@ -16,6 +16,8 @@
 
 #include <utils/xdgdatadirs.h>
 
+#include <algorithm>
+
 using namespace Qt::StringLiterals;
 
 namespace Minuet
@@ -161,6 +163,48 @@ bool ExerciseCatalogController::exerciseMatchesSearch(const QVariantMap &exercis
         }
     }
     return false;
+}
+
+QString ExerciseCatalogController::practiceModeForExercise(const QVariantMap &exercise) const
+{
+    const QString playMode = exercise.value(u"playMode"_s).toString();
+    if (playMode == u"rhythm"_s) {
+        return u"rhythm"_s;
+    }
+    if (playMode != u"scale"_s) {
+        return {};
+    }
+
+    const QVariantList options = exercise.value(u"options"_s).toList();
+    const auto hasTag = [&options](const QString &tag) {
+        return std::any_of(options.cbegin(), options.cend(), [&tag](const QVariant &option) {
+            const QVariantList tags = option.toMap().value(u"tags"_s).toList();
+            return std::any_of(tags.cbegin(), tags.cend(), [&tag](const QVariant &candidate) {
+                return candidate.toString() == tag;
+            });
+        });
+    };
+    if (hasTag(u"interval"_s)) {
+        return u"interval"_s;
+    }
+    if (hasTag(u"scale"_s)) {
+        return u"scale"_s;
+    }
+    return {};
+}
+
+QVariantMap ExerciseCatalogController::exerciseForInputMode(const QVariantMap &exercise, const QString &inputMode, const QString &practiceMode) const
+{
+    QVariantMap result = exercise;
+    result.insert(u"inputMode"_s, inputMode);
+    if (inputMode == u"clapping"_s && result.contains(u"rhythmClappingOptions"_s)) {
+        result.insert(u"options"_s, result.value(u"rhythmClappingOptions"_s));
+    }
+    result.remove(u"rhythmClappingOptions"_s);
+    if (inputMode == u"singing"_s) {
+        result.insert(u"singingExerciseKind"_s, practiceMode);
+    }
+    return result;
 }
 
 void ExerciseCatalogController::collectExercise(const QVariantMap &exercise, const QString &inheritedIconName, QVariantList &collectedExercises) const

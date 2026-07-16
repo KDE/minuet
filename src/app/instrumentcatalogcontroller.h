@@ -18,9 +18,6 @@ class InstrumentCatalogController : public QObject
     QML_UNCREATABLE("InstrumentCatalogController is provided by Core")
 
 public:
-    Q_INVOKABLE QVariantList instrumentGroups(const QString &json) const;
-    Q_INVOKABLE QVariantList melodicInstruments(const QString &json) const;
-    Q_INVOKABLE QVariantList rhythmInstruments(const QString &json) const;
     Q_INVOKABLE QVariantList melodicInstrumentsForGroup(const QVariantList &instruments, int group) const;
     Q_INVOKABLE int melodicGroupForInstrument(const QVariantList &groups, const QVariantList &instruments, int instrument) const;
     Q_INVOKABLE int melodicGroupIndex(const QVariantList &groups, int group) const;
@@ -32,7 +29,6 @@ private:
 
     explicit InstrumentCatalogController(QObject *parent = nullptr);
 
-    QVariantList parseArray(const QString &json) const;
     int indexByRole(const QVariantList &items, const QString &role, int value) const;
 };
 }

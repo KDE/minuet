@@ -22,12 +22,8 @@ public:
         int analysisMode = 0;
         int pitchMethod = 1;
         int onsetMethod = 1;
-        int expectedMidiNote = -1;
-        bool disregardOctaveDifference = true;
         double voiceMinHz = 80.0;
         double voiceMaxHz = 1000.0;
-        double targetBpm = 90.0;
-        double minimumExpectedOnsetIntervalMs = 0.0;
         double minimumPitchConfidence = 0.12;
         double pitchSilenceDb = -55.0;
         double onsetThreshold = 0.16;
@@ -96,7 +92,6 @@ private:
     void publishAcceptedPitch(double seconds, double frequencyHz, double confidence);
     void flushPendingPitch();
     bool acceptStablePitchCandidate(double frequencyHz);
-    double scoreConstrainedFrequency(double frequencyHz) const;
     double smoothedAcceptedFrequency(double frequencyHz);
     void resetPitchCandidate();
     void rememberOnsetDescriptor(double strength);

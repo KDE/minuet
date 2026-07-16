@@ -14,32 +14,19 @@ Kirigami.Page {
 
     property var currentExercise
     property string currentExerciseIconName: ""
-    readonly property var microphone: Core.microphoneInputController
-    readonly property bool microphoneInputAvailable: page.microphone !== null && page.microphone.inputDeviceAvailable
     property string practiceMode: ""
 
     signal practiceSelected(var exercise, string iconName)
-
-    function exerciseForInputMode(inputMode: string): var {
-        let exercise = {};
-        for (const key in page.currentExercise) {
-            exercise[key] = page.currentExercise[key];
-        }
-        exercise.inputMode = inputMode;
-        if (inputMode === "clapping" && exercise.rhythmClappingOptions !== undefined) {
-            exercise.options = exercise.rhythmClappingOptions;
-        }
-        delete exercise.rhythmClappingOptions;
-        if (inputMode === "singing") {
-            exercise.singingExerciseKind = page.practiceMode;
-        }
-        return exercise;
-    }
 
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     Kirigami.Theme.inherit: false
     padding: 0
 
+    QtObject {
+        id: internal
+
+        readonly property var microphone: Core.microphoneInputController
+    }
     ColumnLayout {
         anchors.centerIn: parent
         spacing: 0
@@ -66,15 +53,15 @@ Kirigami.Page {
             Layout.fillWidth: true
 
             action: Kirigami.Action {
-                enabled: page.microphoneInputAvailable
+                enabled: internal.microphone !== null && internal.microphone.inputDeviceAvailable
                 icon.name: page.practiceMode === "rhythm" ? "qrc:/icons/22-actions-minuet-clap-symbolic.svg" : "qrc:/icons/22-actions-minuet-sing-symbolic.svg"
-                text: (page.practiceMode === "rhythm" ? i18n("Read and clap") : i18n("Read and sing")) + (page.microphone !== null && !page.microphone.inputDeviceAvailable ? " " + i18n("(no microphone input devices found)") : "")
+                text: (page.practiceMode === "rhythm" ? i18n("Read and clap") : i18n("Read and sing")) + (internal.microphone !== null && !internal.microphone.inputDeviceAvailable ? " " + i18n("(no microphone input devices found)") : "")
 
                 onTriggered: {
                     if (page.practiceMode === "rhythm") {
-                        page.practiceSelected(page.exerciseForInputMode("clapping"), "qrc:/icons/22-actions-minuet-clap-symbolic.svg");
+                        page.practiceSelected(Core.exerciseCatalogController.exerciseForInputMode(page.currentExercise, "clapping", page.practiceMode), "qrc:/icons/22-actions-minuet-clap-symbolic.svg");
                     } else {
-                        page.practiceSelected(page.exerciseForInputMode("singing"), "qrc:/icons/22-actions-minuet-sing-symbolic.svg");
+                        page.practiceSelected(Core.exerciseCatalogController.exerciseForInputMode(page.currentExercise, "singing", page.practiceMode), "qrc:/icons/22-actions-minuet-sing-symbolic.svg");
                     }
                 }
             }

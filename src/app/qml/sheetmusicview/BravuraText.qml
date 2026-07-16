@@ -20,5 +20,6 @@ Text {
     font {
         family: bravura.name
         pixelSize: 40
+        pointSize: -1
     }
 }

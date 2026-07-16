@@ -88,7 +88,6 @@ void AubioAnalysisWorkerTest::resetClearsPitchHistory()
     AubioAnalysisWorker::Config config;
     config.analysisMode = 0;
     config.pitchMethod = 1;
-    config.disregardOctaveDifference = false;
     config.minimumPitchConfidence = 0.0;
     config.inputGateLevel = 0.0;
     config.requiredStablePitchFrames = 2;
@@ -139,7 +138,6 @@ void AubioAnalysisWorkerTest::pitchTimestampsCompensateAnalysisLatency()
     AubioAnalysisWorker::Config config;
     config.analysisMode = 0;
     config.pitchMethod = 1;
-    config.disregardOctaveDifference = false;
     config.minimumPitchConfidence = 0.0;
     config.inputGateLevel = 0.0;
     config.requiredStablePitchFrames = 2;

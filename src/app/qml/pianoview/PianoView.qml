@@ -10,15 +10,6 @@ import QtQuick.Controls
 Flickable {
     id: flickable
 
-    readonly property bool canScrollHorizontally: piano.width > width
-    property int keyHeight: Math.max(1, height - octaveLabelHeight - keyboardBottomMargin)
-    property int keyWidth: Math.max(1, Math.round(keyHeight / 3.4))
-    readonly property int keyboardBottomMargin: 5
-    readonly property int markerHeight: 2
-    readonly property int octaveLabelHeight: 18
-    readonly property int octaveLabelTextHeight: Math.max(1, octaveLabelHeight - markerHeight)
-    readonly property real sidePadding: canScrollHorizontally ? width / 2 : 0
-
     function clearAllMarks(): void {
         for (var index = 21; index <= 108; ++index) {
             noteOff(0, index, 0);
@@ -48,10 +39,15 @@ Flickable {
         clearMarksFromKey(noteItem);
         noteItem.markColor = color;
         noteItem.marked = true;
-        Qt.callLater(scrollToMarkedKeys);
+        scheduleScrollToMarkedKeys();
     }
     function noteOff(chan: int, pitch: int, vel: int): void {
         highlightKey(pitch, Core.pianoKeyboardController.isBlackKey(pitch) ? "black" : "white");
+    }
+    function scheduleScrollToMarkedKeys(): void {
+        if (!internal.destroying) {
+            scrollUpdateTimer.restart();
+        }
     }
     function scrollToMarkedKeys(): void {
         var left = Number.POSITIVE_INFINITY;
@@ -68,7 +64,7 @@ Flickable {
         }
 
         if (left === Number.POSITIVE_INFINITY) {
-            scrollToX(flickable.sidePadding, false);
+            scrollToX(internal.sidePadding, false);
             return;
         }
 
@@ -90,14 +86,14 @@ Flickable {
 
     boundsBehavior: Flickable.StopAtBounds
     clip: true
-    contentWidth: piano.width + sidePadding * 2
-    implicitHeight: Math.round(3.4 * 16) + octaveLabelHeight + keyboardBottomMargin
+    contentWidth: piano.width + internal.sidePadding * 2
+    implicitHeight: Math.round(3.4 * 16) + internal.octaveLabelHeight + internal.keyboardBottomMargin
 
     ScrollIndicator.horizontal: ScrollIndicator {
         id: pianoScrollIndicator
 
-        active: flickable.canScrollHorizontally
-        visible: flickable.canScrollHorizontally
+        active: internal.canScrollHorizontally
+        visible: internal.canScrollHorizontally
 
         contentItem: Rectangle {
             color: pianoScrollIndicator.palette.mid
@@ -108,9 +104,30 @@ Flickable {
         }
     }
 
-    onContentWidthChanged: Qt.callLater(scrollToMarkedKeys)
-    onWidthChanged: Qt.callLater(scrollToMarkedKeys)
+    Component.onDestruction: {
+        internal.destroying = true;
+        scrollUpdateTimer.stop();
+    }
+    onContentWidthChanged: scheduleScrollToMarkedKeys()
+    onWidthChanged: scheduleScrollToMarkedKeys()
 
+    QtObject {
+        id: internal
+
+        readonly property bool canScrollHorizontally: piano.width > flickable.width
+        property bool destroying: false
+        readonly property int keyHeight: Math.max(1, flickable.height - internal.octaveLabelHeight - internal.keyboardBottomMargin)
+        readonly property int keyWidth: Math.max(1, Math.round(internal.keyHeight / 3.4))
+        readonly property int keyboardBottomMargin: 5
+        readonly property int markerHeight: 2
+        readonly property int octaveLabelHeight: 18
+        readonly property real sidePadding: internal.canScrollHorizontally ? flickable.width / 2 : 0
+    }
+    Timer {
+        id: scrollUpdateTimer
+
+        onTriggered: flickable.scrollToMarkedKeys()
+    }
     NumberAnimation {
         id: scrollAnimation
 
@@ -125,18 +142,18 @@ Flickable {
         color: "#141414"
         height: parent.height
         radius: 5
-        width: 3 * flickable.keyWidth + 7 * (7 * flickable.keyWidth)
-        x: flickable.sidePadding
+        width: 3 * internal.keyWidth + 7 * (7 * internal.keyWidth)
+        x: internal.sidePadding
 
         Row {
             id: octaveNumber
 
-            height: flickable.octaveLabelHeight
+            height: internal.octaveLabelHeight
             width: parent.width
 
             anchors {
                 left: parent.left
-                leftMargin: 2 * flickable.keyWidth
+                leftMargin: 2 * internal.keyWidth
             }
             Repeater {
                 model: 7
@@ -146,104 +163,104 @@ Flickable {
 
                     anchors.top: parent.top
                     color: "white"
-                    height: flickable.octaveLabelTextHeight
+                    height: Math.max(1, internal.octaveLabelHeight - internal.markerHeight)
                     horizontalAlignment: Text.AlignHCenter
                     text: i18nc("technical term, do you have a musician friend?", "Octave %1", 1 + modelData)
                     verticalAlignment: Text.AlignVCenter
-                    width: 7 * flickable.keyWidth
+                    width: 7 * internal.keyWidth
                 }
             }
         }
         Item {
             id: keyboard
 
-            height: flickable.keyHeight - octaveNumber.height
-            width: 3 * flickable.keyWidth + 7 * (7 * flickable.keyWidth)
+            height: internal.keyHeight - octaveNumber.height
+            width: 3 * internal.keyWidth + 7 * (7 * internal.keyWidth)
 
             anchors {
                 bottom: parent.bottom
-                bottomMargin: flickable.keyboardBottomMargin
+                bottomMargin: internal.keyboardBottomMargin
                 horizontalCenter: parent.horizontalCenter
                 top: octaveNumber.bottom
             }
             WhiteKey {
                 id: whiteKeyA
 
-                keyHeight: flickable.keyHeight
-                keyWidth: flickable.keyWidth
+                keyHeight: internal.keyHeight
+                keyWidth: internal.keyWidth
             }
             BlackKey {
                 anchor: whiteKeyA
-                keyHeight: flickable.keyHeight
-                keyWidth: flickable.keyWidth
+                keyHeight: internal.keyHeight
+                keyWidth: internal.keyWidth
             }
             WhiteKey {
                 id: whiteKeyB
 
                 anchor: whiteKeyA
-                keyHeight: flickable.keyHeight
-                keyWidth: flickable.keyWidth
+                keyHeight: internal.keyHeight
+                keyWidth: internal.keyWidth
             }
             Octave {
                 id: octave1
 
                 initialAnchor: whiteKeyB
-                keyHeight: flickable.keyHeight
-                keyWidth: flickable.keyWidth
+                keyHeight: internal.keyHeight
+                keyWidth: internal.keyWidth
             }
             Octave {
                 id: octave2
 
                 initialAnchor: octave1
-                keyHeight: flickable.keyHeight
-                keyWidth: flickable.keyWidth
+                keyHeight: internal.keyHeight
+                keyWidth: internal.keyWidth
             }
             Octave {
                 id: octave3
 
                 initialAnchor: octave2
-                keyHeight: flickable.keyHeight
-                keyWidth: flickable.keyWidth
+                keyHeight: internal.keyHeight
+                keyWidth: internal.keyWidth
             }
             Octave {
                 id: octave4
 
                 initialAnchor: octave3
-                keyHeight: flickable.keyHeight
-                keyWidth: flickable.keyWidth
+                keyHeight: internal.keyHeight
+                keyWidth: internal.keyWidth
             }
             Octave {
                 id: octave5
 
                 initialAnchor: octave4
-                keyHeight: flickable.keyHeight
-                keyWidth: flickable.keyWidth
+                keyHeight: internal.keyHeight
+                keyWidth: internal.keyWidth
             }
             Octave {
                 id: octave6
 
                 initialAnchor: octave5
-                keyHeight: flickable.keyHeight
-                keyWidth: flickable.keyWidth
+                keyHeight: internal.keyHeight
+                keyWidth: internal.keyWidth
             }
             Octave {
                 id: octave7
 
                 initialAnchor: octave6
-                keyHeight: flickable.keyHeight
-                keyWidth: flickable.keyWidth
+                keyHeight: internal.keyHeight
+                keyWidth: internal.keyWidth
             }
             WhiteKey {
                 id: whiteKeyC
 
                 anchor: octave7
-                keyHeight: flickable.keyHeight
-                keyWidth: flickable.keyWidth
+                keyHeight: internal.keyHeight
+                keyWidth: internal.keyWidth
             }
             Rectangle {
                 color: "#A40E09"
-                height: flickable.markerHeight
-                width: 3 * flickable.keyWidth + 7 * (7 * flickable.keyWidth)
+                height: internal.markerHeight
+                width: 3 * internal.keyWidth + 7 * (7 * internal.keyWidth)
 
                 anchors {
                     bottom: whiteKeyA.top

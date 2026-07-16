@@ -88,6 +88,7 @@ public:
     Q_INVOKABLE void resetTest();
     Q_INVOKABLE void startTest();
     Q_INVOKABLE void stopTest();
+    Q_INVOKABLE int recordTestScore(int score, int maximumExercises);
     Q_INVOKABLE void setActiveExercise(const QVariantMap &activeExercise);
     Q_INVOKABLE void randomlySelectExerciseOptions(int selectedOptionCount = -1);
     Q_INVOKABLE void
@@ -115,6 +116,7 @@ private:
     bool m_giveUp = false;
     bool m_isTest = false;
     int m_correctAnswers = 0;
+    int m_accumulatedTestScore = 0;
     int m_currentExercise = 0;
     QVariantMap m_activeExercise;
     QJsonArray m_selectedExerciseOptions;

@@ -5,6 +5,7 @@
 set(MINUET_SRCS
     main.cpp
     core.cpp
+    clappingexercisecontroller.cpp
     exercisecatalogcontroller.cpp
     exercisesessioncontroller.cpp
     instrumentcatalogcontroller.cpp
@@ -12,6 +13,7 @@ set(MINUET_SRCS
     uicontroller.cpp
     plugincontroller.cpp
     settingscontroller.cpp
+    singingexercisecontroller.cpp
     sheetmusiccontroller.cpp
     smuflmetadata.cpp
 )
@@ -116,13 +118,11 @@ if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
     )
 endif()
 
-set(MINUET_QML_MODULE_OPTIONS)
+set(MINUET_QML_MODULE_OPTIONS IMPORT_PATH ${KDE_INSTALL_FULL_QMLDIR})
 if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
     # Qt 6.11 creates a non-idempotent clean_qml_context_properties target that
     # can fail Xcode builds when contextPropertyDump.ini is already absent.
-    list(APPEND MINUET_QML_MODULE_OPTIONS NO_LINT IMPORT_PATH
-         ${KDE_INSTALL_FULL_QMLDIR}
-    )
+    list(APPEND MINUET_QML_MODULE_OPTIONS NO_LINT)
 endif()
 
 qt_add_qml_module(
@@ -136,6 +136,7 @@ qt_add_qml_module(
     /qt/qml
     SOURCES
     ${MINUET_SRCS}
+    clappingexercisecontroller.h
     core.h
     exercisecatalogcontroller.h
     exercisesessioncontroller.h
@@ -144,32 +145,41 @@ qt_add_qml_module(
     pianokeyboardcontroller.h
     plugincontroller.h
     settingscontroller.h
+    singingexercisecontroller.h
     sheetmusiccontroller.h
     smuflmetadata.h
     uicontroller.h
     QML_FILES
     qml/Main.qml
-    qml/AboutPage.qml
-    qml/ActionListItem.qml
-    qml/ExerciseMenuPage.qml
-    qml/ExercisePage.qml
-    qml/AccuracyMeter.qml
-    qml/ExerciseClappingView.qml
-    qml/ExerciseSingingView.qml
-    qml/ExerciseView.qml
-    qml/GraphicalMeter.qml
-    qml/MinuetDrawer.qml
-    qml/PracticeModePage.qml
-    qml/SettingsPage.qml
-    qml/PianoView/BlackKey.qml
-    qml/PianoView/Octave.qml
-    qml/PianoView/PianoView.qml
-    qml/PianoView/WhiteKey.qml
-    qml/SheetMusicView/BravuraText.qml
-    qml/SheetMusicView/SheetMusicView.qml
+    qml/components/AccuracyMeter.qml
+    qml/components/ActionListItem.qml
+    qml/components/AdvancedSettingsComboBox.qml
+    qml/components/AdvancedSettingsSection.qml
+    qml/components/AdvancedSettingsSlider.qml
+    qml/components/GraphicalMeter.qml
+    qml/components/MicrophoneInputPanel.qml
+    qml/components/MinuetDrawer.qml
+    qml/components/SettingsComboBox.qml
+    qml/components/SettingsSlider.qml
+    qml/exercises/ExerciseClappingView.qml
+    qml/exercises/ExerciseContent.qml
+    qml/exercises/ExerciseHeader.qml
+    qml/exercises/ExerciseSingingView.qml
+    qml/exercises/ExerciseView.qml
+    qml/pages/AboutPage.qml
+    qml/pages/ExerciseMenuPage.qml
+    qml/pages/ExercisePage.qml
+    qml/pages/PracticeModePage.qml
+    qml/pages/SettingsPage.qml
+    qml/pianoview/BlackKey.qml
+    qml/pianoview/Octave.qml
+    qml/pianoview/PianoView.qml
+    qml/pianoview/WhiteKey.qml
+    qml/sheetmusicview/BravuraText.qml
+    qml/sheetmusicview/SheetMusicView.qml
     RESOURCES
-    qml/SheetMusicView/Bravura.otf
-    qml/SheetMusicView/bravura_metadata.json
+    qml/sheetmusicview/Bravura.otf
+    qml/sheetmusicview/bravura_metadata.json
 )
 
 if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
@@ -331,12 +341,30 @@ if(NOT MINUET_MOBILE_PLATFORM)
 endif()
 
 if(BUILD_TESTING AND NOT MINUET_MOBILE_PLATFORM)
+    add_executable(
+        exerciseevaluationtest
+        autotests/exerciseevaluationtest.cpp clappingexercisecontroller.cpp
+        singingexercisecontroller.cpp
+    )
+    target_link_libraries(
+        exerciseevaluationtest Qt::Core Qt::Qml Qt::Test KF6::I18n
+        Minuet::Utils
+    )
+    add_test(NAME exerciseevaluationtest COMMAND exerciseevaluationtest)
+
     add_executable(rhythmresttest autotests/rhythmresttest.cpp)
     target_compile_definitions(
         rhythmresttest PRIVATE MINUET_SOURCE_DIR="${CMAKE_SOURCE_DIR}"
     )
     target_link_libraries(rhythmresttest Qt::Core Qt::Test Minuet::Utils)
     add_test(NAME rhythmresttest COMMAND rhythmresttest)
+
+    add_executable(
+        settingscontrollertest autotests/settingscontrollertest.cpp
+                               settingscontroller.cpp
+    )
+    target_link_libraries(settingscontrollertest Qt::Core Qt::Test)
+    add_test(NAME settingscontrollertest COMMAND settingscontrollertest)
 endif()
 
 if(NOT MINUET_MOBILE_PLATFORM)

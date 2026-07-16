@@ -4,10 +4,6 @@
 
 #include "instrumentcatalogcontroller.h"
 
-#include <QDebug>
-#include <QJsonArray>
-#include <QJsonDocument>
-#include <QJsonParseError>
 #include <QVariantMap>
 
 using namespace Qt::StringLiterals;
@@ -17,51 +13,6 @@ namespace Minuet
 InstrumentCatalogController::InstrumentCatalogController(QObject *parent)
     : QObject(parent)
 {
-}
-
-QVariantList InstrumentCatalogController::instrumentGroups(const QString &json) const
-{
-    QVariantList groups;
-    for (const QVariant &entry : parseArray(json)) {
-        const QVariantMap group = entry.toMap();
-        QVariantMap item;
-        item[u"id"_s] = group.value(u"id"_s);
-        item[u"name"_s] = group.value(u"name"_s);
-        groups.push_back(item);
-    }
-    return groups;
-}
-
-QVariantList InstrumentCatalogController::melodicInstruments(const QString &json) const
-{
-    QVariantList instruments;
-    for (const QVariant &entry : parseArray(json)) {
-        const QVariantMap instrument = entry.toMap();
-        QVariantMap item;
-        item[u"group"_s] = instrument.value(u"group"_s);
-        item[u"bank"_s] = instrument.value(u"bank"_s);
-        item[u"program"_s] = instrument.value(u"program"_s);
-        item[u"number"_s] = instrument.value(u"number"_s);
-        item[u"name"_s] = instrument.value(u"name"_s);
-        item[u"displayName"_s] = instrument.value(u"displayName"_s);
-        instruments.push_back(item);
-    }
-    return instruments;
-}
-
-QVariantList InstrumentCatalogController::rhythmInstruments(const QString &json) const
-{
-    QVariantList instruments;
-    for (const QVariant &entry : parseArray(json)) {
-        const QVariantMap instrument = entry.toMap();
-        QVariantMap item;
-        item[u"key"_s] = instrument.value(u"key"_s);
-        item[u"number"_s] = instrument.value(u"number"_s);
-        item[u"name"_s] = instrument.value(u"name"_s);
-        item[u"displayName"_s] = instrument.value(u"displayName"_s);
-        instruments.push_back(item);
-    }
-    return instruments;
 }
 
 QVariantList InstrumentCatalogController::melodicInstrumentsForGroup(const QVariantList &instruments, int group) const
@@ -100,19 +51,6 @@ int InstrumentCatalogController::melodicInstrumentIndex(const QVariantList &inst
 int InstrumentCatalogController::rhythmInstrumentIndex(const QVariantList &instruments, int instrument) const
 {
     return indexByRole(instruments, u"key"_s, instrument);
-}
-
-QVariantList InstrumentCatalogController::parseArray(const QString &json) const
-{
-    QJsonParseError error;
-    const QJsonDocument document = QJsonDocument::fromJson(json.toUtf8(), &error);
-    if (error.error != QJsonParseError::NoError || !document.isArray()) {
-        if (!json.isEmpty() && json != u"[]"_s) {
-            qWarning() << "Unable to parse instrument catalog:" << error.errorString();
-        }
-        return {};
-    }
-    return document.array().toVariantList();
 }
 
 int InstrumentCatalogController::indexByRole(const QVariantList &items, const QString &role, int value) const

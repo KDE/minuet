@@ -28,7 +28,7 @@ void SettingsController::load()
     m_pitch = std::clamp(settings.value(u"Pitch"_s, m_pitch).toInt(), -12, 12);
     m_tempo = std::clamp(settings.value(u"Tempo"_s, m_tempo).toInt(), 1, 255);
     m_exerciseSpeed = std::clamp(settings.value(u"ExerciseSpeed"_s, m_tempo).toInt(), 30, 240);
-    m_clappingSpeed = std::clamp(settings.value(u"ClappingSpeed"_s, m_clappingSpeed).toInt(), 30, 120);
+    m_rhythmTempo = std::clamp(settings.value(u"RhythmTempo"_s, m_rhythmTempo).toInt(), 30, 240);
     m_instrumentGroup = settings.value(u"InstrumentGroup"_s, m_instrumentGroup).toInt();
     m_instrument = std::clamp(settings.value(u"Instrument"_s, m_instrument).toInt(), 0, 127);
     m_rhythmInstrument = std::clamp(settings.value(u"RhythmInstrument"_s, m_rhythmInstrument).toInt(), 35, 81);
@@ -116,9 +116,31 @@ int SettingsController::exerciseSpeed() const
     return m_exerciseSpeed;
 }
 
-int SettingsController::clappingSpeed() const
+int SettingsController::rhythmTempo() const
 {
-    return m_clappingSpeed;
+    return m_rhythmTempo;
+}
+
+int SettingsController::tempoForExercise(const QVariantMap &exercise) const
+{
+    if (exercise.value(u"playMode"_s).toString() != u"rhythm"_s) {
+        return m_exerciseSpeed;
+    }
+    return m_rhythmTempo;
+}
+
+int SettingsController::subdivisionsForExercise(const QVariantMap &exercise) const
+{
+    if (exercise.value(u"playMode"_s).toString() == u"rhythm"_s) {
+        return 4;
+    }
+    if (exercise.value(u"inputMode"_s).toString() == u"singing"_s) {
+        const QString exerciseKind = exercise.value(u"singingExerciseKind"_s).toString();
+        if (exerciseKind == u"interval"_s || exerciseKind == u"scale"_s) {
+            return 2;
+        }
+    }
+    return 1;
 }
 
 int SettingsController::instrumentGroup() const
@@ -258,6 +280,36 @@ void SettingsController::resetAdvancedSettingsToDefaults()
     setClappingRequiredStablePitchFrames(DefaultClappingRequiredStablePitchFrames);
 }
 
+bool SettingsController::takeOnboardingPrompt(const QString &inputMode, bool rhythmic)
+{
+    if (inputMode == QStringLiteral("clapping")) {
+        if (m_clappingOnboardingPromptShown) {
+            return false;
+        }
+        setClappingOnboardingPromptShown(true);
+        return true;
+    }
+    if (inputMode == QStringLiteral("singing")) {
+        if (m_singingOnboardingPromptShown) {
+            return false;
+        }
+        setSingingOnboardingPromptShown(true);
+        return true;
+    }
+    if (rhythmic) {
+        if (m_rhythmicOnboardingPromptShown) {
+            return false;
+        }
+        setRhythmicOnboardingPromptShown(true);
+        return true;
+    }
+    if (m_melodicOnboardingPromptShown) {
+        return false;
+    }
+    setMelodicOnboardingPromptShown(true);
+    return true;
+}
+
 void SettingsController::setRhythmPatternCount(int rhythmPatternCount)
 {
     rhythmPatternCount = std::clamp(rhythmPatternCount, 4, 16);
@@ -336,16 +388,16 @@ void SettingsController::setExerciseSpeed(int exerciseSpeed)
     emit tempoChanged(m_tempo);
 }
 
-void SettingsController::setClappingSpeed(int clappingSpeed)
+void SettingsController::setRhythmTempo(int tempo)
 {
-    clappingSpeed = std::clamp(clappingSpeed, 30, 120);
-    if (m_clappingSpeed == clappingSpeed) {
+    tempo = std::clamp(tempo, 30, 240);
+    if (m_rhythmTempo == tempo) {
         return;
     }
 
-    m_clappingSpeed = clappingSpeed;
-    write(u"ClappingSpeed"_s, m_clappingSpeed);
-    emit clappingSpeedChanged(m_clappingSpeed);
+    m_rhythmTempo = tempo;
+    write(u"RhythmTempo"_s, m_rhythmTempo);
+    emit rhythmTempoChanged(m_rhythmTempo);
 }
 
 void SettingsController::setInstrumentGroup(int instrumentGroup)
