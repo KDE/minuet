@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-15 02:36+0000\n"
-"PO-Revision-Date: 2026-07-14 09:54+0200\n"
+"PO-Revision-Date: 2026-07-15 12:09+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -2066,10 +2066,9 @@ msgid "That's right"
 msgstr "Dat is juist"
 
 #: src/app/exercisesessioncontroller.cpp:348
-#, fuzzy, kde-format
-#| msgid "Not quite, try again"
+#, kde-format
 msgid "Not quite"
-msgstr "Niet helemaal, probeer het opnieuw"
+msgstr "Niet helemaal"
 
 #: src/app/exercisesessioncontroller.cpp:352
 #: src/app/qml/ExerciseClappingView.qml:800
@@ -2461,7 +2460,7 @@ msgstr "Zing het interval"
 #: src/app/qml/ExerciseSingingView.qml:648
 #, kde-format
 msgid "%1 — %2"
-msgstr ""
+msgstr "%1 — %2"
 
 #: src/app/qml/ExerciseSingingView.qml:889
 #, kde-format
