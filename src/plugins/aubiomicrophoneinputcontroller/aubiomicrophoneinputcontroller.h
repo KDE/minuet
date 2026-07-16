@@ -14,8 +14,6 @@
 #include <QThread>
 #include <QVariantList>
 
-#include <aubio/aubio.h>
-
 #include <atomic>
 #include <deque>
 #include <memory>
@@ -57,18 +55,6 @@ public:
     OnsetMethod onsetMethod() const override;
     void setOnsetMethod(OnsetMethod onsetMethod) override;
 
-    int expectedMidiNote() const override;
-    void setExpectedMidiNote(int midiNote) override;
-
-    bool disregardOctaveDifference() const override;
-    void setDisregardOctaveDifference(bool disregard) override;
-
-    double targetBpm() const override;
-    void setTargetBpm(double targetBpm) override;
-
-    double minimumExpectedOnsetIntervalMs() const override;
-    void setMinimumExpectedOnsetIntervalMs(double intervalMs) override;
-
     double minimumPitchConfidence() const override;
     void setMinimumPitchConfidence(double confidence) override;
 
@@ -108,14 +94,9 @@ public:
     double cents() const override;
     double pitchConfidence() const override;
     bool voiced() const override;
-    QString pitchStatus() const override;
-    QString detectedVoiceClass() const;
 
     int onsetCount() const override;
     double lastOnsetSeconds() const override;
-    double detectedBpm() const override;
-    double lastTimingErrorMs() const override;
-    QString rhythmStatus() const override;
 
     Q_INVOKABLE void start() override;
     Q_INVOKABLE void stop() override;
@@ -130,49 +111,17 @@ public:
     Q_INVOKABLE double voiceClassMaxHz(int voiceClass) const;
 
 private:
-    struct AubioPitchDeleter {
-        void operator()(aubio_pitch_t *pitch) const { if (pitch) del_aubio_pitch(pitch); }
-    };
-    struct AubioOnsetDeleter {
-        void operator()(aubio_onset_t *onset) const { if (onset) del_aubio_onset(onset); }
-    };
-    struct AubioFVecDeleter {
-        void operator()(fvec_t *vec) const { if (vec) del_fvec(vec); }
-    };
-
-    using PitchPtr = std::unique_ptr<aubio_pitch_t, AubioPitchDeleter>;
-    using OnsetPtr = std::unique_ptr<aubio_onset_t, AubioOnsetDeleter>;
-    using FVecPtr = std::unique_ptr<fvec_t, AubioFVecDeleter>;
-
     void setStatus(const QString &status);
     void resetRuntimeState();
     void resetDetectionState();
     bool ensureMicrophonePermission();
     bool configureAudioInput();
-    bool recreateAubioObjects();
-    void destroyAubioObjects();
     void readAudioData();
-    void appendSamplesFromBytes(const QByteArray &bytes);
-    void processPendingSamples();
-    void processHop();
-    void processPitchFrame(double timeSeconds);
-    void processOnsetFrame(double fallbackTimeSeconds);
-    void applyPitchResult(double timeSeconds, double frequencyHz, double confidence);
     void applyUnvoicedResult(const QString &reason = QString());
-    bool acceptStablePitchCandidate(double frequencyHz);
-    double scoreConstrainedFrequency(double frequencyHz) const;
-    double smoothedAcceptedFrequency(double frequencyHz);
-    void resetPitchCandidate();
-    void rememberOnsetDescriptor(double strength);
-    double adaptiveMinimumOnsetStrength() const;
-    void updateNoiseCalibration(double sumSquares, int sampleCount);
     void applyCalibratedDetectorThresholds(double noiseFloor);
     void updateInputDevices();
-    void registerOnset(double onsetSeconds, double strength);
-    void updateDetectedTempo(double onsetSeconds);
     void resetIfRunning();
     void applyPreset(Preset preset, bool restartIfRunning);
-    void maybePrintDebug(double timeSeconds, double frequencyHz, double confidence);
     AubioAnalysisWorker::Config workerConfig() const;
     void updateWorkerConfig();
     void handleWorkerPitch(double seconds, bool voiced, double frequencyHz, double confidence, const QString &reason);
@@ -187,9 +136,6 @@ private:
 
     double minFrequencyForCurrentVoiceClass() const;
     double maxFrequencyForCurrentVoiceClass() const;
-    QString voiceClassForFrequency(double frequencyHz) const;
-    QString classifyPitch(double frequencyHz, double cents, double confidence) const;
-    QString classifyRhythm(double timingErrorMs) const;
     bool pitchDetectorEnabled() const;
     bool onsetDetectorEnabled() const;
     QString analysisModeName(AnalysisMode mode) const;
@@ -204,11 +150,6 @@ private:
     VoiceClass m_voiceClass = Tenor;
     PitchMethod m_pitchMethod = YinFft;
     OnsetMethod m_onsetMethod = Hfc;
-    int m_expectedMidiNote = -1;
-    bool m_disregardOctaveDifference = true;
-
-    double m_targetBpm = 90.0;
-    double m_minimumExpectedOnsetIntervalMs = 0.0;
     double m_minimumPitchConfidence = 0.12;
     double m_pitchSilenceDb = -55.0;
     double m_onsetThreshold = 0.16;
@@ -222,11 +163,7 @@ private:
     double m_noiseCalibrationSumSquares = 0.0;
     quint64 m_noiseCalibrationSamples = 0;
 
-    double m_candidateFrequencyHz = 0.0;
-    int m_candidateMidiNote = -1;
     int m_stablePitchFrameCount = 0;
-    std::deque<double> m_recentAcceptedFrequencies;
-    std::deque<double> m_recentOnsetDescriptorValues;
 
     QString m_inputDeviceDescription;
     QVariantList m_inputDevices;
@@ -242,17 +179,9 @@ private:
     double m_cents = 0.0;
     double m_pitchConfidence = 0.0;
     bool m_voiced = false;
-    QString m_pitchStatus = QStringLiteral("No stable voice detected");
-    QString m_detectedVoiceClass = QStringLiteral("-");
 
     int m_onsetCount = 0;
     double m_lastOnsetSeconds = -1.0;
-    double m_previousOnsetSeconds = -1.0;
-    double m_referenceOnsetSeconds = -1.0;
-    double m_detectedBpm = 0.0;
-    double m_lastTimingErrorMs = 0.0;
-    QString m_rhythmStatus = QStringLiteral("No onset detected yet");
-    std::deque<double> m_recentOnsetSeconds;
 
     QAudioFormat m_audioFormat;
     QMediaDevices m_mediaDevices;
@@ -260,21 +189,8 @@ private:
     QPointer<QIODevice> m_audioDevice;
     QTimer m_pollTimer;
 
-    uint_t m_sampleRate = 48000;
-    uint_t m_pitchBufferSize = 4096;
-    uint_t m_onsetBufferSize = 2048;
-    uint_t m_hopSize = 512;
+    int m_sampleRate = 48000;
     quint64 m_processedSamples = 0;
-    quint64 m_lastDebugSample = 0;
-    double m_onsetTimeOffsetSeconds = 0.0;
-
-    PitchPtr m_pitch;
-    OnsetPtr m_onset;
-    FVecPtr m_input;
-    FVecPtr m_pitchOut;
-    FVecPtr m_onsetOut;
-
-    std::deque<float> m_pendingSamples;
 
     QThread m_analysisThread;
     AubioAnalysisWorker *m_analysisWorker = nullptr;

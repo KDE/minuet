@@ -34,6 +34,7 @@ public Q_SLOTS:
     void setVolume(quint8 volume) override;
     void setTempo(quint8 tempo) override;
     void setRhythmCountInBeats(int beats) override;
+    void setRhythmCountInSubdivisions(int subdivisions) override;
     void setInstrument(int instrument) override;
     void setRhythmInstrument(int rhythmInstrument) override;
 
@@ -49,8 +50,10 @@ public Q_SLOTS:
 
 private:
     void appendEvent(int channel, short key, short velocity, unsigned int duration);
+    void appendCountInEvents(int beats);
     void playCountIn(int beats, bool audible);
     static void sequencerCallback(unsigned int time, fluid_event_t *event, fluid_sequencer_t *seq, void *data);
+    void handleSequencerEvent(unsigned int time, int eventType, int channel, short key, int velocity);
     void populateInstruments();
     void populateRhythmInstruments();
     void applyInstrument();
@@ -70,7 +73,7 @@ private:
 
     short m_synthSeqID;
     short m_callbackSeqID;
-    static unsigned int m_initialTime;
+    unsigned int m_initialTime = 0;
     QHash<int, int> m_instrumentSoundFontIds;
     int m_activeCountInBeats;
     int m_countInNextValue;

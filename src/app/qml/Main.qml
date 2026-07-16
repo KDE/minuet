@@ -12,10 +12,7 @@ Kirigami.ApplicationWindow {
     id: window
 
     property var currentExercise
-    property var currentExerciseSelection
     readonly property var currentPage: pageStack.depth > 0 ? pageStack.get(pageStack.currentIndex) : null
-    property int previousPageStackIndex: 0
-    property string titleText: i18n("Home")
 
     function createAboutPage(): Kirigami.Page {
         return aboutPageComponent.createObject(pageStack);
@@ -28,7 +25,7 @@ Kirigami.ApplicationWindow {
     }
     function openAbout(): void {
         stopExerciseActivity();
-        currentExerciseSelection = {
+        internal.currentExerciseSelection = {
             kind: "about"
         };
         pageStack.clear();
@@ -37,16 +34,16 @@ Kirigami.ApplicationWindow {
     function openExerciseFilter(exerciseModel: var, title: string, inheritedIconName: string, selectionKind: string): void {
         stopExerciseActivity();
         if (selectionKind === "all") {
-            currentExerciseSelection = {
+            internal.currentExerciseSelection = {
                 kind: "all"
             };
         } else if (selectionKind === "category" && Array.isArray(exerciseModel) && exerciseModel.length === 1) {
-            currentExerciseSelection = {
+            internal.currentExerciseSelection = {
                 kind: "category",
                 exercise: exerciseModel[0]
             };
         } else {
-            currentExerciseSelection = null;
+            internal.currentExerciseSelection = null;
         }
         pageStack.clear();
         const page = exerciseMenuPageComponent.createObject(pageStack, {
@@ -58,7 +55,7 @@ Kirigami.ApplicationWindow {
     }
     function openHome(): void {
         stopExerciseActivity();
-        currentExerciseSelection = {
+        internal.currentExerciseSelection = {
             kind: "home"
         };
         pageStack.clear();
@@ -66,7 +63,7 @@ Kirigami.ApplicationWindow {
     }
     function openSettings(): void {
         stopExerciseActivity();
-        currentExerciseSelection = {
+        internal.currentExerciseSelection = {
             kind: "settings"
         };
         pageStack.clear();
@@ -78,27 +75,19 @@ Kirigami.ApplicationWindow {
             page.stopExerciseActivity();
         }
         window.currentExercise = undefined;
-        if (Core.soundController !== null) {
-            Core.soundController.stop();
-        }
-        if (Core.microphoneInputController !== null) {
-            Core.microphoneInputController.stop();
-        }
-        if (Core.exerciseSessionController.isTest) {
-            Core.exerciseSessionController.stopTest();
-        }
+        Core.stopExerciseActivity();
     }
 
     Onboarding.blur: 1
     Onboarding.padding: Kirigami.Units.smallSpacing
     height: Screen.height
-    title: currentPage?.title ?? titleText
+    title: currentPage?.title ?? internal.titleText
     visibility: Window.Maximized
     visible: true
     width: Screen.width
 
     globalDrawer: MinuetDrawer {
-        currentExerciseSelection: window.currentExerciseSelection
+        currentExerciseSelection: internal.currentExerciseSelection
         exerciseModel: Core.exerciseCatalogController.exercises
 
         onAboutRequested: window.openAbout()
@@ -112,6 +101,13 @@ Kirigami.ApplicationWindow {
     Component.onCompleted: pageStack.push(createHomePage())
     Onboarding.onFinished: window.showPassiveNotification(i18n("Run this guide again any time from the Help icon."), "long")
 
+    QtObject {
+        id: internal
+
+        property var currentExerciseSelection
+        property int previousPageStackIndex: 0
+        readonly property string titleText: i18n("Home")
+    }
     pageStack {
         columnView.columnResizeMode: Kirigami.ColumnView.SingleColumn
 
@@ -122,10 +118,10 @@ Kirigami.ApplicationWindow {
     }
     Connections {
         function onCurrentIndexChanged(): void {
-            if (pageStack.currentIndex < window.previousPageStackIndex) {
-                window.stopExerciseActivity(pageStack.get(window.previousPageStackIndex));
+            if (pageStack.currentIndex < internal.previousPageStackIndex) {
+                window.stopExerciseActivity(pageStack.get(internal.previousPageStackIndex));
             }
-            window.previousPageStackIndex = pageStack.currentIndex;
+            internal.previousPageStackIndex = pageStack.currentIndex;
         }
 
         target: pageStack
@@ -134,7 +130,7 @@ Kirigami.ApplicationWindow {
         id: homePageComponent
 
         Kirigami.Page {
-            title: window.titleText
+            title: internal.titleText
 
             Kirigami.PlaceholderMessage {
                 anchors.centerIn: parent
@@ -172,11 +168,6 @@ Kirigami.ApplicationWindow {
         property: "playMode"
         target: Core.soundController
         value: (window.currentExercise !== undefined) ? window.currentExercise["playMode"] : ""
-    }
-    Binding {
-        property: "tempo"
-        target: Core.soundController
-        value: window.currentExercise?.inputMode === "clapping" ? Core.settingsController.clappingSpeed : Core.settingsController.exerciseSpeed
     }
     Shortcut {
         sequences: [StandardKey.Quit]

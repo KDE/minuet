@@ -13,12 +13,10 @@ Rectangle {
     property color markColor: "transparent"
     property bool marked: false
 
+    anchors.left: root.anchor ? root.anchor.right : undefined
     color: "white"
     height: root.keyHeight
     width: root.keyWidth
-
-    Component.onCompleted: if (root.anchor !== null)
-        anchors.left = root.anchor.right
 
     border {
         color: "black"

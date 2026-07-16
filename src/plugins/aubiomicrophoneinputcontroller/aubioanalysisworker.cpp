@@ -81,8 +81,6 @@ void AubioAnalysisWorker::updateConfig(quint64 generation, const Config &config)
     if (!isCurrent(generation)) {
         return;
     }
-    const bool pitchTargetChanged =
-        config.expectedMidiNote != m_config.expectedMidiNote || config.disregardOctaveDifference != m_config.disregardOctaveDifference;
     m_config = config;
     if (m_pitch) {
         aubio_pitch_set_silence(m_pitch.get(), static_cast<smpl_t>(m_config.pitchSilenceDb));
@@ -90,10 +88,6 @@ void AubioAnalysisWorker::updateConfig(quint64 generation, const Config &config)
     if (m_onset) {
         aubio_onset_set_silence(m_onset.get(), static_cast<smpl_t>(m_config.pitchSilenceDb));
         aubio_onset_set_threshold(m_onset.get(), static_cast<smpl_t>(m_config.onsetThreshold));
-    }
-    if (pitchTargetChanged) {
-        resetPitchCandidate();
-        m_recentAcceptedFrequencies.clear();
     }
 }
 
@@ -290,16 +284,15 @@ void AubioAnalysisWorker::processPitchFrame(double seconds)
         publishUnvoiced(resultSeconds, QStringLiteral("No stable voice detected"));
         return;
     }
-    const double constrained = scoreConstrainedFrequency(frequency);
-    if (constrained < m_config.voiceMinHz || constrained > m_config.voiceMaxHz || confidence < m_config.minimumPitchConfidence) {
+    if (frequency < m_config.voiceMinHz || frequency > m_config.voiceMaxHz || confidence < m_config.minimumPitchConfidence) {
         resetPitchCandidate();
         publishUnvoiced(resultSeconds, QStringLiteral("Pitch candidate rejected."));
         return;
     }
-    if (!acceptStablePitchCandidate(constrained)) {
+    if (!acceptStablePitchCandidate(frequency)) {
         return;
     }
-    publishAcceptedPitch(resultSeconds, smoothedAcceptedFrequency(constrained), confidence);
+    publishAcceptedPitch(resultSeconds, smoothedAcceptedFrequency(frequency), confidence);
 }
 
 void AubioAnalysisWorker::processOnsetFrame(double fallbackSeconds)
@@ -318,9 +311,9 @@ void AubioAnalysisWorker::processOnsetFrame(double fallbackSeconds)
     if (strength < adaptiveMinimumOnsetStrength()) {
         return;
     }
-    const double beatDuration = 60.0 / m_config.targetBpm;
-    const double expectedInterval = m_config.minimumExpectedOnsetIntervalMs > 0.0 ? m_config.minimumExpectedOnsetIntervalMs / 1000.0 : beatDuration;
-    const double duplicateWindow = std::min(0.18, expectedInterval * 0.35);
+    // Suppress only detector double-triggers. Exercise tempo and expected
+    // onset spacing are interpreted by the application controller.
+    constexpr double duplicateWindow = 0.06;
     if (m_lastAcceptedOnsetSeconds >= 0.0 && seconds - m_lastAcceptedOnsetSeconds < duplicateWindow) {
         return;
     }
@@ -387,27 +380,6 @@ bool AubioAnalysisWorker::acceptStablePitchCandidate(double frequencyHz)
     m_candidateMidiNote = midi;
     m_stablePitchFrameCount = std::min(m_stablePitchFrameCount + 1, m_config.requiredStablePitchFrames);
     return m_stablePitchFrameCount >= m_config.requiredStablePitchFrames;
-}
-
-double AubioAnalysisWorker::scoreConstrainedFrequency(double frequencyHz) const
-{
-    if (m_config.expectedMidiNote < 0 || !m_config.disregardOctaveDifference) {
-        return frequencyHz;
-    }
-    double bestFrequency = frequencyHz;
-    double bestDistance = std::numeric_limits<double>::max();
-    for (int shift = -4; shift <= 4; ++shift) {
-        const double shifted = frequencyHz * std::pow(2.0, shift);
-        if (shifted < BroadVoiceMinHz || shifted > BroadVoiceMaxHz) {
-            continue;
-        }
-        const double distance = std::abs(midiFromFrequency(shifted) - m_config.expectedMidiNote);
-        if (distance < bestDistance) {
-            bestDistance = distance;
-            bestFrequency = shifted;
-        }
-    }
-    return bestFrequency;
 }
 
 double AubioAnalysisWorker::smoothedAcceptedFrequency(double frequencyHz)

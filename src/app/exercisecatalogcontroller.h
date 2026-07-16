@@ -33,6 +33,8 @@ public:
     Q_INVOKABLE QString normalizedText(const QString &text) const;
     Q_INVOKABLE bool actionMatches(const QString &actionText, const QString &searchText) const;
     Q_INVOKABLE bool exerciseMatchesSearch(const QVariantMap &exercise, const QString &searchText, const QString &inheritedIconName) const;
+    Q_INVOKABLE QString practiceModeForExercise(const QVariantMap &exercise) const;
+    Q_INVOKABLE QVariantMap exerciseForInputMode(const QVariantMap &exercise, const QString &inputMode, const QString &practiceMode) const;
 
 private:
     friend class Core;

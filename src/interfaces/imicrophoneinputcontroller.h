@@ -31,12 +31,6 @@ class MINUETINTERFACES_EXPORT IMicrophoneInputController : public IPlugin
     Q_PROPERTY(VoiceClass voiceClass READ voiceClass WRITE setVoiceClass NOTIFY voiceClassChanged)
     Q_PROPERTY(PitchMethod pitchMethod READ pitchMethod WRITE setPitchMethod NOTIFY pitchMethodChanged)
     Q_PROPERTY(OnsetMethod onsetMethod READ onsetMethod WRITE setOnsetMethod NOTIFY onsetMethodChanged)
-    Q_PROPERTY(int expectedMidiNote READ expectedMidiNote WRITE setExpectedMidiNote NOTIFY expectedMidiNoteChanged)
-    Q_PROPERTY(bool disregardOctaveDifference READ disregardOctaveDifference WRITE setDisregardOctaveDifference NOTIFY disregardOctaveDifferenceChanged)
-
-    Q_PROPERTY(double targetBpm READ targetBpm WRITE setTargetBpm NOTIFY targetBpmChanged)
-    Q_PROPERTY(double minimumExpectedOnsetIntervalMs READ minimumExpectedOnsetIntervalMs WRITE setMinimumExpectedOnsetIntervalMs NOTIFY
-                   minimumExpectedOnsetIntervalMsChanged)
     Q_PROPERTY(double minimumPitchConfidence READ minimumPitchConfidence WRITE setMinimumPitchConfidence NOTIFY minimumPitchConfidenceChanged)
     Q_PROPERTY(double pitchSilenceDb READ pitchSilenceDb WRITE setPitchSilenceDb NOTIFY pitchSilenceDbChanged)
     Q_PROPERTY(double onsetThreshold READ onsetThreshold WRITE setOnsetThreshold NOTIFY onsetThresholdChanged)
@@ -63,13 +57,9 @@ class MINUETINTERFACES_EXPORT IMicrophoneInputController : public IPlugin
     Q_PROPERTY(double cents READ cents NOTIFY pitchChanged)
     Q_PROPERTY(double pitchConfidence READ pitchConfidence NOTIFY pitchChanged)
     Q_PROPERTY(bool voiced READ voiced NOTIFY pitchChanged)
-    Q_PROPERTY(QString pitchStatus READ pitchStatus NOTIFY pitchChanged)
 
     Q_PROPERTY(int onsetCount READ onsetCount NOTIFY rhythmChanged)
     Q_PROPERTY(double lastOnsetSeconds READ lastOnsetSeconds NOTIFY rhythmChanged)
-    Q_PROPERTY(double detectedBpm READ detectedBpm NOTIFY rhythmChanged)
-    Q_PROPERTY(double lastTimingErrorMs READ lastTimingErrorMs NOTIFY rhythmChanged)
-    Q_PROPERTY(QString rhythmStatus READ rhythmStatus NOTIFY rhythmChanged)
 
 public:
     enum Preset {
@@ -127,10 +117,6 @@ public:
     virtual VoiceClass voiceClass() const = 0;
     virtual PitchMethod pitchMethod() const = 0;
     virtual OnsetMethod onsetMethod() const = 0;
-    virtual int expectedMidiNote() const = 0;
-    virtual bool disregardOctaveDifference() const = 0;
-    virtual double targetBpm() const = 0;
-    virtual double minimumExpectedOnsetIntervalMs() const = 0;
     virtual double minimumPitchConfidence() const = 0;
     virtual double pitchSilenceDb() const = 0;
     virtual double onsetThreshold() const = 0;
@@ -155,12 +141,8 @@ public:
     virtual double cents() const = 0;
     virtual double pitchConfidence() const = 0;
     virtual bool voiced() const = 0;
-    virtual QString pitchStatus() const = 0;
     virtual int onsetCount() const = 0;
     virtual double lastOnsetSeconds() const = 0;
-    virtual double detectedBpm() const = 0;
-    virtual double lastTimingErrorMs() const = 0;
-    virtual QString rhythmStatus() const = 0;
 
 public Q_SLOTS:
     virtual void setPreset(Preset preset) = 0;
@@ -168,10 +150,6 @@ public Q_SLOTS:
     virtual void setVoiceClass(VoiceClass voiceClass) = 0;
     virtual void setPitchMethod(PitchMethod pitchMethod) = 0;
     virtual void setOnsetMethod(OnsetMethod onsetMethod) = 0;
-    virtual void setExpectedMidiNote(int midiNote) = 0;
-    virtual void setDisregardOctaveDifference(bool disregard) = 0;
-    virtual void setTargetBpm(double targetBpm) = 0;
-    virtual void setMinimumExpectedOnsetIntervalMs(double intervalMs) = 0;
     virtual void setMinimumPitchConfidence(double confidence) = 0;
     virtual void setPitchSilenceDb(double silenceDb) = 0;
     virtual void setOnsetThreshold(double threshold) = 0;
@@ -200,10 +178,6 @@ Q_SIGNALS:
     void voiceClassChanged();
     void pitchMethodChanged();
     void onsetMethodChanged();
-    void expectedMidiNoteChanged();
-    void disregardOctaveDifferenceChanged();
-    void targetBpmChanged();
-    void minimumExpectedOnsetIntervalMsChanged();
     void minimumPitchConfidenceChanged();
     void pitchSilenceDbChanged();
     void onsetThresholdChanged();

@@ -12,23 +12,12 @@ import org.kde.kirigami as Kirigami
 Kirigami.ScrollablePage {
     id: page
 
-    readonly property var exerciseList: Core.exerciseCatalogController.collectExercises(exerciseModel, inheritedIconName)
     property var exerciseModel: []
     property string inheritedIconName: ""
     property string pathText: title
 
-    function exerciseOptionHasTag(exercise: var, tag: string): bool {
-        const options = exercise.options || [];
-        for (const option of options) {
-            const tags = option.tags || [];
-            if (tags.indexOf(tag) >= 0) {
-                return true;
-            }
-        }
-        return false;
-    }
     function openExercise(exercise: var, iconName: string): void {
-        const practiceMode = practiceModeForExercise(exercise);
+        const practiceMode = Core.exerciseCatalogController.practiceModeForExercise(exercise);
         if (practiceMode.length > 0) {
             openPracticeModePage(exercise, iconName, practiceMode);
             return;
@@ -43,6 +32,9 @@ Kirigami.ScrollablePage {
             currentExercise: exercise,
             currentExerciseIconName: iconName
         });
+        if (exercisePage === null) {
+            return;
+        }
         applicationWindow().pageStack.push(exercisePage);
     }
     function openPracticeModePage(exercise: var, iconName: string, practiceMode: string): void {
@@ -54,31 +46,24 @@ Kirigami.ScrollablePage {
             currentExerciseIconName: iconName,
             practiceMode: practiceMode
         });
+        if (practicePage === null) {
+            return;
+        }
         practicePage.practiceSelected.connect(function (selectedExercise, selectedIconName) {
             page.openExercisePage(selectedExercise, selectedIconName);
         });
         applicationWindow().pageStack.push(practicePage);
     }
-    function practiceModeForExercise(exercise: var): string {
-        if (exercise.playMode === "rhythm") {
-            return "rhythm";
-        }
-        if (exercise.playMode !== "scale") {
-            return "";
-        }
-        if (exerciseOptionHasTag(exercise, "interval")) {
-            return "interval";
-        }
-        if (exerciseOptionHasTag(exercise, "scale")) {
-            return "scale";
-        }
-        return "";
-    }
 
     Kirigami.Theme.colorSet: Kirigami.Theme.Window
     Kirigami.Theme.inherit: false
-    title: exerciseList.length > 0 ? i18np("%2 - %1 item", "%2 - %1 items", exerciseList.length, pathText) : pathText
+    title: internal.exerciseList.length > 0 ? i18np("%2 - %1 item", "%2 - %1 items", internal.exerciseList.length, pathText) : pathText
 
+    QtObject {
+        id: internal
+
+        readonly property var exerciseList: Core.exerciseCatalogController.collectExercises(page.exerciseModel, page.inheritedIconName)
+    }
     Component {
         id: exercisePageComponent
 
@@ -94,7 +79,7 @@ Kirigami.ScrollablePage {
     Kirigami.CardsListView {
         boundsBehavior: Flickable.StopAtBounds
         clip: true
-        model: page.exerciseList
+        model: internal.exerciseList
 
         delegate: Kirigami.AbstractCard {
             id: exerciseCard

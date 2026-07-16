@@ -16,37 +16,14 @@
 
 #include <algorithm>
 #include <cmath>
-#include <cstring>
 #include <limits>
 #include <vector>
 
 namespace
 {
-template<typename T>
-T readUnaligned(const char *data)
-{
-    T value;
-    std::memcpy(&value, data, sizeof(T));
-    return value;
-}
-
 double clamp01(double value)
 {
     return std::clamp(value, 0.0, 1.0);
-}
-
-constexpr double broadVoiceMinHz = 65.0;
-constexpr double broadVoiceMaxHz = 1200.0;
-
-double medianValue(std::deque<double> values)
-{
-    if (values.empty()) {
-        return 0.0;
-    }
-
-    std::vector<double> sorted(values.begin(), values.end());
-    std::sort(sorted.begin(), sorted.end());
-    return sorted.at(sorted.size() / 2);
 }
 
 double amplitudeToDbFs(double amplitude)
@@ -165,10 +142,6 @@ Minuet::IMicrophoneInputController::AnalysisMode AubioMicrophoneInputController:
 Minuet::IMicrophoneInputController::VoiceClass AubioMicrophoneInputController::voiceClass() const { return m_voiceClass; }
 Minuet::IMicrophoneInputController::PitchMethod AubioMicrophoneInputController::pitchMethod() const { return m_pitchMethod; }
 Minuet::IMicrophoneInputController::OnsetMethod AubioMicrophoneInputController::onsetMethod() const { return m_onsetMethod; }
-int AubioMicrophoneInputController::expectedMidiNote() const { return m_expectedMidiNote; }
-bool AubioMicrophoneInputController::disregardOctaveDifference() const { return m_disregardOctaveDifference; }
-double AubioMicrophoneInputController::targetBpm() const { return m_targetBpm; }
-double AubioMicrophoneInputController::minimumExpectedOnsetIntervalMs() const { return m_minimumExpectedOnsetIntervalMs; }
 double AubioMicrophoneInputController::minimumPitchConfidence() const { return m_minimumPitchConfidence; }
 double AubioMicrophoneInputController::pitchSilenceDb() const { return m_pitchSilenceDb; }
 double AubioMicrophoneInputController::onsetThreshold() const { return m_onsetThreshold; }
@@ -192,13 +165,8 @@ int AubioMicrophoneInputController::midiNote() const { return m_midiNote; }
 double AubioMicrophoneInputController::cents() const { return m_cents; }
 double AubioMicrophoneInputController::pitchConfidence() const { return m_pitchConfidence; }
 bool AubioMicrophoneInputController::voiced() const { return m_voiced; }
-QString AubioMicrophoneInputController::pitchStatus() const { return m_pitchStatus; }
-QString AubioMicrophoneInputController::detectedVoiceClass() const { return m_detectedVoiceClass; }
 int AubioMicrophoneInputController::onsetCount() const { return m_onsetCount; }
 double AubioMicrophoneInputController::lastOnsetSeconds() const { return m_lastOnsetSeconds; }
-double AubioMicrophoneInputController::detectedBpm() const { return m_detectedBpm; }
-double AubioMicrophoneInputController::lastTimingErrorMs() const { return m_lastTimingErrorMs; }
-QString AubioMicrophoneInputController::rhythmStatus() const { return m_rhythmStatus; }
 
 QString AubioMicrophoneInputController::noteName() const
 {
@@ -230,10 +198,6 @@ void AubioMicrophoneInputController::setVoiceClass(VoiceClass voiceClass)
     }
     m_voiceClass = voiceClass;
     Q_EMIT voiceClassChanged();
-    if (m_voiced) {
-        m_pitchStatus = classifyPitch(m_frequencyHz, m_cents, m_pitchConfidence);
-        Q_EMIT pitchChanged();
-    }
     updateWorkerConfig();
 }
 
@@ -255,51 +219,6 @@ void AubioMicrophoneInputController::setOnsetMethod(OnsetMethod onsetMethod)
     m_onsetMethod = onsetMethod;
     Q_EMIT onsetMethodChanged();
     resetIfRunning();
-}
-
-void AubioMicrophoneInputController::setExpectedMidiNote(int midiNote)
-{
-    midiNote = std::clamp(midiNote, -1, 127);
-    if (m_expectedMidiNote == midiNote) {
-        return;
-    }
-    m_expectedMidiNote = midiNote;
-    Q_EMIT expectedMidiNoteChanged();
-    Q_EMIT pitchChanged();
-    updateWorkerConfig();
-}
-
-void AubioMicrophoneInputController::setDisregardOctaveDifference(bool disregard)
-{
-    if (m_disregardOctaveDifference == disregard) {
-        return;
-    }
-    m_disregardOctaveDifference = disregard;
-    Q_EMIT disregardOctaveDifferenceChanged();
-    Q_EMIT pitchChanged();
-    updateWorkerConfig();
-}
-
-void AubioMicrophoneInputController::setTargetBpm(double targetBpm)
-{
-    targetBpm = std::clamp(targetBpm, 30.0, 240.0);
-    if (qFuzzyCompare(m_targetBpm, targetBpm)) {
-        return;
-    }
-    m_targetBpm = targetBpm;
-    Q_EMIT targetBpmChanged();
-    updateWorkerConfig();
-}
-
-void AubioMicrophoneInputController::setMinimumExpectedOnsetIntervalMs(double intervalMs)
-{
-    intervalMs = std::clamp(intervalMs, 0.0, 4000.0);
-    if (qFuzzyCompare(m_minimumExpectedOnsetIntervalMs, intervalMs)) {
-        return;
-    }
-    m_minimumExpectedOnsetIntervalMs = intervalMs;
-    Q_EMIT minimumExpectedOnsetIntervalMsChanged();
-    updateWorkerConfig();
 }
 
 void AubioMicrophoneInputController::setMinimumPitchConfidence(double confidence)
@@ -474,7 +393,6 @@ void AubioMicrophoneInputController::calibrateNoiseFloor()
 
 void AubioMicrophoneInputController::resetInputAnalysisState()
 {
-    const double resetTimeSeconds = captureTimeSeconds();
     resetDetectionState();
     m_generation = m_activeGeneration->fetch_add(1, std::memory_order_relaxed) + 1;
     m_queuedAnalysisBytes = 0;
@@ -485,12 +403,11 @@ void AubioMicrophoneInputController::resetInputAnalysisState()
         worker->resetAnalysis(generation, captureFrame);
         worker->updateConfig(generation, config);
     });
-    qInfo().noquote() << QStringLiteral("Input analysis state reset: mode=%1 preset=%2 threshold=%3 minOnsetStrength=%4 onsetTimeOffset=%5s")
+    qInfo().noquote() << QStringLiteral("Input analysis state reset: mode=%1 preset=%2 threshold=%3 minOnsetStrength=%4")
         .arg(analysisModeName(m_analysisMode),
              presetName(m_preset))
         .arg(m_onsetThreshold, 0, 'f', 2)
-        .arg(m_minimumOnsetStrength, 0, 'f', 3)
-        .arg(m_onsetTimeOffsetSeconds, 0, 'f', 3);
+        .arg(m_minimumOnsetStrength, 0, 'f', 3);
 }
 
 void AubioMicrophoneInputController::stop()
@@ -614,15 +531,12 @@ void AubioMicrophoneInputController::setStatus(const QString &status)
 
 void AubioMicrophoneInputController::resetRuntimeState()
 {
-    m_pendingSamples.clear();
     m_processedSamples = 0;
-    m_onsetTimeOffsetSeconds = 0.0;
     resetDetectionState();
     m_noiseCalibrationActive = false;
     m_noiseCalibrationSumSquares = 0.0;
     m_noiseCalibrationSamples = 0;
     Q_EMIT noiseCalibrationActiveChanged();
-    m_lastDebugSample = 0;
     m_bytesRead = 0;
     m_capturedSamples = 0;
     m_queuedAnalysisBytes = 0;
@@ -639,26 +553,15 @@ void AubioMicrophoneInputController::resetRuntimeState()
 
 void AubioMicrophoneInputController::resetDetectionState()
 {
-    resetPitchCandidate();
-    m_recentAcceptedFrequencies.clear();
-    m_recentOnsetDescriptorValues.clear();
     m_frequencyHz = 0.0;
     m_midiNote = -1;
     m_cents = 0.0;
     m_pitchConfidence = 0.0;
     m_voiced = false;
-    m_detectedVoiceClass = QStringLiteral("-");
-    m_pitchStatus = QStringLiteral("No stable voice detected");
     Q_EMIT pitchChanged();
 
     m_onsetCount = 0;
     m_lastOnsetSeconds = -1.0;
-    m_previousOnsetSeconds = -1.0;
-    m_referenceOnsetSeconds = -1.0;
-    m_detectedBpm = 0.0;
-    m_lastTimingErrorMs = 0.0;
-    m_rhythmStatus = QStringLiteral("No onset detected yet");
-    m_recentOnsetSeconds.clear();
     Q_EMIT rhythmChanged();
 }
 
@@ -794,72 +697,6 @@ void AubioMicrophoneInputController::updateInputDevices()
     }
 }
 
-bool AubioMicrophoneInputController::recreateAubioObjects()
-{
-    destroyAubioObjects();
-
-    m_input.reset(new_fvec(m_hopSize));
-    if (!m_input) {
-        setStatus(QStringLiteral("Could not allocate aubio buffers."));
-        destroyAubioObjects();
-        return false;
-    }
-
-    // FMP 8.2.3 tracks monophonic F0 independently from onset/tempo novelty analysis.
-    if (pitchDetectorEnabled()) {
-        m_pitchOut.reset(new_fvec(1));
-        if (!m_pitchOut) {
-            setStatus(QStringLiteral("Could not allocate aubio pitch buffer."));
-            destroyAubioObjects();
-            return false;
-        }
-
-        m_pitch.reset(new_aubio_pitch(aubioPitchMethodName(m_pitchMethod), m_pitchBufferSize, m_hopSize, m_sampleRate));
-        if (!m_pitch) {
-            setStatus(QStringLiteral("Could not create aubio pitch detector '%1'.")
-                          .arg(QString::fromLatin1(aubioPitchMethodName(m_pitchMethod))));
-            destroyAubioObjects();
-            return false;
-        }
-
-        aubio_pitch_set_unit(m_pitch.get(), "Hz");
-        aubio_pitch_set_tolerance(m_pitch.get(), 0.8);
-        aubio_pitch_set_silence(m_pitch.get(), static_cast<smpl_t>(m_pitchSilenceDb));
-    }
-
-    // FMP 6.1 models onset detection as novelty plus peak picking; skip it when a task only needs F0.
-    if (onsetDetectorEnabled()) {
-        m_onsetOut.reset(new_fvec(1));
-        if (!m_onsetOut) {
-            setStatus(QStringLiteral("Could not allocate aubio onset buffer."));
-            destroyAubioObjects();
-            return false;
-        }
-
-        m_onset.reset(new_aubio_onset(aubioOnsetMethodName(m_onsetMethod), m_onsetBufferSize, m_hopSize, m_sampleRate));
-        if (!m_onset) {
-            setStatus(QStringLiteral("Could not create aubio onset detector '%1'.")
-                          .arg(QString::fromLatin1(aubioOnsetMethodName(m_onsetMethod))));
-            destroyAubioObjects();
-            return false;
-        }
-
-        aubio_onset_set_threshold(m_onset.get(), static_cast<smpl_t>(m_onsetThreshold));
-        aubio_onset_set_silence(m_onset.get(), static_cast<smpl_t>(m_pitchSilenceDb));
-    }
-
-    return true;
-}
-
-void AubioMicrophoneInputController::destroyAubioObjects()
-{
-    m_onsetOut.reset();
-    m_pitchOut.reset();
-    m_input.reset();
-    m_onset.reset();
-    m_pitch.reset();
-}
-
 void AubioMicrophoneInputController::readAudioData()
 {
     if (!m_audioDevice) {
@@ -895,321 +732,6 @@ void AubioMicrophoneInputController::readAudioData()
     });
 }
 
-void AubioMicrophoneInputController::appendSamplesFromBytes(const QByteArray &bytes)
-{
-    const int channelCount = m_audioFormat.channelCount();
-    const int bytesPerSample = m_audioFormat.bytesPerSample();
-    const int bytesPerFrame = bytesPerSample * channelCount;
-    if (bytesPerFrame <= 0) {
-        return;
-    }
-
-    const int frameCount = bytes.size() / bytesPerFrame;
-    const char *data = bytes.constData();
-    double sumSquares = 0.0;
-    double peak = 0.0;
-
-    for (int frame = 0; frame < frameCount; ++frame) {
-        double mono = 0.0;
-        const char *frameData = data + frame * bytesPerFrame;
-
-        for (int channel = 0; channel < channelCount; ++channel) {
-            const char *sampleData = frameData + channel * bytesPerSample;
-            double sample = 0.0;
-
-            switch (m_audioFormat.sampleFormat()) {
-            case QAudioFormat::UInt8:
-                sample = (static_cast<int>(readUnaligned<quint8>(sampleData)) - 128) / 128.0;
-                break;
-            case QAudioFormat::Int16:
-                sample = readUnaligned<qint16>(sampleData) / 32768.0;
-                break;
-            case QAudioFormat::Int32:
-                sample = readUnaligned<qint32>(sampleData) / 2147483648.0;
-                break;
-            case QAudioFormat::Float:
-                sample = readUnaligned<float>(sampleData);
-                break;
-            case QAudioFormat::Unknown:
-            case QAudioFormat::NSampleFormats:
-                break;
-            }
-            mono += sample;
-        }
-
-        mono /= channelCount;
-        mono = std::clamp(mono, -1.0, 1.0);
-        sumSquares += mono * mono;
-        peak = std::max(peak, std::abs(mono));
-        m_pendingSamples.push_back(static_cast<float>(mono));
-    }
-
-    if (frameCount > 0) {
-        const double rms = std::sqrt(sumSquares / frameCount);
-        const double smoothedRms = 0.80 * m_audioLevel + 0.20 * rms;
-        const double smoothedPeak = std::max(peak, 0.90 * m_peakLevel);
-        updateNoiseCalibration(sumSquares, frameCount);
-
-        if (std::abs(smoothedRms - m_audioLevel) > 0.002 || std::abs(smoothedPeak - m_peakLevel) > 0.002) {
-            m_audioLevel = smoothedRms;
-            m_peakLevel = smoothedPeak;
-            Q_EMIT audioLevelChanged();
-        }
-    }
-}
-
-void AubioMicrophoneInputController::processPendingSamples()
-{
-    while (m_running && m_input && m_pendingSamples.size() >= m_hopSize) {
-        processHop();
-    }
-    if (!m_running || !m_input) {
-        m_pendingSamples.clear();
-    }
-}
-
-void AubioMicrophoneInputController::processHop()
-{
-    if (!m_input) {
-        return;
-    }
-
-    for (uint_t i = 0; i < m_hopSize; ++i) {
-        fvec_set_sample(m_input.get(), static_cast<smpl_t>(m_pendingSamples.front()), i);
-        m_pendingSamples.pop_front();
-    }
-
-    const double frameTimeSeconds = static_cast<double>(m_processedSamples) / static_cast<double>(m_sampleRate);
-    if (m_pitch && m_pitchOut) {
-        processPitchFrame(frameTimeSeconds);
-    }
-    if (m_onset && m_onsetOut) {
-        processOnsetFrame(frameTimeSeconds);
-    }
-    m_processedSamples += m_hopSize;
-}
-
-void AubioMicrophoneInputController::processPitchFrame(double timeSeconds)
-{
-    aubio_pitch_do(m_pitch.get(), m_input.get(), m_pitchOut.get());
-
-    const double frequency = fvec_get_sample(m_pitchOut.get(), 0);
-    const double confidence = aubio_pitch_get_confidence(m_pitch.get());
-
-    maybePrintDebug(timeSeconds, frequency, confidence);
-    applyPitchResult(timeSeconds, frequency, confidence);
-}
-
-void AubioMicrophoneInputController::processOnsetFrame(double fallbackTimeSeconds)
-{
-    aubio_onset_do(m_onset.get(), m_input.get(), m_onsetOut.get());
-
-    const double strength = aubio_onset_get_descriptor(m_onset.get());
-    rememberOnsetDescriptor(strength);
-
-    const double onsetDetected = fvec_get_sample(m_onsetOut.get(), 0);
-    if (onsetDetected <= 0.0) {
-        return;
-    }
-
-    double onsetSeconds = aubio_onset_get_last_s(m_onset.get());
-    if (!(onsetSeconds >= 0.0) || !std::isfinite(onsetSeconds)) {
-        onsetSeconds = fallbackTimeSeconds;
-    } else {
-        onsetSeconds += m_onsetTimeOffsetSeconds;
-    }
-
-    registerOnset(onsetSeconds, strength);
-}
-
-void AubioMicrophoneInputController::applyPitchResult(double timeSeconds, double frequencyHz, double confidence)
-{
-    if (!inputGateOpen()) {
-        resetPitchCandidate();
-        applyUnvoicedResult(QStringLiteral("Input below gate. Raise your voice, move closer to the microphone, or lower the input gate."));
-        return;
-    }
-
-    if (!std::isfinite(frequencyHz) || frequencyHz < broadVoiceMinHz || frequencyHz > broadVoiceMaxHz) {
-        resetPitchCandidate();
-        applyUnvoicedResult(QStringLiteral("Audio present, but aubio has not found a stable voice F0 yet"));
-        return;
-    }
-
-    const double constrainedFrequencyHz = scoreConstrainedFrequency(frequencyHz);
-
-    // FMP 8.2.3.2: voice-range constraints reduce F0 confusion with harmonics and unrelated sources.
-    if (constrainedFrequencyHz < minFrequencyForCurrentVoiceClass() || constrainedFrequencyHz > maxFrequencyForCurrentVoiceClass()) {
-        resetPitchCandidate();
-        applyUnvoicedResult(QStringLiteral("Pitch candidate rejected: outside selected %1 range").arg(voiceClassName(m_voiceClass)));
-        return;
-    }
-
-    const double clampedConfidence = clamp01(confidence);
-    if (clampedConfidence < m_minimumPitchConfidence) {
-        resetPitchCandidate();
-        applyUnvoicedResult(QStringLiteral("Pitch candidate rejected: confidence below threshold"));
-        return;
-    }
-
-    if (!acceptStablePitchCandidate(constrainedFrequencyHz)) {
-        applyUnvoicedResult(QStringLiteral("Waiting for stable pitch (%1/%2 frames)")
-                                .arg(m_stablePitchFrameCount)
-                                .arg(m_requiredStablePitchFrames));
-        return;
-    }
-
-    // FMP 8.2.3.1: keep a short continuity filter to suppress frame-local F0 jumps.
-    const double acceptedFrequencyHz = smoothedAcceptedFrequency(constrainedFrequencyHz);
-    const double midi = midiFromFrequency(acceptedFrequencyHz);
-    const int nearestMidi = static_cast<int>(std::llround(midi));
-    const double nearestHz = frequencyForMidi(nearestMidi);
-    const double cents = 1200.0 * std::log2(acceptedFrequencyHz / nearestHz);
-
-    const bool changed = !m_voiced
-        || std::abs(m_frequencyHz - acceptedFrequencyHz) > 0.5
-        || m_midiNote != nearestMidi
-        || std::abs(m_cents - cents) > 0.5
-        || std::abs(m_pitchConfidence - clampedConfidence) > 0.01;
-
-    m_frequencyHz = acceptedFrequencyHz;
-    m_midiNote = nearestMidi;
-    m_cents = cents;
-    m_pitchConfidence = clampedConfidence;
-    m_voiced = true;
-    m_detectedVoiceClass = voiceClassForFrequency(acceptedFrequencyHz);
-    m_pitchStatus = classifyPitch(acceptedFrequencyHz, cents, clampedConfidence);
-
-    if (changed) {
-        Q_EMIT pitchChanged();
-    }
-    Q_EMIT pitchDetected(timeSeconds, m_midiNote, m_cents, m_pitchConfidence);
-}
-
-bool AubioMicrophoneInputController::acceptStablePitchCandidate(double frequencyHz)
-{
-    const int midi = static_cast<int>(std::llround(midiFromFrequency(frequencyHz)));
-
-    bool similarToCandidate = false;
-    if (m_candidateFrequencyHz > 0.0 && std::isfinite(m_candidateFrequencyHz)) {
-        const double centsDelta = 1200.0 * std::log2(frequencyHz / m_candidateFrequencyHz);
-        similarToCandidate = std::abs(centsDelta) <= 80.0 || midi == m_candidateMidiNote;
-    }
-
-    if (!similarToCandidate) {
-        m_candidateFrequencyHz = frequencyHz;
-        m_candidateMidiNote = midi;
-        m_stablePitchFrameCount = 1;
-        Q_EMIT pitchChanged();
-        return m_requiredStablePitchFrames <= 1;
-    }
-
-    m_candidateFrequencyHz = 0.70 * m_candidateFrequencyHz + 0.30 * frequencyHz;
-    m_candidateMidiNote = midi;
-    if (m_stablePitchFrameCount < m_requiredStablePitchFrames) {
-        ++m_stablePitchFrameCount;
-        Q_EMIT pitchChanged();
-    }
-
-    return m_stablePitchFrameCount >= m_requiredStablePitchFrames;
-}
-
-double AubioMicrophoneInputController::scoreConstrainedFrequency(double frequencyHz) const
-{
-    if (m_expectedMidiNote < 0 || !m_disregardOctaveDifference || !std::isfinite(frequencyHz)) {
-        return frequencyHz;
-    }
-
-    double bestFrequency = frequencyHz;
-    double bestDistance = std::numeric_limits<double>::max();
-    for (int octaveShift = -4; octaveShift <= 4; ++octaveShift) {
-        const double shiftedFrequency = frequencyHz * std::pow(2.0, octaveShift);
-        if (shiftedFrequency < broadVoiceMinHz || shiftedFrequency > broadVoiceMaxHz) {
-            continue;
-        }
-
-        const double distance = std::abs(midiFromFrequency(shiftedFrequency) - static_cast<double>(m_expectedMidiNote));
-        if (distance < bestDistance) {
-            bestDistance = distance;
-            bestFrequency = shiftedFrequency;
-        }
-    }
-    return bestFrequency;
-}
-
-double AubioMicrophoneInputController::smoothedAcceptedFrequency(double frequencyHz)
-{
-    m_recentAcceptedFrequencies.push_back(frequencyHz);
-    while (m_recentAcceptedFrequencies.size() > 5) {
-        m_recentAcceptedFrequencies.pop_front();
-    }
-    return medianValue(m_recentAcceptedFrequencies);
-}
-
-void AubioMicrophoneInputController::resetPitchCandidate()
-{
-    m_candidateFrequencyHz = 0.0;
-    m_candidateMidiNote = -1;
-    m_stablePitchFrameCount = 0;
-}
-
-void AubioMicrophoneInputController::rememberOnsetDescriptor(double strength)
-{
-    if (!std::isfinite(strength) || strength < 0.0) {
-        return;
-    }
-    m_recentOnsetDescriptorValues.push_back(strength);
-    while (m_recentOnsetDescriptorValues.size() > 48) {
-        m_recentOnsetDescriptorValues.pop_front();
-    }
-}
-
-double AubioMicrophoneInputController::adaptiveMinimumOnsetStrength() const
-{
-    // FMP 6.4.2 recommends adaptive peak thresholds before accepting novelty peaks as onsets.
-    const double adaptiveFloor = medianValue(m_recentOnsetDescriptorValues) * 2.5;
-    return std::max({m_minimumOnsetStrength, m_calibratedOnsetStrengthFloor, adaptiveFloor});
-}
-
-void AubioMicrophoneInputController::updateNoiseCalibration(double sumSquares, int sampleCount)
-{
-    if (!m_noiseCalibrationActive || sampleCount <= 0) {
-        return;
-    }
-
-    m_noiseCalibrationSumSquares += sumSquares;
-    m_noiseCalibrationSamples += static_cast<quint64>(sampleCount);
-
-    if (m_noiseCalibrationSamples < m_sampleRate) {
-        return;
-    }
-
-    const double noiseFloor = std::sqrt(m_noiseCalibrationSumSquares / static_cast<double>(m_noiseCalibrationSamples));
-    m_noiseFloorLevel = noiseFloor;
-
-    // +15 dB above measured RMS floor. Keep a small minimum so denormalized silence
-    // does not create an unusably sensitive gate.
-    const double calibratedGate = std::clamp(noiseFloor * 5.6234132519, 0.003, 0.25);
-    m_inputGateLevel = calibratedGate;
-    applyCalibratedDetectorThresholds(noiseFloor);
-
-    m_noiseCalibrationActive = false;
-    m_noiseCalibrationSumSquares = 0.0;
-    m_noiseCalibrationSamples = 0;
-
-    Q_EMIT noiseFloorLevelChanged();
-    Q_EMIT inputGateLevelChanged();
-    Q_EMIT audioLevelChanged();
-    Q_EMIT noiseCalibrationActiveChanged();
-
-    setStatus(QStringLiteral("Noise calibration done: floor=%1%, input gate=%2% (+15 dB).")
-                  .arg(m_noiseFloorLevel * 100.0, 0, 'f', 2)
-                  .arg(m_inputGateLevel * 100.0, 0, 'f', 2));
-    qInfo().noquote() << QStringLiteral("Noise calibration done: floor=%1 gate=%2")
-        .arg(m_noiseFloorLevel, 0, 'f', 6)
-        .arg(m_inputGateLevel, 0, 'f', 6);
-}
-
 void AubioMicrophoneInputController::applyCalibratedDetectorThresholds(double noiseFloor)
 {
     // FMP 6.1/6.4: calibrate the detector floor before peak picking so room noise is not treated as novelty.
@@ -1218,14 +740,6 @@ void AubioMicrophoneInputController::applyCalibratedDetectorThresholds(double no
     m_calibratedOnsetStrengthFloor = std::clamp(noiseFloor * (m_preset == Clapping ? 4.0 : 2.0), 0.0, 0.20);
     m_onsetThreshold = std::clamp(m_onsetThreshold + noiseFloor * (m_preset == Clapping ? 1.5 : 0.75), 0.01, 1.0);
 
-    if (m_pitch) {
-        aubio_pitch_set_silence(m_pitch.get(), static_cast<smpl_t>(m_pitchSilenceDb));
-    }
-    if (m_onset) {
-        aubio_onset_set_silence(m_onset.get(), static_cast<smpl_t>(m_pitchSilenceDb));
-        aubio_onset_set_threshold(m_onset.get(), static_cast<smpl_t>(m_onsetThreshold));
-    }
-
     Q_EMIT pitchSilenceDbChanged();
     Q_EMIT minimumOnsetStrengthChanged();
     Q_EMIT onsetThresholdChanged();
@@ -1233,127 +747,18 @@ void AubioMicrophoneInputController::applyCalibratedDetectorThresholds(double no
 
 void AubioMicrophoneInputController::applyUnvoicedResult(const QString &reason)
 {
-    const QString nextStatus = reason.isEmpty() ? QStringLiteral("No stable voice detected") : reason;
-    const bool changed = m_voiced || m_frequencyHz != 0.0 || m_pitchConfidence != 0.0 || m_midiNote != -1 || m_pitchStatus != nextStatus;
+    Q_UNUSED(reason)
+    const bool changed = m_voiced || m_frequencyHz != 0.0 || m_pitchConfidence != 0.0 || m_midiNote != -1;
 
     m_frequencyHz = 0.0;
     m_midiNote = -1;
     m_cents = 0.0;
     m_pitchConfidence = 0.0;
     m_voiced = false;
-    m_detectedVoiceClass = QStringLiteral("-");
-    m_pitchStatus = nextStatus;
 
     if (changed) {
         Q_EMIT pitchChanged();
     }
-}
-
-void AubioMicrophoneInputController::registerOnset(double onsetSeconds, double strength)
-{
-    // Claps are short transients, so the RMS gate can already be closed by the
-    // time aubio reports a valid onset. Keep the gate for singing, but do not
-    // let it suppress clapping onsets.
-    if (m_preset != Clapping && !inputGateOpen()) {
-        return;
-    }
-
-    const double onsetStrengthFloor = adaptiveMinimumOnsetStrength();
-    if (strength < onsetStrengthFloor) {
-        if (m_preset == Clapping) {
-            qInfo().noquote() << QStringLiteral("aubio onset rejected: strength=%1 floor=%2 threshold=%3 reason=below-floor")
-                .arg(strength, 0, 'f', 3)
-                .arg(onsetStrengthFloor, 0, 'f', 3)
-                .arg(m_onsetThreshold, 0, 'f', 2);
-        }
-        return;
-    }
-
-    const double beatDuration = 60.0 / m_targetBpm;
-    const double expectedIntervalSeconds = m_minimumExpectedOnsetIntervalMs > 0.0 ? m_minimumExpectedOnsetIntervalMs / 1000.0 : beatDuration;
-    const double duplicateWindowSeconds = std::min(0.18, expectedIntervalSeconds * 0.35);
-    if (m_lastOnsetSeconds >= 0.0 && onsetSeconds - m_lastOnsetSeconds < duplicateWindowSeconds) {
-        if (m_preset == Clapping) {
-            qInfo().noquote() << QStringLiteral("aubio onset rejected: t=%1s strength=%2 floor=%3 threshold=%4 interval=%5ms duplicateWindow=%6ms reason=duplicate")
-                .arg(onsetSeconds, 0, 'f', 3)
-                .arg(strength, 0, 'f', 3)
-                .arg(onsetStrengthFloor, 0, 'f', 3)
-                .arg(m_onsetThreshold, 0, 'f', 2)
-                .arg((onsetSeconds - m_lastOnsetSeconds) * 1000.0, 0, 'f', 1)
-                .arg(duplicateWindowSeconds * 1000.0, 0, 'f', 1);
-        }
-        return;
-    }
-
-    m_previousOnsetSeconds = m_lastOnsetSeconds;
-    m_lastOnsetSeconds = onsetSeconds;
-    ++m_onsetCount;
-
-    if (m_referenceOnsetSeconds < 0.0) {
-        m_referenceOnsetSeconds = onsetSeconds;
-        m_lastTimingErrorMs = 0.0;
-        m_rhythmStatus = QStringLiteral("First onset: timing reference set");
-    } else {
-        const double relativeTime = onsetSeconds - m_referenceOnsetSeconds;
-        const double nearestBeat = std::round(relativeTime / beatDuration) * beatDuration;
-        m_lastTimingErrorMs = (relativeTime - nearestBeat) * 1000.0;
-        m_rhythmStatus = classifyRhythm(m_lastTimingErrorMs);
-    }
-
-    updateDetectedTempo(onsetSeconds);
-
-    qInfo().noquote() << QStringLiteral("aubio onset #%1 t=%2s strength=%3 floor=%4 threshold=%5 timingError=%6ms bpm=%7")
-        .arg(m_onsetCount)
-        .arg(onsetSeconds, 0, 'f', 3)
-        .arg(strength, 0, 'f', 3)
-        .arg(onsetStrengthFloor, 0, 'f', 3)
-        .arg(m_onsetThreshold, 0, 'f', 2)
-        .arg(m_lastTimingErrorMs, 0, 'f', 1)
-        .arg(m_detectedBpm, 0, 'f', 1);
-
-    Q_EMIT rhythmChanged();
-    Q_EMIT onsetDetected(onsetSeconds, strength);
-}
-
-void AubioMicrophoneInputController::updateDetectedTempo(double onsetSeconds)
-{
-    // FMP 6.4.2: derive diagnostic tempo from IOI structure instead of a single adjacent interval.
-    m_recentOnsetSeconds.push_back(onsetSeconds);
-    while (m_recentOnsetSeconds.size() > 12) {
-        m_recentOnsetSeconds.pop_front();
-    }
-    if (m_recentOnsetSeconds.size() < 3) {
-        return;
-    }
-
-    std::vector<double> bpmCandidates;
-    for (std::size_t i = 0; i < m_recentOnsetSeconds.size(); ++i) {
-        for (std::size_t j = i + 1; j < m_recentOnsetSeconds.size(); ++j) {
-            const double interval = m_recentOnsetSeconds[j] - m_recentOnsetSeconds[i];
-            const double minimumTempoIntervalSeconds = m_minimumExpectedOnsetIntervalMs > 0.0 ? std::max(0.03, m_minimumExpectedOnsetIntervalMs * 0.001 * 0.45) : 0.12;
-            if (interval < minimumTempoIntervalSeconds || interval > 2.0) {
-                continue;
-            }
-            double bpm = 60.0 / interval;
-            while (bpm < 30.0) {
-                bpm *= 2.0;
-            }
-            while (bpm > 240.0) {
-                bpm /= 2.0;
-            }
-            if (bpm >= 30.0 && bpm <= 240.0) {
-                bpmCandidates.push_back(bpm);
-            }
-        }
-    }
-
-    if (bpmCandidates.empty()) {
-        return;
-    }
-
-    std::sort(bpmCandidates.begin(), bpmCandidates.end());
-    const double estimatedBpm = bpmCandidates.at(bpmCandidates.size() / 2);
-    m_detectedBpm = m_detectedBpm <= 0.0 ? estimatedBpm : 0.80 * m_detectedBpm + 0.20 * estimatedBpm;
 }
 
 void AubioMicrophoneInputController::resetIfRunning()
@@ -1374,8 +779,6 @@ void AubioMicrophoneInputController::applyPreset(Preset preset, bool restartIfRu
 
     m_preset = preset;
     m_calibratedOnsetStrengthFloor = 0.0;
-    m_recentAcceptedFrequencies.clear();
-    m_recentOnsetDescriptorValues.clear();
 
     switch (preset) {
     case Singing:
@@ -1405,8 +808,6 @@ void AubioMicrophoneInputController::applyPreset(Preset preset, bool restartIfRu
         break;
     }
 
-    resetPitchCandidate();
-
     Q_EMIT presetChanged();
     Q_EMIT pitchMethodChanged();
     Q_EMIT onsetMethodChanged();
@@ -1435,12 +836,6 @@ void AubioMicrophoneInputController::applyPreset(Preset preset, bool restartIfRu
 
     if (wasRunning && restartIfRunning) {
         start();
-    } else if (m_onset) {
-        aubio_onset_set_threshold(m_onset.get(), static_cast<smpl_t>(m_onsetThreshold));
-        aubio_onset_set_silence(m_onset.get(), static_cast<smpl_t>(m_pitchSilenceDb));
-    }
-    if (!wasRunning && m_pitch) {
-        aubio_pitch_set_silence(m_pitch.get(), static_cast<smpl_t>(m_pitchSilenceDb));
     }
 }
 
@@ -1451,12 +846,8 @@ AubioAnalysisWorker::Config AubioMicrophoneInputController::workerConfig() const
     config.analysisMode = static_cast<int>(m_analysisMode);
     config.pitchMethod = static_cast<int>(m_pitchMethod);
     config.onsetMethod = static_cast<int>(m_onsetMethod);
-    config.expectedMidiNote = m_expectedMidiNote;
-    config.disregardOctaveDifference = m_disregardOctaveDifference;
     config.voiceMinHz = minFrequencyForCurrentVoiceClass();
     config.voiceMaxHz = maxFrequencyForCurrentVoiceClass();
-    config.targetBpm = m_targetBpm;
-    config.minimumExpectedOnsetIntervalMs = m_minimumExpectedOnsetIntervalMs;
     config.minimumPitchConfidence = m_minimumPitchConfidence;
     config.pitchSilenceDb = m_pitchSilenceDb;
     config.onsetThreshold = m_onsetThreshold;
@@ -1506,8 +897,6 @@ void AubioMicrophoneInputController::handleWorkerPitch(double seconds,
     m_cents = cents;
     m_pitchConfidence = clampedConfidence;
     m_voiced = true;
-    m_detectedVoiceClass = voiceClassForFrequency(frequencyHz);
-    m_pitchStatus = classifyPitch(frequencyHz, cents, clampedConfidence);
     if (changed) {
         Q_EMIT pitchChanged();
     }
@@ -1516,29 +905,13 @@ void AubioMicrophoneInputController::handleWorkerPitch(double seconds,
 
 void AubioMicrophoneInputController::handleWorkerOnset(double onsetSeconds, double strength)
 {
-    m_previousOnsetSeconds = m_lastOnsetSeconds;
     m_lastOnsetSeconds = onsetSeconds;
     ++m_onsetCount;
 
-    const double beatDuration = 60.0 / m_targetBpm;
-    if (m_referenceOnsetSeconds < 0.0) {
-        m_referenceOnsetSeconds = onsetSeconds;
-        m_lastTimingErrorMs = 0.0;
-        m_rhythmStatus = QStringLiteral("First onset: timing reference set");
-    } else {
-        const double relativeTime = onsetSeconds - m_referenceOnsetSeconds;
-        const double nearestBeat = std::round(relativeTime / beatDuration) * beatDuration;
-        m_lastTimingErrorMs = (relativeTime - nearestBeat) * 1000.0;
-        m_rhythmStatus = classifyRhythm(m_lastTimingErrorMs);
-    }
-    updateDetectedTempo(onsetSeconds);
-
-    qInfo().noquote() << QStringLiteral("aubio onset #%1 t=%2s strength=%3 timingError=%4ms bpm=%5")
+    qInfo().noquote() << QStringLiteral("aubio onset #%1 t=%2s strength=%3")
         .arg(m_onsetCount)
         .arg(onsetSeconds, 0, 'f', 3)
-        .arg(strength, 0, 'f', 3)
-        .arg(m_lastTimingErrorMs, 0, 'f', 1)
-        .arg(m_detectedBpm, 0, 'f', 1);
+        .arg(strength, 0, 'f', 3);
 
     Q_EMIT rhythmChanged();
     Q_EMIT onsetDetected(onsetSeconds, strength);
@@ -1548,35 +921,13 @@ void AubioMicrophoneInputController::stopAudioCapture()
 {
     m_pollTimer.stop();
     if (m_audioDevice) {
-        disconnect(m_audioDevice, nullptr, this, nullptr);
+        disconnect(m_audioDevice, &QIODevice::readyRead, this, &AubioMicrophoneInputController::readAudioData);
     }
     if (m_audioSource) {
         m_audioSource->stop();
     }
     m_audioDevice.clear();
     m_audioSource.reset();
-}
-
-void AubioMicrophoneInputController::maybePrintDebug(double timeSeconds, double frequencyHz, double confidence)
-{
-    if (m_processedSamples - m_lastDebugSample < m_sampleRate) {
-        return;
-    }
-    m_lastDebugSample = m_processedSamples;
-    qInfo().noquote() << QStringLiteral("aubio frame t=%1s bytes=%2 samples=%3 level=%4 peak=%5 gate=%6 gateOpen=%7 noiseFloor=%8 stable=%9/%10 f0=%11Hz confidence=%12 pending=%13")
-        .arg(timeSeconds, 0, 'f', 2)
-        .arg(m_bytesRead)
-        .arg(m_processedSamples)
-        .arg(m_audioLevel, 0, 'f', 4)
-        .arg(m_peakLevel, 0, 'f', 4)
-        .arg(m_inputGateLevel, 0, 'f', 4)
-        .arg(inputGateOpen() ? QStringLiteral("yes") : QStringLiteral("no"))
-        .arg(m_noiseFloorLevel, 0, 'f', 4)
-        .arg(m_stablePitchFrameCount)
-        .arg(m_requiredStablePitchFrames)
-        .arg(frequencyHz, 0, 'f', 2)
-        .arg(confidence, 0, 'f', 3)
-        .arg(m_pendingSamples.size());
 }
 
 QString AubioMicrophoneInputController::noteNameForMidi(int midiNote)
@@ -1637,59 +988,6 @@ double AubioMicrophoneInputController::minFrequencyForCurrentVoiceClass() const
 double AubioMicrophoneInputController::maxFrequencyForCurrentVoiceClass() const
 {
     return voiceClassMaxHz(m_voiceClass);
-}
-
-QString AubioMicrophoneInputController::voiceClassForFrequency(double frequencyHz) const
-{
-    QStringList classes;
-    for (int i = Soprano; i <= Bass; ++i) {
-        if (frequencyHz >= voiceClassMinHz(i) && frequencyHz <= voiceClassMaxHz(i)) {
-            classes.append(voiceClassName(i));
-        }
-    }
-    return classes.isEmpty() ? QStringLiteral("outside SATB") : classes.join(QStringLiteral(" / "));
-}
-
-QString AubioMicrophoneInputController::classifyPitch(double frequencyHz, double cents, double confidence) const
-{
-    const bool insideSelectedRange = frequencyHz >= minFrequencyForCurrentVoiceClass() && frequencyHz <= maxFrequencyForCurrentVoiceClass();
-    const QString rangeText = insideSelectedRange
-        ? QStringLiteral("inside selected %1 range").arg(voiceClassName(m_voiceClass))
-        : QStringLiteral("outside selected %1 range").arg(voiceClassName(m_voiceClass));
-
-    QString quality;
-    if (confidence < m_minimumPitchConfidence) {
-        quality = QStringLiteral("Low confidence F0");
-    } else {
-        const double absCents = std::abs(cents);
-        if (absCents < 10.0) {
-            quality = QStringLiteral("Excellent intonation");
-        } else if (absCents < 25.0) {
-            quality = cents > 0.0 ? QStringLiteral("Good, slightly sharp") : QStringLiteral("Good, slightly flat");
-        } else if (absCents < 50.0) {
-            quality = cents > 0.0 ? QStringLiteral("Sharp") : QStringLiteral("Flat");
-        } else {
-            quality = cents > 0.0 ? QStringLiteral("Too sharp / maybe wrong note") : QStringLiteral("Too flat / maybe wrong note");
-        }
-    }
-
-    return QStringLiteral("%1; %2; detected class: %3")
-        .arg(quality, rangeText, voiceClassForFrequency(frequencyHz));
-}
-
-QString AubioMicrophoneInputController::classifyRhythm(double timingErrorMs) const
-{
-    const double absError = std::abs(timingErrorMs);
-    if (absError < 40.0) {
-        return QStringLiteral("Excellent timing");
-    }
-    if (absError < 80.0) {
-        return timingErrorMs > 0.0 ? QStringLiteral("Good, slightly late") : QStringLiteral("Good, slightly early");
-    }
-    if (absError < 150.0) {
-        return timingErrorMs > 0.0 ? QStringLiteral("Late") : QStringLiteral("Early");
-    }
-    return timingErrorMs > 0.0 ? QStringLiteral("Very late") : QStringLiteral("Very early");
 }
 
 bool AubioMicrophoneInputController::pitchDetectorEnabled() const

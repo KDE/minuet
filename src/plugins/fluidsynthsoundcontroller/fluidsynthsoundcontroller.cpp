@@ -26,10 +26,11 @@
 
 using namespace Qt::StringLiterals;
 
-unsigned int FluidSynthSoundController::m_initialTime = 0;
 static constexpr int MelodicChannel = 1;
 static constexpr int RhythmChannel = 9;
 static constexpr short RhythmCountInKey = 76; // High Wood Block
+static constexpr short RhythmCountInVelocity = 127;
+static constexpr short RhythmSubTickVelocity = 64;
 static constexpr short DefaultRhythmInstrumentKey = 37; // Side Stick
 static constexpr short FirstRhythmInstrumentKey = 35;
 static constexpr short LastRhythmInstrumentKey = 81;
@@ -171,6 +172,16 @@ void FluidSynthSoundController::setRhythmCountInBeats(int beats)
     emit rhythmCountInBeatsChanged(m_rhythmCountInBeats);
 }
 
+void FluidSynthSoundController::setRhythmCountInSubdivisions(int subdivisions)
+{
+    subdivisions = std::clamp(subdivisions, 1, 16);
+    if (m_rhythmCountInSubdivisions == subdivisions) {
+        return;
+    }
+    m_rhythmCountInSubdivisions = subdivisions;
+    emit rhythmCountInSubdivisionsChanged(m_rhythmCountInSubdivisions);
+}
+
 void FluidSynthSoundController::setInstrument(int instrument)
 {
     if (instrument < 0 || instrument > 127) {
@@ -206,9 +217,7 @@ void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedEx
     if (m_playMode == u"rhythm"_s) {
         setRhythmCountInBeats(RhythmExerciseCountInBeats);
         m_activeCountInBeats = RhythmExerciseCountInBeats;
-        for (int i = 0; i < m_activeCountInBeats; ++i) {
-            appendEvent(RhythmChannel, RhythmCountInKey, 127, 1000 * (60.0 / m_tempo));
-        }
+        appendCountInEvents(m_activeCountInBeats);
     }
 
     for (auto &&selectedExerciseOption : selectedExerciseOptions) {
@@ -280,9 +289,7 @@ void FluidSynthSoundController::playCountIn(int beats, bool audible)
     m_activeCountInBeats = beats;
     auto *song = new QList<fluid_event_t *>;
     m_song.reset(song);
-    for (int i = 0; i < beats; ++i) {
-        appendEvent(RhythmChannel, RhythmCountInKey, 127, 1000 * (60.0 / m_tempo));
-    }
+    appendCountInEvents(beats);
 
     fluid_event_t *event = new_fluid_event();
     fluid_event_set_source(event, -1);
@@ -376,6 +383,17 @@ void FluidSynthSoundController::appendEvent(int channel, short key, short veloci
     fluid_event_set_source(event, -1);
     fluid_event_note(event, channel, key, velocity, duration);
     m_song->append(event);
+}
+
+void FluidSynthSoundController::appendCountInEvents(int beats)
+{
+    const unsigned int subdivisionDuration = 1000 * (60.0 / m_tempo) / m_rhythmCountInSubdivisions;
+    for (int beat = 0; beat < beats; ++beat) {
+        appendEvent(RhythmChannel, RhythmCountInKey, RhythmCountInVelocity, subdivisionDuration);
+        for (int subdivision = 1; subdivision < m_rhythmCountInSubdivisions; ++subdivision) {
+            appendEvent(RhythmChannel, RhythmCountInKey, RhythmSubTickVelocity, subdivisionDuration);
+        }
+    }
 }
 
 void FluidSynthSoundController::hideCountIn()
@@ -648,21 +666,29 @@ void FluidSynthSoundController::sequencerCallback(unsigned int time, fluid_event
 {
     Q_UNUSED(seq);
 
-    // This is safe!
     auto *soundController = reinterpret_cast<FluidSynthSoundController *>(data);
+    const int eventType = fluid_event_get_type(event);
+    const int channel = eventType == FLUID_SEQ_NOTE ? fluid_event_get_channel(event) : -1;
+    const short key = eventType == FLUID_SEQ_NOTE ? fluid_event_get_key(event) : 0;
+    const int velocity = eventType == FLUID_SEQ_NOTE ? fluid_event_get_velocity(event) : 0;
+    QMetaObject::invokeMethod(soundController, [soundController, time, eventType, channel, key, velocity] {
+        soundController->handleSequencerEvent(time, eventType, channel, key, velocity);
+    });
+}
 
-    int eventType = fluid_event_get_type(event);
+void FluidSynthSoundController::handleSequencerEvent(unsigned int time, int eventType, int channel, short key, int velocity)
+{
     switch (eventType) {
     case FLUID_SEQ_NOTE: {
-        const int channel = fluid_event_get_channel(event);
-        const short key = fluid_event_get_key(event);
-        if ((soundController->m_playMode == u"rhythm"_s || soundController->m_countInOnly) && channel == RhythmChannel) {
-            if (key == RhythmCountInKey && soundController->m_countInNextValue <= soundController->m_activeCountInBeats) {
-                soundController->m_countInVisible = true;
-                emit soundController->countInChanged(soundController->m_countInNextValue);
-                ++soundController->m_countInNextValue;
-            } else if (key == soundController->m_rhythmInstrument) {
-                soundController->hideCountIn();
+        if ((m_playMode == u"rhythm"_s || m_countInOnly) && channel == RhythmChannel) {
+            if (key == RhythmCountInKey && velocity == RhythmCountInVelocity && m_countInNextValue <= m_activeCountInBeats) {
+                m_countInVisible = true;
+                Q_EMIT countInChanged(m_countInNextValue);
+                ++m_countInNextValue;
+            } else if (key == RhythmCountInKey && velocity == RhythmSubTickVelocity && m_countInVisible) {
+                Q_EMIT countInSubTick();
+            } else if (key == m_rhythmInstrument) {
+                hideCountIn();
             }
         }
 
@@ -675,16 +701,18 @@ void FluidSynthSoundController::sequencerCallback(unsigned int time, fluid_event
         int cnts = 100 * (adjustedTime - qFloor(adjustedTime));
 
         static QChar fill('0');
-        soundController->setPlaybackLabel(u"%1:%2.%3"_s.arg(mins, 2, 10, fill).arg(secs, 2, 10, fill).arg(cnts, 2, 10, fill));
+        setPlaybackLabel(u"%1:%2.%3"_s.arg(mins, 2, 10, fill).arg(secs, 2, 10, fill).arg(cnts, 2, 10, fill));
         break;
     }
     case FLUID_SEQ_ALLNOTESOFF: {
-        soundController->hideCountIn();
         m_initialTime = 0;
-        soundController->setPlaybackLabel(u"00:00.00"_s);
-        soundController->setState(State::StoppedState);
+        setPlaybackLabel(u"00:00.00"_s);
+        setState(State::StoppedState);
+        hideCountIn();
         break;
     }
+    default:
+        break;
     }
 }
 

@@ -13,56 +13,51 @@ import org.kde.kirigamiaddons.formcard as FormCard
 FormCard.FormCardPage {
     id: root
 
-    property bool advancedExpanded: false
-    readonly property real formDelegateHorizontalPadding: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing
-    readonly property var groupsModel: Core.instrumentCatalogController.instrumentGroups(instrumentGroupsJson)
-    readonly property string hideAdvancedSettingsText: i18n("Hide advanced settings")
-    readonly property string instrumentGroupsJson: Core.soundController ? Core.soundController.instrumentGroupsJson || "[]" : "[]"
-    readonly property var instrumentsForGroupModel: Core.instrumentCatalogController.melodicInstrumentsForGroup(instrumentsModel, selectedMelodicGroup)
-    readonly property string instrumentsJson: Core.soundController ? Core.soundController.instrumentsJson || "[]" : "[]"
-    readonly property var instrumentsModel: Core.instrumentCatalogController.melodicInstruments(instrumentsJson)
-    readonly property var microphoneInputDevicesModel: Core.microphoneInputController ? Core.microphoneInputController.inputDevices : []
-    readonly property var microphoneOnsetMethods: ["complex", "hfc", "energy", "specflux", "phase", "specdiff", "kl", "mkl"]
-    readonly property var microphonePitchMethods: ["yinfft", "yin", "yinfast", "mcomb", "schmitt", "specacf", "fcomb"]
-    readonly property string rhythmInstrumentsJson: Core.soundController ? Core.soundController.rhythmInstrumentsJson || "[]" : "[]"
-    readonly property var rhythmInstrumentsModel: Core.instrumentCatalogController.rhythmInstruments(rhythmInstrumentsJson)
-    readonly property var scoringModes: [i18n("Pitch primary"), i18n("Pitch + timing")]
-    property int selectedMelodicGroup: -1
-    readonly property int settingLabelWidth: Kirigami.Units.gridUnit * 10
-    readonly property string showAdvancedSettingsText: i18n("Show advanced settings")
-    readonly property var voiceClasses: [i18n("Soprano"), i18n("Alto"), i18n("Tenor"), i18n("Bass")]
-
     function microphoneInputDeviceIndex(deviceId: string): int {
         let defaultIndex = -1;
-        for (let i = 0; i < root.microphoneInputDevicesModel.length; ++i) {
-            if (root.microphoneInputDevicesModel[i].id === deviceId) {
+        for (let i = 0; i < internal.microphoneInputDevicesModel.length; ++i) {
+            if (internal.microphoneInputDevicesModel[i].id === deviceId) {
                 return i;
             }
-            if (root.microphoneInputDevicesModel[i].isDefault) {
+            if (internal.microphoneInputDevicesModel[i].isDefault) {
                 defaultIndex = i;
             }
         }
-        return defaultIndex >= 0 ? defaultIndex : root.microphoneInputDevicesModel.length > 0 ? 0 : -1;
+        return defaultIndex >= 0 ? defaultIndex : internal.microphoneInputDevicesModel.length > 0 ? 0 : -1;
     }
     function syncSelectionFromController(): void {
         if (!Core.soundController) {
-            root.selectedMelodicGroup = -1;
+            internal.selectedMelodicGroup = -1;
             return;
         }
 
-        root.selectedMelodicGroup = Core.instrumentCatalogController.melodicGroupIndex(groupsModel, Core.settingsController.instrumentGroup) >= 0 ? Core.settingsController.instrumentGroup : Core.instrumentCatalogController.melodicGroupForInstrument(groupsModel, instrumentsModel, Core.settingsController.instrument);
-        if (root.selectedMelodicGroup !== Core.settingsController.instrumentGroup) {
-            Core.settingsController.instrumentGroup = root.selectedMelodicGroup;
+        internal.selectedMelodicGroup = Core.instrumentCatalogController.melodicGroupIndex(internal.groupsModel, Core.settingsController.instrumentGroup) >= 0 ? Core.settingsController.instrumentGroup : Core.instrumentCatalogController.melodicGroupForInstrument(internal.groupsModel, internal.instrumentsModel, Core.settingsController.instrument);
+        if (internal.selectedMelodicGroup !== Core.settingsController.instrumentGroup) {
+            Core.settingsController.instrumentGroup = internal.selectedMelodicGroup;
         }
-        groupSelector.currentIndex = Core.instrumentCatalogController.melodicGroupIndex(groupsModel, root.selectedMelodicGroup);
-        melodicInstrumentSelector.currentIndex = Core.instrumentCatalogController.melodicInstrumentIndex(instrumentsForGroupModel, Core.settingsController.instrument);
-        rhythmInstrumentSelector.currentIndex = Core.instrumentCatalogController.rhythmInstrumentIndex(rhythmInstrumentsModel, Core.settingsController.rhythmInstrument);
+        groupSelector.currentIndex = Core.instrumentCatalogController.melodicGroupIndex(internal.groupsModel, internal.selectedMelodicGroup);
+        melodicInstrumentSelector.currentIndex = Core.instrumentCatalogController.melodicInstrumentIndex(internal.instrumentsForGroupModel, Core.settingsController.instrument);
+        rhythmInstrumentSelector.currentIndex = Core.instrumentCatalogController.rhythmInstrumentIndex(internal.rhythmInstrumentsModel, Core.settingsController.rhythmInstrument);
     }
 
     title: i18n("Settings")
 
     Component.onCompleted: root.syncSelectionFromController()
 
+    QtObject {
+        id: internal
+
+        property bool advancedExpanded: false
+        readonly property real formDelegateHorizontalPadding: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing
+        readonly property var groupsModel: Core.soundController ? Core.soundController.instrumentGroups : []
+        readonly property string hideAdvancedSettingsText: i18n("Hide advanced settings")
+        readonly property var instrumentsForGroupModel: Core.instrumentCatalogController.melodicInstrumentsForGroup(internal.instrumentsModel, internal.selectedMelodicGroup)
+        readonly property var instrumentsModel: Core.soundController ? Core.soundController.instruments : []
+        readonly property var microphoneInputDevicesModel: Core.microphoneInputController ? Core.microphoneInputController.inputDevices : []
+        readonly property var rhythmInstrumentsModel: Core.soundController ? Core.soundController.rhythmInstruments : []
+        property int selectedMelodicGroup: -1
+        readonly property string showAdvancedSettingsText: i18n("Show advanced settings")
+    }
     Connections {
         function onInstrumentChanged(): void {
             root.syncSelectionFromController();
@@ -121,13 +116,13 @@ FormCard.FormCardPage {
 
             contentItem: SettingsSlider {
                 from: 30
-                label: i18n("Clapping speed")
+                label: i18n("Rhythm tempo")
                 suffix: i18n("bpm")
-                to: 120
-                value: Core.settingsController.clappingSpeed
+                to: 240
+                value: Core.settingsController.rhythmTempo
 
                 onMoved: function (value) {
-                    Core.settingsController.clappingSpeed = value;
+                    Core.settingsController.rhythmTempo = value;
                 }
             }
         }
@@ -184,73 +179,73 @@ FormCard.FormCardPage {
             description: i18n("The active sound controller did not report any General MIDI bank 0 instruments.")
             icon.name: "dialog-warning-symbolic"
             text: i18n("No melodic instruments available")
-            visible: groupsModel.length === 0
+            visible: internal.groupsModel.length === 0
         }
         FormCard.FormTextDelegate {
             description: i18n("Used for scales, intervals, and chords.")
             text: i18n("Melodic Exercises")
-            visible: groupsModel.length > 0
+            visible: internal.groupsModel.length > 0
         }
         FormCard.AbstractFormDelegate {
             background: null
-            visible: groupsModel.length > 0
+            visible: internal.groupsModel.length > 0
 
             contentItem: SettingsComboBox {
                 id: groupSelector
 
-                currentIndex: Core.instrumentCatalogController.melodicGroupIndex(groupsModel, root.selectedMelodicGroup)
+                currentIndex: Core.instrumentCatalogController.melodicGroupIndex(internal.groupsModel, internal.selectedMelodicGroup)
                 label: i18n("Instrument group:")
-                model: groupsModel
+                model: internal.groupsModel
                 textRole: "name"
                 valueRole: "id"
 
                 onActivated: function (currentValue, currentIndex) {
-                    root.selectedMelodicGroup = currentValue;
+                    internal.selectedMelodicGroup = currentValue;
                     Core.settingsController.instrumentGroup = currentValue;
-                    melodicInstrumentSelector.currentIndex = instrumentsForGroupModel.length > 0 ? 0 : -1;
+                    melodicInstrumentSelector.currentIndex = internal.instrumentsForGroupModel.length > 0 ? 0 : -1;
                     if (melodicInstrumentSelector.currentIndex >= 0) {
-                        Core.settingsController.instrument = instrumentsForGroupModel[melodicInstrumentSelector.currentIndex].program;
+                        Core.settingsController.instrument = internal.instrumentsForGroupModel[melodicInstrumentSelector.currentIndex].program;
                     }
                 }
             }
         }
         FormCard.AbstractFormDelegate {
             background: null
-            visible: groupsModel.length > 0
+            visible: internal.groupsModel.length > 0
 
             contentItem: SettingsComboBox {
                 id: melodicInstrumentSelector
 
-                currentIndex: Core.instrumentCatalogController.melodicInstrumentIndex(instrumentsForGroupModel, Core.settingsController.instrument)
+                currentIndex: Core.instrumentCatalogController.melodicInstrumentIndex(internal.instrumentsForGroupModel, Core.settingsController.instrument)
                 label: i18n("Instrument:")
-                model: instrumentsForGroupModel
+                model: internal.instrumentsForGroupModel
                 textRole: "displayName"
                 valueRole: "program"
 
                 onActivated: function (currentValue, currentIndex) {
-                    Core.settingsController.instrumentGroup = root.selectedMelodicGroup;
+                    Core.settingsController.instrumentGroup = internal.selectedMelodicGroup;
                     Core.settingsController.instrument = currentValue;
                 }
             }
         }
         FormCard.FormDelegateSeparator {
-            visible: groupsModel.length > 0 && rhythmInstrumentsModel.length > 0
+            visible: internal.groupsModel.length > 0 && internal.rhythmInstrumentsModel.length > 0
         }
         FormCard.FormTextDelegate {
             description: i18n("Used for rhythm figures. The count-in keeps its own sound.")
             text: i18n("Rhythmic Exercises")
-            visible: rhythmInstrumentsModel.length > 0
+            visible: internal.rhythmInstrumentsModel.length > 0
         }
         FormCard.AbstractFormDelegate {
             background: null
-            visible: rhythmInstrumentsModel.length > 0
+            visible: internal.rhythmInstrumentsModel.length > 0
 
             contentItem: SettingsComboBox {
                 id: rhythmInstrumentSelector
 
-                currentIndex: Core.instrumentCatalogController.rhythmInstrumentIndex(rhythmInstrumentsModel, Core.settingsController.rhythmInstrument)
+                currentIndex: Core.instrumentCatalogController.rhythmInstrumentIndex(internal.rhythmInstrumentsModel, Core.settingsController.rhythmInstrument)
                 label: i18n("Percussion sound:")
-                model: rhythmInstrumentsModel
+                model: internal.rhythmInstrumentsModel
                 textRole: "displayName"
                 valueRole: "key"
 
@@ -266,12 +261,12 @@ FormCard.FormCardPage {
     FormCard.FormCard {
         FormCard.AbstractFormDelegate {
             background: null
-            visible: root.microphoneInputDevicesModel.length > 1
+            visible: internal.microphoneInputDevicesModel.length > 1
 
             contentItem: SettingsComboBox {
                 currentIndex: root.microphoneInputDeviceIndex(Core.settingsController.microphoneInputDeviceId)
                 label: i18n("Input device")
-                model: root.microphoneInputDevicesModel
+                model: internal.microphoneInputDevicesModel
                 textRole: "displayName"
                 valueRole: "id"
 
@@ -286,7 +281,7 @@ FormCard.FormCardPage {
             contentItem: SettingsComboBox {
                 currentIndex: Core.settingsController.singingVoiceClass
                 label: i18n("Voice class")
-                model: root.voiceClasses
+                model: [i18n("Soprano"), i18n("Alto"), i18n("Tenor"), i18n("Bass")]
 
                 onActivated: function (currentValue, currentIndex) {
                     Core.settingsController.singingVoiceClass = currentIndex;
@@ -348,14 +343,14 @@ FormCard.FormCardPage {
                         id: showAdvancedSettingsButtonMetrics
 
                         icon.name: "go-down-symbolic"
-                        text: root.showAdvancedSettingsText
+                        text: internal.showAdvancedSettingsText
                         visible: false
                     }
                     QQC2.Button {
                         id: hideAdvancedSettingsButtonMetrics
 
                         icon.name: "go-up-symbolic"
-                        text: root.hideAdvancedSettingsText
+                        text: internal.hideAdvancedSettingsText
                         visible: false
                     }
                     QQC2.Button {
@@ -363,10 +358,10 @@ FormCard.FormCardPage {
 
                         Layout.alignment: Qt.AlignLeft
                         Layout.preferredWidth: Math.max(showAdvancedSettingsButtonMetrics.implicitWidth, hideAdvancedSettingsButtonMetrics.implicitWidth)
-                        icon.name: root.advancedExpanded ? "go-up-symbolic" : "go-down-symbolic"
-                        text: root.advancedExpanded ? root.hideAdvancedSettingsText : root.showAdvancedSettingsText
+                        icon.name: internal.advancedExpanded ? "go-up-symbolic" : "go-down-symbolic"
+                        text: internal.advancedExpanded ? internal.hideAdvancedSettingsText : internal.showAdvancedSettingsText
 
-                        onClicked: root.advancedExpanded = !root.advancedExpanded
+                        onClicked: internal.advancedExpanded = !internal.advancedExpanded
                     }
                     QQC2.Label {
                         Layout.fillWidth: true
@@ -379,12 +374,12 @@ FormCard.FormCardPage {
                     id: advancedLoader
 
                     Layout.fillWidth: true
-                    Layout.maximumHeight: root.advancedExpanded ? implicitHeight : 0
-                    Layout.minimumHeight: root.advancedExpanded ? implicitHeight : 0
-                    Layout.preferredHeight: root.advancedExpanded ? implicitHeight : 0
-                    active: root.advancedExpanded
+                    Layout.maximumHeight: internal.advancedExpanded ? implicitHeight : 0
+                    Layout.minimumHeight: internal.advancedExpanded ? implicitHeight : 0
+                    Layout.preferredHeight: internal.advancedExpanded ? implicitHeight : 0
+                    active: internal.advancedExpanded
                     sourceComponent: advancedSettingsComponent
-                    visible: root.advancedExpanded
+                    visible: internal.advancedExpanded
                 }
             }
         }
@@ -403,7 +398,7 @@ FormCard.FormCardPage {
             AdvancedSettingsComboBox {
                 currentIndex: Core.settingsController.clappingOnsetMethod
                 label: i18n("Onset method")
-                model: root.microphoneOnsetMethods
+                model: ["complex", "hfc", "energy", "specflux", "phase", "specdiff", "kl", "mkl"]
 
                 onActivated: function (currentValue, currentIndex) {
                     Core.settingsController.clappingOnsetMethod = currentIndex;
@@ -446,10 +441,10 @@ FormCard.FormCardPage {
                 }
             }
             FormCard.FormDelegateSeparator {
-                Layout.bottomMargin: root.formDelegateHorizontalPadding
+                Layout.bottomMargin: internal.formDelegateHorizontalPadding
                 Layout.leftMargin: 0
                 Layout.rightMargin: 0
-                Layout.topMargin: root.formDelegateHorizontalPadding
+                Layout.topMargin: internal.formDelegateHorizontalPadding
             }
             AdvancedSettingsSection {
                 description: i18n("Used for pitch analysis and note-entry timing in singing exercises.")
@@ -458,7 +453,7 @@ FormCard.FormCardPage {
             AdvancedSettingsComboBox {
                 currentIndex: Core.settingsController.singingPitchMethod
                 label: i18n("Pitch method")
-                model: root.microphonePitchMethods
+                model: ["yinfft", "yin", "yinfast", "mcomb", "schmitt", "specacf", "fcomb"]
 
                 onActivated: function (currentValue, currentIndex) {
                     Core.settingsController.singingPitchMethod = currentIndex;
@@ -501,16 +496,16 @@ FormCard.FormCardPage {
             AdvancedSettingsComboBox {
                 currentIndex: Core.settingsController.singingScoringMode
                 label: i18n("Scoring mode")
-                model: root.scoringModes
+                model: [i18n("Pitch primary"), i18n("Pitch + timing")]
 
                 onActivated: function (currentValue, currentIndex) {
                     Core.settingsController.singingScoringMode = currentIndex;
                 }
             }
             QQC2.CheckBox {
-                Layout.bottomMargin: root.formDelegateHorizontalPadding
+                Layout.bottomMargin: internal.formDelegateHorizontalPadding
                 Layout.fillWidth: true
-                Layout.topMargin: root.formDelegateHorizontalPadding
+                Layout.topMargin: internal.formDelegateHorizontalPadding
                 checked: Core.settingsController.singingDisregardOctaveDifference
                 text: i18n("Disregard octave difference")
 
@@ -518,135 +513,12 @@ FormCard.FormCardPage {
             }
             QQC2.Button {
                 Layout.alignment: Qt.AlignRight
-                Layout.topMargin: root.formDelegateHorizontalPadding
+                Layout.topMargin: internal.formDelegateHorizontalPadding
                 icon.name: "edit-reset-symbolic"
                 text: i18n("Reset to Defaults")
 
                 onClicked: Core.settingsController.resetAdvancedSettingsToDefaults()
             }
-        }
-    }
-
-    component AdvancedSettingsComboBox: SettingsComboBox {
-        Layout.bottomMargin: root.formDelegateHorizontalPadding
-        Layout.topMargin: root.formDelegateHorizontalPadding
-    }
-    component AdvancedSettingsSection: FormCard.FormTextDelegate {
-        Layout.fillWidth: true
-        bottomPadding: Kirigami.Units.smallSpacing
-        descriptionItem.horizontalAlignment: Text.AlignLeft
-        leftPadding: 0
-        rightPadding: 0
-        textItem.horizontalAlignment: Text.AlignLeft
-        topPadding: Kirigami.Units.smallSpacing
-    }
-    component AdvancedSettingsSlider: SettingsSlider {
-        Layout.bottomMargin: root.formDelegateHorizontalPadding
-        Layout.topMargin: root.formDelegateHorizontalPadding
-    }
-    component SettingsComboBox: ColumnLayout {
-        id: comboRow
-
-        property int currentIndex: -1
-        property string description: ""
-        property string label: ""
-        property var model: []
-        property string textRole: ""
-        property string valueRole: ""
-
-        signal activated(var currentValue, int currentIndex)
-
-        Layout.fillWidth: true
-        spacing: Kirigami.Units.smallSpacing
-
-        RowLayout {
-            Layout.fillWidth: true
-
-            QQC2.Label {
-                Layout.preferredWidth: root.settingLabelWidth
-                elide: Text.ElideRight
-                text: comboRow.label
-            }
-            QQC2.ComboBox {
-                id: comboBox
-
-                Layout.fillWidth: true
-                currentIndex: comboRow.currentIndex
-                model: comboRow.model
-                textRole: comboRow.textRole
-                valueRole: comboRow.valueRole
-
-                onActivated: comboRow.activated(currentValue, currentIndex)
-            }
-        }
-        QQC2.Label {
-            Layout.fillWidth: true
-            Layout.leftMargin: root.settingLabelWidth + Kirigami.Units.smallSpacing
-            color: Kirigami.Theme.disabledTextColor
-            text: comboRow.description
-            visible: comboRow.description.length > 0
-            wrapMode: Text.WordWrap
-        }
-    }
-    component SettingsSlider: ColumnLayout {
-        id: sliderRow
-
-        property int decimals: 0
-        property string description: ""
-        property real from: 0
-        property string label: ""
-        property real stepSize: 1
-        property string suffix: ""
-        property real to: 100
-        property real value: 0
-
-        signal moved(real value)
-
-        function formattedValue(): string {
-            const numericValue = decimals === 0 ? Math.round(slider.value).toString() : slider.value.toFixed(decimals);
-            return suffix.length > 0 ? i18n("%1 %2", numericValue, suffix) : numericValue;
-        }
-
-        Layout.fillWidth: true
-        spacing: Kirigami.Units.smallSpacing
-
-        RowLayout {
-            Layout.fillWidth: true
-
-            QQC2.Label {
-                Layout.preferredWidth: root.settingLabelWidth
-                elide: Text.ElideRight
-                text: sliderRow.label
-            }
-            QQC2.Slider {
-                id: slider
-
-                Layout.fillWidth: true
-                from: sliderRow.from
-                snapMode: QQC2.Slider.NoSnap
-                stepSize: 0
-                to: sliderRow.to
-                value: sliderRow.value
-
-                onMoved: {
-                    const adjustedValue = sliderRow.decimals === 0 ? Math.round(value) : Number(value.toFixed(sliderRow.decimals));
-                    sliderRow.moved(adjustedValue);
-                }
-            }
-            QQC2.Label {
-                Layout.minimumWidth: Kirigami.Units.gridUnit * 4
-                color: Kirigami.Theme.disabledTextColor
-                horizontalAlignment: Text.AlignRight
-                text: sliderRow.formattedValue()
-            }
-        }
-        QQC2.Label {
-            Layout.fillWidth: true
-            Layout.leftMargin: root.settingLabelWidth + Kirigami.Units.smallSpacing
-            color: Kirigami.Theme.disabledTextColor
-            text: sliderRow.description
-            visible: sliderRow.description.length > 0
-            wrapMode: Text.WordWrap
         }
     }
 }

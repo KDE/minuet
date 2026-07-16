@@ -361,8 +361,23 @@ void ExerciseSessionController::resetTest()
 {
     m_isTest = false;
     m_correctAnswers = 0;
+    m_accumulatedTestScore = 0;
     m_currentExercise = 0;
     emit sessionChanged();
+}
+
+int ExerciseSessionController::recordTestScore(int score, int maximumExercises)
+{
+    if (!m_isTest || maximumExercises <= 0) {
+        return -1;
+    }
+    m_accumulatedTestScore += std::max(0, score);
+    if (m_currentExercise < maximumExercises) {
+        return -1;
+    }
+    const int finalScore = qRound(m_accumulatedTestScore / static_cast<double>(maximumExercises));
+    resetTest();
+    return finalScore;
 }
 
 void ExerciseSessionController::startTest()

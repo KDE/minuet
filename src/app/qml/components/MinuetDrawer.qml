@@ -14,11 +14,6 @@ Kirigami.GlobalDrawer {
     id: drawer
 
     property var currentExerciseSelection: null
-    property string currentSearchText: ""
-    readonly property int defaultPreferredSize: Kirigami.Units.gridUnit * 24
-    readonly property real drawerActionBottomPadding: homeActionItem.bottomPadding
-    readonly property real drawerActionTopPadding: homeActionItem.topPadding
-    readonly property real drawerActionVerticalSpacing: drawerActionTopPadding + drawerActionBottomPadding
     property var exerciseModel: []
 
     signal aboutRequested
@@ -56,11 +51,11 @@ Kirigami.GlobalDrawer {
         return exerciseActions;
     }
 
-    actions: createDrawerActions(currentSearchText)
+    actions: createDrawerActions(internal.currentSearchText)
     drawerOpen: applicationWindow().wideScreen
     interactiveResizeEnabled: true
     modal: !applicationWindow().wideScreen
-    preferredSize: defaultPreferredSize
+    preferredSize: Kirigami.Units.gridUnit * 24
     resetMenuOnTriggered: false
 
     header: Kirigami.AbstractApplicationHeader {
@@ -76,7 +71,7 @@ Kirigami.GlobalDrawer {
             objectName: "searchField"
             placeholderText: i18n("Search…")
 
-            onTextChanged: drawer.currentSearchText = text
+            onTextChanged: internal.currentSearchText = text
 
             anchors {
                 left: parent.left
@@ -110,7 +105,6 @@ Kirigami.GlobalDrawer {
         Image {
             readonly property real preferredIconSize: Kirigami.Units.gridUnit * 7
 
-            Accessible.ignored: true
             Layout.alignment: Qt.AlignHCenter
             Layout.preferredHeight: preferredIconSize
             Layout.preferredWidth: preferredIconSize
@@ -144,9 +138,9 @@ Kirigami.GlobalDrawer {
             wrapMode: Text.WordWrap
         },
         Kirigami.Separator {
-            Layout.bottomMargin: drawer.drawerActionBottomPadding
+            Layout.bottomMargin: internal.drawerActionBottomPadding
             Layout.fillWidth: true
-            Layout.topMargin: drawer.drawerActionVerticalSpacing
+            Layout.topMargin: internal.drawerActionVerticalSpacing
         },
         ActionListItem {
             id: homeActionItem
@@ -195,14 +189,14 @@ Kirigami.GlobalDrawer {
             }
         },
         Kirigami.Separator {
-            Layout.bottomMargin: Math.max(0, drawer.drawerActionBottomPadding - Platform.Units.smallSpacing)
+            Layout.bottomMargin: Math.max(0, internal.drawerActionBottomPadding - Platform.Units.smallSpacing)
             Layout.fillWidth: true
-            Layout.topMargin: drawer.drawerActionVerticalSpacing - aboutActionItem.bottomPadding
+            Layout.topMargin: internal.drawerActionVerticalSpacing - aboutActionItem.bottomPadding
         },
         Item {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            visible: Core.exerciseCatalogController.normalizedText(drawer.currentSearchText) !== "" && drawer.actions.length === 0
+            visible: Core.exerciseCatalogController.normalizedText(internal.currentSearchText) !== "" && drawer.actions.length === 0
 
             Kirigami.PlaceholderMessage {
                 anchors.centerIn: parent
@@ -212,18 +206,28 @@ Kirigami.GlobalDrawer {
         }
     ]
 
-    onCurrentSearchTextChanged: {
-        if (currentSubMenu === null) {
-            return;
-        }
+    QtObject {
+        id: internal
 
-        const wasDrawerOpen = drawerOpen;
-        resetMenu();
-        if (wasDrawerOpen) {
-            drawerOpen = true;
-        }
+        property string currentSearchText: ""
+        readonly property real drawerActionBottomPadding: homeActionItem.bottomPadding
+        readonly property real drawerActionVerticalSpacing: homeActionItem.topPadding + internal.drawerActionBottomPadding
     }
+    Connections {
+        function onCurrentSearchTextChanged(): void {
+            if (currentSubMenu === null) {
+                return;
+            }
 
+            const wasDrawerOpen = drawerOpen;
+            resetMenu();
+            if (wasDrawerOpen) {
+                drawerOpen = true;
+            }
+        }
+
+        target: internal
+    }
     Kirigami.Action {
         id: allExercisesAction
 

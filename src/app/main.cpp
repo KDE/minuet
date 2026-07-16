@@ -230,5 +230,7 @@ int main(int argc, char *argv[])
 #endif
     Minuet::Core::initialize();
 
-    return QGuiApplication::exec();
+    const int exitCode = QGuiApplication::exec();
+    Minuet::Core::shutdown();
+    return exitCode;
 }

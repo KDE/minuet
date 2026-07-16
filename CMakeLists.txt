@@ -44,6 +44,7 @@ include(ECMAddAppIcon)
 include(KDEClangFormat)
 include(KDEInstallDirs)
 include(KDECMakeSettings)
+include(ECMEnableSanitizers)
 include(FeatureSummary)
 
 file(GLOB MINUET_PO_FILES CONFIGURE_DEPENDS

@@ -17,7 +17,7 @@ namespace Minuet
 SmuflMetadata::SmuflMetadata(QObject *parent)
     : QObject(parent)
 {
-    QFile metadataFile(u":/qt/qml/org/kde/minuet/qml/SheetMusicView/bravura_metadata.json"_s);
+    QFile metadataFile(u":/qt/qml/org/kde/minuet/qml/sheetmusicview/bravura_metadata.json"_s);
     if (!metadataFile.open(QIODevice::ReadOnly)) {
         qWarning() << "Unable to load Bravura metadata:" << metadataFile.errorString();
         return;
