@@ -27,7 +27,7 @@
 
 <copyright>
 <year
->2016</year>
+>2026</year>
 <holder
 >&Sandro.Andrade;</holder>
 </copyright>
@@ -35,14 +35,14 @@
 >&FDLNotice;</legalnotice>
 
 <date
->2021-10-19</date>
+>2026-07-03</date>
 
 <releaseinfo
->0.4 (KDE Gear 21.08)</releaseinfo>
+>Huidige ontwikkelversie</releaseinfo>
 
 <abstract>
 <para
->&minuet; is een toepassing voor muziekonderwijs. Het biedt een set mogelijkheden voor trainingsoefeningen voor het gehoor betreffende intervallen, akkoorden en toonladders. </para>
+>&minuet; is de toepassing van KDE voor muziekeducatie, gericht op gehoortraining, ritmeoefening en begeleid zingen. De toepassing groepeert oefeningen per onderwerp, laat u wisselen tussen luister- en uitvoeringsgerichte oefeningen en biedt toegang tot geluids- en microfooninstellingen voor diverse instrumenten en ruimtes. </para>
 </abstract>
 
 <keywordset>
@@ -61,6 +61,12 @@
 <keyword
 >toonladders</keyword>
 <keyword
+>ritme</keyword>
+<keyword
+>microfoon</keyword>
+<keyword
+>in de praktijk</keyword>
+<keyword
 >Minuet</keyword>
 </keywordset>
 
@@ -71,24 +77,25 @@
 >Inleiding</title>
 
 <para
->Welkom bij &minuet;: de software voor muziekonderwijs. &minuet; richt zich op ondersteuning van studenten en leraren in vele aspecten van muziekonderwijs, zoals training van het oor, lezen op eerste gezicht, solfa, toonladders, ritme, harmonie en improvisatie. &minuet; maakt intensief gebruik van de &MIDI; mogelijkheden om een volledige set van functies te leveren met betrekking tot wijzigingen in volume, tempo en hoogte, wat &minuet; maakt tot een waardevol hulpmiddel voor zowel beginnende en ervaren musici. </para>
+>Welkom bij &minuet;: de software voor muziekeducatie. Het programma is opgebouwd rond korte oefeningen waarmee u kunt luisteren, reageren en uw voortgang kunt testen, zonder de toepassing te verlaten. </para>
 <para
->&minuet; bezit een rijke set van trainingsoefeningen voor het oor en er kunnen nieuwe <link linkend="creating-exercises"
-> naadloos worden toegevoegd</link
-> om zijn functionaliteiten uit te breiden en aan te passen aan verschillende contexten in het muziekonderwijs. </para>
+>De toepassing omvat momenteel melodische gehoortraining, ritmeherkenning, klapoefeningen en zangoefeningen. Dezelfde oefening kan vaak op meerdere manieren worden uitgevoerd; daarom vraagt ​​de interface eerst of u wilt luisteren en herkennen, lezen en klappen, of lezen en zingen. </para>
 
 <screenshot>
   <screeninfo
->Hoofdvenster van &minuet;</screeninfo>
+>&minuet; startscherm</screeninfo>
   <mediaobject>
     <imageobject
-><imagedata fileref="minuet-screenshot.png" format="PNG"/></imageobject>
+><imagedata fileref="minuet-home.png" format="PNG"/></imageobject>
     <textobject
 ><phrase
->Gehoortraining van akkoorden met &minuet;</phrase
+>Het startscherm van &minuet;</phrase
 ></textobject>
   </mediaobject>
 </screenshot>
+
+<para
+>De startpagina is bewust minimalistisch gehouden. Gebruik het navigatiemenu om naar de instellingenpagina, de pagina 'Over ons' of een categorie oefeningen te gaan. </para>
 </chapter>
 
 <chapter id="using-minuet">
@@ -96,105 +103,375 @@
 >&minuet; gebruiken</title>
 
 <para
->In de volgende twee secties - <link linkend="starting-minuet"
->Beginnen met &minuet;</link
-> en <link linkend="minuet-exercises"
->Oefeningen in &minuet;</link
-> - zullen we u de benodigde stappen leveren om &minuet; te laten werken. </para>
+>Het normale verloop is eenvoudig: start, kies een oefening, selecteer een oefenmodus en doorloop vervolgens een vraag of een proefronde. </para>
 
 <sect1 id="starting-minuet">
 <title
 >Beginnen met &minuet;</title>
 
 <para
->U kunt &minuet; starten vanuit de toepassingenstarter. Open het globale menu door te klikken op het pictogram van de toepassingenstarter op de werkbalk links onderaan uw scherm. Dit toont een menu. Verplaats de cursor omhoog in het menu naar het menu-item <menuchoice
-><guimenu
->Toepassingen</guimenu
-><guisubmenu
->Onderwijs</guisubmenu
-><guisubmenu
->Diversen</guisubmenu
-> <guimenuitem
->&minuet; (Software voor muziekonderwijs)</guimenuitem
-></menuchoice
-> uit het globale menu of met <keycombo action="simul"
->&Alt;<keycap
->F2</keycap
-></keycombo
-> en voer <command
+>Start &minuet; vanuit het toepassingenmenu of vanuit een terminal door <command
 >minuet</command
-> in het invoerveld. </para>
+> uit te voeren. Wanneer de toepassing opent, toont de startpagina één enkele melding: <guilabel
+>Kies een oefening</guilabel
+>. </para>
 </sect1>
 
-<sect1 id="minuet-exercises">
+<sect1 id="browse-exercises">
 <title
->Oefeningen en werkwijze in &minuet;</title>
+>Bekijk en kies oefeningen</title>
 
 <para
->Het gebruikersinterface van &minuet; heeft drie hoofdcomponenten: </para>
+>De oefeningenbrowser groepeert onderwerpen op thema. Gebruik het zijpaneel of de categorieënlijst om toegang te krijgen tot akkoorden, intervallen, ritmes of toonladders. De browser werkt zichzelf bij op basis van de geïnstalleerde specificatiebestanden voor oefeningen, zodat de zichtbare hiërarchie een weerspiegeling is van de momenteel beschikbare oefeningen. </para>
 
 <screenshot>
   <screeninfo
->Hoofdvenster van &minuet;</screeninfo>
+>&minuet; oefeningenoverzicht</screeninfo>
   <mediaobject>
     <imageobject
-><imagedata fileref="minuet-ui-components.png" format="PNG"/></imageobject>
+><imagedata fileref="minuet-exercise-list.png" format="PNG"/></imageobject>
     <textobject
 ><phrase
->UI-componenten van &minuet;</phrase
+>Het oefeningenoverzicht in &minuet;</phrase
 ></textobject>
   </mediaobject>
 </screenshot>
 
-<variablelist>
+<para
+>Elk oefenitem heeft een titel en een korte beschrijving. Sommige categorieën leiden direct naar een oefening, terwijl andere zich vertakken in subcategorieën. De lijst is niet hard gecodeerd: nieuwe oefenbestanden worden automatisch in de hiërarchie opgenomen wanneer &minuet; wordt gestart. </para>
 
-<varlistentry>
-<term
-><guilabel
->Navigatie-menu</guilabel
-></term>
-<listitem
-><para
->Biedt navigeren categorieën oefeningen in &minuet; en selectie van een specifieke oefening. Het menu Navigatie wordt dynamisch gemaakt gebaseerd op specificatiebestanden van oefeningen zoals beschreven in <link linkend="creating-exercises"
->Aanmaken van oefeningen</link
->. De oefeningen van &minuet; zijn gegroepeerd volgens klassen zoals intervallen, toonladders en akkoorden.</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Beeld van het toetsenbord</guilabel
-></term>
-<listitem
-><para
->Stuurt <parameter
->note on</parameter
-> &MIDI; gebeurtenis uit veroorzaakt door een &MIDI; bestand of door het uitvoeren van een oefening.</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Beeld van de oefeningen</guilabel
-></term>
-<listitem
-><para
->Presenteert, voor een gegeven oefening, knoppen voor de besturing van de presentatie van een oefening en een set mogelijke antwoorden op een oefening. Een oefening uitvoeren begint met klikken op de knop <guibutton
->Start vraag</guibutton
->. Een willekeurig geselecteerd interval/akkoord/toonladder wordt door &minuet; afgespeeld en dan wordt de student geacht een antwoord uit de getoonden in het antwoordenrooster te kiezen. &minuet; presenteert altijd - als een kleine witte cirkel in de Toetsenbordweergave- de eerste noot van het geselecteerde interval/toonladder of de grondtoon van het geselecteerd akkoord. Door te zweven boven een mogelijk antwoord, accentueert &minuet; zijn overeenkomstige visuele representatie in de toetsenbordweergave. De overblijvende noten van het antwoord waarboven wordt gezweefd worden gepresenteerd als kleine cirkels waarvan de kleuren hetzelfde zijn van de antwoordknop waarboven wordt gezweefd. De student kan de oefening opnieuw horen door te klikken op de knop <guibutton
->Vraag afspelen</guibutton
->, klik op de gekozen antwoordknop of krijg het juiste antwoord door te klikken op de knop <guibutton
->Opgeven</guibutton
->. Een nieuwe uitvoering van dezelfde oefening kan gestart worden door opnieuw te klikken op de knop <guibutton
->Nieuwe vraag</guibutton
->.</para
-></listitem>
-</varlistentry>
-
-</variablelist>
 </sect1>
+
+<sect1 id="practice-modes">
+<title
+>Wijze van oefenen</title>
+
+<para
+>Wanneer u een oefening opent, vraagt ​​&minuet; hoe u deze wilt oefenen. </para>
+
+<screenshot>
+  <screeninfo
+>&minuet; keuze voor oefenmodus</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-practice-mode.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>De keuze voor de oefenmodus in &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Er zijn twee brede praktijkrichtingen: </para>
+
+<itemizedlist>
+<listitem>
+<para
+><guilabel
+>Luisteren en herkennen</guilabel
+> speelt de oefening af en vraagt u om een ​​antwoord te kiezen uit de beschikbare opties. Dit is de standaardprocedure voor melodische gehoortraining. </para>
+</listitem>
+<listitem>
+<para
+><guilabel
+>Lezen en klappen</guilabel
+> wordt weergegeven bij ritme-oefeningen. <guilabel
+>Lezen en zingen</guilabel
+> wordt weergegeven bij melodische oefeningen die vocale invoer accepteren, zoals intervallen en toonladders. </para>
+</listitem>
+</itemizedlist>
+
+<para
+>De keuze van de oefening verandert de invoermodus, niet de onderliggende oefencategorie. Dit betekent dat u dezelfde oefengegevens kunt gebruiken voor luister-, klap- of zangoefeningen, afhankelijk van het onderwerp. </para>
+</sect1>
+
+<sect1 id="melodic-workflow">
+<title
+>Melodische gehoortraining</title>
+
+<para
+>Melodische oefeningen volgen het klassieke Minuet-verloop: de toepassing speelt een vraag af, toont antwoordopties en biedt de mogelijkheid om het fragment opnieuw af te spelen als u het nog eens wilt horen. Deze handmatige modus wordt gebruikt voor intervallen, toonladders en akkoorden wanneer u kiest voor <guilabel
+>Luisteren en herkennen</guilabel
+>. </para>
+
+<screenshot>
+  <screeninfo
+>&minuet; akkoordoefening in handmatige modus</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-chords-manual.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>Een akkoordoefening in de handmatige modus in &minuet;.</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>De oefenpagina biedt de bedieningselementen die u nodig hebt voor een enkele vraag of een langere testsessie: </para>
+
+<itemizedlist>
+<listitem
+><para
+><guibutton
+>Nieuwe vraag</guibutton
+> start een nieuwe vraag.</para
+></listitem>
+<listitem
+><para
+><guibutton
+>Vraag afspelen</guibutton
+> herhaalt de huidige prompt.</para
+></listitem>
+<listitem
+><para
+><guibutton
+>Opgeven</guibutton
+> onthult het antwoord.</para
+></listitem>
+<listitem
+><para
+><guibutton
+>Test starten</guibutton
+> start een reeks vragen die worden beoordeeld.</para
+></listitem>
+<listitem
+><para
+><guibutton
+>Test stoppen</guibutton
+> beëindigt de testuitvoering.</para
+></listitem>
+</itemizedlist>
+
+<para
+>Bij melodische oefeningen blijven de antwoordknoppen en de weergave van het klavier of de notenbalk op elkaar uitgelijnd, zodat u kunt zien hoe elk alternatief overeenkomt met de gespeelde noten. </para>
+
+<para
+>Bij akkoordoefeningen wordt dezelfde handmatige werkwijze gehanteerd, maar de opgave wordt als akkoord afgespeeld in plaats van als melodische reeks. &minuet; speelt het akkoord af, toont de grondtoon op het klavier en de notenbalk, en vraagt ​​u een akkoordtype te kiezen uit de beschikbare antwoorden. De akkoordencatalogus omvat drieklanken, omkeringen, onderdrukte-akkoorden, septiemakkoorden, none-akkoorden, undeciemakkoorden en gemengde akkoordensets zoals <guilabel
+>Veel akkoorden</guilabel
+>. </para>
+
+<para
+>Gebruik <guibutton
+>Vraag afspelen</guibutton
+> om het akkoord nogmaals te horen voordat u antwoord geeft. In de testmodus beoordeelt &minuet; de reeks op basis van het aantal oefeningen dat op de instellingenpagina is geconfigureerd. </para>
+</sect1>
+
+<sect1 id="rhythm-workflow">
+<title
+>Ritme en klappen</title>
+
+<para
+>Ritmische oefeningen richten zich op timing in plaats van toonhoogte. In de klapmodus luistert &minuet; naar de input van uw microfoon en vergelijkt de aanzetten met het doelpatroon. </para>
+
+<para
+>De categorieën <guilabel
+>Eenvoudig met rusten</guilabel
+> en <guilabel
+>Gemiddeld met rusten</guilabel
+> voegen stille momenten toe aan de bijbehorende patronen die alleen uit noten bestaan. Bij luisteroefeningen worden opties vermeden die identiek klinken, terwijl <guilabel
+>Lezen en klappen</guilabel
+> alle gecombineerde patronen van noten en rusten omvat. </para>
+
+<screenshot>
+  <screeninfo
+>Klapoefening van &minuet;</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-clapping.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>Een ritmische klapoefening in &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>De klapweergave toont de kaarten met ritmepatronen, een ingangsniveaumeter en een <guibutton
+>Stilte kalibreren</guibutton
+>-functie. Er vindt een aftelmoment plaats voordat de opname begint, zodat u in het juiste tempo kunt komen voordat de oefening op klappen gaat letten. </para>
+
+<para
+>Gebruik de ritme-oefening om te werken aan: </para>
+
+<itemizedlist>
+<listitem
+><para
+>eenvoudige ritmische figuren op het gehoor herkennen;</para
+></listitem>
+<listitem
+><para
+>je handgeklap afstemmen op de beat;</para
+></listitem>
+<listitem
+><para
+>binnen de geconfigureerde tijdtolerantie blijven.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="singing-workflow">
+<title
+>Zangoefeningen</title>
+
+<para
+>Bij zangoefeningen wordt de microfoon gebruikt om wat u zingt te vergelijken met de beoogde toonhoogte. Voor zowel interval- als toonladderoefeningen wordt hetzelfde oefenscherm gebruikt, maar de doelstelling en de terugkoppeling passen zich aan de gekozen oefening aan. </para>
+
+<para
+>Bij intervaloefeningen speelt &minuet; de grondtoon af en vraagt u het gevraagde interval ten opzichte daarvan te zingen. Bij toonladeroefeningen toont de toepassing een toonladder of kerktoonladder en wordt van u verwacht dat u de noten op volgorde zingt, waarbij u zuiver en in de maat blijft. </para>
+
+<screenshot>
+  <screeninfo
+>&minuet; zangoefening voor intervallen</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-singing-interval.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>Een zang- en intervaloefening in &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<screenshot>
+  <screeninfo
+>&minuet; toonladderoefening voor zang</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-singing-scale.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>Een zangoefening met toonladders in &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>De zangweergave toont de doelnoten, terugkoppeling over toonhoogte en aanzet, een live-ingangsmeter en een actie om stilte te kalibreren (<guibutton
+>Stilte kalibreren</guibutton
+>). &minuet; telt ook af voor de eerste noot, zodat u op de juiste tel kunt beginnen. De toonladderweergave past dezelfde terugkoppeling toe op langere reeksen, waardoor deze geschikt is voor het oefenen van het melodisch geheugen, naast het zuiver zingen van toonhoogtes. </para>
+
+<para
+>Zangoefeningen worden beïnvloed door verschillende instellingen: </para>
+
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>Stemtype</guilabel
+> selecteert het verwachte stembereik.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Toonhoogtetolerantie</guilabel
+> bepaalt hoe ver een gezongen noot van de doeltoonhoogte mag afwijken.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Timing-tolerantie</guilabel
+> bepaalt hoeveel ritmische afwijking bij handgeklap wordt toegestaan.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="settings">
+<title
+>Instellingen</title>
+
+<para
+>De instellingenpagina is onderverdeeld in vier secties: <guilabel
+>Oefenen</guilabel
+>, <guilabel
+>Geluid</guilabel
+>, <guilabel
+>Microfoon</guilabel
+> en <guilabel
+>Geavanceerd</guilabel
+>. De eerste drie secties tonen de basisinstellingen. De sectie 'Geavanceerd' blijft ingeklapt totdat u deze opent. </para>
+
+<screenshot>
+  <screeninfo
+>Basisinstellingen van &minuet;</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-settings-basic.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>De pagina met basisinstellingen in &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>De zichtbare instellingen omvatten de bedieningselementen die de meeste gebruikers dagelijks nodig hebben: </para>
+
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>Oefensnelheid</guilabel
+> bepaalt het tempo in slagen per minuut.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Aantal ritmepatronen</guilabel
+> bepaalt de grootte van de ritme-oefensets.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Aantal oefeningen</guilabel
+> bepaalt de duur van een testrun.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Volume</guilabel
+> regelt het afspeelvolume.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Instrument</guilabel
+> selecteert het melodische geluid dat voor gehoortraining wordt gebruikt.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Stemtype</guilabel
+> selecteert het beoogde zangbereik.</para
+></listitem>
+</itemizedlist>
+
+<para
+>Het microfoongedeelte bevat ook korte toelichtingen bij de instellingen voor tolerantie en kalibratie. Deze beschrijvingen leggen uit wanneer de tolerantie moet worden aangescherpt en wanneer de stilte opnieuw moet worden gekalibreerd. </para>
+
+<screenshot>
+  <screeninfo
+>Geavanceerde instellingen van &minuet;</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-settings-advanced.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>Het gedeelte met geavanceerde instellingen in &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Via de geavanceerde instellingen krijgt u toegang tot detectie-algoritmen en drempelwaarden voor lastige microfoons of rumoerige ruimtes. Gebruik deze instellingen wanneer het standaarddetectiegedrag niet volstaat. Dit gedeelte is standaard ingeklapt en bevat een knop <guibutton
+>Terug naar standaardwaarden</guibutton
+>, waarmee u de fabrieksinstellingen kunt herstellen nadat u met de instellingen hebt geëxperimenteerd. </para>
+
+<para
+>De geavanceerde sectie bevat aparte groepen voor het detecteren van klappen en zingen. Typische instellingen zijn onder andere de beginmethode, de begindrempel, de ingangspoort, de minimale beginsterkte, het stilteniveau, de toonhoogtemethode, de scoringsmodus, de toonhoogtebetrouwbaarheid en stabiele toonhoogtekaders. </para>
 </chapter>
 
 <chapter id="creating-exercises">
@@ -202,31 +479,28 @@
 >Nieuwe oefeningen voor &minuet; aanmaken</title>
 
 <para
->Oefeningen voor &minuet; worden gedefinieerd in oefeningspecificatiebestanden, geschreven in het &JSON;-formaat: </para>
+>De oefeningen van &minuet; worden gedefinieerd in &JSON;-specificatiebestanden. De toepassing laadt bij het opstarten alle beschikbare bestanden en voegt deze samen tot de zichtbare oefeningenboom. </para>
+
 <para>
 <programlisting
 >{
   "exercises": [
     {
-      "name": "Intervals",
-      "root": "21..104",
-      "playMode": "scale",
+      "name": "Intervallen",
+      "root": "29..69",
+      "playMode": "toonladder",
+      "userMessage": "Hoor het interval en kies uw antwoord",
+      "numberOfSelectedOptions": 1,
+      "_icon": "minuet-intervals-symbolic.svg",
       "children": [
         {
-          "name": "Ascending Melodic Intervals",
+          "name": "Oplopende melodische intervallen",
+          "and-tags": ["interval", "oplopend"],
           "children": [
             {
-              "name": "Seconds",
-              "options": [
-                {
-                  "name": "Minor Second",
-                  "sequenceFromRoot": "1"
-                },
-                {
-                  "name": "Major Second",
-                  "sequenceFromRoot": "2"
-                }
-              ]
+              "name": "Secunden",
+              "or-tags": ["2"],
+              "description": "Oefenen met identificeren van oplopende melodische secunden op gehoor."
             }
           ]
         }
@@ -236,38 +510,92 @@
 }
 </programlisting>
 </para>
+
 <para
->De oefeningspecificatiebestanden van &minuet; bevatten één &JSON; object op het hoogste niveau aangevend het array <parameter
+>Het hoofdobject bevat een <parameter
 >oefeningen</parameter
->. Zo'n array definieert een hiërarchische structuur met oefeningen, gegroepeerd op categorieën. Elke categorie/oefening heeft een naam. De categorie &JSON; objecten bevat een eigenschap genaamd <parameter
->kinderen</parameter
->, die de subcategorieën/oefeningen beschrijven behorende bij zo'n categorie. De &JSON; objecten oefening bevatten een eigenschap genaamd <parameter
-> opties</parameter
->, die de mogelijke antwoorden voor zo'n oefening definieert. In elke uitvoering van een oefening selecteert &minuet; willekeurig één antwoord uit de mogelijke antwoorden en van de student wordt verwacht om op de knop van het overeenkomstig geselecteerde antwoord te klikken. </para>
+>-array. Elk element in dat array is ofwel een categorie, ofwel een oefening (als eindpunt). Categorieën gebruiken <parameter
+>children</parameter
+> om het volgende niveau van de boomstructuur te definiëren. </para>
+
 <para
->Elke (sub)categorie kan een parameter <parameter
->begin</parameter
-> definiëren om de reeks te specificeren vanwaar de initiële noot van het interval/het akkoord/de toonladder willekeurig zal worden gekozen voor alle oefeningen in deze categorie. Zulke reeksen corresponderen met de standaard nootnummers van &MIDI; en volgen het formaat <parameter
->&lt;min-waarde&gt;..&lt;max-waarde&gt;</parameter
->. Het bovenstaande voorbeeld presenteert gebruik van alle klavierreeksen als mogelijke beginnoten (21..104). De parameter <parameter
+>Bruikbare velden zijn onder andere: </para>
+
+<itemizedlist>
+<listitem
+><para
+><parameter
+>name</parameter
+> geeft elk knooppunt zijn zichtbare label.</para
+></listitem>
+<listitem
+><para
+><parameter
+>root</parameter
+> beperkt het bereik van noten dat wordt gebruikt om de prompt te genereren.</para
+></listitem>
+<listitem
+><para
+><parameter
 >playMode</parameter
-> geeft aan hoe mogelijke antwoorden gespeeld zouden moeten worden: als een <parameter
->toonladder</parameter
-> (één noot na de ander) of als een <parameter
->akkoord</parameter
-> (alle noten klinken tegelijkertijd). </para>
-<para
->Elke optie in een oefening definieert een naam en de volgorde van noten die gespeeld zouden moeten worden vanaf de beginnoot willekeurig geselecteerd in elke uitvoering van de oefening. Zo'n volgorde van noten is gedefinieerd als relatieve afstanden vanaf de beginnoot, met een beschrijving van het interval dat elke noot vormt in verband met de beginnoot. Voor een majeur toonladder is bijvoorbeeld de volgorde van noten <quote
->2 4 5 7 9 11 12</quote
->, die respectievelijk aangeeft de majeur toonladderstructuur <quote
->heel heel half heel heel heel half</quote
->. De parameter <parameter
+> selecteert weergave van de toonladder, het akkoord of het ritme.</para
+></listitem>
+<listitem
+><para
+><parameter
+>userMessage</parameter
+> past de instructie aan die aan de gebruiker wordt getoond.</para
+></listitem>
+<listitem
+><para
+><parameter
+>numberOfSelectedOptions</parameter
+> bepaalt hoeveel antwoorden correct mogen zijn.</para
+></listitem>
+<listitem
+><para
+><parameter
+>_icon</parameter
+> bepaalt het pictogram dat in de lade en de oefeningenbrowser wordt weergegeven.</para
+></listitem>
+<listitem
+><para
+><parameter
+>and-tags</parameter
+> en <parameter
+>or-tags</parameter
+> helpen bij het groeperen en filteren van gerelateerde knooppunten.</para
+></listitem>
+<listitem
+><para
+><parameter
+>description</parameter
+> geeft de browser een korte uitleg over het knooppunt.</para
+></listitem>
+<listitem
+><para
+><parameter
+>options</parameter
+> beschrijft de antwoordopties voor een zij-oefening.</para
+></listitem>
+<listitem
+><para
+><parameter
 >sequenceFromRoot</parameter
-> kan elke lengte van noten bevatten. De kern van &minuet; verzekert dat alleen antwoorden waarvan alle noten liggen binnen de reeks van het klavier willekeurig worden geselecteerd. </para>
+> definieert de toonafwijkingen voor melodische antwoorden.</para
+></listitem>
+<listitem
+><para
+><parameter
+>template</parameter
+> wordt door ritme-oefeningen gebruikt om de notatie weer te geven.</para
+></listitem>
+</itemizedlist>
+
 <para
->Om een betere infrastructuur voor het organiseren van een grote set specificatiebestanden van oefeningen te bieden, ondersteunt de kern van &minuet; het gebruik van verschillende specificatiebestanden, die automatisch samengevoegd worden om de uiteindelijke hiërarchie van oefeningen te presenteren in het Navigatiemenu. Oefeningen zijn juist samengevoegd zolang de verschillende specificatiebestanden dezelfde (sub)categorienaam gebruiken bij het definiëren van oefeningen. Voor nu biedt &minuet; geen &GUI; voor het maken van specificaties van oefeningen zodat u handmatig zulke &JSON;-bestanden moet maken. De specificatiebestanden van &minuet; kunnen systeembreed geïnstalleerd worden of lokaal in de map <filename
+>De toepassing voegt bestanden samen die dezelfde categorienamen delen, zodat afzonderlijke specificatiebestanden kunnen bijdragen aan één zichtbare hiërarchie. Installeer ze systeembreed of plaats ze in <filename class="directory"
 >minuet/exercises/</filename
-> in <userinput
+> onder de algemene datalocatie die wordt geretourneerd door <userinput
 ><command
 >qtpaths</command
 > <option
@@ -288,7 +616,7 @@
 >Programma copyright 2016 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
 
 <para
->Documentatie copyright &copy; 2016 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
+>Documentatie copyright &copy; 2026 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
 
 &meld.fouten;&vertaling.freek; &underFDL; &underGPL; </chapter>
 

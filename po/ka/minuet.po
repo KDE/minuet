@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-15 00:40+0000\n"
-"PO-Revision-Date: 2026-07-09 06:33+0200\n"
+"PO-Revision-Date: 2026-07-15 13:11+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -511,7 +511,7 @@ msgstr "ადვილი"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Easy with rests"
-msgstr ""
+msgstr "მარტივი დასვენებით"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -776,7 +776,7 @@ msgstr "საშუალო"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Medium with rests"
-msgstr ""
+msgstr "საშუალო დასვენებით"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -972,6 +972,8 @@ msgstr "დომინანტური ფრიგიული"
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice basic rhythm patterns that combine notes and rests."
 msgstr ""
+"ივარჯიშეთ, სმენით გაარჩიოთ ძირითადი რიტმის სახეობები, რომელიც აერთიანებს "
+"ნოტებს და დასვენებებს."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1571,6 +1573,8 @@ msgstr ""
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice varied rhythm patterns that combine notes and rests."
 msgstr ""
+"ივარჯიშეთ, სმენით გაარჩიოთ ცვლადი რიტმის სახეობები, რომელიც აერთიანებს "
+"ნოტებს და დასვენებებს."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1720,79 +1724,77 @@ msgstr "ტრიტონები და სეპტიმები"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D7 uE1D9 uE4E7"
-msgstr ""
+msgstr "uE1D7 uE1D9 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D7uE1E7 uE4E7"
-msgstr ""
+msgstr "uE1D7uE1E7 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D7 uE4E6"
-msgstr ""
+msgstr "uE1D7 uE4E6"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D7 uE4E7 uE1D9"
-msgstr ""
+msgstr "uE1D7 uE4E7 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D7 uE4E7 uE4E7"
-msgstr ""
+msgstr "uE1D7 uE4E7 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE1D7 uE4E7"
-msgstr ""
+msgstr "uE1D9 uE1D7 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E6 uE1D9"
-msgstr ""
+msgstr "uE1D9 uE4E6 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E6uE1E7"
-msgstr ""
+msgstr "uE1D9 uE4E6uE1E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E6 uE4E7"
-msgstr ""
+msgstr "uE1D9 uE4E6 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E7 uE1D7"
-msgstr ""
+msgstr "uE1D9 uE4E7 uE1D7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E7 uE1D9 uE4E7"
-msgstr ""
+msgstr "uE1D9 uE4E7 uE1D9 uE4E7"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E7 uE1F0uE1F9uE1F4"
-msgstr "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgstr "uE1D9 uE4E7 uE1F0uE1F9uE1F4"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E7 uE4E6"
-msgstr ""
+msgstr "uE1D9 uE4E7 uE4E6"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E7 uE4E7 uE1D9"
-msgstr ""
+msgstr "uE1D9 uE4E7 uE4E7 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E7 uE4E7 uE4E7"
-msgstr ""
+msgstr "uE1D9 uE4E7 uE4E7 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1834,136 +1836,120 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
 msgstr "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F4uE1F9uE1F4 uE4E7"
-msgstr "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
+msgstr "uE1F0uE1F9uE1F4uE1F9uE1F4 uE4E7"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F9uE1F4uE1F7uE1F2"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F4 uE4E6"
-msgstr "uE1F0uE1F9uE1F4uE1F7uE1F2"
+msgstr "uE1F0uE1F9uE1F4 uE4E6"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F9uE1F4uE1F7uE1F2"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F4 uE4E7 uE1D9"
-msgstr "uE1F0uE1F9uE1F4uE1F7uE1F2"
+msgstr "uE1F0uE1F9uE1F4 uE4E7 uE1D9"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F9uE1F2uE1F7uE1F4"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F4 uE4E7 uE4E7"
-msgstr "uE1F0uE1F9uE1F2uE1F7uE1F4"
+msgstr "uE1F0uE1F9uE1F4 uE4E7 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E6 uE1D7"
-msgstr ""
+msgstr "uE4E6 uE1D7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E6 uE1D9 uE4E7"
-msgstr ""
+msgstr "uE4E6 uE1D9 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E6uE1E7 uE1D9"
-msgstr ""
+msgstr "uE4E6uE1E7 uE1D9"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E6 uE1F0uE1F9uE1F4"
-msgstr "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgstr "uE4E6 uE1F0uE1F9uE1F4"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E6 uE4E7 uE1D9"
-msgstr ""
+msgstr "uE4E6 uE4E7 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1D7 uE1D9"
-msgstr ""
+msgstr "uE4E7 uE1D7 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1D7uE1E7"
-msgstr ""
+msgstr "uE4E7 uE1D7uE1E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1D7 uE4E7"
-msgstr ""
+msgstr "uE4E7 uE1D7 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1D9 uE1D7"
-msgstr ""
+msgstr "uE4E7 uE1D9 uE1D7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1D9 uE4E6"
-msgstr ""
+msgstr "uE4E7 uE1D9 uE4E6"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1D9 uE4E7 uE1D9"
-msgstr ""
+msgstr "uE4E7 uE1D9 uE4E7 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1D9 uE4E7 uE4E7"
-msgstr ""
+msgstr "uE4E7 uE1D9 uE4E7 uE4E7"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F9uE1F4uE1F7uE1F2"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1F0uE1F9uE1F4uE1F9uE1F4"
-msgstr "uE1F0uE1F9uE1F4uE1F7uE1F2"
+msgstr "uE4E7 uE1F0uE1F9uE1F4uE1F9uE1F4"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1F0uE1F9uE1F4 uE4E7"
-msgstr "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgstr "uE4E7 uE1F0uE1F9uE1F4 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE4E6 uE1D9"
-msgstr ""
+msgstr "uE4E7 uE4E6 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE4E7 uE1D7"
-msgstr ""
+msgstr "uE4E7 uE4E7 uE1D7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE4E7 uE1D9 uE4E7"
-msgstr ""
+msgstr "uE4E7 uE4E7 uE1D9 uE4E7"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE4E7 uE1F0uE1F9uE1F4"
-msgstr "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgstr "uE4E7 uE4E7 uE1F0uE1F9uE1F4"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE4E7 uE4E7 uE1D9"
-msgstr ""
+msgstr "uE4E7 uE4E7 uE4E7 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -2037,10 +2023,9 @@ msgid "That's right"
 msgstr "სწორია"
 
 #: src/app/exercisesessioncontroller.cpp:348
-#, fuzzy, kde-format
-#| msgid "Not quite, try again"
+#, kde-format
 msgid "Not quite"
-msgstr "არც ისე. კიდევ სცადეთ"
+msgstr "არც ისე"
 
 #: src/app/exercisesessioncontroller.cpp:352
 #: src/app/qml/ExerciseClappingView.qml:800
@@ -2155,7 +2140,7 @@ msgstr "სიჩუმის კალიბრაცია"
 #: src/app/qml/ExerciseClappingView.qml:792
 #, kde-format
 msgid "The header shows the current instruction, microphone status, and score."
-msgstr ""
+msgstr "სათაური გაჩვენებთ მიმდინარე ინსტრუქციას, მიკროფონის სტატუსს და ქულებს."
 
 #: src/app/qml/ExerciseClappingView.qml:800
 #, kde-format
@@ -2171,10 +2156,9 @@ msgstr "ვისმენ..."
 #: src/app/qml/ExerciseClappingView.qml:808
 #: src/app/qml/ExerciseSingingView.qml:442
 #: src/app/qml/ExerciseSingingView.qml:630
-#, fuzzy, kde-format
-#| msgid "Calibrating..."
+#, kde-format
 msgid "Analyzing..."
-msgstr "კალიბრაცია..."
+msgstr "ანალიზი..."
 
 #: src/app/qml/ExerciseClappingView.qml:808
 #: src/app/qml/ExerciseSingingView.qml:449
@@ -2195,6 +2179,8 @@ msgid ""
 "Use New Question or Start for one exercise, or Start Test for a scored "
 "series."
 msgstr ""
+"გამოიყენეთ ახალი შეკითხვა ან დაწყება ერთი ვარჯიშისთვის, ან ტესტის დაწყება "
+"ქულებიანი სერიებისთვის."
 
 #: src/app/qml/ExerciseClappingView.qml:827
 #: src/app/qml/ExerciseSingingView.qml:924 src/app/qml/ExerciseView.qml:417
@@ -2226,6 +2212,8 @@ msgid ""
 "This area shows every rhythm figure. Borders mark correct or missed claps, "
 "and timing meters show early or late claps."
 msgstr ""
+"ამ არეში ნაჩვენებია რიტმის თითოეული ფიგურა. ჩარჩოებით მონიშნულია სწორი, ან "
+"არასწორი ტაში, დროის მაჩვენებლები კი მიუთითებს ნაადრევ, ან დაგვიანებულ ტაშზე."
 
 #: src/app/qml/ExerciseClappingView.qml:995
 #, kde-format
@@ -2292,7 +2280,7 @@ msgstr "რაოდენობა: %1"
 msgid ""
 "A four-beat count-in plays before the rhythm. Listen, then recreate the "
 "pattern."
-msgstr ""
+msgstr "რიტმის დაწყებამდე იკვრება ოთხტაქტიანი თვლა. მოუსმინეთ და გაიმეორეთ."
 
 #: src/app/qml/ExercisePage.qml:102
 #, kde-format
@@ -2300,6 +2288,8 @@ msgid ""
 "A four-beat count-in plays before clapping is analyzed. Start clapping when "
 "the count finishes."
 msgstr ""
+"სანამ ტაშის ანალიზი მიმდინარეობს, იკვრება ოთხტაქტიანი თვლა. დაიწყეთ ტაშის "
+"დაკვრა როცა თვლა დასრულდება."
 
 #: src/app/qml/ExercisePage.qml:102
 #, kde-format
@@ -2307,6 +2297,8 @@ msgid ""
 "A four-beat count-in plays before the base note. Listen, then sing the scale "
 "notes in order."
 msgstr ""
+"საწყისი ნოტის გაჟღერებამდე იკვრება ოთხტაქტიანი თვლა. მოუსმინეთ და შემდეგ "
+"გამა თანამიმდევრულად იმღერეთ."
 
 #: src/app/qml/ExercisePage.qml:102
 #, kde-format
@@ -2314,6 +2306,8 @@ msgid ""
 "A four-beat count-in plays before the root note. Listen, then sing the "
 "interval note."
 msgstr ""
+"ძირითადი ტონის გაჟღერებამდე იკვრება ოთხტაქტიანი თვლა. მოუსმინეთ და იმღერეთ "
+"ინტერვალის ნოტი."
 
 #: src/app/qml/ExercisePage.qml:194
 #, kde-format
@@ -2377,10 +2371,9 @@ msgstr "ხმის სიმაღლის გარეშე"
 
 #: src/app/qml/ExerciseSingingView.qml:204
 #: src/app/qml/ExerciseSingingView.qml:1079
-#, fuzzy, kde-format
-#| msgid "Pitch + timing"
+#, kde-format
 msgid "No timing"
-msgstr "ტონი + დრო"
+msgstr "ქრონომეტრაჟის გარეშე"
 
 #: src/app/qml/ExerciseSingingView.qml:222
 #, kde-format
@@ -2420,13 +2413,15 @@ msgstr "იმღერეთ ეს ინტერვალი"
 #: src/app/qml/ExerciseSingingView.qml:648
 #, kde-format
 msgid "%1 — %2"
-msgstr ""
+msgstr "%1 — %2"
 
 #: src/app/qml/ExerciseSingingView.qml:889
 #, kde-format
 msgid ""
 "The header identifies the scale and shows the current instruction or score."
 msgstr ""
+"ეს თავსართი განსაზღვრავს მასშტაბს და გაჩვენებთ მიმდინარე ინსტრუქციას, ან "
+"ქულას."
 
 #: src/app/qml/ExerciseSingingView.qml:889
 #, kde-format
@@ -2434,6 +2429,8 @@ msgid ""
 "The header identifies the interval and shows the current instruction or "
 "score."
 msgstr ""
+"ეს თავსართი განსაზღვრავს ინტერვალს და გაჩვენებთ მიმდინარე ინსტრუქციას, ან "
+"ქულას."
 
 #: src/app/qml/ExerciseSingingView.qml:976
 #, kde-format
@@ -2441,6 +2438,9 @@ msgid ""
 "This area shows the scale notes in order. Borders report pitch; pitch meters "
 "show flat or sharp notes, and timing meters show early or late starts."
 msgstr ""
+"ამ არეში ნაჩვენებია გამის ნოტები, რიგითობით. ჩარჩოები ასახავს ბგერის "
+"სიმაღლეს. სიმაღლის მაჩვენებლები მიუთითებს ბემოლია, თუ დიეზი, ხოლო დროის "
+"მაჩვენებლები კი აკონტროლებს დაწყება ნაადრევია, თუ გვიანი."
 
 #: src/app/qml/ExerciseSingingView.qml:976
 #, kde-format
@@ -2448,6 +2448,9 @@ msgid ""
 "This area shows the reference and target notes. Sing the target; its border "
 "reports accuracy, and its pitch meter shows flat or sharp notes."
 msgstr ""
+"ამ არეალში მოცემულია საორიენგაციო და სამიზნე ნოტები. იმღერეთ სამიზნე ნოტი. "
+"მისი ჩარჩო გიჩვენებთ სიზუსტეს, ხოლო სიმაღლის მაჩვენებელი კი დიეზია, თუ "
+"ბემოლი."
 
 #: src/app/qml/ExerciseSingingView.qml:1106
 #, kde-format
@@ -2459,16 +2462,13 @@ msgstr ""
 "ნიშნავს, რომ სიგნალი მიმდინარე არხზე მაღლაა."
 
 #: src/app/qml/ExerciseSingingView.qml:1115
-#, fuzzy, kde-format
-#| msgid ""
-#| "Calibrate silence in a quiet room before singing so room noise does not "
-#| "affect pitch and onset detection."
+#, kde-format
 msgid ""
 "Calibrate silence in a quiet room before singing so room noise does not "
 "affect pitch detection."
 msgstr ""
 "სიმღერის დაწყებამდე მოახდინეთ სიჩუმის კალიბრაცია წყნარ ოთახში, რომ ოთახის "
-"ხმაურმა არ იქონიოს გავლენა ტონის და დაწყების დადგენაზე."
+"ხმაურმა არ იქონიოს გავლენა ტონის დადგენაზე."
 
 #: src/app/qml/ExerciseSingingView.qml:1167
 #, kde-format
@@ -2634,7 +2634,7 @@ msgstr "გაუშვით ეს სახელმძღვანელო 
 #: src/app/qml/Main.qml:141
 #, kde-format
 msgid "Start by selecting an exercise topic from the drawer menu."
-msgstr ""
+msgstr "დაიწყეთ უჯრის მენიუდან სავარჯიშო თემის არჩევით."
 
 #: src/app/qml/Main.qml:143
 #, kde-format
@@ -2676,10 +2676,9 @@ msgid "About"
 msgstr "შესახებ"
 
 #: src/app/qml/MinuetDrawer.qml:209
-#, fuzzy, kde-format
-#| msgid "Number of exercises"
+#, kde-format
 msgid "No exercises found"
-msgstr "სავარჯიშოების რაოდენობა"
+msgstr "სავარჯიშოების აღმოჩენილი არაა"
 
 #: src/app/qml/PianoView/PianoView.qml:151
 #, kde-format
@@ -2768,10 +2767,9 @@ msgid "bpm"
 msgstr "დარტყმა/წთ"
 
 #: src/app/qml/SettingsPage.qml:124
-#, fuzzy, kde-format
-#| msgid "Clapping detection"
+#, kde-format
 msgid "Clapping speed"
-msgstr "ტაშის დადგენა"
+msgstr "ტაშის სიჩქარე"
 
 #: src/app/qml/SettingsPage.qml:139
 #, kde-format
@@ -2944,8 +2942,7 @@ msgid "Minimum onset strength"
 msgstr "ბგერის საწყისი წერტილის სიმძლავრის მინიმუმი"
 
 #: src/app/qml/SettingsPage.qml:455
-#, fuzzy, kde-format
-#| msgid "Used for pitch and timing analysis in singing exercises."
+#, kde-format
 msgid "Used for pitch analysis and note-entry timing in singing exercises."
 msgstr "გამოიყენება ტონისა და დროის ანალიზისთვის სიმღერის სავარჯიშოებში."
 
