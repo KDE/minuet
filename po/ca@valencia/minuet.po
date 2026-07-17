@@ -3,14 +3,14 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# SPDX-FileCopyrightText: 2016, 2017, 2018, 2022, 2023, 2026 Josep M. Ferrer <txemaq@gmail.com>
+# SPDX-FileCopyrightText: 2016-2018, 2022-2023, 2026 Josep M. Ferrer <txemaq@gmail.com>
 # SPDX-FileCopyrightText: 2020 Antoni Bella Pérez <antonibella5@yahoo.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-15 02:36+0000\n"
-"PO-Revision-Date: 2026-07-04 16:33+0200\n"
+"POT-Creation-Date: 2026-07-17 02:38+0000\n"
+"PO-Revision-Date: 2026-07-15 10:23+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 25.04.0\n"
+"X-Generator: Lokalize 26.04.3\n"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -514,7 +514,7 @@ msgstr "Fàcil"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Easy with rests"
-msgstr ""
+msgstr "Fàcil amb pauses"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -779,7 +779,7 @@ msgstr "Mitjà"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Medium with rests"
-msgstr ""
+msgstr "Mitjà amb pauses"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -974,7 +974,7 @@ msgstr "Frigi dominant"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice basic rhythm patterns that combine notes and rests."
-msgstr ""
+msgstr "Pràctica de patrons rítmics bàsics que combinen notes i pauses."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1596,7 +1596,7 @@ msgstr ""
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice varied rhythm patterns that combine notes and rests."
-msgstr ""
+msgstr "Pràctica de patrons rítmics variats que combinen notes i pauses."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1746,79 +1746,77 @@ msgstr "Tríton i sèptimes"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D7 uE1D9 uE4E7"
-msgstr ""
+msgstr "uE1D7 uE1D9 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D7uE1E7 uE4E7"
-msgstr ""
+msgstr "uE1D7uE1E7 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D7 uE4E6"
-msgstr ""
+msgstr "uE1D7 uE4E6"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D7 uE4E7 uE1D9"
-msgstr ""
+msgstr "uE1D7 uE4E7 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D7 uE4E7 uE4E7"
-msgstr ""
+msgstr "uE1D7 uE4E7 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE1D7 uE4E7"
-msgstr ""
+msgstr "uE1D9 uE1D7 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E6 uE1D9"
-msgstr ""
+msgstr "uE1D9 uE4E6 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E6uE1E7"
-msgstr ""
+msgstr "uE1D9 uE4E6uE1E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E6 uE4E7"
-msgstr ""
+msgstr "uE1D9 uE4E6 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E7 uE1D7"
-msgstr ""
+msgstr "uE1D9 uE4E7 uE1D7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E7 uE1D9 uE4E7"
-msgstr ""
+msgstr "uE1D9 uE4E7 uE1D9 uE4E7"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E7 uE1F0uE1F9uE1F4"
-msgstr "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgstr "uE1D9 uE4E7 uE1F0uE1F9uE1F4"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E7 uE4E6"
-msgstr ""
+msgstr "uE1D9 uE4E7 uE4E6"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E7 uE4E7 uE1D9"
-msgstr ""
+msgstr "uE1D9 uE4E7 uE4E7 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1D9 uE4E7 uE4E7 uE4E7"
-msgstr ""
+msgstr "uE1D9 uE4E7 uE4E7 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1860,136 +1858,120 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
 msgstr "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F4uE1F9uE1F4 uE4E7"
-msgstr "uE1F0uE1F9uE1F4uE1F9uE1F4uE1F9uE1F4"
+msgstr "uE1F0uE1F9uE1F4uE1F9uE1F4 uE4E7"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F9uE1F4uE1F7uE1F2"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F4 uE4E6"
-msgstr "uE1F0uE1F9uE1F4uE1F7uE1F2"
+msgstr "uE1F0uE1F9uE1F4 uE4E6"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F9uE1F4uE1F7uE1F2"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F4 uE4E7 uE1D9"
-msgstr "uE1F0uE1F9uE1F4uE1F7uE1F2"
+msgstr "uE1F0uE1F9uE1F4 uE4E7 uE1D9"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F9uE1F2uE1F7uE1F4"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE1F0uE1F9uE1F4 uE4E7 uE4E7"
-msgstr "uE1F0uE1F9uE1F2uE1F7uE1F4"
+msgstr "uE1F0uE1F9uE1F4 uE4E7 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E6 uE1D7"
-msgstr ""
+msgstr "uE4E6 uE1D7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E6 uE1D9 uE4E7"
-msgstr ""
+msgstr "uE4E6 uE1D9 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E6uE1E7 uE1D9"
-msgstr ""
+msgstr "uE4E6uE1E7 uE1D9"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E6 uE1F0uE1F9uE1F4"
-msgstr "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgstr "uE4E6 uE1F0uE1F9uE1F4"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E6 uE4E7 uE1D9"
-msgstr ""
+msgstr "uE4E6 uE4E7 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1D7 uE1D9"
-msgstr ""
+msgstr "uE4E7 uE1D7 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1D7uE1E7"
-msgstr ""
+msgstr "uE4E7 uE1D7uE1E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1D7 uE4E7"
-msgstr ""
+msgstr "uE4E7 uE1D7 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1D9 uE1D7"
-msgstr ""
+msgstr "uE4E7 uE1D9 uE1D7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1D9 uE4E6"
-msgstr ""
+msgstr "uE4E7 uE1D9 uE4E6"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1D9 uE4E7 uE1D9"
-msgstr ""
+msgstr "uE4E7 uE1D9 uE4E7 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1D9 uE4E7 uE4E7"
-msgstr ""
+msgstr "uE4E7 uE1D9 uE4E7 uE4E7"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F9uE1F4uE1F7uE1F2"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1F0uE1F9uE1F4uE1F9uE1F4"
-msgstr "uE1F0uE1F9uE1F4uE1F7uE1F2"
+msgstr "uE4E7 uE1F0uE1F9uE1F4uE1F9uE1F4"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE1F0uE1F9uE1F4 uE4E7"
-msgstr "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgstr "uE4E7 uE1F0uE1F9uE1F4 uE4E7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE4E6 uE1D9"
-msgstr ""
+msgstr "uE4E7 uE4E6 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE4E7 uE1D7"
-msgstr ""
+msgstr "uE4E7 uE4E7 uE1D7"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE4E7 uE1D9 uE4E7"
-msgstr ""
+msgstr "uE4E7 uE4E7 uE1D9 uE4E7"
 
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "uE1F0uE1F7uE1F2uE1F9uE1F4"
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE4E7 uE1F0uE1F9uE1F4"
-msgstr "uE1F0uE1F7uE1F2uE1F9uE1F4"
+msgstr "uE4E7 uE4E7 uE1F0uE1F9uE1F4"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "uE4E7 uE4E7 uE4E7 uE1D9"
-msgstr ""
+msgstr "uE4E7 uE4E7 uE4E7 uE1D9"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -2001,43 +1983,69 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Whole Tone"
 msgstr "To sencer"
 
-#: src/app/exercisecatalogcontroller.cpp:44
-#: src/app/exercisecatalogcontroller.cpp:118
+#: src/app/clappingexercisecontroller.cpp:56
+#: src/app/clappingexercisecontroller.cpp:151
+#: src/app/qml/exercises/ExerciseClappingView.qml:337
+#, kde-format
+msgid "Ready"
+msgstr "Llest"
+
+#: src/app/clappingexercisecontroller.cpp:220
+#: src/app/singingexercisecontroller.cpp:171
+#, kde-format
+msgid "Missed"
+msgstr "Perduda"
+
+#: src/app/clappingexercisecontroller.cpp:297
+#: src/app/qml/components/GraphicalMeter.qml:62
+#: src/app/singingexercisecontroller.cpp:139
+#, kde-format
+msgid "%1 ms"
+msgstr "%1 ms"
+
+#: src/app/clappingexercisecontroller.cpp:297
+#: src/app/singingexercisecontroller.cpp:139
+#, kde-format
+msgid "On time"
+msgstr "A temps"
+
+#: src/app/exercisecatalogcontroller.cpp:46
+#: src/app/exercisecatalogcontroller.cpp:120
 #, kde-format
 msgid "Practice identifying this exercise by ear."
 msgstr "Pràctica d'identificació d'este exercici d'oïda."
 
-#: src/app/exercisecatalogcontroller.cpp:47
-#: src/app/exercisecatalogcontroller.cpp:121
+#: src/app/exercisecatalogcontroller.cpp:49
+#: src/app/exercisecatalogcontroller.cpp:123
 #, kde-format
 msgid "Practice rhythm recognition."
 msgstr "Pràctica de reconeixement del ritme."
 
-#: src/app/exercisecatalogcontroller.cpp:49
-#: src/app/exercisecatalogcontroller.cpp:123
+#: src/app/exercisecatalogcontroller.cpp:51
+#: src/app/exercisecatalogcontroller.cpp:125
 #, kde-format
 msgid "Identify the scale by ear."
 msgstr "Identifiqueu l'escala d'oïda."
 
-#: src/app/exercisecatalogcontroller.cpp:51
-#: src/app/exercisecatalogcontroller.cpp:125
+#: src/app/exercisecatalogcontroller.cpp:53
+#: src/app/exercisecatalogcontroller.cpp:127
 #, kde-format
 msgid "Identify the chord or interval by ear."
 msgstr "Identifiqueu l'acord o l'interval d'oïda."
 
-#: src/app/exercisecatalogcontroller.cpp:56
-#: src/app/exercisecatalogcontroller.cpp:130
+#: src/app/exercisecatalogcontroller.cpp:58
+#: src/app/exercisecatalogcontroller.cpp:132
 #, kde-format
 msgid "%1 Includes %2 possible answers."
 msgstr "%1 Inclou %2 respostes possibles."
 
-#: src/app/exercisecatalogcontroller.cpp:245
+#: src/app/exercisecatalogcontroller.cpp:289
 #, kde-format
 msgid "Could not open JSON file \"%1\"."
 msgstr "No s'ha pogut obrir el fitxer JSON «%1»."
 
 #: src/app/exercisesessioncontroller.cpp:101
-#: src/app/exercisesessioncontroller.cpp:378
+#: src/app/exercisesessioncontroller.cpp:393
 #, kde-format
 msgid "Select New Question to start"
 msgstr "Trieu «Pregunta nova» per a començar"
@@ -2063,19 +2071,18 @@ msgid "That's right"
 msgstr "Açò és correcte"
 
 #: src/app/exercisesessioncontroller.cpp:348
-#, fuzzy, kde-format
-#| msgid "Not quite, try again"
+#, kde-format
 msgid "Not quite"
-msgstr "Encara no, torneu-ho a provar"
+msgstr "Encara no"
 
 #: src/app/exercisesessioncontroller.cpp:352
-#: src/app/qml/ExerciseClappingView.qml:800
-#: src/app/qml/ExerciseSingingView.qml:639
+#: src/app/qml/exercises/ExerciseClappingView.qml:457
+#: src/app/qml/exercises/ExerciseSingingView.qml:438
 #, kde-format
 msgid "Score: %1%"
 msgstr "Puntuació: %1%"
 
-#: src/app/exercisesessioncontroller.cpp:582
+#: src/app/exercisesessioncontroller.cpp:597
 #, kde-format
 msgid "Question %1 out of %2"
 msgstr "Pregunta %1 de %2"
@@ -2147,535 +2154,69 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "txemaq@gmail.com"
 
-#: src/app/qml/ExerciseClappingView.qml:39
-#: src/app/qml/ExerciseClappingView.qml:376
-#: src/app/qml/ExerciseClappingView.qml:454
-#, kde-format
-msgid "Ready"
-msgstr "Llest"
-
-#: src/app/qml/ExerciseClappingView.qml:514
-#: src/app/qml/ExerciseSingingView.qml:489
-#, kde-format
-msgid "Missed"
-msgstr "Perduda"
-
-#: src/app/qml/ExerciseClappingView.qml:617
-#: src/app/qml/ExerciseSingingView.qml:470
-#, kde-format
-msgid "On time"
-msgstr "A temps"
-
-#: src/app/qml/ExerciseClappingView.qml:619
-#: src/app/qml/ExerciseSingingView.qml:470 src/app/qml/GraphicalMeter.qml:24
-#, kde-format
-msgid "%1 ms"
-msgstr "%1 ms"
-
-#: src/app/qml/ExerciseClappingView.qml:675
-#: src/app/qml/ExerciseClappingView.qml:1006
-#: src/app/qml/ExerciseSingingView.qml:762
-#: src/app/qml/ExerciseSingingView.qml:1117
-#, kde-format
-msgid "Calibrate Silence"
-msgstr "Calibra el silenci"
-
-#: src/app/qml/ExerciseClappingView.qml:792
-#, kde-format
-msgid "The header shows the current instruction, microphone status, and score."
-msgstr ""
-
-#: src/app/qml/ExerciseClappingView.qml:800
-#, kde-format
-msgid "Clap the rhythm"
-msgstr "Piqueu de mans amb el ritme"
-
-#: src/app/qml/ExerciseClappingView.qml:808
-#: src/app/qml/ExerciseSingingView.qml:627
-#, kde-format
-msgid "Listening..."
-msgstr "Escoltant…"
-
-#: src/app/qml/ExerciseClappingView.qml:808
-#: src/app/qml/ExerciseSingingView.qml:442
-#: src/app/qml/ExerciseSingingView.qml:630
-#, fuzzy, kde-format
-#| msgid "Calibrating..."
-msgid "Analyzing..."
-msgstr "S'està calibrant…"
-
-#: src/app/qml/ExerciseClappingView.qml:808
-#: src/app/qml/ExerciseSingingView.qml:449
-#, fuzzy, kde-format
-#| msgid "No microphone input plugin available"
-msgid "No microphone input devices found"
-msgstr "No hi ha cap connector disponible d'entrada de micròfon"
-
-#: src/app/qml/ExerciseClappingView.qml:808
-#: src/app/qml/ExerciseSingingView.qml:446
-#, kde-format
-msgid "No microphone input plugin available"
-msgstr "No hi ha cap connector disponible d'entrada de micròfon"
-
-#: src/app/qml/ExerciseClappingView.qml:819
-#: src/app/qml/ExerciseSingingView.qml:916
-#, kde-format
-msgid ""
-"Use New Question or Start for one exercise, or Start Test for a scored "
-"series."
-msgstr ""
-
-#: src/app/qml/ExerciseClappingView.qml:827
-#: src/app/qml/ExerciseSingingView.qml:924 src/app/qml/ExerciseView.qml:417
-#, kde-format
-msgid "New Question"
-msgstr "Pregunta nova"
-
-#: src/app/qml/ExerciseClappingView.qml:827
-#: src/app/qml/ExerciseSingingView.qml:924
-#, kde-format
-msgid "Start"
-msgstr "Inicia"
-
-#: src/app/qml/ExerciseClappingView.qml:841
-#: src/app/qml/ExerciseSingingView.qml:938 src/app/qml/ExerciseView.qml:444
-#, kde-format
-msgid "Stop Test"
-msgstr "Para la prova"
-
-#: src/app/qml/ExerciseClappingView.qml:841
-#: src/app/qml/ExerciseSingingView.qml:938 src/app/qml/ExerciseView.qml:444
-#, kde-format
-msgid "Start Test"
-msgstr "Inicia la prova"
-
-#: src/app/qml/ExerciseClappingView.qml:879
-#, kde-format
-msgid ""
-"This area shows every rhythm figure. Borders mark correct or missed claps, "
-"and timing meters show early or late claps."
-msgstr ""
-
-#: src/app/qml/ExerciseClappingView.qml:995
-#, kde-format
-msgid ""
-"The input level shows microphone activity while you clap. Open means the "
-"signal is above the current gate."
-msgstr ""
-
-#: src/app/qml/ExerciseClappingView.qml:997
-#: src/app/qml/ExerciseSingingView.qml:1108
-#, kde-format
-msgid "Input level"
-msgstr "Nivell d'entrada"
-
-#: src/app/qml/ExerciseClappingView.qml:999
-#: src/app/qml/ExerciseSingingView.qml:1110
-#, kde-format
-msgid "Open"
-msgstr "Obri"
-
-#: src/app/qml/ExerciseClappingView.qml:999
-#: src/app/qml/ExerciseSingingView.qml:1110
-#, kde-format
-msgid "Closed"
-msgstr "Tancat"
-
-#: src/app/qml/ExerciseClappingView.qml:1004
-#, kde-format
-msgid ""
-"Calibrate silence in a quiet room before clapping so background noise is not "
-"counted as input."
-msgstr ""
-
-#: src/app/qml/ExerciseClappingView.qml:1006
-#: src/app/qml/ExerciseSingingView.qml:1117
-#, kde-format
-msgid "Calibrating..."
-msgstr "S'està calibrant…"
-
-#: src/app/qml/ExerciseMenuPage.qml:80
-#, kde-format
-msgid "%2 - %1 item"
-msgid_plural "%2 - %1 items"
-msgstr[0] "%2 – %1 element"
-msgstr[1] "%2 – %1 elements"
-
-#: src/app/qml/ExercisePage.qml:71
-#, kde-format
-msgctxt "@action:button"
-msgid "Help"
-msgstr "Ajuda"
-
-#: src/app/qml/ExercisePage.qml:99
-#, kde-format
-msgid "Count: %1"
-msgstr "Comptador: %1"
-
-#: src/app/qml/ExercisePage.qml:102
-#, kde-format
-msgid ""
-"A four-beat count-in plays before the rhythm. Listen, then recreate the "
-"pattern."
-msgstr ""
-
-#: src/app/qml/ExercisePage.qml:102
-#, kde-format
-msgid ""
-"A four-beat count-in plays before clapping is analyzed. Start clapping when "
-"the count finishes."
-msgstr ""
-
-#: src/app/qml/ExercisePage.qml:102
-#, kde-format
-msgid ""
-"A four-beat count-in plays before the base note. Listen, then sing the scale "
-"notes in order."
-msgstr ""
-
-#: src/app/qml/ExercisePage.qml:102
-#, kde-format
-msgid ""
-"A four-beat count-in plays before the root note. Listen, then sing the "
-"interval note."
-msgstr ""
-
-#: src/app/qml/ExercisePage.qml:194
-#, kde-format
-msgid ""
-"This is your first clapping exercise. Start a quick guide? You can open it "
-"later from the Help icon."
-msgstr ""
-"Este és el vostre primer exercici de picar de mans. Voleu iniciar una guia "
-"ràpida? Podeu obrir-la més tard des de la icona Ajuda."
-
-#: src/app/qml/ExercisePage.qml:194
-#, kde-format
-msgid ""
-"This is your first singing exercise. Start a quick guide? You can open it "
-"later from the Help icon."
-msgstr ""
-"Este és el vostre primer exercici de cant. Voleu iniciar una guia ràpida? "
-"Podeu obrir-la més tard des de la icona Ajuda."
-
-#: src/app/qml/ExercisePage.qml:194
-#, kde-format
-msgid ""
-"This is your first rhythmic exercise. Start a quick guide? You can open it "
-"later from the Help icon."
-msgstr ""
-"Este és el vostre primer exercici rítmic. Voleu iniciar una guia ràpida? "
-"Podeu obrir-la més tard des de la icona Ajuda."
-
-#: src/app/qml/ExercisePage.qml:194
-#, kde-format
-msgid ""
-"This is your first melodic exercise. Start a quick guide? You can open it "
-"later from the Help icon."
-msgstr ""
-"Este és el vostre primer exercici melòdic. Voleu iniciar una guia ràpida? "
-"Podeu obrir-la més tard des de la icona Ajuda."
-
-#: src/app/qml/ExercisePage.qml:195
-#, kde-format
-msgid "First Time Here"
-msgstr "És la primera vegada"
-
-#: src/app/qml/ExercisePage.qml:200
-#, kde-format
-msgctxt "@action:button"
-msgid "Start Guide"
-msgstr "Inicia la guia"
-
-#: src/app/qml/ExercisePage.qml:209
-#, kde-format
-msgctxt "@action:button"
-msgid "Not Now"
-msgstr "Ara no"
-
-#: src/app/qml/ExerciseSingingView.qml:50
-#: src/app/qml/ExerciseSingingView.qml:201
-#: src/app/qml/ExerciseSingingView.qml:317 src/app/qml/GraphicalMeter.qml:17
+#: src/app/qml/components/GraphicalMeter.qml:28
+#: src/app/qml/exercises/ExerciseSingingView.qml:216
+#: src/app/qml/exercises/ExerciseSingingView.qml:523
+#: src/app/singingexercisecontroller.cpp:90
+#: src/app/singingexercisecontroller.cpp:238
 #, kde-format
 msgid "No pitch"
 msgstr "Sense to"
 
-#: src/app/qml/ExerciseSingingView.qml:204
-#: src/app/qml/ExerciseSingingView.qml:1079
-#, fuzzy, kde-format
-#| msgid "Pitch + timing"
-msgid "No timing"
-msgstr "To + temps"
-
-#: src/app/qml/ExerciseSingingView.qml:222
-#, kde-format
-msgid "Played"
-msgstr ""
-
-#: src/app/qml/ExerciseSingingView.qml:336 src/app/qml/GraphicalMeter.qml:24
-#, kde-format
-msgid "%1 cents"
-msgstr "%1 cents"
-
-#: src/app/qml/ExerciseSingingView.qml:457
-#, kde-format
-msgid "%1 - Base: %2 - Targets: %3"
-msgstr "%1 – Base: %2 – Objectius: %3"
-
-#: src/app/qml/ExerciseSingingView.qml:459
-#, kde-format
-msgid "%1 - Base: %2 - Target: %3"
-msgstr "%1 – Base: %2 – Objectiu: %3"
-
-#: src/app/qml/ExerciseSingingView.qml:624 src/app/qml/ExerciseView.qml:391
-#, kde-format
-msgid "Playing…"
-msgstr "En reproducció…"
-
-#: src/app/qml/ExerciseSingingView.qml:642
-#, kde-format
-msgid "Sing the scale"
-msgstr "Canteu l'escala"
-
-#: src/app/qml/ExerciseSingingView.qml:642
-#, kde-format
-msgid "Sing the interval"
-msgstr "Canteu l'interval"
-
-#: src/app/qml/ExerciseSingingView.qml:648
-#, kde-format
-msgid "%1 — %2"
-msgstr ""
-
-#: src/app/qml/ExerciseSingingView.qml:889
-#, kde-format
-msgid ""
-"The header identifies the scale and shows the current instruction or score."
-msgstr ""
-
-#: src/app/qml/ExerciseSingingView.qml:889
-#, kde-format
-msgid ""
-"The header identifies the interval and shows the current instruction or "
-"score."
-msgstr ""
-
-#: src/app/qml/ExerciseSingingView.qml:976
-#, kde-format
-msgid ""
-"This area shows the scale notes in order. Borders report pitch; pitch meters "
-"show flat or sharp notes, and timing meters show early or late starts."
-msgstr ""
-
-#: src/app/qml/ExerciseSingingView.qml:976
-#, kde-format
-msgid ""
-"This area shows the reference and target notes. Sing the target; its border "
-"reports accuracy, and its pitch meter shows flat or sharp notes."
-msgstr ""
-
-#: src/app/qml/ExerciseSingingView.qml:1106
-#, kde-format
-msgid ""
-"The input level shows microphone activity while you sing. Open means the "
-"signal is above the current gate."
-msgstr ""
-
-#: src/app/qml/ExerciseSingingView.qml:1115
-#, kde-format
-msgid ""
-"Calibrate silence in a quiet room before singing so room noise does not "
-"affect pitch detection."
-msgstr ""
-
-#: src/app/qml/ExerciseSingingView.qml:1167
-#, kde-format
-msgid ""
-"The keyboard highlights the reference note and target notes for the singing "
-"question."
-msgstr ""
-
-#: src/app/qml/ExerciseSingingView.qml:1205
-#, fuzzy, kde-format
-#| msgid "The staff shows the same notes in music notation."
-msgid "The staff shows the same singing notes in music notation."
-msgstr "El pentagrama mostra les mateixes notes en notació musical."
-
-#: src/app/qml/ExerciseSingingView.qml:1234 src/app/qml/ExerciseView.qml:746
-#, kde-format
-msgid "Keyboard"
-msgstr "Teclat"
-
-#: src/app/qml/ExerciseSingingView.qml:1237 src/app/qml/ExerciseView.qml:749
-#, kde-format
-msgid "Staff"
-msgstr "Pentagrama"
-
-#: src/app/qml/ExerciseView.qml:363
-#, kde-format
-msgid "These messages explain the question and show its status."
-msgstr "Este missatges expliquen la pregunta i mostren el seu estat."
-
-#: src/app/qml/ExerciseView.qml:379
-#, kde-format
-msgctxt "technical term, do you have a musician friend?"
-msgid "userMessage"
-msgstr "missatgeUsuari"
-
-#: src/app/qml/ExerciseView.qml:403
-#, fuzzy, kde-format
-#| msgid "Start a new question or replay the current one."
-msgid "Start a new question, replay it, reveal the answer, or begin a test."
-msgstr "Inicia una pregunta nova o torna a reproduir l'actual."
-
-#: src/app/qml/ExerciseView.qml:403
-#, fuzzy, kde-format
-#| msgid "Start a new question or replay the current one."
-msgid "Start a rhythm question, replay it, reveal the answer, or begin a test."
-msgstr "Inicia una pregunta nova o torna a reproduir l'actual."
-
-#: src/app/qml/ExerciseView.qml:417
-#, kde-format
-msgid "Play Question"
-msgstr "Reproduïx la pregunta"
-
-#: src/app/qml/ExerciseView.qml:431
-#, kde-format
-msgid "Give Up"
-msgstr "Renuncio"
-
-#: src/app/qml/ExerciseView.qml:489
-#, kde-format
-msgid "Choose an answer here. Hover, or press and hold, to preview it below."
-msgstr ""
-"Trieu una resposta ací. Passeu per damunt o premeu i manteniu premut per a "
-"previsualitzar-la a continuació."
-
-#: src/app/qml/ExerciseView.qml:489
-#, kde-format
-msgid "Choose each rhythm part from these available answers."
-msgstr "Trieu cada part del ritme d'entre estes respostes disponibles."
-
-#: src/app/qml/ExerciseView.qml:503
-#, kde-format
-msgid "Available answers"
-msgstr "Respostes disponibles"
-
-#: src/app/qml/ExerciseView.qml:507
-#, kde-format
-msgid "Scroll for more"
-msgstr "Desplaceu per a més"
-
-#: src/app/qml/ExerciseView.qml:555
-#, kde-format
-msgid "Your selected answer appears here."
-msgstr "La vostra resposta seleccionada apareix ací."
-
-#: src/app/qml/ExerciseView.qml:555
-#, kde-format
-msgid "Build your rhythm answer here, one part at a time."
-msgstr "Construïu ací la vostra resposta de ritme, una part cada vegada."
-
-#: src/app/qml/ExerciseView.qml:571
-#, kde-format
-msgid "Correct answer"
-msgid_plural "Correct answers"
-msgstr[0] "Resposta correcta"
-msgstr[1] "Respostes correctes"
-
-#: src/app/qml/ExerciseView.qml:571
-#, kde-format
-msgid "Your answer"
-msgid_plural "Your answers"
-msgstr[0] "La vostra resposta"
-msgstr[1] "Les vostres respostes"
-
-#: src/app/qml/ExerciseView.qml:575
-#, kde-format
-msgid "Scroll for more |"
-msgstr "Desplaceu per a més |"
-
-#: src/app/qml/ExerciseView.qml:580
-#, kde-format
-msgid "%1 / %2"
-msgstr "%1 / %2"
-
-#: src/app/qml/ExerciseView.qml:584
-#, kde-format
-msgid "Backspace"
-msgstr "Retrocés"
-
-#: src/app/qml/ExerciseView.qml:680
-#, kde-format
-msgid "The keyboard shows the notes in the question or preview."
-msgstr "El teclat mostra les notes de la pregunta o previsualització."
-
-#: src/app/qml/ExerciseView.qml:718
-#, kde-format
-msgid "The staff shows the same notes in music notation."
-msgstr "El pentagrama mostra les mateixes notes en notació musical."
-
-#: src/app/qml/ExerciseView.qml:877
-#, kde-format
-msgid "Empty answer slot"
-msgstr "Ranura de resposta buida"
-
-#: src/app/qml/ExerciseView.qml:909
-#, kde-format
-msgid "Answer %1"
-msgstr "Resposta %1"
-
-#: src/app/qml/GraphicalMeter.qml:17
+#: src/app/qml/components/GraphicalMeter.qml:28
 #, kde-format
 msgid "No onset"
 msgstr "Sense inici"
 
-#: src/app/qml/GraphicalMeter.qml:53
+#: src/app/qml/components/GraphicalMeter.qml:62
+#: src/app/singingexercisecontroller.cpp:98
 #, kde-format
-msgid "Pitch deviation: %1"
-msgstr "Desviació de to: %1"
+msgid "%1 cents"
+msgstr "%1 cents"
 
-#: src/app/qml/GraphicalMeter.qml:53
+#: src/app/qml/components/MicrophoneInputPanel.qml:29
 #, kde-format
-msgid "Onset deviation: %1"
-msgstr "Desviació d'inici: %1"
+msgid "Input level"
+msgstr "Nivell d'entrada"
 
-#: src/app/qml/Main.qml:18 src/app/qml/MinuetDrawer.qml:157
+#: src/app/qml/components/MicrophoneInputPanel.qml:31
 #, kde-format
-msgid "Home"
-msgstr "Inici"
+msgid "Open"
+msgstr "Obri"
 
-#: src/app/qml/Main.qml:113
+#: src/app/qml/components/MicrophoneInputPanel.qml:31
 #, kde-format
-msgid "Run this guide again any time from the Help icon."
-msgstr "Executa esta guia de nou en qualsevol moment des de la icona Ajuda."
+msgid "Closed"
+msgstr "Tancat"
 
-#: src/app/qml/Main.qml:141
+#: src/app/qml/components/MicrophoneInputPanel.qml:40
+#: src/app/qml/components/MicrophoneInputPanel.qml:47
 #, kde-format
-msgid "Start by selecting an exercise topic from the drawer menu."
-msgstr ""
+msgid "Calibrating..."
+msgstr "S'està calibrant…"
 
-#: src/app/qml/Main.qml:143
+#: src/app/qml/components/MicrophoneInputPanel.qml:40
 #, kde-format
-msgid "Choose an exercise"
-msgstr "Trieu un exercici"
+msgid "Calibrate Silence"
+msgstr "Calibra el silenci"
 
-#: src/app/qml/MinuetDrawer.qml:32 src/app/qml/MinuetDrawer.qml:232
+#: src/app/qml/components/MinuetDrawer.qml:27
+#: src/app/qml/components/MinuetDrawer.qml:236
 #, kde-format
 msgid "All exercises"
 msgstr "Tots els exercicis"
 
-#: src/app/qml/MinuetDrawer.qml:77
+#: src/app/qml/components/MinuetDrawer.qml:72
 #, kde-format
 msgid "Search…"
 msgstr "Busca…"
 
-#: src/app/qml/MinuetDrawer.qml:133
+#: src/app/qml/components/MinuetDrawer.qml:127
 #, kde-format
 msgid "Welcome to Minuet"
 msgstr "Us donem la benvinguda a Minuet"
 
-#: src/app/qml/MinuetDrawer.qml:143
+#: src/app/qml/components/MinuetDrawer.qml:137
 #, kde-format
 msgid ""
 "Practice ear training with exercises for intervals, chords, rhythm, scales, "
@@ -2684,136 +2225,569 @@ msgstr ""
 "Practiqueu l'entrenament de l'oïda amb exercicis d'intervals, acords, "
 "ritmes, escales, etc."
 
-#: src/app/qml/MinuetDrawer.qml:171 src/app/qml/SettingsPage.qml:62
+#: src/app/qml/components/MinuetDrawer.qml:151 src/app/qml/Main.qml:109
+#, kde-format
+msgid "Home"
+msgstr "Inici"
+
+#: src/app/qml/components/MinuetDrawer.qml:165
+#: src/app/qml/pages/SettingsPage.qml:43
 #, kde-format
 msgid "Settings"
 msgstr "Configuració"
 
-#: src/app/qml/MinuetDrawer.qml:187
+#: src/app/qml/components/MinuetDrawer.qml:181
 #, kde-format
 msgid "About"
 msgstr "Quant a"
 
-#: src/app/qml/MinuetDrawer.qml:209
-#, fuzzy, kde-format
-#| msgid "Number of exercises"
+#: src/app/qml/components/MinuetDrawer.qml:203
+#, kde-format
 msgid "No exercises found"
-msgstr "Nombre d'exercicis"
+msgstr "No s'ha trobat cap exercici"
 
-#: src/app/qml/PianoView/PianoView.qml:151
+#: src/app/qml/components/SettingsSlider.qml:56
+#, kde-format
+msgid "%1 %2"
+msgstr "%1 %2"
+
+#: src/app/qml/exercises/ExerciseClappingView.qml:451
+#: src/app/qml/exercises/ExerciseSingingView.qml:677
+#, kde-format
+msgid ""
+"Use New Question or Start for one exercise, or Start Test for a scored "
+"series."
+msgstr ""
+"Utilitzeu «Pregunta nova» o «Inicia» per a un exercici, o «Inicia la prova» "
+"per a una sèrie puntuada."
+
+#: src/app/qml/exercises/ExerciseClappingView.qml:455
+#, kde-format
+msgid "The header shows the current instruction, microphone status, and score."
+msgstr ""
+"La capçalera mostra la instrucció actual, l'estat del micròfon i la "
+"puntuació."
+
+#: src/app/qml/exercises/ExerciseClappingView.qml:456
+#: src/app/qml/exercises/ExerciseSingingView.qml:429
+#, kde-format
+msgid "Listening..."
+msgstr "Escoltant…"
+
+#: src/app/qml/exercises/ExerciseClappingView.qml:456
+#: src/app/qml/exercises/ExerciseSingingView.qml:273
+#: src/app/qml/exercises/ExerciseSingingView.qml:432
+#, kde-format
+msgid "Analyzing..."
+msgstr "S'està analitzant…"
+
+#: src/app/qml/exercises/ExerciseClappingView.qml:456
+#: src/app/qml/exercises/ExerciseSingingView.qml:280
+#, kde-format
+msgid "No microphone input devices found"
+msgstr "No s'ha cap trobat cap dispositiu d'entrada de micròfon"
+
+#: src/app/qml/exercises/ExerciseClappingView.qml:456
+#: src/app/qml/exercises/ExerciseSingingView.qml:277
+#, kde-format
+msgid "No microphone input plugin available"
+msgstr "No hi ha cap connector disponible d'entrada de micròfon"
+
+#: src/app/qml/exercises/ExerciseClappingView.qml:457
+#, kde-format
+msgid "Clap the rhythm"
+msgstr "Piqueu de mans amb el ritme"
+
+#: src/app/qml/exercises/ExerciseClappingView.qml:464
+#: src/app/qml/exercises/ExerciseSingingView.qml:690
+#: src/app/qml/exercises/ExerciseView.qml:368
+#, kde-format
+msgid "New Question"
+msgstr "Pregunta nova"
+
+#: src/app/qml/exercises/ExerciseClappingView.qml:464
+#: src/app/qml/exercises/ExerciseSingingView.qml:690
+#, kde-format
+msgid "Start"
+msgstr "Inicia"
+
+#: src/app/qml/exercises/ExerciseClappingView.qml:478
+#: src/app/qml/exercises/ExerciseSingingView.qml:704
+#: src/app/qml/exercises/ExerciseView.qml:395
+#, kde-format
+msgid "Stop Test"
+msgstr "Para la prova"
+
+#: src/app/qml/exercises/ExerciseClappingView.qml:478
+#: src/app/qml/exercises/ExerciseSingingView.qml:704
+#: src/app/qml/exercises/ExerciseView.qml:395
+#, kde-format
+msgid "Start Test"
+msgstr "Inicia la prova"
+
+#: src/app/qml/exercises/ExerciseClappingView.qml:493
+#, kde-format
+msgid ""
+"This area shows every rhythm figure. Borders mark correct or missed claps, "
+"and timing meters show early or late claps."
+msgstr ""
+"Esta zona mostra totes les figures rítmiques. Les vores marquen picades de "
+"mans correctes o absentes, i els comptadors de temps mostren picades de mans "
+"anticipats o tardans."
+
+#: src/app/qml/exercises/ExerciseClappingView.qml:606
+#, kde-format
+msgid ""
+"Calibrate silence in a quiet room before clapping so background noise is not "
+"counted as input."
+msgstr ""
+"Calibra el silenci en una habitació tranquil·la abans de picar de mans de "
+"manera que el soroll de fons no es compta com a entrada."
+
+#: src/app/qml/exercises/ExerciseClappingView.qml:607
+#, kde-format
+msgid ""
+"The input level shows microphone activity while you clap. Open means the "
+"signal is above the current gate."
+msgstr ""
+"El nivell d'entrada mostra l'activitat del micròfon mentre piqueu de mans. "
+"Obert significa que el senyal està per damunt de la porta actual."
+
+#: src/app/qml/exercises/ExerciseSingingView.qml:292
+#, kde-format
+msgid "%1 - Base: %2 - Targets: %3"
+msgstr "%1 – Base: %2 – Objectius: %3"
+
+#: src/app/qml/exercises/ExerciseSingingView.qml:294
+#, kde-format
+msgid "%1 - Base: %2 - Target: %3"
+msgstr "%1 – Base: %2 – Objectiu: %3"
+
+#: src/app/qml/exercises/ExerciseSingingView.qml:426
+#: src/app/qml/exercises/ExerciseView.qml:347
+#, kde-format
+msgid "Playing…"
+msgstr "En reproducció…"
+
+#: src/app/qml/exercises/ExerciseSingingView.qml:441
+#, kde-format
+msgid "Sing the scale"
+msgstr "Canteu l'escala"
+
+#: src/app/qml/exercises/ExerciseSingingView.qml:441
+#, kde-format
+msgid "Sing the interval"
+msgstr "Canteu l'interval"
+
+#: src/app/qml/exercises/ExerciseSingingView.qml:447
+#, kde-format
+msgid "%1 — %2"
+msgstr "%1 — %2"
+
+#: src/app/qml/exercises/ExerciseSingingView.qml:681
+#, kde-format
+msgid ""
+"The header identifies the scale and shows the current instruction or score."
+msgstr ""
+"La capçalera identifica l'escala i mostra la instrucció actual o la "
+"puntuació."
+
+#: src/app/qml/exercises/ExerciseSingingView.qml:681
+#, kde-format
+msgid ""
+"The header identifies the interval and shows the current instruction or "
+"score."
+msgstr ""
+"La capçalera identifica l'interval i mostra la instrucció actual o la "
+"puntuació."
+
+#: src/app/qml/exercises/ExerciseSingingView.qml:719
+#, kde-format
+msgid ""
+"This area shows the scale notes in order. Borders report pitch; pitch meters "
+"show flat or sharp notes, and timing meters show early or late starts."
+msgstr ""
+"Esta àrea mostra les notes de l'escala en ordre. Les vores informen del to; "
+"els mesuradors de to mostren notes bemolls o sostingudes, i els mesuradors "
+"de temps mostren començaments anticipats o tardans."
+
+#: src/app/qml/exercises/ExerciseSingingView.qml:719
+#, kde-format
+msgid ""
+"This area shows the reference and target notes. Sing the target; its border "
+"reports accuracy, and its pitch meter shows flat or sharp notes."
+msgstr ""
+"Esta àrea mostra les notes de referència i d'objectiu. Canteu l'objectiu; la "
+"seua vora informa de la precisió i el seu mesurador de to mostra notes "
+"bemolls o sostingudes."
+
+#: src/app/qml/exercises/ExerciseSingingView.qml:821
+#: src/app/singingexercisecontroller.cpp:241
+#, kde-format
+msgid "No timing"
+msgstr "Sense temps"
+
+#: src/app/qml/exercises/ExerciseSingingView.qml:843
+#, kde-format
+msgid ""
+"Calibrate silence in a quiet room before singing so room noise does not "
+"affect pitch detection."
+msgstr ""
+"Calibra el silenci en una habitació tranquil·la abans de cantar de manera "
+"que el soroll de l'habitació no afecta la detecció del to."
+
+#: src/app/qml/exercises/ExerciseSingingView.qml:844
+#, kde-format
+msgid ""
+"The input level shows microphone activity while you sing. Open means the "
+"signal is above the current gate."
+msgstr ""
+"El nivell d'entrada mostra l'activitat del micròfon mentre canteu. Obert "
+"significa que el senyal està per damunt de la porta actual."
+
+#: src/app/qml/exercises/ExerciseSingingView.qml:896
+#, kde-format
+msgid ""
+"The keyboard highlights the reference note and target notes for the singing "
+"question."
+msgstr ""
+"El teclat ressalta la nota de referència i les notes objectives per a la "
+"pregunta de cant."
+
+#: src/app/qml/exercises/ExerciseSingingView.qml:934
+#, kde-format
+msgid "The staff shows the same singing notes in music notation."
+msgstr "El pentagrama mostra les mateixes notes de cant en notació musical."
+
+#: src/app/qml/exercises/ExerciseSingingView.qml:963
+#: src/app/qml/exercises/ExerciseView.qml:683
+#, kde-format
+msgid "Keyboard"
+msgstr "Teclat"
+
+#: src/app/qml/exercises/ExerciseSingingView.qml:966
+#: src/app/qml/exercises/ExerciseView.qml:686
+#, kde-format
+msgid "Staff"
+msgstr "Pentagrama"
+
+#: src/app/qml/exercises/ExerciseView.qml:342
+#, fuzzy, kde-format
+#| msgid ""
+#| "Use New Question or Start for one exercise, or Start Test for a scored "
+#| "series."
+msgid ""
+"Use the first button to hear or replace the question, Give Up to reveal its "
+"answer, and Start Test for a scored series."
+msgstr ""
+"Utilitzeu «Pregunta nova» o «Inicia» per a un exercici, o «Inicia la prova» "
+"per a una sèrie puntuada."
+
+#: src/app/qml/exercises/ExerciseView.qml:342
+#, fuzzy, kde-format
+#| msgid ""
+#| "Use New Question or Start for one exercise, or Start Test for a scored "
+#| "series."
+msgid ""
+"Use the first button to hear or replace the rhythm, Give Up to reveal its "
+"answer, and Start Test for a scored series."
+msgstr ""
+"Utilitzeu «Pregunta nova» o «Inicia» per a un exercici, o «Inicia la prova» "
+"per a una sèrie puntuada."
+
+#: src/app/qml/exercises/ExerciseView.qml:346
+#, kde-format
+msgid "These messages explain the question and show its status."
+msgstr "Este missatges expliquen la pregunta i mostren el seu estat."
+
+#: src/app/qml/exercises/ExerciseView.qml:361
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
-msgid "Octave %1"
-msgstr "Octava %1"
+msgid "userMessage"
+msgstr "missatgeUsuari"
 
-#: src/app/qml/PracticeModePage.qml:52
+#: src/app/qml/exercises/ExerciseView.qml:368
+#, kde-format
+msgid "Play Question"
+msgstr "Reproduïx la pregunta"
+
+#: src/app/qml/exercises/ExerciseView.qml:382
+#, kde-format
+msgid "Give Up"
+msgstr "Renuncio"
+
+#: src/app/qml/exercises/ExerciseView.qml:422
+#, kde-format
+msgid "Choose an answer here. Hover, or press and hold, to preview it below."
+msgstr ""
+"Trieu una resposta ací. Passeu per damunt o premeu i manteniu premut per a "
+"previsualitzar-la a continuació."
+
+#: src/app/qml/exercises/ExerciseView.qml:422
+#, kde-format
+msgid "Choose each rhythm part from these available answers."
+msgstr "Trieu cada part del ritme d'entre estes respostes disponibles."
+
+#: src/app/qml/exercises/ExerciseView.qml:436
+#, kde-format
+msgid "Available answers"
+msgstr "Respostes disponibles"
+
+#: src/app/qml/exercises/ExerciseView.qml:440
+#, kde-format
+msgid "Scroll for more"
+msgstr "Desplaceu per a més"
+
+#: src/app/qml/exercises/ExerciseView.qml:491
+#, kde-format
+msgid "Your selected answer appears here."
+msgstr "La vostra resposta seleccionada apareix ací."
+
+#: src/app/qml/exercises/ExerciseView.qml:491
+#, kde-format
+msgid "Build your rhythm answer here, one part at a time."
+msgstr "Construïu ací la vostra resposta de ritme, una part cada vegada."
+
+#: src/app/qml/exercises/ExerciseView.qml:507
+#, kde-format
+msgid "Correct answer"
+msgid_plural "Correct answers"
+msgstr[0] "Resposta correcta"
+msgstr[1] "Respostes correctes"
+
+#: src/app/qml/exercises/ExerciseView.qml:507
+#, kde-format
+msgid "Your answer"
+msgid_plural "Your answers"
+msgstr[0] "La vostra resposta"
+msgstr[1] "Les vostres respostes"
+
+#: src/app/qml/exercises/ExerciseView.qml:511
+#, kde-format
+msgid "Scroll for more |"
+msgstr "Desplaceu per a més |"
+
+#: src/app/qml/exercises/ExerciseView.qml:516
+#, kde-format
+msgid "%1 / %2"
+msgstr "%1 / %2"
+
+#: src/app/qml/exercises/ExerciseView.qml:520
+#, kde-format
+msgid "Backspace"
+msgstr "Retrocés"
+
+#: src/app/qml/exercises/ExerciseView.qml:617
+#, kde-format
+msgid "The keyboard shows the notes in the question or preview."
+msgstr "El teclat mostra les notes de la pregunta o previsualització."
+
+#: src/app/qml/exercises/ExerciseView.qml:655
+#, kde-format
+msgid "The staff shows the same notes in music notation."
+msgstr "El pentagrama mostra les mateixes notes en notació musical."
+
+#: src/app/qml/exercises/ExerciseView.qml:842
+#, kde-format
+msgid "Answer %1"
+msgstr "Resposta %1"
+
+#: src/app/qml/Main.qml:102
+#, kde-format
+msgid "Run this guide again any time from the Help icon."
+msgstr "Executa esta guia de nou en qualsevol moment des de la icona Ajuda."
+
+#: src/app/qml/Main.qml:137
+#, kde-format
+msgid "Start by selecting an exercise topic from the drawer menu."
+msgstr "Comenceu seleccionant un tema d'exercici des del menú del calaix."
+
+#: src/app/qml/Main.qml:139
+#, kde-format
+msgid "Choose an exercise"
+msgstr "Trieu un exercici"
+
+#: src/app/qml/pages/ExerciseMenuPage.qml:60
+#, kde-format
+msgid "%2 - %1 item"
+msgid_plural "%2 - %1 items"
+msgstr[0] "%2 – %1 element"
+msgstr[1] "%2 – %1 elements"
+
+#: src/app/qml/pages/ExercisePage.qml:55
+#, kde-format
+msgctxt "@action:button"
+msgid "Help"
+msgstr "Ajuda"
+
+#: src/app/qml/pages/ExercisePage.qml:93
+#, kde-format
+msgid ""
+"A four-beat count-in plays before the rhythm. Listen, then recreate the "
+"pattern."
+msgstr ""
+"Un comptador de quatre temps es reproduïx abans del ritme. Escolteu, després "
+"recreeu el patró."
+
+#: src/app/qml/pages/ExercisePage.qml:93
+#, kde-format
+msgid ""
+"A four-beat count-in plays before clapping is analyzed. Start clapping when "
+"the count finishes."
+msgstr ""
+"Un comptador de quatre temps es reproduïx abans d'analitzar les picades de "
+"mans. Inicieu el picar de mans quan acabe el compte."
+
+#: src/app/qml/pages/ExercisePage.qml:93
+#, kde-format
+msgid ""
+"A four-beat count-in plays before the base note. Listen, then sing the scale "
+"notes in order."
+msgstr ""
+"Un comptador de quatre temps es reproduïx abans de la nota base. Escolteu, "
+"després canteu les notes de l'escala en ordre."
+
+#: src/app/qml/pages/ExercisePage.qml:93
+#, kde-format
+msgid ""
+"A four-beat count-in plays before the root note. Listen, then sing the "
+"interval note."
+msgstr ""
+"Un comptador de quatre temps es reproduïx abans de la nota arrel. Escolteu, "
+"després canteu la nota de l'interval."
+
+#: src/app/qml/pages/ExercisePage.qml:260
+#, kde-format
+msgid ""
+"This is your first clapping exercise. Start a quick guide? You can open it "
+"later from the Help icon."
+msgstr ""
+"Este és el vostre primer exercici de picar de mans. Voleu iniciar una guia "
+"ràpida? Podeu obrir-la més tard des de la icona Ajuda."
+
+#: src/app/qml/pages/ExercisePage.qml:260
+#, kde-format
+msgid ""
+"This is your first singing exercise. Start a quick guide? You can open it "
+"later from the Help icon."
+msgstr ""
+"Este és el vostre primer exercici de cant. Voleu iniciar una guia ràpida? "
+"Podeu obrir-la més tard des de la icona Ajuda."
+
+#: src/app/qml/pages/ExercisePage.qml:260
+#, kde-format
+msgid ""
+"This is your first rhythmic exercise. Start a quick guide? You can open it "
+"later from the Help icon."
+msgstr ""
+"Este és el vostre primer exercici rítmic. Voleu iniciar una guia ràpida? "
+"Podeu obrir-la més tard des de la icona Ajuda."
+
+#: src/app/qml/pages/ExercisePage.qml:260
+#, kde-format
+msgid ""
+"This is your first melodic exercise. Start a quick guide? You can open it "
+"later from the Help icon."
+msgstr ""
+"Este és el vostre primer exercici melòdic. Voleu iniciar una guia ràpida? "
+"Podeu obrir-la més tard des de la icona Ajuda."
+
+#: src/app/qml/pages/ExercisePage.qml:261
+#, kde-format
+msgid "First Time Here"
+msgstr "És la primera vegada"
+
+#: src/app/qml/pages/ExercisePage.qml:266
+#, kde-format
+msgctxt "@action:button"
+msgid "Start Guide"
+msgstr "Inicia la guia"
+
+#: src/app/qml/pages/ExercisePage.qml:275
+#, kde-format
+msgctxt "@action:button"
+msgid "Not Now"
+msgstr "Ara no"
+
+#: src/app/qml/pages/PracticeModePage.qml:39
 #, kde-format
 msgid "Choose how you would like to practice this exercise:"
 msgstr "Trieu com voleu practicar este exercici:"
 
-#: src/app/qml/PracticeModePage.qml:60
+#: src/app/qml/pages/PracticeModePage.qml:47
 #, kde-format
 msgid "Hear and identify"
 msgstr "Escoltar i identificar"
 
-#: src/app/qml/PracticeModePage.qml:71
+#: src/app/qml/pages/PracticeModePage.qml:58
 #, kde-format
 msgid "Read and clap"
 msgstr "Llegir i picar de mans"
 
-#: src/app/qml/PracticeModePage.qml:71
+#: src/app/qml/pages/PracticeModePage.qml:58
 #, kde-format
 msgid "Read and sing"
 msgstr "Llegir i cantar"
 
-#: src/app/qml/PracticeModePage.qml:71
-#, fuzzy, kde-format
-#| msgid "No microphone input plugin available"
+#: src/app/qml/pages/PracticeModePage.qml:58
+#, kde-format
 msgid "(no microphone input devices found)"
-msgstr "No hi ha cap connector disponible d'entrada de micròfon"
+msgstr "(no s'ha cap trobat cap dispositiu d'entrada de micròfon)"
 
-#: src/app/qml/SettingsPage.qml:19
+#: src/app/qml/pages/SettingsPage.qml:53
 #, kde-format
 msgid "Hide advanced settings"
 msgstr "Oculta la configuració avançada"
 
-#: src/app/qml/SettingsPage.qml:29
-#, kde-format
-msgid "Pitch primary"
-msgstr "To primari"
-
-#: src/app/qml/SettingsPage.qml:29
-#, kde-format
-msgid "Pitch + timing"
-msgstr "To + temps"
-
-#: src/app/qml/SettingsPage.qml:32
+#: src/app/qml/pages/SettingsPage.qml:59
 #, kde-format
 msgid "Show advanced settings"
 msgstr "Mostra la configuració avançada"
 
-#: src/app/qml/SettingsPage.qml:33
-#, kde-format
-msgid "Soprano"
-msgstr "Soprano"
-
-#: src/app/qml/SettingsPage.qml:33
-#, kde-format
-msgid "Alto"
-msgstr "Alto"
-
-#: src/app/qml/SettingsPage.qml:33
-#, kde-format
-msgid "Tenor"
-msgstr "Tenor"
-
-#: src/app/qml/SettingsPage.qml:33
-#, kde-format
-msgid "Bass"
-msgstr "Baix"
-
-#: src/app/qml/SettingsPage.qml:99
+#: src/app/qml/pages/SettingsPage.qml:94
 #, kde-format
 msgid "Practice"
 msgstr "Exercici"
 
-#: src/app/qml/SettingsPage.qml:108
+#: src/app/qml/pages/SettingsPage.qml:103
 #, kde-format
 msgid "Exercise speed"
 msgstr "Velocitat de l'exercici"
 
-#: src/app/qml/SettingsPage.qml:109 src/app/qml/SettingsPage.qml:125
+#: src/app/qml/pages/SettingsPage.qml:104
+#: src/app/qml/pages/SettingsPage.qml:120
 #, kde-format
 msgid "bpm"
 msgstr "bpm"
 
-#: src/app/qml/SettingsPage.qml:124
+#: src/app/qml/pages/SettingsPage.qml:119
 #, fuzzy, kde-format
-#| msgid "Clapping detection"
-msgid "Clapping speed"
-msgstr "Detecció de picar de mans"
+#| msgctxt "technical term, do you have a musician friend?"
+#| msgid "Rhythm"
+msgid "Rhythm tempo"
+msgstr "Ritme"
 
-#: src/app/qml/SettingsPage.qml:139
+#: src/app/qml/pages/SettingsPage.qml:134
 #, kde-format
 msgid "Number of rhythm patterns"
 msgstr "Nombre de patrons de ritme"
 
-#: src/app/qml/SettingsPage.qml:153
+#: src/app/qml/pages/SettingsPage.qml:148
 #, kde-format
 msgid "Number of exercises"
 msgstr "Nombre d'exercicis"
 
-#: src/app/qml/SettingsPage.qml:164
+#: src/app/qml/pages/SettingsPage.qml:159
 #, kde-format
 msgid "Sound"
 msgstr "So"
 
-#: src/app/qml/SettingsPage.qml:173
+#: src/app/qml/pages/SettingsPage.qml:168
 #, kde-format
 msgid "Volume"
 msgstr "Volum"
 
-#: src/app/qml/SettingsPage.qml:184
+#: src/app/qml/pages/SettingsPage.qml:179
 #, kde-format
 msgid ""
 "The active sound controller did not report any General MIDI bank 0 "
@@ -2822,65 +2796,84 @@ msgstr ""
 "El controlador de so actiu no ha informat cap instrument de MIDI General del "
 "banc 0."
 
-#: src/app/qml/SettingsPage.qml:186
+#: src/app/qml/pages/SettingsPage.qml:181
 #, kde-format
 msgid "No melodic instruments available"
 msgstr "No hi ha instruments melòdics disponibles"
 
-#: src/app/qml/SettingsPage.qml:190
+#: src/app/qml/pages/SettingsPage.qml:185
 #, kde-format
 msgid "Used for scales, intervals, and chords."
 msgstr "S'utilitza a les escales, intervals i acords."
 
-#: src/app/qml/SettingsPage.qml:191
+#: src/app/qml/pages/SettingsPage.qml:186
 #, kde-format
 msgid "Melodic Exercises"
 msgstr "Exercicis melòdics"
 
-#: src/app/qml/SettingsPage.qml:202
+#: src/app/qml/pages/SettingsPage.qml:197
 #, kde-format
 msgid "Instrument group:"
 msgstr "Grup d'instruments:"
 
-#: src/app/qml/SettingsPage.qml:225
+#: src/app/qml/pages/SettingsPage.qml:220
 #, kde-format
 msgid "Instrument:"
 msgstr "Instrument:"
 
-#: src/app/qml/SettingsPage.qml:240
+#: src/app/qml/pages/SettingsPage.qml:235
 #, kde-format
 msgid "Used for rhythm figures. The count-in keeps its own sound."
 msgstr ""
 "Utilitzat a les figures de ritmes. El comptador intern seguix el seu propi "
 "so."
 
-#: src/app/qml/SettingsPage.qml:241
+#: src/app/qml/pages/SettingsPage.qml:236
 #, kde-format
 msgid "Rhythmic Exercises"
 msgstr "Exercicis rítmics"
 
-#: src/app/qml/SettingsPage.qml:252
+#: src/app/qml/pages/SettingsPage.qml:247
 #, kde-format
 msgid "Percussion sound:"
 msgstr "So de percussió:"
 
-#: src/app/qml/SettingsPage.qml:264
+#: src/app/qml/pages/SettingsPage.qml:259
 #, kde-format
 msgid "Microphone"
 msgstr "Micròfon"
 
-#: src/app/qml/SettingsPage.qml:273
-#, fuzzy, kde-format
-#| msgid "Input level"
+#: src/app/qml/pages/SettingsPage.qml:268
+#, kde-format
 msgid "Input device"
-msgstr "Nivell d'entrada"
+msgstr "Dispositiu d'entrada"
 
-#: src/app/qml/SettingsPage.qml:288
+#: src/app/qml/pages/SettingsPage.qml:283
 #, kde-format
 msgid "Voice class"
 msgstr "Classe de veu"
 
-#: src/app/qml/SettingsPage.qml:300
+#: src/app/qml/pages/SettingsPage.qml:284
+#, kde-format
+msgid "Soprano"
+msgstr "Soprano"
+
+#: src/app/qml/pages/SettingsPage.qml:284
+#, kde-format
+msgid "Alto"
+msgstr "Alto"
+
+#: src/app/qml/pages/SettingsPage.qml:284
+#, kde-format
+msgid "Tenor"
+msgstr "Tenor"
+
+#: src/app/qml/pages/SettingsPage.qml:284
+#, kde-format
+msgid "Bass"
+msgstr "Baix"
+
+#: src/app/qml/pages/SettingsPage.qml:295
 #, kde-format
 msgid ""
 "Larger values accept claps farther from the beat; smaller values require "
@@ -2889,12 +2882,12 @@ msgstr ""
 "Els valors més grans accepten picar de mans més lluny del ritme; els valors "
 "més petits requerixen un temps més ajustat."
 
-#: src/app/qml/SettingsPage.qml:302
+#: src/app/qml/pages/SettingsPage.qml:297
 #, kde-format
 msgid "Timing tolerance"
 msgstr "Tolerància de temps"
 
-#: src/app/qml/SettingsPage.qml:316
+#: src/app/qml/pages/SettingsPage.qml:311
 #, kde-format
 msgid ""
 "Larger values accept notes farther from the target pitch; smaller values "
@@ -2903,17 +2896,17 @@ msgstr ""
 "Els valors més grans accepten notes més allunyades del to objectiu; els "
 "valors més petits requerixen un cant més precís."
 
-#: src/app/qml/SettingsPage.qml:318
+#: src/app/qml/pages/SettingsPage.qml:313
 #, kde-format
 msgid "Pitch tolerance"
 msgstr "Tolerància de to"
 
-#: src/app/qml/SettingsPage.qml:319
+#: src/app/qml/pages/SettingsPage.qml:314
 #, kde-format
 msgid "cents"
 msgstr "cents"
 
-#: src/app/qml/SettingsPage.qml:329
+#: src/app/qml/pages/SettingsPage.qml:324
 #, kde-format
 msgid ""
 "Keep the room quiet while calibrating silence. Recalibrate when the "
@@ -2922,580 +2915,532 @@ msgstr ""
 "Manteniu l'habitació tranquil·la mentre calibreu el silenci. Recalibreu quan "
 "canvie el micròfon o el soroll de la sala."
 
-#: src/app/qml/SettingsPage.qml:330
+#: src/app/qml/pages/SettingsPage.qml:325
 #, kde-format
 msgid "Calibration"
 msgstr "Calibratge"
 
-#: src/app/qml/SettingsPage.qml:334
+#: src/app/qml/pages/SettingsPage.qml:329
 #, kde-format
 msgid "Advanced"
 msgstr "Avançat"
 
-#: src/app/qml/SettingsPage.qml:374
+#: src/app/qml/pages/SettingsPage.qml:369
 #, kde-format
 msgid "Algorithms and detection thresholds for difficult microphones or rooms."
 msgstr "Algorismes i llindars de detecció per a micròfons o sales difícils."
 
-#: src/app/qml/SettingsPage.qml:400
+#: src/app/qml/pages/SettingsPage.qml:395
 #, kde-format
 msgid "Used for rhythm clapping exercises."
-msgstr ""
+msgstr "S'utilitza als exercicis de ritme de picar de mans."
 
-#: src/app/qml/SettingsPage.qml:401
+#: src/app/qml/pages/SettingsPage.qml:396
 #, kde-format
 msgid "Clapping detection"
 msgstr "Detecció de picar de mans"
 
-#: src/app/qml/SettingsPage.qml:405
+#: src/app/qml/pages/SettingsPage.qml:400
 #, kde-format
 msgid "Onset method"
 msgstr "Mètode d'inici"
 
-#: src/app/qml/SettingsPage.qml:415
+#: src/app/qml/pages/SettingsPage.qml:410
 #, kde-format
 msgid "Onset threshold"
 msgstr "Llindar d'inici"
 
-#: src/app/qml/SettingsPage.qml:427 src/app/qml/SettingsPage.qml:482
+#: src/app/qml/pages/SettingsPage.qml:422
+#: src/app/qml/pages/SettingsPage.qml:477
 #, kde-format
 msgid "Input gate"
 msgstr "Porta d'entrada"
 
-#: src/app/qml/SettingsPage.qml:439
+#: src/app/qml/pages/SettingsPage.qml:434
 #, kde-format
 msgid "Minimum onset strength"
 msgstr "Intensitat mínima d'inici"
 
-#: src/app/qml/SettingsPage.qml:455
+#: src/app/qml/pages/SettingsPage.qml:450
 #, kde-format
 msgid "Used for pitch analysis and note-entry timing in singing exercises."
 msgstr ""
+"S'utilitza per a l'anàlisi de to i temps d'entrada de nota en exercicis de "
+"cant."
 
-#: src/app/qml/SettingsPage.qml:456
+#: src/app/qml/pages/SettingsPage.qml:451
 #, kde-format
 msgid "Singing detection"
 msgstr "Detecció de cant"
 
-#: src/app/qml/SettingsPage.qml:460
+#: src/app/qml/pages/SettingsPage.qml:455
 #, kde-format
 msgid "Pitch method"
 msgstr "Mètode de to"
 
-#: src/app/qml/SettingsPage.qml:470
+#: src/app/qml/pages/SettingsPage.qml:465
 #, kde-format
 msgid "Pitch confidence"
 msgstr "Confiança del to"
 
-#: src/app/qml/SettingsPage.qml:493
+#: src/app/qml/pages/SettingsPage.qml:488
 #, kde-format
 msgid "Stable pitch frames"
 msgstr "Marcs de to estables"
 
-#: src/app/qml/SettingsPage.qml:503
+#: src/app/qml/pages/SettingsPage.qml:498
 #, kde-format
 msgid "Scoring mode"
 msgstr "Mode de puntuació"
 
-#: src/app/qml/SettingsPage.qml:515
+#: src/app/qml/pages/SettingsPage.qml:499
+#, kde-format
+msgid "Pitch primary"
+msgstr "To primari"
+
+#: src/app/qml/pages/SettingsPage.qml:499
+#, kde-format
+msgid "Pitch + timing"
+msgstr "To + temps"
+
+#: src/app/qml/pages/SettingsPage.qml:510
 #, kde-format
 msgid "Disregard octave difference"
 msgstr "Descarta la diferència d'octaves"
 
-#: src/app/qml/SettingsPage.qml:523
+#: src/app/qml/pages/SettingsPage.qml:518
 #, kde-format
 msgid "Reset to Defaults"
 msgstr "Restaura els valors predeterminats"
 
-#: src/app/qml/SettingsPage.qml:607
+#: src/app/qml/pianoview/PianoView.qml:168
 #, kde-format
-msgid "%1 %2"
-msgstr "%1 %2"
+msgctxt "technical term, do you have a musician friend?"
+msgid "Octave %1"
+msgstr "Octava %1"
+
+#: src/app/singingexercisecontroller.cpp:69
+#, kde-format
+msgid "Played"
+msgstr "Reproduït"
 
 #: src/app/uicontroller.cpp:57
 #, kde-format
 msgid "Could not load the main user interface."
 msgstr "No s'ha pogut carregar la interfície d'usuari principal."
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:509
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:527
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Acoustic Bass Drum"
 msgstr "Bombo acústic"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:511
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:529
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Bass Drum 1"
 msgstr "Bombo 1"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:513
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:531
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Side Stick"
 msgstr "Cop lateral"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:515
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:533
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Acoustic Snare"
 msgstr "Caixa acústica"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:517
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:535
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hand Clap"
 msgstr "Picar de mans"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:519
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:537
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Electric Snare"
 msgstr "Caixa elèctrica"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:521
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:539
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Floor Tom"
 msgstr "Goliat baix"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:523
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:541
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Closed Hi-hat"
 msgstr "Xarleston tancat"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:525
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:543
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Floor Tom"
 msgstr "Goliat alt"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:527
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:545
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Pedal Hi-hat"
 msgstr "Xarleston de pedal"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:529
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:547
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Tom"
 msgstr "Tom baix"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:531
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:549
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Hi-hat"
 msgstr "Xarleston obert"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:533
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:551
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low-Mid Tom"
 msgstr "Tom baix-mig"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:535
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:553
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hi-Mid Tom"
 msgstr "Tom alt-mig"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:537
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:555
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Crash Cymbal 1"
 msgstr "Plat d'accents 1"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:539
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:557
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Tom"
 msgstr "Tom alt"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:541
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:559
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Ride Cymbal 1"
 msgstr "Plat de ritme 1"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:543
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:561
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Chinese Cymbal"
 msgstr "Plat xinés"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:545
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:563
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Ride Bell"
 msgstr "Plat de campana"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:547
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:565
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Tambourine"
 msgstr "Pandereta"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:549
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:567
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Splash Cymbal"
 msgstr "Plat d'esguitat"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:551
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:569
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Cowbell"
 msgstr "Campana"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:553
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:571
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Crash Cymbal 2"
 msgstr "Plat d'accents 2"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:555
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:573
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Vibraslap"
 msgstr "Vibraslap"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:557
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:575
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Ride Cymbal 2"
 msgstr "Plat de ritme 2"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:559
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:577
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hi Bongo"
 msgstr "Bongo alt"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:561
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:579
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Bongo"
 msgstr "Bongo baix"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:563
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:581
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Mute Hi Conga"
 msgstr "Conga alta muda"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:565
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:583
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Hi Conga"
 msgstr "Conga alta oberta"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:567
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:585
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Conga"
 msgstr "Conga baixa"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:569
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:587
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Timbale"
 msgstr "Timbala alta"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:571
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:589
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Timbale"
 msgstr "Timbala baixa"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:573
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:591
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Agogo"
 msgstr "Agogó alt"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:575
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:593
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Agogo"
 msgstr "Agogó baix"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:577
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:595
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Cabasa"
 msgstr "Cabassa"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:579
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:597
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Maracas"
 msgstr "Maraques"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:581
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:599
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Short Whistle"
 msgstr "Xiulet curt"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:583
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:601
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Long Whistle"
 msgstr "Xiulet llarg"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:585
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:603
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Short Guiro"
 msgstr "Güiro curt"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:587
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:605
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Long Guiro"
 msgstr "Güiro llarg"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:589
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:607
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Claves"
 msgstr "Bastons"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:591
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:609
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hi Wood Block"
 msgstr "Caixa xinesa alta"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:593
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:611
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Wood Block"
 msgstr "Caixa xinesa baixa"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:595
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:613
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Mute Cuica"
 msgstr "Cuica muda"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:597
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:615
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Cuica"
 msgstr "Cuica oberta"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:599
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:617
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Mute Triangle"
 msgstr "Triangle sord"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:601
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:619
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Triangle"
 msgstr "Triangle obert"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:603
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:621
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Percussion"
 msgstr "Percussió"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:611
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:629
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Piano"
 msgstr "Piano"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:613
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:631
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Chromatic Percussion"
 msgstr "Percussió cromàtica"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:615
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:633
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Organ"
 msgstr "Orgue"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:617
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:635
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Guitar"
 msgstr "Guitarra"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:619
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:637
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Bass"
 msgstr "Baix"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:621
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:639
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Strings"
 msgstr "Cordes"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:623
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:641
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Ensemble"
 msgstr "Conjunt"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:625
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:643
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Brass"
 msgstr "Vent de metall"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:627
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:645
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Reed"
 msgstr "Canya"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:629
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:647
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Pipe"
 msgstr "Tub"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:631
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:649
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Synth Lead"
 msgstr "Sintetitzador melòdic"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:633
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:651
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Synth Pad"
 msgstr "Sintetitzador de fons"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:635
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:653
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Synth Effects"
 msgstr "Efectes de sintetitzador"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:637
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:655
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Ethnic"
 msgstr "Ètnic"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:639
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:657
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Percussive"
 msgstr "Percussiu"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:641
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:659
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Sound Effects"
 msgstr "Efectes de so"
 
-#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:643
+#: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:661
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Other"
 msgstr "Altres"
 
-#~ msgid ""
-#~ "Start a question, listen to the count, then clap each rhythm figure in "
-#~ "time."
-#~ msgstr ""
-#~ "Inicieu una pregunta, escolteu el comptador, després piqueu de mans a "
-#~ "cada figura de ritme a temps."
+#~ msgid "Count: %1"
+#~ msgstr "Comptador: %1"
 
-#~ msgid ""
-#~ "Each colored card is one rhythm figure. Green borders mark figures "
-#~ "clapped correctly; red borders mark missed figures."
+#~ msgid "Start a new question, replay it, reveal the answer, or begin a test."
 #~ msgstr ""
-#~ "Cada targeta acolorida és una figura de ritme. Les vores verdes marquen "
-#~ "figures picades de mans correctament; les vores rojes marquen figures "
-#~ "perdudes."
+#~ "Inicia una pregunta nova, la repetix, revela la resposta o comença una "
+#~ "prova."
 
 #~ msgid ""
-#~ "The onset meter below each figure lights below the center for advanced "
-#~ "claps and above the center for late claps."
+#~ "Start a rhythm question, replay it, reveal the answer, or begin a test."
 #~ msgstr ""
-#~ "El metrònom d'inici davall cada figura s'il·lumina davall del centre per "
-#~ "les picades de mans avançades i per damunt del centre per picades de mans "
-#~ "endarrerides."
+#~ "Inicia una pregunta de ritme, la repetix, revela la resposta o comença "
+#~ "una prova."
 
-#~ msgid "Rhythm questions begin with a count-in."
-#~ msgstr "Les preguntes del ritme comencen amb un comptador."
+#~ msgid "Empty answer slot"
+#~ msgstr "Ranura de resposta buida"
 
-#~ msgid ""
-#~ "Clapping exercises count to the number of rhythm patterns before "
-#~ "recording, then repeat that count while you clap."
-#~ msgstr ""
-#~ "Els exercicis de picar de mans compten al número de patrons de ritme "
-#~ "abans de gravar, després repetixen el compte mentre piqueu de mans."
+#~ msgid "Pitch deviation: %1"
+#~ msgstr "Desviació de to: %1"
 
-#~ msgid ""
-#~ "Singing exercises count in before the first note; then sing one displayed "
-#~ "note on each count."
-#~ msgstr ""
-#~ "Els exercicis de cant compten abans de la primera nota; després canteu "
-#~ "una nota mostrada en cada compte."
+#~ msgid "Onset deviation: %1"
+#~ msgstr "Desviació d'inici: %1"
 
-#~ msgid ""
-#~ "Start a question, listen to the count-in and first note, then sing the "
-#~ "displayed interval or scale notes."
-#~ msgstr ""
-#~ "Inicieu una pregunta, escolteu el comptador i la primera nota, i després "
-#~ "canteu l'interval mostrat o les notes d'escala."
-
-#~ msgid ""
-#~ "For interval exercises, Minuet plays the first note and you sing the next "
-#~ "note shown as the target."
-#~ msgstr ""
-#~ "Per als exercicis d'interval, Minuet reproduïx la primera nota i canteu "
-#~ "la nota següent que es mostre com a objectiu."
-
-#~ msgid ""
-#~ "For scale exercises, Minuet plays the first note and you sing the "
-#~ "remaining target notes in order."
-#~ msgstr ""
-#~ "Per als exercicis d'escala, Minuet reproduïx la primera nota i canteu les "
-#~ "notes romanents en ordre."
-
-#~ msgid ""
-#~ "Sing the note cards in order. The current card is highlighted; borders "
-#~ "show correctness after detection."
-#~ msgstr ""
-#~ "Canteu les notes de les targetes en ordre. La targeta actual està "
-#~ "ressaltada; les vores mostren la correcció després de la detecció."
-
-#~ msgid ""
-#~ "Pitch meters light below the center for flat notes and above the center "
-#~ "for sharp notes. Scale exercises also show an onset meter for each note."
-#~ msgstr ""
-#~ "El metrònom de to s'il·lumina per davall del centre a les notes bemolls i "
-#~ "per damunt del centre a les notes sostingudes. Els exercicis d'escala "
-#~ "també mostren un metrònom d'inici a cada nota."
-
-#~ msgid "Give up to reveal the correct answer."
-#~ msgstr "Renuncieu per a veure la resposta correcta."
-
-#~ msgid "Start a test to answer several questions in a row."
-#~ msgstr ""
-#~ "Inicia una prova per respondre a preguntes diverses una rere l'altra."
-
-#~ msgid "Start with a topic, then pick the specific training level."
-#~ msgstr ""
-#~ "Comenceu per un tema, després trieu el nivell d'entrenament específic."
-
-#~ msgid "Aubio silence"
-#~ msgstr "Silenci d'Aubio"
-
-#~ msgid "dB"
-#~ msgstr "dB"
+#~ msgid "Clapping speed"
+#~ msgstr "Velocitat de picar de mans"
