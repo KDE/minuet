@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 02:38+0000\n"
-"PO-Revision-Date: 2026-07-14 20:49+0300\n"
+"PO-Revision-Date: 2026-07-17 19:42+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -2442,6 +2442,9 @@ msgid ""
 "Use the first button to hear or replace the question, Give Up to reveal its "
 "answer, and Start Test for a scored series."
 msgstr ""
+"Soruyu duymak veya değiştirmek için ilk düğmeyi kullanın; yanıtı ortaya "
+"çıkarmak için “Pes Et” yapın ve puanlı bir seri için “Testi Başlat”ı "
+"kullanın."
 
 #: src/app/qml/exercises/ExerciseView.qml:342
 #, kde-format
@@ -2449,6 +2452,9 @@ msgid ""
 "Use the first button to hear or replace the rhythm, Give Up to reveal its "
 "answer, and Start Test for a scored series."
 msgstr ""
+"Ritmi duymak veya değiştirmek için ilk düğmeyi kullanın; yanıtı ortaya "
+"çıkarmak için “Pes Et” yapın ve puanlı bir seri için “Testi Başlat”ı "
+"kullanın."
 
 #: src/app/qml/exercises/ExerciseView.qml:346
 #, kde-format
@@ -2709,11 +2715,9 @@ msgid "bpm"
 msgstr "bpm"
 
 #: src/app/qml/pages/SettingsPage.qml:119
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Rhythm"
+#, kde-format
 msgid "Rhythm tempo"
-msgstr "Ritim"
+msgstr "Ritim temposu"
 
 #: src/app/qml/pages/SettingsPage.qml:134
 #, kde-format

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 02:38+0000\n"
-"PO-Revision-Date: 2026-07-15 12:09+0200\n"
+"PO-Revision-Date: 2026-07-17 12:51+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -2487,28 +2487,22 @@ msgid "Staff"
 msgstr "Notenbalk"
 
 #: src/app/qml/exercises/ExerciseView.qml:342
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use New Question or Start for one exercise, or Start Test for a scored "
-#| "series."
+#, kde-format
 msgid ""
 "Use the first button to hear or replace the question, Give Up to reveal its "
 "answer, and Start Test for a scored series."
 msgstr ""
-"Gebruik 'Nieuwe vraag' of 'Start' voor één oefening, of 'Start toets' voor "
-"een reeks met puntentelling."
+"Gebruik de eerste knop om de vraag te beluisteren of te vervangen, Opgeven "
+"om het antwoord te bekijken en Test starten voor een reeks met puntentelling."
 
 #: src/app/qml/exercises/ExerciseView.qml:342
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use New Question or Start for one exercise, or Start Test for a scored "
-#| "series."
+#, kde-format
 msgid ""
 "Use the first button to hear or replace the rhythm, Give Up to reveal its "
 "answer, and Start Test for a scored series."
 msgstr ""
-"Gebruik 'Nieuwe vraag' of 'Start' voor één oefening, of 'Start toets' voor "
-"een reeks met puntentelling."
+"Gebruik de eerste knop om het ritme te beluisteren of te vervangen, Opgeven "
+"om het antwoord te bekijken en Test starten voor een reeks met puntentelling."
 
 #: src/app/qml/exercises/ExerciseView.qml:346
 #, kde-format
@@ -2780,11 +2774,9 @@ msgid "bpm"
 msgstr "bpm"
 
 #: src/app/qml/pages/SettingsPage.qml:119
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Rhythm"
+#, kde-format
 msgid "Rhythm tempo"
-msgstr "Ritme"
+msgstr "Tempo van ritme"
 
 #: src/app/qml/pages/SettingsPage.qml:134
 #, kde-format

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 02:38+0000\n"
-"PO-Revision-Date: 2026-07-16 00:05+0100\n"
+"PO-Revision-Date: 2026-07-17 11:32+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -2502,28 +2502,22 @@ msgid "Staff"
 msgstr "Pentagrama"
 
 #: src/app/qml/exercises/ExerciseView.qml:342
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use New Question or Start for one exercise, or Start Test for a scored "
-#| "series."
+#, kde-format
 msgid ""
 "Use the first button to hear or replace the question, Give Up to reveal its "
 "answer, and Start Test for a scored series."
 msgstr ""
-"Use «Nueva pregunta» o «Iniciar» para un solo ejercicio, o «Iniciar prueba» "
-"para una serie con puntuación."
+"Use el primer botón para escuchar o sustituir la pregunta, «Me rindo» para "
+"revelar la respuesta y «Empezar prueba» para una serie con puntuación."
 
 #: src/app/qml/exercises/ExerciseView.qml:342
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use New Question or Start for one exercise, or Start Test for a scored "
-#| "series."
+#, kde-format
 msgid ""
 "Use the first button to hear or replace the rhythm, Give Up to reveal its "
 "answer, and Start Test for a scored series."
 msgstr ""
-"Use «Nueva pregunta» o «Iniciar» para un solo ejercicio, o «Iniciar prueba» "
-"para una serie con puntuación."
+"Use el primer botón para escuchar o sustituir el ritmo, «Me rindo» para "
+"revelar la respuesta y «Empezar prueba» para una serie con puntuación."
 
 #: src/app/qml/exercises/ExerciseView.qml:346
 #, kde-format
@@ -2544,7 +2538,7 @@ msgstr "Reproducir la pregunta"
 #: src/app/qml/exercises/ExerciseView.qml:382
 #, kde-format
 msgid "Give Up"
-msgstr "Me doy por vencido"
+msgstr "Me rindo"
 
 #: src/app/qml/exercises/ExerciseView.qml:422
 #, kde-format
@@ -2791,11 +2785,9 @@ msgid "bpm"
 msgstr "bpm"
 
 #: src/app/qml/pages/SettingsPage.qml:119
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Rhythm"
+#, kde-format
 msgid "Rhythm tempo"
-msgstr "Ritmo"
+msgstr "Tempo del ritmo"
 
 #: src/app/qml/pages/SettingsPage.qml:134
 #, kde-format
@@ -3446,29 +3438,3 @@ msgstr "Efectos de sonido"
 msgctxt "General MIDI instrument group"
 msgid "Other"
 msgstr "Otros"
-
-#~ msgid "Count: %1"
-#~ msgstr "Cuenta: %1"
-
-#~ msgid "Start a new question, replay it, reveal the answer, or begin a test."
-#~ msgstr ""
-#~ "Empezar una nueva pregunta, reproducirla, revelar la respuesta o empezar "
-#~ "una prueba."
-
-#~ msgid ""
-#~ "Start a rhythm question, replay it, reveal the answer, or begin a test."
-#~ msgstr ""
-#~ "Empezar una pregunta de ritmo, reproducirla, revelar la respuesta o "
-#~ "empezar una prueba."
-
-#~ msgid "Empty answer slot"
-#~ msgstr "Espacio de respuesta vacío"
-
-#~ msgid "Pitch deviation: %1"
-#~ msgstr "Desviación del tono: %1"
-
-#~ msgid "Onset deviation: %1"
-#~ msgstr "Desviación de inicio: %1"
-
-#~ msgid "Clapping speed"
-#~ msgstr "Velocidad de las palmadas"
