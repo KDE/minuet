@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 00:39+0000\n"
-"PO-Revision-Date: 2026-07-15 13:11+0200\n"
+"PO-Revision-Date: 2026-07-17 05:37+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -2444,28 +2444,22 @@ msgid "Staff"
 msgstr "პერსონალი"
 
 #: src/app/qml/exercises/ExerciseView.qml:342
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use New Question or Start for one exercise, or Start Test for a scored "
-#| "series."
+#, kde-format
 msgid ""
 "Use the first button to hear or replace the question, Give Up to reveal its "
 "answer, and Start Test for a scored series."
 msgstr ""
-"გამოიყენეთ ახალი შეკითხვა ან დაწყება ერთი ვარჯიშისთვის, ან ტესტის დაწყება "
-"ქულებიანი სერიებისთვის."
+"გამოიყენეთ პირველი ღილაკი კითხვის მოსასმენად, ან ჩასანაცვლებლად. 'დანებება' "
+"მისი პასუხის გამოსაჩენად და 'ტესტის დაწყება' ქულიანი სერიებისთვის."
 
 #: src/app/qml/exercises/ExerciseView.qml:342
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use New Question or Start for one exercise, or Start Test for a scored "
-#| "series."
+#, kde-format
 msgid ""
 "Use the first button to hear or replace the rhythm, Give Up to reveal its "
 "answer, and Start Test for a scored series."
 msgstr ""
-"გამოიყენეთ ახალი შეკითხვა ან დაწყება ერთი ვარჯიშისთვის, ან ტესტის დაწყება "
-"ქულებიანი სერიებისთვის."
+"გამოიყენეთ პირველი ღილაკი რიტმის მოსასმენად, ან ჩასანაცვლებლად. 'დანებება' "
+"მისი პასუხის გამოსაჩენად და 'ტესტის დაწყება' ქულიანი სერიებისთვის."
 
 #: src/app/qml/exercises/ExerciseView.qml:346
 #, kde-format
@@ -2730,11 +2724,9 @@ msgid "bpm"
 msgstr "დარტყმა/წთ"
 
 #: src/app/qml/pages/SettingsPage.qml:119
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Rhythm"
+#, kde-format
 msgid "Rhythm tempo"
-msgstr "რიტმი"
+msgstr "რიტმის ტემპი"
 
 #: src/app/qml/pages/SettingsPage.qml:134
 #, kde-format

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 00:39+0000\n"
-"PO-Revision-Date: 2026-07-15 09:17+0300\n"
+"PO-Revision-Date: 2026-07-17 09:49+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -2447,28 +2447,24 @@ msgid "Staff"
 msgstr "Нотні лінійки"
 
 #: src/app/qml/exercises/ExerciseView.qml:342
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use New Question or Start for one exercise, or Start Test for a scored "
-#| "series."
+#, kde-format
 msgid ""
 "Use the first button to hear or replace the question, Give Up to reveal its "
 "answer, and Start Test for a scored series."
 msgstr ""
-"Скористайтеся пунктом «Нове питання» або «Почати», щоб виконати одну вправу, "
-"або «Почати тест», щоб почати послідовність вправ з оцінками."
+"Скористайтеся першою кнопкою для прослуховування або заміни питання, кнопкою "
+"«Здатися» для перегляду відповіді і кнопкою «Почати вправу» для "
+"послідовності питань з рахунком."
 
 #: src/app/qml/exercises/ExerciseView.qml:342
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use New Question or Start for one exercise, or Start Test for a scored "
-#| "series."
+#, kde-format
 msgid ""
 "Use the first button to hear or replace the rhythm, Give Up to reveal its "
 "answer, and Start Test for a scored series."
 msgstr ""
-"Скористайтеся пунктом «Нове питання» або «Почати», щоб виконати одну вправу, "
-"або «Почати тест», щоб почати послідовність вправ з оцінками."
+"Скористайтеся першою кнопкою для прослуховування або заміни ритму, кнопкою "
+"«Здатися» для перегляду відповіді і кнопкою «Почати вправу» для "
+"послідовності питань з рахунком."
 
 #: src/app/qml/exercises/ExerciseView.qml:346
 #, kde-format
@@ -2744,11 +2740,9 @@ msgid "bpm"
 msgstr "такт/хв"
 
 #: src/app/qml/pages/SettingsPage.qml:119
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Rhythm"
+#, kde-format
 msgid "Rhythm tempo"
-msgstr "Ритм"
+msgstr "Темп ритму"
 
 #: src/app/qml/pages/SettingsPage.qml:134
 #, kde-format

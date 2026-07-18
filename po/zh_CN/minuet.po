@@ -2608,11 +2608,9 @@ msgid "bpm"
 msgstr ""
 
 #: src/app/qml/pages/SettingsPage.qml:119
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Rhythm"
+#, kde-format
 msgid "Rhythm tempo"
-msgstr "节拍"
+msgstr ""
 
 #: src/app/qml/pages/SettingsPage.qml:134
 #, kde-format

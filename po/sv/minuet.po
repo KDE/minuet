@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 00:39+0000\n"
-"PO-Revision-Date: 2026-07-15 20:49+0200\n"
+"PO-Revision-Date: 2026-07-17 08:48+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -2409,28 +2409,22 @@ msgid "Staff"
 msgstr "Notsystem"
 
 #: src/app/qml/exercises/ExerciseView.qml:342
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use New Question or Start for one exercise, or Start Test for a scored "
-#| "series."
+#, kde-format
 msgid ""
 "Use the first button to hear or replace the question, Give Up to reveal its "
 "answer, and Start Test for a scored series."
 msgstr ""
-"Använd Ny fråga eller Starta för en övning, eller Starta prov för en "
-"poängsatt serie."
+"Använd den första knappen för att höra eller ersätta frågan, Ge upp för att "
+"avslöja svaret, och Starta prov för en poängsatt serie."
 
 #: src/app/qml/exercises/ExerciseView.qml:342
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use New Question or Start for one exercise, or Start Test for a scored "
-#| "series."
+#, kde-format
 msgid ""
 "Use the first button to hear or replace the rhythm, Give Up to reveal its "
 "answer, and Start Test for a scored series."
 msgstr ""
-"Använd Ny fråga eller Starta för en övning, eller Starta prov för en "
-"poängsatt serie."
+"Använd den första knappen för att höra eller ersätta rytmen, Ge upp för att "
+"avslöja svaret, och Starta prov för en poängsatt serie."
 
 #: src/app/qml/exercises/ExerciseView.qml:346
 #, kde-format
@@ -2698,11 +2692,9 @@ msgid "bpm"
 msgstr "slag/min"
 
 #: src/app/qml/pages/SettingsPage.qml:119
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Rhythm"
+#, kde-format
 msgid "Rhythm tempo"
-msgstr "Rytm"
+msgstr "Rytmtempo"
 
 #: src/app/qml/pages/SettingsPage.qml:134
 #, kde-format

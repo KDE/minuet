@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 00:39+0000\n"
-"PO-Revision-Date: 2026-07-15 06:02+0200\n"
+"PO-Revision-Date: 2026-07-17 09:41+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -2422,24 +2422,22 @@ msgid "Staff"
 msgstr "Osebje"
 
 #: src/app/qml/exercises/ExerciseView.qml:342
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use New Question or Start for one exercise, or Start Test for a scored "
-#| "series."
+#, kde-format
 msgid ""
 "Use the first button to hear or replace the question, Give Up to reveal its "
 "answer, and Start Test for a scored series."
-msgstr "Za eno vajo uporabite Novo vprašanje ali Začni test za serijo točk."
+msgstr ""
+"S prvim gumbom lahko slišite ali zamenjate vprašanje, z Odnehaj razkrijete "
+"odgovor in z Začni test za točkovano serijo vprašanj."
 
 #: src/app/qml/exercises/ExerciseView.qml:342
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use New Question or Start for one exercise, or Start Test for a scored "
-#| "series."
+#, kde-format
 msgid ""
 "Use the first button to hear or replace the rhythm, Give Up to reveal its "
 "answer, and Start Test for a scored series."
-msgstr "Za eno vajo uporabite Novo vprašanje ali Začni test za serijo točk."
+msgstr ""
+"S prvim gumbom lahko slišite ali zamenjate ritem, z Odnehaj razkrijete "
+"odgovor in z Začni test za točkovano serijo vprašanj."
 
 #: src/app/qml/exercises/ExerciseView.qml:346
 #, kde-format
@@ -2713,11 +2711,9 @@ msgid "bpm"
 msgstr "udarcev na minuto"
 
 #: src/app/qml/pages/SettingsPage.qml:119
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Rhythm"
+#, kde-format
 msgid "Rhythm tempo"
-msgstr "Ritem"
+msgstr "Tempo ritma"
 
 #: src/app/qml/pages/SettingsPage.qml:134
 #, kde-format
