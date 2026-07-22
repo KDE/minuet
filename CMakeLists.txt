@@ -186,7 +186,7 @@ ecm_find_qmlmodule(org.kde.kirigamiaddons.onboarding REQUIRED)
 
 if(NOT MINUET_MOBILE_PLATFORM)
     find_package(
-        KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS Crash DocTools IconThemes
+        KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS Crash DocTools
                                                   QQC2DesktopStyle
     )
     ecm_find_qmlmodule(org.kde.desktop REQUIRED)
