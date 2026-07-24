@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 00:39+0000\n"
-"PO-Revision-Date: 2026-07-15 16:32+0200\n"
+"PO-Revision-Date: 2026-07-19 08:48+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -2484,28 +2484,23 @@ msgid "Staff"
 msgstr "Staff"
 
 #: src/app/qml/exercises/ExerciseView.qml:342
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use New Question or Start for one exercise, or Start Test for a scored "
-#| "series."
+#, kde-format
 msgid ""
 "Use the first button to hear or replace the question, Give Up to reveal its "
 "answer, and Start Test for a scored series."
 msgstr ""
-"Utilizza Nuova domanda o Inizia per un esercizio o Avvia test per una serie "
-"con punteggio."
+"Utilizza il primo pulsante per ascoltare o sostituire la domanda, Rinuncia "
+"per rivelarne la risposta e Avvia il test per una serie di domande con "
+"punteggio."
 
 #: src/app/qml/exercises/ExerciseView.qml:342
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use New Question or Start for one exercise, or Start Test for a scored "
-#| "series."
+#, kde-format
 msgid ""
 "Use the first button to hear or replace the rhythm, Give Up to reveal its "
 "answer, and Start Test for a scored series."
 msgstr ""
-"Utilizza Nuova domanda o Inizia per un esercizio o Avvia test per una serie "
-"con punteggio."
+"Utilizza il primo pulsante per ascoltare o sostituire il ritmo, Rinuncia per "
+"rivelarne la risposta e Avvia il test per una serie con punteggio."
 
 #: src/app/qml/exercises/ExerciseView.qml:346
 #, kde-format
@@ -2774,11 +2769,9 @@ msgid "bpm"
 msgstr "bpm"
 
 #: src/app/qml/pages/SettingsPage.qml:119
-#, fuzzy, kde-format
-#| msgctxt "technical term, do you have a musician friend?"
-#| msgid "Rhythm"
+#, kde-format
 msgid "Rhythm tempo"
-msgstr "Ritmo"
+msgstr "Tempo del ritmo"
 
 #: src/app/qml/pages/SettingsPage.qml:134
 #, kde-format
