@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 02:38+0000\n"
-"PO-Revision-Date: 2026-07-17 09:48+0200\n"
+"PO-Revision-Date: 2026-07-28 13:21+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1389,54 +1389,53 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing basic seventh chords across inversions."
 msgstr "Vadite prepoznavanje osnovnih sedmih akordov v inverzijah."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing bebop scales with added passing tones."
 msgstr "Vadite prepoznavanje bebop lestvic z dodanimi prehodnimi toni."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing bright augmented chord sounds by ear."
 msgstr "Vadite prepoznavanje svetlih, ojačanih akordnih zvokov po posluhu."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing chords that include a major seventh by ear."
 msgstr ""
-"Vadite prepoznavanje akordov, ki vključujejo veliko septimo, po posluhu."
+"Vadite prepoznavanje akordov, ki vključujejo velika septimo, po posluhu."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing chords that include a minor seventh by ear."
 msgstr "Vadite prepoznavanje akordov, ki vključujejo malo septimo, po posluhu."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing common seventh chord qualities in root position."
-msgstr ""
-"Vadite prepoznavanje pogostih lastnosti sedmega akorda v korenskem položaju."
+msgstr "Vadite prepoznavanje pogostih lastnosti septakorda v osnovni obliki."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing diminished triads in different inversions."
-msgstr "Vadite prepoznavanje zmanjšanih trozvokov v različnih inverzijah."
+msgstr "Vadite prepoznavanje zmanjšanih trozvokov v različnih obratih."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing dominant seventh chords in different inversions."
-msgstr "Vadite prepoznavanje dominantnih septakordov v različnih inverzijah."
+msgstr "Vadite prepoznavanje dominantnih septakordov v različnih obratih."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing eleventh chord colors by ear."
 msgstr "Vadite prepoznavanje barv enajstih akordov po posluhu."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing harmonic major and its modal colors."
 msgstr "Vadite prepoznavanje harmoničnega dura in njegovih modalnih barv."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing harmonic minor and its modal colors."
 msgstr "Vadite prepoznavanje harmoničnega mola in njegovih modalnih barv."
@@ -1455,61 +1454,58 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing major chord qualities by ear."
 msgstr "Vadite prepoznavanje lastnosti durovih akordov po posluhu."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing major pentatonic sounds and their modes."
-msgstr "Vadite prepoznavanje glavnih pentatoničnih zvokov in njihovih načinov."
+msgstr "Vadite prepoznavanje durovih pentatoničnih zvokov in njihovih načinov."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing major seventh chords in different inversions."
-msgstr "Vadite prepoznavanje velikih septakordov v različnih inverzijah."
+msgstr "Vadite prepoznavanje durovih septakordov v različnih obratih."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing major triads in different inversions."
-msgstr "Vadite prepoznavanje durovih trozvokov v različnih inverzijah."
+msgstr "Vadite prepoznavanje durovih trozvokov v različnih obratih."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing minor chord qualities by ear."
-msgstr "Vadite prepoznavanje molovih trozvokov v različnih inverzijah."
+msgstr "Vadite prepoznavanje molovih trozvokov v različnih obratih."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing minor seventh chords in different inversions."
-msgstr "Vadite prepoznavanje molovih septakordov v različnih inverzijah."
+msgstr "Vadite prepoznavanje molovih septakordov v različnih obratih."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing minor triads in different inversions."
-msgstr "Vadite prepoznavanje molovih trozvokov v različnih inverzijah."
+msgstr "Vadite prepoznavanje molovih trozvokov v različnih obratih."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing ninth, eleventh, and other extended chord sounds."
 msgstr ""
-"Vadite prepoznavanje devetih, enajstih in drugih razširjenih akordnih zvokov."
+"Vadite prepoznavanje devetih, enajstih in drugih razširjenih akordnih tonov."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing seventh chords built with a major seventh by ear."
-msgstr ""
-"Vadite prepoznavanje septakordov, zgrajenih z veliko septimo, po posluhu."
+msgstr "Vadite prepoznavanje septakordov z veliko septimo po posluhu."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing seventh chords built with a minor seventh by ear."
-msgstr ""
-"Vadite prepoznavanje septakordov, zgrajenih z malo septimo, po posluhu."
+msgstr "Vadite prepoznavanje septakordov z malo septimo po posluhu."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing seventh chords with flattened or sharpened fifths."
-msgstr ""
-"Vadite prepoznavanje septakordov s sploščenimi ali izostrenimi kvintami."
+msgstr "Vadite prepoznavanje septakordov z znižanimi ali zvišanimi kvintami."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid ""
 "Practice recognizing symmetric scale sounds such as whole-tone and "
@@ -1518,27 +1514,27 @@ msgstr ""
 "Vadite prepoznavanje simetričnih zvokov lestvice, kot so celotonski in "
 "zmanjšani vzorci."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing tense diminished chord sounds by ear."
-msgstr "Vadite prepoznavanje napetih, zmanjšanih akordnih zvokov po posluhu."
+msgstr "Vadite prepoznavanje napetih, zmanjšanih akordov po posluhu."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the basic triad qualities in root position."
-msgstr ""
-"Vadite prepoznavanje osnovnih trozvočnih lastnosti v korenskem položaju."
+msgstr "Vadite prepoznavanje trozvokov v osnovni obliki."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the distinctive color of sharp-eleventh chords."
-msgstr "Vadite prepoznavanje značilne barve ostrih enajstih akordov."
+msgstr ""
+"Vadite prepoznavanje značilne barve zvišane undecime (enajstke) v akordu."
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the full range of eleventh chord colors by ear."
 msgstr ""
-"Vadite prepoznavanje celotnega obsega barv enajstega akorda po posluhu."
+"Vadite prepoznavanje celotnega obsega barv enajstke v akordu po posluhu."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
