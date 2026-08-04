@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 00:39+0000\n"
-"PO-Revision-Date: 2026-07-31 17:25+0300\n"
+"PO-Revision-Date: 2026-08-03 17:09+0300\n"
 "Last-Translator: Olesya Gerasimenko <goa@altlinux.org>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
@@ -244,7 +244,7 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Bebop Minor"
 msgstr "Минорный бибоп"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Bebop scales"
 msgstr "Гаммы бибоп"
@@ -484,15 +484,15 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh inversions"
 msgstr "Обращения доминантсептаккорда"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh, second inversion"
-msgstr "Доминантсептаккорд — второе обращение"
+msgstr "Доминантсептаккорд, второе обращение"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Dominant seventh, third inversion"
-msgstr "Доминантсептаккорд — третье обращение"
+msgstr "Доминантсептаккорд, третье обращение"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -564,25 +564,25 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Harmonic minor scale and its modes"
 msgstr "Гармоническая минорная гамма и её лады"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the chord and choose your answer"
-msgstr "Прослушайте аккорд и выберите вариант ответа"
+msgstr "Прослушайте аккорд и выберите ответ"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the interval and choose your answer"
-msgstr "Прослушайте интервал и выберите вариант ответа"
+msgstr "Прослушайте интервал и выберите ответ"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the rhythm and choose your answers"
-msgstr "Прослушайте ритмический отрезок и выберите вариант ответа"
+msgstr "Прослушайте ритмический отрезок и выберите ответы"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Hear the scale and choose your answer"
-msgstr "Прослушайте гамму и выберите один вариант ответа"
+msgstr "Прослушайте гамму и выберите ответ"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1370,8 +1370,7 @@ msgstr "Научитесь распознавать все типы трёхно
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing basic minor and major ninth chord colors."
-msgstr ""
-"Научитесь распознавать основные краски минорных и мажорных нонаккордов."
+msgstr "Научитесь распознавать основные цвета минорных и мажорных нонаккордов."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1390,7 +1389,7 @@ msgstr "Научитесь распознавать основные септа�
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing bebop scales with added passing tones."
-msgstr ""
+msgstr "Научитесь распознавать гаммы бибоп с добавлением проходящих звуков."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1411,7 +1410,7 @@ msgstr "Научитесь распознавать аккорды с малой
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing common seventh chord qualities in root position."
 msgstr ""
-"Научитесь распознавать основные качества септаккорда в основном положении."
+"Научитесь распознавать основные качества септаккорда в корневом положении."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1421,22 +1420,22 @@ msgstr "Научитесь распознавать уменьшенные тр�
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing dominant seventh chords in different inversions."
-msgstr ""
+msgstr "Научитесь распознавать доминантсептаккорды в различных обращениях."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing eleventh chord colors by ear."
-msgstr ""
+msgstr "Научитесь распознавать цвета ундецимаккорда на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing harmonic major and its modal colors."
-msgstr "Научитесь распознавать гармонический мажор и его модальные краски."
+msgstr "Научитесь распознавать гармонический мажор и его модальные цвета."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing harmonic minor and its modal colors."
-msgstr "Научитесь распознавать гармонический минор и его модальные краски."
+msgstr "Научитесь распознавать гармонический минор и его модальные цвета."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1460,7 +1459,7 @@ msgstr "Научитесь распознавать звучание мажор�
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing major seventh chords in different inversions."
-msgstr ""
+msgstr "Научитесь распознавать мажорные септаккорды в различных обращениях."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1511,6 +1510,8 @@ msgid ""
 "Practice recognizing symmetric scale sounds such as whole-tone and "
 "diminished patterns."
 msgstr ""
+"Научитесь распознавать звучание симметричных гамм (целотонные и уменьшенные "
+"структуры)."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1522,22 +1523,23 @@ msgstr ""
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the basic triad qualities in root position."
 msgstr ""
-"Научитесь распознавать основные качества трезвучия в основном положении."
+"Научитесь распознавать основные качества трезвучия в корневом положении."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the distinctive color of sharp-eleventh chords."
 msgstr ""
+"Научитесь распознавать отличительный цвет септаккорда с повышенной ундецимой."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the full range of eleventh chord colors by ear."
-msgstr "Научитесь распознавать полный спектр красок ундецимаккорда на слух."
+msgstr "Научитесь распознавать полный спектр цветов ундецимаккорда на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the full range of ninth chord colors by ear."
-msgstr "Научитесь распознавать полный спектр красок нонаккорда на слух."
+msgstr "Научитесь распознавать полный спектр цветов нонаккорда на слух."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1547,7 +1549,7 @@ msgstr "Научитесь распознавать мажорную гамму 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing triads across root position and inversions."
-msgstr "Научитесь распознавать трезвучия в основном положении и обращениях."
+msgstr "Научитесь распознавать трезвучия в корневом положении и обращениях."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1969,31 +1971,31 @@ msgstr "Вовремя"
 #: src/app/exercisecatalogcontroller.cpp:120
 #, kde-format
 msgid "Practice identifying this exercise by ear."
-msgstr ""
+msgstr "Научитесь определять на слух."
 
 #: src/app/exercisecatalogcontroller.cpp:49
 #: src/app/exercisecatalogcontroller.cpp:123
 #, kde-format
 msgid "Practice rhythm recognition."
-msgstr ""
+msgstr "Научитесь распознавать ритм."
 
 #: src/app/exercisecatalogcontroller.cpp:51
 #: src/app/exercisecatalogcontroller.cpp:125
 #, kde-format
 msgid "Identify the scale by ear."
-msgstr ""
+msgstr "Определите гамму на слух."
 
 #: src/app/exercisecatalogcontroller.cpp:53
 #: src/app/exercisecatalogcontroller.cpp:127
 #, kde-format
 msgid "Identify the chord or interval by ear."
-msgstr ""
+msgstr "Определите аккорд или интервал на слух."
 
 #: src/app/exercisecatalogcontroller.cpp:58
 #: src/app/exercisecatalogcontroller.cpp:132
 #, kde-format
 msgid "%1 Includes %2 possible answers."
-msgstr ""
+msgstr "%1 Возможных ответов — %2."
 
 #: src/app/exercisecatalogcontroller.cpp:289
 #, kde-format
@@ -2064,7 +2066,7 @@ msgid "Developer"
 msgstr "Разработчик"
 
 #: src/app/main.cpp:170
-#, fuzzy, kde-format
+#, kde-format
 msgid "Minuet icon designer"
 msgstr "Автор значка Minuet"
 
@@ -2072,7 +2074,7 @@ msgstr "Автор значка Minuet"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Fluidsynth"
-msgstr ""
+msgstr "FluidSynth"
 
 #: src/app/main.cpp:172
 #, kde-format
@@ -2081,18 +2083,21 @@ msgid ""
 "Software synthesizer based on the SoundFont 2 specifications. © 2003 Peter "
 "Hanappe and others."
 msgstr ""
+"Программный синтезатор на основе спецификаций SoundFont 2. © Peter Hanappe и "
+"другие, 2003."
 
 #: src/app/main.cpp:176
 #, kde-format
 msgctxt "@info:credit"
 msgid "Aubio"
-msgstr ""
+msgstr "Aubio"
 
 #: src/app/main.cpp:177
 #, kde-format
 msgctxt "@info:credit"
 msgid "A library for audio and music analysis. © 2003-2015 Paul Brossier."
 msgstr ""
+"Библиотека для анализа звуковых данных и музыки. © Paul Brossier, 2003–2015."
 
 #: src/app/main.cpp:181
 #, kde-format
@@ -2129,44 +2134,44 @@ msgstr "%1 сот."
 #: src/app/qml/components/MicrophoneInputPanel.qml:29
 #, kde-format
 msgid "Input level"
-msgstr ""
+msgstr "Уровень входного сигнала"
 
 #: src/app/qml/components/MicrophoneInputPanel.qml:31
 #, kde-format
 msgid "Open"
-msgstr ""
+msgstr "Открыт"
 
 #: src/app/qml/components/MicrophoneInputPanel.qml:31
 #, kde-format
 msgid "Closed"
-msgstr ""
+msgstr "Закрыт"
 
 #: src/app/qml/components/MicrophoneInputPanel.qml:40
 #: src/app/qml/components/MicrophoneInputPanel.qml:47
 #, kde-format
 msgid "Calibrating..."
-msgstr ""
+msgstr "Калибровка…"
 
 #: src/app/qml/components/MicrophoneInputPanel.qml:40
 #, kde-format
 msgid "Calibrate Silence"
-msgstr ""
+msgstr "Калибровать тишину"
 
 #: src/app/qml/components/MinuetDrawer.qml:27
 #: src/app/qml/components/MinuetDrawer.qml:236
 #, kde-format
 msgid "All exercises"
-msgstr ""
+msgstr "Все упражнения"
 
 #: src/app/qml/components/MinuetDrawer.qml:72
 #, kde-format
 msgid "Search…"
-msgstr ""
+msgstr "Найти…"
 
 #: src/app/qml/components/MinuetDrawer.qml:127
 #, kde-format
 msgid "Welcome to Minuet"
-msgstr ""
+msgstr "Добро пожаловать в Minuet"
 
 #: src/app/qml/components/MinuetDrawer.qml:137
 #, kde-format
@@ -2174,11 +2179,13 @@ msgid ""
 "Practice ear training with exercises for intervals, chords, rhythm, scales, "
 "and more."
 msgstr ""
+"Развивайте слух с помощью упражнений на интервалы, аккорды, ритм, гаммы и "
+"многое другое."
 
 #: src/app/qml/components/MinuetDrawer.qml:151 src/app/qml/Main.qml:109
 #, kde-format
 msgid "Home"
-msgstr ""
+msgstr "Домой"
 
 #: src/app/qml/components/MinuetDrawer.qml:165
 #: src/app/qml/pages/SettingsPage.qml:43
@@ -2312,23 +2319,23 @@ msgstr "%1 - Основа: %2 - Цели: %3"
 #: src/app/qml/exercises/ExerciseSingingView.qml:294
 #, kde-format
 msgid "%1 - Base: %2 - Target: %3"
-msgstr ""
+msgstr "%1 - Основа: %2 - Цель: %3"
 
 #: src/app/qml/exercises/ExerciseSingingView.qml:426
 #: src/app/qml/exercises/ExerciseView.qml:347
 #, kde-format
 msgid "Playing…"
-msgstr ""
+msgstr "Воспроизведение…"
 
 #: src/app/qml/exercises/ExerciseSingingView.qml:441
 #, kde-format
 msgid "Sing the scale"
-msgstr ""
+msgstr "Пропойте гамму"
 
 #: src/app/qml/exercises/ExerciseSingingView.qml:441
-#, fuzzy, kde-format
+#, kde-format
 msgid "Sing the interval"
-msgstr "Интервалы"
+msgstr "Пропойте интервал"
 
 #: src/app/qml/exercises/ExerciseSingingView.qml:447
 #, kde-format
@@ -2439,14 +2446,14 @@ msgstr ""
 #: src/app/qml/exercises/ExerciseView.qml:346
 #, kde-format
 msgid "These messages explain the question and show its status."
-msgstr ""
+msgstr "Эти сообщения объясняют вопрос и показывают его состояние."
 
 # BUGME: should this really be translatable? --aspotashev
 #: src/app/qml/exercises/ExerciseView.qml:361
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "userMessage"
-msgstr "userMessage"
+msgstr "Сообщение для пользователя"
 
 #: src/app/qml/exercises/ExerciseView.qml:368
 #, kde-format
@@ -2468,7 +2475,7 @@ msgstr ""
 #: src/app/qml/exercises/ExerciseView.qml:422
 #, kde-format
 msgid "Choose each rhythm part from these available answers."
-msgstr ""
+msgstr "Выберите каждую часть ритма из этих доступных ответов."
 
 #: src/app/qml/exercises/ExerciseView.qml:436
 #, kde-format
@@ -2478,7 +2485,7 @@ msgstr "Доступные ответы"
 #: src/app/qml/exercises/ExerciseView.qml:440
 #, kde-format
 msgid "Scroll for more"
-msgstr ""
+msgstr "Прокрутите, чтобы увидеть больше"
 
 #: src/app/qml/exercises/ExerciseView.qml:491
 #, kde-format
@@ -2488,7 +2495,7 @@ msgstr "Здесь показывается выбранный ответ."
 #: src/app/qml/exercises/ExerciseView.qml:491
 #, kde-format
 msgid "Build your rhythm answer here, one part at a time."
-msgstr ""
+msgstr "Сформируйте здесь ответ по ритму, по одной части за раз."
 
 #: src/app/qml/exercises/ExerciseView.qml:507
 #, kde-format
@@ -2511,7 +2518,7 @@ msgstr[3] "Ваш ответ"
 #: src/app/qml/exercises/ExerciseView.qml:511
 #, kde-format
 msgid "Scroll for more |"
-msgstr ""
+msgstr "Прокрутите, чтобы увидеть больше |"
 
 #: src/app/qml/exercises/ExerciseView.qml:516
 #, kde-format
@@ -2543,6 +2550,7 @@ msgstr "Ответ %1"
 #, kde-format
 msgid "Run this guide again any time from the Help icon."
 msgstr ""
+"Это руководство можно запустить в любой момент — нажмите значок «Справка»."
 
 #: src/app/qml/Main.qml:137
 #, kde-format
@@ -2575,6 +2583,8 @@ msgid ""
 "A four-beat count-in plays before the rhythm. Listen, then recreate the "
 "pattern."
 msgstr ""
+"Перед ритмом будет воспроизведён четырёхтактный вводный счёт. Прослушайте, а "
+"затем воссоздайте структуру."
 
 #: src/app/qml/pages/ExercisePage.qml:93
 #, kde-format
@@ -2582,6 +2592,8 @@ msgid ""
 "A four-beat count-in plays before clapping is analyzed. Start clapping when "
 "the count finishes."
 msgstr ""
+"Перед анализом хлопков будет воспроизведён четырёхтактный вводный счёт. "
+"Начните хлопать после его окончания."
 
 #: src/app/qml/pages/ExercisePage.qml:93
 #, kde-format
@@ -2589,6 +2601,8 @@ msgid ""
 "A four-beat count-in plays before the base note. Listen, then sing the scale "
 "notes in order."
 msgstr ""
+"Перед базовой нотой будет воспроизведён четырёхтактный вводный счёт. "
+"Прослушайте, а затем пропойте ноты гаммы по порядку."
 
 #: src/app/qml/pages/ExercisePage.qml:93
 #, kde-format
@@ -2596,6 +2610,8 @@ msgid ""
 "A four-beat count-in plays before the root note. Listen, then sing the "
 "interval note."
 msgstr ""
+"Перед корневой нотой будет воспроизведён четырёхтактный вводный счёт. "
+"Прослушайте, а затем пропойте ноту интервала."
 
 #: src/app/qml/pages/ExercisePage.qml:260
 #, kde-format
@@ -2636,39 +2652,39 @@ msgstr ""
 #: src/app/qml/pages/ExercisePage.qml:261
 #, kde-format
 msgid "First Time Here"
-msgstr ""
+msgstr "Впервые здесь"
 
 #: src/app/qml/pages/ExercisePage.qml:266
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button"
 msgid "Start Guide"
-msgstr "Начать тест"
+msgstr "Запустить руководство"
 
 #: src/app/qml/pages/ExercisePage.qml:275
 #, kde-format
 msgctxt "@action:button"
 msgid "Not Now"
-msgstr ""
+msgstr "Не сейчас"
 
 #: src/app/qml/pages/PracticeModePage.qml:39
 #, kde-format
 msgid "Choose how you would like to practice this exercise:"
-msgstr ""
+msgstr "Выберите способ выполнения этого упражнения:"
 
 #: src/app/qml/pages/PracticeModePage.qml:47
 #, kde-format
 msgid "Hear and identify"
-msgstr ""
+msgstr "Прослушивание и определение"
 
 #: src/app/qml/pages/PracticeModePage.qml:58
 #, kde-format
 msgid "Read and clap"
-msgstr ""
+msgstr "Чтение и хлопки"
 
 #: src/app/qml/pages/PracticeModePage.qml:58
 #, kde-format
 msgid "Read and sing"
-msgstr ""
+msgstr "Чтение и пение"
 
 #: src/app/qml/pages/PracticeModePage.qml:58
 #, kde-format
@@ -2732,6 +2748,8 @@ msgid ""
 "The active sound controller did not report any General MIDI bank 0 "
 "instruments."
 msgstr ""
+"Активный контроллер звука не сообщил о каких-либо инструментах из набора "
+"General MIDI."
 
 #: src/app/qml/pages/SettingsPage.qml:181
 #, kde-format
@@ -2741,7 +2759,7 @@ msgstr "Доступные мелодические инструменты от�
 #: src/app/qml/pages/SettingsPage.qml:185
 #, kde-format
 msgid "Used for scales, intervals, and chords."
-msgstr ""
+msgstr "Используется для гамм, интервалов и аккордов."
 
 #: src/app/qml/pages/SettingsPage.qml:186
 #, kde-format
@@ -2762,6 +2780,8 @@ msgstr "Инструмент:"
 #, kde-format
 msgid "Used for rhythm figures. The count-in keeps its own sound."
 msgstr ""
+"Используется для ритмических рисунков. Вводный счёт сохраняет собственное "
+"звучание."
 
 #: src/app/qml/pages/SettingsPage.qml:236
 #, kde-format
@@ -2911,17 +2931,17 @@ msgstr "Определение пения"
 #: src/app/qml/pages/SettingsPage.qml:455
 #, kde-format
 msgid "Pitch method"
-msgstr ""
+msgstr "Способ установки высоты тона"
 
 #: src/app/qml/pages/SettingsPage.qml:465
 #, kde-format
 msgid "Pitch confidence"
-msgstr ""
+msgstr "Точность высоты тона"
 
 #: src/app/qml/pages/SettingsPage.qml:488
 #, kde-format
 msgid "Stable pitch frames"
-msgstr ""
+msgstr "Стабильные кадры высоты тона"
 
 #: src/app/qml/pages/SettingsPage.qml:498
 #, kde-format
@@ -2931,17 +2951,17 @@ msgstr "Режим оценки"
 #: src/app/qml/pages/SettingsPage.qml:499
 #, kde-format
 msgid "Pitch primary"
-msgstr ""
+msgstr "Основная высота тона"
 
 #: src/app/qml/pages/SettingsPage.qml:499
 #, kde-format
 msgid "Pitch + timing"
-msgstr ""
+msgstr "Высота тона + тайминг"
 
 #: src/app/qml/pages/SettingsPage.qml:510
 #, kde-format
 msgid "Disregard octave difference"
-msgstr ""
+msgstr "Не учитывать разницу в октаву"
 
 #: src/app/qml/pages/SettingsPage.qml:518
 #, kde-format
@@ -2957,300 +2977,300 @@ msgstr "Октава %1"
 #: src/app/singingexercisecontroller.cpp:69
 #, kde-format
 msgid "Played"
-msgstr ""
+msgstr "Воспроизведено"
 
 #: src/app/uicontroller.cpp:57
 #, kde-format
 msgid "Could not load the main user interface."
-msgstr ""
+msgstr "Не удалось загрузить основной интерфейс пользователя."
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:527
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Acoustic Bass Drum"
-msgstr ""
+msgstr "Акустический большой барабан"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:529
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Bass Drum 1"
-msgstr ""
+msgstr "Большой барабан"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:531
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Side Stick"
-msgstr ""
+msgstr "Удар по ободу "
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:533
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Acoustic Snare"
-msgstr ""
+msgstr "Акустический малый барабан"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:535
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hand Clap"
-msgstr ""
+msgstr "Хлопок в ладоши"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:537
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Electric Snare"
-msgstr ""
+msgstr "Электрический малый барабан"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:539
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Floor Tom"
-msgstr ""
+msgstr "Низкий напольный томтом"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:541
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Closed Hi-hat"
-msgstr ""
+msgstr "Закрытый хэт"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:543
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Floor Tom"
-msgstr ""
+msgstr "Высокий напольный томтом"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:545
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Pedal Hi-hat"
-msgstr ""
+msgstr "Хэт (педалью)"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:547
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Tom"
-msgstr ""
+msgstr "Низкий томтом"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:549
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Hi-hat"
-msgstr ""
+msgstr "Открытый хэт"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:551
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low-Mid Tom"
-msgstr ""
+msgstr "Низкий средний томтом"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:553
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hi-Mid Tom"
-msgstr ""
+msgstr "Высокий средний томтом"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:555
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Crash Cymbal 1"
-msgstr ""
+msgstr "Крэш-тарелка"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:557
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Tom"
-msgstr ""
+msgstr "Высокий томтом"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:559
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Ride Cymbal 1"
-msgstr ""
+msgstr "Райд-тарелка"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:561
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Chinese Cymbal"
-msgstr ""
+msgstr "Китайская тарелка"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:563
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Ride Bell"
-msgstr ""
+msgstr "Райд-тарелка (по центральной части)"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:565
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Tambourine"
-msgstr ""
+msgstr "Бубен"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:567
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Splash Cymbal"
-msgstr ""
+msgstr "Сплэш-тарелка"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:569
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Cowbell"
-msgstr ""
+msgstr "Коровий (альпийский) колокольчик"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:571
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Crash Cymbal 2"
-msgstr ""
+msgstr "Крэш-тарелка 2"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:573
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Vibraslap"
-msgstr ""
+msgstr "Вибрирующий слэп"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:575
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Ride Cymbal 2"
-msgstr ""
+msgstr "Райд-тарелка 2"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:577
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hi Bongo"
-msgstr ""
+msgstr "Высокий бонго"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:579
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Bongo"
-msgstr ""
+msgstr "Низкий бонго"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:581
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Mute Hi Conga"
-msgstr ""
+msgstr "Закрытая высокая конга"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:583
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Hi Conga"
-msgstr ""
+msgstr "Открытая высокая конга"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:585
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Conga"
-msgstr ""
+msgstr "Низкая конга"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:587
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Timbale"
-msgstr ""
+msgstr "Высокий тимбал"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:589
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Timbale"
-msgstr ""
+msgstr "Низкий тимбал"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:591
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "High Agogo"
-msgstr ""
+msgstr "Высокий агого"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:593
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Agogo"
-msgstr ""
+msgstr "Низкий агого"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:595
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Cabasa"
-msgstr ""
+msgstr "Кабаса"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:597
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Maracas"
-msgstr ""
+msgstr "Маракас"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:599
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Short Whistle"
-msgstr ""
+msgstr "Короткий свисток"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:601
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Long Whistle"
-msgstr ""
+msgstr "Длинный свисток"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:603
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Short Guiro"
-msgstr ""
+msgstr "Короткое гуиро"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:605
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Long Guiro"
-msgstr ""
+msgstr "Длинное гуиро"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:607
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Claves"
-msgstr ""
+msgstr "Клавес"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:609
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Hi Wood Block"
-msgstr ""
+msgstr "Высокая коробочка"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:611
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Low Wood Block"
-msgstr ""
+msgstr "Низкая коробочка"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:613
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Mute Cuica"
-msgstr ""
+msgstr "Закрытая куика"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:615
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Cuica"
-msgstr ""
+msgstr "Открытая куика"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:617
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Mute Triangle"
-msgstr ""
+msgstr "Закрытый треугольник"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:619
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Open Triangle"
-msgstr ""
+msgstr "Открытый треугольник"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:621
 #, kde-format
 msgctxt "General MIDI percussion instrument"
 msgid "Percussion"
-msgstr ""
+msgstr "Перкуссия"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:629
 #, kde-format
