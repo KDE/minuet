@@ -71,7 +71,7 @@ public Q_SLOTS:
     virtual void setInstrument(int instrument) = 0;
     virtual void setRhythmInstrument(int rhythmInstrument) = 0;
 
-    virtual void prepareFromExerciseOptions(QJsonArray selectedExerciseOptions) = 0;
+    virtual void prepareFromExerciseOptions(QJsonArray selectedExerciseOptions, bool includeRhythmCountIn) = 0;
     virtual void prepareFromMidiFile(const QString &fileName) = 0;
     virtual void playCountIn(int beats) = 0;
     virtual void playSilentCountIn(int beats) = 0;

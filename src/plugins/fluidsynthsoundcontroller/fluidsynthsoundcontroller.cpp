@@ -201,7 +201,7 @@ void FluidSynthSoundController::setRhythmInstrument(int rhythmInstrument)
     setRhythmInstrumentValue(rhythmInstrument);
 }
 
-void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedExerciseOptions)
+void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedExerciseOptions, bool includeRhythmCountIn)
 {
     hideCountIn();
     clearSong();
@@ -214,7 +214,7 @@ void FluidSynthSoundController::prepareFromExerciseOptions(QJsonArray selectedEx
     auto *song = new QList<fluid_event_t *>;
     m_song.reset(song);
 
-    if (m_playMode == u"rhythm"_s) {
+    if (m_playMode == u"rhythm"_s && includeRhythmCountIn) {
         setRhythmCountInBeats(RhythmExerciseCountInBeats);
         m_activeCountInBeats = RhythmExerciseCountInBeats;
         appendCountInEvents(m_activeCountInBeats);

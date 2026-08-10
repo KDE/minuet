@@ -38,7 +38,7 @@ public Q_SLOTS:
     void setInstrument(int instrument) override;
     void setRhythmInstrument(int rhythmInstrument) override;
 
-    void prepareFromExerciseOptions(QJsonArray selectedExerciseOptions) override;
+    void prepareFromExerciseOptions(QJsonArray selectedExerciseOptions, bool includeRhythmCountIn) override;
     void prepareFromMidiFile(const QString &fileName) override;
     void playCountIn(int beats) override;
     void playSilentCountIn(int beats) override;

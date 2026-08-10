@@ -257,7 +257,7 @@ ExerciseContent {
                     "rootNote": internal.rootNote.toString(),
                     "sequence": ""
                 }
-            ]);
+            ], true);
             Core.soundController.play();
         }
         if (internal.referenceCardExercise) {

@@ -81,7 +81,7 @@ ExerciseContent {
         Core.exerciseSessionController.beginQuestion(internal.maximumExercises);
         Core.exerciseSessionController.randomlySelectExerciseOptions(internal.selectedOptionCount);
         var chosenExercises = Core.exerciseSessionController.selectedExerciseOptions;
-        Core.soundController.prepareFromExerciseOptions(chosenExercises);
+        Core.soundController.prepareFromExerciseOptions(chosenExercises, true);
         if (exerciseView.currentExercise["playMode"] !== "rhythm") {
             pianoView.noteMark(0, Core.exerciseSessionController.chosenRootNote, 0, "white");
             pianoView.scrollToMarkedKeys();
@@ -123,6 +123,17 @@ ExerciseContent {
         }
         Core.soundController.stop();
         generateNewQuestion();
+        Core.soundController.play();
+    }
+    function playAnswer(answer: var): void {
+        if (answer === undefined || Core.soundController === null) {
+            return;
+        }
+
+        const answerModel = Object.assign({}, Core.exerciseSessionController.answerModel(answer));
+        answerModel["rootNote"] = String(Core.exerciseSessionController.chosenRootNote);
+        Core.soundController.stop();
+        Core.soundController.prepareFromExerciseOptions([answerModel], false);
         Core.soundController.play();
     }
     function removeLastUserAnswer(): void {
@@ -489,7 +500,7 @@ ExerciseContent {
                 Layout.rightMargin: internal.contentPadding
                 Layout.topMargin: internal.contentPadding
                 Onboarding.groups: ["melodic", "rhythmic"]
-                Onboarding.texts: [i18n("Your selected answer appears here."), i18n("Build your rhythm answer here, one part at a time.")]
+                Onboarding.texts: [i18n("Your selected answer appears here. After answering, click the card to hear it. A wrong answer switches between your answer and the correct answer."), i18n("Build your rhythm answer here, one part at a time. After answering, click a card to hear that part. A wrong part switches between your answer and the correct answer.")]
 
                 ColumnLayout {
                     id: selectedAnswersLayout
@@ -853,9 +864,17 @@ ExerciseContent {
             }
 
             onClicked: {
-                if (canShowSubmittedAnswerCorrection(index)) {
-                    toggleSubmittedAnswerCorrection(index);
+                if (!submitted) {
+                    return;
                 }
+
+                if (wrongAnswer) {
+                    toggleSubmittedAnswerCorrection(index);
+                    const showingCorrectedAnswer = Core.exerciseSessionController.correctedAnswerPosition === index;
+                    exerciseView.playAnswer(showingCorrectedAnswer ? expectedAnswer : submittedAnswer);
+                    return;
+                }
+                exerciseView.playAnswer(expectedAnswer);
             }
         }
     }
