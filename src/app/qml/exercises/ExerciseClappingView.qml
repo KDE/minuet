@@ -157,7 +157,7 @@ ExerciseContent {
         const finalScore = Core.exerciseSessionController.recordTestScore(internal.score, Core.settingsController.testExerciseCount);
         if (finalScore >= 0) {
             internal.score = finalScore;
-        } else {
+        } else if (Core.settingsController.automaticallyAdvanceTestQuestions) {
             testNextQuestionTimer.restart();
         }
     }
@@ -461,7 +461,7 @@ ExerciseContent {
 
                 Layout.preferredWidth: exerciseHeader.actionButtonWidth
                 enabled: internal.microphoneReady && internal.viewState !== "counting" && internal.viewState !== "listening" && internal.viewState !== "analyzing"
-                text: internal.expectedOnsets.length === 0 || internal.viewState === "finished" ? i18n("New Question") : i18n("Start")
+                text: Core.exerciseSessionController.isTest && internal.viewState === "finished" ? i18n("Next Question") : internal.expectedOnsets.length === 0 || internal.viewState === "finished" ? i18n("New Question") : i18n("Start")
 
                 onClicked: {
                     if (internal.expectedOnsets.length === 0 || internal.viewState === "finished") {

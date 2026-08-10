@@ -27,7 +27,7 @@ ExerciseContent {
             highlightRightAnswer();
         } else {
             exerciseView.state = "waitingForNewQuestion";
-            if (Core.exerciseSessionController.isTest) {
+            if (Core.exerciseSessionController.isTest && Core.settingsController.automaticallyAdvanceTestQuestions) {
                 testFeedbackTimer.restart();
             }
         }
@@ -67,8 +67,8 @@ ExerciseContent {
         return Core.exerciseSessionController.colorForAnswerIndex(index, internal.colors);
     }
     function finishSingleAnswerFeedback(): void {
-        exerciseView.state = Core.exerciseSessionController.isTest ? "waitingForAnswer" : "waitingForNewQuestion";
-        if (Core.exerciseSessionController.isTest) {
+        exerciseView.state = "waitingForNewQuestion";
+        if (Core.exerciseSessionController.isTest && Core.settingsController.automaticallyAdvanceTestQuestions) {
             nextTestExercise();
             if (Core.exerciseSessionController.currentExercise === internal.maximumExercises + 1)
                 Core.exerciseSessionController.resetTest();
@@ -121,6 +121,7 @@ ExerciseContent {
                 answerItem.opacity = 1;
             }
         }
+        Core.soundController.stop();
         generateNewQuestion();
         Core.soundController.play();
     }
@@ -365,7 +366,7 @@ ExerciseContent {
 
                     Layout.preferredWidth: exerciseHeader.actionButtonWidth
                     enabled: !animation.running && !testFeedbackTimer.running && !internal.exercisePlaying
-                    text: exerciseView.state === "waitingForNewQuestion" ? i18n("New Question") : i18n("Play Question")
+                    text: exerciseView.state === "waitingForNewQuestion" ? Core.exerciseSessionController.isTest ? i18n("Next Question") : i18n("New Question") : i18n("Play Question")
 
                     onClicked: {
                         if (exerciseView.state === "waitingForNewQuestion") {

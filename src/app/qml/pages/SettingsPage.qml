@@ -145,7 +145,7 @@ FormCard.FormCardPage {
 
             contentItem: SettingsSlider {
                 from: 5
-                label: i18n("Number of exercises")
+                label: i18n("Number of exercises in tests")
                 to: 20
                 value: Core.settingsController.testExerciseCount
 
@@ -153,6 +153,12 @@ FormCard.FormCardPage {
                     Core.settingsController.testExerciseCount = value;
                 }
             }
+        }
+        FormCard.FormSwitchDelegate {
+            checked: Core.settingsController.automaticallyAdvanceTestQuestions
+            text: i18n("Automatically advance to the next test question")
+
+            onToggled: Core.settingsController.automaticallyAdvanceTestQuestions = checked
         }
     }
     FormCard.FormHeader {

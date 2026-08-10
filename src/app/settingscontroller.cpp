@@ -24,6 +24,7 @@ void SettingsController::load()
     settings.beginGroup(u"Settings"_s);
     m_rhythmPatternCount = std::clamp(settings.value(u"RhythmPatternCount"_s, m_rhythmPatternCount).toInt(), 4, 16);
     m_testExerciseCount = std::clamp(settings.value(u"TestExerciseCount"_s, m_testExerciseCount).toInt(), 5, 20);
+    m_automaticallyAdvanceTestQuestions = settings.value(u"AutomaticallyAdvanceTestQuestions"_s, m_automaticallyAdvanceTestQuestions).toBool();
     m_volume = std::clamp(settings.value(u"Volume"_s, m_volume).toInt(), 0, 200);
     m_pitch = std::clamp(settings.value(u"Pitch"_s, m_pitch).toInt(), -12, 12);
     m_tempo = std::clamp(settings.value(u"Tempo"_s, m_tempo).toInt(), 1, 255);
@@ -94,6 +95,11 @@ int SettingsController::rhythmPatternCount() const
 int SettingsController::testExerciseCount() const
 {
     return m_testExerciseCount;
+}
+
+bool SettingsController::automaticallyAdvanceTestQuestions() const
+{
+    return m_automaticallyAdvanceTestQuestions;
 }
 
 int SettingsController::volume() const
@@ -332,6 +338,17 @@ void SettingsController::setTestExerciseCount(int testExerciseCount)
     m_testExerciseCount = testExerciseCount;
     write(u"TestExerciseCount"_s, m_testExerciseCount);
     emit testExerciseCountChanged(m_testExerciseCount);
+}
+
+void SettingsController::setAutomaticallyAdvanceTestQuestions(bool automaticallyAdvance)
+{
+    if (m_automaticallyAdvanceTestQuestions == automaticallyAdvance) {
+        return;
+    }
+
+    m_automaticallyAdvanceTestQuestions = automaticallyAdvance;
+    write(u"AutomaticallyAdvanceTestQuestions"_s, m_automaticallyAdvanceTestQuestions);
+    emit automaticallyAdvanceTestQuestionsChanged(m_automaticallyAdvanceTestQuestions);
 }
 
 void SettingsController::setVolume(int volume)

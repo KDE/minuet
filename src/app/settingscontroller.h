@@ -16,6 +16,8 @@ class SettingsController : public QObject
     Q_OBJECT
     Q_PROPERTY(int rhythmPatternCount READ rhythmPatternCount WRITE setRhythmPatternCount NOTIFY rhythmPatternCountChanged)
     Q_PROPERTY(int testExerciseCount READ testExerciseCount WRITE setTestExerciseCount NOTIFY testExerciseCountChanged)
+    Q_PROPERTY(bool automaticallyAdvanceTestQuestions READ automaticallyAdvanceTestQuestions WRITE setAutomaticallyAdvanceTestQuestions NOTIFY
+                   automaticallyAdvanceTestQuestionsChanged)
     Q_PROPERTY(int volume READ volume WRITE setVolume NOTIFY volumeChanged)
     Q_PROPERTY(int pitch READ pitch WRITE setPitch NOTIFY pitchChanged)
     Q_PROPERTY(int tempo READ tempo WRITE setTempo NOTIFY tempoChanged)
@@ -62,6 +64,7 @@ public:
 
     int rhythmPatternCount() const;
     int testExerciseCount() const;
+    bool automaticallyAdvanceTestQuestions() const;
     int volume() const;
     int pitch() const;
     int tempo() const;
@@ -100,6 +103,7 @@ public:
 public Q_SLOTS:
     void setRhythmPatternCount(int rhythmPatternCount);
     void setTestExerciseCount(int testExerciseCount);
+    void setAutomaticallyAdvanceTestQuestions(bool automaticallyAdvance);
     void setVolume(int volume);
     void setPitch(int pitch);
     void setTempo(int tempo);
@@ -133,6 +137,7 @@ public Q_SLOTS:
 Q_SIGNALS:
     void rhythmPatternCountChanged(int rhythmPatternCount);
     void testExerciseCountChanged(int testExerciseCount);
+    void automaticallyAdvanceTestQuestionsChanged(bool automaticallyAdvance);
     void volumeChanged(int volume);
     void pitchChanged(int pitch);
     void tempoChanged(int tempo);
@@ -191,6 +196,7 @@ private:
 
     int m_rhythmPatternCount = 4;
     int m_testExerciseCount = 10;
+    bool m_automaticallyAdvanceTestQuestions = false;
     int m_volume = 100;
     int m_pitch = 0;
     int m_tempo = 60;

@@ -6,6 +6,7 @@
 
 #include <QCoreApplication>
 #include <QSettings>
+#include <QSignalSpy>
 #include <QStandardPaths>
 #include <QTest>
 
@@ -21,6 +22,7 @@ private Q_SLOTS:
     void initTestCase();
     void init();
     void usesRhythmDefault();
+    void persistsAutomaticTestQuestionAdvancement();
     void routesTempoAndSubdivisionsByPlayMode();
     void clampsRhythmTempo();
 };
@@ -42,6 +44,32 @@ void SettingsControllerTest::usesRhythmDefault()
     SettingsController controller;
     QCOMPARE(controller.exerciseSpeed(), 60);
     QCOMPARE(controller.rhythmTempo(), 45);
+}
+
+void SettingsControllerTest::persistsAutomaticTestQuestionAdvancement()
+{
+    SettingsController controller;
+    QCOMPARE(controller.automaticallyAdvanceTestQuestions(), false);
+
+    QSignalSpy spy(&controller, &SettingsController::automaticallyAdvanceTestQuestionsChanged);
+    controller.setAutomaticallyAdvanceTestQuestions(true);
+    QCOMPARE(controller.automaticallyAdvanceTestQuestions(), true);
+    QCOMPARE(spy.count(), 1);
+    QCOMPARE(spy.at(0).at(0).toBool(), true);
+
+    controller.setAutomaticallyAdvanceTestQuestions(true);
+    QCOMPARE(spy.count(), 1);
+
+    SettingsController reloadedController;
+    QCOMPARE(reloadedController.automaticallyAdvanceTestQuestions(), true);
+
+    controller.setAutomaticallyAdvanceTestQuestions(false);
+    QCOMPARE(controller.automaticallyAdvanceTestQuestions(), false);
+    QCOMPARE(spy.count(), 2);
+    QCOMPARE(spy.at(1).at(0).toBool(), false);
+
+    SettingsController resetController;
+    QCOMPARE(resetController.automaticallyAdvanceTestQuestions(), false);
 }
 
 void SettingsControllerTest::routesTempoAndSubdivisionsByPlayMode()
