@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-17 00:39+0000\n"
+"POT-Creation-Date: 2026-08-11 00:40+0000\n"
 "PO-Revision-Date: 2026-08-03 17:09+0300\n"
 "Last-Translator: Olesya Gerasimenko <goa@altlinux.org>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -2258,7 +2258,15 @@ msgstr "Воспроизведите ритм хлопками"
 
 #: src/app/qml/exercises/ExerciseClappingView.qml:464
 #: src/app/qml/exercises/ExerciseSingingView.qml:690
-#: src/app/qml/exercises/ExerciseView.qml:368
+#: src/app/qml/exercises/ExerciseView.qml:380
+#, fuzzy, kde-format
+#| msgid "New Question"
+msgid "Next Question"
+msgstr "Новый вопрос"
+
+#: src/app/qml/exercises/ExerciseClappingView.qml:464
+#: src/app/qml/exercises/ExerciseSingingView.qml:690
+#: src/app/qml/exercises/ExerciseView.qml:380
 #, kde-format
 msgid "New Question"
 msgstr "Новый вопрос"
@@ -2271,14 +2279,14 @@ msgstr "Начать"
 
 #: src/app/qml/exercises/ExerciseClappingView.qml:478
 #: src/app/qml/exercises/ExerciseSingingView.qml:704
-#: src/app/qml/exercises/ExerciseView.qml:395
+#: src/app/qml/exercises/ExerciseView.qml:407
 #, kde-format
 msgid "Stop Test"
 msgstr "Закончить тест"
 
 #: src/app/qml/exercises/ExerciseClappingView.qml:478
 #: src/app/qml/exercises/ExerciseSingingView.qml:704
-#: src/app/qml/exercises/ExerciseView.qml:395
+#: src/app/qml/exercises/ExerciseView.qml:407
 #, kde-format
 msgid "Start Test"
 msgstr "Начать тест"
@@ -2322,7 +2330,7 @@ msgid "%1 - Base: %2 - Target: %3"
 msgstr "%1 - Основа: %2 - Цель: %3"
 
 #: src/app/qml/exercises/ExerciseSingingView.qml:426
-#: src/app/qml/exercises/ExerciseView.qml:347
+#: src/app/qml/exercises/ExerciseView.qml:359
 #, kde-format
 msgid "Playing…"
 msgstr "Воспроизведение…"
@@ -2414,18 +2422,18 @@ msgstr ""
 "На нотном стане показаны те же самые вокальные ноты в музыкальной нотации."
 
 #: src/app/qml/exercises/ExerciseSingingView.qml:963
-#: src/app/qml/exercises/ExerciseView.qml:683
+#: src/app/qml/exercises/ExerciseView.qml:695
 #, kde-format
 msgid "Keyboard"
 msgstr "Клавиатура"
 
 #: src/app/qml/exercises/ExerciseSingingView.qml:966
-#: src/app/qml/exercises/ExerciseView.qml:686
+#: src/app/qml/exercises/ExerciseView.qml:698
 #, kde-format
 msgid "Staff"
 msgstr "Нотный стан"
 
-#: src/app/qml/exercises/ExerciseView.qml:342
+#: src/app/qml/exercises/ExerciseView.qml:354
 #, kde-format
 msgid ""
 "Use the first button to hear or replace the question, Give Up to reveal its "
@@ -2434,7 +2442,7 @@ msgstr ""
 "Первая кнопка позволяет прослушать или заменить вопрос, кнопка «Сдаться» — "
 "увидеть ответ, а кнопка «Начать тест» — ответить на ряд вопросов на оценку."
 
-#: src/app/qml/exercises/ExerciseView.qml:342
+#: src/app/qml/exercises/ExerciseView.qml:354
 #, kde-format
 msgid ""
 "Use the first button to hear or replace the rhythm, Give Up to reveal its "
@@ -2443,61 +2451,66 @@ msgstr ""
 "Первая кнопка позволяет прослушать или заменить ритм, кнопка «Сдаться» — "
 "увидеть ответ, а кнопка «Начать тест» — ответить на ряд вопросов на оценку."
 
-#: src/app/qml/exercises/ExerciseView.qml:346
+#: src/app/qml/exercises/ExerciseView.qml:358
 #, kde-format
 msgid "These messages explain the question and show its status."
 msgstr "Эти сообщения объясняют вопрос и показывают его состояние."
 
 # BUGME: should this really be translatable? --aspotashev
-#: src/app/qml/exercises/ExerciseView.qml:361
+#: src/app/qml/exercises/ExerciseView.qml:373
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "userMessage"
 msgstr "Сообщение для пользователя"
 
-#: src/app/qml/exercises/ExerciseView.qml:368
+#: src/app/qml/exercises/ExerciseView.qml:380
 #, kde-format
 msgid "Play Question"
 msgstr "Проиграть вопрос"
 
-#: src/app/qml/exercises/ExerciseView.qml:382
+#: src/app/qml/exercises/ExerciseView.qml:394
 #, kde-format
 msgid "Give Up"
 msgstr "Сдаться"
 
-#: src/app/qml/exercises/ExerciseView.qml:422
+#: src/app/qml/exercises/ExerciseView.qml:434
 #, kde-format
 msgid "Choose an answer here. Hover, or press and hold, to preview it below."
 msgstr ""
 "Выберите ответ. Наведите указатель мыши или нажмите и удерживайте для "
 "предварительного просмотра ниже."
 
-#: src/app/qml/exercises/ExerciseView.qml:422
+#: src/app/qml/exercises/ExerciseView.qml:434
 #, kde-format
 msgid "Choose each rhythm part from these available answers."
 msgstr "Выберите каждую часть ритма из этих доступных ответов."
 
-#: src/app/qml/exercises/ExerciseView.qml:436
+#: src/app/qml/exercises/ExerciseView.qml:448
 #, kde-format
 msgid "Available answers"
 msgstr "Доступные ответы"
 
-#: src/app/qml/exercises/ExerciseView.qml:440
+#: src/app/qml/exercises/ExerciseView.qml:452
 #, kde-format
 msgid "Scroll for more"
 msgstr "Прокрутите, чтобы увидеть больше"
 
-#: src/app/qml/exercises/ExerciseView.qml:491
+#: src/app/qml/exercises/ExerciseView.qml:503
 #, kde-format
-msgid "Your selected answer appears here."
-msgstr "Здесь показывается выбранный ответ."
+msgid ""
+"Your selected answer appears here. After answering, click the card to hear "
+"it. A wrong answer switches between your answer and the correct answer."
+msgstr ""
 
-#: src/app/qml/exercises/ExerciseView.qml:491
+#: src/app/qml/exercises/ExerciseView.qml:503
 #, kde-format
-msgid "Build your rhythm answer here, one part at a time."
-msgstr "Сформируйте здесь ответ по ритму, по одной части за раз."
+msgid ""
+"Build your rhythm answer here, one part at a time. After answering, click a "
+"card to hear that part. A wrong part switches between your answer and the "
+"correct answer."
+msgstr ""
 
-#: src/app/qml/exercises/ExerciseView.qml:507
+#: src/app/qml/exercises/ExerciseView.qml:519
 #, kde-format
 msgid "Correct answer"
 msgid_plural "Correct answers"
@@ -2506,7 +2519,7 @@ msgstr[1] "Правильные ответы"
 msgstr[2] "Правильные ответы"
 msgstr[3] "Правильный ответ"
 
-#: src/app/qml/exercises/ExerciseView.qml:507
+#: src/app/qml/exercises/ExerciseView.qml:519
 #, kde-format
 msgid "Your answer"
 msgid_plural "Your answers"
@@ -2515,33 +2528,33 @@ msgstr[1] "Ваши ответы"
 msgstr[2] "Ваши ответы"
 msgstr[3] "Ваш ответ"
 
-#: src/app/qml/exercises/ExerciseView.qml:511
+#: src/app/qml/exercises/ExerciseView.qml:523
 #, kde-format
 msgid "Scroll for more |"
 msgstr "Прокрутите, чтобы увидеть больше |"
 
-#: src/app/qml/exercises/ExerciseView.qml:516
+#: src/app/qml/exercises/ExerciseView.qml:528
 #, kde-format
 msgid "%1 / %2"
 msgstr "%1 / %2"
 
-#: src/app/qml/exercises/ExerciseView.qml:520
+#: src/app/qml/exercises/ExerciseView.qml:532
 #, kde-format
 msgid "Backspace"
 msgstr "Стереть блок"
 
-#: src/app/qml/exercises/ExerciseView.qml:617
+#: src/app/qml/exercises/ExerciseView.qml:629
 #, kde-format
 msgid "The keyboard shows the notes in the question or preview."
 msgstr ""
 "На клавиатуре показаны ноты в вопросе или области предварительного просмотра."
 
-#: src/app/qml/exercises/ExerciseView.qml:655
+#: src/app/qml/exercises/ExerciseView.qml:667
 #, kde-format
 msgid "The staff shows the same notes in music notation."
 msgstr "На нотном стане показаны те же самые ноты в музыкальной нотации."
 
-#: src/app/qml/exercises/ExerciseView.qml:842
+#: src/app/qml/exercises/ExerciseView.qml:854
 #, kde-format
 msgid "Answer %1"
 msgstr "Ответ %1"
@@ -2728,21 +2741,27 @@ msgid "Number of rhythm patterns"
 msgstr "Количество ритмических структур"
 
 #: src/app/qml/pages/SettingsPage.qml:148
-#, kde-format
-msgid "Number of exercises"
+#, fuzzy, kde-format
+#| msgid "Number of exercises"
+msgid "Number of exercises in tests"
 msgstr "Количество упражнений"
 
 #: src/app/qml/pages/SettingsPage.qml:159
 #, kde-format
+msgid "Automatically advance to the next test question"
+msgstr ""
+
+#: src/app/qml/pages/SettingsPage.qml:165
+#, kde-format
 msgid "Sound"
 msgstr "Звук"
 
-#: src/app/qml/pages/SettingsPage.qml:168
+#: src/app/qml/pages/SettingsPage.qml:174
 #, kde-format
 msgid "Volume"
 msgstr "Громкость"
 
-#: src/app/qml/pages/SettingsPage.qml:179
+#: src/app/qml/pages/SettingsPage.qml:185
 #, kde-format
 msgid ""
 "The active sound controller did not report any General MIDI bank 0 "
@@ -2751,84 +2770,84 @@ msgstr ""
 "Активный контроллер звука не сообщил о каких-либо инструментах из набора "
 "General MIDI."
 
-#: src/app/qml/pages/SettingsPage.qml:181
+#: src/app/qml/pages/SettingsPage.qml:187
 #, kde-format
 msgid "No melodic instruments available"
 msgstr "Доступные мелодические инструменты отсутствуют"
 
-#: src/app/qml/pages/SettingsPage.qml:185
+#: src/app/qml/pages/SettingsPage.qml:191
 #, kde-format
 msgid "Used for scales, intervals, and chords."
 msgstr "Используется для гамм, интервалов и аккордов."
 
-#: src/app/qml/pages/SettingsPage.qml:186
+#: src/app/qml/pages/SettingsPage.qml:192
 #, kde-format
 msgid "Melodic Exercises"
 msgstr "Упражнения на мелодию"
 
-#: src/app/qml/pages/SettingsPage.qml:197
+#: src/app/qml/pages/SettingsPage.qml:203
 #, kde-format
 msgid "Instrument group:"
 msgstr "Группа инструментов:"
 
-#: src/app/qml/pages/SettingsPage.qml:220
+#: src/app/qml/pages/SettingsPage.qml:226
 #, kde-format
 msgid "Instrument:"
 msgstr "Инструмент:"
 
-#: src/app/qml/pages/SettingsPage.qml:235
+#: src/app/qml/pages/SettingsPage.qml:241
 #, kde-format
 msgid "Used for rhythm figures. The count-in keeps its own sound."
 msgstr ""
 "Используется для ритмических рисунков. Вводный счёт сохраняет собственное "
 "звучание."
 
-#: src/app/qml/pages/SettingsPage.qml:236
+#: src/app/qml/pages/SettingsPage.qml:242
 #, kde-format
 msgid "Rhythmic Exercises"
 msgstr "Упражнения на ритм"
 
-#: src/app/qml/pages/SettingsPage.qml:247
+#: src/app/qml/pages/SettingsPage.qml:253
 #, kde-format
 msgid "Percussion sound:"
 msgstr "Звук ударных:"
 
-#: src/app/qml/pages/SettingsPage.qml:259
+#: src/app/qml/pages/SettingsPage.qml:265
 #, kde-format
 msgid "Microphone"
 msgstr "Микрофон"
 
-#: src/app/qml/pages/SettingsPage.qml:268
+#: src/app/qml/pages/SettingsPage.qml:274
 #, kde-format
 msgid "Input device"
 msgstr "Устройство ввода"
 
-#: src/app/qml/pages/SettingsPage.qml:283
+#: src/app/qml/pages/SettingsPage.qml:289
 #, kde-format
 msgid "Voice class"
 msgstr "Класс голоса"
 
-#: src/app/qml/pages/SettingsPage.qml:284
+#: src/app/qml/pages/SettingsPage.qml:290
 #, kde-format
 msgid "Soprano"
 msgstr "Сопрано"
 
-#: src/app/qml/pages/SettingsPage.qml:284
+#: src/app/qml/pages/SettingsPage.qml:290
 #, kde-format
 msgid "Alto"
 msgstr "Альт"
 
-#: src/app/qml/pages/SettingsPage.qml:284
+#: src/app/qml/pages/SettingsPage.qml:290
 #, kde-format
 msgid "Tenor"
 msgstr "Тенор"
 
-#: src/app/qml/pages/SettingsPage.qml:284
+#: src/app/qml/pages/SettingsPage.qml:290
 #, kde-format
 msgid "Bass"
 msgstr "Бас"
 
-#: src/app/qml/pages/SettingsPage.qml:295
+#: src/app/qml/pages/SettingsPage.qml:301
 #, kde-format
 msgid ""
 "Larger values accept claps farther from the beat; smaller values require "
@@ -2837,12 +2856,12 @@ msgstr ""
 "Чем больше значение, тем дальше хлопки могут быть от ритма; чем меньше "
 "значение, тем точнее нужно соблюдать ритм."
 
-#: src/app/qml/pages/SettingsPage.qml:297
+#: src/app/qml/pages/SettingsPage.qml:303
 #, kde-format
 msgid "Timing tolerance"
 msgstr "Допуск по времени"
 
-#: src/app/qml/pages/SettingsPage.qml:311
+#: src/app/qml/pages/SettingsPage.qml:317
 #, kde-format
 msgid ""
 "Larger values accept notes farther from the target pitch; smaller values "
@@ -2851,17 +2870,17 @@ msgstr ""
 "Чем больше значение, тем дальше ноты могут быть от целевого тона; чем меньше "
 "значение, тем точнее нужно попадать в ноты при пении."
 
-#: src/app/qml/pages/SettingsPage.qml:313
+#: src/app/qml/pages/SettingsPage.qml:319
 #, kde-format
 msgid "Pitch tolerance"
 msgstr "Допуск по высоте тона"
 
-#: src/app/qml/pages/SettingsPage.qml:314
+#: src/app/qml/pages/SettingsPage.qml:320
 #, kde-format
 msgid "cents"
 msgstr "сот."
 
-#: src/app/qml/pages/SettingsPage.qml:324
+#: src/app/qml/pages/SettingsPage.qml:330
 #, kde-format
 msgid ""
 "Keep the room quiet while calibrating silence. Recalibrate when the "
@@ -2870,100 +2889,100 @@ msgstr ""
 "Соблюдайте тишину в комнате во время калибровки. Повторите калибровку при "
 "смене микрофона или изменении фонового шума в комнате."
 
-#: src/app/qml/pages/SettingsPage.qml:325
+#: src/app/qml/pages/SettingsPage.qml:331
 #, kde-format
 msgid "Calibration"
 msgstr "Калибровка"
 
-#: src/app/qml/pages/SettingsPage.qml:329
+#: src/app/qml/pages/SettingsPage.qml:335
 #, kde-format
 msgid "Advanced"
 msgstr "Дополнительно"
 
-#: src/app/qml/pages/SettingsPage.qml:369
+#: src/app/qml/pages/SettingsPage.qml:375
 #, kde-format
 msgid "Algorithms and detection thresholds for difficult microphones or rooms."
 msgstr "Алгоритмы и пороги определения для проблемных микрофонов или комнат."
 
-#: src/app/qml/pages/SettingsPage.qml:395
+#: src/app/qml/pages/SettingsPage.qml:401
 #, kde-format
 msgid "Used for rhythm clapping exercises."
 msgstr "Используется для упражнений с хлопками для воспроизведения ритма."
 
-#: src/app/qml/pages/SettingsPage.qml:396
+#: src/app/qml/pages/SettingsPage.qml:402
 #, kde-format
 msgid "Clapping detection"
 msgstr "Определение хлопков"
 
-#: src/app/qml/pages/SettingsPage.qml:400
+#: src/app/qml/pages/SettingsPage.qml:406
 #, kde-format
 msgid "Onset method"
 msgstr "Метод атаки"
 
-#: src/app/qml/pages/SettingsPage.qml:410
+#: src/app/qml/pages/SettingsPage.qml:416
 #, kde-format
 msgid "Onset threshold"
 msgstr "Порог атаки"
 
-#: src/app/qml/pages/SettingsPage.qml:422
-#: src/app/qml/pages/SettingsPage.qml:477
+#: src/app/qml/pages/SettingsPage.qml:428
+#: src/app/qml/pages/SettingsPage.qml:483
 #, kde-format
 msgid "Input gate"
 msgstr "Входной шлюз"
 
-#: src/app/qml/pages/SettingsPage.qml:434
+#: src/app/qml/pages/SettingsPage.qml:440
 #, kde-format
 msgid "Minimum onset strength"
 msgstr "Минимальная сила атаки"
 
-#: src/app/qml/pages/SettingsPage.qml:450
+#: src/app/qml/pages/SettingsPage.qml:456
 #, kde-format
 msgid "Used for pitch analysis and note-entry timing in singing exercises."
 msgstr ""
 "Используется для анализа высоты тона и точности воспроизведения нот по "
 "времени (тайминга) в упражнениях по вокалу."
 
-#: src/app/qml/pages/SettingsPage.qml:451
+#: src/app/qml/pages/SettingsPage.qml:457
 #, kde-format
 msgid "Singing detection"
 msgstr "Определение пения"
 
-#: src/app/qml/pages/SettingsPage.qml:455
+#: src/app/qml/pages/SettingsPage.qml:461
 #, kde-format
 msgid "Pitch method"
 msgstr "Способ установки высоты тона"
 
-#: src/app/qml/pages/SettingsPage.qml:465
+#: src/app/qml/pages/SettingsPage.qml:471
 #, kde-format
 msgid "Pitch confidence"
 msgstr "Точность высоты тона"
 
-#: src/app/qml/pages/SettingsPage.qml:488
+#: src/app/qml/pages/SettingsPage.qml:494
 #, kde-format
 msgid "Stable pitch frames"
 msgstr "Стабильные кадры высоты тона"
 
-#: src/app/qml/pages/SettingsPage.qml:498
+#: src/app/qml/pages/SettingsPage.qml:504
 #, kde-format
 msgid "Scoring mode"
 msgstr "Режим оценки"
 
-#: src/app/qml/pages/SettingsPage.qml:499
+#: src/app/qml/pages/SettingsPage.qml:505
 #, kde-format
 msgid "Pitch primary"
 msgstr "Основная высота тона"
 
-#: src/app/qml/pages/SettingsPage.qml:499
+#: src/app/qml/pages/SettingsPage.qml:505
 #, kde-format
 msgid "Pitch + timing"
 msgstr "Высота тона + тайминг"
 
-#: src/app/qml/pages/SettingsPage.qml:510
+#: src/app/qml/pages/SettingsPage.qml:516
 #, kde-format
 msgid "Disregard octave difference"
 msgstr "Не учитывать разницу в октаву"
 
-#: src/app/qml/pages/SettingsPage.qml:518
+#: src/app/qml/pages/SettingsPage.qml:524
 #, kde-format
 msgid "Reset to Defaults"
 msgstr "Вернуть значения по умолчанию"
@@ -3373,6 +3392,12 @@ msgstr "Звуковые эффекты"
 msgctxt "General MIDI instrument group"
 msgid "Other"
 msgstr "Другое"
+
+#~ msgid "Your selected answer appears here."
+#~ msgstr "Здесь показывается выбранный ответ."
+
+#~ msgid "Build your rhythm answer here, one part at a time."
+#~ msgstr "Сформируйте здесь ответ по ритму, по одной части за раз."
 
 #, fuzzy
 #~ msgid "Clapping speed"
