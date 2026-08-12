@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-11 00:40+0000\n"
-"PO-Revision-Date: 2026-07-24 09:50+0200\n"
+"PO-Revision-Date: 2026-08-11 07:10+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -2254,8 +2254,7 @@ msgstr "Ploskajte v ritmu"
 #: src/app/qml/exercises/ExerciseClappingView.qml:464
 #: src/app/qml/exercises/ExerciseSingingView.qml:690
 #: src/app/qml/exercises/ExerciseView.qml:380
-#, fuzzy, kde-format
-#| msgid "New Question"
+#, kde-format
 msgid "Next Question"
 msgstr "Novo vprašanje"
 
@@ -2494,6 +2493,8 @@ msgid ""
 "Your selected answer appears here. After answering, click the card to hear "
 "it. A wrong answer switches between your answer and the correct answer."
 msgstr ""
+"Vaš izbrani odgovor se prikaže tukaj. Ko ste odgovorili, kliknite kartico, "
+"da ga slišite. Napačen odgovor preklaplja med vašim in pravilnim odgovorom."
 
 #: src/app/qml/exercises/ExerciseView.qml:503
 #, kde-format
@@ -2502,6 +2503,9 @@ msgid ""
 "card to hear that part. A wrong part switches between your answer and the "
 "correct answer."
 msgstr ""
+"Sestavite svoj ritmični odgovor tukaj delček za delčkom. Ko ste odgovorili, "
+"kliknite kartico, da slišite ta del. Napačen del preklaplja med vašim in "
+"pravilnim odgovorom."
 
 #: src/app/qml/exercises/ExerciseView.qml:519
 #, kde-format
@@ -2732,15 +2736,14 @@ msgid "Number of rhythm patterns"
 msgstr "Število ritmičnih vzorcev"
 
 #: src/app/qml/pages/SettingsPage.qml:148
-#, fuzzy, kde-format
-#| msgid "Number of exercises"
+#, kde-format
 msgid "Number of exercises in tests"
-msgstr "Število vaj"
+msgstr "Število vaj in preizkusov"
 
 #: src/app/qml/pages/SettingsPage.qml:159
 #, kde-format
 msgid "Automatically advance to the next test question"
-msgstr ""
+msgstr "Samodejno napredovanje na naslednje vprašanje preizkusa"
 
 #: src/app/qml/pages/SettingsPage.qml:165
 #, kde-format

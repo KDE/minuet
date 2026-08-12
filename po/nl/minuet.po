@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-11 00:40+0000\n"
-"PO-Revision-Date: 2026-07-17 12:51+0200\n"
+"PO-Revision-Date: 2026-08-11 15:04+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -2320,10 +2320,9 @@ msgstr "Klap het ritme"
 #: src/app/qml/exercises/ExerciseClappingView.qml:464
 #: src/app/qml/exercises/ExerciseSingingView.qml:690
 #: src/app/qml/exercises/ExerciseView.qml:380
-#, fuzzy, kde-format
-#| msgid "New Question"
+#, kde-format
 msgid "Next Question"
-msgstr "Nieuwe vraag"
+msgstr "Volgende vraag"
 
 #: src/app/qml/exercises/ExerciseClappingView.qml:464
 #: src/app/qml/exercises/ExerciseSingingView.qml:690
@@ -2563,6 +2562,9 @@ msgid ""
 "Your selected answer appears here. After answering, click the card to hear "
 "it. A wrong answer switches between your answer and the correct answer."
 msgstr ""
+"Uw gekozen antwoord verschijnt hier. Klik na het beantwoorden op de kaart om "
+"deze te horen. Bij een fout antwoord wordt gewisseld tussen uw antwoord en "
+"het juiste antwoord."
 
 #: src/app/qml/exercises/ExerciseView.qml:503
 #, kde-format
@@ -2571,6 +2573,9 @@ msgid ""
 "card to hear that part. A wrong part switches between your answer and the "
 "correct answer."
 msgstr ""
+"Stel hier uw ritmeantwoord samen, deel voor deel. Klik na het beantwoorden "
+"op een kaart om dat deel te horen. Bij een fout deel wordt gewisseld tussen "
+"uw antwoord en het juiste antwoord."
 
 #: src/app/qml/exercises/ExerciseView.qml:519
 #, kde-format
@@ -2797,15 +2802,14 @@ msgid "Number of rhythm patterns"
 msgstr "Aantal ritme patronen"
 
 #: src/app/qml/pages/SettingsPage.qml:148
-#, fuzzy, kde-format
-#| msgid "Number of exercises"
+#, kde-format
 msgid "Number of exercises in tests"
-msgstr "Aantal oefeningen"
+msgstr "Aantal oefeningen in de testen"
 
 #: src/app/qml/pages/SettingsPage.qml:159
 #, kde-format
 msgid "Automatically advance to the next test question"
-msgstr ""
+msgstr "Automatisch doorgaan naar de volgende testvraag"
 
 #: src/app/qml/pages/SettingsPage.qml:165
 #, kde-format

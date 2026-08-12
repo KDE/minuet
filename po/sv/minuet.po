@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-11 00:40+0000\n"
-"PO-Revision-Date: 2026-07-17 08:48+0200\n"
+"PO-Revision-Date: 2026-08-11 17:02+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -2240,10 +2240,9 @@ msgstr "Klappa rytmen"
 #: src/app/qml/exercises/ExerciseClappingView.qml:464
 #: src/app/qml/exercises/ExerciseSingingView.qml:690
 #: src/app/qml/exercises/ExerciseView.qml:380
-#, fuzzy, kde-format
-#| msgid "New Question"
+#, kde-format
 msgid "Next Question"
-msgstr "Ny fråga"
+msgstr "Nästa fråga"
 
 #: src/app/qml/exercises/ExerciseClappingView.qml:464
 #: src/app/qml/exercises/ExerciseSingingView.qml:690
@@ -2483,6 +2482,8 @@ msgid ""
 "Your selected answer appears here. After answering, click the card to hear "
 "it. A wrong answer switches between your answer and the correct answer."
 msgstr ""
+"Ditt valda svar visas här. Efter att ha svarat klicka på kortet för att höra "
+"det. Ett felaktigt svar byter mellan ditt svar och det rätta svaret."
 
 #: src/app/qml/exercises/ExerciseView.qml:503
 #, kde-format
@@ -2491,6 +2492,9 @@ msgid ""
 "card to hear that part. A wrong part switches between your answer and the "
 "correct answer."
 msgstr ""
+"Bygg upp rytmsvaret här, en del i taget. Efter att ha svarat klicka på ett "
+"kort för att höra den delen. En felaktig del byter mellan ditt svar och det "
+"rätta svaret."
 
 #: src/app/qml/exercises/ExerciseView.qml:519
 #, kde-format
@@ -2715,15 +2719,14 @@ msgid "Number of rhythm patterns"
 msgstr "Antal rytmmönster"
 
 #: src/app/qml/pages/SettingsPage.qml:148
-#, fuzzy, kde-format
-#| msgid "Number of exercises"
+#, kde-format
 msgid "Number of exercises in tests"
-msgstr "Antal övningar"
+msgstr "Antal övningar i provet"
 
 #: src/app/qml/pages/SettingsPage.qml:159
 #, kde-format
 msgid "Automatically advance to the next test question"
-msgstr ""
+msgstr "Gå automatiskt vidare till nästa fråga i provet"
 
 #: src/app/qml/pages/SettingsPage.qml:165
 #, kde-format

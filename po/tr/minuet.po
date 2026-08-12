@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-11 00:40+0000\n"
-"PO-Revision-Date: 2026-07-17 19:42+0300\n"
+"PO-Revision-Date: 2026-08-11 19:19+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -2267,10 +2267,9 @@ msgstr "Ritme el çırpın"
 #: src/app/qml/exercises/ExerciseClappingView.qml:464
 #: src/app/qml/exercises/ExerciseSingingView.qml:690
 #: src/app/qml/exercises/ExerciseView.qml:380
-#, fuzzy, kde-format
-#| msgid "New Question"
+#, kde-format
 msgid "Next Question"
-msgstr "Yeni Soru"
+msgstr "Sonraki Soru"
 
 #: src/app/qml/exercises/ExerciseClappingView.qml:464
 #: src/app/qml/exercises/ExerciseSingingView.qml:690
@@ -2501,7 +2500,7 @@ msgstr "Kullanılabilir yanıtlar"
 #: src/app/qml/exercises/ExerciseView.qml:452
 #, kde-format
 msgid "Scroll for more"
-msgstr "Daha fazlası için kaydırın"
+msgstr "Daha fazlası için sarın"
 
 #: src/app/qml/exercises/ExerciseView.qml:503
 #, kde-format
@@ -2509,6 +2508,8 @@ msgid ""
 "Your selected answer appears here. After answering, click the card to hear "
 "it. A wrong answer switches between your answer and the correct answer."
 msgstr ""
+"Seçtiğiniz yanıt burada görünür. Yanıtladıktan sonra duymak için karta "
+"tıklayın. Yanlış bir yanıt, yanıtınız ve doğru yanıt arasında geçiş yapar."
 
 #: src/app/qml/exercises/ExerciseView.qml:503
 #, kde-format
@@ -2517,6 +2518,9 @@ msgid ""
 "card to hear that part. A wrong part switches between your answer and the "
 "correct answer."
 msgstr ""
+"Ritminizi burada, her seferinde bir kısım olacak şekilde oluşturun. "
+"Yanıtladıktan sonra, o kısmı duymak için bir karta tıklayın. Yanlış bir "
+"kısım, yanıtınız ve doğru yanıt arasında geçiş yapar."
 
 #: src/app/qml/exercises/ExerciseView.qml:519
 #, kde-format
@@ -2535,7 +2539,7 @@ msgstr[1] "Yanıtlarınız"
 #: src/app/qml/exercises/ExerciseView.qml:523
 #, kde-format
 msgid "Scroll for more |"
-msgstr "Daha fazlası için kaydırın |"
+msgstr "Daha fazlası için sarın |"
 
 #: src/app/qml/exercises/ExerciseView.qml:528
 #, kde-format
@@ -2741,15 +2745,14 @@ msgid "Number of rhythm patterns"
 msgstr "Ritim kalıpları sayısı"
 
 #: src/app/qml/pages/SettingsPage.qml:148
-#, fuzzy, kde-format
-#| msgid "Number of exercises"
+#, kde-format
 msgid "Number of exercises in tests"
-msgstr "Alıştırma sayısı"
+msgstr "Testlerdeki alıştırma sayısı"
 
 #: src/app/qml/pages/SettingsPage.qml:159
 #, kde-format
 msgid "Automatically advance to the next test question"
-msgstr ""
+msgstr "Sonraki test sorusuna kendiliğinden geç"
 
 #: src/app/qml/pages/SettingsPage.qml:165
 #, kde-format

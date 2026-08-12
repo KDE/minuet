@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-11 00:40+0000\n"
-"PO-Revision-Date: 2026-07-17 07:26-0300\n"
+"PO-Revision-Date: 2026-08-11 06:48-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -2317,10 +2317,9 @@ msgstr "Bata palmas no ritmo"
 #: src/app/qml/exercises/ExerciseClappingView.qml:464
 #: src/app/qml/exercises/ExerciseSingingView.qml:690
 #: src/app/qml/exercises/ExerciseView.qml:380
-#, fuzzy, kde-format
-#| msgid "New Question"
+#, kde-format
 msgid "Next Question"
-msgstr "Nova pergunta"
+msgstr "Próxima pergunta"
 
 #: src/app/qml/exercises/ExerciseClappingView.qml:464
 #: src/app/qml/exercises/ExerciseSingingView.qml:690
@@ -2560,6 +2559,9 @@ msgid ""
 "Your selected answer appears here. After answering, click the card to hear "
 "it. A wrong answer switches between your answer and the correct answer."
 msgstr ""
+"A resposta que você selecionou aparece aqui. Após responder, clique no "
+"cartão para ouvi-la. Se a resposta estiver incorreta, o sistema alterna "
+"entre a sua resposta e a correta."
 
 #: src/app/qml/exercises/ExerciseView.qml:503
 #, kde-format
@@ -2568,6 +2570,9 @@ msgid ""
 "card to hear that part. A wrong part switches between your answer and the "
 "correct answer."
 msgstr ""
+"Monte sua resposta rítmica aqui, uma parte de cada vez. Após responder, "
+"clique em um cartão para ouvir aquela parte. Se uma parte estiver incorreta, "
+"o sistema alterna entre a sua resposta e a resposta correta."
 
 #: src/app/qml/exercises/ExerciseView.qml:519
 #, kde-format
@@ -2793,15 +2798,14 @@ msgid "Number of rhythm patterns"
 msgstr "Número de padrões rítmicos"
 
 #: src/app/qml/pages/SettingsPage.qml:148
-#, fuzzy, kde-format
-#| msgid "Number of exercises"
+#, kde-format
 msgid "Number of exercises in tests"
-msgstr "Número de exercícios"
+msgstr "Número de exercícios nos testes"
 
 #: src/app/qml/pages/SettingsPage.qml:159
 #, kde-format
 msgid "Automatically advance to the next test question"
-msgstr ""
+msgstr "Avançar automaticamente para a próxima pergunta do teste"
 
 #: src/app/qml/pages/SettingsPage.qml:165
 #, kde-format

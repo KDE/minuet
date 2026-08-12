@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-11 00:40+0000\n"
-"PO-Revision-Date: 2026-07-17 05:37+0200\n"
+"PO-Revision-Date: 2026-08-11 05:56+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -2275,10 +2275,9 @@ msgstr "დაუკარით ტაში რიტმში"
 #: src/app/qml/exercises/ExerciseClappingView.qml:464
 #: src/app/qml/exercises/ExerciseSingingView.qml:690
 #: src/app/qml/exercises/ExerciseView.qml:380
-#, fuzzy, kde-format
-#| msgid "New Question"
+#, kde-format
 msgid "Next Question"
-msgstr "ახალი კითხვა"
+msgstr "შემდეგი შეკითხვა"
 
 #: src/app/qml/exercises/ExerciseClappingView.qml:464
 #: src/app/qml/exercises/ExerciseSingingView.qml:690
@@ -2517,6 +2516,9 @@ msgid ""
 "Your selected answer appears here. After answering, click the card to hear "
 "it. A wrong answer switches between your answer and the correct answer."
 msgstr ""
+"თქვენი არჩეული პასუხი აქ გამოჩნდება. პასუხის გაცემის შემდეგ დააწკაპუნეთ "
+"ბარათს, რომ ის გაიგოთ. არასწორი პასუხი თქვენს პასუხსა და სწორს შორის "
+"გადაერთვება."
 
 #: src/app/qml/exercises/ExerciseView.qml:503
 #, kde-format
@@ -2525,6 +2527,9 @@ msgid ""
 "card to hear that part. A wrong part switches between your answer and the "
 "correct answer."
 msgstr ""
+"ააგეთ თქვენი რიტმის პასუხი აქ, ოღონდ ერთი ნაწილი ერთ დროს. პასუხის გაცემის "
+"შემდეგ დააწკაპუნეთ ბარათს, რომ ის ნაწილი მოისმინოთ. არასწორი პასუხი "
+"გადაერთვება თქვენს პასუხსა და სწორ პასუხს შორის."
 
 #: src/app/qml/exercises/ExerciseView.qml:519
 #, kde-format
@@ -2747,15 +2752,14 @@ msgid "Number of rhythm patterns"
 msgstr "რიტმის ნიმუშების რაოდენობა"
 
 #: src/app/qml/pages/SettingsPage.qml:148
-#, fuzzy, kde-format
-#| msgid "Number of exercises"
+#, kde-format
 msgid "Number of exercises in tests"
-msgstr "სავარჯიშოების რაოდენობა"
+msgstr "სავარჯიშოების რაოდენობა ტესტებში"
 
 #: src/app/qml/pages/SettingsPage.qml:159
 #, kde-format
 msgid "Automatically advance to the next test question"
-msgstr ""
+msgstr "ავტომატური გადასვლა შემდეგ კითხვაზე"
 
 #: src/app/qml/pages/SettingsPage.qml:165
 #, kde-format
