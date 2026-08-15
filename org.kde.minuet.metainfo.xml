@@ -90,6 +90,7 @@
     <value key="KDE::windows_store::StoreLogoSquare">https://invent.kde.org/education/minuet/-/raw/master/src/app/icons/windows/storelogo-1080x1080.png</value>
     <value key="KDE::windows_store::Icon">https://invent.kde.org/education/minuet/-/raw/master/src/app/icons/windows/icon-300x300.png</value>
     <value key="KDE::windows_store::PromotionalArt16x9">https://invent.kde.org/education/minuet/-/raw/master/src/app/icons/windows/promoimage-1920x1080.png</value>
+    <value key="KDE::mailinglist">kde-edu@kde.org</value>
   </custom>
   <screenshots>
     <screenshot type="default">
