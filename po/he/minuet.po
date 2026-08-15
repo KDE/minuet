@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 02:38+0000\n"
-"PO-Revision-Date: 2026-08-01 15:00+0300\n"
+"PO-Revision-Date: 2026-08-14 10:03+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -3310,13 +3310,13 @@ msgid "Synth Lead"
 msgstr "ליד סינתיסייזר"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:651
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Synth Pad"
 msgstr "פד סינתיסייזר"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:653
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Synth Effects"
 msgstr "אפקטי סינתיסייזר"
