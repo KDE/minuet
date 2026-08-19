@@ -2202,10 +2202,9 @@ msgstr ""
 #: src/app/qml/exercises/ExerciseClappingView.qml:464
 #: src/app/qml/exercises/ExerciseSingingView.qml:690
 #: src/app/qml/exercises/ExerciseView.qml:380
-#, fuzzy, kde-format
-#| msgid "New Question"
+#, kde-format
 msgid "Next Question"
-msgstr "新的题目"
+msgstr ""
 
 #: src/app/qml/exercises/ExerciseClappingView.qml:464
 #: src/app/qml/exercises/ExerciseSingingView.qml:690
