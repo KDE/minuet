@@ -299,7 +299,7 @@ if(ANDROID)
         minuet
         PROPERTIES QT_ANDROID_PACKAGE_NAME org.kde.minuet
                    QT_ANDROID_MIN_SDK_VERSION 28
-                   QT_ANDROID_TARGET_SDK_VERSION 35
+                   QT_ANDROID_TARGET_SDK_VERSION 36
                    QT_ANDROID_VERSION_CODE ${RELEASE_SERVICE_COMPACT_VERSION}
                    QT_ANDROID_VERSION_NAME ${PROJECT_VERSION}
     )
