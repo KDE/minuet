@@ -59,7 +59,7 @@ Item {
         id: sampleReadoutLabel
 
         font: deviationLabel.font
-        text: root.meterKind === "pitch" ? i18n("%1 cents").arg(12345) : i18n("%1 ms").arg(12345)
+        text: root.meterKind === "pitch" ? i18n("%1 cents", 12345) : i18n("%1 ms", 12345)
         visible: false
     }
     Column {
