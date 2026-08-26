@@ -9,7 +9,7 @@
       "name": "extra-cmake-modules",
       "url": "https://invent.kde.org/frameworks/extra-cmake-modules.git",
       "refEnv": "KDE_REF",
-      "defaultRef": "master"
+      "defaultRef": "v6.29.0"
     },
     {
       "name": "libintl-lite",
@@ -62,10 +62,19 @@
       ]
     },
     {
+      "name": "aubio",
+      "url": "https://github.com/aubio/aubio.git",
+      "defaultRef": "0.4.9",
+      "buildSystem": "waf",
+      "patches": [
+        "ios-patches/aubio-modern-ios.diff"
+      ]
+    },
+    {
       "name": "kconfig",
       "url": "https://invent.kde.org/frameworks/kconfig.git",
       "refEnv": "KDE_REF",
-      "defaultRef": "master",
+      "defaultRef": "v6.29.0",
       "cmakeOptions": [
         "-DKCONFIG_USE_QML=OFF"
       ],
@@ -103,13 +112,16 @@
       "name": "kcoreaddons",
       "url": "https://invent.kde.org/frameworks/kcoreaddons.git",
       "refEnv": "KDE_REF",
-      "defaultRef": "master"
+      "defaultRef": "v6.29.0",
+      "patches": [
+        "ios-patches/kcoreaddons-qml-sandbox-ios.diff"
+      ]
     },
     {
       "name": "karchive",
       "url": "https://invent.kde.org/frameworks/karchive.git",
       "refEnv": "KDE_REF",
-      "defaultRef": "master",
+      "defaultRef": "v6.29.0",
       "cmakeOptions": [
         "-DWITH_LIBLZMA=OFF",
         "-DWITH_OPENSSL=OFF",
@@ -122,7 +134,7 @@
       "name": "kwidgetsaddons",
       "url": "https://invent.kde.org/frameworks/kwidgetsaddons.git",
       "refEnv": "KDE_REF",
-      "defaultRef": "master",
+      "defaultRef": "v6.29.0",
       "patches": [
       ]
     },
@@ -130,14 +142,15 @@
       "name": "kitemviews",
       "url": "https://invent.kde.org/frameworks/kitemviews.git",
       "refEnv": "KDE_REF",
-      "defaultRef": "master"
+      "defaultRef": "v6.29.0"
     },
     {
       "name": "kguiaddons",
       "url": "https://invent.kde.org/frameworks/kguiaddons.git",
       "refEnv": "KDE_REF",
-      "defaultRef": "master",
+      "defaultRef": "v6.29.0",
       "cmakeOptions": [
+        "-DBUILD_GEO_SCHEME_HANDLER=OFF",
         "-DWITH_WAYLAND=OFF",
         "-DWITH_X11=OFF"
       ],
@@ -148,7 +161,7 @@
       "name": "ki18n",
       "url": "https://invent.kde.org/frameworks/ki18n.git",
       "refEnv": "KDE_REF",
-      "defaultRef": "master",
+      "defaultRef": "v6.29.0",
       "cmakeOptions": [
         "-DHAVE_NL_MSG_CAT_CNTR=OFF"
       ]
@@ -157,13 +170,13 @@
       "name": "kcolorscheme",
       "url": "https://invent.kde.org/frameworks/kcolorscheme.git",
       "refEnv": "KDE_REF",
-      "defaultRef": "master"
+      "defaultRef": "v6.29.0"
     },
     {
       "name": "kirigami",
       "url": "https://invent.kde.org/frameworks/kirigami.git",
       "refEnv": "KDE_REF",
-      "defaultRef": "master",
+      "defaultRef": "v6.29.0",
       "patches": [
       ]
     },
@@ -171,7 +184,7 @@
       "name": "breeze-icons",
       "url": "https://invent.kde.org/frameworks/breeze-icons.git",
       "refEnv": "KDE_REF",
-      "defaultRef": "master",
+      "defaultRef": "v6.29.0",
       "cmakeOptions": [
         "-DWITH_ICON_GENERATION=OFF"
       ],
@@ -197,7 +210,7 @@
       "name": "kiconthemes",
       "url": "https://invent.kde.org/frameworks/kiconthemes.git",
       "refEnv": "KDE_REF",
-      "defaultRef": "master",
+      "defaultRef": "v6.29.0",
       "cmakeOptions": [
         "-DWITH_BREEZEICONS=ON"
       ],
@@ -208,7 +221,7 @@
       "name": "kirigami-addons",
       "url": "https://invent.kde.org/libraries/kirigami-addons.git",
       "refEnv": "KIRIGAMI_ADDONS_REF",
-      "defaultRef": "master",
+      "defaultRef": "v1.13.1",
       "patches": [
       ]
     },
@@ -216,7 +229,7 @@
       "name": "qqc2-breeze-style",
       "url": "https://invent.kde.org/plasma/qqc2-breeze-style.git",
       "refEnv": "PLASMA_REF",
-      "defaultRef": "master"
+      "defaultRef": "v6.5.1"
     }
   ]
 }
