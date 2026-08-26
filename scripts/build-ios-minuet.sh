@@ -5,30 +5,41 @@ set -euo pipefail
 usage()
 {
     cat <<EOF
-Usage: $(basename "$0") [--qt-host-prefix <qt-macos-prefix>] <qt-ios-prefix>
+Usage: $(basename "$0") [--qt-host-prefix <qt-macos-prefix>]
+       [--qt-simulator-prefix <qt-ios-simulator-prefix>] [qt-ios-prefix]
 
-Build Minuet's iOS dependency stack into <qt-ios-prefix> and generate
-device and simulator Xcode projects below ../build relative to this script.
+Build Minuet's iOS dependency stack and generate device and simulator Xcode
+projects below ../build relative to this script.
 
 Options:
   --qt-host-prefix PATH  Qt for macOS prefix used to build host tools. Defaults
                          to a sibling "macos" prefix next to <qt-ios-prefix>.
+  --qt-simulator-prefix PATH
+                         Qt for iOS Simulator. Defaults to QT_SIMULATOR_PREFIX
+                         or the device prefix when omitted.
   -h, --help             Show this help.
 
 Example:
-  $(basename "$0") /Users/sandroandrade/Qt/6.11.1/ios
-  SKIP_CLONE_CHECKOUT=1 SINGLE_DEPENDENCY=kirigami $(basename "$0") /Users/sandroandrade/Qt/6.11.1/ios
-  $(basename "$0") --qt-host-prefix /Users/sandroandrade/Qt/6.11.1/macos /Users/sandroandrade/Qt/6.11.1/ios
+  $(basename "$0")
+  SKIP_CLONE_CHECKOUT=1 SINGLE_DEPENDENCY=kirigami $(basename "$0")
+  $(basename "$0") --qt-host-prefix /Users/sandroandrade/Qt/6.11.2/macos /Users/sandroandrade/Qt/6.11.2/ios
 
 Environment overrides:
+  QT_ROOT=/Users/sandroandrade/Qt
+  QT_VERSION=6.11.2
+  QT_SIMULATOR_PREFIX=<Qt iOS Simulator prefix>
   CONFIG=Release|Debug
   DEVICE_ARCHS=arm64
-  SIMULATOR_ARCHS=x86_64
-  KDE_REF=master
-  KIRIGAMI_ADDONS_REF=master
-  PLASMA_REF=master
+  SIMULATOR_ARCHS=$(uname -m)
+  KDE_REF=v6.29.0
+  KIRIGAMI_ADDONS_REF=v1.13.1
+  PLASMA_REF=v6.5.1
   LIBINTL_LITE_REF=ba1514607d02ce3711d828e784a7e9e2bb25aa84
   FLUIDSYNTH_REF=v2.5.3
+  AUBIO_REF=0.4.9
+  DEVICE_PREFIX=<install prefix for iphoneos dependencies>
+  SIM_PREFIX=<install prefix for iphonesimulator dependencies>
+  HOST_TOOLS_PREFIX=<install prefix for host tools>
   BUILD_DEPENDENCIES=0|1
   SKIP_CLONE_CHECKOUT=0|1
   SINGLE_DEPENDENCY=<manifest dependency name>
@@ -42,9 +53,11 @@ MINUET_SRC="$(cd "$SCRIPT_DIR/.." && pwd)"
 WORK_DIR="$MINUET_SRC/build"
 MANIFEST="$SCRIPT_DIR/ios-dependencies.json"
 
+DEFAULT_QT_ROOT="${QT_ROOT:-/Users/sandroandrade/Qt}"
+DEFAULT_QT_VERSION="${QT_VERSION:-6.11.2}"
 CONFIG="${CONFIG:-Release}"
 DEVICE_ARCHS="${DEVICE_ARCHS:-arm64}"
-SIMULATOR_ARCHS="${SIMULATOR_ARCHS:-x86_64}"
+SIMULATOR_ARCHS="${SIMULATOR_ARCHS:-$(uname -m)}"
 BUILD_DEPENDENCIES="${BUILD_DEPENDENCIES:-1}"
 SKIP_CLONE_CHECKOUT="${SKIP_CLONE_CHECKOUT:-0}"
 SINGLE_DEPENDENCY="${SINGLE_DEPENDENCY:-}"
@@ -53,6 +66,7 @@ GIT_RETRY_DELAY="${GIT_RETRY_DELAY:-5}"
 
 QT_IOS_PREFIX_ARG=
 QT_HOST_PREFIX_ARG=
+QT_SIMULATOR_PREFIX_ARG="${QT_SIMULATOR_PREFIX:-}"
 while [ "$#" -gt 0 ]; do
     case "$1" in
         -h|--help)
@@ -70,6 +84,15 @@ while [ "$#" -gt 0 ]; do
                 exit 2
             }
             QT_HOST_PREFIX_ARG="$2"
+            shift 2
+            ;;
+        --qt-simulator-prefix)
+            [ "$#" -ge 2 ] || {
+                usage >&2
+                printf 'error: --qt-simulator-prefix requires a path\n' >&2
+                exit 2
+            }
+            QT_SIMULATOR_PREFIX_ARG="$2"
             shift 2
             ;;
         --)
@@ -103,9 +126,13 @@ if [ "$#" -gt 0 ]; then
     shift
 fi
 
-if [ "$#" -gt 0 ] || [ -z "$QT_IOS_PREFIX_ARG" ]; then
+if [ "$#" -gt 0 ]; then
     usage >&2
     exit 2
+fi
+
+if [ -z "$QT_IOS_PREFIX_ARG" ]; then
+    QT_IOS_PREFIX_ARG="$DEFAULT_QT_ROOT/$DEFAULT_QT_VERSION/ios"
 fi
 
 [ -d "$QT_IOS_PREFIX_ARG" ] || {
@@ -114,6 +141,16 @@ fi
 }
 
 QT_IOS_PREFIX="$(cd "$QT_IOS_PREFIX_ARG" && pwd)"
+if [ -z "$QT_SIMULATOR_PREFIX_ARG" ]; then
+    QT_SIMULATOR_PREFIX_ARG="$QT_IOS_PREFIX"
+fi
+
+[ -d "$QT_SIMULATOR_PREFIX_ARG" ] || {
+    printf 'error: Qt iOS Simulator prefix does not exist: %s\n' "$QT_SIMULATOR_PREFIX_ARG" >&2
+    exit 1
+}
+
+QT_SIMULATOR_PREFIX="$(cd "$QT_SIMULATOR_PREFIX_ARG" && pwd)"
 if [ -z "$QT_HOST_PREFIX_ARG" ]; then
     QT_HOST_PREFIX_ARG="$(cd "$QT_IOS_PREFIX/.." && pwd)/macos"
 fi
@@ -126,11 +163,13 @@ fi
 QT_HOST_PREFIX="$(cd "$QT_HOST_PREFIX_ARG" && pwd)"
 
 QT_CMAKE="$QT_IOS_PREFIX/bin/qt-cmake"
+QT_SIMULATOR_CMAKE="$QT_SIMULATOR_PREFIX/bin/qt-cmake"
 QT_HOST_CMAKE="$QT_HOST_PREFIX/bin/qt-cmake"
 PKG_CONFIG_EXECUTABLE=
 SRC_DIR="$WORK_DIR/ios-src"
-SIM_PREFIX="$WORK_DIR/prefix-iphonesimulator"
-HOST_TOOLS_PREFIX="$WORK_DIR/host-tools"
+DEVICE_PREFIX="${DEVICE_PREFIX:-$WORK_DIR/prefix-iphoneos}"
+SIM_PREFIX="${SIM_PREFIX:-$WORK_DIR/prefix-iphonesimulator}"
+HOST_TOOLS_PREFIX="${HOST_TOOLS_PREFIX:-$WORK_DIR/host-tools}"
 HOST_TOOLING_PATH="$HOST_TOOLS_PREFIX/bin;$HOST_TOOLS_PREFIX/lib/cmake"
 HOST_BUILD_ROOT="$WORK_DIR/deps-host"
 DEVICE_BUILD_ROOT="$WORK_DIR/deps-iphoneos"
@@ -196,6 +235,7 @@ clean_build_env()
 check_environment()
 {
     [ -x "$QT_CMAKE" ] || die "Qt iOS qt-cmake not found or not executable: $QT_CMAKE"
+    [ -x "$QT_SIMULATOR_CMAKE" ] || die "Qt iOS Simulator qt-cmake not found or not executable: $QT_SIMULATOR_CMAKE"
     [ -x "$QT_HOST_CMAKE" ] || die "Qt host qt-cmake not found or not executable: $QT_HOST_CMAKE"
     [ -d "$MINUET_SRC" ] || die "Minuet source directory does not exist: $MINUET_SRC"
     [ -f "$MANIFEST" ] || die "Dependency manifest does not exist: $MANIFEST"
@@ -203,15 +243,15 @@ check_environment()
     require_tool git
     require_tool cmake
     require_tool python3
+    require_tool curl
     require_tool xcrun
-    require_tool lipo
     PKG_CONFIG_EXECUTABLE="$(find_pkg_config)"
 
     python3 -m json.tool "$MANIFEST" >/dev/null
     xcrun --sdk iphoneos --show-sdk-path >/dev/null
     xcrun --sdk iphonesimulator --show-sdk-path >/dev/null
 
-    mkdir -p "$SRC_DIR" "$SIM_PREFIX" "$HOST_TOOLS_PREFIX" "$HOST_BUILD_ROOT" "$DEVICE_BUILD_ROOT" "$SIM_BUILD_ROOT"
+    mkdir -p "$SRC_DIR" "$DEVICE_PREFIX" "$SIM_PREFIX" "$HOST_TOOLS_PREFIX" "$HOST_BUILD_ROOT" "$DEVICE_BUILD_ROOT" "$SIM_BUILD_ROOT"
 }
 
 manifest_query()
@@ -265,6 +305,9 @@ elif query == "ref":
     if not value:
         raise SystemExit(f"{dep_name}: missing refEnv/defaultRef")
     print(value)
+elif query == "build-system":
+    dependency = dependency_named(dep_name)
+    print(dependency.get("buildSystem", "cmake"))
 elif query == "cmake-options":
     dependency = dependency_named(dep_name)
     for option in dependency.get("cmakeOptions", []):
@@ -531,11 +574,17 @@ common_cmake_args()
     local prefix="$1"
     local sdk="$2"
     local archs="$3"
+    local qt_prefix="$QT_IOS_PREFIX"
+
+    if [ "$sdk" = "iphonesimulator" ]; then
+        qt_prefix="$QT_SIMULATOR_PREFIX"
+    fi
 
     printf '%s\n' \
         -G Xcode \
         -DCMAKE_INSTALL_PREFIX="$prefix" \
-        -DCMAKE_PREFIX_PATH="$prefix;$QT_IOS_PREFIX" \
+        -DCMAKE_PREFIX_PATH="$prefix;$qt_prefix" \
+        -DCMAKE_FIND_ROOT_PATH="$prefix;$qt_prefix" \
         -DCMAKE_OSX_SYSROOT="$sdk" \
         -DCMAKE_OSX_ARCHITECTURES="$archs" \
         -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY \
@@ -587,6 +636,60 @@ extra_cmake_args()
 extra_host_cmake_args()
 {
     manifest_query host-cmake-options "$1"
+}
+
+ensure_waf()
+{
+    local waf="$WORK_DIR/waf"
+
+    if [ ! -x "$waf" ]; then
+        log "Downloading Waf 2.1.5" >&2
+        curl -fsSL https://waf.io/waf-2.1.5 -o "$waf"
+        chmod +x "$waf"
+    fi
+    printf '%s\n' "$waf"
+}
+
+build_aubio()
+{
+    local sdk="$1"
+    local archs="$2"
+    local prefix="$3"
+    local source_dir="$SRC_DIR/aubio"
+    local sdk_path
+    local target_platform=ios
+    local waf
+
+    [ "$sdk" = "iphonesimulator" ] && target_platform=iosimulator
+    sdk_path="$(xcrun --sdk "$sdk" --show-sdk-path)"
+    waf="$(ensure_waf)"
+    log "Configuring Aubio for $sdk ($archs)"
+    (
+        cd "$source_dir"
+        clean_build_env env \
+            AUBIO_IOS_ARCHS="$archs" \
+            AUBIO_SDKROOT="$sdk_path" \
+            python3 "$waf" distclean configure \
+            --prefix="$prefix" \
+            --with-target-platform="$target_platform" \
+            --disable-tests \
+            --disable-examples \
+            --disable-docs \
+            --disable-sndfile \
+            --disable-avcodec \
+            --disable-samplerate \
+            --disable-accelerate \
+            --disable-apple-audio
+        log "Building Aubio for $sdk"
+        clean_build_env env \
+            AUBIO_IOS_ARCHS="$archs" \
+            AUBIO_SDKROOT="$sdk_path" \
+            python3 "$waf" build --targets=aubio -j "$(sysctl -n hw.ncpu 2>/dev/null || printf 4)"
+        clean_build_env env \
+            AUBIO_IOS_ARCHS="$archs" \
+            AUBIO_SDKROOT="$sdk_path" \
+            python3 "$waf" install
+    )
 }
 
 cmake_build()
@@ -770,6 +873,11 @@ configure_build_install()
     local target
     local component
 
+    if [ "$(manifest_query build-system "$name")" = "waf" ]; then
+        build_aubio "$sdk" "$archs" "$prefix"
+        return 0
+    fi
+
     log "Configuring $name for $sdk ($archs)"
     clean_build_env "$QT_CMAKE" -S "$source_dir" -B "$build_dir" \
         $(common_cmake_args "$prefix" "$sdk" "$archs") \
@@ -868,58 +976,6 @@ build_host_tooling()
         || die "KConfig host compiler targets were not installed into $HOST_TOOLS_PREFIX"
 }
 
-merge_simulator_binary()
-{
-    local device_file="$1"
-    local simulator_file="$2"
-    local base_file="$device_file"
-    local stripped_file
-    local next_file
-    local output_file="$device_file.universal.$$"
-    local arch
-
-    stripped_file="$device_file.device-only.$$"
-    rm -f "$stripped_file" "$output_file"
-
-    for arch in $SIMULATOR_ARCHS; do
-        if lipo -archs "$base_file" 2>/dev/null | grep -qw "$arch"; then
-            next_file="$stripped_file.$arch"
-            lipo -remove "$arch" "$base_file" -output "$next_file"
-            if [ "$base_file" != "$device_file" ]; then
-                rm -f "$base_file"
-            fi
-            base_file="$next_file"
-        fi
-    done
-
-    lipo -create "$base_file" "$simulator_file" -output "$output_file"
-    mv "$output_file" "$device_file"
-
-    if [ "$base_file" != "$device_file" ]; then
-        rm -f "$base_file"
-    fi
-    rm -f "$stripped_file" "$stripped_file".*
-}
-
-merge_simulator_binaries()
-{
-    local simulator_file
-    local rel
-    local device_file
-
-    log "Merging simulator static archives and resource objects into $QT_IOS_PREFIX"
-    while IFS= read -r simulator_file; do
-        rel="${simulator_file#$SIM_PREFIX/}"
-        device_file="$QT_IOS_PREFIX/$rel"
-        [ -f "$device_file" ] || continue
-
-        merge_simulator_binary "$device_file" "$simulator_file"
-        if [[ "$device_file" == *.a ]]; then
-            xcrun ranlib "$device_file" >/dev/null 2>&1 || true
-        fi
-    done < <(find "$SIM_PREFIX" -type f \( -name '*.a' -o -name '*.o' \))
-}
-
 build_dependency_stack()
 {
     local dep
@@ -940,23 +996,27 @@ build_dependency_stack()
     build_host_tooling
 
     while IFS= read -r dep; do
-        configure_build_install "$dep" iphoneos "$DEVICE_ARCHS" "$QT_IOS_PREFIX" "$DEVICE_BUILD_ROOT"
+        configure_build_install "$dep" iphoneos "$DEVICE_ARCHS" "$DEVICE_PREFIX" "$DEVICE_BUILD_ROOT"
         configure_build_install "$dep" iphonesimulator "$SIMULATOR_ARCHS" "$SIM_PREFIX" "$SIM_BUILD_ROOT"
     done < <(selected_dependency_names)
-
-    merge_simulator_binaries
 }
 
 configure_minuet()
 {
     local sdk="$1"
     local archs="$2"
-    local build_dir="$3"
-    local pkg_config_dir="$QT_IOS_PREFIX/lib/pkgconfig"
+    local dependency_prefix="$3"
+    local build_dir="$4"
+    local pkg_config_dir="$dependency_prefix/lib/pkgconfig"
 
     log "Generating Minuet Xcode project for $sdk ($archs)"
     [ -f "$pkg_config_dir/fluidsynth.pc" ] \
         || die "FluidSynth pkg-config file does not exist: $pkg_config_dir/fluidsynth.pc"
+    [ -f "$dependency_prefix/lib/libfluidsynth.a" ] \
+        || die "FluidSynth static archive does not exist: $dependency_prefix/lib/libfluidsynth.a"
+
+    local qt_cmake="$QT_CMAKE"
+    [ "$sdk" = "iphonesimulator" ] && qt_cmake="$QT_SIMULATOR_CMAKE"
 
     clean_build_env env \
         -u PKG_CONFIG_PATH \
@@ -964,9 +1024,10 @@ configure_minuet()
         -u PKG_CONFIG_SYSROOT_DIR \
         PKG_CONFIG_PATH="$pkg_config_dir" \
         PKG_CONFIG_LIBDIR="$pkg_config_dir" \
-        "$QT_CMAKE" -S "$MINUET_SRC" -B "$build_dir" \
-        $(common_cmake_args "$QT_IOS_PREFIX" "$sdk" "$archs") \
+        "$qt_cmake" -UFLUIDSYNTH_* -Upkgcfg_lib_FLUIDSYNTH_* -S "$MINUET_SRC" -B "$build_dir" \
+        $(common_cmake_args "$dependency_prefix" "$sdk" "$archs") \
         -DPKG_CONFIG_EXECUTABLE="$PKG_CONFIG_EXECUTABLE" \
+        -DFLUIDSYNTH_STATIC_LIBRARY="$dependency_prefix/lib/libfluidsynth.a" \
         -DCMAKE_XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER=org.kde.minuet \
         -DCMAKE_XCODE_ATTRIBUTE_ONLY_ACTIVE_ARCH=YES
 }
@@ -981,8 +1042,14 @@ main()
         log "Skipping dependency build because BUILD_DEPENDENCIES=$BUILD_DEPENDENCIES"
     fi
 
-    configure_minuet iphoneos "$DEVICE_ARCHS" "$DEVICE_MINUET_BUILD"
-    configure_minuet iphonesimulator "$SIMULATOR_ARCHS" "$SIM_MINUET_BUILD"
+    if [ -n "$SINGLE_DEPENDENCY" ]; then
+        log "Done"
+        printf 'Built dependency: %s\n' "$SINGLE_DEPENDENCY"
+        return 0
+    fi
+
+    configure_minuet iphoneos "$DEVICE_ARCHS" "$DEVICE_PREFIX" "$DEVICE_MINUET_BUILD"
+    configure_minuet iphonesimulator "$SIMULATOR_ARCHS" "$SIM_PREFIX" "$SIM_MINUET_BUILD"
 
     log "Done"
     printf 'Device Xcode project: %s/minuet.xcodeproj\n' "$DEVICE_MINUET_BUILD"

@@ -1,0 +1,28 @@
+diff --git a/src/qml/sandbox.cpp b/src/qml/sandbox.cpp
+index d0ac3616..ca2117dc 100644
+--- a/src/qml/sandbox.cpp
++++ b/src/qml/sandbox.cpp
+@@ -6,10 +6,15 @@
+
+ #include "sandbox.h"
+
++#if !defined(Q_OS_IOS)
+ #include <KSandbox>
++#endif
+
+ Sandbox::Type Sandbox::type() const
+ {
++#if defined(Q_OS_IOS)
++    return None;
++#else
+     if (KSandbox::isFlatpak()) {
+         return Flatpak;
+     }
+@@ -19,6 +24,7 @@ Sandbox::Type Sandbox::type() const
+     }
+
+     return None;
++#endif
+ }
+
+ #include "moc_sandbox.cpp"

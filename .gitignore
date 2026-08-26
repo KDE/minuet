@@ -19,6 +19,8 @@ random_seed
 build*
 !src/app/android/build.gradle
 !scripts/build-ios-minuet.sh
+!scripts/ios-patches/
+!scripts/ios-patches/*.diff
 CMakeLists.txt.user*
 *.unc-backup*
 .vscode
