@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 02:38+0000\n"
-"PO-Revision-Date: 2026-07-29 07:31+0200\n"
+"PO-Revision-Date: 2026-08-25 11:54+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -650,7 +650,7 @@ msgstr "Lidijska z znižano terco"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major"
-msgstr "Durov"
+msgstr "Dur"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -730,17 +730,17 @@ msgstr "Velika septima znižana kvinta"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh inversions"
-msgstr "Velika septakord inverzije"
+msgstr "Veliki septakord inverzije"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh, second inversion"
-msgstr "Velika septakord druge inverzije"
+msgstr "Veliki septakord druge inverzije"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Major seventh, third inversion"
-msgstr "Velika septakord tretje inverzije"
+msgstr "Veliki septakord tretje inverzije"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1403,7 +1403,7 @@ msgstr "Vadite prepoznavanje svetlih, ojačanih akordnih zvokov po posluhu."
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing chords that include a major seventh by ear."
 msgstr ""
-"Vadite prepoznavanje akordov, ki vključujejo velika septimo, po posluhu."
+"Vadite prepoznavanje akordov, ki vključujejo veliko septimo, po posluhu."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
