@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-11 00:40+0000\n"
-"PO-Revision-Date: 2026-08-25 11:54+0200\n"
+"PO-Revision-Date: 2026-08-26 07:15+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -432,10 +432,10 @@ msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished inversions"
 msgstr "Zmanjšani obrati"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Diminished major seventh"
-msgstr "Zmanjšani durov septakord"
+msgstr "Zmanjšana durova septima"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
