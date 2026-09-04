@@ -203,7 +203,9 @@ include_directories(${minuet_SOURCE_DIR}/src/ ${minuet_BINARY_DIR}/src/)
 add_subdirectory(src)
 add_subdirectory(data)
 ki18n_install(po)
-add_dependencies(minuet pofiles)
+if(TARGET pofiles)
+    add_dependencies(minuet pofiles)
+endif()
 
 if(ANDROID)
     add_custom_target(
@@ -219,7 +221,9 @@ if(ANDROID)
         COMMENT "Copying Minuet translations into the Android package"
         VERBATIM
     )
-    add_dependencies(minuet_android_translations pofiles)
+    if(TARGET pofiles)
+        add_dependencies(minuet_android_translations pofiles)
+    endif()
     add_dependencies(create-apk-minuet minuet_android_translations)
 endif()
 
