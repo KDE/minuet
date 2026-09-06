@@ -41,7 +41,7 @@
 
 <copyright>
 <year
->2016</year>
+>2026</year>
 <holder
 >&Sandro.Andrade;</holder>
 </copyright>
@@ -49,14 +49,14 @@
 >&FDLNotice;</legalnotice>
 
 <date
->2021-10-19</date>
+>2026-07-03</date>
 
 <releaseinfo
->0.4 (KDE Gear 21.08)</releaseinfo>
+>Versión en desarrollo actual</releaseinfo>
 
 <abstract>
 <para
->&minuet; es una aplicación para el aprendizaje musical. Contiene un conjunto de ejercicios de entrenamiento auditivo que contemplan el uso de intervalos, acordes y escalas. </para>
+>&minuet; es la aplicación de aprendizaje musical de KDE para entrenar el oído, practicar ritmos y canto guiado. Agrupa los ejercicios por tema, permite alternar entre la práctica basada en la escucha y la basada en la interpretación, y muestra la configuración del sonido y del micrófono para diferentes instrumentos y salas. </para>
 </abstract>
 
 <keywordset>
@@ -75,6 +75,12 @@
 <keyword
 >escalas</keyword>
 <keyword
+>ritmo</keyword>
+<keyword
+>micrófono</keyword>
+<keyword
+>prácticar</keyword>
+<keyword
 >Minuet</keyword>
 </keywordset>
 
@@ -85,24 +91,25 @@
 >Introducción</title>
 
 <para
->Bienvenido a &minuet;: el software musical educativo. &minuet; está pensado para ayudar a estudiantes y profesores en diversos aspectos de la educación musical, como el entrenamiento auditivo, la lectura a primera vista, el solfeo, las escalas, el ritmo, la armonía y la improvisación. &minuet; hace un amplio uso de las funcionalidades &MIDI; para proporcionar un completo conjunto de funciones sobre cambios de volumen, tempo y modulación, lo que hace de &minuet; una valiosa herramienta tanto para el principiante como para el músico experimentado. </para>
+>Bienvenido a &minuet;: el software de aprendizaje musical. Se basa en ejercicios breves que permiten escuchar, responder y probar el progreso sin abandonar la aplicación. </para>
 <para
->&minuet; incluye un extenso conjunto de ejercicios para entrenamiento del oído y permite <link linkend="creating-exercises"
->añadir fácilmente</link
-> otros nuevos para poder extender sus funciones y adaptarlo a diversos contextos de educación musical. </para>
+>En la actualidad, la aplicación cubre el entrenamiento del oído, el reconocimiento de ritmos, ejercicios de palmadas y de canto. Se puede practicar con el mismo ejercicio de más de una forma, por lo que la interfaz pregunta primero si se quiere escuchar e identificar, leer y dar palmadas, o leer y cantar. </para>
 
 <screenshot>
   <screeninfo
->Ventana principal de &minuet;</screeninfo>
+>Pantalla de inicio de &minuet;</screeninfo>
   <mediaobject>
     <imageobject
-><imagedata fileref="minuet-screenshot.png" format="PNG"/></imageobject>
+><imagedata fileref="minuet-home.png" format="PNG"/></imageobject>
     <textobject
 ><phrase
->Ejercicios de acordes de &minuet; para entrenamiento auditivo</phrase
+>La pantalla de inicio de &minuet;</phrase
 ></textobject>
   </mediaobject>
 </screenshot>
+
+<para
+>La página de inicio es minimalista de forma intencionada. Se puede usar el cajón de navegación para ir a la página de preferencias, a la página de información sobre la aplicación o a una categoría de ejercicios. </para>
 </chapter>
 
 <chapter id="using-minuet">
@@ -110,107 +117,375 @@
 >Uso de &minuet;</title>
 
 <para
->En las dos siguientes secciones (<link linkend="starting-minuet"
->Inicio de &minuet;</link
-> y <link linkend="minuet-exercises"
->Ejercicios de &minuet;</link
->) le proporcionaremos los pasos necesarios para empezar a usar &minuet;. </para>
+>La forma de uso es simple: se arranca &minuet;, se elije un ejercicio, se escoge un modo de práctica y luego se resuelve una pregunta o se realiza una prueba. </para>
 
 <sect1 id="starting-minuet">
 <title
 >Inicio de &minuet;</title>
 
 <para
->Puede iniciar &minuet; desde el lanzador de aplicaciones. Abra el menú global haciendo clic en el icono del lanzador de aplicaciones que hay en la barra de la parte inferior de su pantalla. Esto mostrará un menú. Mueva el cursor hasta la opción del menú global <menuchoice
-><guimenu
->Aplicaciones</guimenu
-><guisubmenu
->Educación</guisubmenu
-><guisubmenu
->Varios</guisubmenu
-> <guimenuitem
->&minuet; (Software educativo musical)</guimenuitem
-></menuchoice
-> o con <keycombo action="simul"
->&Alt;<keycap
->F2</keycap
-></keycombo
-> e introduciendo <command
+>Se puede iniciar &minuet; desde el lanzador de aplicaciones o desde un terminal ejecutando <command
 >minuet</command
-> en el campo de entrada. </para>
+>. Cuando se abre la aplicación, la página de inicio muestra una única opción: <guilabel
+>Escoger un ejercicio</guilabel
+>. </para>
 </sect1>
 
-<sect1 id="minuet-exercises">
+<sect1 id="browse-exercises">
 <title
->Ejercicios y flujo de trabajo en &minuet;</title>
+>Explorar y escoger ejercicios</title>
 
 <para
->La interfaz de usuario de &minuet; contiene tres componentes principales: </para>
+>El explorador de ejercicios agrupa los temas por materia. Se puede usar el menú lateral o la lista de categorías para acceder a acordes, intervalos, ritmos o escalas. El explorador se actualiza automáticamente a partir de los archivos de especificación de ejercicios instalados, por lo que la jerarquía visible refleja los ejercicios disponibles. </para>
 
 <screenshot>
   <screeninfo
->Ventana principal de &minuet;</screeninfo>
+>Explorador de ejercicios de &minuet;</screeninfo>
   <mediaobject>
     <imageobject
-><imagedata fileref="minuet-ui-components.png" format="PNG"/></imageobject>
+><imagedata fileref="minuet-exercise-list.png" format="PNG"/></imageobject>
     <textobject
 ><phrase
->Componentes de la interfaz de usuario de &minuet;</phrase
+>El explorador de ejercicios de &minuet;</phrase
 ></textobject>
   </mediaobject>
 </screenshot>
 
-<variablelist>
+<para
+>Cada entrada de ejercicio tiene un título y una descripción breve. Algunas categorías llevan directamente a un ejercicio, mientras que otras se expanden en subcategorías. La lista no se fija en el código fuente: los nuevos archivos de ejercicios se fusionan en su categoría de forma automática cuando &minuet; arranca. </para>
 
-<varlistentry>
-<term
-><guilabel
->Menú de navegación</guilabel
-></term>
-<listitem
-><para
->Le permite desplazarse por las categorías de ejercicios de &minuet; y seleccionar un determinado ejercicio. El menú de navegación se crea de forma dinámica según los archivos de especificación de ejercicios, como se describe en <link linkend="creating-exercises"
->Creación de ejercicios</link
->. Los ejercicios de &minuet; se agrupan según su clase, como intervalos, escalas y acordes.</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Vista del teclado</guilabel
-></term>
-<listitem
-><para
->Expone los eventos &MIDI; <parameter
->note on</parameter
-> secuenciados por la ejecución de un archivo &MIDI; o de un ejercicio.</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Vista de ejercicios</guilabel
-></term>
-<listitem
-><para
->Muestra, para un determinado ejercicio, botones para controlar la presentación del ejercicio y un conjunto de posibles respuestas para el ejercicio. La ejecución de un ejercicio comienza al pulsar el botón <guibutton
->Iniciar la prueba</guibutton
->. &minuet; reproduce un intervalo, un acorde o una escala al azar y el estudiante debe seleccionar una respuesta de entre las posibles que se muestran. &minuet; siempre presenta (como un pequeño círculo blanco en la vista del teclado) la primera nota del intervalo o escala seleccionado, o la nota raíz del acorde seleccionado. Al situar el cursor sobre una posible respuesta, &minuet; resalta su correspondiente representación visual en el visor del teclado. Las notas restantes de la respuesta se muestran como pequeños círculos cuyo color es idéntico al del botón de la respuesta sobre el que se ha situado el cursor. El estudiante puede escuchar el ejercicio de nuevo pulsando el botón <guibutton
->Reproducir la pregunta</guibutton
->, pulsar el botón de la respuesta escogida u obtener la respuesta correcta pulsando el botón <guibutton
->Me rindo</guibutton
->. Se puede volver a ejecutar el mismo ejercicio pulsando el botón <guibutton
->Detener la prueba</guibutton
-> y volviendo a pulsar el botón <guibutton
->Nueva pregunta</guibutton
->.</para
-></listitem>
-</varlistentry>
-
-</variablelist>
 </sect1>
+
+<sect1 id="practice-modes">
+<title
+>Modos de práctica</title>
+
+<para
+>Cuando se abre un ejercicio, &minuet; pregunta cómo se quiere practicar con él. </para>
+
+<screenshot>
+  <screeninfo
+>Selector de modo de práctica de &minuet;</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-practice-mode.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>El selector de modo de práctica de &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Existen dos modos de práctica generales: </para>
+
+<itemizedlist>
+<listitem>
+<para
+><guilabel
+>Oír e identificar</guilabel
+> reproduce el ejercicio y permite escoger la respuesta entre las opciones disponibles. Este es el principal modo de uso para el entrenamiento melódico del oído. </para>
+</listitem>
+<listitem>
+<para
+><guilabel
+>Leer y dar palmadas</guilabel
+> se muestra en los ejercicios rítmicos. <guilabel
+>Leer y cantar</guilabel
+> se muestra en los ejercicios melódicos que aceptan entrada vocal, como intervalos y escalas. </para>
+</listitem>
+</itemizedlist>
+
+<para
+>La práctica seleccionada cambia el modo de entrada, no la categoría en la que se basa. Esto significa que se pueden usar los mismos datos de un ejercicio para trabajos de oído, de palmadas o de canto según la materia. </para>
+</sect1>
+
+<sect1 id="melodic-workflow">
+<title
+>Entrenamiento melódico del oído</title>
+
+<para
+>Los ejercicios melódicos siguen el modo de trabajo clásico de Minuet: la aplicación reproduce una pregunta, muestra las posibles respuestas y permite reproducir la pregunta de nuevo cuando se necesita oírla otra vez. Este modo manual se usa para intervalos, escalas y acordes cuando se elige <guilabel
+>Oír e identificar</guilabel
+>. </para>
+
+<screenshot>
+  <screeninfo
+>Ejercicios de acordes de &minuet; en modo manual</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-chords-manual.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>Un ejercicio de acordes en el modo manual de &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>La página de ejercicios proporciona los controles necesarios para una sola pregunta o para una prueba más larga: </para>
+
+<itemizedlist>
+<listitem
+><para
+><guibutton
+>Nueva pregunta</guibutton
+> inicia otra pregunta.</para
+></listitem>
+<listitem
+><para
+><guibutton
+>Reproducir pregunta</guibutton
+> repite la pregunta actual.</para
+></listitem>
+<listitem
+><para
+><guibutton
+>Me rindo</guibutton
+> revela la respuesta.</para
+></listitem>
+<listitem
+><para
+><guibutton
+>Empezar prueba</guibutton
+> inicia una secuencia de preguntas puntuables.</para
+></listitem>
+<listitem
+><para
+><guibutton
+>Detener prueba</guibutton
+> finaliza la prueba.</para
+></listitem>
+</itemizedlist>
+
+<para
+>En los ejercicios melódicos, los botones de respuesta y el teclado o la vista de la partitura permanecen alineados, para que pueda ver cómo se corresponde cada candidato con las notas que se están tocando. </para>
+
+<para
+>Los ejercicios de acordes usan el mismo procedimiento manual, pero la indicación se reproduce como un acorde en lugar de una secuencia melódica. &minuet; reproduce el acorde, muestra la nota fundamental en el teclado y en el pentagrama, y pide que se elija una cualidad de acorde entre las respuestas disponibles. El catálogo de acordes incluye tríadas, inversiones, acordes suspendidos, acordes de séptima, acordes de novena, acordes de undécima y conjuntos de acordes mixtos como <guilabel
+>Muchos acordes</guilabel
+>. </para>
+
+<para
+>Use <guibutton
+>Reproducir pregunta</guibutton
+> para escuchar el acorde de nuevo antes de responder. En el modo de prueba, &minuet; puntúa la secuencia usando el número de ejercicios configurado en la página de ajustes. </para>
+</sect1>
+
+<sect1 id="rhythm-workflow">
+<title
+>Ritmo y palmadas</title>
+
+<para
+>Los ejercicios de ritmo se centran en la sincronización más que en el tono. En el modo de palmadas, &minuet; escucha la entrada del micrófono y compara los inicios con el patrón objetivo. </para>
+
+<para
+>Las categorías <guilabel
+>Fácil con silencios</guilabel
+> y <guilabel
+>Medio con silencios</guilabel
+> añaden posiciones silenciosas a los patrones correspondientes de solo notas. Los ejercicios de audición evitan opciones que suenan idénticas, mientras que <guilabel
+>Leer y dar palmadas</guilabel
+> incluye todos los patrones mixtos de notas y silencios. </para>
+
+<screenshot>
+  <screeninfo
+>Ejercicio de palmadas de &minuet;</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-clapping.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>Un ejercicio de palmadas rítmicas en &minuet;.</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>La vista de palmadas muestra las tarjetas de patrones rítmicos, un medidor de nivel de entrada y la acción <guibutton
+>Calibrar silencio</guibutton
+>. La cuenta atrás se produce antes de que comience la grabación, para que pueda ajustar el tempo antes de que el ejercicio detecte las palmadas. </para>
+
+<para
+>Use la práctica del ritmo para trabajar en: </para>
+
+<itemizedlist>
+<listitem
+><para
+>reconocer figuras rítmicas simples de oído;</para
+></listitem>
+<listitem
+><para
+>acompasar las palmadas al ritmo de la música;</para
+></listitem>
+<listitem
+><para
+>mantenerse dentro de la tolerancia de tiempo configurada.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="singing-workflow">
+<title
+>Ejercicios de canto</title>
+
+<para
+>Los ejercicios de canto usan el micrófono para comparar la voz con el tono objetivo. La misma pantalla de práctica se usa tanto para intervalos como para escalas, pero el tono objetivo y la respuesta visual cambian según el ejercicio elegido. </para>
+
+<para
+>Para los ejercicios de intervalos, &minuet; reproduce la nota fundamental y pide que cante el intervalo correspondiente. Para los ejercicios de escalas, la aplicación presenta una escala o modo y espera que cante las notas en secuencia, manteniendo la afinación y el ritmo. </para>
+
+<screenshot>
+  <screeninfo
+>Ejercicios de intervalo de canto de &minuet;</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-singing-interval.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>Un ejercicio de intervalo de canto en &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<screenshot>
+  <screeninfo
+>Ejercicio de escala de canto de &minuet;</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-singing-scale.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>Un ejercicio de escala de canto en &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>La vista de canto muestra las notas objetivo, la afinación y la respuesta visual del inicio, un medidor de entrada en tiempo real y la acción <guibutton
+>Calibrar silencio</guibutton
+>. &minuet; también cuenta antes de la primera nota, para que pueda empezar en el tiempo correcto. La vista de escala extiende la misma respuesta visual a secuencias más largas, lo que resulta útil para practicar la memoria melódica además de la afinación. </para>
+
+<para
+>Los ejercicios de canto se ven influenciados por varias cosas: </para>
+
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>Clase de voz</guilabel
+> selecciona el intervalo vocal que se espera.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Tolerancia de tono</guilabel
+> controla la distancia a la que puede estar una nota cantada del tono objetivo.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Tolerancia de sincronización</guilabel
+> controla cuánta desviación rítmica se acepta para las palmadas.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="settings">
+<title
+>Preferencias</title>
+
+<para
+>La página de configuración se divide en cuatro secciones: <guilabel
+>Práctica</guilabel
+>, <guilabel
+>Sonido</guilabel
+>, <guilabel
+>Micrófono</guilabel
+> y <guilabel
+>Avanzado</guilabel
+>. Las tres primeras secciones mantienen visibles los controles básicos. La sección avanzada permanece oculta hasta que se abra. </para>
+
+<screenshot>
+  <screeninfo
+>Ajustes básicos de &minuet;</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-settings-basic.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>La página de ajustes básicos de &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Los ajustes visibles incluyen los controles que la mayoría de los usuarios necesitan a diario: </para>
+
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>Velocidad del ejercicio</guilabel
+> define el ritmo en pulsos por minuto.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Número de patrones rítmicos</guilabel
+> controla el tamaño de los conjuntos de práctica rítmica.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Número de ejercicios</guilabel
+> define la duración de una prueba.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Volumen</guilabel
+> ajusta el volumen de reproducción.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Instrumento</guilabel
+> selecciona el sonido melódico usado para el entrenamiento auditivo.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Clase de voz</guilabel
+> selecciona el rango de canto objetivo.</para
+></listitem>
+</itemizedlist>
+
+<para
+>La sección del micrófono también incluye breves descripciones de ayuda para los controles de tolerancia y calibración. Estas descripciones explican cuándo ajustar la tolerancia y cuándo recalibrar el silencio. </para>
+
+<screenshot>
+  <screeninfo
+>Ajustes avanzados de &minuet;</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-settings-advanced.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>La sección de ajustes avanzados de &minuet;</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>La configuración avanzada muestra algoritmos de detección y umbrales para micrófonos difíciles o entornos ruidosos. Úsela cuando la detección predeterminada no sea suficiente. Esta sección está contraída por defecto e incluye un botón <guibutton
+>Restablecer valores predeterminados</guibutton
+> para que pueda restaurar la configuración de fábrica después de realizar pruebas. </para>
+
+<para
+>La sección avanzada incluye grupos separados para la detección de palmadas y la detección de canto. Los controles típicos incluyen el método de inicio, el umbral de inicio, la puerta de entrada, la fuerza mínima de inicio, el nivel de silencio, el método de tono, el modo de puntuación, la confianza del tono y los marcos de tono estables. </para>
 </chapter>
 
 <chapter id="creating-exercises">
@@ -218,31 +493,28 @@
 >Creación de nuevos ejercicios de &minuet;</title>
 
 <para
->Los ejercicios de &minuet; se definen en archivos de especificación de ejercicios, escritos en formato &JSON;: </para>
+>Los ejercicios de &minuet; se definen en archivos con la especificación &JSON;. La aplicación carga todos los archivos disponibles al arrancar y los integra en el árbol de ejercicios visibles. </para>
+
 <para>
 <programlisting
 >{
   "exercises": [
     {
       "name": "Intervalos",
-      "root": "21..104",
+      "root": "29..69",
       "playMode": "scale",
+      "userMessage": "Escucha el intervalo y escoge una respuesta",
+      "numberOfSelectedOptions": 1,
+      "_icon": "minuet-intervals-symbolic.svg",
       "children": [
         {
           "name": "Intervalos melódicos ascendentes",
+          "and-tags": ["intervalo", "ascendente],
           "children": [
             {
-              "name": "Segundas",
-              "options": [
-                {
-                  "name": "Segunda menor",
-                  "sequenceFromRoot": "1"
-                },
-                {
-                  "name": "Segunda mayor",
-                  "sequenceFromRoot": "2"
-                }
-              ]
+              "name": "Segundos",
+              "or-tags": ["2"],
+              "description": "Practica la identificación de segundos melódicos ascendentes de oído."
             }
           ]
         }
@@ -252,40 +524,98 @@
 }
 </programlisting>
 </para>
+
 <para
->Los archivos de especificación de ejercicios de &minuet; contienen un objeto &JSON; de nivel superior que incluye la tabla de <parameter
->ejercicios</parameter
->. Esta tabla define una estructura jerárquica de ejercicios, agrupados por categorías. Cada categoría o ejercicio posee un nombre. Los objetos &JSON; de categorías contienen una propiedad llamada <parameter
+>El objeto de nivel superior contiene una matriz <parameter
+>exercises</parameter
+>. Cada elemento de esa matriz es una categoría o una hoja de ejercicio. Las categorías utilizan <parameter
 >children</parameter
-> que describe las subcategorías o ejercicios que contiene dicha categoría. Los objetos &JSON; de ejercicios contienen una propiedad llamada <parameter
->options</parameter
-> que define las posibles respuestas para dicho ejercicio. Cada vez que se ejecuta un ejercicio, &minuet; selecciona al azar una respuesta entre las posibles y se espera que el estudiante pulse el botón de la respuesta que se corresponda con la respuesta seleccionada. </para>
+> para definir el siguiente nivel del árbol. </para>
+
 <para
->Cualquier (sub)categoría puede definir un parámetro <parameter
+>Algunos campos útiles son: </para>
+
+<itemizedlist>
+<listitem
+><para
+><parameter
+>name</parameter
+> proporciona una etiqueta visible a cada nota.</para
+></listitem>
+<listitem
+><para
+><parameter
 >root</parameter
-> para indicar el intervalo del que se escogerá al azar la nota inicial del intervalo, acorde o escala para todos los ejercicios de dicha categoría. Este intervalo corresponde a los números de notas &MIDI; estándares y sigue el formato <parameter
->&lt;valor-mín&gt;..&lt;valor-máx&gt;</parameter
->. El ejemplo mostrado anteriormente usa todo el intervalo del teclado como posibles notas raíz (21..104). El parámetro <parameter
+> limita el intervalo de la nota que se usa para generar la pregunta.</para
+></listitem>
+<listitem
+><para
+><parameter
 >playMode</parameter
-> indica cómo se deben reproducir las posibles respuestas: como una <parameter
->escala</parameter
-> (una nota tras otra) o como un <parameter
->acorde</parameter
-> (todas las notas sonando simultáneamente). </para>
-<para
->Cada opción del ejercicio define un nombre y una secuencia de notas que se deben reproducir desde la nota raíz seleccionada al azar cada vez que se ejecuta el ejercicio. Dicha secuencia de notas se define como distancias relativas desde la nota raíz, describiendo el intervalo que forma cada nota en conjunción con la nota raíz. Por ejemplo, para una escala mayor, la secuencia de notas es «2 4 5 7 9 11 12», que representa respectivamente la estructura de la escala mayor «entera entera media entera entera entera media». El parámetro <parameter
+> selecciona la escala, el acorde o la reproducción del ritmo.</para
+></listitem>
+<listitem
+><para
+><parameter
+>userMessage</parameter
+> personaliza las instrucciones que se muestran al usuario.</para
+></listitem>
+<listitem
+><para
+><parameter
+>numberOfSelectedOptions</parameter
+> controla cuántas respuestas pueden ser correctas.</para
+></listitem>
+<listitem
+><para
+><parameter
+>_icon</parameter
+> define el icono que se muestra en el cajón y en el explorador de ejercicios.</para
+></listitem>
+<listitem
+><para
+><parameter
+>and-tags</parameter
+> y <parameter
+>or-tags</parameter
+> ayuda a agrupar y filtrar los nodos seleccionados.</para
+></listitem>
+<listitem
+><para
+><parameter
+>description</parameter
+> proporciona al explorador una breve descripción del nodo.</para
+></listitem>
+<listitem
+><para
+><parameter
+>options</parameter
+> describe las posibles respuestas para un ejercicio sobre hojas.</para
+></listitem>
+<listitem
+><para
+><parameter
 >sequenceFromRoot</parameter
-> puede contener notas de cualquier longitud. Además, el núcleo de &minuet; se asegura de que solo se seleccionen al azar las respuestas cuyas notas caigan dentro del intervalo del teclado. </para>
+> define los desplazamientos de las notas para las respuestas melódicas.</para
+></listitem>
+<listitem
+><para
+><parameter
+>template</parameter
+> se usa en los ejercicios rítmicos para representar la notación.</para
+></listitem>
+</itemizedlist>
+
 <para
->Para proporcionar una mejor infraestructura para organizar un gran conjunto de archivos de especificación de ejercicios, el núcleo de &minuet; permite el uso de varios archivos de especificación, que se fusionan automáticamente para componer la jerarquía de ejercicios final que se muestra en el menú de navegación. Los ejercicios se fusionan correctamente siempre y cuando los distintos archivos de especificación usen el mismo nombre de (sub)categoría para definir los ejercicios. Hasta ahora, &minuet; no proporciona ninguna &GUI; para crear especificaciones de ejercicios, por lo que usted deberá crear manualmente estos archivos &JSON;. Los archivos de especificación de ejercicios de &minuet; se pueden instalar para todo el sistema o de forma local en la carpeta <filename class="directory"
+>La aplicación fusiona archivos que comparten los mismos nombres de categoría, por lo que archivos de especificación separados pueden constituir una misma jerarquía visible. Instálelos en el sistema o colóquelos en <filename class="directory"
 >minuet/exercises/</filename
-> situada en <userinput
+> en la ubicación de datos genérica devuelta por <userinput
 ><command
 >qtpaths</command
 > <option
 >--paths GenericDataLocation</option
 ></userinput
-> </para>
+>. </para>
 
 </chapter>
 
@@ -300,7 +630,7 @@
 >Copyright del programa 2016 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
 
 <para
->Copyright de la documentación &copy; 2016 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
+>Copyright de la documentación &copy; 2026 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
 
 <para
 >Traducido por Eloy Cuadra <email
