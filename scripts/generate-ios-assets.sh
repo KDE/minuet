@@ -3,7 +3,7 @@
 #
 # SPDX-License-Identifier: GPL-2.0-or-later
 #
-# Generates Assets.xcassets for iOS from the scalable SVG app icon.
+# Generates opaque iOS and macOS app-icon asset catalogs from the scalable SVG app icon.
 # Requires: librsvg (brew install librsvg)
 #
 # Usage: run from the repository root
@@ -17,11 +17,13 @@ REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 SRC="$REPO_ROOT/src/app/icons/128-apps-minuet.svg"
 XCASSETS="$REPO_ROOT/src/app/ios/Assets.xcassets"
 ICONSET="$XCASSETS/AppIcon.appiconset"
+MACOS_ICONSET="$REPO_ROOT/src/app/macos/Assets.xcassets/AppIcon.appiconset"
 LAUNCHICON="$XCASSETS/LaunchIcon.imageset"
 LAUNCHBRANDING="$XCASSETS/LaunchBranding.imageset"
 SPLASHCOLOR="$XCASSETS/SplashBackground.colorset"
 BRANDING_LIGHT="$REPO_ROOT/src/app/android/artwork/minuet-splash-branding-light.svg"
 BRANDING_DARK="$REPO_ROOT/src/app/android/artwork/minuet-splash-branding-dark.svg"
+APP_ICON_BACKGROUND="#F8F7F2"
 
 # --- Sanity checks -----------------------------------------------------------
 
@@ -42,7 +44,8 @@ mkdir -p "$ICONSET"
 generate() {
     local SIZE=$1
     local NAME=$2
-    rsvg-convert -w "$SIZE" -h "$SIZE" "$SRC" -o "$ICONSET/$NAME"
+    rsvg-convert -w "$SIZE" -h "$SIZE" "$SRC" | \
+        magick png:- -background "$APP_ICON_BACKGROUND" -alpha remove -alpha off "png:$ICONSET/$NAME"
     echo "  Generated $NAME (${SIZE}x${SIZE})"
 }
 
@@ -92,6 +95,32 @@ cat > "$ICONSET/Contents.json" << 'JSON'
 JSON
 
 echo "✅ AppIcon.appiconset done"
+
+# --- Generate macOS app icons ------------------------------------------------
+
+mkdir -p "$MACOS_ICONSET"
+
+generate_macos() {
+    local SIZE=$1
+    local NAME=$2
+    rsvg-convert -w "$SIZE" -h "$SIZE" "$SRC" | \
+        magick png:- -background "$APP_ICON_BACKGROUND" -alpha remove -alpha off "png:$MACOS_ICONSET/$NAME"
+    echo "  Generated $NAME (${SIZE}x${SIZE})"
+}
+
+echo "🎨 Generating macOS app icons from: $SRC"
+generate_macos 16 "icon_16x16.png"
+generate_macos 32 "icon_16x16@2x.png"
+generate_macos 32 "icon_32x32.png"
+generate_macos 64 "icon_32x32@2x.png"
+generate_macos 128 "icon_128x128.png"
+generate_macos 256 "icon_128x128@2x.png"
+generate_macos 256 "icon_256x256.png"
+generate_macos 512 "icon_256x256@2x.png"
+generate_macos 512 "icon_512x512.png"
+generate_macos 1024 "icon_512x512@2x.png"
+
+echo "✅ macOS AppIcon.appiconset done"
 
 # --- Generate launch screen icon ---------------------------------------------
 

@@ -93,11 +93,26 @@ if(APPLE)
 endif()
 
 if(APPLE AND NOT (CMAKE_SYSTEM_NAME STREQUAL "iOS"))
+    option(MINUET_MAC_APP_STORE "Build Minuet for Mac App Store distribution" OFF)
+    set(MACOS_ASSETS ${CMAKE_CURRENT_SOURCE_DIR}/macos/Assets.xcassets)
     set_target_properties(
         minuet
         PROPERTIES MACOSX_BUNDLE_INFO_PLIST
                    "${CMAKE_CURRENT_SOURCE_DIR}/ios/MacOSXBundleInfo.plist.in"
+                   MACOSX_BUNDLE_ICON_FILE AppIcon
+                   XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_APPICON_NAME AppIcon
     )
+    target_sources(minuet PRIVATE ${MACOS_ASSETS})
+    set_source_files_properties(
+        ${MACOS_ASSETS} PROPERTIES MACOSX_PACKAGE_LOCATION Resources
+    )
+    if(MINUET_MAC_APP_STORE)
+        set_target_properties(
+            minuet
+            PROPERTIES XCODE_ATTRIBUTE_CODE_SIGN_ENTITLEMENTS
+                       "${CMAKE_CURRENT_SOURCE_DIR}/macos/MinuetAppStore.entitlements"
+        )
+    endif()
 endif()
 
 if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
@@ -208,11 +223,7 @@ qt_add_resources(
     PREFIX
     /
     FILES
-    qml/images/minuet-icon.svg
     qml/images/minuet-icon.png
-    qml/images/menu.png
-    qml/images/keyboard_arrow_left.png
-    qml/images/more_vert.png
     icons/64-apps-minuet.png
     icons/22-actions-minuet-chords-symbolic.svg
     icons/22-actions-minuet-clap-symbolic.svg
