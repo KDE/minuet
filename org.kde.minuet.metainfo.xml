@@ -86,8 +86,6 @@
   <url type="translate">https://l10n.kde.org</url>
   <custom>
     <value key="KDE::windows_store">https://www.microsoft.com/store/apps/9p3tmg67ndl8</value>
-    <value key="KDE::windows_store::StoreLogo9x16">https://invent.kde.org/education/minuet/-/raw/master/src/app/icons/windows/storelogo-720x1080.png</value>
-    <value key="KDE::windows_store::StoreLogoSquare">https://invent.kde.org/education/minuet/-/raw/master/src/app/icons/windows/storelogo-1080x1080.png</value>
     <value key="KDE::windows_store::Icon">https://invent.kde.org/education/minuet/-/raw/master/src/app/icons/windows/icon-300x300.png</value>
     <value key="KDE::windows_store::PromotionalArt16x9">https://invent.kde.org/education/minuet/-/raw/master/src/app/icons/windows/promoimage-1920x1080.png</value>
     <value key="KDE::mailinglist">kde-edu@kde.org</value>
