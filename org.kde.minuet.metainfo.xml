@@ -91,85 +91,29 @@
     <value key="KDE::mailinglist">kde-edu@kde.org</value>
   </custom>
   <screenshots>
-    <screenshot type="default">
-      <caption>Choose music training exercises</caption>
-      <caption xml:lang="ar">اختر تمارين تدريب الموسيقى</caption>
-      <caption xml:lang="ca">Trieu exercicis d'entrenament musical</caption>
-      <caption xml:lang="ca-valencia">Trieu exercicis d'entrenament musical</caption>
-      <caption xml:lang="es">Selección de ejercicios de aprendizaje musical</caption>
-      <caption xml:lang="fr">Sélectionnez des exercices d'entraînement à la musique</caption>
-      <caption xml:lang="he">בחירת תרגולי אימון מוזיקלי</caption>
-      <caption xml:lang="it">Scegli esercizi di allenamento musicale</caption>
-      <caption xml:lang="ka">აირჩიეთ მუსიკალური სავარჯიშოები</caption>
-      <caption xml:lang="nl">Kies oefeningen voor muziektrainingen</caption>
-      <caption xml:lang="pt-BR">Escolha exercícios de treinamento musical</caption>
-      <caption xml:lang="ru">Выбор упражнений для обучения музыке</caption>
-      <caption xml:lang="sk">Vyberte si hudobné cvičenia</caption>
-      <caption xml:lang="sl">Izberite glasbene vaje</caption>
-      <caption xml:lang="sv">Välj musikövningar</caption>
-      <caption xml:lang="tr">Müzik eğitimi alıştırmaları seçin</caption>
-      <caption xml:lang="uk">Вибір музичних вправ</caption>
-      <image>https://cdn.kde.org/screenshots/minuet/minuet-home.png</image>
+    <screenshot type="default" environment="windows">
+      <caption>Find focused exercises for intervals, chords, scales, and rhythm.</caption>
+      <image>https://cdn.kde.org/screenshots/minuet/minuet-01-exercise-library.png</image>
     </screenshot>
-    <screenshot>
-      <caption>Practice recognizing chords</caption>
-      <caption xml:lang="ar">تمرين التعرف على الأوتار</caption>
-      <caption xml:lang="ca">Practiqueu el reconeixement d'acords</caption>
-      <caption xml:lang="ca-valencia">Practiqueu el reconeixement d'acords</caption>
-      <caption xml:lang="es">Práctica de reconocimiento de acordes</caption>
-      <caption xml:lang="fr">S'exercer à reconnaître les accords</caption>
-      <caption xml:lang="he">תרגול זיהוי אקורדים</caption>
-      <caption xml:lang="it">Esercitati a riconoscere gli accordi</caption>
-      <caption xml:lang="ka">აკორდების ამოცნობაში ვარჯიში</caption>
-      <caption xml:lang="nl">Oefen herkennen van akkoorden</caption>
-      <caption xml:lang="pt-BR">Pratique o reconhecimento de acordes</caption>
-      <caption xml:lang="ru">Тренировка распознавания аккордов</caption>
-      <caption xml:lang="sk">Precvičujte si rozpoznávanie akordov</caption>
-      <caption xml:lang="sl">Vadite prepoznavanje akordov</caption>
-      <caption xml:lang="sv">Öva på att känna igen ackord</caption>
-      <caption xml:lang="tr">Akor tanıma pratiği yapın</caption>
-      <caption xml:lang="uk">Вправа на розпізнавання акордів</caption>
-      <image>https://cdn.kde.org/screenshots/minuet/minuet-chords.png</image>
+    <screenshot environment="windows">
+      <caption>Build your ear by identifying notes with keyboard and staff feedback.</caption>
+      <image>https://cdn.kde.org/screenshots/minuet/minuet-02-melodic-interval.png</image>
     </screenshot>
-    <screenshot>
-      <caption>Improve rhythm recognition</caption>
-      <caption xml:lang="ar">تحسين التعرف على الإيقاع</caption>
-      <caption xml:lang="ca">Milloreu el reconeixement del ritme</caption>
-      <caption xml:lang="ca-valencia">Milloreu el reconeixement del ritme</caption>
-      <caption xml:lang="es">Mejora del reconocimiento del ritmo</caption>
-      <caption xml:lang="fr">Améliorer la reconnaissance du rythme</caption>
-      <caption xml:lang="he">שיפור זיהוי קצב</caption>
-      <caption xml:lang="it">Migliora il riconoscimento del ritmo</caption>
-      <caption xml:lang="ka">რიტმის ამოცნობის გაუმჯობესება</caption>
-      <caption xml:lang="nl">Verbeter herkenning van ritme</caption>
-      <caption xml:lang="pt-BR">Melhore o reconhecimento do ritmo</caption>
-      <caption xml:lang="ru">Улучшение распознавания ритма</caption>
-      <caption xml:lang="sk">Zlepšite si rozpoznávanie rytmu</caption>
-      <caption xml:lang="sl">Izboljšajte prepoznavanje ritma</caption>
-      <caption xml:lang="sv">Förbättra rytmigenkänning</caption>
-      <caption xml:lang="tr">Ritim tanımayı iyileştirin</caption>
-      <caption xml:lang="uk">Удосконалення розпізнавання ритму</caption>
-      <image>https://cdn.kde.org/screenshots/minuet/minuet-rhythms.png</image>
+    <screenshot environment="windows">
+      <caption>Recognize rhythm patterns, including rests, at your own pace.</caption>
+      <image>https://cdn.kde.org/screenshots/minuet/minuet-03-rhythm-with-rests.png</image>
     </screenshot>
-    <screenshot environment="plasma-mobile">
-      <caption>Train your ear on mobile</caption>
-      <caption xml:lang="ar">درّب أذنك على الجهاز المحمول</caption>
-      <caption xml:lang="ca">Entreneu la vostra oïda al mòbil</caption>
-      <caption xml:lang="ca-valencia">Entreneu la vostra oïda al mòbil</caption>
-      <caption xml:lang="es">Entrenamiento del oído en el móvil</caption>
-      <caption xml:lang="fr">Entraînez votre oreille sur mobile</caption>
-      <caption xml:lang="he">אימון האוזן שלך במכשירים ניידים</caption>
-      <caption xml:lang="it">Allena il tuo orecchio sui dispositivi mobili</caption>
-      <caption xml:lang="ka">ავარჯიშეთ ყური მობილურზე</caption>
-      <caption xml:lang="nl">Oefen uw gehoor op de mobiel</caption>
-      <caption xml:lang="pt-BR">Treine seu ouvido no celular</caption>
-      <caption xml:lang="ru">Развитие слуха с помощью мобильного телефона</caption>
-      <caption xml:lang="sk">Trénujte si sluch na mobile</caption>
-      <caption xml:lang="sl">Vadite svoj posluh na mobilni napravi</caption>
-      <caption xml:lang="sv">Träna ditt gehör på mobilen</caption>
-      <caption xml:lang="tr">Dışarıda olsanız bile kulak alıştırmaları yapın</caption>
-      <caption xml:lang="uk">Тренування слуху на мобільному</caption>
-      <image>https://cdn.kde.org/screenshots/minuet/minuet-mobile.png</image>
+    <screenshot environment="windows">
+      <caption>Sing intervals and scales with live pitch and timing feedback.</caption>
+      <image>https://cdn.kde.org/screenshots/minuet/minuet-04-read-and-sing.png</image>
+    </screenshot>
+    <screenshot environment="windows">
+      <caption>Clap written rhythms and see where each beat lands.</caption>
+      <image>https://cdn.kde.org/screenshots/minuet/minuet-05-read-and-clap.png</image>
+    </screenshot>
+    <screenshot environment="windows">
+      <caption>Adjust tempo, instruments, test length, and microphone feedback.</caption>
+      <image>https://cdn.kde.org/screenshots/minuet/minuet-06-practice-settings.png</image>
     </screenshot>
   </screenshots>
   <categories>
