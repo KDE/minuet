@@ -90,7 +90,9 @@ QVariantMap SingingExerciseController::evaluatePitch(const QVariantList &targetS
         return {{u"targetStates"_s, states}, {u"targetIndex"_s, 0}, {u"meterValue"_s, 0.0}, {u"meterText"_s, i18n("No pitch")}};
     }
     const double elapsedMs = std::max(0.0, (seconds - listeningStartSeconds) * 1000.0);
-    const int index = targetIndexForElapsed(targetNotes.size(), elapsedMs, beatMs);
+    // targetIndexForElapsed() is exposed to QML as an int-based API, so make
+    // the container-to-index conversion explicit at this boundary.
+    const int index = targetIndexForElapsed(static_cast<int>(targetNotes.size()), elapsedMs, beatMs);
     const int tolerance = std::max(1, pitchToleranceCents);
     const double error = pitchErrorCents(midiNote, cents, targetNotes.at(index).toInt(), disregardOctaveDifference);
     const double absoluteError = std::abs(error);
@@ -158,7 +160,7 @@ QVariantList SingingExerciseController::refreshTargetStates(const QVariantList &
                                                             bool scaleExercise) const
 {
     QVariantList states = targetStates;
-    const double finalTime = finalElapsedMs(states.size(), beatMs, timingToleranceMs, pitchCorrectHoldSeconds, scaleExercise);
+    const double finalTime = finalElapsedMs(static_cast<int>(states.size()), beatMs, timingToleranceMs, pitchCorrectHoldSeconds, scaleExercise);
     for (int index = 0; index < states.size(); ++index) {
         QVariantMap state = states.at(index).toMap();
         const double pitchEnd = scaleExercise && index < states.size() - 1 ? (index + 1) * beatMs : finalTime;
@@ -197,7 +199,7 @@ double SingingExerciseController::finalElapsedMs(int targetCount,
 
 int SingingExerciseController::score(const QVariantList &targetStates, int scoringMode) const
 {
-    const int correct = std::count_if(targetStates.cbegin(), targetStates.cend(), [scoringMode](const QVariant &stateValue) {
+    const qsizetype correct = std::count_if(targetStates.cbegin(), targetStates.cend(), [scoringMode](const QVariant &stateValue) {
         const QVariantMap state = stateValue.toMap();
         return state.value(u"pitchCorrect"_s).toBool() && (scoringMode == 0 || state.value(u"timingCorrect"_s).toBool());
     });
