@@ -30,7 +30,7 @@ Environment overrides:
   QT_SIMULATOR_PREFIX=<Qt iOS Simulator prefix>
   CONFIG=Release|Debug
   DEVICE_ARCHS=arm64
-  SIMULATOR_ARCHS=$(uname -m)
+  SIMULATOR_ARCHS=x86_64
   KDE_REF=v6.29.0
   KIRIGAMI_ADDONS_REF=v1.13.1
   PLASMA_REF=v6.5.1
@@ -57,7 +57,12 @@ DEFAULT_QT_ROOT="${QT_ROOT:-/Users/sandroandrade/Qt}"
 DEFAULT_QT_VERSION="${QT_VERSION:-6.11.2}"
 CONFIG="${CONFIG:-Release}"
 DEVICE_ARCHS="${DEVICE_ARCHS:-arm64}"
-SIMULATOR_ARCHS="${SIMULATOR_ARCHS:-$(uname -m)}"
+# Qt's prebuilt iOS package uses the arm64 slice for devices and the x86_64
+# slice for the simulator.  In particular, its generated static-plugin object
+# files cannot carry both arm64 platform variants in one Mach-O binary.  A
+# native arm64 simulator build therefore needs a separately built simulator
+# Qt prefix and an explicit SIMULATOR_ARCHS=arm64.
+SIMULATOR_ARCHS="${SIMULATOR_ARCHS:-x86_64}"
 BUILD_DEPENDENCIES="${BUILD_DEPENDENCIES:-1}"
 SKIP_CLONE_CHECKOUT="${SKIP_CLONE_CHECKOUT:-0}"
 SINGLE_DEPENDENCY="${SINGLE_DEPENDENCY:-}"
@@ -870,6 +875,7 @@ configure_build_install()
     local build_dir="$build_root/$name"
     local build_targets=()
     local install_components=()
+    local intl_cmake_args=()
     local target
     local component
 
@@ -878,10 +884,21 @@ configure_build_install()
         return 0
     fi
 
+    # Ki18n's FindLibIntl module otherwise finds the device copy bundled in
+    # Qt when the same Qt prefix is also a search root.  Prefer the library
+    # built for this SDK as soon as it is available.
+    if [ -f "$prefix/lib/libintl.a" ]; then
+        intl_cmake_args=(
+            "-DLibIntl_INCLUDE_DIRS=$prefix/include"
+            "-DLibIntl_LIBRARIES=$prefix/lib/libintl.a"
+        )
+    fi
+
     log "Configuring $name for $sdk ($archs)"
     clean_build_env "$QT_CMAKE" -S "$source_dir" -B "$build_dir" \
         $(common_cmake_args "$prefix" "$sdk" "$archs") \
         $(dependency_cmake_args) \
+        "${intl_cmake_args[@]}" \
         $(extra_cmake_args "$name")
 
     mapfile -t build_targets < <(manifest_query build-targets "$name")
@@ -1028,6 +1045,7 @@ configure_minuet()
         $(common_cmake_args "$dependency_prefix" "$sdk" "$archs") \
         -DPKG_CONFIG_EXECUTABLE="$PKG_CONFIG_EXECUTABLE" \
         -DFLUIDSYNTH_STATIC_LIBRARY="$dependency_prefix/lib/libfluidsynth.a" \
+        -DKF6Config_DIR="$dependency_prefix/lib/cmake/KF6Config" \
         -DCMAKE_XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER=org.kde.minuet \
         -DCMAKE_XCODE_ATTRIBUTE_ONLY_ACTIVE_ARCH=YES
 }

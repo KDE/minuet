@@ -70,8 +70,8 @@ QVariantMap ClappingExerciseController::alignment(const QVariantList &expectedOn
 
     constexpr double missingCost = 2.0;
     constexpr double extraCost = 2.0;
-    const int expectedCount = expectedOnsets.size();
-    const int performedCount = performedOnsets.size();
+    const qsizetype expectedCount = expectedOnsets.size();
+    const qsizetype performedCount = performedOnsets.size();
     const double safeTolerance = std::max(1.0, toleranceMs);
     QVector<QVector<Cell>> dp(expectedCount + 1, QVector<Cell>(performedCount + 1));
     dp[0][0].cost = 0.0;
@@ -102,8 +102,8 @@ QVariantMap ClappingExerciseController::alignment(const QVariantList &expectedOn
 
     QVariantList expectedMatches(expectedCount, -1);
     QVariantList performedMatches(performedCount, -1);
-    int i = expectedCount;
-    int j = performedCount;
+    qsizetype i = expectedCount;
+    qsizetype j = performedCount;
     while (i > 0 || j > 0) {
         switch (dp[i][j].operation) {
         case Cell::Match:
@@ -269,7 +269,7 @@ int ClappingExerciseController::timelineIndex(const QVariantList &figureStates, 
         return -1;
     }
     const int index = figureIndexForElapsed(figureStates, std::max(0.0, elapsedMs), toleranceMs);
-    return index >= 0 ? index : figureStates.size() - 1;
+    return index >= 0 ? index : static_cast<int>(figureStates.size() - 1);
 }
 
 double ClappingExerciseController::totalDurationMs(const QVariantList &figureStates) const
@@ -282,13 +282,13 @@ int ClappingExerciseController::score(const QVariantList &expectedOnsets, const 
     const QVariantMap matches = alignment(expectedOnsets, performedOnsets, toleranceMs);
     const QVariantList expectedMatches = matches.value(u"expectedMatches"_s).toList();
     const QVariantList performedMatches = matches.value(u"performedMatches"_s).toList();
-    const int matched = std::count_if(expectedMatches.cbegin(), expectedMatches.cend(), [](const QVariant &value) {
+    const qsizetype matched = std::count_if(expectedMatches.cbegin(), expectedMatches.cend(), [](const QVariant &value) {
         return value.toInt() >= 0;
     });
-    const int extras = std::count_if(performedMatches.cbegin(), performedMatches.cend(), [](const QVariant &value) {
+    const qsizetype extras = std::count_if(performedMatches.cbegin(), performedMatches.cend(), [](const QVariant &value) {
         return value.toInt() < 0;
     });
-    const int scoredOnsets = expectedOnsets.size() + extras;
+    const qsizetype scoredOnsets = expectedOnsets.size() + extras;
     return scoredOnsets > 0 ? qRound(matched * 100.0 / scoredOnsets) : 0;
 }
 
