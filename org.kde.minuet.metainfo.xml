@@ -92,26 +92,32 @@
   <screenshots>
     <screenshot type="default" environment="windows">
       <caption>Find focused exercises for intervals, chords, scales, and rhythm.</caption>
+      <caption xml:lang="ka">იპოვნეთ ფოკუსირებული სავარჯიშოები ინტერვალების, აკორდების, მასშტაბებისა და რიტმისთვის.</caption>
       <image>https://cdn.kde.org/screenshots/minuet/minuet-01-exercise-library.png</image>
     </screenshot>
     <screenshot environment="windows">
       <caption>Build your ear by identifying notes with keyboard and staff feedback.</caption>
+      <caption xml:lang="ka">შექმენით თქვენი სმენა კლავიატურისა და პერსონალის გამოხმაურებით შენიშვნების იდენტიფიცირებით.</caption>
       <image>https://cdn.kde.org/screenshots/minuet/minuet-02-melodic-interval.png</image>
     </screenshot>
     <screenshot environment="windows">
       <caption>Recognize rhythm patterns, including rests, at your own pace.</caption>
+      <caption xml:lang="ka">ამოიცანით რიტმის შაბლონები, მათ შორის დასვენება, საკუთარი ტემპით.</caption>
       <image>https://cdn.kde.org/screenshots/minuet/minuet-03-rhythm-with-rests.png</image>
     </screenshot>
     <screenshot environment="windows">
       <caption>Sing intervals and scales with live pitch and timing feedback.</caption>
+      <caption xml:lang="ka">იმღერეთ ინტერვალები ცოცხალი სიმაღლით და დროის გამოხმაურებით.</caption>
       <image>https://cdn.kde.org/screenshots/minuet/minuet-04-read-and-sing.png</image>
     </screenshot>
     <screenshot environment="windows">
       <caption>Clap written rhythms and see where each beat lands.</caption>
+      <caption xml:lang="ka">დაუკარით ტაში დაწერილი რიტმებით და ნახეთ, სად დაეშვება თითოეული დარტყმა.</caption>
       <image>https://cdn.kde.org/screenshots/minuet/minuet-05-read-and-clap.png</image>
     </screenshot>
     <screenshot environment="windows">
       <caption>Adjust tempo, instruments, test length, and microphone feedback.</caption>
+      <caption xml:lang="ka">დაარეგულირეთ ტემპი, ინსტრუმენტები, ტესტის სიგრძე და მიკროფონის გამოხმაურება.</caption>
       <image>https://cdn.kde.org/screenshots/minuet/minuet-06-practice-settings.png</image>
     </screenshot>
   </screenshots>
