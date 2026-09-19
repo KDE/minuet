@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-11 00:40+0000\n"
+"POT-Creation-Date: 2026-09-19 00:40+0000\n"
 "PO-Revision-Date: 2026-05-26 07:31+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
@@ -2089,20 +2089,20 @@ msgid "Ready"
 msgstr ""
 
 #: src/app/clappingexercisecontroller.cpp:220
-#: src/app/singingexercisecontroller.cpp:171
+#: src/app/singingexercisecontroller.cpp:173
 #, kde-format
 msgid "Missed"
 msgstr ""
 
 #: src/app/clappingexercisecontroller.cpp:297
 #: src/app/qml/components/GraphicalMeter.qml:62
-#: src/app/singingexercisecontroller.cpp:139
+#: src/app/singingexercisecontroller.cpp:141
 #, kde-format
 msgid "%1 ms"
 msgstr ""
 
 #: src/app/clappingexercisecontroller.cpp:297
-#: src/app/singingexercisecontroller.cpp:139
+#: src/app/singingexercisecontroller.cpp:141
 #, kde-format
 msgid "On time"
 msgstr ""
@@ -2256,7 +2256,7 @@ msgstr "mcorteel@gmail.com, vpinon@kde.org, xavier.besnard@kde.org"
 #: src/app/qml/exercises/ExerciseSingingView.qml:216
 #: src/app/qml/exercises/ExerciseSingingView.qml:523
 #: src/app/singingexercisecontroller.cpp:90
-#: src/app/singingexercisecontroller.cpp:238
+#: src/app/singingexercisecontroller.cpp:240
 #, kde-format
 msgid "No pitch"
 msgstr ""
@@ -2267,7 +2267,7 @@ msgid "No onset"
 msgstr ""
 
 #: src/app/qml/components/GraphicalMeter.qml:62
-#: src/app/singingexercisecontroller.cpp:98
+#: src/app/singingexercisecontroller.cpp:100
 #, kde-format
 msgid "%1 cents"
 msgstr ""
@@ -2513,7 +2513,7 @@ msgid ""
 msgstr ""
 
 #: src/app/qml/exercises/ExerciseSingingView.qml:821
-#: src/app/singingexercisecontroller.cpp:241
+#: src/app/singingexercisecontroller.cpp:243
 #, kde-format
 msgid "No timing"
 msgstr ""
