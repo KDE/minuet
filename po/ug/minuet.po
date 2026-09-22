@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-19 00:40+0000\n"
-"PO-Revision-Date: 2026-06-01 16:23-0400\n"
+"PO-Revision-Date: 2026-09-22 18:03+0900\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
@@ -1900,7 +1900,7 @@ msgstr ""
 #: src/app/qml/exercises/ExerciseClappingView.qml:337
 #, kde-format
 msgid "Ready"
-msgstr ""
+msgstr "تەييار"
 
 #: src/app/clappingexercisecontroller.cpp:220
 #: src/app/singingexercisecontroller.cpp:173
@@ -2090,12 +2090,12 @@ msgstr ""
 #: src/app/qml/components/MicrophoneInputPanel.qml:31
 #, kde-format
 msgid "Open"
-msgstr ""
+msgstr "ئاچ"
 
 #: src/app/qml/components/MicrophoneInputPanel.qml:31
 #, kde-format
 msgid "Closed"
-msgstr ""
+msgstr "يېپىلغان"
 
 #: src/app/qml/components/MicrophoneInputPanel.qml:40
 #: src/app/qml/components/MicrophoneInputPanel.qml:47
@@ -2117,7 +2117,7 @@ msgstr ""
 #: src/app/qml/components/MinuetDrawer.qml:72
 #, kde-format
 msgid "Search…"
-msgstr ""
+msgstr "ئىزدە…"
 
 #: src/app/qml/components/MinuetDrawer.qml:127
 #, kde-format
@@ -2134,18 +2134,18 @@ msgstr ""
 #: src/app/qml/components/MinuetDrawer.qml:151 src/app/qml/Main.qml:109
 #, kde-format
 msgid "Home"
-msgstr ""
+msgstr "باش بەت"
 
 #: src/app/qml/components/MinuetDrawer.qml:165
 #: src/app/qml/pages/SettingsPage.qml:43
 #, kde-format
 msgid "Settings"
-msgstr ""
+msgstr "تەڭشەك"
 
 #: src/app/qml/components/MinuetDrawer.qml:181
 #, kde-format
 msgid "About"
-msgstr ""
+msgstr "ھەققىدە"
 
 #: src/app/qml/components/MinuetDrawer.qml:203
 #, kde-format
@@ -2218,7 +2218,7 @@ msgstr ""
 #: src/app/qml/exercises/ExerciseSingingView.qml:690
 #, kde-format
 msgid "Start"
-msgstr ""
+msgstr "باشلا"
 
 #: src/app/qml/exercises/ExerciseClappingView.qml:478
 #: src/app/qml/exercises/ExerciseSingingView.qml:704
@@ -2349,7 +2349,7 @@ msgstr ""
 #: src/app/qml/exercises/ExerciseView.qml:695
 #, kde-format
 msgid "Keyboard"
-msgstr ""
+msgstr "ھەرپتاختا"
 
 #: src/app/qml/exercises/ExerciseSingingView.qml:966
 #: src/app/qml/exercises/ExerciseView.qml:698
@@ -2432,16 +2432,12 @@ msgstr ""
 msgid "Correct answer"
 msgid_plural "Correct answers"
 msgstr[0] ""
-msgstr[1] ""
 
 #: src/app/qml/exercises/ExerciseView.qml:519
-#, fuzzy, kde-format
-#| msgctxt "NAME OF TRANSLATORS"
-#| msgid "Your names"
+#, kde-format
 msgid "Your answer"
 msgid_plural "Your answers"
-msgstr[0] "ئابدۇقادىر ئابلىز، غەيرەت كەنجى"
-msgstr[1] "ئابدۇقادىر ئابلىز، غەيرەت كەنجى"
+msgstr[0] ""
 
 #: src/app/qml/exercises/ExerciseView.qml:523
 #, kde-format
@@ -2456,7 +2452,7 @@ msgstr ""
 #: src/app/qml/exercises/ExerciseView.qml:532
 #, kde-format
 msgid "Backspace"
-msgstr "Backspace"
+msgstr ""
 
 #: src/app/qml/exercises/ExerciseView.qml:629
 #, kde-format
@@ -2492,14 +2488,13 @@ msgstr ""
 #, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 - %1 تۈر"
 
 #: src/app/qml/pages/ExercisePage.qml:55
 #, kde-format
 msgctxt "@action:button"
 msgid "Help"
-msgstr ""
+msgstr "ياردەم"
 
 #: src/app/qml/pages/ExercisePage.qml:93
 #, kde-format
@@ -2648,12 +2643,12 @@ msgstr ""
 #: src/app/qml/pages/SettingsPage.qml:165
 #, kde-format
 msgid "Sound"
-msgstr ""
+msgstr "ئاۋاز"
 
 #: src/app/qml/pages/SettingsPage.qml:174
 #, kde-format
 msgid "Volume"
-msgstr ""
+msgstr "ئاۋاز مىقدارى"
 
 #: src/app/qml/pages/SettingsPage.qml:185
 #, kde-format
@@ -2705,12 +2700,12 @@ msgstr ""
 #: src/app/qml/pages/SettingsPage.qml:265
 #, kde-format
 msgid "Microphone"
-msgstr ""
+msgstr "مىكروفون"
 
 #: src/app/qml/pages/SettingsPage.qml:274
 #, kde-format
 msgid "Input device"
-msgstr ""
+msgstr "كىرگۈزۈش ئۈسكۈنىسى"
 
 #: src/app/qml/pages/SettingsPage.qml:289
 #, kde-format
@@ -2735,7 +2730,7 @@ msgstr ""
 #: src/app/qml/pages/SettingsPage.qml:290
 #, kde-format
 msgid "Bass"
-msgstr ""
+msgstr "تۆۋەن ئاۋاز"
 
 #: src/app/qml/pages/SettingsPage.qml:301
 #, kde-format
@@ -2781,7 +2776,7 @@ msgstr ""
 #: src/app/qml/pages/SettingsPage.qml:335
 #, kde-format
 msgid "Advanced"
-msgstr ""
+msgstr "ئالىي"
 
 #: src/app/qml/pages/SettingsPage.qml:375
 #, kde-format
@@ -2867,7 +2862,7 @@ msgstr ""
 #: src/app/qml/pages/SettingsPage.qml:524
 #, kde-format
 msgid "Reset to Defaults"
-msgstr ""
+msgstr "كۆڭۈلدىكىگە قايتۇر"
 
 #: src/app/qml/pianoview/PianoView.qml:168
 #, kde-format
@@ -3195,19 +3190,19 @@ msgstr ""
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Guitar"
-msgstr ""
+msgstr "گىتار"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:637
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Bass"
-msgstr ""
+msgstr "تۆۋەن ئاۋاز"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:639
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Strings"
-msgstr ""
+msgstr "ھەرب- بەلگە تىزىقى"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:641
 #, kde-format
@@ -3255,7 +3250,7 @@ msgstr ""
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Ethnic"
-msgstr ""
+msgstr "Ethnic مۇزىكىسى"
 
 #: src/plugins/fluidsynthsoundcontroller/fluidsynthsoundcontroller.cpp:657
 #, kde-format
@@ -3273,4 +3268,4 @@ msgstr ""
 #, kde-format
 msgctxt "General MIDI instrument group"
 msgid "Other"
-msgstr ""
+msgstr "باشقا"
