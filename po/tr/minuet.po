@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-19 00:40+0000\n"
-"PO-Revision-Date: 2026-08-11 19:19+0300\n"
+"PO-Revision-Date: 2026-09-23 15:32+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
-"Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
+"Language-Team: Turkish <kde-i18n-doc@kde.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 26.04.2\n"
+"X-Generator: Lokalize 26.07.70\n"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -510,7 +510,7 @@ msgstr "Kolay"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Easy with rests"
-msgstr "Esli kolay"
+msgstr "Suslarla Kolay"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -775,7 +775,7 @@ msgstr "Orta"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Medium with rests"
-msgstr "Esli orta"
+msgstr "Suslarla Orta"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -2645,8 +2645,8 @@ msgid ""
 "This is your first singing exercise. Start a quick guide? You can open it "
 "later from the Help icon."
 msgstr ""
-"Bu sizin ilk şarkı söyleme alıştırmanız. Kılavuza mı gereksiniminiz var? "
-"Yardım simgesinden erişebilirsiniz."
+"Bu sizin ilk şan alıştırmanız. Kılavuza mı gereksiniminiz var? Yardım "
+"simgesinden erişebilirsiniz."
 
 #: src/app/qml/pages/ExercisePage.qml:260
 #, kde-format
@@ -2691,7 +2691,7 @@ msgstr "Bu alıştırmayı nasıl yapmak istediğinizi seçin:"
 #: src/app/qml/pages/PracticeModePage.qml:47
 #, kde-format
 msgid "Hear and identify"
-msgstr "Duy ve tanımla"
+msgstr "Dinle ve tanımla"
 
 #: src/app/qml/pages/PracticeModePage.qml:58
 #, kde-format
@@ -2938,13 +2938,13 @@ msgstr "En düşük başlangıç gücü"
 #, kde-format
 msgid "Used for pitch analysis and note-entry timing in singing exercises."
 msgstr ""
-"Şarkı söyleme alıştırmalarında perde çözümlemesi nota girişi zamanlaması "
-"için kullanılır."
+"Şan alıştırmalarında perde çözümlemesi nota girişi zamanlaması için "
+"kullanılır."
 
 #: src/app/qml/pages/SettingsPage.qml:457
 #, kde-format
 msgid "Singing detection"
-msgstr "Şarkı söyleme algılaması"
+msgstr "Şarkı söylemeyi algılama"
 
 #: src/app/qml/pages/SettingsPage.qml:461
 #, kde-format
