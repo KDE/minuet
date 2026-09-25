@@ -93,6 +93,7 @@
   <screenshots>
     <screenshot type="default" environment="windows">
       <caption>Find focused exercises for intervals, chords, scales, and rhythm.</caption>
+      <caption xml:lang="ar">اعثر على تمارين مركّزة للمسافات الموسيقية والكوردات والسلالم والإيقاع.</caption>
       <caption xml:lang="ca">Trobeu exercicis centrats en intervals, acords, escales i ritmes.</caption>
       <caption xml:lang="ca-valencia">Trobeu exercicis centrats en intervals, acords, escales i ritmes.</caption>
       <caption xml:lang="es">Encuentre ejercicios específicos para intervalos, acordes, escalas y ritmo.</caption>
@@ -100,6 +101,7 @@
       <caption xml:lang="ka">იპოვნეთ ფოკუსირებული სავარჯიშოები ინტერვალების, აკორდების, მასშტაბებისა და რიტმისთვის.</caption>
       <caption xml:lang="nl">Zoek gerichte oefeningen voor intervallen, akkoorden, toonladders en ritme.</caption>
       <caption xml:lang="pt-BR">Encontre exercícios focados em intervalos, acordes, escalas e ritmo.</caption>
+      <caption xml:lang="ru">Тематические упражнения на интервалы, аккорды, гаммы и ритм</caption>
       <caption xml:lang="sl">Poiščite ciljno usmerjene vaje za intervale, akorde, lestvice in ritem.</caption>
       <caption xml:lang="sv">Hitta riktade övningar för intervall, ackord, skalor och rytm.</caption>
       <caption xml:lang="tr">Aralıklar, akorlar, gamlar ve ritim için odaklanmış egzersizler bulun.</caption>
@@ -108,12 +110,14 @@
     </screenshot>
     <screenshot environment="windows">
       <caption>Build your ear by identifying notes with keyboard and staff feedback.</caption>
+      <caption xml:lang="ar">درّب أذنك على تمييز النغمات مع تغذية راجعة من لوحة المفاتيح والمدرج الموسيقي.</caption>
       <caption xml:lang="ca">Eduqueu l'oïda identificant notes amb el teclat i la retroalimentació del pentagrama.</caption>
       <caption xml:lang="ca-valencia">Eduqueu l'oïda identificant notes amb el teclat i la retroalimentació del pentagrama.</caption>
       <caption xml:lang="es">Entrene el oído identificando notas con la ayuda visual del teclado y el pentagrama.</caption>
       <caption xml:lang="ka">შექმენით თქვენი სმენა კლავიატურისა და პერსონალის გამოხმაურებით შენიშვნების იდენტიფიცირებით.</caption>
       <caption xml:lang="nl">Train uw gehoor door noten te herkennen met feedback via het klavier en de notenbalk.</caption>
       <caption xml:lang="pt-BR">Treine seu ouvido identificando notas com feedback no teclado e na pauta.</caption>
+      <caption xml:lang="ru">Развитие музыкального слуха при определении нот с подсказками на клавиатуре и нотном стане</caption>
       <caption xml:lang="sl">Razvijte svoj posluh s prepoznavanjem tonov ob hkratnem prikazu na klaviaturi in v notnem črtovju.</caption>
       <caption xml:lang="sv">Träna upp gehör genom att identifiera toner med återkoppling från klaviatur och notsystem.</caption>
       <caption xml:lang="tr">Klavye ve desta geri bildirimiyle notaları tanıyarak kulağınızı geliştirin.</caption>
@@ -122,12 +126,14 @@
     </screenshot>
     <screenshot environment="windows">
       <caption>Recognize rhythm patterns, including rests, at your own pace.</caption>
+      <caption xml:lang="ar">تعرّف على الأنماط الإيقاعية، بما فيها السكتات، بالوتيرة التي تناسبك.</caption>
       <caption xml:lang="ca">Reconegueu patrons de ritme, inclosos les pauses, al vostre aire.</caption>
       <caption xml:lang="ca-valencia">Reconegueu patrons de ritme, inclosos les pauses, al vostre aire.</caption>
       <caption xml:lang="es">Reconozca patrones rítmicos, incluyendo silencios, a su propio ritmo.</caption>
       <caption xml:lang="ka">ამოიცანით რიტმის შაბლონები, მათ შორის დასვენება, საკუთარი ტემპით.</caption>
       <caption xml:lang="nl">Herken ritmepatronen, inclusief rusten, in uw eigen tempo.</caption>
       <caption xml:lang="pt-BR">Reconheça padrões rítmicos, incluindo pausas, no seu próprio ritmo.</caption>
+      <caption xml:lang="ru">Распознавание ритмических рисунков, включая паузы, в удобном для себя темпе</caption>
       <caption xml:lang="sl">Prepoznavajte ritmične vzorce, vključno s pavzami, v lastnem tempu.</caption>
       <caption xml:lang="sv">Identifiera rytmmönster, inklusive pauser, i egen takt.</caption>
       <caption xml:lang="tr">Esler de dahil olmak üzere ritim kalıplarını kendi hızınızda öğrenin.</caption>
@@ -136,12 +142,14 @@
     </screenshot>
     <screenshot environment="windows">
       <caption>Sing intervals and scales with live pitch and timing feedback.</caption>
+      <caption xml:lang="ar">غنِّ المسافات الموسيقية والسلالم مع تغذية راجعة فورية للطبقة والتوقيت.</caption>
       <caption xml:lang="ca">Canteu intervals i escales amb to en directe i retroalimentació de temps.</caption>
       <caption xml:lang="ca-valencia">Canteu intervals i escales amb to en directe i retroalimentació de temps.</caption>
       <caption xml:lang="es">Cante intervalos y escalas con información en tiempo real sobre afinación y ritmo.</caption>
       <caption xml:lang="ka">იმღერეთ ინტერვალები ცოცხალი სიმაღლით და დროის გამოხმაურებით.</caption>
       <caption xml:lang="nl">Zing intervallen en toonladders met live feedback over toonhoogte en timing.</caption>
       <caption xml:lang="pt-BR">Cante intervalos e escalas com feedback em tempo real sobre a afinação e o ritmo.</caption>
+      <caption xml:lang="ru">Пение интервалов и гамм с обратной связью по высоте тона и ритму в реальном времени</caption>
       <caption xml:lang="sl">Pojte intervale in lestvice s sprotnimi povratnimi informacijami o višini tona in ritmu.</caption>
       <caption xml:lang="sv">Sjung intervall och skalor med direkt återkoppling av tonhöjd och takt.</caption>
       <caption xml:lang="tr">Canlı ses ve zamanlama geri bildirimiyle aralıkları ve dizileri söyleyin.</caption>
@@ -150,12 +158,14 @@
     </screenshot>
     <screenshot environment="windows">
       <caption>Clap written rhythms and see where each beat lands.</caption>
+      <caption xml:lang="ar">صفّق الإيقاعات المكتوبة وشاهد أين تقع كل نبضة.</caption>
       <caption xml:lang="ca">Piqueu de mans amb ritmes escrits i mireu on para cada temps.</caption>
       <caption xml:lang="ca-valencia">Piqueu de mans amb ritmes escrits i mireu on para cada temps.</caption>
       <caption xml:lang="es">Dé palmadas con los ritmos escritos y observe dónde cae cada tiempo.</caption>
       <caption xml:lang="ka">დაუკარით ტაში დაწერილი რიტმებით და ნახეთ, სად დაეშვება თითოეული დარტყმა.</caption>
       <caption xml:lang="nl">Klap uitgeschreven ritmes en zie waar elke tel valt.</caption>
       <caption xml:lang="pt-BR">Bata palmas acompanhando ritmos escritos e observe onde cada tempo cai.</caption>
+      <caption xml:lang="ru">Прохлопывание записанных ритмов с показом того, куда попадает каждая доля</caption>
       <caption xml:lang="sl">Ploskajte zapisane ritme in opazujte, kam pade posamezen udarec.</caption>
       <caption xml:lang="sv">Klappa nedskrivna rytmer och se var varje taktslag hamnar.</caption>
       <caption xml:lang="tr">Yazılı ritimleri alkışlayarak çalın ve her bir vuruşun nereye denk geldiğini görün.</caption>
@@ -164,12 +174,14 @@
     </screenshot>
     <screenshot environment="windows">
       <caption>Adjust tempo, instruments, test length, and microphone feedback.</caption>
+      <caption xml:lang="ar">اضبط السرعة والآلات وطول الاختبار والتغذية الراجعة من المِصدَح.</caption>
       <caption xml:lang="ca">Ajusteu el tempo, els instruments, la durada de la prova i la retroalimentació del micròfon.</caption>
       <caption xml:lang="ca-valencia">Ajusteu el tempo, els instruments, la duració de la prova i la retroalimentació del micròfon.</caption>
       <caption xml:lang="es">Ajuste el tempo, los instrumentos, la duración de la prueba y la información del micrófono.</caption>
       <caption xml:lang="ka">დაარეგულირეთ ტემპი, ინსტრუმენტები, ტესტის სიგრძე და მიკროფონის გამოხმაურება.</caption>
       <caption xml:lang="nl">Pas het tempo, de instrumenten, de duur van de test en de microfoonfeedback aan.</caption>
       <caption xml:lang="pt-BR">Ajuste o andamento, os instrumentos, a duração do teste e o retorno do microfone.</caption>
+      <caption xml:lang="ru">Настройка темпа, инструментов, продолжительности теста и обратной связи от микрофона</caption>
       <caption xml:lang="sl">Prilagodite tempo, instrumente, dolžino preizkusa in povratno zanko mikrofona.</caption>
       <caption xml:lang="sv">Justera tempo, instrument, testlängd och mikrofonåterkoppling.</caption>
       <caption xml:lang="tr">Tempo, enstrümanlar, test uzunluğu ve mikrofon geri bildirimini ayarlayın.</caption>
