@@ -41,7 +41,7 @@
 
 <copyright>
 <year
->2016</year>
+>2026</year>
 <holder
 >&Sandro.Andrade;</holder>
 </copyright>
@@ -49,14 +49,14 @@
 >&FDLNotice;</legalnotice>
 
 <date
->2021‒10‒19</date>
+>2026‒07‒03</date>
 
 <releaseinfo
->0.4 (KDE Gear 21.08)</releaseinfo>
+>Geçerli geliştirme sürümü</releaseinfo>
 
 <abstract>
 <para
->&minuet;, müzik eğitimi için bir uygulamadır. Aralıklar, akorlar ve gamlar ile ilgili bir dizi kulak eğitimi alıştırması içerir. </para>
+>&minuet;, KDE’nin kulak eğitimi, ritim pratiği ve rehberli şarkı söylemeye yönelik müzik eğitimi uygulamasıdır. Egzersizleri konuya göre gruplandırır, dinleme ve performansa dayalı uygulamalar arasında geçiş yapmanızı sağlar ve farklı çalgılar ve odalar için ses ve mikrofon ayarlarını ortaya çıkarır. </para>
 </abstract>
 
 <keywordset>
@@ -75,6 +75,12 @@
 <keyword
 >gamlar</keyword>
 <keyword
+>ritim</keyword>
+<keyword
+>mikrofon</keyword>
+<keyword
+>pratik</keyword>
+<keyword
 >Minuet</keyword>
 </keywordset>
 
@@ -85,24 +91,25 @@
 >Giriş</title>
 
 <para
->Müzik eğitimi için bir yazılım olan &minuet;’e hoş geldiniz. &minuet;, öğrencileri ve öğretmenleri kulak eğitimi, nota okuma, solfej, gamlar, ritim, armoni ve doğaçlama gibi müzik eğitiminin birçok alanında desteklemeyi amaçlamaktadır. &minuet;, ses düzeyi, tempo ve perde değişiklikleri ile ilgili eksiksiz bir özellik kümesi sağlamak için &MIDI; yeteneklerinden yoğun bir şekilde yararlanır; bu da &minuet;’i hem yeni başlayan hem de deneyimli müzisyenler için değerli bir araç haline getirir. </para>
+>&minuet;’e hoş geldiniz: Müzik eğitimi için yegâne bir yazılım. Uygulamadan çıkmadan dinlemenize, yanıt vermenize ve ilerlemenizi test etmenize olanak tanıyan kısa alıştırmalar üzerine kurulmuştur. </para>
 <para
->&minuet;, zengin bir kulak eğitimi alıştırmaları kümesi içerir ve işlevselliğini genişletmek ve çeşitli müzik eğitimi bağlamlarına uyarlamak için yenileri <link linkend="creating-exercises"
->sorunsuz bir şekilde</link
-> eklenebilir. </para>
+>Uygulama şu anda melodik kulak eğitimi, ritim tanıma, alkış egzersizleri ve şarkı söyleme egzersizlerini kapsıyor. Aynı alıştırma genellikle birden fazla şekilde yapılabilir; bu nedenle arayüz ilk önce duymak ve tanımlamak mı, okumak ve alkışlamak mı, yoksa okumak ve şarkı söylemek mi istediğinizi sorar. </para>
 
 <screenshot>
   <screeninfo
->&minuet; ana penceresi</screeninfo>
+>&minuet; ana ekranı</screeninfo>
   <mediaobject>
     <imageobject
-><imagedata fileref="minuet-screenshot.png" format="PNG"/></imageobject>
+><imagedata fileref="minuet-home.png" format="PNG"/></imageobject>
     <textobject
 ><phrase
->&minuet;’in kulak eğitimi için akor alıştırmaları</phrase
+>&minuet; ana ekranı</phrase
 ></textobject>
   </mediaobject>
 </screenshot>
+
+<para
+>Ana ekran kasıtlı olarak minimal düzeydedir. Ayarlar sayfasına, hakkında sayfasına veya bir egzersiz kategorisine gitmek için dolaşım çekmecesini kullanın. </para>
 </chapter>
 
 <chapter id="using-minuet">
@@ -110,139 +117,404 @@
 >&minuet;’i kullanmak</title>
 
 <para
->Sonraki iki bölümde —<link linkend="starting-minuet"
->&minuet;’i Başlatmak</link
-> ve <link linkend="minuet-exercises"
->&minuet; Alıştırmaları</link
->— &minuet;’i açıp kullanmaya başlamak için gerekli adımları anlatacağız. </para>
+>Normal akış pek basittir: Başlatın, bir egzersiz seçin, bir alıştırma kipi seçin, ardından bir soru veya test çalıştırması üzerinde çalışın. </para>
 
 <sect1 id="starting-minuet">
 <title
->&minuet;’i Başlatmak</title>
+>&minuet;’i başlatmak</title>
 
 <para
->&minuet; uygulamasını uygulama başlatıcısından başlatabilirsiniz. Ekranınızın sol alt köşesindeki sistem tepsisinde bulunan uygulama başlatıcı simgesine tıklayarak global menüyü açın. Bu, bir menü açacaktır. İmlecinizi menüdeki <menuchoice
-><guimenu
->Uygulamalar</guimenu
-> <guisubmenu
->Eğitim</guisubmenu
-> <guisubmenu
->Çeşitli</guisubmenu
-> <guimenuitem
->&minuet; (Müzik Eğitimi Yazılımı)</guimenuitem
-></menuchoice
-> menü ögesine getirin veya <keycombo action="simul"
->&Alt;<keycap
->F2</keycap
-></keycombo
-> düğmesine basıp giriş alanına <command
+>&minuet;’i uygulama başlatıcısından veya uçbirimde <command
 >minuet</command
-> yazın. </para>
+> komutunu yazarak başlatın. Uygulama açıldığında, ana ekran tek bir istem gösterir: <guilabel
+>Bir alıştırma seçin</guilabel
+>. </para>
 </sect1>
 
-<sect1 id="minuet-exercises">
+<sect1 id="browse-exercises">
 <title
->&minuet; Alıştırmaları ve İş Akışı</title>
+>Alıştırmalara göz atın ve aralarından seçin</title>
 
 <para
->&minuet;’in kullanıcı arayüzü üç adet ana bileşenden oluşur: </para>
+>Alıştırma tarayıcısı, konuları kendi alanlarına göre gruplandırır. Akorlar, aralıklar, ritim veya gamlar bölümlerine erişmek için yan paneli ya da kategori listesini kullanın. Tarayıcı, yüklü alıştırma tanımlama dosyalarını temel alarak kendini günceller; bu sayede görüntülenen hiyerarşi, o anda var olan alıştırmaları yansıtır. </para>
 
 <screenshot>
   <screeninfo
->&minuet; ana penceresi</screeninfo>
+>&minuet; alıştırma tarayıcısı</screeninfo>
   <mediaobject>
     <imageobject
-><imagedata fileref="minuet-ui-components.png" format="PNG"/></imageobject>
+><imagedata fileref="minuet-exercise-list.png" format="PNG"/></imageobject>
     <textobject
 ><phrase
->&minuet;’in arayüz bileşenleri</phrase
+>&minuet; bünyesindeki alıştırma tarayıcısı</phrase
 ></textobject>
   </mediaobject>
 </screenshot>
 
-<variablelist>
+<para
+>Her bir alıştırma girdisi bir başlığa ve kısa bir açıklamaya sahiptir. Bazı kategoriler doğrudan bir alıştırmaya yönlendirirken, diğerleri alt kategorilere ayrılır. Liste kod içine sabitlenmemiştir; &minuet; başlatıldığında yeni alıştırma dosyaları hiyerarşide kendiliğinden içerilir. </para>
 
-<varlistentry>
-<term
-><guilabel
->Dolaşım Menüsü</guilabel
-></term>
-<listitem
-><para
->&minuet;’in alıştırma kategorilerinde gezinmeyi ve belirli bir alıştırmayı seçmeyi sağlar. Dolaşım Menüsü, <link linkend="creating-exercises"
->Alıştırma Oluşturma</link
-> bölümünde açıklandığı gibi, alıştırma belirtim dosyalarına göre devingen olarak oluşturulur. &minuet;’in alıştırmaları; aralıklar, gamlar ve akorlar gibi sınıflara göre gruplandırılmıştır.</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Klavye Görünümü</guilabel
-></term>
-<listitem
-><para
->Bir &MIDI; dosyası veya bir alıştırma yürütülmesiyle sıralanan olaylar hakkında &MIDI; <parameter
->notası</parameter
-> sergiler.</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Alıştırma Görünümü</guilabel
-></term>
-<listitem
-><para
->Belirli bir alıştırma için alıştırma sunumunu denetleyen düğmeler ve alıştırmanın olası yanıtlarını gösterir. Bir alıştırma çalıştırması, <guibutton
->Testi Başlat</guibutton
-> düğmesine tıklanarak başlar. &minuet; tarafından rastgele seçilen bir aralık/akor/gam çalınır ve ardından öğrencinin yanıt tablosunda gösterilenler arasından bir yanıt seçmesi beklenir. &minuet; her zaman —klavye görünümünde beyaz küçük bir daire olarak— seçilen aralığın/gamın ilk notasını veya seçilen akorun kök notasını gösterir. Olası bir yanıtın üzerine gelindiğinde &minuet;, klavye görünümünde karşılık gelen görsel temsilini vurgular. Üzerine gelinen yanıtın kalan notaları, üzerine gelinen yanıtın düğmesinin rengiyle aynı renkte küçük daireler olarak gösterilir. Öğrenci, <guibutton
->Soruyu Oynat</guibutton
-> düğmesine tıklayarak alıştırmayı yeniden dinleyebilir, seçilen yanıt düğmesine tıklayabilir veya <guibutton
->Vazgeç</guibutton
-> düğmesine tıklayarak doğru yanıtı alabilir. Aynı alıştırmayı bir kez daha başlatmak için <guibutton
->Testi Durdur</guibutton
-> düğmesine basıp ardından <guibutton
->Yeni Soru</guibutton
-> düğmesine yeniden basabilirsiniz.</para
-></listitem>
-</varlistentry>
-
-</variablelist>
 </sect1>
+
+<sect1 id="practice-modes">
+<title
+>Alıştırma kipleri</title>
+
+<para
+>Bir alıştırmayı açtığınızda &minuet;, onu nasıl yapmak istediğinizi sorar. </para>
+
+<screenshot>
+  <screeninfo
+>&minuet; alıştırma kipi seçicisi</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-practice-mode.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>&minuet; bünyesindeki alıştırma kipi seçicisi</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>İki yaygın kullanılan alıştırma yolu vardır: </para>
+
+<itemizedlist>
+<listitem>
+<para
+><guilabel
+>Dinle ve tanımla</guilabel
+> seçeneği alıştırmayı çalar ve var olan seçenekler arasından yanıtı seçmenizi ister. Bu, melodik kulak eğitimi için temel işleyiştir. </para>
+</listitem>
+<listitem>
+<para
+>Ritim alıştırmaları için <guilabel
+>Oku ve el çırp</guilabel
+> gösterilir. Aralıklar ve gamlar gibi vokal girişi kabul eden melodik egzersizler için ise <guilabel
+>Oku ve söyle</guilabel
+> gösterilir. </para>
+</listitem>
+</itemizedlist>
+
+<para
+>Seçilen alıştırma türü, temel alıştırma kategorisini değil, girdi yöntemini değiştirir. Bu da konuya bağlı olarak aynı alıştırmaları verilerini dinleme, el çırpma veya şarkı söyleme çalışmaları için kullanabileceğiniz anlamına gelir. </para>
+</sect1>
+
+<sect1 id="melodic-workflow">
+<title
+>Melodik kulak alıştırmaları</title>
+
+<para
+>Melodik alıştırmalar, klasik Minuet akışını izler: Uygulama bir soru çalar, yanıt seçeneklerini gösterir ve yeniden dinlemeniz gerekirse buna olanak tanır. Bu elle işlenen kip, <guilabel
+>Dinle ve tanımla</guilabel
+> seçeneğini tercih ettiğinizde aralıklar, gamlar ve akorlar için kullanılır. </para>
+
+<screenshot>
+  <screeninfo
+>Elle işleme kipinde &minuet; akor alıştırmaları</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-chords-manual.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>&minuet; bünyesinde elle işleme kipinde bir akor alıştırması</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Alıştırma sayfası, tek bir soru veya daha kapsamlı bir test çalışması için gereksinim duyduğunuz denetimleri sunar: </para>
+
+<itemizedlist>
+<listitem
+><para
+><guibutton
+>Yeni Soru</guibutton
+>, başka bir soruyu başlatır.</para
+></listitem>
+<listitem
+><para
+><guibutton
+>Soruyu Çal</guibutton
+>, geçerli istemi yineler.</para
+></listitem>
+<listitem
+><para
+><guibutton
+>Pes Et</guibutton
+>, yanıtı ortaya çıkarır.</para
+></listitem>
+<listitem
+><para
+><guibutton
+>Testi Başlat</guibutton
+>, puanlı bir soru dizisini başlatır.</para
+></listitem>
+<listitem
+><para
+><guibutton
+>Testi Durdur</guibutton
+>, test dizisini sonlandırır.</para
+></listitem>
+</itemizedlist>
+
+<para
+>Melodik alıştırmalarda, yanıt düğmeleri ile klavye veya dizek görünümü hizalı kalır; böylece her bir seçeneğin çalınan notalarla nasıl eşleştiğini görebilirsiniz. </para>
+
+<para
+>Akor alıştırmaları da aynı elle yapılan işleyişi kullanır; ancak burada, melodik bir dizi yerine bir akor çalınır. &minuet; akoru çalar, kök sesi klavye ve dizek üzerinde gösterir ve sunulan seçenekler arasından akor türünü belirlemenizi ister. Akor kataloğu; üçlü akorları, akor çevrimlerini, gecikmeli akorları, yedili, dokuzlu ve on birli akorları ve <guilabel
+>Bir Sürü Akor</guilabel
+> gibi karma akor setlerini içerir. </para>
+
+<para
+>Yanıtlamadan önce akoru yeniden duymak için <guibutton
+>Soruyu Çal</guibutton
+> düğmesini kullanın. Test kipinde &minuet;, ayarlar sayfasında yapılandırılmış alıştırma sayısını kullanarak diziyi puanlar. </para>
+</sect1>
+
+<sect1 id="rhythm-workflow">
+<title
+>Ritim ve el çırpma</title>
+
+<para
+>Ritim alıştırmaları, ses perdesinden ziyade zamanlamaya odaklanır. El çırpma kipinde &minuet;, mikrofon girişinizi dinler ve seslerin başlama anlarını hedef kalıpla karşılaştırır. </para>
+
+<para
+><guilabel
+>Suslarla Kolay</guilabel
+> ve <guilabel
+>Suslarla Orta</guilabel
+> kategorileri, yalnızca notalardan oluşan ilgili kalıplara sessiz konumlar ekler. Dinleme alıştırmalarında kulağa aynı gelen seçeneklere yer verilmezken, <guilabel
+>Oku ve el çırp</guilabel
+> seçeneği nota ve susların birlikte yer aldığı tüm karma kalıpları kapsar. </para>
+
+<screenshot>
+  <screeninfo
+>&minuet; el çırpma alıştırması</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-clapping.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>&minuet; bünyesindeki el çırpma alıştırması</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>El çırpma görünümü; ritim deseni kartlarını, bir giriş düzeyi göstergesini ve <guibutton
+>Sessizliği Kalibre Et</guibutton
+> eylemini içerir. Kayıt başlamadan önce bir hazırlık sayımı yapılır; böylece alıştırma el çırpmalarını dinlemeye başlamadan önce tempoya uyum sağlayabilirsiniz. </para>
+
+<para
+>Şunları çalışmak için ritim alıştırmalarını kullanın: </para>
+
+<itemizedlist>
+<listitem
+><para
+>basit ritim kalıplarını kulaktan tanıma;</para
+></listitem>
+<listitem
+><para
+>el çırpmalarınızı ritme uydurmak;</para
+></listitem>
+<listitem
+><para
+>ve yapılandırılmış zamanlama toleransı sınırları içinde kalmak.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="singing-workflow">
+<title
+>Şan alıştırmaları</title>
+
+<para
+>Şan alıştırmaları, söylediklerinizi hedef perde içeriğiyle karşılaştırmak için mikrofonu kullanır. Hem aralık hem de gam çalışmaları için aynı uygulama ekranı kullanılır; ancak seçilen alıştırmaya göre hedef ve geri bildirim değişir. </para>
+
+<para
+>Aralık alıştırmalarında &minuet;, kök notayı çalar ve sizden bu notaya göre istenen aralığı seslendirmenizi ister. Gam alıştırmalarında ise uygulama bir gam veya kip sunar; sizden de doğru perde ve ritimle, notaları sırasıyla seslendirmenizi bekler. </para>
+
+<screenshot>
+  <screeninfo
+>&minuet; şan aralık alıştırması</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-singing-interval.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>&minuet; bünyesindeki bir şan aralık alıştırması</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<screenshot>
+  <screeninfo
+>&minuet; şan gam alıştırması</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-singing-scale.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>&minuet; bünyesindeki bir şan gam alıştırması</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Şan görünümü; hedef notaları, perde ve ses başlama zamanlamasıyla ilgili geri bildirimleri, canlı giriş düzeyi göstergesini ve <guibutton
+>Sessizliği Kalibre Et</guibutton
+> işlevini sunar. &minuet;, ilk notadan önce bir hazırlık sayımı da yaparak doğru vuruşta başlamanızı sağlar. Gam görünümü, aynı geri bildirimleri daha uzun ezgi dizileri için de sunar; bu da onu, perde eşleştirmenin yanı sıra melodik bellek çalışmaları için de yararlı kılar. </para>
+
+<para
+>Şan alıştırmaları, birkaç ayar ile yapılandırılabilir: </para>
+
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>Ses sınıfı</guilabel
+>, beklenen vokal erimini seçer.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Perde toleransı</guilabel
+>, söylenen bir notanın hedef perdeden ne kadar uzak olabileceğini denetler.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Zamanlama toleransı</guilabel
+>, el çırpma için ne kadarlık bir ritmik kaymanın kabul edilebilir olacağını denetler.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="settings">
+<title
+>Ayarlar</title>
+
+<para
+>Ayarlar sayfası, dört ayrı bölüme ayrılmıştır: <guilabel
+>Alıştırma</guilabel
+>, <guilabel
+>Ses</guilabel
+>, <guilabel
+>Mikrofon</guilabel
+> ve <guilabel
+>Gelişmiş</guilabel
+>. İlk üç bölüm, başlangıç ​​düzeyi denetimlerini görünür tutar. Gelişmiş bölümü ise siz açana kadar kapalı kalır. </para>
+
+<screenshot>
+  <screeninfo
+>&minuet; temel ayarları</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-settings-basic.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>&minuet; bünyesindeki temel ayarlar sayfası</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Görünür ayarlar, kullanıcıların en çok gereksinim duyabileceği ayarları sunar: </para>
+
+<itemizedlist>
+<listitem
+><para
+><guilabel
+>Alıştırma hızı</guilabel
+>, dakika başına vuruş hızı ile tempoyu ayarlar.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Ritim kalıpları sayısı</guilabel
+>, ritim alıştırma kümelerinin boyutunu denetler.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Testlerdeki alıştırma sayısı</guilabel
+>, bir test dizisindeki uzunluğu ayarlar.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Ses düzeyi</guilabel
+>, çalma ses düzeyini ayarlar.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Çalgı</guilabel
+>, kulak alıştırmaları için kullanılan melodik sesi seçer.</para
+></listitem>
+<listitem
+><para
+><guilabel
+>Ses sınıfı</guilabel
+>, hedef şan erimini seçer.</para
+></listitem>
+</itemizedlist>
+
+<para
+>Mikrofon bölümü ayrıca, tolerans ve kalibrasyon denetimlerine ilişkin kısa açıklayıcı bilgiler de içerir. Bu açıklamalar, toleransın ne zaman sıkılaştırılması ve sessizlik kalibrasyonunun ne zaman yenilenmesi gerektiğini belirtir. </para>
+
+<screenshot>
+  <screeninfo
+>&minuet; gelişmiş ayarları</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-settings-advanced.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>&minuet; bünyesindeki gelişmiş ayarlar</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Gelişmiş ayarlar; zorlu mikrofonlar veya gürültülü odalar için algılama algoritmalarını ve eşik değerlerini sunar. Bu ayarları, öntanımlı algılama davranışı yeterli olmadığında kullanın. Bu bölüm öntanımlı olarak kapalı durumdadır ve denemeler yaptıktan sonra fabrika değerlerine geri dönebilmeniz için bir <guibutton
+>Öntanımlılara Sıfırla</guibutton
+> düğmesi içerir. </para>
+
+<para
+>Gelişmiş bölüm; el çırpma algılama ve şarkı söyleme algılama için ayrı gruplar içerir. Tipik denetimler arasında başlangıç yöntemi, başlangıç ​​eşiği, giriş kapısı, en düşük başlangıç ​​şiddeti, sessizlik düzeyi, perde yöntemi, puanlama kipi, perde güvenilirliği ve kararlı perde kareleri yer alır. </para>
 </chapter>
 
 <chapter id="creating-exercises">
 <title
->Yeni &minuet; Alıştırmaları Oluşturmak</title>
+>Yeni &minuet; alıştırmaları oluşturmak</title>
 
 <para
->&minuet;’in alıştırmaları, &JSON; biçiminde yazılmış alıştırma belirtim dosyalarında tanımlanmıştır: </para>
+>&minuet;’in alıştırmaları, &JSON; belirtim dosyalarında tanımlanır. Uygulama, başlangıçta var olan tüm dosyaları yükler ve bunları görünür alıştırma ağacında birleştirir. </para>
+
 <para>
 <programlisting
 >{
   "exercises": [
     {
       "name": "Aralıklar",
-      "root": "21..104",
-      "playMode": "scale",
+      "root": "29..69",
+      "playMode": "gam",
+      "userMessage": "Aralığı duyun ve yanıtınızı seçin",
+      "numberOfSelectedOptions": 1,
+      "_icon": "minuet-intervals-symbolic.svg",
       "children": [
         {
           "name": "Çıkıcı Melodik Aralıklar",
+          "and-tags": ["aralık", "çıkıcı"],
           "children": [
             {
-              "name": "İkililer",
-              "options": [
-                {
-                  "name": "Minör İkili",
-                  "sequenceFromRoot": "1"
-                },
-                {
-                  "name": "Majör İkili",
-                  "sequenceFromRoot": "2"
-                }
-              ]
+              "name": "Saniye",
+              "or-tags": ["2"],
+              "description": "Kulakla çıkıcı melodik aralıkları tanımla alıştırmaları yapın."
             }
           ]
         }
@@ -252,44 +524,98 @@
 }
 </programlisting>
 </para>
+
 <para
->&minuet;’in alıştırma belirtim dosyaları, <parameter
+>En üst düzey nesne, bir <parameter
 >exercises</parameter
-> (alıştırmalar) dizilişini içeren en üst düzey bir &JSON; nesnesi içerir. Bu diziliş, kategorilere göre gruplandırılmış alıştırmaların hiyerarşik bir yapısını tanımlar. Her kategori/alıştırmanın bir adı vardır. Kategori &JSON; nesneleri, söz konusu kategorinin içerdiği alt kategorileri/alıştırmaları açıklayan <parameter
+> dizisi içerir. Bu dizideki her bir öge, ya bir kategori ya da bir egzersiz yaprağıdır. Kategoriler, ağacın bir sonraki düzeyini tanımlamak için <parameter
 >children</parameter
-> (alt ögeler) adlı bir özellik içerir. Alıştırma &JSON; nesneleri, söz konusu alıştırma için olası yanıtları tanımlayan <parameter
->options</parameter
-> (seçenekler) adlı bir özellik içerir. Her alıştırma çalışmasında, &minuet; olası yanıtlar arasından rastgele birini seçer ve öğrencinin seçilen yanıta karşılık gelen düğmeye tıklaması beklenir. </para>
+> parametresini kullanır. </para>
+
 <para
->Herhangi bir (alt) kategori, bu kategorideki tüm alıştırmalar için başlangıç aralığının/akordun/gamın notasının rastgele seçileceği erimi belirtmek üzere bir <parameter
+>Kullanışlı alanlara örnek olarak: </para>
+
+<itemizedlist>
+<listitem
+><para
+><parameter
+>name</parameter
+>, her bir düğüme onun görünür adını verir.</para
+></listitem>
+<listitem
+><para
+><parameter
 >root</parameter
-> (kök) parametresi tanımlayabilir. Bu erim, standart &MIDI; nota numaralarına karşılık gelir ve <parameter
->&lt;min-value&gt;..&lt;max-value&gt;</parameter
-> (en düşük, en yüksek değer) biçimini izler. Yukarıda sunulan örnek, olası kök notalar olarak tüm klavye erimini (21..104) kullanır. <parameter
+>, istemi oluşturmak için kullanılan nota erimini sınırlar.</para
+></listitem>
+<listitem
+><para
+><parameter
 >playMode</parameter
-> parametresi, olası yanıtların nasıl çalınması gerektiğini gösterir: Bir <parameter
->scale</parameter
-> (gam) olarak (bir nota diğerinin ardından) veya bir <parameter
->chord</parameter
-> (akor) olarak (tüm notalar aynı anda çalınır). </para>
-<para
->Her alıştırmanın seçeneği, her alıştırma çalışmasında rastgele seçilen kök notadan çalınması gereken notaların adını ve sırasını tanımlar. Bu nota dizisi, kök notadan göreceli uzaklıklar olarak tanımlanır ve her notanın kök nota ile birlikte oluşturduğu aralığı açıklar. Örneğin, bir majör gam için nota dizisi <quote
->2 4 5 7 9 11 12</quote
-> şeklindedir ve bu sırasıyla <quote
->tam tam yarım tam tam tam yarım</quote
-> majör gam yapısını ifade eder. <parameter
+>; gamı, akoru veya çalan ritmi seçer.</para
+></listitem>
+<listitem
+><para
+><parameter
+>userMessage</parameter
+>, kullanıcıya gösterilen yönergeleri özelleştirme olanağı sunar.</para
+></listitem>
+<listitem
+><para
+><parameter
+>numberOfSelectedOptions</parameter
+>, kaç tane yanıtın doğru olabileceğini belirler.</para
+></listitem>
+<listitem
+><para
+><parameter
+>_icon</parameter
+>, çekmecede ve alıştırıcı tarayıcısında gösterilen simgeyi ayarlar.</para
+></listitem>
+<listitem
+><para
+><parameter
+>and-tags</parameter
+> ve <parameter
+>or-tags</parameter
+>, ilgili düğümleri gruplamaya ve süzmeye yardımcı olur.</para
+></listitem>
+<listitem
+><para
+><parameter
+>description</parameter
+>, düğüm için kısa bir açıklama sunar.</para
+></listitem>
+<listitem
+><para
+><parameter
+>options</parameter
+>, bir yaprak alıştırma için yanıt seçimlerini açıklar.</para
+></listitem>
+<listitem
+><para
+><parameter
 >sequenceFromRoot</parameter
-> parametresi herhangi bir uzunlukta nota içerebilir. Ayrıca, &minuet;’in çekirdeği, yalnızca tüm notaları klavye erimi içinde bulunan yanıtların rastgele seçilmesini sağlar. </para>
+>, melodik yanıtlar için nota ofsetlerini tanımlar.</para
+></listitem>
+<listitem
+><para
+><parameter
+>template</parameter
+>, notasyonu sunmak için ritim alıştırmaları tarafından kullanılır.</para
+></listitem>
+</itemizedlist>
+
 <para
->Çok sayıda alıştırma belirtim dosyasını düzenlemek için daha iyi bir altyapı sağlamak amacıyla, &minuet;’in çekirdeği, Dolaşım menüsünde sunulan nihaî alıştırma hiyerarşisini oluşturmak üzere kendiliğinden birleştirilen çeşitli belirtim dosyalarının kullanımını destekler. Alıştırmalar, farklı belirtim dosyaları alıştırmaları tanımlarken aynı (alt) kategori adını kullandığı sürece doğru şekilde birleştirilir. Şimdilik, &minuet; alıştırma belirtimleri oluşturmak için herhangi bir arayüz sağlamamaktadır, bu nedenle bu tür &JSON; dosyalarını elle oluşturmanız gerekir. &minuet;’in alıştırma belirtim dosyaları, sistem genelinde veya yerel olarak <filename class="directory"
->minuet/exercises/</filename
-> klasörüne <userinput
+>Uygulama, aynı kategori adlarına sahip dosyaları birleştirir; böylece ayrı teknik özellik dosyaları, tek bir görünür hiyerarşiye katkıda bulunabilir. Onları tüm sistem kullanıcıları için kurun veya <userinput
 ><command
 >qtpaths</command
 > <option
 >--paths GenericDataLocation</option
 ></userinput
-> içinde kurulabilir. </para>
+> komutu tarafından döndürülen genel veri konumu olan <filename class="directory"
+>minuet/exercises/</filename
+> dizini altına koyun. </para>
 
 </chapter>
 
@@ -304,7 +630,7 @@
 >Program telif hakkı &copy; 2016 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
 
 <para
->Belgelendirme telif hakkı &copy; 2016 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
+>Belgelendirme telif hakkı &copy; 2026 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
 
 <para
 >Çeviri: Emir SARI <email
