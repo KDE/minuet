@@ -607,7 +607,7 @@ msgstr "Увеличенный ионийский"
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
 msgid "Jazz sus chord"
-msgstr "Джазовый аккорд с повышенным/пониженным терцовым тоном (sus)"
+msgstr "Джазовый аккорд с задержанием (sus)"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -2185,7 +2185,7 @@ msgstr ""
 #: src/app/qml/components/MinuetDrawer.qml:151 src/app/qml/Main.qml:109
 #, kde-format
 msgid "Home"
-msgstr "Домой"
+msgstr "Главная"
 
 #: src/app/qml/components/MinuetDrawer.qml:165
 #: src/app/qml/pages/SettingsPage.qml:43
@@ -2309,7 +2309,7 @@ msgid ""
 "signal is above the current gate."
 msgstr ""
 "Уровень входного сигнала показывает активность микрофона при хлопке. "
-"«Открытый» означает, что сигнал превышает текущий уровень шлюза."
+"«Открыт» означает, что сигнал превышает текущий порог гейта."
 
 #: src/app/qml/exercises/ExerciseSingingView.qml:292
 #, kde-format
@@ -2396,8 +2396,8 @@ msgid ""
 "The input level shows microphone activity while you sing. Open means the "
 "signal is above the current gate."
 msgstr ""
-"Уровень входного сигнала показывает активность микрофона при пении. "
-"«Открытый» означает, что сигнал превышает текущий уровень шлюза."
+"Уровень входного сигнала показывает активность микрофона при пении. «Открыт» "
+"означает, что сигнал превышает текущий порог гейта."
 
 #: src/app/qml/exercises/ExerciseSingingView.qml:896
 #, kde-format
@@ -2909,7 +2909,7 @@ msgstr "Порог атаки"
 #: src/app/qml/pages/SettingsPage.qml:477
 #, kde-format
 msgid "Input gate"
-msgstr "Входной шлюз"
+msgstr "Входной гейт"
 
 #: src/app/qml/pages/SettingsPage.qml:434
 #, kde-format
@@ -2931,7 +2931,7 @@ msgstr "Определение пения"
 #: src/app/qml/pages/SettingsPage.qml:455
 #, kde-format
 msgid "Pitch method"
-msgstr "Способ установки высоты тона"
+msgstr "Метод определения высоты"
 
 #: src/app/qml/pages/SettingsPage.qml:465
 #, kde-format
