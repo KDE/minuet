@@ -1,0 +1,655 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Arabic "INCLUDE">
+]>
+<book id="minuet" lang="&language;">
+
+<bookinfo>
+<title
+>دليل منويت</title>
+
+<authorgroup>
+<author
+><personname
+> <firstname
+>Sandro</firstname
+> <othername
+>S.</othername
+> <surname
+>Andrade</surname
+> </personname
+> <email
+>&Sandro.Andrade.mail;</email
+> </author>
+<othercredit role="translator"
+><firstname
+>زايد</firstname
+><surname
+>السعيدي</surname
+><affiliation
+><address
+><email
+>zayed.alsaidi@gmail.com</email
+></address
+></affiliation
+><contrib
+>التّرجمة العربيّة</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2026</year>
+<holder
+>&Sandro.Andrade;</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2026-07-03</date>
+
+<releaseinfo
+>نسخة التطوير الحالية</releaseinfo>
+
+<abstract>
+<para
+>منويت هو تطبيق كيدي لتعليم الموسيقى لتدريب الأذن، وممارسة الإيقاع، والغناء الموجّه. يجمّع التمارين حسب الموضوع، ويتيح لك التنقل بين التدريب القائم على الاستماع والأداء، ويوفر إعدادات الصوت والميكروفون لمختلف الآلات والغرف. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>كيدي</keyword>
+<keyword
+>kdeedu</keyword>
+<keyword
+>موسيقى</keyword>
+<keyword
+>تعليم</keyword>
+<keyword
+>مسافات</keyword>
+<keyword
+>كوردات</keyword>
+<keyword
+>مقاييس</keyword>
+<keyword
+>إيقاع</keyword>
+<keyword
+>ميكروفون</keyword>
+<keyword
+>ممارسة</keyword>
+<keyword
+>منويت</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>مقدمة</title>
+
+<para
+>مرحبًا بك في منويت: برنامج تعليم الموسيقى. بُني حول تمارين قصيرة تتيح لك الاستماع والاستجابة واختبار تقدمك دون مغادرة التطبيق. </para>
+<para
+>يغطي التطبيق حاليًا التدريب الأذني اللحني، والتعرف على الإيقاع، وتمارين التصفيق، وتمارين الغناء. يمكن في كثير من الأحيان ممارسة التمرين نفسه بأكثر من طريقة، ولهذا السبب تسأل الواجهة أولاً عما إذا كنت تريد الاستماع والتعرف، أو القراءة والتصفيق، أو القراءة والغناء. </para>
+
+<screenshot>
+  <screeninfo
+>الشاشة الرئيسة لمنويت</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-home.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>الشاشة الرئيسة لمنويت</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>الصفحة الرئيسة بسيطة عن قصد. استخدم درج التنقل للانتقال إلى صفحة الإعدادات، أو صفحة 'عن'، أو فئة من التمارين. </para>
+</chapter>
+
+<chapter id="using-minuet">
+<title
+>استخدام منويت</title>
+
+<para
+>التدفق العادي بسيط: ابدأ منويت، واختر تمرينًا، واختر نمط الممارسة، ثم اعمل من خلال سؤال أو تشغيل اختباري. </para>
+
+<sect1 id="starting-minuet">
+<title
+>بدء منويت</title>
+
+<para
+>ابدأ منويت من مشغل التطبيقات أو من الطرفية عبر تشغيل <command
+>minuet</command
+>. عندما يفتح التطبيق، تعرض الصفحة الرئيسة أمرًا واحدًا: <guilabel
+>اختر تمرينًا</guilabel
+>. </para>
+</sect1>
+
+<sect1 id="browse-exercises">
+<title
+>استعرض واختر التمارين</title>
+
+<para
+>يجمّع مستعرض التمارين المواضيع حسب المادة. استخدم الدرج أو قائمة الفئات للوصول إلى الكوردات، أو المسافات، أو الإيقاع، أو المقاييس. يحدّث المستعرض نفسه آليًا من ملفات مواصفات التمارين المثبتة، لذا فإن التسلسل الهرمي المرئي يعكس التمارين المتاحة حاليًا. </para>
+
+<screenshot>
+  <screeninfo
+>مستعرض تمارين منويت</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-exercise-list.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>مستعرض التمارين في منويت</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>لكل مدخل تمرين عنوان ووصف قصير. تؤدي بعض الفئات مباشرة إلى تمرين، بينما يتوسع بعضها الآخر إلى فئات فرعية. القائمة ليست ثابتة في البرمجية: تُدمج ملفات التمارين الجديدة في التسلسل الهرمي آليًا عند بدء منويت. </para>
+
+</sect1>
+
+<sect1 id="practice-modes">
+<title
+>أنماط الممارسة</title>
+
+<para
+>عند فتح تمرين، يسألك منويت عن الكيفية التي تريد ممارسته بها. </para>
+
+<screenshot>
+  <screeninfo
+>منتقي نمط الممارسة في منويت</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-practice-mode.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>منتقي نمط الممارسة في منويت</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>هناك مساران عريضان للممارسة: </para>
+
+<itemizedlist>
+<listitem>
+<para
+>يعزف الخيار <guilabel
+>استمع وتعرّف</guilabel
+> التمرين ويطلب منك اختيار الإجابة من الخيارات المتاحة. هذا هو التدفق الرئيسي للتدريب الأذني اللحني. </para>
+</listitem>
+<listitem>
+<para
+>يُعرض الخيار <guilabel
+>اقرأ وصفّق</guilabel
+> لتمارين الإيقاع. بينما يُعرض الخيار <guilabel
+>اقرأ وغنّ</guilabel
+> للتمارين اللحنية التي تقبل الإدخال الصوتي، مثل المسافات والمقاييس. </para>
+</listitem>
+</itemizedlist>
+
+<para
+>يغير اختيار الممارسة نمط الإدخال، وليس فئة التمرين الأساسية. هذا يعني أنه يمكنك استخدام بيانات التمرين نفسها لأعمال الاستماع، أو التصفيق، أو الغناء بناءً على الموضوع. </para>
+</sect1>
+
+<sect1 id="melodic-workflow">
+<title
+>التدريب الأذني اللحني</title>
+
+<para
+>تتبع التمارين اللحنية تدفق منويت الكلاسيكي: يعزف التطبيق سؤالاً، ويظهر خيارات الإجابة، ويدعك تعيد عزف الموجه إذا كنت بحاجة إلى الاستماع إليه مرة أخرى. يُستخدم هذا النمط اليدوي للمسافات والمقاييس والكوردات عندما تختار <guilabel
+>استمع وتعرّف</guilabel
+>. </para>
+
+<screenshot>
+  <screeninfo
+>تمرين كوردات منويت في النمط اليدوي</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-chords-manual.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>تمرين كوردات في النمط اليدوي في منويت</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>تمنحك صفحة التمرين عناصر التحكم التي تحتاج إليها لسؤال واحد أو لتشغيل اختباري أطول: </para>
+
+<itemizedlist>
+<listitem
+><para
+>يبدأ زر <guibutton
+>سؤال جديد</guibutton
+> سؤالاً آخر.</para
+></listitem>
+<listitem
+><para
+>يكرر زر <guibutton
+>اعزف السؤال</guibutton
+> الموجه الحالي.</para
+></listitem>
+<listitem
+><para
+>يكشف زر <guibutton
+>استسلم</guibutton
+> عن الإجابة.</para
+></listitem>
+<listitem
+><para
+>يبدأ زر <guibutton
+>ابدأ الاختبار</guibutton
+> تسلسلاً محسوب النقاط من الأسئلة.</para
+></listitem>
+<listitem
+><para
+>ينهي زر <guibutton
+>أوقف الاختبار</guibutton
+> التشغيل الاختباري.</para
+></listitem>
+</itemizedlist>
+
+<para
+>في التمارين اللحنية، تظل أزرار الإجابة وعرض لوحة المفاتيح أو المدرج الموسيقي متحاذية، بحيث يمكنك رؤية كيفية تعيين كل مرشح على النوتات الملعوبة. </para>
+
+<para
+>تستخدم تمارين الكوردات سير العمل اليدوي نفسه، ولكن يُعزف الموجه ككورد بدلاً من تسلسل لحني. يعزف منويت الكورد، ويظهر النوتة الأساسية على لوحة المفاتيح والمدرج، ويطلب منك اختيار نوع كورد واحد من الإجابات المتاحة. يتضمن كتالوج الكوردات الثلاثيات، والانقلابات، والكوردات المعلقة، وكوردات السباعية، والتاسعة، والحادية عشرة، ومجموعات الكوردات المختلطة مثل <guilabel
+>الكثير من الكوردات</guilabel
+>. </para>
+
+<para
+>استخدم <guibutton
+>اعزف السؤال</guibutton
+> لسماع الكورد مرة أخرى قبل الإجابة. في نمط الاختبار، يحسب منويت نقاط التسلسل باستخدام عدد التمارين المضبوط من صفحة الإعدادات. </para>
+</sect1>
+
+<sect1 id="rhythm-workflow">
+<title
+>الإيقاع والتصفيق</title>
+
+<para
+>تركز تمارين الإيقاع على التوقيت بدلاً من طبقة الصوت. في نمط التصفيق، يستمع منويت إلى إدخال الميكروفون ويقارن البدايات بالنمط المستهدف. </para>
+
+<para
+>تضيف الفئتان <guilabel
+>سهل مع السكتات</guilabel
+> و<guilabel
+>متوسط مع السكتات</guilabel
+> مواضع صامتة إلى الأنماط المقابلة المقتصرة على النوتات. تتجنب تمارين الاستماع الخيارات التي تبدو متطابقة، بينما يتضمن <guilabel
+>اقرأ وصفّق</guilabel
+> كل نمط مختلط من النوتات والسكتات. </para>
+
+<screenshot>
+  <screeninfo
+>تمرين التصفيق في منويت</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-clapping.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>تمرين تصفيق إيقاعي في منويت</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>يعرض عرض التصفيق بطاقات النمط الإيقاعي، ومقياس مستوى الإدخال، وإجراء <guibutton
+>عاير الصمت</guibutton
+>. يحدث العد التنازلي التمهيدي قبل بدء التسجيل، بحيث يمكنك الاستقرار في السرعة قبل أن يستمع التمرين للتصفيقات. </para>
+
+<para
+>استخدم ممارسة الإيقاع للعمل على: </para>
+
+<itemizedlist>
+<listitem
+><para
+>التعرف على الأشكال الإيقاعية البسيطة سماعيًا؛</para
+></listitem>
+<listitem
+><para
+>مطابقة تصفيقك مع النبضة؛</para
+></listitem>
+<listitem
+><para
+>البقاء ضمن التسامح الزمني المضبوط.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="singing-workflow">
+<title
+>تمارين الغناء</title>
+
+<para
+>تستخدم تمارين الغناء الميكروفون لمقارنة ما تغنيه مع محتوى طبقة الصوت المستهدف. تُستخدم شاشة الممارسة نفسها لكل من أعمال المسافات والمقاييس، ولكن الهدف والتغذية الراجعة يتغيران مع التمرين المختار. </para>
+
+<para
+>بالنسبة لتمارين المسافات، يعزف منويت النوتة الأساسية ويطلب منك غناء المسافة المطلوبة بالنسبة إليها. بالنسبة لتمارين المقاييس، يقدم التطبيق مقياسًا أو مقامًا ويتوقع منك غناء النوتات بالتسلسل مع الحفاظ على طبقة الصوت والنبضة. </para>
+
+<screenshot>
+  <screeninfo
+>تمرين غناء المسافات في منويت</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-singing-interval.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>تمرين غناء المسافات في منويت</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<screenshot>
+  <screeninfo
+>تمرين غناء المقاييس في منويت</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-singing-scale.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>تمرين غناء المقاييس في منويت</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>يعرض عرض الغناء أهداف النوتة، والتغذية الراجعة لطبقة الصوت والبداية، ومقياس الإدخال المباشر، وإجراء <guibutton
+>عاير الصمت</guibutton
+>. كما يقوم منويت بالعد التنازلي التمهيدي قبل النوتة الأولى، حتى تتمكن من البدء في النبضة الصحيحة. يوسع عرض المقاييس التغذية الراجعة نفسها إلى تسلسلات أطول، مما يجعله مفيدًا لممارسة الذاكرة اللحنية بالإضافة إلى مطابقة طبقة الصوت. </para>
+
+<para
+>تتأثر تمارين الغناء بعدة إعدادات: </para>
+
+<itemizedlist>
+<listitem
+><para
+>يحدد الخيار <guilabel
+>طبقة الصوت</guilabel
+> النطاق الصوتي المتوقع.</para
+></listitem>
+<listitem
+><para
+>يتحكم <guilabel
+>تسامح طبقة الصوت</guilabel
+> في مدى بعد النوتة المغناة عن طبقة الصوت المستهدفة.</para
+></listitem>
+<listitem
+><para
+>يتحكم <guilabel
+>التسامح الزمني</guilabel
+> في مقدار الانحراف الإيقاعي المقبول التصفيق.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="settings">
+<title
+>الإعدادات</title>
+
+<para
+>تنقسم صفحة الإعدادات إلى أربعة أقسام: <guilabel
+>الممارسة</guilabel
+>، و<guilabel
+>الصوت</guilabel
+>، و<guilabel
+>الميكروفون</guilabel
+>، و<guilabel
+>متقدم</guilabel
+>. تبقي الأقسام الثلاثة الأولى عناصر التحكم المخصصة للمبتدئين مرئية. بينما يظل القسم المتقدم مطويًا حتى تفتحه. </para>
+
+<screenshot>
+  <screeninfo
+>الإعدادات الأساسية لمنويت</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-settings-basic.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>صفحة الإعدادات الأساسية في منويت</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>تغطي الإعدادات المرئية عناصر التحكم التي يحتاجها معظم المستخدمين يوميًا: </para>
+
+<itemizedlist>
+<listitem
+><para
+>يضبط الخيار <guilabel
+>سرعة التمرين</guilabel
+> الإيقاع بالنبضات في الدقيقة.</para
+></listitem>
+<listitem
+><para
+>يتحكم الخيار <guilabel
+>عدد الأنماط الإيقاعية</guilabel
+> في حجم مجموعات ممارسة الإيقاع.</para
+></listitem>
+<listitem
+><para
+>يحدد الخيار <guilabel
+>عدد التمارين</guilabel
+> طول التشغيل الاختباري.</para
+></listitem>
+<listitem
+><para
+>يعدّل الخيار <guilabel
+>شدة الصوت</guilabel
+> علو صوت التشغيل.</para
+></listitem>
+<listitem
+><para
+>يحدد الخيار <guilabel
+>الآلة</guilabel
+> الصوت اللحني المستخدم لتدريب الأذن.</para
+></listitem>
+<listitem
+><para
+>يحدد الخيار <guilabel
+>طبقة الصوت</guilabel
+> نطاق الغناء المستهدف.</para
+></listitem>
+</itemizedlist>
+
+<para
+>يتضمن قسم الميكروفون أيضًا أوصافًا مساعدة قصيرة لعناصر التحكم في التسامح والمعايرة. تشرح تلك الأوصاف متى يجب تشديد التسامح ومتى يجب إعادة معايرة الصمت. </para>
+
+<screenshot>
+  <screeninfo
+>الإعدادات المتقدمة لمنويت</screeninfo>
+  <mediaobject>
+    <imageobject
+><imagedata fileref="minuet-settings-advanced.png" format="PNG"/></imageobject>
+    <textobject
+><phrase
+>قسم الإعدادات المتقدمة في منويت</phrase
+></textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>تكشف الإعدادات المتقدمة خوارزميات الاكتشاف والعتبات للميكروفونات الصعبة أو الغرف المزعجة. استخدمها عندما لا يكون سلوك الاكتشاف المبدئي كافيًا. يكون القسم مطويًا مبدئيًا ويتضمن زر <guibutton
+>استرجع المبدئيات</guibutton
+> حتى تتمكن من استعادة قيم المصنع بعد التجريب. </para>
+
+<para
+>يتضمن القسم المتقدم مجموعات منفصلة لاكتشاف التصفيق واكتشاف الغناء. تشمل عناصر التحكم النموذجية طريقة البداية، وعتبة البداية، وبوابة الإدخال، والحد الأدنى لقوة البداية، ومستوى الصمت، وطريقة طبقة الصوت، ونمط حساب النقاط، وثقة طبقة الصوت، وإطارات طبقة الصوت المستقرة. </para>
+</chapter>
+
+<chapter id="creating-exercises">
+<title
+>إنشاء تمارين جديدة لـ منويت</title>
+
+<para
+>تُعرّف تمارين منويت في ملفات مواصفات &JSON;. يحمّل التطبيق جميع الملفات المتاحة عند بدء التشغيل ويضمّنها في شجرة التمارين المرئية. </para>
+
+<para>
+<programlisting
+>{
+  "exercises": [
+    {
+      "name": "Intervals",
+      "root": "29..69",
+      "playMode": "scale",
+      "userMessage": "Hear the interval and choose your answer",
+      "numberOfSelectedOptions": 1,
+      "_icon": "minuet-intervals-symbolic.svg",
+      "children": [
+        {
+          "name": "Ascending melodic intervals",
+          "and-tags": ["interval", "ascending"],
+          "children": [
+            {
+              "name": "Seconds",
+              "or-tags": ["2"],
+              "description": "Practice identifying ascending melodic seconds by ear."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+</programlisting>
+</para>
+
+<para
+>يحتوي الكائن العالي المستوى على مصفوفة <parameter
+>exercises</parameter
+>. كل عنصر في تلك المصفوفة إما فئة وإما ورقة تمرين. تستخدم الفئات <parameter
+>children</parameter
+> لتحديد المستوى التالي من الشجرة. </para>
+
+<para
+>تشمل الحقول المفيدة ما يلي: </para>
+
+<itemizedlist>
+<listitem
+><para
+>يعطي <parameter
+>name</parameter
+> كل العقدة لصيقتها المرئية.</para
+></listitem>
+<listitem
+><para
+>يحدّد <parameter
+>root</parameter
+> نطاق النوتة المستخدم لتوليد الموجه.</para
+></listitem>
+<listitem
+><para
+>يحدد <parameter
+>playMode</parameter
+> تشغيل المقياس، أو الكورد، أو الإيقاع.</para
+></listitem>
+<listitem
+><para
+>يخصص <parameter
+>userMessage</parameter
+> التعليمات المعروضة للمستخدم.</para
+></listitem>
+<listitem
+><para
+>يتحكم <parameter
+>numberOfSelectedOptions</parameter
+> في عدد الإجابات التي يمكن أن تكون صحيحة.</para
+></listitem>
+<listitem
+><para
+>يضبط <parameter
+>_icon</parameter
+> الأيقونة المعروضة في الدرج ومستعرض التمارين.</para
+></listitem>
+<listitem
+><para
+>تساعد <parameter
+>and-tags</parameter
+> و <parameter
+>or-tags</parameter
+> في تجميع العقد ذات الصلة وتصفيتها.</para
+></listitem>
+<listitem
+><para
+>يعطي <parameter
+>description</parameter
+> المستعرض شرحًا قصيرًا للعقدة.</para
+></listitem>
+<listitem
+><para
+>يشرح <parameter
+>options</parameter
+> خيارات الإجابة لتمرين ورقي.</para
+></listitem>
+<listitem
+><para
+>يعرّف <parameter
+>sequenceFromRoot</parameter
+> إزاحات النوتة للإجابات اللحنية.</para
+></listitem>
+<listitem
+><para
+>يُستخدم <parameter
+>template</parameter
+> بواسطة تمارين الإيقاع لتقديم التدوين الموسيقي.</para
+></listitem>
+</itemizedlist>
+
+<para
+>يدمج التطبيق الملفات التي تشترك في أسماء الفئات نفسها، بحيث يمكن لملفات المواصفات المنفصلة المساهمة في تسلسل هرمي مرئي واحد. ثبّتها على مستوى النظام أو ضعها في <filename class="directory"
+>minuet/exercises/</filename
+> تحت موقع البيانات العام الذي يرجعه <userinput
+><command
+>qtpaths</command
+> <option
+>--paths GenericDataLocation</option
+></userinput
+>. </para>
+
+</chapter>
+
+<chapter id="credits">
+
+<title
+>الحقوق والترخيص</title>
+
+<para
+>منويت </para>
+<para
+>حقوق نشر البرنامج 2016 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
+
+<para
+>حقوق نشر التوثيق &copy; 2026 &Sandro.Andrade; &Sandro.Andrade.mail; </para>
+
+<para
+>الترجمة: زايد السعيدي <email
+>zayed.alsaidi@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->
