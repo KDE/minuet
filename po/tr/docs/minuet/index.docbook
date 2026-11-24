@@ -480,8 +480,8 @@
 </screenshot>
 
 <para
->Gelişmiş ayarlar; zorlu mikrofonlar veya gürültülü odalar için algılama algoritmalarını ve eşik değerlerini sunar. Bu ayarları, öntanımlı algılama davranışı yeterli olmadığında kullanın. Bu bölüm öntanımlı olarak kapalı durumdadır ve denemeler yaptıktan sonra fabrika değerlerine geri dönebilmeniz için bir <guibutton
->Öntanımlılara Sıfırla</guibutton
+>Gelişmiş ayarlar; zorlu mikrofonlar veya gürültülü odalar için algılama algoritmalarını ve eşik değerlerini sunar. Bu ayarları, varsayılan algılama davranışı yeterli olmadığında kullanın. Bu bölüm varsayılan olarak kapalı durumdadır ve denemeler yaptıktan sonra fabrika değerlerine geri dönebilmeniz için bir <guibutton
+>Varsayılanlara Sıfırla</guibutton
 > düğmesi içerir. </para>
 
 <para
