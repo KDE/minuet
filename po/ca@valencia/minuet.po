@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: minuet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-19 00:40+0000\n"
-"PO-Revision-Date: 2026-08-11 08:27+0200\n"
+"PO-Revision-Date: 2026-11-21 20:01+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 26.04.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -1584,7 +1584,7 @@ msgstr ""
 msgctxt "technical term, do you have a musician friend?"
 msgid "Practice recognizing the major scale and its diatonic modes."
 msgstr ""
-"Pràctica de reconeixement de l'escala majors i els seus modes diatònics."
+"Pràctica de reconeixement de l'escala major i els seus modes diatònics."
 
 #, kde-format
 msgctxt "technical term, do you have a musician friend?"
@@ -2340,7 +2340,7 @@ msgid ""
 msgstr ""
 "Esta zona mostra totes les figures rítmiques. Les vores marquen picades de "
 "mans correctes o absentes, i els comptadors de temps mostren picades de mans "
-"anticipats o tardans."
+"anticipades o tardanes."
 
 #: src/app/qml/exercises/ExerciseClappingView.qml:606
 #, kde-format
@@ -2500,7 +2500,7 @@ msgstr ""
 #: src/app/qml/exercises/ExerciseView.qml:358
 #, kde-format
 msgid "These messages explain the question and show its status."
-msgstr "Este missatges expliquen la pregunta i mostren el seu estat."
+msgstr "Estos missatges expliquen la pregunta i mostren el seu estat."
 
 #: src/app/qml/exercises/ExerciseView.qml:373
 #, kde-format
@@ -2649,7 +2649,7 @@ msgid ""
 "the count finishes."
 msgstr ""
 "Un comptador de quatre temps es reproduïx abans d'analitzar les picades de "
-"mans. Inicieu el picar de mans quan acabe el compte."
+"mans. Inicieu el fet de picar de mans quan acabe el comptador."
 
 #: src/app/qml/pages/ExercisePage.qml:93
 #, kde-format
